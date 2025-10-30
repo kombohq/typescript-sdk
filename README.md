@@ -25,8 +25,7 @@ Developer-friendly & type-safe TypeScript SDK for the [Kombo Unified API](https:
 * [@kombo-api/sdk](#kombo-apisdk)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
-  * [Global Parameters](#global-parameters)
-  * [Server Selection](#server-selection)
+  * [Region Selection](#region-selection)
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Pagination](#pagination)
   * [Error Handling](#error-handling)
@@ -75,10 +74,7 @@ yarn add @kombo-api/sdk
 > CommonJS, use `await import("@kombo-api/sdk")` to import and use this package.
 <!-- End SDK Installation [installation] -->
 
-<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
-
-### Example
 
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
@@ -94,61 +90,34 @@ async function run() {
 }
 
 run();
-
 ```
-<!-- End SDK Example Usage [usage] -->
 
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
+### Specifying an integration ID
 
-A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `integration_id` to `"workday:HWUTwvyx2wLoSUHphiWVrp28"` at SDK initialization and then you do not have to pass the same value on calls to operations like `deleteIntegration`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameter is available.
-
-| Name           | Type   | Description                                      |
-| -------------- | ------ | ------------------------------------------------ |
-| integration_id | string | ID of the integration you want to interact with. |
-
-### Example
+The majority of Kombo API endpoints are for interacting with a single "integration" (i.e., a single connection to one your customers' systems). For using these, make sure to specify the `integration_id` parameter when initializing the SDK:
 
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
 const kombo = new Kombo({
-  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
   api_key: "<YOUR_BEARER_TOKEN_HERE>",
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
 });
 
 async function run() {
-  const result = await kombo.general.deleteIntegration({
-    integration_id: "<id>",
-    delete_integrations_integration_id_request_body: {},
-  });
+  const result = await kombo.hris.getEmployees();
 
   console.log(result);
 }
 
 run();
-
 ```
-<!-- End Global Parameters [global-parameters] -->
 
-<!-- Start Server Selection [server] -->
-## Server Selection
+## Region Selection
 
-### Select Server by Name
+The Kombo platform is available in two regions: Europe and United States.
 
-You can override the default server globally by passing a server name to the `server: keyof typeof ServerList` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
-
-| Name | Server                        | Description      |
-| ---- | ----------------------------- | ---------------- |
-| `eu` | `https://api.kombo.dev/v1`    | Kombo API Server |
-| `us` | `https://api.us.kombo.dev/v1` | Kombo API Server |
+By default, the SDK will use the EU region. If you're using the US region (hosted under `api.us.kombo.dev`), make sure to specify the `server` parameter when initializing the SDK.
 
 #### Example
 
@@ -159,38 +128,7 @@ const kombo = new Kombo({
   server: "us",
   api_key: "<YOUR_BEARER_TOKEN_HERE>",
 });
-
-async function run() {
-  const result = await kombo.general.checkApiKey();
-
-  console.log(result);
-}
-
-run();
-
 ```
-
-### Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `server_url: string` optional parameter when initializing the SDK client instance. For example:
-```typescript
-import { Kombo } from "@kombo-api/sdk";
-
-const kombo = new Kombo({
-  server_url: "https://api.kombo.dev/v1",
-  api_key: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await kombo.general.checkApiKey();
-
-  console.log(result);
-}
-
-run();
-
-```
-<!-- End Server Selection [server] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
