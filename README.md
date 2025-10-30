@@ -3,7 +3,7 @@
 Developer-friendly & type-safe TypeScript SDK for the [Kombo Unified API](https://docs.kombo.dev/introduction).
 
 <div align="left">
-  <a href="https://www.speakeasy.com/?utm_source=github-com/kombohq/typescript-sdk&utm_campaign=typescript">
+  <a href="https://www.speakeasy.com/?utm_source=@kombo-api/sdk&utm_campaign=typescript">
     <img src="https://custom-icon-badges.demolab.com/badge/-built%20with%20speakeasy-212015?style=flat-square&logoColor=FBE331&logo=speakeasy&labelColor=545454" />
   </a>
   <a href="https://www.npmjs.com/package/@kombo-api/sdk">
@@ -628,12 +628,6 @@ const sdk = new Kombo({ debug_logger: console });
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 # Development
-
-## Maturity
-
-This SDK is in beta, and there may be breaking changes between versions without a major version update. Therefore, we recommend pinning usage
-to a specific package version. This way, you can install the same version each time without breaking changes unless you are intentionally
-looking for the latest version.
 
 ## Contributions
 
