@@ -24,18 +24,17 @@ Developer-friendly & type-safe TypeScript SDK for the [Kombo Unified API](https:
 <!-- $toc-max-depth=2 -->
 * [@kombo-api/sdk](#kombo-apisdk)
   * [SDK Installation](#sdk-installation)
-  * [Requirements](#requirements)
   * [SDK Example Usage](#sdk-example-usage)
-  * [Authentication](#authentication)
-  * [Available Resources and Operations](#available-resources-and-operations)
-  * [Standalone functions](#standalone-functions)
   * [Global Parameters](#global-parameters)
-  * [Pagination](#pagination)
-  * [Retries](#retries)
-  * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Pagination](#pagination)
+  * [Error Handling](#error-handling)
+  * [Retries](#retries)
+  * [Standalone functions](#standalone-functions)
   * [Custom HTTP Client](#custom-http-client)
   * [Debugging](#debugging)
+  * [Requirements](#requirements)
 * [Development](#development)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
@@ -76,12 +75,6 @@ yarn add @kombo-api/sdk
 > CommonJS, use `await import("@kombo-api/sdk")` to import and use this package.
 <!-- End SDK Installation [installation] -->
 
-<!-- Start Requirements [requirements] -->
-## Requirements
-
-For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
-<!-- End Requirements [requirements] -->
-
 <!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
 
@@ -105,22 +98,65 @@ run();
 ```
 <!-- End SDK Example Usage [usage] -->
 
-<!-- Start Authentication [security] -->
-## Authentication
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
 
-### Per-Client Security Schemes
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-This SDK supports the following security scheme globally:
+For example, you can set `integration_id` to `"workday:HWUTwvyx2wLoSUHphiWVrp28"` at SDK initialization and then you do not have to pass the same value on calls to operations like `deleteIntegration`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
-| Name      | Type | Scheme      |
-| --------- | ---- | ----------- |
-| `api_key` | http | HTTP Bearer |
 
-To authenticate with the API the `api_key` parameter must be set when initializing the SDK client instance. For example:
+### Available Globals
+
+The following global parameter is available.
+
+| Name           | Type   | Description                                      |
+| -------------- | ------ | ------------------------------------------------ |
+| integration_id | string | ID of the integration you want to interact with. |
+
+### Example
+
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
 const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.general.deleteIntegration({
+    integration_id: "<id>",
+    delete_integrations_integration_id_request_body: {},
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Select Server by Name
+
+You can override the default server globally by passing a server name to the `server: keyof typeof ServerList` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
+
+| Name | Server                        | Description      |
+| ---- | ----------------------------- | ---------------- |
+| `eu` | `https://api.kombo.dev/v1`    | Kombo API Server |
+| `us` | `https://api.us.kombo.dev/v1` | Kombo API Server |
+
+#### Example
+
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  server: "us",
   api_key: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
@@ -133,7 +169,28 @@ async function run() {
 run();
 
 ```
-<!-- End Authentication [security] -->
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: string` optional parameter when initializing the SDK client instance. For example:
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  server_url: "https://api.kombo.dev/v1",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.general.checkApiKey();
+
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End Server Selection [server] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
@@ -216,122 +273,6 @@ run();
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
-<!-- Start Standalone functions [standalone-funcs] -->
-## Standalone functions
-
-All the methods listed above are available as standalone functions. These
-functions are ideal for use in applications running in the browser, serverless
-runtimes or other environments where application bundle size is a primary
-concern. When using a bundler to build your application, all unused
-functionality will be either excluded from the final bundle or tree-shaken away.
-
-To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
-
-<details>
-
-<summary>Available standalone functions</summary>
-
-- [`assessmentGetOpenOrders`](docs/sdks/assessment/README.md#getopenorders) - Get open orders
-- [`assessmentGetPackages`](docs/sdks/assessment/README.md#getpackages) - Get packages
-- [`assessmentSetPackages`](docs/sdks/assessment/README.md#setpackages) - Set packages
-- [`assessmentUpdateOrderResult`](docs/sdks/assessment/README.md#updateorderresult) - Update order result
-- [`atsAddApplicationAttachment`](docs/sdks/ats/README.md#addapplicationattachment) - Add attachment to application
-- [`atsAddApplicationNote`](docs/sdks/ats/README.md#addapplicationnote) - Add note to application
-- [`atsAddApplicationResultLink`](docs/sdks/ats/README.md#addapplicationresultlink) - Add result link to application
-- [`atsAddCandidateAttachment`](docs/sdks/ats/README.md#addcandidateattachment) - Add attachment to candidate
-- [`atsAddCandidateResultLink`](docs/sdks/ats/README.md#addcandidateresultlink) - Add result link to candidate
-- [`atsAddCandidateTag`](docs/sdks/ats/README.md#addcandidatetag) - Add tag to candidate
-- [`atsCreateApplication`](docs/sdks/ats/README.md#createapplication) - Create application
-- [`atsCreateCandidate`](docs/sdks/ats/README.md#createcandidate) - Create candidate
-- [`atsGetApplicationAttachments`](docs/sdks/ats/README.md#getapplicationattachments) - Get application attachments
-- [`atsGetApplications`](docs/sdks/ats/README.md#getapplications) - Get applications
-- [`atsGetApplicationStages`](docs/sdks/ats/README.md#getapplicationstages) - Get application stages
-- [`atsGetCandidateAttachments`](docs/sdks/ats/README.md#getcandidateattachments) - Get candidate attachments
-- [`atsGetCandidates`](docs/sdks/ats/README.md#getcandidates) - Get candidates
-- [`atsGetInterviews`](docs/sdks/ats/README.md#getinterviews) - Get interviews
-- [`atsGetJobs`](docs/sdks/ats/README.md#getjobs) - Get jobs
-- [`atsGetOffers`](docs/sdks/ats/README.md#getoffers) - Get offers
-- [`atsGetRejectionReasons`](docs/sdks/ats/README.md#getrejectionreasons) - Get rejection reasons
-- [`atsGetTags`](docs/sdks/ats/README.md#gettags) - Get tags
-- [`atsGetUsers`](docs/sdks/ats/README.md#getusers) - Get users
-- [`atsImportTrackedApplication`](docs/sdks/ats/README.md#importtrackedapplication) - Import tracked application
-- [`atsMoveApplicationToStage`](docs/sdks/ats/README.md#moveapplicationtostage) - Move application to stage
-- [`atsRejectApplication`](docs/sdks/ats/README.md#rejectapplication) - Reject application
-- [`atsRemoveCandidateTag`](docs/sdks/ats/README.md#removecandidatetag) - Remove tag from candidate
-- [`connectCreateConnectionLink`](docs/sdks/connect/README.md#createconnectionlink) - Create connection link
-- [`connectGetIntegrationByToken`](docs/sdks/connect/README.md#getintegrationbytoken) - Get integration by token
-- [`generalCheckApiKey`](docs/sdks/general/README.md#checkapikey) - Check API key
-- [`generalCreateReconnectionLink`](docs/sdks/general/README.md#createreconnectionlink) - Create reconnection link
-- [`generalDeleteIntegration`](docs/sdks/general/README.md#deleteintegration) - Delete integration
-- [`generalGetCustomFields`](docs/sdks/general/README.md#getcustomfields) - Get custom fields with current mappings
-- [`generalGetIntegrationDetails`](docs/sdks/general/README.md#getintegrationdetails) - Get integration details
-- [`generalGetIntegrationFields`](docs/sdks/general/README.md#getintegrationfields) - Get integration fields
-- [`generalGetTools`](docs/sdks/general/README.md#gettools) - Get tools
-- [`generalSendPassthroughRequest`](docs/sdks/general/README.md#sendpassthroughrequest) - Send passthrough request
-- [`generalTriggerSync`](docs/sdks/general/README.md#triggersync) - Trigger sync
-- [`generalUpdateCustomFieldMapping`](docs/sdks/general/README.md#updatecustomfieldmapping) - Put custom field mappings
-- [`generalUpdateIntegrationField`](docs/sdks/general/README.md#updateintegrationfield) - Updates an integration fields passthrough setting
-- [`hrisAddEmployeeDocument`](docs/sdks/hris/README.md#addemployeedocument) - Add document to employee
-- [`hrisCreateAbsence`](docs/sdks/hris/README.md#createabsence) - Create absence
-- [`hrisCreateEmployeeWithForm`](docs/sdks/hris/README.md#createemployeewithform) - Create employee with form
-- [`hrisDeleteAbsence`](docs/sdks/hris/README.md#deleteabsence) - Delete absence
-- [`hrisGetAbsences`](docs/sdks/hris/README.md#getabsences) - Get absences
-- [`hrisGetAbsenceTypes`](docs/sdks/hris/README.md#getabsencetypes) - Get absence types
-- [`hrisGetEmployeeDocumentCategories`](docs/sdks/hris/README.md#getemployeedocumentcategories) - Get employee document categories
-- [`hrisGetEmployeeForm`](docs/sdks/hris/README.md#getemployeeform) - Get employee form
-- [`hrisGetEmployees`](docs/sdks/hris/README.md#getemployees) - Get employees
-- [`hrisGetEmployments`](docs/sdks/hris/README.md#getemployments) - Get employments
-- [`hrisGetGroups`](docs/sdks/hris/README.md#getgroups) - Get groups
-- [`hrisGetLegalEntities`](docs/sdks/hris/README.md#getlegalentities) - Get legal entities
-- [`hrisGetLocations`](docs/sdks/hris/README.md#getlocations) - Get work locations
-- [`hrisGetPerformanceReviewCycles`](docs/sdks/hris/README.md#getperformancereviewcycles) - Get performance review cycles
-- [`hrisGetPerformanceReviews`](docs/sdks/hris/README.md#getperformancereviews) - Get performance reviews
-- [`hrisGetTimeOffBalances`](docs/sdks/hris/README.md#gettimeoffbalances) - Get time off balances
-- [`hrisGetTimesheets`](docs/sdks/hris/README.md#gettimesheets) - Get timesheets
-
-</details>
-<!-- End Standalone functions [standalone-funcs] -->
-
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
-
-A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `integration_id` to `"workday:HWUTwvyx2wLoSUHphiWVrp28"` at SDK initialization and then you do not have to pass the same value on calls to operations like `deleteIntegration`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameter is available.
-
-| Name           | Type   | Description                                      |
-| -------------- | ------ | ------------------------------------------------ |
-| integration_id | string | ID of the integration you want to interact with. |
-
-### Example
-
-```typescript
-import { Kombo } from "@kombo-api/sdk";
-
-const kombo = new Kombo({
-  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
-  api_key: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await kombo.general.deleteIntegration({
-    integration_id: "<id>",
-    delete_integrations_integration_id_request_body: {},
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-<!-- End Global Parameters [global-parameters] -->
-
 <!-- Start Pagination [pagination] -->
 ## Pagination
 
@@ -365,69 +306,6 @@ run();
 
 ```
 <!-- End Pagination [pagination] -->
-
-<!-- Start Retries [retries] -->
-## Retries
-
-Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
-
-To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
-```typescript
-import { Kombo } from "@kombo-api/sdk";
-
-const kombo = new Kombo({
-  api_key: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await kombo.general.checkApiKey({
-    retries: {
-      strategy: "backoff",
-      backoff: {
-        initialInterval: 1,
-        maxInterval: 50,
-        exponent: 1.1,
-        maxElapsedTime: 100,
-      },
-      retryConnectionErrors: false,
-    },
-  });
-
-  console.log(result);
-}
-
-run();
-
-```
-
-If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
-```typescript
-import { Kombo } from "@kombo-api/sdk";
-
-const kombo = new Kombo({
-  retry_config: {
-    strategy: "backoff",
-    backoff: {
-      initialInterval: 1,
-      maxInterval: 50,
-      exponent: 1.1,
-      maxElapsedTime: 100,
-    },
-    retryConnectionErrors: false,
-  },
-  api_key: "<YOUR_BEARER_TOKEN_HERE>",
-});
-
-async function run() {
-  const result = await kombo.general.checkApiKey();
-
-  console.log(result);
-}
-
-run();
-
-```
-<!-- End Retries [retries] -->
 
 <!-- Start Error Handling [errors] -->
 ## Error Handling
@@ -505,25 +383,55 @@ run();
 \* Check [the method documentation](#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
-<!-- Start Server Selection [server] -->
-## Server Selection
+<!-- Start Retries [retries] -->
+## Retries
 
-### Select Server by Name
+Some of the endpoints in this SDK support retries.  If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API.  However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
 
-You can override the default server globally by passing a server name to the `server: keyof typeof ServerList` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
-
-| Name | Server                        | Description      |
-| ---- | ----------------------------- | ---------------- |
-| `eu` | `https://api.kombo.dev/v1`    | Kombo API Server |
-| `us` | `https://api.us.kombo.dev/v1` | Kombo API Server |
-
-#### Example
-
+To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
 const kombo = new Kombo({
-  server: "us",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.general.checkApiKey({
+    retries: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 100,
+      },
+      retryConnectionErrors: false,
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  retry_config: {
+    strategy: "backoff",
+    backoff: {
+      initialInterval: 1,
+      maxInterval: 50,
+      exponent: 1.1,
+      maxElapsedTime: 100,
+    },
+    retryConnectionErrors: false,
+  },
   api_key: "<YOUR_BEARER_TOKEN_HERE>",
 });
 
@@ -536,28 +444,83 @@ async function run() {
 run();
 
 ```
+<!-- End Retries [retries] -->
 
-### Override Server URL Per-Client
+<!-- Start Standalone functions [standalone-funcs] -->
+## Standalone functions
 
-The default server can also be overridden globally by passing a URL to the `server_url: string` optional parameter when initializing the SDK client instance. For example:
-```typescript
-import { Kombo } from "@kombo-api/sdk";
+All the methods listed above are available as standalone functions. These
+functions are ideal for use in applications running in the browser, serverless
+runtimes or other environments where application bundle size is a primary
+concern. When using a bundler to build your application, all unused
+functionality will be either excluded from the final bundle or tree-shaken away.
 
-const kombo = new Kombo({
-  server_url: "https://api.kombo.dev/v1",
-  api_key: "<YOUR_BEARER_TOKEN_HERE>",
-});
+To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
-async function run() {
-  const result = await kombo.general.checkApiKey();
+<details>
 
-  console.log(result);
-}
+<summary>Available standalone functions</summary>
 
-run();
+- [`assessmentGetOpenOrders`](docs/sdks/assessment/README.md#getopenorders) - Get open orders
+- [`assessmentGetPackages`](docs/sdks/assessment/README.md#getpackages) - Get packages
+- [`assessmentSetPackages`](docs/sdks/assessment/README.md#setpackages) - Set packages
+- [`assessmentUpdateOrderResult`](docs/sdks/assessment/README.md#updateorderresult) - Update order result
+- [`atsAddApplicationAttachment`](docs/sdks/ats/README.md#addapplicationattachment) - Add attachment to application
+- [`atsAddApplicationNote`](docs/sdks/ats/README.md#addapplicationnote) - Add note to application
+- [`atsAddApplicationResultLink`](docs/sdks/ats/README.md#addapplicationresultlink) - Add result link to application
+- [`atsAddCandidateAttachment`](docs/sdks/ats/README.md#addcandidateattachment) - Add attachment to candidate
+- [`atsAddCandidateResultLink`](docs/sdks/ats/README.md#addcandidateresultlink) - Add result link to candidate
+- [`atsAddCandidateTag`](docs/sdks/ats/README.md#addcandidatetag) - Add tag to candidate
+- [`atsCreateApplication`](docs/sdks/ats/README.md#createapplication) - Create application
+- [`atsCreateCandidate`](docs/sdks/ats/README.md#createcandidate) - Create candidate
+- [`atsGetApplicationAttachments`](docs/sdks/ats/README.md#getapplicationattachments) - Get application attachments
+- [`atsGetApplications`](docs/sdks/ats/README.md#getapplications) - Get applications
+- [`atsGetApplicationStages`](docs/sdks/ats/README.md#getapplicationstages) - Get application stages
+- [`atsGetCandidateAttachments`](docs/sdks/ats/README.md#getcandidateattachments) - Get candidate attachments
+- [`atsGetCandidates`](docs/sdks/ats/README.md#getcandidates) - Get candidates
+- [`atsGetInterviews`](docs/sdks/ats/README.md#getinterviews) - Get interviews
+- [`atsGetJobs`](docs/sdks/ats/README.md#getjobs) - Get jobs
+- [`atsGetOffers`](docs/sdks/ats/README.md#getoffers) - Get offers
+- [`atsGetRejectionReasons`](docs/sdks/ats/README.md#getrejectionreasons) - Get rejection reasons
+- [`atsGetTags`](docs/sdks/ats/README.md#gettags) - Get tags
+- [`atsGetUsers`](docs/sdks/ats/README.md#getusers) - Get users
+- [`atsImportTrackedApplication`](docs/sdks/ats/README.md#importtrackedapplication) - Import tracked application
+- [`atsMoveApplicationToStage`](docs/sdks/ats/README.md#moveapplicationtostage) - Move application to stage
+- [`atsRejectApplication`](docs/sdks/ats/README.md#rejectapplication) - Reject application
+- [`atsRemoveCandidateTag`](docs/sdks/ats/README.md#removecandidatetag) - Remove tag from candidate
+- [`connectCreateConnectionLink`](docs/sdks/connect/README.md#createconnectionlink) - Create connection link
+- [`connectGetIntegrationByToken`](docs/sdks/connect/README.md#getintegrationbytoken) - Get integration by token
+- [`generalCheckApiKey`](docs/sdks/general/README.md#checkapikey) - Check API key
+- [`generalCreateReconnectionLink`](docs/sdks/general/README.md#createreconnectionlink) - Create reconnection link
+- [`generalDeleteIntegration`](docs/sdks/general/README.md#deleteintegration) - Delete integration
+- [`generalGetCustomFields`](docs/sdks/general/README.md#getcustomfields) - Get custom fields with current mappings
+- [`generalGetIntegrationDetails`](docs/sdks/general/README.md#getintegrationdetails) - Get integration details
+- [`generalGetIntegrationFields`](docs/sdks/general/README.md#getintegrationfields) - Get integration fields
+- [`generalGetTools`](docs/sdks/general/README.md#gettools) - Get tools
+- [`generalSendPassthroughRequest`](docs/sdks/general/README.md#sendpassthroughrequest) - Send passthrough request
+- [`generalTriggerSync`](docs/sdks/general/README.md#triggersync) - Trigger sync
+- [`generalUpdateCustomFieldMapping`](docs/sdks/general/README.md#updatecustomfieldmapping) - Put custom field mappings
+- [`generalUpdateIntegrationField`](docs/sdks/general/README.md#updateintegrationfield) - Updates an integration fields passthrough setting
+- [`hrisAddEmployeeDocument`](docs/sdks/hris/README.md#addemployeedocument) - Add document to employee
+- [`hrisCreateAbsence`](docs/sdks/hris/README.md#createabsence) - Create absence
+- [`hrisCreateEmployeeWithForm`](docs/sdks/hris/README.md#createemployeewithform) - Create employee with form
+- [`hrisDeleteAbsence`](docs/sdks/hris/README.md#deleteabsence) - Delete absence
+- [`hrisGetAbsences`](docs/sdks/hris/README.md#getabsences) - Get absences
+- [`hrisGetAbsenceTypes`](docs/sdks/hris/README.md#getabsencetypes) - Get absence types
+- [`hrisGetEmployeeDocumentCategories`](docs/sdks/hris/README.md#getemployeedocumentcategories) - Get employee document categories
+- [`hrisGetEmployeeForm`](docs/sdks/hris/README.md#getemployeeform) - Get employee form
+- [`hrisGetEmployees`](docs/sdks/hris/README.md#getemployees) - Get employees
+- [`hrisGetEmployments`](docs/sdks/hris/README.md#getemployments) - Get employments
+- [`hrisGetGroups`](docs/sdks/hris/README.md#getgroups) - Get groups
+- [`hrisGetLegalEntities`](docs/sdks/hris/README.md#getlegalentities) - Get legal entities
+- [`hrisGetLocations`](docs/sdks/hris/README.md#getlocations) - Get work locations
+- [`hrisGetPerformanceReviewCycles`](docs/sdks/hris/README.md#getperformancereviewcycles) - Get performance review cycles
+- [`hrisGetPerformanceReviews`](docs/sdks/hris/README.md#getperformancereviews) - Get performance reviews
+- [`hrisGetTimeOffBalances`](docs/sdks/hris/README.md#gettimeoffbalances) - Get time off balances
+- [`hrisGetTimesheets`](docs/sdks/hris/README.md#gettimesheets) - Get timesheets
 
-```
-<!-- End Server Selection [server] -->
+</details>
+<!-- End Standalone functions [standalone-funcs] -->
 
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
@@ -624,6 +587,12 @@ import { Kombo } from "@kombo-api/sdk";
 const sdk = new Kombo({ debug_logger: console });
 ```
 <!-- End Debugging [debug] -->
+
+<!-- Start Requirements [requirements] -->
+## Requirements
+
+For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
+<!-- End Requirements [requirements] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
