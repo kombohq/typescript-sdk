@@ -188,6 +188,7 @@ export const IntegrationTool = {
   Talentadore: "talentadore",
   Youforce: "youforce",
   Nibelis: "nibelis",
+  Peoplexd: "peoplexd",
   Sandbox: "sandbox",
   Guidecom: "guidecom",
   Sftp: "sftp",

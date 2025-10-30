@@ -1312,7 +1312,7 @@ Get timesheets
 
 Retrieve attendance data and timesheets from HRIS tools.
 
-<Warning>**Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
+<Warning>**Open Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
 
 For a detailed explanation of the data model, validation rules, time zones, payable hours, approvals, and break patterns, see the [Time & Attendance guide](/hris/features/time-and-attendance).
 
@@ -1396,7 +1396,7 @@ Get performance review cycles
 
 Retrieve performance review cycles data from HRIS tools.
 
-<Warning>**Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
+<Warning>**Open Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
 
 
 
@@ -1480,7 +1480,7 @@ Get performance reviews
 
 Retrieve performance review data from HRIS tools.
 
-<Warning>**Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
+<Warning>**Open Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
 
 
 

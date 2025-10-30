@@ -1,14 +1,14 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: b5b73be5c967a455c7923e95f6cb0cd9
+  docChecksum: 406f8e491157996b835eb1b9a7fb8e02
   docVersion: 1.0.0
   speakeasyVersion: 1.643.2
   generationVersion: 2.731.6
-  releaseVersion: 0.1.0
-  configChecksum: 7694a92b84d55c6d93fb266cd4eb77b4
-  repoURL: https://github.com/vercel/sdk.git
-  installationURL: https://github.com/vercel/sdk
+  releaseVersion: 0.1.1
+  configChecksum: 08e86cc347d0c99214463485b86690a8
+  repoURL: https://github.com/kombohq/kombo-typescript-sdk.git
+  installationURL: https://github.com/kombohq/kombo-typescript-sdk
   published: true
 features:
   typescript:
