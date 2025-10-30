@@ -2,6 +2,17 @@
   "name": "@kombo-api/sdk",
   "version": "0.1.1",
   "author": "Kombo Technologies GmbH <support@kombo.dev> (https://www.kombo.dev)",
+  "description": "The official TypeScript/JavaScript SDK for the Kombo Unified API",
+  "homepage": "https://github.com/kombohq/typescript-sdk#readme",
+  "keywords": [
+    "Kombo",
+    "Kombo API",
+    "kombo.dev",
+    "HRIS",
+    "ATS",
+    "Assessment"
+  ],
+  "license": "MIT",
   "type": "module",
   "main": "./esm/index.js",
   "exports": {

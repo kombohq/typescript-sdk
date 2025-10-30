@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 406f8e491157996b835eb1b9a7fb8e02
+  docChecksum: 7e25cd419aa0f29cfceadc9629e30430
   docVersion: 1.0.0
-  speakeasyVersion: 1.643.2
-  generationVersion: 2.731.6
+  speakeasyVersion: 1.643.3
+  generationVersion: 2.731.9
   releaseVersion: 0.1.1
-  configChecksum: 08e86cc347d0c99214463485b86690a8
+  configChecksum: 89a2d3b45614aba017a1b4ba7cd0f189
   repoURL: https://github.com/kombohq/kombo-typescript-sdk.git
   installationURL: https://github.com/kombohq/kombo-typescript-sdk
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.24.1
+    core: 3.24.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0

@@ -32,7 +32,17 @@ typescript:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
-  additionalPackageJSON: {}
+  additionalPackageJSON:
+    description: The official TypeScript/JavaScript SDK for the Kombo Unified API
+    homepage: https://github.com/kombohq/typescript-sdk#readme
+    keywords:
+      - Kombo
+      - Kombo API
+      - kombo.dev
+      - HRIS
+      - ATS
+      - Assessment
+    license: MIT
   author: Kombo Technologies GmbH <support@kombo.dev> (https://www.kombo.dev)
   baseErrorName: KomboError
   clientServerStatusCodesAsErrors: true

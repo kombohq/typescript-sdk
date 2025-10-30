@@ -1,4 +1,4 @@
-speakeasyVersion: 1.643.2
+speakeasyVersion: 1.643.3
 sources:
     kombo-prepared-spec:
         sourceNamespace: kombo-api
@@ -15,7 +15,7 @@ targets:
         sourceRevisionDigest: sha256:6a4ec4e32c5f00a86bcf939909f64e16f9aeb6dede882176a8b5197b2e8f2bc2
         sourceBlobDigest: sha256:8f38699f46ae3b8116996a054a4284aebb602990eab32ad5d187543889fdb350
         codeSamplesNamespace: kombo-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:41923361f647e30608d2bae984e28742fa63ad11dc945bc8427f00f013badca3
+        codeSamplesRevisionDigest: sha256:70d935158321cb496d222754bc0c4ce4219f287f11be8f7b9cc3f8cb81c82908
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
