@@ -3,10 +3,15 @@
 Developer-friendly & type-safe TypeScript SDK for the [Kombo Unified API](https://docs.kombo.dev/introduction).
 
 <div align="left">
-    <a href="https://www.speakeasy.com/?utm_source=@vercel/sdk&utm_campaign=typescript"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
-    <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
-    </a>
+  <a href="https://www.speakeasy.com/?utm_source=github-com/kombohq/typescript-sdk&utm_campaign=typescript">
+    <img src="https://custom-icon-badges.demolab.com/badge/-built%20with%20speakeasy-212015?style=flat-square&logoColor=FBE331&logo=speakeasy&labelColor=545454" />
+  </a>
+  <a href="https://www.npmjs.com/package/@kombo-api/sdk">
+    <img src="https://img.shields.io/npm/v/%40kombo-api%2Fsdk?style=flat-square" />
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" />
+  </a>
 </div>
 
 <br />
