@@ -19,12 +19,6 @@ Developer-friendly & type-safe TypeScript SDK for the [Kombo Unified API](https:
 > [!WARNING]
 > The Kombo TypeScript SDK is still in beta and is subject to breaking changes.
 
-<!-- Start Summary [summary] -->
-## Summary
-
-
-<!-- End Summary [summary] -->
-
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
