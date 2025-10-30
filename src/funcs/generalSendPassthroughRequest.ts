@@ -179,6 +179,7 @@ import { Result } from "../types/fp.js";
  * |Flatchr|`flatchr/career`|Flatchr's [Career API](https://developers.flatchr.io/docs/QuickStart/Candidats/Creer_un_candidat). We automatically authenticate all requests and use `https://career.flatchr.io` as the base URL.|
  * |ApplicantStack|`applicantstack/api`|ApplicantStack's [API](https://helpas.payrollservers.info/s/article/API-Integration-Guide). We automatically authenticate all requests and use `https://\{subdomain\}.applicantstack.com/api/` as the base URL.|
  * |Visma Raet - Youforce|`youforce/v1.0`|[Youforce's basic v1.0 API](https://vr-api-integration.github.io/youforce-api-documentation/postman_collections.html). We automatically authenticate all requests and use 'https://api.youforce.com' as base URL.|
+ * |PeopleXD|`peoplexd/b2b`|PeopleXD's [B2B API](https://documenter.getpostman.com/view/3101638/TzeTHUDu#intro). We automatically authenticate all requests and use `https://api.corehr.com/ws/\{tenant_id\}/corehr` or `https://uatapi.corehr.com/ws/\{tenant_id\}/corehr` as the base URL.|
  *
  * <Note>Please note that the passthrough API endpoints are only meant for edge cases. That's why we only expose them for new integrations after understanding a concrete customer use case. If you have such a use case in mind, please reach out to Kombo.</Note>
  */

@@ -1,17 +1,31 @@
 speakeasyVersion: 1.643.2
-sources: {}
+sources:
+    kombo-prepared-spec:
+        sourceNamespace: kombo-api
+        sourceRevisionDigest: sha256:6a4ec4e32c5f00a86bcf939909f64e16f9aeb6dede882176a8b5197b2e8f2bc2
+        sourceBlobDigest: sha256:8f38699f46ae3b8116996a054a4284aebb602990eab32ad5d187543889fdb350
+        tags:
+            - latest
+            - speakeasy-sdk-regen-1761847666
+            - 1.0.0
 targets:
     kombo-typescript:
         source: kombo-prepared-spec
+        sourceNamespace: kombo-api
+        sourceRevisionDigest: sha256:6a4ec4e32c5f00a86bcf939909f64e16f9aeb6dede882176a8b5197b2e8f2bc2
+        sourceBlobDigest: sha256:8f38699f46ae3b8116996a054a4284aebb602990eab32ad5d187543889fdb350
         codeSamplesNamespace: kombo-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:daaf910910a9f1b9d26573082c161e3bd37eaff56ff083bec37bbbcdfb1cb4cd
+        codeSamplesRevisionDigest: sha256:41923361f647e30608d2bae984e28742fa63ad11dc945bc8427f00f013badca3
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
         kombo-prepared-spec:
             inputs:
-                - location: ./prepared.openapi.yaml
+                - location: https://api.kombo.dev/internal/sdk.openapi.yaml
+                  auth:
+                    authHeader: Authorization
+                    authSecret: $openapi_doc_auth_token
             registry:
                 location: registry.speakeasyapi.dev/kombo-ayg/api/kombo-api
     targets:

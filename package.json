@@ -1,6 +1,6 @@
 {
   "name": "@kombo-api/sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Kombo Technologies GmbH <support@kombo.dev> (https://www.kombo.dev)",
   "type": "module",
   "main": "./esm/index.js",
@@ -50,7 +50,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/vercel/sdk.git"
+    "url": "https://github.com/kombohq/kombo-typescript-sdk.git"
   },
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
