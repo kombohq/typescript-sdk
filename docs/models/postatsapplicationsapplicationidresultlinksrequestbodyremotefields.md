@@ -1,0 +1,21 @@
+# PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields
+
+Additional fields that we will pass through to specific ATS systems.
+
+## Example Usage
+
+```typescript
+import { PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields } from "@kombo-api/sdk/models";
+
+let value: PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields =
+  {};
+```
+
+## Fields
+
+| Field                                                                                                                                                    | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `icims`                                                                                                                                                  | [models.PostAtsApplicationsApplicationIdResultLinksRequestBodyIcims](../models/postatsapplicationsapplicationidresultlinksrequestbodyicims.md)           | :heavy_minus_sign:                                                                                                                                       | Fields specific to iCIMS.                                                                                                                                |
+| `oracle`                                                                                                                                                 | [models.PostAtsApplicationsApplicationIdResultLinksRequestBodyOracle](../models/postatsapplicationsapplicationidresultlinksrequestbodyoracle.md)         | :heavy_minus_sign:                                                                                                                                       | Fields specific to Oracle.                                                                                                                               |
+| `greenhouse`                                                                                                                                             | [models.PostAtsApplicationsApplicationIdResultLinksRequestBodyGreenhouse](../models/postatsapplicationsapplicationidresultlinksrequestbodygreenhouse.md) | :heavy_minus_sign:                                                                                                                                       | Fields specific to Greenhouse.                                                                                                                           |
+| `workable`                                                                                                                                               | [models.PostAtsApplicationsApplicationIdResultLinksRequestBodyWorkable](../models/postatsapplicationsapplicationidresultlinksrequestbodyworkable.md)     | :heavy_minus_sign:                                                                                                                                       | Workable specific remote fields for ATS actions.                                                                                                         |

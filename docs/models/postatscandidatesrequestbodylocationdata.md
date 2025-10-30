@@ -1,0 +1,19 @@
+# PostAtsCandidatesRequestBodyLocationData
+
+## Example Usage
+
+```typescript
+import { PostAtsCandidatesRequestBodyLocationData } from "@kombo-api/sdk/models";
+
+let value: PostAtsCandidatesRequestBodyLocationData = {};
+```
+
+## Fields
+
+| Field                                                                                                                        | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `address_line_1`                                                                                                             | *string*                                                                                                                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `address_line_2`                                                                                                             | *string*                                                                                                                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `region_subdivision_1`                                                                                                       | *string*                                                                                                                     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `country_region_reference`                                                                                                   | [models.PostAtsCandidatesRequestBodyCountryRegionReference](../models/postatscandidatesrequestbodycountryregionreference.md) | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |
+| `country_city_reference`                                                                                                     | [models.PostAtsCandidatesRequestBodyCountryCityReference](../models/postatscandidatesrequestbodycountrycityreference.md)     | :heavy_minus_sign:                                                                                                           | N/A                                                                                                                          |

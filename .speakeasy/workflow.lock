@@ -1,0 +1,29 @@
+speakeasyVersion: 1.643.2
+sources: {}
+targets:
+    kombo-typescript:
+        source: kombo-prepared-spec
+        codeSamplesNamespace: kombo-api-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:daaf910910a9f1b9d26573082c161e3bd37eaff56ff083bec37bbbcdfb1cb4cd
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        kombo-prepared-spec:
+            inputs:
+                - location: ./prepared.openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/kombo-ayg/api/kombo-api
+    targets:
+        kombo-typescript:
+            target: typescript
+            source: kombo-prepared-spec
+            publish:
+                npm:
+                    token: $npm_token
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/kombo-ayg/api/kombo-api-typescript-code-samples
+                blocking: false
+            testing:
+                enabled: false

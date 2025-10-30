@@ -1,0 +1,20 @@
+# PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields
+
+Additional fields that we will pass through to specific ATS systems.
+
+## Example Usage
+
+```typescript
+import { PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields } from "@kombo-api/sdk/models";
+
+let value: PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields = {};
+```
+
+## Fields
+
+| Field                                                                                                                                            | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `icims`                                                                                                                                          | [models.PostAtsCandidatesCandidateIdResultLinksRequestBodyIcims](../models/postatscandidatescandidateidresultlinksrequestbodyicims.md)           | :heavy_minus_sign:                                                                                                                               | Fields specific to iCIMS.                                                                                                                        |
+| `oracle`                                                                                                                                         | [models.PostAtsCandidatesCandidateIdResultLinksRequestBodyOracle](../models/postatscandidatescandidateidresultlinksrequestbodyoracle.md)         | :heavy_minus_sign:                                                                                                                               | Fields specific to Oracle.                                                                                                                       |
+| `greenhouse`                                                                                                                                     | [models.PostAtsCandidatesCandidateIdResultLinksRequestBodyGreenhouse](../models/postatscandidatescandidateidresultlinksrequestbodygreenhouse.md) | :heavy_minus_sign:                                                                                                                               | Fields specific to Greenhouse.                                                                                                                   |
+| `workable`                                                                                                                                       | [models.PostAtsCandidatesCandidateIdResultLinksRequestBodyWorkable](../models/postatscandidatescandidateidresultlinksrequestbodyworkable.md)     | :heavy_minus_sign:                                                                                                                               | Workable specific remote fields for ATS actions.                                                                                                 |

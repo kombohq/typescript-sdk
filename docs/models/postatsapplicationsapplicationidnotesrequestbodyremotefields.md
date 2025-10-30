@@ -1,0 +1,21 @@
+# PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields
+
+Tool specific remote fields for the note.
+
+## Example Usage
+
+```typescript
+import { PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields } from "@kombo-api/sdk/models";
+
+let value: PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields = {};
+```
+
+## Fields
+
+| Field                                                                                                                                        | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `teamtailor`                                                                                                                                 | [models.PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor](../models/postatsapplicationsapplicationidnotesrequestbodyteamtailor.md) | :heavy_minus_sign:                                                                                                                           | Teamtailor specific remote fields for the note.                                                                                              |
+| `greenhouse`                                                                                                                                 | [models.PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse](../models/postatsapplicationsapplicationidnotesrequestbodygreenhouse.md) | :heavy_minus_sign:                                                                                                                           | Fields specific to Greenhouse.                                                                                                               |
+| `recruitee`                                                                                                                                  | [models.PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee](../models/postatsapplicationsapplicationidnotesrequestbodyrecruitee.md)   | :heavy_minus_sign:                                                                                                                           | Recruitee specific remote fields for the note.                                                                                               |
+| `bullhorn`                                                                                                                                   | [models.PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn](../models/postatsapplicationsapplicationidnotesrequestbodybullhorn.md)     | :heavy_minus_sign:                                                                                                                           | Bullhorn specific remote fields for the note.                                                                                                |
+| `workable`                                                                                                                                   | [models.PostAtsApplicationsApplicationIdNotesRequestBodyWorkable](../models/postatsapplicationsapplicationidnotesrequestbodyworkable.md)     | :heavy_minus_sign:                                                                                                                           | Workable specific remote fields for ATS actions.                                                                                             |

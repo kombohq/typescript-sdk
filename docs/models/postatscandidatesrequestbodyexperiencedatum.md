@@ -1,0 +1,25 @@
+# PostAtsCandidatesRequestBodyExperienceDatum
+
+## Example Usage
+
+```typescript
+import { PostAtsCandidatesRequestBodyExperienceDatum } from "@kombo-api/sdk/models";
+
+let value: PostAtsCandidatesRequestBodyExperienceDatum = {
+  company_name: "Rice Inc",
+  title: "<value>",
+  start_date: new Date("2023-05-01T10:31:09.661Z"),
+};
+```
+
+## Fields
+
+| Field                                                                                                                           | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `company_name`                                                                                                                  | *string*                                                                                                                        | :heavy_check_mark:                                                                                                              | N/A                                                                                                                             |
+| `title`                                                                                                                         | *string*                                                                                                                        | :heavy_check_mark:                                                                                                              | N/A                                                                                                                             |
+| `location`                                                                                                                      | *string*                                                                                                                        | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |
+| `start_date`                                                                                                                    | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                   | :heavy_check_mark:                                                                                                              | YYYY-MM-DDTHH:mm:ss.sssZ<br/><br/>[](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) |
+| `end_date`                                                                                                                      | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                   | :heavy_minus_sign:                                                                                                              | YYYY-MM-DDTHH:mm:ss.sssZ<br/><br/>[](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) |
+| `currently_work_here`                                                                                                           | *boolean*                                                                                                                       | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |
+| `description`                                                                                                                   | *string*                                                                                                                        | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |

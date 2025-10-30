@@ -1,0 +1,18 @@
+# PostAtsJobsJobIdApplicationsRequestBodyResumeData
+
+## Example Usage
+
+```typescript
+import { PostAtsJobsJobIdApplicationsRequestBodyResumeData } from "@kombo-api/sdk/models";
+
+let value: PostAtsJobsJobIdApplicationsRequestBodyResumeData = {};
+```
+
+## Fields
+
+| Field                                                                                                                                  | Type                                                                                                                                   | Required                                                                                                                               | Description                                                                                                                            |
+| -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `education_data`                                                                                                                       | [models.PostAtsJobsJobIdApplicationsRequestBodyEducationDatum](../models/postatsjobsjobidapplicationsrequestbodyeducationdatum.md)[]   | :heavy_minus_sign:                                                                                                                     | N/A                                                                                                                                    |
+| `skill_data`                                                                                                                           | [models.PostAtsJobsJobIdApplicationsRequestBodySkillDatum](../models/postatsjobsjobidapplicationsrequestbodyskilldatum.md)[]           | :heavy_minus_sign:                                                                                                                     | N/A                                                                                                                                    |
+| `language_data`                                                                                                                        | [models.PostAtsJobsJobIdApplicationsRequestBodyLanguageDatum](../models/postatsjobsjobidapplicationsrequestbodylanguagedatum.md)[]     | :heavy_minus_sign:                                                                                                                     | N/A                                                                                                                                    |
+| `experience_data`                                                                                                                      | [models.PostAtsJobsJobIdApplicationsRequestBodyExperienceDatum](../models/postatsjobsjobidapplicationsrequestbodyexperiencedatum.md)[] | :heavy_minus_sign:                                                                                                                     | N/A                                                                                                                                    |
