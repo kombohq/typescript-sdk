@@ -8,11 +8,11 @@ import { RetryConfig } from "./retries.js";
 import { Params, pathToFunc } from "./url.js";
 
 /**
- * Kombo API Server
+ * Kombo EU Region
  */
 export const ServerEu = "eu";
 /**
- * Kombo API Server
+ * Kombo US Region
  */
 export const ServerUs = "us";
 /**
@@ -69,7 +69,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "1.0.0",
-  sdkVersion: "0.1.1",
-  genVersion: "2.731.9",
-  userAgent: "speakeasy-sdk/typescript 0.1.1 2.731.9 1.0.0 @kombo-api/sdk",
+  sdkVersion: "0.2.0",
+  genVersion: "2.735.1",
+  userAgent: "speakeasy-sdk/typescript 0.2.0 2.735.1 1.0.0 @kombo-api/sdk",
 } as const;

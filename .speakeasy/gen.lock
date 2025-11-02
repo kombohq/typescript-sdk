@@ -1,14 +1,14 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 7e25cd419aa0f29cfceadc9629e30430
+  docChecksum: c7c41e3feaf5a3c55b4d6e0cc13be9f5
   docVersion: 1.0.0
-  speakeasyVersion: 1.643.3
-  generationVersion: 2.731.9
-  releaseVersion: 0.1.1
-  configChecksum: 89a2d3b45614aba017a1b4ba7cd0f189
-  repoURL: https://github.com/kombohq/kombo-typescript-sdk.git
-  installationURL: https://github.com/kombohq/kombo-typescript-sdk
+  speakeasyVersion: 1.645.1
+  generationVersion: 2.735.1
+  releaseVersion: 0.2.0
+  configChecksum: 09b40e291d811011a311aae58e38805e
+  repoURL: https://github.com/kombohq/typescript-sdk.git
+  installationURL: https://github.com/kombohq/typescript-sdk
   published: true
 features:
   typescript:
@@ -23,7 +23,7 @@ features:
     globalSecurity: 2.82.14
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
-    globalServerURLs: 2.82.5
+    globalServerURLs: 2.83.0
     globals: 2.82.2
     groups: 2.81.3
     hiddenGlobals: 0.1.0
@@ -655,6 +655,8 @@ generatedFiles:
   - docs/models/postatscandidatesrequestbodynamedetaildata.md
   - docs/models/postatscandidatesrequestbodyperiod.md
   - docs/models/postatscandidatesrequestbodypersonio.md
+  - docs/models/postatscandidatesrequestbodypiloga.md
+  - docs/models/postatscandidatesrequestbodypilogacandidate.md
   - docs/models/postatscandidatesrequestbodypostheaders.md
   - docs/models/postatscandidatesrequestbodyrecruitee.md
   - docs/models/postatscandidatesrequestbodyrecruiteecandidate.md
@@ -789,6 +791,8 @@ generatedFiles:
   - docs/models/postatsjobsjobidapplicationsrequestbodynamedetaildata.md
   - docs/models/postatsjobsjobidapplicationsrequestbodyperiod.md
   - docs/models/postatsjobsjobidapplicationsrequestbodypersonio.md
+  - docs/models/postatsjobsjobidapplicationsrequestbodypiloga.md
+  - docs/models/postatsjobsjobidapplicationsrequestbodypilogacandidate.md
   - docs/models/postatsjobsjobidapplicationsrequestbodypostheaders.md
   - docs/models/postatsjobsjobidapplicationsrequestbodyrecruitee.md
   - docs/models/postatsjobsjobidapplicationsrequestbodyrecruiteecandidate.md
@@ -7584,3 +7588,4 @@ generatedTests:
   unlinkSharedEnvVariable: "2025-10-24T00:07:28Z"
   updateStaticIps: "2025-10-24T00:07:28Z"
   getProjectClientCerts: "2025-10-27T19:04:15Z"
+releaseNotes: "## Typescript SDK Changes Detected:\n* `kombo.ats.createCandidate()`: \n  *  `request.remoteFields.piloga` **Added**\n* `kombo.ats.createApplication()`: \n  *  `request.postAtsJobsJobIdApplicationsRequestBody.remoteFields.piloga` **Added**\n"

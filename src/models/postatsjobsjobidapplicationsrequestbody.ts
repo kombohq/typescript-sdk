@@ -730,6 +730,28 @@ export type PostAtsJobsJobIdApplicationsRequestBodyUmantis = {
 };
 
 /**
+ * Additional candidate fields for P&I Loga that will be mapped to the application form.
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate = {
+  /**
+   * The street address of the candidate.
+   */
+  street?: string | undefined;
+};
+
+/**
+ * Fields specific to P&I Loga.
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyPiloga = {
+  /**
+   * Additional candidate fields for P&I Loga that will be mapped to the application form.
+   */
+  candidate?:
+    | PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate
+    | undefined;
+};
+
+/**
  * Additional fields that we will pass through to specific ATS systems.
  */
 export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
@@ -810,6 +832,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
    * Fields specific to Abacus Umantis.
    */
   umantis?: PostAtsJobsJobIdApplicationsRequestBodyUmantis | undefined;
+  /**
+   * Fields specific to P&I Loga.
+   */
+  piloga?: PostAtsJobsJobIdApplicationsRequestBodyPiloga | undefined;
 };
 
 /**
@@ -5895,6 +5921,146 @@ export function postAtsJobsJobIdApplicationsRequestBodyUmantisFromJSON(
 }
 
 /** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$inboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    street: z.string().optional(),
+  });
+
+/** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$Outbound = {
+  street?: string | undefined;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate
+  > = z.object({
+    street: z.string().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$ {
+  /** @deprecated use `PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$inboundSchema` instead. */
+  export const inboundSchema =
+    PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$inboundSchema;
+  /** @deprecated use `PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$outboundSchema` instead. */
+  export const outboundSchema =
+    PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$outboundSchema;
+  /** @deprecated use `PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$Outbound` instead. */
+  export type Outbound =
+    PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$Outbound;
+}
+
+export function postAtsJobsJobIdApplicationsRequestBodyPilogaCandidateToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyPilogaCandidate:
+    PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$outboundSchema.parse(
+      postAtsJobsJobIdApplicationsRequestBodyPilogaCandidate,
+    ),
+  );
+}
+
+export function postAtsJobsJobIdApplicationsRequestBodyPilogaCandidateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyPiloga$inboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyPiloga,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    candidate: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$inboundSchema
+    ).optional(),
+  });
+
+/** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyPiloga$Outbound = {
+  candidate?:
+    | PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$Outbound
+    | undefined;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyPiloga$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyPiloga$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyPiloga
+  > = z.object({
+    candidate: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$outboundSchema
+    ).optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostAtsJobsJobIdApplicationsRequestBodyPiloga$ {
+  /** @deprecated use `PostAtsJobsJobIdApplicationsRequestBodyPiloga$inboundSchema` instead. */
+  export const inboundSchema =
+    PostAtsJobsJobIdApplicationsRequestBodyPiloga$inboundSchema;
+  /** @deprecated use `PostAtsJobsJobIdApplicationsRequestBodyPiloga$outboundSchema` instead. */
+  export const outboundSchema =
+    PostAtsJobsJobIdApplicationsRequestBodyPiloga$outboundSchema;
+  /** @deprecated use `PostAtsJobsJobIdApplicationsRequestBodyPiloga$Outbound` instead. */
+  export type Outbound = PostAtsJobsJobIdApplicationsRequestBodyPiloga$Outbound;
+}
+
+export function postAtsJobsJobIdApplicationsRequestBodyPilogaToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyPiloga:
+    PostAtsJobsJobIdApplicationsRequestBodyPiloga,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyPiloga$outboundSchema.parse(
+      postAtsJobsJobIdApplicationsRequestBodyPiloga,
+    ),
+  );
+}
+
+export function postAtsJobsJobIdApplicationsRequestBodyPilogaFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PostAtsJobsJobIdApplicationsRequestBodyPiloga,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostAtsJobsJobIdApplicationsRequestBodyPiloga$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostAtsJobsJobIdApplicationsRequestBodyPiloga' from JSON`,
+  );
+}
+
+/** @internal */
 export const PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$inboundSchema:
   z.ZodType<
     PostAtsJobsJobIdApplicationsRequestBodyRemoteFields,
@@ -5958,6 +6124,9 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$inboundSchema:
     umantis: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyUmantis$inboundSchema
     ).optional(),
+    piloga: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyPiloga$inboundSchema
+    ).optional(),
   });
 
 /** @internal */
@@ -6005,6 +6174,7 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
     | PostAtsJobsJobIdApplicationsRequestBodyRecruitee$Outbound
     | undefined;
   umantis?: PostAtsJobsJobIdApplicationsRequestBodyUmantis$Outbound | undefined;
+  piloga?: PostAtsJobsJobIdApplicationsRequestBodyPiloga$Outbound | undefined;
 };
 
 /** @internal */
@@ -6070,6 +6240,9 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$outboundSchema:
     ).optional(),
     umantis: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyUmantis$outboundSchema
+    ).optional(),
+    piloga: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyPiloga$outboundSchema
     ).optional(),
   });
 

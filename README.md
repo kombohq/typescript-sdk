@@ -19,6 +19,12 @@ Developer-friendly & type-safe TypeScript SDK for the [Kombo Unified API](https:
 > [!WARNING]
 > The Kombo TypeScript SDK is still in beta and is subject to breaking changes.
 
+<!-- Start Summary [summary] -->
+## Summary
+
+
+<!-- End Summary [summary] -->
+
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
@@ -26,16 +32,19 @@ Developer-friendly & type-safe TypeScript SDK for the [Kombo Unified API](https:
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
   * [Region Selection](#region-selection)
+  * [SDK Example Usage](#sdk-example-usage-1)
+  * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
+  * [Global Parameters](#global-parameters)
   * [Pagination](#pagination)
   * [Error Handling](#error-handling)
   * [Retries](#retries)
   * [Standalone functions](#standalone-functions)
+  * [Server Selection](#server-selection)
   * [Custom HTTP Client](#custom-http-client)
   * [Debugging](#debugging)
   * [Requirements](#requirements)
 * [Development](#development)
-  * [Maturity](#maturity)
   * [Contributions](#contributions)
 
 <!-- End Table of Contents [toc] -->
@@ -130,6 +139,59 @@ const kombo = new Kombo({
 });
 ```
 
+<!-- Start SDK Example Usage [usage] -->
+## SDK Example Usage
+
+### Example
+
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.general.checkApiKey();
+
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End SDK Example Usage [usage] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name      | Type | Scheme      |
+| --------- | ---- | ----------- |
+| `api_key` | http | HTTP Bearer |
+
+To authenticate with the API the `api_key` parameter must be set when initializing the SDK client instance. For example:
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.general.checkApiKey();
+
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End Authentication [security] -->
+
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
@@ -210,6 +272,46 @@ const kombo = new Kombo({
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `integration_id` to `"workday:HWUTwvyx2wLoSUHphiWVrp28"` at SDK initialization and then you do not have to pass the same value on calls to operations like `deleteIntegration`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available.
+
+| Name           | Type   | Description                                      |
+| -------------- | ------ | ------------------------------------------------ |
+| integration_id | string | ID of the integration you want to interact with. |
+
+### Example
+
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.general.deleteIntegration({
+    integration_id: "<id>",
+    delete_integrations_integration_id_request_body: {},
+  });
+
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Start Pagination [pagination] -->
 ## Pagination
@@ -459,6 +561,60 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Select Server by Name
+
+You can override the default server globally by passing a server name to the `server: keyof typeof ServerList` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
+
+| Name | Server                        | Description     |
+| ---- | ----------------------------- | --------------- |
+| `eu` | `https://api.kombo.dev/v1`    | Kombo EU Region |
+| `us` | `https://api.us.kombo.dev/v1` | Kombo US Region |
+
+#### Example
+
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  server: "eu",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.general.checkApiKey();
+
+  console.log(result);
+}
+
+run();
+
+```
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: string` optional parameter when initializing the SDK client instance. For example:
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  server_url: "https://api.kombo.dev/v1",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.general.checkApiKey();
+
+  console.log(result);
+}
+
+run();
+
+```
+<!-- End Server Selection [server] -->
 
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client

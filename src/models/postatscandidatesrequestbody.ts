@@ -810,6 +810,26 @@ export type PostAtsCandidatesRequestBodyUmantis = {
 };
 
 /**
+ * Additional candidate fields for P&I Loga that will be mapped to the application form.
+ */
+export type PostAtsCandidatesRequestBodyPilogaCandidate = {
+  /**
+   * The street address of the candidate.
+   */
+  street?: string | undefined;
+};
+
+/**
+ * Fields specific to P&I Loga.
+ */
+export type PostAtsCandidatesRequestBodyPiloga = {
+  /**
+   * Additional candidate fields for P&I Loga that will be mapped to the application form.
+   */
+  candidate?: PostAtsCandidatesRequestBodyPilogaCandidate | undefined;
+};
+
+/**
  * Additional fields that we will pass through to specific ATS systems.
  */
 export type PostAtsCandidatesRequestBodyRemoteFields = {
@@ -886,6 +906,10 @@ export type PostAtsCandidatesRequestBodyRemoteFields = {
    * Fields specific to Abacus Umantis.
    */
   umantis?: PostAtsCandidatesRequestBodyUmantis | undefined;
+  /**
+   * Fields specific to P&I Loga.
+   */
+  piloga?: PostAtsCandidatesRequestBodyPiloga | undefined;
 };
 
 export type PostAtsCandidatesRequestBody = {
@@ -5845,6 +5869,135 @@ export function postAtsCandidatesRequestBodyUmantisFromJSON(
 }
 
 /** @internal */
+export const PostAtsCandidatesRequestBodyPilogaCandidate$inboundSchema:
+  z.ZodType<
+    PostAtsCandidatesRequestBodyPilogaCandidate,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    street: z.string().optional(),
+  });
+
+/** @internal */
+export type PostAtsCandidatesRequestBodyPilogaCandidate$Outbound = {
+  street?: string | undefined;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyPilogaCandidate$outboundSchema:
+  z.ZodType<
+    PostAtsCandidatesRequestBodyPilogaCandidate$Outbound,
+    z.ZodTypeDef,
+    PostAtsCandidatesRequestBodyPilogaCandidate
+  > = z.object({
+    street: z.string().optional(),
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostAtsCandidatesRequestBodyPilogaCandidate$ {
+  /** @deprecated use `PostAtsCandidatesRequestBodyPilogaCandidate$inboundSchema` instead. */
+  export const inboundSchema =
+    PostAtsCandidatesRequestBodyPilogaCandidate$inboundSchema;
+  /** @deprecated use `PostAtsCandidatesRequestBodyPilogaCandidate$outboundSchema` instead. */
+  export const outboundSchema =
+    PostAtsCandidatesRequestBodyPilogaCandidate$outboundSchema;
+  /** @deprecated use `PostAtsCandidatesRequestBodyPilogaCandidate$Outbound` instead. */
+  export type Outbound = PostAtsCandidatesRequestBodyPilogaCandidate$Outbound;
+}
+
+export function postAtsCandidatesRequestBodyPilogaCandidateToJSON(
+  postAtsCandidatesRequestBodyPilogaCandidate:
+    PostAtsCandidatesRequestBodyPilogaCandidate,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyPilogaCandidate$outboundSchema.parse(
+      postAtsCandidatesRequestBodyPilogaCandidate,
+    ),
+  );
+}
+
+export function postAtsCandidatesRequestBodyPilogaCandidateFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PostAtsCandidatesRequestBodyPilogaCandidate,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostAtsCandidatesRequestBodyPilogaCandidate$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PostAtsCandidatesRequestBodyPilogaCandidate' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyPiloga$inboundSchema: z.ZodType<
+  PostAtsCandidatesRequestBodyPiloga,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  candidate: z.lazy(() =>
+    PostAtsCandidatesRequestBodyPilogaCandidate$inboundSchema
+  ).optional(),
+});
+
+/** @internal */
+export type PostAtsCandidatesRequestBodyPiloga$Outbound = {
+  candidate?: PostAtsCandidatesRequestBodyPilogaCandidate$Outbound | undefined;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyPiloga$outboundSchema: z.ZodType<
+  PostAtsCandidatesRequestBodyPiloga$Outbound,
+  z.ZodTypeDef,
+  PostAtsCandidatesRequestBodyPiloga
+> = z.object({
+  candidate: z.lazy(() =>
+    PostAtsCandidatesRequestBodyPilogaCandidate$outboundSchema
+  ).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostAtsCandidatesRequestBodyPiloga$ {
+  /** @deprecated use `PostAtsCandidatesRequestBodyPiloga$inboundSchema` instead. */
+  export const inboundSchema = PostAtsCandidatesRequestBodyPiloga$inboundSchema;
+  /** @deprecated use `PostAtsCandidatesRequestBodyPiloga$outboundSchema` instead. */
+  export const outboundSchema =
+    PostAtsCandidatesRequestBodyPiloga$outboundSchema;
+  /** @deprecated use `PostAtsCandidatesRequestBodyPiloga$Outbound` instead. */
+  export type Outbound = PostAtsCandidatesRequestBodyPiloga$Outbound;
+}
+
+export function postAtsCandidatesRequestBodyPilogaToJSON(
+  postAtsCandidatesRequestBodyPiloga: PostAtsCandidatesRequestBodyPiloga,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyPiloga$outboundSchema.parse(
+      postAtsCandidatesRequestBodyPiloga,
+    ),
+  );
+}
+
+export function postAtsCandidatesRequestBodyPilogaFromJSON(
+  jsonString: string,
+): SafeParseResult<PostAtsCandidatesRequestBodyPiloga, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostAtsCandidatesRequestBodyPiloga$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PostAtsCandidatesRequestBodyPiloga' from JSON`,
+  );
+}
+
+/** @internal */
 export const PostAtsCandidatesRequestBodyRemoteFields$inboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyRemoteFields,
   z.ZodTypeDef,
@@ -5892,6 +6045,8 @@ export const PostAtsCandidatesRequestBodyRemoteFields$inboundSchema: z.ZodType<
     .optional(),
   umantis: z.lazy(() => PostAtsCandidatesRequestBodyUmantis$inboundSchema)
     .optional(),
+  piloga: z.lazy(() => PostAtsCandidatesRequestBodyPiloga$inboundSchema)
+    .optional(),
 });
 
 /** @internal */
@@ -5919,6 +6074,7 @@ export type PostAtsCandidatesRequestBodyRemoteFields$Outbound = {
   avature?: PostAtsCandidatesRequestBodyAvature$Outbound | undefined;
   recruitee?: PostAtsCandidatesRequestBodyRecruitee$Outbound | undefined;
   umantis?: PostAtsCandidatesRequestBodyUmantis$Outbound | undefined;
+  piloga?: PostAtsCandidatesRequestBodyPiloga$Outbound | undefined;
 };
 
 /** @internal */
@@ -5971,6 +6127,8 @@ export const PostAtsCandidatesRequestBodyRemoteFields$outboundSchema: z.ZodType<
   recruitee: z.lazy(() => PostAtsCandidatesRequestBodyRecruitee$outboundSchema)
     .optional(),
   umantis: z.lazy(() => PostAtsCandidatesRequestBodyUmantis$outboundSchema)
+    .optional(),
+  piloga: z.lazy(() => PostAtsCandidatesRequestBodyPiloga$outboundSchema)
     .optional(),
 });
 
