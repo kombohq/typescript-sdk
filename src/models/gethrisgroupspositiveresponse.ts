@@ -73,23 +73,6 @@ export const GetHrisGroupsPositiveResponseType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetHrisGroupsPositiveResponseType);
 
 /** @internal */
-export const GetHrisGroupsPositiveResponseType$outboundSchema: z.ZodNativeEnum<
-  typeof GetHrisGroupsPositiveResponseType
-> = GetHrisGroupsPositiveResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisGroupsPositiveResponseType$ {
-  /** @deprecated use `GetHrisGroupsPositiveResponseType$inboundSchema` instead. */
-  export const inboundSchema = GetHrisGroupsPositiveResponseType$inboundSchema;
-  /** @deprecated use `GetHrisGroupsPositiveResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisGroupsPositiveResponseType$outboundSchema;
-}
-
-/** @internal */
 export const GetHrisGroupsPositiveResponseResult$inboundSchema: z.ZodType<
   GetHrisGroupsPositiveResponseResult,
   z.ZodTypeDef,
@@ -105,57 +88,6 @@ export const GetHrisGroupsPositiveResponseResult$inboundSchema: z.ZodType<
   type: z.nullable(GetHrisGroupsPositiveResponseType$inboundSchema),
   parent_id: z.nullable(z.string()),
 });
-
-/** @internal */
-export type GetHrisGroupsPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string;
-  name: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-  type: string | null;
-  parent_id: string | null;
-};
-
-/** @internal */
-export const GetHrisGroupsPositiveResponseResult$outboundSchema: z.ZodType<
-  GetHrisGroupsPositiveResponseResult$Outbound,
-  z.ZodTypeDef,
-  GetHrisGroupsPositiveResponseResult
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  name: z.nullable(z.string()),
-  changed_at: z.date().transform(v => v.toISOString()),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  type: z.nullable(GetHrisGroupsPositiveResponseType$outboundSchema),
-  parent_id: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisGroupsPositiveResponseResult$ {
-  /** @deprecated use `GetHrisGroupsPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisGroupsPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetHrisGroupsPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisGroupsPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetHrisGroupsPositiveResponseResult$Outbound` instead. */
-  export type Outbound = GetHrisGroupsPositiveResponseResult$Outbound;
-}
-
-export function getHrisGroupsPositiveResponseResultToJSON(
-  getHrisGroupsPositiveResponseResult: GetHrisGroupsPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetHrisGroupsPositiveResponseResult$outboundSchema.parse(
-      getHrisGroupsPositiveResponseResult,
-    ),
-  );
-}
 
 export function getHrisGroupsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -180,48 +112,6 @@ export const GetHrisGroupsPositiveResponseData$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetHrisGroupsPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetHrisGroupsPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetHrisGroupsPositiveResponseData$outboundSchema: z.ZodType<
-  GetHrisGroupsPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  GetHrisGroupsPositiveResponseData
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisGroupsPositiveResponseResult$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisGroupsPositiveResponseData$ {
-  /** @deprecated use `GetHrisGroupsPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema = GetHrisGroupsPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetHrisGroupsPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisGroupsPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetHrisGroupsPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetHrisGroupsPositiveResponseData$Outbound;
-}
-
-export function getHrisGroupsPositiveResponseDataToJSON(
-  getHrisGroupsPositiveResponseData: GetHrisGroupsPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetHrisGroupsPositiveResponseData$outboundSchema.parse(
-      getHrisGroupsPositiveResponseData,
-    ),
-  );
-}
-
 export function getHrisGroupsPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetHrisGroupsPositiveResponseData, SDKValidationError> {
@@ -241,45 +131,6 @@ export const GetHrisGroupsPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetHrisGroupsPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetHrisGroupsPositiveResponse$Outbound = {
-  status: "success";
-  data: GetHrisGroupsPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetHrisGroupsPositiveResponse$outboundSchema: z.ZodType<
-  GetHrisGroupsPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisGroupsPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisGroupsPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisGroupsPositiveResponse$ {
-  /** @deprecated use `GetHrisGroupsPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisGroupsPositiveResponse$inboundSchema;
-  /** @deprecated use `GetHrisGroupsPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema = GetHrisGroupsPositiveResponse$outboundSchema;
-  /** @deprecated use `GetHrisGroupsPositiveResponse$Outbound` instead. */
-  export type Outbound = GetHrisGroupsPositiveResponse$Outbound;
-}
-
-export function getHrisGroupsPositiveResponseToJSON(
-  getHrisGroupsPositiveResponse: GetHrisGroupsPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetHrisGroupsPositiveResponse$outboundSchema.parse(
-      getHrisGroupsPositiveResponse,
-    ),
-  );
-}
 
 export function getHrisGroupsPositiveResponseFromJSON(
   jsonString: string,

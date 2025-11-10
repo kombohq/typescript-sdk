@@ -4,12 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  ClosedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../types/enums.js";
+import { catchUnrecognizedEnum, ClosedEnum, OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -125,24 +120,6 @@ export const PostHrisAbsencesPositiveResponseUnit$inboundSchema:
   );
 
 /** @internal */
-export const PostHrisAbsencesPositiveResponseUnit$outboundSchema:
-  z.ZodNativeEnum<typeof PostHrisAbsencesPositiveResponseUnit> =
-    PostHrisAbsencesPositiveResponseUnit$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisAbsencesPositiveResponseUnit$ {
-  /** @deprecated use `PostHrisAbsencesPositiveResponseUnit$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisAbsencesPositiveResponseUnit$inboundSchema;
-  /** @deprecated use `PostHrisAbsencesPositiveResponseUnit$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisAbsencesPositiveResponseUnit$outboundSchema;
-}
-
-/** @internal */
 export const PostHrisAbsencesPositiveResponseStatus$inboundSchema: z.ZodType<
   PostHrisAbsencesPositiveResponseStatus,
   z.ZodTypeDef,
@@ -152,29 +129,6 @@ export const PostHrisAbsencesPositiveResponseStatus$inboundSchema: z.ZodType<
     z.nativeEnum(PostHrisAbsencesPositiveResponseStatus),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const PostHrisAbsencesPositiveResponseStatus$outboundSchema: z.ZodType<
-  PostHrisAbsencesPositiveResponseStatus,
-  z.ZodTypeDef,
-  PostHrisAbsencesPositiveResponseStatus
-> = z.union([
-  z.nativeEnum(PostHrisAbsencesPositiveResponseStatus),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisAbsencesPositiveResponseStatus$ {
-  /** @deprecated use `PostHrisAbsencesPositiveResponseStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisAbsencesPositiveResponseStatus$inboundSchema;
-  /** @deprecated use `PostHrisAbsencesPositiveResponseStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisAbsencesPositiveResponseStatus$outboundSchema;
-}
 
 /** @internal */
 export const PostHrisAbsencesPositiveResponseData$inboundSchema: z.ZodType<
@@ -203,76 +157,6 @@ export const PostHrisAbsencesPositiveResponseData$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type PostHrisAbsencesPositiveResponseData$Outbound = {
-  id: string;
-  remote_id: string | null;
-  employee_id: string;
-  start_date?: any | null | undefined;
-  end_date?: any | null | undefined;
-  start_half_day: boolean | null;
-  end_half_day: boolean | null;
-  start_time?: any | null | undefined;
-  end_time?: any | null | undefined;
-  amount: number | null;
-  unit: string | null;
-  status?: string | null | undefined;
-  employee_note: string | null;
-  type_id: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const PostHrisAbsencesPositiveResponseData$outboundSchema: z.ZodType<
-  PostHrisAbsencesPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  PostHrisAbsencesPositiveResponseData
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  employee_id: z.string(),
-  start_date: z.nullable(z.any()).optional(),
-  end_date: z.nullable(z.any()).optional(),
-  start_half_day: z.nullable(z.boolean()),
-  end_half_day: z.nullable(z.boolean()),
-  start_time: z.nullable(z.any()).optional(),
-  end_time: z.nullable(z.any()).optional(),
-  amount: z.nullable(z.number()),
-  unit: z.nullable(PostHrisAbsencesPositiveResponseUnit$outboundSchema),
-  status: z.nullable(PostHrisAbsencesPositiveResponseStatus$outboundSchema)
-    .optional(),
-  employee_note: z.nullable(z.string()),
-  type_id: z.nullable(z.string()),
-  changed_at: z.date().transform(v => v.toISOString()),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisAbsencesPositiveResponseData$ {
-  /** @deprecated use `PostHrisAbsencesPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisAbsencesPositiveResponseData$inboundSchema;
-  /** @deprecated use `PostHrisAbsencesPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisAbsencesPositiveResponseData$outboundSchema;
-  /** @deprecated use `PostHrisAbsencesPositiveResponseData$Outbound` instead. */
-  export type Outbound = PostHrisAbsencesPositiveResponseData$Outbound;
-}
-
-export function postHrisAbsencesPositiveResponseDataToJSON(
-  postHrisAbsencesPositiveResponseData: PostHrisAbsencesPositiveResponseData,
-): string {
-  return JSON.stringify(
-    PostHrisAbsencesPositiveResponseData$outboundSchema.parse(
-      postHrisAbsencesPositiveResponseData,
-    ),
-  );
-}
-
 export function postHrisAbsencesPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<PostHrisAbsencesPositiveResponseData, SDKValidationError> {
@@ -292,46 +176,6 @@ export const PostHrisAbsencesPositiveResponseWarning$inboundSchema: z.ZodType<
 > = z.object({
   message: z.string(),
 });
-
-/** @internal */
-export type PostHrisAbsencesPositiveResponseWarning$Outbound = {
-  message: string;
-};
-
-/** @internal */
-export const PostHrisAbsencesPositiveResponseWarning$outboundSchema: z.ZodType<
-  PostHrisAbsencesPositiveResponseWarning$Outbound,
-  z.ZodTypeDef,
-  PostHrisAbsencesPositiveResponseWarning
-> = z.object({
-  message: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisAbsencesPositiveResponseWarning$ {
-  /** @deprecated use `PostHrisAbsencesPositiveResponseWarning$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisAbsencesPositiveResponseWarning$inboundSchema;
-  /** @deprecated use `PostHrisAbsencesPositiveResponseWarning$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisAbsencesPositiveResponseWarning$outboundSchema;
-  /** @deprecated use `PostHrisAbsencesPositiveResponseWarning$Outbound` instead. */
-  export type Outbound = PostHrisAbsencesPositiveResponseWarning$Outbound;
-}
-
-export function postHrisAbsencesPositiveResponseWarningToJSON(
-  postHrisAbsencesPositiveResponseWarning:
-    PostHrisAbsencesPositiveResponseWarning,
-): string {
-  return JSON.stringify(
-    PostHrisAbsencesPositiveResponseWarning$outboundSchema.parse(
-      postHrisAbsencesPositiveResponseWarning,
-    ),
-  );
-}
 
 export function postHrisAbsencesPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -361,49 +205,6 @@ export const PostHrisAbsencesPositiveResponse$inboundSchema: z.ZodType<
     z.lazy(() => PostHrisAbsencesPositiveResponseWarning$inboundSchema),
   ),
 });
-
-/** @internal */
-export type PostHrisAbsencesPositiveResponse$Outbound = {
-  status: "success";
-  data: PostHrisAbsencesPositiveResponseData$Outbound;
-  warnings: Array<PostHrisAbsencesPositiveResponseWarning$Outbound>;
-};
-
-/** @internal */
-export const PostHrisAbsencesPositiveResponse$outboundSchema: z.ZodType<
-  PostHrisAbsencesPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  PostHrisAbsencesPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => PostHrisAbsencesPositiveResponseData$outboundSchema),
-  warnings: z.array(
-    z.lazy(() => PostHrisAbsencesPositiveResponseWarning$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisAbsencesPositiveResponse$ {
-  /** @deprecated use `PostHrisAbsencesPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema = PostHrisAbsencesPositiveResponse$inboundSchema;
-  /** @deprecated use `PostHrisAbsencesPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema = PostHrisAbsencesPositiveResponse$outboundSchema;
-  /** @deprecated use `PostHrisAbsencesPositiveResponse$Outbound` instead. */
-  export type Outbound = PostHrisAbsencesPositiveResponse$Outbound;
-}
-
-export function postHrisAbsencesPositiveResponseToJSON(
-  postHrisAbsencesPositiveResponse: PostHrisAbsencesPositiveResponse,
-): string {
-  return JSON.stringify(
-    PostHrisAbsencesPositiveResponse$outboundSchema.parse(
-      postHrisAbsencesPositiveResponse,
-    ),
-  );
-}
 
 export function postHrisAbsencesPositiveResponseFromJSON(
   jsonString: string,

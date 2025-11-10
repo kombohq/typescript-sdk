@@ -64,34 +64,3 @@ export const KomboAtsError$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type KomboAtsError$Outbound = {
-  status: string;
-  error: models.KomboAtsErrorError$Outbound;
-};
-
-/** @internal */
-export const KomboAtsError$outboundSchema: z.ZodType<
-  KomboAtsError$Outbound,
-  z.ZodTypeDef,
-  KomboAtsError
-> = z.instanceof(KomboAtsError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: models.KomboAtsErrorStatus$outboundSchema,
-    error: z.lazy(() => models.KomboAtsErrorError$outboundSchema),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KomboAtsError$ {
-  /** @deprecated use `KomboAtsError$inboundSchema` instead. */
-  export const inboundSchema = KomboAtsError$inboundSchema;
-  /** @deprecated use `KomboAtsError$outboundSchema` instead. */
-  export const outboundSchema = KomboAtsError$outboundSchema;
-  /** @deprecated use `KomboAtsError$Outbound` instead. */
-  export type Outbound = KomboAtsError$Outbound;
-}

@@ -4,12 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  ClosedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../types/enums.js";
+import { catchUnrecognizedEnum, ClosedEnum, OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -124,24 +119,6 @@ export const DeleteHrisAbsencesAbsenceIdPositiveResponseUnit$inboundSchema:
     .nativeEnum(DeleteHrisAbsencesAbsenceIdPositiveResponseUnit);
 
 /** @internal */
-export const DeleteHrisAbsencesAbsenceIdPositiveResponseUnit$outboundSchema:
-  z.ZodNativeEnum<typeof DeleteHrisAbsencesAbsenceIdPositiveResponseUnit> =
-    DeleteHrisAbsencesAbsenceIdPositiveResponseUnit$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteHrisAbsencesAbsenceIdPositiveResponseUnit$ {
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponseUnit$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteHrisAbsencesAbsenceIdPositiveResponseUnit$inboundSchema;
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponseUnit$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteHrisAbsencesAbsenceIdPositiveResponseUnit$outboundSchema;
-}
-
-/** @internal */
 export const DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$inboundSchema:
   z.ZodType<
     DeleteHrisAbsencesAbsenceIdPositiveResponseStatus,
@@ -152,30 +129,6 @@ export const DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$inboundSchema:
       z.nativeEnum(DeleteHrisAbsencesAbsenceIdPositiveResponseStatus),
       z.string().transform(catchUnrecognizedEnum),
     ]);
-
-/** @internal */
-export const DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$outboundSchema:
-  z.ZodType<
-    DeleteHrisAbsencesAbsenceIdPositiveResponseStatus,
-    z.ZodTypeDef,
-    DeleteHrisAbsencesAbsenceIdPositiveResponseStatus
-  > = z.union([
-    z.nativeEnum(DeleteHrisAbsencesAbsenceIdPositiveResponseStatus),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$ {
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$inboundSchema;
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$outboundSchema;
-}
 
 /** @internal */
 export const DeleteHrisAbsencesAbsenceIdPositiveResponseData$inboundSchema:
@@ -210,82 +163,6 @@ export const DeleteHrisAbsencesAbsenceIdPositiveResponseData$inboundSchema:
     ),
   });
 
-/** @internal */
-export type DeleteHrisAbsencesAbsenceIdPositiveResponseData$Outbound = {
-  id: string;
-  remote_id: string | null;
-  employee_id: string;
-  start_date?: any | null | undefined;
-  end_date?: any | null | undefined;
-  start_half_day: boolean | null;
-  end_half_day: boolean | null;
-  start_time?: any | null | undefined;
-  end_time?: any | null | undefined;
-  amount: number | null;
-  unit: string | null;
-  status?: string | null | undefined;
-  employee_note: string | null;
-  type_id: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const DeleteHrisAbsencesAbsenceIdPositiveResponseData$outboundSchema:
-  z.ZodType<
-    DeleteHrisAbsencesAbsenceIdPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    DeleteHrisAbsencesAbsenceIdPositiveResponseData
-  > = z.object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()),
-    employee_id: z.string(),
-    start_date: z.nullable(z.any()).optional(),
-    end_date: z.nullable(z.any()).optional(),
-    start_half_day: z.nullable(z.boolean()),
-    end_half_day: z.nullable(z.boolean()),
-    start_time: z.nullable(z.any()).optional(),
-    end_time: z.nullable(z.any()).optional(),
-    amount: z.nullable(z.number()),
-    unit: z.nullable(
-      DeleteHrisAbsencesAbsenceIdPositiveResponseUnit$outboundSchema,
-    ),
-    status: z.nullable(
-      DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$outboundSchema,
-    ).optional(),
-    employee_note: z.nullable(z.string()),
-    type_id: z.nullable(z.string()),
-    changed_at: z.date().transform(v => v.toISOString()),
-    remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteHrisAbsencesAbsenceIdPositiveResponseData$ {
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteHrisAbsencesAbsenceIdPositiveResponseData$inboundSchema;
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteHrisAbsencesAbsenceIdPositiveResponseData$outboundSchema;
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    DeleteHrisAbsencesAbsenceIdPositiveResponseData$Outbound;
-}
-
-export function deleteHrisAbsencesAbsenceIdPositiveResponseDataToJSON(
-  deleteHrisAbsencesAbsenceIdPositiveResponseData:
-    DeleteHrisAbsencesAbsenceIdPositiveResponseData,
-): string {
-  return JSON.stringify(
-    DeleteHrisAbsencesAbsenceIdPositiveResponseData$outboundSchema.parse(
-      deleteHrisAbsencesAbsenceIdPositiveResponseData,
-    ),
-  );
-}
-
 export function deleteHrisAbsencesAbsenceIdPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -311,48 +188,6 @@ export const DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$inboundSchema:
   > = z.object({
     message: z.string(),
   });
-
-/** @internal */
-export type DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$Outbound = {
-  message: string;
-};
-
-/** @internal */
-export const DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$outboundSchema:
-  z.ZodType<
-    DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$Outbound,
-    z.ZodTypeDef,
-    DeleteHrisAbsencesAbsenceIdPositiveResponseWarning
-  > = z.object({
-    message: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$ {
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$inboundSchema;
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$outboundSchema;
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$Outbound` instead. */
-  export type Outbound =
-    DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$Outbound;
-}
-
-export function deleteHrisAbsencesAbsenceIdPositiveResponseWarningToJSON(
-  deleteHrisAbsencesAbsenceIdPositiveResponseWarning:
-    DeleteHrisAbsencesAbsenceIdPositiveResponseWarning,
-): string {
-  return JSON.stringify(
-    DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$outboundSchema.parse(
-      deleteHrisAbsencesAbsenceIdPositiveResponseWarning,
-    ),
-  );
-}
 
 export function deleteHrisAbsencesAbsenceIdPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -387,57 +222,6 @@ export const DeleteHrisAbsencesAbsenceIdPositiveResponse$inboundSchema:
       ),
     ),
   });
-
-/** @internal */
-export type DeleteHrisAbsencesAbsenceIdPositiveResponse$Outbound = {
-  status: "success";
-  data: DeleteHrisAbsencesAbsenceIdPositiveResponseData$Outbound;
-  warnings: Array<DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$Outbound>;
-};
-
-/** @internal */
-export const DeleteHrisAbsencesAbsenceIdPositiveResponse$outboundSchema:
-  z.ZodType<
-    DeleteHrisAbsencesAbsenceIdPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    DeleteHrisAbsencesAbsenceIdPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      DeleteHrisAbsencesAbsenceIdPositiveResponseData$outboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$outboundSchema
-      ),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteHrisAbsencesAbsenceIdPositiveResponse$ {
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteHrisAbsencesAbsenceIdPositiveResponse$inboundSchema;
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteHrisAbsencesAbsenceIdPositiveResponse$outboundSchema;
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdPositiveResponse$Outbound` instead. */
-  export type Outbound = DeleteHrisAbsencesAbsenceIdPositiveResponse$Outbound;
-}
-
-export function deleteHrisAbsencesAbsenceIdPositiveResponseToJSON(
-  deleteHrisAbsencesAbsenceIdPositiveResponse:
-    DeleteHrisAbsencesAbsenceIdPositiveResponse,
-): string {
-  return JSON.stringify(
-    DeleteHrisAbsencesAbsenceIdPositiveResponse$outboundSchema.parse(
-      deleteHrisAbsencesAbsenceIdPositiveResponse,
-    ),
-  );
-}
 
 export function deleteHrisAbsencesAbsenceIdPositiveResponseFromJSON(
   jsonString: string,

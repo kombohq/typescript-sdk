@@ -4,12 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  ClosedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../types/enums.js";
+import { catchUnrecognizedEnum, ClosedEnum, OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -700,29 +695,6 @@ export const GetHrisEmployeesPositiveResponseGender$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const GetHrisEmployeesPositiveResponseGender$outboundSchema: z.ZodType<
-  GetHrisEmployeesPositiveResponseGender,
-  z.ZodTypeDef,
-  GetHrisEmployeesPositiveResponseGender
-> = z.union([
-  z.nativeEnum(GetHrisEmployeesPositiveResponseGender),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesPositiveResponseGender$ {
-  /** @deprecated use `GetHrisEmployeesPositiveResponseGender$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesPositiveResponseGender$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesPositiveResponseGender$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesPositiveResponseGender$outboundSchema;
-}
-
-/** @internal */
 export const Ethnicity$inboundSchema: z.ZodType<
   Ethnicity,
   z.ZodTypeDef,
@@ -732,27 +704,6 @@ export const Ethnicity$inboundSchema: z.ZodType<
     z.nativeEnum(Ethnicity),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const Ethnicity$outboundSchema: z.ZodType<
-  Ethnicity,
-  z.ZodTypeDef,
-  Ethnicity
-> = z.union([
-  z.nativeEnum(Ethnicity),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Ethnicity$ {
-  /** @deprecated use `Ethnicity$inboundSchema` instead. */
-  export const inboundSchema = Ethnicity$inboundSchema;
-  /** @deprecated use `Ethnicity$outboundSchema` instead. */
-  export const outboundSchema = Ethnicity$outboundSchema;
-}
 
 /** @internal */
 export const MaritalStatus$inboundSchema: z.ZodType<
@@ -766,27 +717,6 @@ export const MaritalStatus$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const MaritalStatus$outboundSchema: z.ZodType<
-  MaritalStatus,
-  z.ZodTypeDef,
-  MaritalStatus
-> = z.union([
-  z.nativeEnum(MaritalStatus),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MaritalStatus$ {
-  /** @deprecated use `MaritalStatus$inboundSchema` instead. */
-  export const inboundSchema = MaritalStatus$inboundSchema;
-  /** @deprecated use `MaritalStatus$outboundSchema` instead. */
-  export const outboundSchema = MaritalStatus$outboundSchema;
-}
-
-/** @internal */
 export const EmploymentStatus$inboundSchema: z.ZodType<
   EmploymentStatus,
   z.ZodTypeDef,
@@ -796,27 +726,6 @@ export const EmploymentStatus$inboundSchema: z.ZodType<
     z.nativeEnum(EmploymentStatus),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const EmploymentStatus$outboundSchema: z.ZodType<
-  EmploymentStatus,
-  z.ZodTypeDef,
-  EmploymentStatus
-> = z.union([
-  z.nativeEnum(EmploymentStatus),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentStatus$ {
-  /** @deprecated use `EmploymentStatus$inboundSchema` instead. */
-  export const inboundSchema = EmploymentStatus$inboundSchema;
-  /** @deprecated use `EmploymentStatus$outboundSchema` instead. */
-  export const outboundSchema = EmploymentStatus$outboundSchema;
-}
 
 /** @internal */
 export const GetHrisEmployeesPositiveResponseEmploymentType$inboundSchema:
@@ -829,30 +738,6 @@ export const GetHrisEmployeesPositiveResponseEmploymentType$inboundSchema:
       z.nativeEnum(GetHrisEmployeesPositiveResponseEmploymentType),
       z.string().transform(catchUnrecognizedEnum),
     ]);
-
-/** @internal */
-export const GetHrisEmployeesPositiveResponseEmploymentType$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesPositiveResponseEmploymentType,
-    z.ZodTypeDef,
-    GetHrisEmployeesPositiveResponseEmploymentType
-  > = z.union([
-    z.nativeEnum(GetHrisEmployeesPositiveResponseEmploymentType),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesPositiveResponseEmploymentType$ {
-  /** @deprecated use `GetHrisEmployeesPositiveResponseEmploymentType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesPositiveResponseEmploymentType$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesPositiveResponseEmploymentType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesPositiveResponseEmploymentType$outboundSchema;
-}
 
 /** @internal */
 export const HomeAddress$inboundSchema: z.ZodType<
@@ -868,49 +753,6 @@ export const HomeAddress$inboundSchema: z.ZodType<
   street_2: z.nullable(z.string()).optional(),
   zip_code: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type HomeAddress$Outbound = {
-  city?: string | null | undefined;
-  country?: string | null | undefined;
-  raw?: string | null | undefined;
-  state?: string | null | undefined;
-  street_1?: string | null | undefined;
-  street_2?: string | null | undefined;
-  zip_code?: string | null | undefined;
-};
-
-/** @internal */
-export const HomeAddress$outboundSchema: z.ZodType<
-  HomeAddress$Outbound,
-  z.ZodTypeDef,
-  HomeAddress
-> = z.object({
-  city: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.string()).optional(),
-  state: z.nullable(z.string()).optional(),
-  street_1: z.nullable(z.string()).optional(),
-  street_2: z.nullable(z.string()).optional(),
-  zip_code: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace HomeAddress$ {
-  /** @deprecated use `HomeAddress$inboundSchema` instead. */
-  export const inboundSchema = HomeAddress$inboundSchema;
-  /** @deprecated use `HomeAddress$outboundSchema` instead. */
-  export const outboundSchema = HomeAddress$outboundSchema;
-  /** @deprecated use `HomeAddress$Outbound` instead. */
-  export type Outbound = HomeAddress$Outbound;
-}
-
-export function homeAddressToJSON(homeAddress: HomeAddress): string {
-  return JSON.stringify(HomeAddress$outboundSchema.parse(homeAddress));
-}
 
 export function homeAddressFromJSON(
   jsonString: string,
@@ -928,22 +770,6 @@ export const DomesticBankRoutingType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(DomesticBankRoutingType);
 
 /** @internal */
-export const DomesticBankRoutingType$outboundSchema: z.ZodNativeEnum<
-  typeof DomesticBankRoutingType
-> = DomesticBankRoutingType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomesticBankRoutingType$ {
-  /** @deprecated use `DomesticBankRoutingType$inboundSchema` instead. */
-  export const inboundSchema = DomesticBankRoutingType$inboundSchema;
-  /** @deprecated use `DomesticBankRoutingType$outboundSchema` instead. */
-  export const outboundSchema = DomesticBankRoutingType$outboundSchema;
-}
-
-/** @internal */
 export const DomesticBankRouting$inboundSchema: z.ZodType<
   DomesticBankRouting,
   z.ZodTypeDef,
@@ -952,43 +778,6 @@ export const DomesticBankRouting$inboundSchema: z.ZodType<
   number: z.string(),
   type: z.nullable(DomesticBankRoutingType$inboundSchema),
 });
-
-/** @internal */
-export type DomesticBankRouting$Outbound = {
-  number: string;
-  type: string | null;
-};
-
-/** @internal */
-export const DomesticBankRouting$outboundSchema: z.ZodType<
-  DomesticBankRouting$Outbound,
-  z.ZodTypeDef,
-  DomesticBankRouting
-> = z.object({
-  number: z.string(),
-  type: z.nullable(DomesticBankRoutingType$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DomesticBankRouting$ {
-  /** @deprecated use `DomesticBankRouting$inboundSchema` instead. */
-  export const inboundSchema = DomesticBankRouting$inboundSchema;
-  /** @deprecated use `DomesticBankRouting$outboundSchema` instead. */
-  export const outboundSchema = DomesticBankRouting$outboundSchema;
-  /** @deprecated use `DomesticBankRouting$Outbound` instead. */
-  export type Outbound = DomesticBankRouting$Outbound;
-}
-
-export function domesticBankRoutingToJSON(
-  domesticBankRouting: DomesticBankRouting,
-): string {
-  return JSON.stringify(
-    DomesticBankRouting$outboundSchema.parse(domesticBankRouting),
-  );
-}
 
 export function domesticBankRoutingFromJSON(
   jsonString: string,
@@ -1016,49 +805,6 @@ export const BankAccount$inboundSchema: z.ZodType<
   ).optional(),
 });
 
-/** @internal */
-export type BankAccount$Outbound = {
-  iban?: string | null | undefined;
-  bic?: string | null | undefined;
-  account_number?: string | null | undefined;
-  holder_name?: string | null | undefined;
-  bank_name?: string | null | undefined;
-  domestic_bank_routing?: DomesticBankRouting$Outbound | null | undefined;
-};
-
-/** @internal */
-export const BankAccount$outboundSchema: z.ZodType<
-  BankAccount$Outbound,
-  z.ZodTypeDef,
-  BankAccount
-> = z.object({
-  iban: z.nullable(z.string()).optional(),
-  bic: z.nullable(z.string()).optional(),
-  account_number: z.nullable(z.string()).optional(),
-  holder_name: z.nullable(z.string()).optional(),
-  bank_name: z.nullable(z.string()).optional(),
-  domestic_bank_routing: z.nullable(
-    z.lazy(() => DomesticBankRouting$outboundSchema),
-  ).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace BankAccount$ {
-  /** @deprecated use `BankAccount$inboundSchema` instead. */
-  export const inboundSchema = BankAccount$inboundSchema;
-  /** @deprecated use `BankAccount$outboundSchema` instead. */
-  export const outboundSchema = BankAccount$outboundSchema;
-  /** @deprecated use `BankAccount$Outbound` instead. */
-  export type Outbound = BankAccount$Outbound;
-}
-
-export function bankAccountToJSON(bankAccount: BankAccount): string {
-  return JSON.stringify(BankAccount$outboundSchema.parse(bankAccount));
-}
-
 export function bankAccountFromJSON(
   jsonString: string,
 ): SafeParseResult<BankAccount, SDKValidationError> {
@@ -1081,30 +827,6 @@ export const GetHrisEmployeesPositiveResponsePayPeriod$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const GetHrisEmployeesPositiveResponsePayPeriod$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesPositiveResponsePayPeriod,
-    z.ZodTypeDef,
-    GetHrisEmployeesPositiveResponsePayPeriod
-  > = z.union([
-    z.nativeEnum(GetHrisEmployeesPositiveResponsePayPeriod),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesPositiveResponsePayPeriod$ {
-  /** @deprecated use `GetHrisEmployeesPositiveResponsePayPeriod$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesPositiveResponsePayPeriod$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesPositiveResponsePayPeriod$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesPositiveResponsePayPeriod$outboundSchema;
-}
-
-/** @internal */
 export const GetHrisEmployeesPositiveResponsePayFrequency$inboundSchema:
   z.ZodType<
     GetHrisEmployeesPositiveResponsePayFrequency,
@@ -1117,30 +839,6 @@ export const GetHrisEmployeesPositiveResponsePayFrequency$inboundSchema:
     ]);
 
 /** @internal */
-export const GetHrisEmployeesPositiveResponsePayFrequency$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesPositiveResponsePayFrequency,
-    z.ZodTypeDef,
-    GetHrisEmployeesPositiveResponsePayFrequency
-  > = z.union([
-    z.nativeEnum(GetHrisEmployeesPositiveResponsePayFrequency),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesPositiveResponsePayFrequency$ {
-  /** @deprecated use `GetHrisEmployeesPositiveResponsePayFrequency$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesPositiveResponsePayFrequency$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesPositiveResponsePayFrequency$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesPositiveResponsePayFrequency$outboundSchema;
-}
-
-/** @internal */
 export const EmploymentEmploymentType$inboundSchema: z.ZodType<
   EmploymentEmploymentType,
   z.ZodTypeDef,
@@ -1150,27 +848,6 @@ export const EmploymentEmploymentType$inboundSchema: z.ZodType<
     z.nativeEnum(EmploymentEmploymentType),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const EmploymentEmploymentType$outboundSchema: z.ZodType<
-  EmploymentEmploymentType,
-  z.ZodTypeDef,
-  EmploymentEmploymentType
-> = z.union([
-  z.nativeEnum(EmploymentEmploymentType),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmploymentEmploymentType$ {
-  /** @deprecated use `EmploymentEmploymentType$inboundSchema` instead. */
-  export const inboundSchema = EmploymentEmploymentType$inboundSchema;
-  /** @deprecated use `EmploymentEmploymentType$outboundSchema` instead. */
-  export const outboundSchema = EmploymentEmploymentType$outboundSchema;
-}
 
 /** @internal */
 export const Employment$inboundSchema: z.ZodType<
@@ -1202,66 +879,6 @@ export const Employment$inboundSchema: z.ZodType<
   custom_fields: z.nullable(z.record(z.any())),
 });
 
-/** @internal */
-export type Employment$Outbound = {
-  id: string;
-  remote_id: string | null;
-  employee_id: string;
-  job_title: string | null;
-  pay_rate: number | null;
-  pay_period?: string | null | undefined;
-  pay_frequency?: string | null | undefined;
-  employment_type?: string | null | undefined;
-  pay_currency: string | null;
-  effective_date: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-  custom_fields: { [k: string]: any } | null;
-};
-
-/** @internal */
-export const Employment$outboundSchema: z.ZodType<
-  Employment$Outbound,
-  z.ZodTypeDef,
-  Employment
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  employee_id: z.string(),
-  job_title: z.nullable(z.string()),
-  pay_rate: z.nullable(z.number()),
-  pay_period: z.nullable(
-    GetHrisEmployeesPositiveResponsePayPeriod$outboundSchema,
-  ).optional(),
-  pay_frequency: z.nullable(
-    GetHrisEmployeesPositiveResponsePayFrequency$outboundSchema,
-  ).optional(),
-  employment_type: z.nullable(EmploymentEmploymentType$outboundSchema)
-    .optional(),
-  pay_currency: z.nullable(z.string()),
-  effective_date: z.nullable(z.date().transform(v => v.toISOString())),
-  changed_at: z.date().transform(v => v.toISOString()),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  custom_fields: z.nullable(z.record(z.any())),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Employment$ {
-  /** @deprecated use `Employment$inboundSchema` instead. */
-  export const inboundSchema = Employment$inboundSchema;
-  /** @deprecated use `Employment$outboundSchema` instead. */
-  export const outboundSchema = Employment$outboundSchema;
-  /** @deprecated use `Employment$Outbound` instead. */
-  export type Outbound = Employment$Outbound;
-}
-
-export function employmentToJSON(employment: Employment): string {
-  return JSON.stringify(Employment$outboundSchema.parse(employment));
-}
-
 export function employmentFromJSON(
   jsonString: string,
 ): SafeParseResult<Employment, SDKValidationError> {
@@ -1278,45 +895,9 @@ export const GetHrisEmployeesPositiveResponseBalanceUnit$inboundSchema:
     .nativeEnum(GetHrisEmployeesPositiveResponseBalanceUnit);
 
 /** @internal */
-export const GetHrisEmployeesPositiveResponseBalanceUnit$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesPositiveResponseBalanceUnit> =
-    GetHrisEmployeesPositiveResponseBalanceUnit$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesPositiveResponseBalanceUnit$ {
-  /** @deprecated use `GetHrisEmployeesPositiveResponseBalanceUnit$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesPositiveResponseBalanceUnit$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesPositiveResponseBalanceUnit$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesPositiveResponseBalanceUnit$outboundSchema;
-}
-
-/** @internal */
 export const GetHrisEmployeesPositiveResponseUsedUnit$inboundSchema:
   z.ZodNativeEnum<typeof GetHrisEmployeesPositiveResponseUsedUnit> = z
     .nativeEnum(GetHrisEmployeesPositiveResponseUsedUnit);
-
-/** @internal */
-export const GetHrisEmployeesPositiveResponseUsedUnit$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesPositiveResponseUsedUnit> =
-    GetHrisEmployeesPositiveResponseUsedUnit$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesPositiveResponseUsedUnit$ {
-  /** @deprecated use `GetHrisEmployeesPositiveResponseUsedUnit$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesPositiveResponseUsedUnit$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesPositiveResponseUsedUnit$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesPositiveResponseUsedUnit$outboundSchema;
-}
 
 /** @internal */
 export const TimeOffBalance$inboundSchema: z.ZodType<
@@ -1340,59 +921,6 @@ export const TimeOffBalance$inboundSchema: z.ZodType<
   used_unit: z.nullable(GetHrisEmployeesPositiveResponseUsedUnit$inboundSchema),
 });
 
-/** @internal */
-export type TimeOffBalance$Outbound = {
-  id: string;
-  remote_id: string | null;
-  employee_id: string;
-  type_id: string;
-  balance: number | null;
-  balance_unit: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-  used: number | null;
-  used_unit: string | null;
-};
-
-/** @internal */
-export const TimeOffBalance$outboundSchema: z.ZodType<
-  TimeOffBalance$Outbound,
-  z.ZodTypeDef,
-  TimeOffBalance
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  employee_id: z.string(),
-  type_id: z.string(),
-  balance: z.nullable(z.number()),
-  balance_unit: z.nullable(
-    GetHrisEmployeesPositiveResponseBalanceUnit$outboundSchema,
-  ),
-  changed_at: z.date().transform(v => v.toISOString()),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  used: z.nullable(z.number()),
-  used_unit: z.nullable(
-    GetHrisEmployeesPositiveResponseUsedUnit$outboundSchema,
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace TimeOffBalance$ {
-  /** @deprecated use `TimeOffBalance$inboundSchema` instead. */
-  export const inboundSchema = TimeOffBalance$inboundSchema;
-  /** @deprecated use `TimeOffBalance$outboundSchema` instead. */
-  export const outboundSchema = TimeOffBalance$outboundSchema;
-  /** @deprecated use `TimeOffBalance$Outbound` instead. */
-  export type Outbound = TimeOffBalance$Outbound;
-}
-
-export function timeOffBalanceToJSON(timeOffBalance: TimeOffBalance): string {
-  return JSON.stringify(TimeOffBalance$outboundSchema.parse(timeOffBalance));
-}
-
 export function timeOffBalanceFromJSON(
   jsonString: string,
 ): SafeParseResult<TimeOffBalance, SDKValidationError> {
@@ -1415,27 +943,6 @@ export const ManagerEmploymentStatus$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const ManagerEmploymentStatus$outboundSchema: z.ZodType<
-  ManagerEmploymentStatus,
-  z.ZodTypeDef,
-  ManagerEmploymentStatus
-> = z.union([
-  z.nativeEnum(ManagerEmploymentStatus),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ManagerEmploymentStatus$ {
-  /** @deprecated use `ManagerEmploymentStatus$inboundSchema` instead. */
-  export const inboundSchema = ManagerEmploymentStatus$inboundSchema;
-  /** @deprecated use `ManagerEmploymentStatus$outboundSchema` instead. */
-  export const outboundSchema = ManagerEmploymentStatus$outboundSchema;
-}
-
-/** @internal */
 export const Manager$inboundSchema: z.ZodType<Manager, z.ZodTypeDef, unknown> =
   z.object({
     first_name: z.nullable(z.string()),
@@ -1450,52 +957,6 @@ export const Manager$inboundSchema: z.ZodType<Manager, z.ZodTypeDef, unknown> =
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ),
   });
-
-/** @internal */
-export type Manager$Outbound = {
-  first_name: string | null;
-  last_name: string | null;
-  display_full_name: string | null;
-  id: string;
-  work_email?: string | null | undefined;
-  remote_id: string;
-  employment_status?: string | null | undefined;
-  termination_date: string | null;
-};
-
-/** @internal */
-export const Manager$outboundSchema: z.ZodType<
-  Manager$Outbound,
-  z.ZodTypeDef,
-  Manager
-> = z.object({
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  display_full_name: z.nullable(z.string()),
-  id: z.string(),
-  work_email: z.nullable(z.string()).optional(),
-  remote_id: z.string(),
-  employment_status: z.nullable(ManagerEmploymentStatus$outboundSchema)
-    .optional(),
-  termination_date: z.nullable(z.date().transform(v => v.toISOString())),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Manager$ {
-  /** @deprecated use `Manager$inboundSchema` instead. */
-  export const inboundSchema = Manager$inboundSchema;
-  /** @deprecated use `Manager$outboundSchema` instead. */
-  export const outboundSchema = Manager$outboundSchema;
-  /** @deprecated use `Manager$Outbound` instead. */
-  export type Outbound = Manager$Outbound;
-}
-
-export function managerToJSON(manager: Manager): string {
-  return JSON.stringify(Manager$outboundSchema.parse(manager));
-}
 
 export function managerFromJSON(
   jsonString: string,
@@ -1512,21 +973,6 @@ export const GroupType$inboundSchema: z.ZodNativeEnum<typeof GroupType> = z
   .nativeEnum(GroupType);
 
 /** @internal */
-export const GroupType$outboundSchema: z.ZodNativeEnum<typeof GroupType> =
-  GroupType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GroupType$ {
-  /** @deprecated use `GroupType$inboundSchema` instead. */
-  export const inboundSchema = GroupType$inboundSchema;
-  /** @deprecated use `GroupType$outboundSchema` instead. */
-  export const outboundSchema = GroupType$outboundSchema;
-}
-
-/** @internal */
 export const Group$inboundSchema: z.ZodType<Group, z.ZodTypeDef, unknown> = z
   .object({
     id: z.string(),
@@ -1534,43 +980,6 @@ export const Group$inboundSchema: z.ZodType<Group, z.ZodTypeDef, unknown> = z
     name: z.nullable(z.string()),
     type: z.nullable(GroupType$inboundSchema),
   });
-
-/** @internal */
-export type Group$Outbound = {
-  id: string;
-  remote_id: string;
-  name: string | null;
-  type: string | null;
-};
-
-/** @internal */
-export const Group$outboundSchema: z.ZodType<
-  Group$Outbound,
-  z.ZodTypeDef,
-  Group
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  name: z.nullable(z.string()),
-  type: z.nullable(GroupType$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Group$ {
-  /** @deprecated use `Group$inboundSchema` instead. */
-  export const inboundSchema = Group$inboundSchema;
-  /** @deprecated use `Group$outboundSchema` instead. */
-  export const outboundSchema = Group$outboundSchema;
-  /** @deprecated use `Group$Outbound` instead. */
-  export type Outbound = Group$Outbound;
-}
-
-export function groupToJSON(group: Group): string {
-  return JSON.stringify(Group$outboundSchema.parse(group));
-}
 
 export function groupFromJSON(
   jsonString: string,
@@ -1597,53 +1006,6 @@ export const LegalEntityAddress$inboundSchema: z.ZodType<
   zip_code: z.nullable(z.string()).optional(),
 });
 
-/** @internal */
-export type LegalEntityAddress$Outbound = {
-  city?: string | null | undefined;
-  country?: string | null | undefined;
-  raw?: string | null | undefined;
-  state?: string | null | undefined;
-  street_1?: string | null | undefined;
-  street_2?: string | null | undefined;
-  zip_code?: string | null | undefined;
-};
-
-/** @internal */
-export const LegalEntityAddress$outboundSchema: z.ZodType<
-  LegalEntityAddress$Outbound,
-  z.ZodTypeDef,
-  LegalEntityAddress
-> = z.object({
-  city: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.string()).optional(),
-  state: z.nullable(z.string()).optional(),
-  street_1: z.nullable(z.string()).optional(),
-  street_2: z.nullable(z.string()).optional(),
-  zip_code: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LegalEntityAddress$ {
-  /** @deprecated use `LegalEntityAddress$inboundSchema` instead. */
-  export const inboundSchema = LegalEntityAddress$inboundSchema;
-  /** @deprecated use `LegalEntityAddress$outboundSchema` instead. */
-  export const outboundSchema = LegalEntityAddress$outboundSchema;
-  /** @deprecated use `LegalEntityAddress$Outbound` instead. */
-  export type Outbound = LegalEntityAddress$Outbound;
-}
-
-export function legalEntityAddressToJSON(
-  legalEntityAddress: LegalEntityAddress,
-): string {
-  return JSON.stringify(
-    LegalEntityAddress$outboundSchema.parse(legalEntityAddress),
-  );
-}
-
 export function legalEntityAddressFromJSON(
   jsonString: string,
 ): SafeParseResult<LegalEntityAddress, SDKValidationError> {
@@ -1666,44 +1028,6 @@ export const LegalEntity$inboundSchema: z.ZodType<
   address: z.nullable(z.lazy(() => LegalEntityAddress$inboundSchema))
     .optional(),
 });
-
-/** @internal */
-export type LegalEntity$Outbound = {
-  id: string;
-  remote_id: string | null;
-  name: string | null;
-  address?: LegalEntityAddress$Outbound | null | undefined;
-};
-
-/** @internal */
-export const LegalEntity$outboundSchema: z.ZodType<
-  LegalEntity$Outbound,
-  z.ZodTypeDef,
-  LegalEntity
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  name: z.nullable(z.string()),
-  address: z.nullable(z.lazy(() => LegalEntityAddress$outboundSchema))
-    .optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LegalEntity$ {
-  /** @deprecated use `LegalEntity$inboundSchema` instead. */
-  export const inboundSchema = LegalEntity$inboundSchema;
-  /** @deprecated use `LegalEntity$outboundSchema` instead. */
-  export const outboundSchema = LegalEntity$outboundSchema;
-  /** @deprecated use `LegalEntity$Outbound` instead. */
-  export type Outbound = LegalEntity$Outbound;
-}
-
-export function legalEntityToJSON(legalEntity: LegalEntity): string {
-  return JSON.stringify(LegalEntity$outboundSchema.parse(legalEntity));
-}
 
 export function legalEntityFromJSON(
   jsonString: string,
@@ -1729,53 +1053,6 @@ export const WorkLocationAddress$inboundSchema: z.ZodType<
   street_2: z.nullable(z.string()).optional(),
   zip_code: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type WorkLocationAddress$Outbound = {
-  city?: string | null | undefined;
-  country?: string | null | undefined;
-  raw?: string | null | undefined;
-  state?: string | null | undefined;
-  street_1?: string | null | undefined;
-  street_2?: string | null | undefined;
-  zip_code?: string | null | undefined;
-};
-
-/** @internal */
-export const WorkLocationAddress$outboundSchema: z.ZodType<
-  WorkLocationAddress$Outbound,
-  z.ZodTypeDef,
-  WorkLocationAddress
-> = z.object({
-  city: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.string()).optional(),
-  state: z.nullable(z.string()).optional(),
-  street_1: z.nullable(z.string()).optional(),
-  street_2: z.nullable(z.string()).optional(),
-  zip_code: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WorkLocationAddress$ {
-  /** @deprecated use `WorkLocationAddress$inboundSchema` instead. */
-  export const inboundSchema = WorkLocationAddress$inboundSchema;
-  /** @deprecated use `WorkLocationAddress$outboundSchema` instead. */
-  export const outboundSchema = WorkLocationAddress$outboundSchema;
-  /** @deprecated use `WorkLocationAddress$Outbound` instead. */
-  export type Outbound = WorkLocationAddress$Outbound;
-}
-
-export function workLocationAddressToJSON(
-  workLocationAddress: WorkLocationAddress,
-): string {
-  return JSON.stringify(
-    WorkLocationAddress$outboundSchema.parse(workLocationAddress),
-  );
-}
 
 export function workLocationAddressFromJSON(
   jsonString: string,
@@ -1804,50 +1081,6 @@ export const WorkLocation$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ),
 });
-
-/** @internal */
-export type WorkLocation$Outbound = {
-  id: string;
-  remote_id: string | null;
-  name: string | null;
-  address?: WorkLocationAddress$Outbound | null | undefined;
-  type: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const WorkLocation$outboundSchema: z.ZodType<
-  WorkLocation$Outbound,
-  z.ZodTypeDef,
-  WorkLocation
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  name: z.nullable(z.string()),
-  address: z.nullable(z.lazy(() => WorkLocationAddress$outboundSchema))
-    .optional(),
-  type: z.nullable(z.string()),
-  changed_at: z.date().transform(v => v.toISOString()),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WorkLocation$ {
-  /** @deprecated use `WorkLocation$inboundSchema` instead. */
-  export const inboundSchema = WorkLocation$inboundSchema;
-  /** @deprecated use `WorkLocation$outboundSchema` instead. */
-  export const outboundSchema = WorkLocation$outboundSchema;
-  /** @deprecated use `WorkLocation$Outbound` instead. */
-  export type Outbound = WorkLocation$Outbound;
-}
-
-export function workLocationToJSON(workLocation: WorkLocation): string {
-  return JSON.stringify(WorkLocation$outboundSchema.parse(workLocation));
-}
 
 export function workLocationFromJSON(
   jsonString: string,
@@ -1919,124 +1152,6 @@ export const GetHrisEmployeesPositiveResponseResult$inboundSchema: z.ZodType<
   work_location: z.nullable(z.lazy(() => WorkLocation$inboundSchema)),
 });
 
-/** @internal */
-export type GetHrisEmployeesPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string;
-  employee_number: string | null;
-  first_name: string | null;
-  last_name: string | null;
-  nationality: string | null;
-  display_full_name: string | null;
-  job_title: string | null;
-  work_email?: string | null | undefined;
-  personal_email?: string | null | undefined;
-  mobile_phone_number: string | null;
-  ssn: string | null;
-  tax_id: string | null;
-  gender?: string | null | undefined;
-  ethnicity?: string | null | undefined;
-  marital_status?: string | null | undefined;
-  employment_status?: string | null | undefined;
-  employment_type?: string | null | undefined;
-  weekly_hours: number | null;
-  avatar: string | null;
-  work_location_id: string | null;
-  legal_entity_id: string | null;
-  manager_id: string | null;
-  home_address?: HomeAddress$Outbound | null | undefined;
-  bank_accounts?: Array<BankAccount$Outbound> | null | undefined;
-  date_of_birth: string | null;
-  start_date: string | null;
-  termination_date: string | null;
-  remote_created_at: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-  custom_fields: { [k: string]: any } | null;
-  employments: Array<Employment$Outbound>;
-  time_off_balances: Array<TimeOffBalance$Outbound>;
-  manager: Manager$Outbound | null;
-  groups: Array<Group$Outbound>;
-  legal_entity: LegalEntity$Outbound | null;
-  work_location: WorkLocation$Outbound | null;
-};
-
-/** @internal */
-export const GetHrisEmployeesPositiveResponseResult$outboundSchema: z.ZodType<
-  GetHrisEmployeesPositiveResponseResult$Outbound,
-  z.ZodTypeDef,
-  GetHrisEmployeesPositiveResponseResult
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  employee_number: z.nullable(z.string()),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  nationality: z.nullable(z.string()),
-  display_full_name: z.nullable(z.string()),
-  job_title: z.nullable(z.string()),
-  work_email: z.nullable(z.string()).optional(),
-  personal_email: z.nullable(z.string()).optional(),
-  mobile_phone_number: z.nullable(z.string()),
-  ssn: z.nullable(z.string()),
-  tax_id: z.nullable(z.string()),
-  gender: z.nullable(GetHrisEmployeesPositiveResponseGender$outboundSchema)
-    .optional(),
-  ethnicity: z.nullable(Ethnicity$outboundSchema).optional(),
-  marital_status: z.nullable(MaritalStatus$outboundSchema).optional(),
-  employment_status: z.nullable(EmploymentStatus$outboundSchema).optional(),
-  employment_type: z.nullable(
-    GetHrisEmployeesPositiveResponseEmploymentType$outboundSchema,
-  ).optional(),
-  weekly_hours: z.nullable(z.number()),
-  avatar: z.nullable(z.string()),
-  work_location_id: z.nullable(z.string()),
-  legal_entity_id: z.nullable(z.string()),
-  manager_id: z.nullable(z.string()),
-  home_address: z.nullable(z.lazy(() => HomeAddress$outboundSchema)).optional(),
-  bank_accounts: z.nullable(z.array(z.lazy(() => BankAccount$outboundSchema)))
-    .optional(),
-  date_of_birth: z.nullable(z.date().transform(v => v.toISOString())),
-  start_date: z.nullable(z.date().transform(v => v.toISOString())),
-  termination_date: z.nullable(z.date().transform(v => v.toISOString())),
-  remote_created_at: z.nullable(z.date().transform(v => v.toISOString())),
-  changed_at: z.date().transform(v => v.toISOString()),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  custom_fields: z.nullable(z.record(z.any())),
-  employments: z.array(z.lazy(() => Employment$outboundSchema)),
-  time_off_balances: z.array(z.lazy(() => TimeOffBalance$outboundSchema)),
-  manager: z.nullable(z.lazy(() => Manager$outboundSchema)),
-  groups: z.array(z.lazy(() => Group$outboundSchema)),
-  legal_entity: z.nullable(z.lazy(() => LegalEntity$outboundSchema)),
-  work_location: z.nullable(z.lazy(() => WorkLocation$outboundSchema)),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesPositiveResponseResult$ {
-  /** @deprecated use `GetHrisEmployeesPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesPositiveResponseResult$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesPositiveResponseResult$Outbound;
-}
-
-export function getHrisEmployeesPositiveResponseResultToJSON(
-  getHrisEmployeesPositiveResponseResult:
-    GetHrisEmployeesPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesPositiveResponseResult$outboundSchema.parse(
-      getHrisEmployeesPositiveResponseResult,
-    ),
-  );
-}
-
 export function getHrisEmployeesPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<GetHrisEmployeesPositiveResponseResult, SDKValidationError> {
@@ -2060,49 +1175,6 @@ export const GetHrisEmployeesPositiveResponseData$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetHrisEmployeesPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetHrisEmployeesPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetHrisEmployeesPositiveResponseData$outboundSchema: z.ZodType<
-  GetHrisEmployeesPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  GetHrisEmployeesPositiveResponseData
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisEmployeesPositiveResponseResult$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesPositiveResponseData$ {
-  /** @deprecated use `GetHrisEmployeesPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesPositiveResponseData$Outbound;
-}
-
-export function getHrisEmployeesPositiveResponseDataToJSON(
-  getHrisEmployeesPositiveResponseData: GetHrisEmployeesPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesPositiveResponseData$outboundSchema.parse(
-      getHrisEmployeesPositiveResponseData,
-    ),
-  );
-}
-
 export function getHrisEmployeesPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetHrisEmployeesPositiveResponseData, SDKValidationError> {
@@ -2123,45 +1195,6 @@ export const GetHrisEmployeesPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetHrisEmployeesPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetHrisEmployeesPositiveResponse$Outbound = {
-  status: "success";
-  data: GetHrisEmployeesPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetHrisEmployeesPositiveResponse$outboundSchema: z.ZodType<
-  GetHrisEmployeesPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisEmployeesPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisEmployeesPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesPositiveResponse$ {
-  /** @deprecated use `GetHrisEmployeesPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisEmployeesPositiveResponse$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema = GetHrisEmployeesPositiveResponse$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesPositiveResponse$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesPositiveResponse$Outbound;
-}
-
-export function getHrisEmployeesPositiveResponseToJSON(
-  getHrisEmployeesPositiveResponse: GetHrisEmployeesPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesPositiveResponse$outboundSchema.parse(
-      getHrisEmployeesPositiveResponse,
-    ),
-  );
-}
 
 export function getHrisEmployeesPositiveResponseFromJSON(
   jsonString: string,

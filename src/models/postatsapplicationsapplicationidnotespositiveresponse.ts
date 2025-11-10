@@ -30,44 +30,6 @@ export const PostAtsApplicationsApplicationIdNotesPositiveResponseData$inboundSc
     unknown
   > = z.object({});
 
-/** @internal */
-export type PostAtsApplicationsApplicationIdNotesPositiveResponseData$Outbound =
-  {};
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdNotesPositiveResponseData$outboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdNotesPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    PostAtsApplicationsApplicationIdNotesPositiveResponseData
-  > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdNotesPositiveResponseData$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdNotesPositiveResponseData$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdNotesPositiveResponseData$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdNotesPositiveResponseData$Outbound;
-}
-
-export function postAtsApplicationsApplicationIdNotesPositiveResponseDataToJSON(
-  postAtsApplicationsApplicationIdNotesPositiveResponseData:
-    PostAtsApplicationsApplicationIdNotesPositiveResponseData,
-): string {
-  return JSON.stringify(
-    PostAtsApplicationsApplicationIdNotesPositiveResponseData$outboundSchema
-      .parse(postAtsApplicationsApplicationIdNotesPositiveResponseData),
-  );
-}
-
 export function postAtsApplicationsApplicationIdNotesPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -92,48 +54,6 @@ export const PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$inboun
   > = z.object({
     message: z.string(),
   });
-
-/** @internal */
-export type PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$Outbound =
-  {
-    message: string;
-  };
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$outboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$Outbound,
-    z.ZodTypeDef,
-    PostAtsApplicationsApplicationIdNotesPositiveResponseWarning
-  > = z.object({
-    message: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$Outbound;
-}
-
-export function postAtsApplicationsApplicationIdNotesPositiveResponseWarningToJSON(
-  postAtsApplicationsApplicationIdNotesPositiveResponseWarning:
-    PostAtsApplicationsApplicationIdNotesPositiveResponseWarning,
-): string {
-  return JSON.stringify(
-    PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$outboundSchema
-      .parse(postAtsApplicationsApplicationIdNotesPositiveResponseWarning),
-  );
-}
 
 export function postAtsApplicationsApplicationIdNotesPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -167,60 +87,6 @@ export const PostAtsApplicationsApplicationIdNotesPositiveResponse$inboundSchema
       ),
     ),
   });
-
-/** @internal */
-export type PostAtsApplicationsApplicationIdNotesPositiveResponse$Outbound = {
-  status: "success";
-  data: PostAtsApplicationsApplicationIdNotesPositiveResponseData$Outbound;
-  warnings: Array<
-    PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$Outbound
-  >;
-};
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdNotesPositiveResponse$outboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdNotesPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    PostAtsApplicationsApplicationIdNotesPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesPositiveResponseData$outboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$outboundSchema
-      ),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdNotesPositiveResponse$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdNotesPositiveResponse$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdNotesPositiveResponse$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesPositiveResponse$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdNotesPositiveResponse$Outbound;
-}
-
-export function postAtsApplicationsApplicationIdNotesPositiveResponseToJSON(
-  postAtsApplicationsApplicationIdNotesPositiveResponse:
-    PostAtsApplicationsApplicationIdNotesPositiveResponse,
-): string {
-  return JSON.stringify(
-    PostAtsApplicationsApplicationIdNotesPositiveResponse$outboundSchema.parse(
-      postAtsApplicationsApplicationIdNotesPositiveResponse,
-    ),
-  );
-}
 
 export function postAtsApplicationsApplicationIdNotesPositiveResponseFromJSON(
   jsonString: string,

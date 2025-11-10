@@ -215,24 +215,6 @@ export const GetHrisPerformanceReviewsPositiveResponseType$inboundSchema:
     .nativeEnum(GetHrisPerformanceReviewsPositiveResponseType);
 
 /** @internal */
-export const GetHrisPerformanceReviewsPositiveResponseType$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisPerformanceReviewsPositiveResponseType> =
-    GetHrisPerformanceReviewsPositiveResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisPerformanceReviewsPositiveResponseType$ {
-  /** @deprecated use `GetHrisPerformanceReviewsPositiveResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisPerformanceReviewsPositiveResponseType$inboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsPositiveResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisPerformanceReviewsPositiveResponseType$outboundSchema;
-}
-
-/** @internal */
 export const SummaryRatingSingleSelect$inboundSchema: z.ZodType<
   SummaryRatingSingleSelect,
   z.ZodTypeDef,
@@ -242,45 +224,6 @@ export const SummaryRatingSingleSelect$inboundSchema: z.ZodType<
   ordered_options: z.nullable(z.array(z.string())),
   value: z.nullable(z.string()),
 });
-
-/** @internal */
-export type SummaryRatingSingleSelect$Outbound = {
-  type: "SINGLE_SELECT";
-  ordered_options: Array<string> | null;
-  value: string | null;
-};
-
-/** @internal */
-export const SummaryRatingSingleSelect$outboundSchema: z.ZodType<
-  SummaryRatingSingleSelect$Outbound,
-  z.ZodTypeDef,
-  SummaryRatingSingleSelect
-> = z.object({
-  type: z.literal("SINGLE_SELECT"),
-  ordered_options: z.nullable(z.array(z.string())),
-  value: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SummaryRatingSingleSelect$ {
-  /** @deprecated use `SummaryRatingSingleSelect$inboundSchema` instead. */
-  export const inboundSchema = SummaryRatingSingleSelect$inboundSchema;
-  /** @deprecated use `SummaryRatingSingleSelect$outboundSchema` instead. */
-  export const outboundSchema = SummaryRatingSingleSelect$outboundSchema;
-  /** @deprecated use `SummaryRatingSingleSelect$Outbound` instead. */
-  export type Outbound = SummaryRatingSingleSelect$Outbound;
-}
-
-export function summaryRatingSingleSelectToJSON(
-  summaryRatingSingleSelect: SummaryRatingSingleSelect,
-): string {
-  return JSON.stringify(
-    SummaryRatingSingleSelect$outboundSchema.parse(summaryRatingSingleSelect),
-  );
-}
 
 export function summaryRatingSingleSelectFromJSON(
   jsonString: string,
@@ -304,47 +247,6 @@ export const SummaryRatingNumeric$inboundSchema: z.ZodType<
   value: z.nullable(z.number()),
 });
 
-/** @internal */
-export type SummaryRatingNumeric$Outbound = {
-  type: "NUMERIC";
-  min: number | null;
-  max: number | null;
-  value: number | null;
-};
-
-/** @internal */
-export const SummaryRatingNumeric$outboundSchema: z.ZodType<
-  SummaryRatingNumeric$Outbound,
-  z.ZodTypeDef,
-  SummaryRatingNumeric
-> = z.object({
-  type: z.literal("NUMERIC"),
-  min: z.nullable(z.number()),
-  max: z.nullable(z.number()),
-  value: z.nullable(z.number()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SummaryRatingNumeric$ {
-  /** @deprecated use `SummaryRatingNumeric$inboundSchema` instead. */
-  export const inboundSchema = SummaryRatingNumeric$inboundSchema;
-  /** @deprecated use `SummaryRatingNumeric$outboundSchema` instead. */
-  export const outboundSchema = SummaryRatingNumeric$outboundSchema;
-  /** @deprecated use `SummaryRatingNumeric$Outbound` instead. */
-  export type Outbound = SummaryRatingNumeric$Outbound;
-}
-
-export function summaryRatingNumericToJSON(
-  summaryRatingNumeric: SummaryRatingNumeric,
-): string {
-  return JSON.stringify(
-    SummaryRatingNumeric$outboundSchema.parse(summaryRatingNumeric),
-  );
-}
-
 export function summaryRatingNumericFromJSON(
   jsonString: string,
 ): SafeParseResult<SummaryRatingNumeric, SDKValidationError> {
@@ -364,38 +266,6 @@ export const SummaryRating$inboundSchema: z.ZodType<
   z.lazy(() => SummaryRatingNumeric$inboundSchema),
   z.lazy(() => SummaryRatingSingleSelect$inboundSchema),
 ]);
-
-/** @internal */
-export type SummaryRating$Outbound =
-  | SummaryRatingNumeric$Outbound
-  | SummaryRatingSingleSelect$Outbound;
-
-/** @internal */
-export const SummaryRating$outboundSchema: z.ZodType<
-  SummaryRating$Outbound,
-  z.ZodTypeDef,
-  SummaryRating
-> = z.union([
-  z.lazy(() => SummaryRatingNumeric$outboundSchema),
-  z.lazy(() => SummaryRatingSingleSelect$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SummaryRating$ {
-  /** @deprecated use `SummaryRating$inboundSchema` instead. */
-  export const inboundSchema = SummaryRating$inboundSchema;
-  /** @deprecated use `SummaryRating$outboundSchema` instead. */
-  export const outboundSchema = SummaryRating$outboundSchema;
-  /** @deprecated use `SummaryRating$Outbound` instead. */
-  export type Outbound = SummaryRating$Outbound;
-}
-
-export function summaryRatingToJSON(summaryRating: SummaryRating): string {
-  return JSON.stringify(SummaryRating$outboundSchema.parse(summaryRating));
-}
 
 export function summaryRatingFromJSON(
   jsonString: string,
@@ -424,49 +294,6 @@ export const Reviewee$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type Reviewee$Outbound = {
-  id: string;
-  remote_id: string;
-  first_name: string | null;
-  last_name: string | null;
-  display_full_name: string | null;
-  work_email?: string | null | undefined;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const Reviewee$outboundSchema: z.ZodType<
-  Reviewee$Outbound,
-  z.ZodTypeDef,
-  Reviewee
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  display_full_name: z.nullable(z.string()),
-  work_email: z.nullable(z.string()).optional(),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Reviewee$ {
-  /** @deprecated use `Reviewee$inboundSchema` instead. */
-  export const inboundSchema = Reviewee$inboundSchema;
-  /** @deprecated use `Reviewee$outboundSchema` instead. */
-  export const outboundSchema = Reviewee$outboundSchema;
-  /** @deprecated use `Reviewee$Outbound` instead. */
-  export type Outbound = Reviewee$Outbound;
-}
-
-export function revieweeToJSON(reviewee: Reviewee): string {
-  return JSON.stringify(Reviewee$outboundSchema.parse(reviewee));
-}
-
 export function revieweeFromJSON(
   jsonString: string,
 ): SafeParseResult<Reviewee, SDKValidationError> {
@@ -493,49 +320,6 @@ export const Reviewer$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ),
 });
-
-/** @internal */
-export type Reviewer$Outbound = {
-  id: string;
-  remote_id: string;
-  first_name: string | null;
-  last_name: string | null;
-  display_full_name: string | null;
-  work_email?: string | null | undefined;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const Reviewer$outboundSchema: z.ZodType<
-  Reviewer$Outbound,
-  z.ZodTypeDef,
-  Reviewer
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  display_full_name: z.nullable(z.string()),
-  work_email: z.nullable(z.string()).optional(),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Reviewer$ {
-  /** @deprecated use `Reviewer$inboundSchema` instead. */
-  export const inboundSchema = Reviewer$inboundSchema;
-  /** @deprecated use `Reviewer$outboundSchema` instead. */
-  export const outboundSchema = Reviewer$outboundSchema;
-  /** @deprecated use `Reviewer$Outbound` instead. */
-  export type Outbound = Reviewer$Outbound;
-}
-
-export function reviewerToJSON(reviewer: Reviewer): string {
-  return JSON.stringify(Reviewer$outboundSchema.parse(reviewer));
-}
 
 export function reviewerFromJSON(
   jsonString: string,
@@ -564,49 +348,6 @@ export const ReviewCycle$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ),
 });
-
-/** @internal */
-export type ReviewCycle$Outbound = {
-  id: string;
-  remote_id: string;
-  name: string | null;
-  review_period_start_date: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const ReviewCycle$outboundSchema: z.ZodType<
-  ReviewCycle$Outbound,
-  z.ZodTypeDef,
-  ReviewCycle
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  name: z.nullable(z.string()),
-  review_period_start_date: z.nullable(
-    z.date().transform(v => v.toISOString()),
-  ),
-  changed_at: z.date().transform(v => v.toISOString()),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ReviewCycle$ {
-  /** @deprecated use `ReviewCycle$inboundSchema` instead. */
-  export const inboundSchema = ReviewCycle$inboundSchema;
-  /** @deprecated use `ReviewCycle$outboundSchema` instead. */
-  export const outboundSchema = ReviewCycle$outboundSchema;
-  /** @deprecated use `ReviewCycle$Outbound` instead. */
-  export type Outbound = ReviewCycle$Outbound;
-}
-
-export function reviewCycleToJSON(reviewCycle: ReviewCycle): string {
-  return JSON.stringify(ReviewCycle$outboundSchema.parse(reviewCycle));
-}
 
 export function reviewCycleFromJSON(
   jsonString: string,
@@ -648,77 +389,6 @@ export const GetHrisPerformanceReviewsPositiveResponseResult$inboundSchema:
     review_cycle: z.nullable(z.lazy(() => ReviewCycle$inboundSchema)),
   });
 
-/** @internal */
-export type GetHrisPerformanceReviewsPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string;
-  type: string | null;
-  summary_comment: string | null;
-  summary_rating?:
-    | SummaryRatingNumeric$Outbound
-    | SummaryRatingSingleSelect$Outbound
-    | null
-    | undefined;
-  changed_at: string;
-  remote_deleted_at: string | null;
-  reviewee: Reviewee$Outbound;
-  reviewer: Reviewer$Outbound | null;
-  review_cycle: ReviewCycle$Outbound | null;
-};
-
-/** @internal */
-export const GetHrisPerformanceReviewsPositiveResponseResult$outboundSchema:
-  z.ZodType<
-    GetHrisPerformanceReviewsPositiveResponseResult$Outbound,
-    z.ZodTypeDef,
-    GetHrisPerformanceReviewsPositiveResponseResult
-  > = z.object({
-    id: z.string(),
-    remote_id: z.string(),
-    type: z.nullable(
-      GetHrisPerformanceReviewsPositiveResponseType$outboundSchema,
-    ),
-    summary_comment: z.nullable(z.string()),
-    summary_rating: z.nullable(
-      z.union([
-        z.lazy(() => SummaryRatingNumeric$outboundSchema),
-        z.lazy(() => SummaryRatingSingleSelect$outboundSchema),
-      ]),
-    ).optional(),
-    changed_at: z.date().transform(v => v.toISOString()),
-    remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-    reviewee: z.lazy(() => Reviewee$outboundSchema),
-    reviewer: z.nullable(z.lazy(() => Reviewer$outboundSchema)),
-    review_cycle: z.nullable(z.lazy(() => ReviewCycle$outboundSchema)),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisPerformanceReviewsPositiveResponseResult$ {
-  /** @deprecated use `GetHrisPerformanceReviewsPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisPerformanceReviewsPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisPerformanceReviewsPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsPositiveResponseResult$Outbound` instead. */
-  export type Outbound =
-    GetHrisPerformanceReviewsPositiveResponseResult$Outbound;
-}
-
-export function getHrisPerformanceReviewsPositiveResponseResultToJSON(
-  getHrisPerformanceReviewsPositiveResponseResult:
-    GetHrisPerformanceReviewsPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetHrisPerformanceReviewsPositiveResponseResult$outboundSchema.parse(
-      getHrisPerformanceReviewsPositiveResponseResult,
-    ),
-  );
-}
-
 export function getHrisPerformanceReviewsPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -750,53 +420,6 @@ export const GetHrisPerformanceReviewsPositiveResponseData$inboundSchema:
     ),
   });
 
-/** @internal */
-export type GetHrisPerformanceReviewsPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetHrisPerformanceReviewsPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetHrisPerformanceReviewsPositiveResponseData$outboundSchema:
-  z.ZodType<
-    GetHrisPerformanceReviewsPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    GetHrisPerformanceReviewsPositiveResponseData
-  > = z.object({
-    next: z.nullable(z.string()),
-    results: z.array(
-      z.lazy(() =>
-        GetHrisPerformanceReviewsPositiveResponseResult$outboundSchema
-      ),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisPerformanceReviewsPositiveResponseData$ {
-  /** @deprecated use `GetHrisPerformanceReviewsPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisPerformanceReviewsPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisPerformanceReviewsPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetHrisPerformanceReviewsPositiveResponseData$Outbound;
-}
-
-export function getHrisPerformanceReviewsPositiveResponseDataToJSON(
-  getHrisPerformanceReviewsPositiveResponseData:
-    GetHrisPerformanceReviewsPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetHrisPerformanceReviewsPositiveResponseData$outboundSchema.parse(
-      getHrisPerformanceReviewsPositiveResponseData,
-    ),
-  );
-}
-
 export function getHrisPerformanceReviewsPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -824,51 +447,6 @@ export const GetHrisPerformanceReviewsPositiveResponse$inboundSchema: z.ZodType<
     GetHrisPerformanceReviewsPositiveResponseData$inboundSchema
   ),
 });
-
-/** @internal */
-export type GetHrisPerformanceReviewsPositiveResponse$Outbound = {
-  status: "success";
-  data: GetHrisPerformanceReviewsPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetHrisPerformanceReviewsPositiveResponse$outboundSchema:
-  z.ZodType<
-    GetHrisPerformanceReviewsPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    GetHrisPerformanceReviewsPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      GetHrisPerformanceReviewsPositiveResponseData$outboundSchema
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisPerformanceReviewsPositiveResponse$ {
-  /** @deprecated use `GetHrisPerformanceReviewsPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisPerformanceReviewsPositiveResponse$inboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisPerformanceReviewsPositiveResponse$outboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsPositiveResponse$Outbound` instead. */
-  export type Outbound = GetHrisPerformanceReviewsPositiveResponse$Outbound;
-}
-
-export function getHrisPerformanceReviewsPositiveResponseToJSON(
-  getHrisPerformanceReviewsPositiveResponse:
-    GetHrisPerformanceReviewsPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetHrisPerformanceReviewsPositiveResponse$outboundSchema.parse(
-      getHrisPerformanceReviewsPositiveResponse,
-    ),
-  );
-}
 
 export function getHrisPerformanceReviewsPositiveResponseFromJSON(
   jsonString: string,

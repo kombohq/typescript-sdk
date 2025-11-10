@@ -73,26 +73,6 @@ export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPo
   );
 
 /** @internal */
-export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType
-  > =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType$ {
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType$inboundSchema;
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType$outboundSchema;
-}
-
-/** @internal */
 export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$inboundSchema:
   z.ZodType<
     PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData,
@@ -108,63 +88,6 @@ export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPo
     is_passthrough_enabled: z.boolean(),
     is_writable: z.literal(false),
   });
-
-/** @internal */
-export type PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$Outbound =
-  {
-    id: string;
-    key: string;
-    model: string;
-    type: string;
-    label: string | null;
-    is_passthrough_enabled: boolean;
-    is_writable: false;
-  };
-
-/** @internal */
-export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$outboundSchema:
-  z.ZodType<
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData
-  > = z.object({
-    id: z.string(),
-    key: z.string(),
-    model: z.string(),
-    type:
-      PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType$outboundSchema,
-    label: z.nullable(z.string()),
-    is_passthrough_enabled: z.boolean(),
-    is_writable: z.literal(false),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$ {
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$inboundSchema;
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$outboundSchema;
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$Outbound;
-}
-
-export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseDataToJSON(
-  patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData:
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData,
-): string {
-  return JSON.stringify(
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$outboundSchema
-      .parse(
-        patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData,
-      ),
-  );
-}
 
 export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseDataFromJSON(
   jsonString: string,
@@ -193,55 +116,6 @@ export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPo
       PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$inboundSchema
     ),
   });
-
-/** @internal */
-export type PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse$Outbound =
-  {
-    status: "success";
-    data:
-      PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$Outbound;
-  };
-
-/** @internal */
-export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse$outboundSchema:
-  z.ZodType<
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$outboundSchema
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse$ {
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse$inboundSchema;
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse$outboundSchema;
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse$Outbound` instead. */
-  export type Outbound =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse$Outbound;
-}
-
-export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseToJSON(
-  patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse:
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse,
-): string {
-  return JSON.stringify(
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse$outboundSchema
-      .parse(
-        patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse,
-      ),
-  );
-}
 
 export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseFromJSON(
   jsonString: string,

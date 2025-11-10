@@ -26,7 +26,13 @@ export type GetAtsOffersRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -46,76 +52,6 @@ export type GetAtsOffersRequest = {
 export type GetAtsOffersResponse = {
   result: models.GetAtsOffersPositiveResponse;
 };
-
-/** @internal */
-export const GetAtsOffersGlobals$inboundSchema: z.ZodType<
-  GetAtsOffersGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetAtsOffersGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetAtsOffersGlobals$outboundSchema: z.ZodType<
-  GetAtsOffersGlobals$Outbound,
-  z.ZodTypeDef,
-  GetAtsOffersGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsOffersGlobals$ {
-  /** @deprecated use `GetAtsOffersGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetAtsOffersGlobals$inboundSchema;
-  /** @deprecated use `GetAtsOffersGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetAtsOffersGlobals$outboundSchema;
-  /** @deprecated use `GetAtsOffersGlobals$Outbound` instead. */
-  export type Outbound = GetAtsOffersGlobals$Outbound;
-}
-
-export function getAtsOffersGlobalsToJSON(
-  getAtsOffersGlobals: GetAtsOffersGlobals,
-): string {
-  return JSON.stringify(
-    GetAtsOffersGlobals$outboundSchema.parse(getAtsOffersGlobals),
-  );
-}
-
-export function getAtsOffersGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAtsOffersGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAtsOffersGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsOffersGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetAtsOffersRequest$inboundSchema: z.ZodType<
-  GetAtsOffersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-});
 
 /** @internal */
 export type GetAtsOffersRequest$Outbound = {
@@ -141,34 +77,11 @@ export const GetAtsOffersRequest$outboundSchema: z.ZodType<
   remote_ids: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsOffersRequest$ {
-  /** @deprecated use `GetAtsOffersRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAtsOffersRequest$inboundSchema;
-  /** @deprecated use `GetAtsOffersRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAtsOffersRequest$outboundSchema;
-  /** @deprecated use `GetAtsOffersRequest$Outbound` instead. */
-  export type Outbound = GetAtsOffersRequest$Outbound;
-}
-
 export function getAtsOffersRequestToJSON(
   getAtsOffersRequest: GetAtsOffersRequest,
 ): string {
   return JSON.stringify(
     GetAtsOffersRequest$outboundSchema.parse(getAtsOffersRequest),
-  );
-}
-
-export function getAtsOffersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAtsOffersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAtsOffersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsOffersRequest' from JSON`,
   );
 }
 
@@ -184,45 +97,6 @@ export const GetAtsOffersResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetAtsOffersResponse$Outbound = {
-  Result: models.GetAtsOffersPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetAtsOffersResponse$outboundSchema: z.ZodType<
-  GetAtsOffersResponse$Outbound,
-  z.ZodTypeDef,
-  GetAtsOffersResponse
-> = z.object({
-  result: models.GetAtsOffersPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsOffersResponse$ {
-  /** @deprecated use `GetAtsOffersResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAtsOffersResponse$inboundSchema;
-  /** @deprecated use `GetAtsOffersResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAtsOffersResponse$outboundSchema;
-  /** @deprecated use `GetAtsOffersResponse$Outbound` instead. */
-  export type Outbound = GetAtsOffersResponse$Outbound;
-}
-
-export function getAtsOffersResponseToJSON(
-  getAtsOffersResponse: GetAtsOffersResponse,
-): string {
-  return JSON.stringify(
-    GetAtsOffersResponse$outboundSchema.parse(getAtsOffersResponse),
-  );
-}
 
 export function getAtsOffersResponseFromJSON(
   jsonString: string,

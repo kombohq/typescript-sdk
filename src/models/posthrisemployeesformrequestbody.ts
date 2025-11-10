@@ -3,12 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 import {
   Schema4,
-  Schema4$inboundSchema,
   Schema4$Outbound,
   Schema4$outboundSchema,
 } from "./schema4.js";
@@ -16,15 +12,6 @@ import {
 export type PostHrisEmployeesFormRequestBody = {
   properties: { [k: string]: Schema4 };
 };
-
-/** @internal */
-export const PostHrisEmployeesFormRequestBody$inboundSchema: z.ZodType<
-  PostHrisEmployeesFormRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  properties: z.record(Schema4$inboundSchema),
-});
 
 /** @internal */
 export type PostHrisEmployeesFormRequestBody$Outbound = {
@@ -40,19 +27,6 @@ export const PostHrisEmployeesFormRequestBody$outboundSchema: z.ZodType<
   properties: z.record(Schema4$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisEmployeesFormRequestBody$ {
-  /** @deprecated use `PostHrisEmployeesFormRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PostHrisEmployeesFormRequestBody$inboundSchema;
-  /** @deprecated use `PostHrisEmployeesFormRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PostHrisEmployeesFormRequestBody$outboundSchema;
-  /** @deprecated use `PostHrisEmployeesFormRequestBody$Outbound` instead. */
-  export type Outbound = PostHrisEmployeesFormRequestBody$Outbound;
-}
-
 export function postHrisEmployeesFormRequestBodyToJSON(
   postHrisEmployeesFormRequestBody: PostHrisEmployeesFormRequestBody,
 ): string {
@@ -60,15 +34,5 @@ export function postHrisEmployeesFormRequestBodyToJSON(
     PostHrisEmployeesFormRequestBody$outboundSchema.parse(
       postHrisEmployeesFormRequestBody,
     ),
-  );
-}
-
-export function postHrisEmployeesFormRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PostHrisEmployeesFormRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostHrisEmployeesFormRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostHrisEmployeesFormRequestBody' from JSON`,
   );
 }

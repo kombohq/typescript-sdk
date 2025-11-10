@@ -59,41 +59,9 @@ export const KomboGeneralErrorStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(KomboGeneralErrorStatus);
 
 /** @internal */
-export const KomboGeneralErrorStatus$outboundSchema: z.ZodNativeEnum<
-  typeof KomboGeneralErrorStatus
-> = KomboGeneralErrorStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KomboGeneralErrorStatus$ {
-  /** @deprecated use `KomboGeneralErrorStatus$inboundSchema` instead. */
-  export const inboundSchema = KomboGeneralErrorStatus$inboundSchema;
-  /** @deprecated use `KomboGeneralErrorStatus$outboundSchema` instead. */
-  export const outboundSchema = KomboGeneralErrorStatus$outboundSchema;
-}
-
-/** @internal */
 export const KomboGeneralErrorCode$inboundSchema: z.ZodNativeEnum<
   typeof KomboGeneralErrorCode
 > = z.nativeEnum(KomboGeneralErrorCode);
-
-/** @internal */
-export const KomboGeneralErrorCode$outboundSchema: z.ZodNativeEnum<
-  typeof KomboGeneralErrorCode
-> = KomboGeneralErrorCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KomboGeneralErrorCode$ {
-  /** @deprecated use `KomboGeneralErrorCode$inboundSchema` instead. */
-  export const inboundSchema = KomboGeneralErrorCode$inboundSchema;
-  /** @deprecated use `KomboGeneralErrorCode$outboundSchema` instead. */
-  export const outboundSchema = KomboGeneralErrorCode$outboundSchema;
-}
 
 /** @internal */
 export const KomboGeneralErrorError$inboundSchema: z.ZodType<
@@ -106,47 +74,6 @@ export const KomboGeneralErrorError$inboundSchema: z.ZodType<
   message: z.string(),
   log_url: z.nullable(z.string()),
 });
-
-/** @internal */
-export type KomboGeneralErrorError$Outbound = {
-  code: string | null;
-  title: string | null;
-  message: string;
-  log_url: string | null;
-};
-
-/** @internal */
-export const KomboGeneralErrorError$outboundSchema: z.ZodType<
-  KomboGeneralErrorError$Outbound,
-  z.ZodTypeDef,
-  KomboGeneralErrorError
-> = z.object({
-  code: z.nullable(KomboGeneralErrorCode$outboundSchema),
-  title: z.nullable(z.string()),
-  message: z.string(),
-  log_url: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KomboGeneralErrorError$ {
-  /** @deprecated use `KomboGeneralErrorError$inboundSchema` instead. */
-  export const inboundSchema = KomboGeneralErrorError$inboundSchema;
-  /** @deprecated use `KomboGeneralErrorError$outboundSchema` instead. */
-  export const outboundSchema = KomboGeneralErrorError$outboundSchema;
-  /** @deprecated use `KomboGeneralErrorError$Outbound` instead. */
-  export type Outbound = KomboGeneralErrorError$Outbound;
-}
-
-export function komboGeneralErrorErrorToJSON(
-  komboGeneralErrorError: KomboGeneralErrorError,
-): string {
-  return JSON.stringify(
-    KomboGeneralErrorError$outboundSchema.parse(komboGeneralErrorError),
-  );
-}
 
 export function komboGeneralErrorErrorFromJSON(
   jsonString: string,

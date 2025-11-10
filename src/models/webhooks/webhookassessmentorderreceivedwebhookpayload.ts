@@ -14,8 +14,7 @@ export type WebhookAssessmentOrderReceivedWebhookPayloadRequest = {
    * HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature.
    */
   x_kombo_signature: string;
-  assessment_order_received_webhook_payload:
-    models.AssessmentOrderReceivedWebhookPayload;
+  body: models.AssessmentOrderReceivedWebhookPayload;
 };
 
 /** @internal */
@@ -26,21 +25,16 @@ export const WebhookAssessmentOrderReceivedWebhookPayloadRequest$inboundSchema:
     unknown
   > = z.object({
     "X-Kombo-Signature": z.string(),
-    AssessmentOrderReceivedWebhookPayload:
-      models.AssessmentOrderReceivedWebhookPayload$inboundSchema,
+    body: models.AssessmentOrderReceivedWebhookPayload$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "X-Kombo-Signature": "x_kombo_signature",
-      "AssessmentOrderReceivedWebhookPayload":
-        "assessment_order_received_webhook_payload",
     });
   });
-
 /** @internal */
 export type WebhookAssessmentOrderReceivedWebhookPayloadRequest$Outbound = {
   "X-Kombo-Signature": string;
-  AssessmentOrderReceivedWebhookPayload:
-    models.AssessmentOrderReceivedWebhookPayload$Outbound;
+  body: models.AssessmentOrderReceivedWebhookPayload$Outbound;
 };
 
 /** @internal */
@@ -51,31 +45,12 @@ export const WebhookAssessmentOrderReceivedWebhookPayloadRequest$outboundSchema:
     WebhookAssessmentOrderReceivedWebhookPayloadRequest
   > = z.object({
     x_kombo_signature: z.string(),
-    assessment_order_received_webhook_payload:
-      models.AssessmentOrderReceivedWebhookPayload$outboundSchema,
+    body: models.AssessmentOrderReceivedWebhookPayload$outboundSchema,
   }).transform((v) => {
     return remap$(v, {
       x_kombo_signature: "X-Kombo-Signature",
-      assessment_order_received_webhook_payload:
-        "AssessmentOrderReceivedWebhookPayload",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookAssessmentOrderReceivedWebhookPayloadRequest$ {
-  /** @deprecated use `WebhookAssessmentOrderReceivedWebhookPayloadRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    WebhookAssessmentOrderReceivedWebhookPayloadRequest$inboundSchema;
-  /** @deprecated use `WebhookAssessmentOrderReceivedWebhookPayloadRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    WebhookAssessmentOrderReceivedWebhookPayloadRequest$outboundSchema;
-  /** @deprecated use `WebhookAssessmentOrderReceivedWebhookPayloadRequest$Outbound` instead. */
-  export type Outbound =
-    WebhookAssessmentOrderReceivedWebhookPayloadRequest$Outbound;
-}
 
 export function webhookAssessmentOrderReceivedWebhookPayloadRequestToJSON(
   webhookAssessmentOrderReceivedWebhookPayloadRequest:
@@ -87,7 +62,6 @@ export function webhookAssessmentOrderReceivedWebhookPayloadRequestToJSON(
     ),
   );
 }
-
 export function webhookAssessmentOrderReceivedWebhookPayloadRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<

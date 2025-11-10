@@ -127,49 +127,21 @@ export type IntegrationStateChangedWebhookPayload = {
 export const IntegrationStateChangedWebhookPayloadType$inboundSchema:
   z.ZodNativeEnum<typeof IntegrationStateChangedWebhookPayloadType> = z
     .nativeEnum(IntegrationStateChangedWebhookPayloadType);
-
 /** @internal */
 export const IntegrationStateChangedWebhookPayloadType$outboundSchema:
   z.ZodNativeEnum<typeof IntegrationStateChangedWebhookPayloadType> =
     IntegrationStateChangedWebhookPayloadType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IntegrationStateChangedWebhookPayloadType$ {
-  /** @deprecated use `IntegrationStateChangedWebhookPayloadType$inboundSchema` instead. */
-  export const inboundSchema =
-    IntegrationStateChangedWebhookPayloadType$inboundSchema;
-  /** @deprecated use `IntegrationStateChangedWebhookPayloadType$outboundSchema` instead. */
-  export const outboundSchema =
-    IntegrationStateChangedWebhookPayloadType$outboundSchema;
-}
 
 /** @internal */
 export const IntegrationStateChangedWebhookPayloadIntegrationCategory$inboundSchema:
   z.ZodNativeEnum<
     typeof IntegrationStateChangedWebhookPayloadIntegrationCategory
   > = z.nativeEnum(IntegrationStateChangedWebhookPayloadIntegrationCategory);
-
 /** @internal */
 export const IntegrationStateChangedWebhookPayloadIntegrationCategory$outboundSchema:
   z.ZodNativeEnum<
     typeof IntegrationStateChangedWebhookPayloadIntegrationCategory
   > = IntegrationStateChangedWebhookPayloadIntegrationCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IntegrationStateChangedWebhookPayloadIntegrationCategory$ {
-  /** @deprecated use `IntegrationStateChangedWebhookPayloadIntegrationCategory$inboundSchema` instead. */
-  export const inboundSchema =
-    IntegrationStateChangedWebhookPayloadIntegrationCategory$inboundSchema;
-  /** @deprecated use `IntegrationStateChangedWebhookPayloadIntegrationCategory$outboundSchema` instead. */
-  export const outboundSchema =
-    IntegrationStateChangedWebhookPayloadIntegrationCategory$outboundSchema;
-}
 
 /** @internal */
 export const IntegrationStateChangedWebhookPayloadEndUser$inboundSchema:
@@ -182,7 +154,6 @@ export const IntegrationStateChangedWebhookPayloadEndUser$inboundSchema:
     creator_email: z.nullable(z.string()),
     origin_id: z.nullable(z.string()),
   });
-
 /** @internal */
 export type IntegrationStateChangedWebhookPayloadEndUser$Outbound = {
   organization_name: string;
@@ -202,21 +173,6 @@ export const IntegrationStateChangedWebhookPayloadEndUser$outboundSchema:
     origin_id: z.nullable(z.string()),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IntegrationStateChangedWebhookPayloadEndUser$ {
-  /** @deprecated use `IntegrationStateChangedWebhookPayloadEndUser$inboundSchema` instead. */
-  export const inboundSchema =
-    IntegrationStateChangedWebhookPayloadEndUser$inboundSchema;
-  /** @deprecated use `IntegrationStateChangedWebhookPayloadEndUser$outboundSchema` instead. */
-  export const outboundSchema =
-    IntegrationStateChangedWebhookPayloadEndUser$outboundSchema;
-  /** @deprecated use `IntegrationStateChangedWebhookPayloadEndUser$Outbound` instead. */
-  export type Outbound = IntegrationStateChangedWebhookPayloadEndUser$Outbound;
-}
-
 export function integrationStateChangedWebhookPayloadEndUserToJSON(
   integrationStateChangedWebhookPayloadEndUser:
     IntegrationStateChangedWebhookPayloadEndUser,
@@ -227,7 +183,6 @@ export function integrationStateChangedWebhookPayloadEndUserToJSON(
     ),
   );
 }
-
 export function integrationStateChangedWebhookPayloadEndUserFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -247,41 +202,17 @@ export function integrationStateChangedWebhookPayloadEndUserFromJSON(
 /** @internal */
 export const QaStatus$inboundSchema: z.ZodNativeEnum<typeof QaStatus> = z
   .nativeEnum(QaStatus);
-
 /** @internal */
 export const QaStatus$outboundSchema: z.ZodNativeEnum<typeof QaStatus> =
   QaStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace QaStatus$ {
-  /** @deprecated use `QaStatus$inboundSchema` instead. */
-  export const inboundSchema = QaStatus$inboundSchema;
-  /** @deprecated use `QaStatus$outboundSchema` instead. */
-  export const outboundSchema = QaStatus$outboundSchema;
-}
 
 /** @internal */
 export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
   State,
 );
-
 /** @internal */
 export const State$outboundSchema: z.ZodNativeEnum<typeof State> =
   State$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace State$ {
-  /** @deprecated use `State$inboundSchema` instead. */
-  export const inboundSchema = State$inboundSchema;
-  /** @deprecated use `State$outboundSchema` instead. */
-  export const outboundSchema = State$outboundSchema;
-}
 
 /** @internal */
 export const IntegrationStateChangedWebhookPayloadData$inboundSchema: z.ZodType<
@@ -300,7 +231,6 @@ export const IntegrationStateChangedWebhookPayloadData$inboundSchema: z.ZodType<
   state: State$inboundSchema,
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type IntegrationStateChangedWebhookPayloadData$Outbound = {
   integration_tool: string;
@@ -331,21 +261,6 @@ export const IntegrationStateChangedWebhookPayloadData$outboundSchema:
     updated_at: z.date().transform(v => v.toISOString()),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IntegrationStateChangedWebhookPayloadData$ {
-  /** @deprecated use `IntegrationStateChangedWebhookPayloadData$inboundSchema` instead. */
-  export const inboundSchema =
-    IntegrationStateChangedWebhookPayloadData$inboundSchema;
-  /** @deprecated use `IntegrationStateChangedWebhookPayloadData$outboundSchema` instead. */
-  export const outboundSchema =
-    IntegrationStateChangedWebhookPayloadData$outboundSchema;
-  /** @deprecated use `IntegrationStateChangedWebhookPayloadData$Outbound` instead. */
-  export type Outbound = IntegrationStateChangedWebhookPayloadData$Outbound;
-}
-
 export function integrationStateChangedWebhookPayloadDataToJSON(
   integrationStateChangedWebhookPayloadData:
     IntegrationStateChangedWebhookPayloadData,
@@ -356,7 +271,6 @@ export function integrationStateChangedWebhookPayloadDataToJSON(
     ),
   );
 }
-
 export function integrationStateChangedWebhookPayloadDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -383,7 +297,6 @@ export const IntegrationStateChangedWebhookPayload$inboundSchema: z.ZodType<
   type: IntegrationStateChangedWebhookPayloadType$inboundSchema,
   data: z.lazy(() => IntegrationStateChangedWebhookPayloadData$inboundSchema),
 });
-
 /** @internal */
 export type IntegrationStateChangedWebhookPayload$Outbound = {
   id: string;
@@ -402,21 +315,6 @@ export const IntegrationStateChangedWebhookPayload$outboundSchema: z.ZodType<
   data: z.lazy(() => IntegrationStateChangedWebhookPayloadData$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IntegrationStateChangedWebhookPayload$ {
-  /** @deprecated use `IntegrationStateChangedWebhookPayload$inboundSchema` instead. */
-  export const inboundSchema =
-    IntegrationStateChangedWebhookPayload$inboundSchema;
-  /** @deprecated use `IntegrationStateChangedWebhookPayload$outboundSchema` instead. */
-  export const outboundSchema =
-    IntegrationStateChangedWebhookPayload$outboundSchema;
-  /** @deprecated use `IntegrationStateChangedWebhookPayload$Outbound` instead. */
-  export type Outbound = IntegrationStateChangedWebhookPayload$Outbound;
-}
-
 export function integrationStateChangedWebhookPayloadToJSON(
   integrationStateChangedWebhookPayload: IntegrationStateChangedWebhookPayload,
 ): string {
@@ -426,7 +324,6 @@ export function integrationStateChangedWebhookPayloadToJSON(
     ),
   );
 }
-
 export function integrationStateChangedWebhookPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<IntegrationStateChangedWebhookPayload, SDKValidationError> {

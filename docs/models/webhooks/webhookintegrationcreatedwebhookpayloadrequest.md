@@ -7,7 +7,7 @@ import { WebhookIntegrationCreatedWebhookPayloadRequest } from "@kombo-api/sdk/m
 
 let value: WebhookIntegrationCreatedWebhookPayloadRequest = {
   x_kombo_signature: "<value>",
-  integration_created_webhook_payload: {
+  body: {
     id: "<id>",
     type: "integration-created",
     data: {
@@ -29,4 +29,4 @@ let value: WebhookIntegrationCreatedWebhookPayloadRequest = {
 | Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `x_kombo_signature`                                                                                                 | *string*                                                                                                            | :heavy_check_mark:                                                                                                  | HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature. |
-| `integration_created_webhook_payload`                                                                               | [models.IntegrationCreatedWebhookPayload](../../models/integrationcreatedwebhookpayload.md)                         | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| `body`                                                                                                              | [models.IntegrationCreatedWebhookPayload](../../models/integrationcreatedwebhookpayload.md)                         | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |

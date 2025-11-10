@@ -32,72 +32,6 @@ export type GetAssessmentOrdersOpenResponse = {
 };
 
 /** @internal */
-export const GetAssessmentOrdersOpenGlobals$inboundSchema: z.ZodType<
-  GetAssessmentOrdersOpenGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetAssessmentOrdersOpenGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetAssessmentOrdersOpenGlobals$outboundSchema: z.ZodType<
-  GetAssessmentOrdersOpenGlobals$Outbound,
-  z.ZodTypeDef,
-  GetAssessmentOrdersOpenGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAssessmentOrdersOpenGlobals$ {
-  /** @deprecated use `GetAssessmentOrdersOpenGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetAssessmentOrdersOpenGlobals$inboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetAssessmentOrdersOpenGlobals$outboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenGlobals$Outbound` instead. */
-  export type Outbound = GetAssessmentOrdersOpenGlobals$Outbound;
-}
-
-export function getAssessmentOrdersOpenGlobalsToJSON(
-  getAssessmentOrdersOpenGlobals: GetAssessmentOrdersOpenGlobals,
-): string {
-  return JSON.stringify(
-    GetAssessmentOrdersOpenGlobals$outboundSchema.parse(
-      getAssessmentOrdersOpenGlobals,
-    ),
-  );
-}
-
-export function getAssessmentOrdersOpenGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAssessmentOrdersOpenGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAssessmentOrdersOpenGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAssessmentOrdersOpenGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetAssessmentOrdersOpenRequest$inboundSchema: z.ZodType<
-  GetAssessmentOrdersOpenRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-});
-
-/** @internal */
 export type GetAssessmentOrdersOpenRequest$Outbound = {
   cursor?: string | undefined;
   page_size: number;
@@ -113,19 +47,6 @@ export const GetAssessmentOrdersOpenRequest$outboundSchema: z.ZodType<
   page_size: z.number().int().default(100),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAssessmentOrdersOpenRequest$ {
-  /** @deprecated use `GetAssessmentOrdersOpenRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAssessmentOrdersOpenRequest$inboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAssessmentOrdersOpenRequest$outboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenRequest$Outbound` instead. */
-  export type Outbound = GetAssessmentOrdersOpenRequest$Outbound;
-}
-
 export function getAssessmentOrdersOpenRequestToJSON(
   getAssessmentOrdersOpenRequest: GetAssessmentOrdersOpenRequest,
 ): string {
@@ -133,16 +54,6 @@ export function getAssessmentOrdersOpenRequestToJSON(
     GetAssessmentOrdersOpenRequest$outboundSchema.parse(
       getAssessmentOrdersOpenRequest,
     ),
-  );
-}
-
-export function getAssessmentOrdersOpenRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAssessmentOrdersOpenRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAssessmentOrdersOpenRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAssessmentOrdersOpenRequest' from JSON`,
   );
 }
 
@@ -158,47 +69,6 @@ export const GetAssessmentOrdersOpenResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetAssessmentOrdersOpenResponse$Outbound = {
-  Result: models.GetAssessmentOrdersOpenPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetAssessmentOrdersOpenResponse$outboundSchema: z.ZodType<
-  GetAssessmentOrdersOpenResponse$Outbound,
-  z.ZodTypeDef,
-  GetAssessmentOrdersOpenResponse
-> = z.object({
-  result: models.GetAssessmentOrdersOpenPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAssessmentOrdersOpenResponse$ {
-  /** @deprecated use `GetAssessmentOrdersOpenResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAssessmentOrdersOpenResponse$inboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAssessmentOrdersOpenResponse$outboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenResponse$Outbound` instead. */
-  export type Outbound = GetAssessmentOrdersOpenResponse$Outbound;
-}
-
-export function getAssessmentOrdersOpenResponseToJSON(
-  getAssessmentOrdersOpenResponse: GetAssessmentOrdersOpenResponse,
-): string {
-  return JSON.stringify(
-    GetAssessmentOrdersOpenResponse$outboundSchema.parse(
-      getAssessmentOrdersOpenResponse,
-    ),
-  );
-}
 
 export function getAssessmentOrdersOpenResponseFromJSON(
   jsonString: string,

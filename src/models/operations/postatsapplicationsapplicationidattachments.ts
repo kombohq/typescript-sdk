@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostAtsApplicationsApplicationIdAttachmentsGlobals = {
@@ -24,101 +20,13 @@ export type PostAtsApplicationsApplicationIdAttachmentsRequest = {
   /**
    * POST /ats/applications/:application_id/attachments Request body
    */
-  post_ats_applications_application_id_attachments_request_body:
-    models.PostAtsApplicationsApplicationIdAttachmentsRequestBody;
+  body: models.PostAtsApplicationsApplicationIdAttachmentsRequestBody;
 };
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdAttachmentsGlobals$inboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdAttachmentsGlobals,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integration_id: z.string().optional(),
-  });
-
-/** @internal */
-export type PostAtsApplicationsApplicationIdAttachmentsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdAttachmentsGlobals$outboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdAttachmentsGlobals$Outbound,
-    z.ZodTypeDef,
-    PostAtsApplicationsApplicationIdAttachmentsGlobals
-  > = z.object({
-    integration_id: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdAttachmentsGlobals$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdAttachmentsGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdAttachmentsGlobals$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdAttachmentsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdAttachmentsGlobals$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdAttachmentsGlobals$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdAttachmentsGlobals$Outbound;
-}
-
-export function postAtsApplicationsApplicationIdAttachmentsGlobalsToJSON(
-  postAtsApplicationsApplicationIdAttachmentsGlobals:
-    PostAtsApplicationsApplicationIdAttachmentsGlobals,
-): string {
-  return JSON.stringify(
-    PostAtsApplicationsApplicationIdAttachmentsGlobals$outboundSchema.parse(
-      postAtsApplicationsApplicationIdAttachmentsGlobals,
-    ),
-  );
-}
-
-export function postAtsApplicationsApplicationIdAttachmentsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsApplicationsApplicationIdAttachmentsGlobals,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsApplicationsApplicationIdAttachmentsGlobals$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostAtsApplicationsApplicationIdAttachmentsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdAttachmentsRequest$inboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdAttachmentsRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    application_id: z.string(),
-    PostAtsApplicationsApplicationIdAttachmentsRequestBody:
-      models
-        .PostAtsApplicationsApplicationIdAttachmentsRequestBody$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "PostAtsApplicationsApplicationIdAttachmentsRequestBody":
-        "post_ats_applications_application_id_attachments_request_body",
-    });
-  });
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdAttachmentsRequest$Outbound = {
   application_id: string;
-  PostAtsApplicationsApplicationIdAttachmentsRequestBody:
-    models.PostAtsApplicationsApplicationIdAttachmentsRequestBody$Outbound;
+  body: models.PostAtsApplicationsApplicationIdAttachmentsRequestBody$Outbound;
 };
 
 /** @internal */
@@ -129,31 +37,10 @@ export const PostAtsApplicationsApplicationIdAttachmentsRequest$outboundSchema:
     PostAtsApplicationsApplicationIdAttachmentsRequest
   > = z.object({
     application_id: z.string(),
-    post_ats_applications_application_id_attachments_request_body:
+    body:
       models
         .PostAtsApplicationsApplicationIdAttachmentsRequestBody$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      post_ats_applications_application_id_attachments_request_body:
-        "PostAtsApplicationsApplicationIdAttachmentsRequestBody",
-    });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdAttachmentsRequest$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdAttachmentsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdAttachmentsRequest$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdAttachmentsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdAttachmentsRequest$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdAttachmentsRequest$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdAttachmentsRequest$Outbound;
-}
 
 export function postAtsApplicationsApplicationIdAttachmentsRequestToJSON(
   postAtsApplicationsApplicationIdAttachmentsRequest:
@@ -163,21 +50,5 @@ export function postAtsApplicationsApplicationIdAttachmentsRequestToJSON(
     PostAtsApplicationsApplicationIdAttachmentsRequest$outboundSchema.parse(
       postAtsApplicationsApplicationIdAttachmentsRequest,
     ),
-  );
-}
-
-export function postAtsApplicationsApplicationIdAttachmentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsApplicationsApplicationIdAttachmentsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsApplicationsApplicationIdAttachmentsRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostAtsApplicationsApplicationIdAttachmentsRequest' from JSON`,
   );
 }

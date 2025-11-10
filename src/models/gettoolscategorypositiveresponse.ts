@@ -266,41 +266,6 @@ export const Assets$inboundSchema: z.ZodType<Assets, z.ZodTypeDef, unknown> = z
     icon_black_url: z.string(),
   });
 
-/** @internal */
-export type Assets$Outbound = {
-  logo_url: string;
-  icon_url: string;
-  icon_black_url: string;
-};
-
-/** @internal */
-export const Assets$outboundSchema: z.ZodType<
-  Assets$Outbound,
-  z.ZodTypeDef,
-  Assets
-> = z.object({
-  logo_url: z.string(),
-  icon_url: z.string(),
-  icon_black_url: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Assets$ {
-  /** @deprecated use `Assets$inboundSchema` instead. */
-  export const inboundSchema = Assets$inboundSchema;
-  /** @deprecated use `Assets$outboundSchema` instead. */
-  export const outboundSchema = Assets$outboundSchema;
-  /** @deprecated use `Assets$Outbound` instead. */
-  export type Outbound = Assets$Outbound;
-}
-
-export function assetsToJSON(assets: Assets): string {
-  return JSON.stringify(Assets$outboundSchema.parse(assets));
-}
-
 export function assetsFromJSON(
   jsonString: string,
 ): SafeParseResult<Assets, SDKValidationError> {
@@ -318,46 +283,9 @@ export const GetToolsCategoryPositiveResponseReadModelCoverageStatus$inboundSche
   > = z.nativeEnum(GetToolsCategoryPositiveResponseReadModelCoverageStatus);
 
 /** @internal */
-export const GetToolsCategoryPositiveResponseReadModelCoverageStatus$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetToolsCategoryPositiveResponseReadModelCoverageStatus
-  > = GetToolsCategoryPositiveResponseReadModelCoverageStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetToolsCategoryPositiveResponseReadModelCoverageStatus$ {
-  /** @deprecated use `GetToolsCategoryPositiveResponseReadModelCoverageStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetToolsCategoryPositiveResponseReadModelCoverageStatus$inboundSchema;
-  /** @deprecated use `GetToolsCategoryPositiveResponseReadModelCoverageStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetToolsCategoryPositiveResponseReadModelCoverageStatus$outboundSchema;
-}
-
-/** @internal */
 export const GetToolsCategoryPositiveResponseFieldCoverageStatus$inboundSchema:
   z.ZodNativeEnum<typeof GetToolsCategoryPositiveResponseFieldCoverageStatus> =
     z.nativeEnum(GetToolsCategoryPositiveResponseFieldCoverageStatus);
-
-/** @internal */
-export const GetToolsCategoryPositiveResponseFieldCoverageStatus$outboundSchema:
-  z.ZodNativeEnum<typeof GetToolsCategoryPositiveResponseFieldCoverageStatus> =
-    GetToolsCategoryPositiveResponseFieldCoverageStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetToolsCategoryPositiveResponseFieldCoverageStatus$ {
-  /** @deprecated use `GetToolsCategoryPositiveResponseFieldCoverageStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetToolsCategoryPositiveResponseFieldCoverageStatus$inboundSchema;
-  /** @deprecated use `GetToolsCategoryPositiveResponseFieldCoverageStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetToolsCategoryPositiveResponseFieldCoverageStatus$outboundSchema;
-}
 
 /** @internal */
 export const GetToolsCategoryPositiveResponseField$inboundSchema: z.ZodType<
@@ -369,48 +297,6 @@ export const GetToolsCategoryPositiveResponseField$inboundSchema: z.ZodType<
   coverage_status:
     GetToolsCategoryPositiveResponseFieldCoverageStatus$inboundSchema,
 });
-
-/** @internal */
-export type GetToolsCategoryPositiveResponseField$Outbound = {
-  id: string;
-  coverage_status: string;
-};
-
-/** @internal */
-export const GetToolsCategoryPositiveResponseField$outboundSchema: z.ZodType<
-  GetToolsCategoryPositiveResponseField$Outbound,
-  z.ZodTypeDef,
-  GetToolsCategoryPositiveResponseField
-> = z.object({
-  id: z.string(),
-  coverage_status:
-    GetToolsCategoryPositiveResponseFieldCoverageStatus$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetToolsCategoryPositiveResponseField$ {
-  /** @deprecated use `GetToolsCategoryPositiveResponseField$inboundSchema` instead. */
-  export const inboundSchema =
-    GetToolsCategoryPositiveResponseField$inboundSchema;
-  /** @deprecated use `GetToolsCategoryPositiveResponseField$outboundSchema` instead. */
-  export const outboundSchema =
-    GetToolsCategoryPositiveResponseField$outboundSchema;
-  /** @deprecated use `GetToolsCategoryPositiveResponseField$Outbound` instead. */
-  export type Outbound = GetToolsCategoryPositiveResponseField$Outbound;
-}
-
-export function getToolsCategoryPositiveResponseFieldToJSON(
-  getToolsCategoryPositiveResponseField: GetToolsCategoryPositiveResponseField,
-): string {
-  return JSON.stringify(
-    GetToolsCategoryPositiveResponseField$outboundSchema.parse(
-      getToolsCategoryPositiveResponseField,
-    ),
-  );
-}
 
 export function getToolsCategoryPositiveResponseFieldFromJSON(
   jsonString: string,
@@ -438,56 +324,6 @@ export const GetToolsCategoryPositiveResponseReadModel$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetToolsCategoryPositiveResponseReadModel$Outbound = {
-  id: string;
-  label: string;
-  coverage_status: string;
-  fields: Array<GetToolsCategoryPositiveResponseField$Outbound>;
-};
-
-/** @internal */
-export const GetToolsCategoryPositiveResponseReadModel$outboundSchema:
-  z.ZodType<
-    GetToolsCategoryPositiveResponseReadModel$Outbound,
-    z.ZodTypeDef,
-    GetToolsCategoryPositiveResponseReadModel
-  > = z.object({
-    id: z.string(),
-    label: z.string(),
-    coverage_status:
-      GetToolsCategoryPositiveResponseReadModelCoverageStatus$outboundSchema,
-    fields: z.array(
-      z.lazy(() => GetToolsCategoryPositiveResponseField$outboundSchema),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetToolsCategoryPositiveResponseReadModel$ {
-  /** @deprecated use `GetToolsCategoryPositiveResponseReadModel$inboundSchema` instead. */
-  export const inboundSchema =
-    GetToolsCategoryPositiveResponseReadModel$inboundSchema;
-  /** @deprecated use `GetToolsCategoryPositiveResponseReadModel$outboundSchema` instead. */
-  export const outboundSchema =
-    GetToolsCategoryPositiveResponseReadModel$outboundSchema;
-  /** @deprecated use `GetToolsCategoryPositiveResponseReadModel$Outbound` instead. */
-  export type Outbound = GetToolsCategoryPositiveResponseReadModel$Outbound;
-}
-
-export function getToolsCategoryPositiveResponseReadModelToJSON(
-  getToolsCategoryPositiveResponseReadModel:
-    GetToolsCategoryPositiveResponseReadModel,
-): string {
-  return JSON.stringify(
-    GetToolsCategoryPositiveResponseReadModel$outboundSchema.parse(
-      getToolsCategoryPositiveResponseReadModel,
-    ),
-  );
-}
-
 export function getToolsCategoryPositiveResponseReadModelFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -510,22 +346,6 @@ export const WriteActionCoverageStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(WriteActionCoverageStatus);
 
 /** @internal */
-export const WriteActionCoverageStatus$outboundSchema: z.ZodNativeEnum<
-  typeof WriteActionCoverageStatus
-> = WriteActionCoverageStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WriteActionCoverageStatus$ {
-  /** @deprecated use `WriteActionCoverageStatus$inboundSchema` instead. */
-  export const inboundSchema = WriteActionCoverageStatus$inboundSchema;
-  /** @deprecated use `WriteActionCoverageStatus$outboundSchema` instead. */
-  export const outboundSchema = WriteActionCoverageStatus$outboundSchema;
-}
-
-/** @internal */
 export const WriteAction$inboundSchema: z.ZodType<
   WriteAction,
   z.ZodTypeDef,
@@ -535,41 +355,6 @@ export const WriteAction$inboundSchema: z.ZodType<
   label: z.string(),
   coverage_status: WriteActionCoverageStatus$inboundSchema,
 });
-
-/** @internal */
-export type WriteAction$Outbound = {
-  id: string;
-  label: string;
-  coverage_status: string;
-};
-
-/** @internal */
-export const WriteAction$outboundSchema: z.ZodType<
-  WriteAction$Outbound,
-  z.ZodTypeDef,
-  WriteAction
-> = z.object({
-  id: z.string(),
-  label: z.string(),
-  coverage_status: WriteActionCoverageStatus$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WriteAction$ {
-  /** @deprecated use `WriteAction$inboundSchema` instead. */
-  export const inboundSchema = WriteAction$inboundSchema;
-  /** @deprecated use `WriteAction$outboundSchema` instead. */
-  export const outboundSchema = WriteAction$outboundSchema;
-  /** @deprecated use `WriteAction$Outbound` instead. */
-  export type Outbound = WriteAction$Outbound;
-}
-
-export function writeActionToJSON(writeAction: WriteAction): string {
-  return JSON.stringify(WriteAction$outboundSchema.parse(writeAction));
-}
 
 export function writeActionFromJSON(
   jsonString: string,
@@ -587,63 +372,12 @@ export const FeatureCoverageStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(FeatureCoverageStatus);
 
 /** @internal */
-export const FeatureCoverageStatus$outboundSchema: z.ZodNativeEnum<
-  typeof FeatureCoverageStatus
-> = FeatureCoverageStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FeatureCoverageStatus$ {
-  /** @deprecated use `FeatureCoverageStatus$inboundSchema` instead. */
-  export const inboundSchema = FeatureCoverageStatus$inboundSchema;
-  /** @deprecated use `FeatureCoverageStatus$outboundSchema` instead. */
-  export const outboundSchema = FeatureCoverageStatus$outboundSchema;
-}
-
-/** @internal */
 export const Feature$inboundSchema: z.ZodType<Feature, z.ZodTypeDef, unknown> =
   z.object({
     id: z.string(),
     label: z.string(),
     coverage_status: FeatureCoverageStatus$inboundSchema,
   });
-
-/** @internal */
-export type Feature$Outbound = {
-  id: string;
-  label: string;
-  coverage_status: string;
-};
-
-/** @internal */
-export const Feature$outboundSchema: z.ZodType<
-  Feature$Outbound,
-  z.ZodTypeDef,
-  Feature
-> = z.object({
-  id: z.string(),
-  label: z.string(),
-  coverage_status: FeatureCoverageStatus$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Feature$ {
-  /** @deprecated use `Feature$inboundSchema` instead. */
-  export const inboundSchema = Feature$inboundSchema;
-  /** @deprecated use `Feature$outboundSchema` instead. */
-  export const outboundSchema = Feature$outboundSchema;
-  /** @deprecated use `Feature$Outbound` instead. */
-  export type Outbound = Feature$Outbound;
-}
-
-export function featureToJSON(feature: Feature): string {
-  return JSON.stringify(Feature$outboundSchema.parse(feature));
-}
 
 export function featureFromJSON(
   jsonString: string,
@@ -667,43 +401,6 @@ export const Coverage$inboundSchema: z.ZodType<
   write_actions: z.array(z.lazy(() => WriteAction$inboundSchema)),
   features: z.array(z.lazy(() => Feature$inboundSchema)),
 });
-
-/** @internal */
-export type Coverage$Outbound = {
-  read_models: Array<GetToolsCategoryPositiveResponseReadModel$Outbound>;
-  write_actions: Array<WriteAction$Outbound>;
-  features: Array<Feature$Outbound>;
-};
-
-/** @internal */
-export const Coverage$outboundSchema: z.ZodType<
-  Coverage$Outbound,
-  z.ZodTypeDef,
-  Coverage
-> = z.object({
-  read_models: z.array(
-    z.lazy(() => GetToolsCategoryPositiveResponseReadModel$outboundSchema),
-  ),
-  write_actions: z.array(z.lazy(() => WriteAction$outboundSchema)),
-  features: z.array(z.lazy(() => Feature$outboundSchema)),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Coverage$ {
-  /** @deprecated use `Coverage$inboundSchema` instead. */
-  export const inboundSchema = Coverage$inboundSchema;
-  /** @deprecated use `Coverage$outboundSchema` instead. */
-  export const outboundSchema = Coverage$outboundSchema;
-  /** @deprecated use `Coverage$Outbound` instead. */
-  export type Outbound = Coverage$Outbound;
-}
-
-export function coverageToJSON(coverage: Coverage): string {
-  return JSON.stringify(Coverage$outboundSchema.parse(coverage));
-}
 
 export function coverageFromJSON(
   jsonString: string,
@@ -732,61 +429,6 @@ export const GetToolsCategoryPositiveResponseTool$inboundSchema: z.ZodType<
   coverage: z.lazy(() => Coverage$inboundSchema),
 });
 
-/** @internal */
-export type GetToolsCategoryPositiveResponseTool$Outbound = {
-  id: string;
-  label: string;
-  internal_label: string | null;
-  assets: Assets$Outbound;
-  paid_api_details_markdown: string | null;
-  fast_track_details_markdown: string | null;
-  partner_only_details_markdown: string | null;
-  connection_guide_url: string | null;
-  coverage: Coverage$Outbound;
-};
-
-/** @internal */
-export const GetToolsCategoryPositiveResponseTool$outboundSchema: z.ZodType<
-  GetToolsCategoryPositiveResponseTool$Outbound,
-  z.ZodTypeDef,
-  GetToolsCategoryPositiveResponseTool
-> = z.object({
-  id: z.string(),
-  label: z.string(),
-  internal_label: z.nullable(z.string()),
-  assets: z.lazy(() => Assets$outboundSchema),
-  paid_api_details_markdown: z.nullable(z.string()),
-  fast_track_details_markdown: z.nullable(z.string()),
-  partner_only_details_markdown: z.nullable(z.string()),
-  connection_guide_url: z.nullable(z.string()),
-  coverage: z.lazy(() => Coverage$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetToolsCategoryPositiveResponseTool$ {
-  /** @deprecated use `GetToolsCategoryPositiveResponseTool$inboundSchema` instead. */
-  export const inboundSchema =
-    GetToolsCategoryPositiveResponseTool$inboundSchema;
-  /** @deprecated use `GetToolsCategoryPositiveResponseTool$outboundSchema` instead. */
-  export const outboundSchema =
-    GetToolsCategoryPositiveResponseTool$outboundSchema;
-  /** @deprecated use `GetToolsCategoryPositiveResponseTool$Outbound` instead. */
-  export type Outbound = GetToolsCategoryPositiveResponseTool$Outbound;
-}
-
-export function getToolsCategoryPositiveResponseToolToJSON(
-  getToolsCategoryPositiveResponseTool: GetToolsCategoryPositiveResponseTool,
-): string {
-  return JSON.stringify(
-    GetToolsCategoryPositiveResponseTool$outboundSchema.parse(
-      getToolsCategoryPositiveResponseTool,
-    ),
-  );
-}
-
 export function getToolsCategoryPositiveResponseToolFromJSON(
   jsonString: string,
 ): SafeParseResult<GetToolsCategoryPositiveResponseTool, SDKValidationError> {
@@ -809,47 +451,6 @@ export const GetToolsCategoryPositiveResponseData$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetToolsCategoryPositiveResponseData$Outbound = {
-  tools: Array<GetToolsCategoryPositiveResponseTool$Outbound>;
-};
-
-/** @internal */
-export const GetToolsCategoryPositiveResponseData$outboundSchema: z.ZodType<
-  GetToolsCategoryPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  GetToolsCategoryPositiveResponseData
-> = z.object({
-  tools: z.array(
-    z.lazy(() => GetToolsCategoryPositiveResponseTool$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetToolsCategoryPositiveResponseData$ {
-  /** @deprecated use `GetToolsCategoryPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetToolsCategoryPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetToolsCategoryPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetToolsCategoryPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetToolsCategoryPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetToolsCategoryPositiveResponseData$Outbound;
-}
-
-export function getToolsCategoryPositiveResponseDataToJSON(
-  getToolsCategoryPositiveResponseData: GetToolsCategoryPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetToolsCategoryPositiveResponseData$outboundSchema.parse(
-      getToolsCategoryPositiveResponseData,
-    ),
-  );
-}
-
 export function getToolsCategoryPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetToolsCategoryPositiveResponseData, SDKValidationError> {
@@ -870,45 +471,6 @@ export const GetToolsCategoryPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetToolsCategoryPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetToolsCategoryPositiveResponse$Outbound = {
-  status: "success";
-  data: GetToolsCategoryPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetToolsCategoryPositiveResponse$outboundSchema: z.ZodType<
-  GetToolsCategoryPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetToolsCategoryPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetToolsCategoryPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetToolsCategoryPositiveResponse$ {
-  /** @deprecated use `GetToolsCategoryPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema = GetToolsCategoryPositiveResponse$inboundSchema;
-  /** @deprecated use `GetToolsCategoryPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema = GetToolsCategoryPositiveResponse$outboundSchema;
-  /** @deprecated use `GetToolsCategoryPositiveResponse$Outbound` instead. */
-  export type Outbound = GetToolsCategoryPositiveResponse$Outbound;
-}
-
-export function getToolsCategoryPositiveResponseToJSON(
-  getToolsCategoryPositiveResponse: GetToolsCategoryPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetToolsCategoryPositiveResponse$outboundSchema.parse(
-      getToolsCategoryPositiveResponse,
-    ),
-  );
-}
 
 export function getToolsCategoryPositiveResponseFromJSON(
   jsonString: string,

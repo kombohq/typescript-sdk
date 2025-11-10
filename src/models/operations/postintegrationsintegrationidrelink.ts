@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostIntegrationsIntegrationIdRelinkRequest = {
@@ -17,29 +13,13 @@ export type PostIntegrationsIntegrationIdRelinkRequest = {
   /**
    * POST /integrations/:integration_id/relink Request body
    */
-  post_integrations_integration_id_relink_request_body:
-    models.PostIntegrationsIntegrationIdRelinkRequestBody;
+  body: models.PostIntegrationsIntegrationIdRelinkRequestBody;
 };
-
-/** @internal */
-export const PostIntegrationsIntegrationIdRelinkRequest$inboundSchema:
-  z.ZodType<PostIntegrationsIntegrationIdRelinkRequest, z.ZodTypeDef, unknown> =
-    z.object({
-      integration_id: z.string(),
-      PostIntegrationsIntegrationIdRelinkRequestBody:
-        models.PostIntegrationsIntegrationIdRelinkRequestBody$inboundSchema,
-    }).transform((v) => {
-      return remap$(v, {
-        "PostIntegrationsIntegrationIdRelinkRequestBody":
-          "post_integrations_integration_id_relink_request_body",
-      });
-    });
 
 /** @internal */
 export type PostIntegrationsIntegrationIdRelinkRequest$Outbound = {
   integration_id: string;
-  PostIntegrationsIntegrationIdRelinkRequestBody:
-    models.PostIntegrationsIntegrationIdRelinkRequestBody$Outbound;
+  body: models.PostIntegrationsIntegrationIdRelinkRequestBody$Outbound;
 };
 
 /** @internal */
@@ -50,29 +30,8 @@ export const PostIntegrationsIntegrationIdRelinkRequest$outboundSchema:
     PostIntegrationsIntegrationIdRelinkRequest
   > = z.object({
     integration_id: z.string(),
-    post_integrations_integration_id_relink_request_body:
-      models.PostIntegrationsIntegrationIdRelinkRequestBody$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      post_integrations_integration_id_relink_request_body:
-        "PostIntegrationsIntegrationIdRelinkRequestBody",
-    });
+    body: models.PostIntegrationsIntegrationIdRelinkRequestBody$outboundSchema,
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostIntegrationsIntegrationIdRelinkRequest$ {
-  /** @deprecated use `PostIntegrationsIntegrationIdRelinkRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PostIntegrationsIntegrationIdRelinkRequest$inboundSchema;
-  /** @deprecated use `PostIntegrationsIntegrationIdRelinkRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PostIntegrationsIntegrationIdRelinkRequest$outboundSchema;
-  /** @deprecated use `PostIntegrationsIntegrationIdRelinkRequest$Outbound` instead. */
-  export type Outbound = PostIntegrationsIntegrationIdRelinkRequest$Outbound;
-}
 
 export function postIntegrationsIntegrationIdRelinkRequestToJSON(
   postIntegrationsIntegrationIdRelinkRequest:
@@ -82,21 +41,5 @@ export function postIntegrationsIntegrationIdRelinkRequestToJSON(
     PostIntegrationsIntegrationIdRelinkRequest$outboundSchema.parse(
       postIntegrationsIntegrationIdRelinkRequest,
     ),
-  );
-}
-
-export function postIntegrationsIntegrationIdRelinkRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostIntegrationsIntegrationIdRelinkRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostIntegrationsIntegrationIdRelinkRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostIntegrationsIntegrationIdRelinkRequest' from JSON`,
   );
 }

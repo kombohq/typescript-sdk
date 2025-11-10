@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest =
@@ -22,35 +18,16 @@ export type PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdReq
     /**
      * PATCH /integrations/:integration_id/integration-fields/:integration_field_id Request body
      */
-    patch_integrations_integration_id_integration_fields_integration_field_id_request_body:
+    body:
       models.PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody;
   };
-
-/** @internal */
-export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest$inboundSchema:
-  z.ZodType<
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integration_id: z.string(),
-    integration_field_id: z.string(),
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody:
-      models
-        .PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody":
-        "patch_integrations_integration_id_integration_fields_integration_field_id_request_body",
-    });
-  });
 
 /** @internal */
 export type PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest$Outbound =
   {
     integration_id: string;
     integration_field_id: string;
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody:
+    body:
       models.PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$Outbound;
   };
 
@@ -63,31 +40,10 @@ export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRe
   > = z.object({
     integration_id: z.string(),
     integration_field_id: z.string(),
-    patch_integrations_integration_id_integration_fields_integration_field_id_request_body:
+    body:
       models
         .PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      patch_integrations_integration_id_integration_fields_integration_field_id_request_body:
-        "PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody",
-    });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest$ {
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest$inboundSchema;
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest$outboundSchema;
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest$Outbound` instead. */
-  export type Outbound =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest$Outbound;
-}
 
 export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestToJSON(
   patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest:
@@ -98,20 +54,5 @@ export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldI
       .parse(
         patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest,
       ),
-  );
-}
-
-export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest' from JSON`,
   );
 }

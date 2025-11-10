@@ -26,7 +26,13 @@ export type GetHrisGroupsRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -60,78 +66,6 @@ export type GetHrisGroupsResponse = {
 };
 
 /** @internal */
-export const GetHrisGroupsGlobals$inboundSchema: z.ZodType<
-  GetHrisGroupsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetHrisGroupsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetHrisGroupsGlobals$outboundSchema: z.ZodType<
-  GetHrisGroupsGlobals$Outbound,
-  z.ZodTypeDef,
-  GetHrisGroupsGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisGroupsGlobals$ {
-  /** @deprecated use `GetHrisGroupsGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetHrisGroupsGlobals$inboundSchema;
-  /** @deprecated use `GetHrisGroupsGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetHrisGroupsGlobals$outboundSchema;
-  /** @deprecated use `GetHrisGroupsGlobals$Outbound` instead. */
-  export type Outbound = GetHrisGroupsGlobals$Outbound;
-}
-
-export function getHrisGroupsGlobalsToJSON(
-  getHrisGroupsGlobals: GetHrisGroupsGlobals,
-): string {
-  return JSON.stringify(
-    GetHrisGroupsGlobals$outboundSchema.parse(getHrisGroupsGlobals),
-  );
-}
-
-export function getHrisGroupsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisGroupsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisGroupsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisGroupsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetHrisGroupsRequest$inboundSchema: z.ZodType<
-  GetHrisGroupsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-  types: z.array(z.string()).optional(),
-  name_contains: z.string().optional(),
-});
-
-/** @internal */
 export type GetHrisGroupsRequest$Outbound = {
   cursor?: string | undefined;
   page_size: number;
@@ -159,34 +93,11 @@ export const GetHrisGroupsRequest$outboundSchema: z.ZodType<
   name_contains: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisGroupsRequest$ {
-  /** @deprecated use `GetHrisGroupsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetHrisGroupsRequest$inboundSchema;
-  /** @deprecated use `GetHrisGroupsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetHrisGroupsRequest$outboundSchema;
-  /** @deprecated use `GetHrisGroupsRequest$Outbound` instead. */
-  export type Outbound = GetHrisGroupsRequest$Outbound;
-}
-
 export function getHrisGroupsRequestToJSON(
   getHrisGroupsRequest: GetHrisGroupsRequest,
 ): string {
   return JSON.stringify(
     GetHrisGroupsRequest$outboundSchema.parse(getHrisGroupsRequest),
-  );
-}
-
-export function getHrisGroupsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisGroupsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisGroupsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisGroupsRequest' from JSON`,
   );
 }
 
@@ -202,45 +113,6 @@ export const GetHrisGroupsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetHrisGroupsResponse$Outbound = {
-  Result: models.GetHrisGroupsPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetHrisGroupsResponse$outboundSchema: z.ZodType<
-  GetHrisGroupsResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisGroupsResponse
-> = z.object({
-  result: models.GetHrisGroupsPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisGroupsResponse$ {
-  /** @deprecated use `GetHrisGroupsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisGroupsResponse$inboundSchema;
-  /** @deprecated use `GetHrisGroupsResponse$outboundSchema` instead. */
-  export const outboundSchema = GetHrisGroupsResponse$outboundSchema;
-  /** @deprecated use `GetHrisGroupsResponse$Outbound` instead. */
-  export type Outbound = GetHrisGroupsResponse$Outbound;
-}
-
-export function getHrisGroupsResponseToJSON(
-  getHrisGroupsResponse: GetHrisGroupsResponse,
-): string {
-  return JSON.stringify(
-    GetHrisGroupsResponse$outboundSchema.parse(getHrisGroupsResponse),
-  );
-}
 
 export function getHrisGroupsResponseFromJSON(
   jsonString: string,

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type GetToolsCategoryRequest = {
@@ -14,15 +11,6 @@ export type GetToolsCategoryRequest = {
    */
   category: models.GetToolsCategoryParameterCategory;
 };
-
-/** @internal */
-export const GetToolsCategoryRequest$inboundSchema: z.ZodType<
-  GetToolsCategoryRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  category: models.GetToolsCategoryParameterCategory$inboundSchema,
-});
 
 /** @internal */
 export type GetToolsCategoryRequest$Outbound = {
@@ -38,33 +26,10 @@ export const GetToolsCategoryRequest$outboundSchema: z.ZodType<
   category: models.GetToolsCategoryParameterCategory$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetToolsCategoryRequest$ {
-  /** @deprecated use `GetToolsCategoryRequest$inboundSchema` instead. */
-  export const inboundSchema = GetToolsCategoryRequest$inboundSchema;
-  /** @deprecated use `GetToolsCategoryRequest$outboundSchema` instead. */
-  export const outboundSchema = GetToolsCategoryRequest$outboundSchema;
-  /** @deprecated use `GetToolsCategoryRequest$Outbound` instead. */
-  export type Outbound = GetToolsCategoryRequest$Outbound;
-}
-
 export function getToolsCategoryRequestToJSON(
   getToolsCategoryRequest: GetToolsCategoryRequest,
 ): string {
   return JSON.stringify(
     GetToolsCategoryRequest$outboundSchema.parse(getToolsCategoryRequest),
-  );
-}
-
-export function getToolsCategoryRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetToolsCategoryRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetToolsCategoryRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetToolsCategoryRequest' from JSON`,
   );
 }

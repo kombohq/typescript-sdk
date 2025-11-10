@@ -26,7 +26,13 @@ export type GetAtsUsersRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -50,77 +56,6 @@ export type GetAtsUsersRequest = {
 export type GetAtsUsersResponse = {
   result: models.GetAtsUsersPositiveResponse;
 };
-
-/** @internal */
-export const GetAtsUsersGlobals$inboundSchema: z.ZodType<
-  GetAtsUsersGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetAtsUsersGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetAtsUsersGlobals$outboundSchema: z.ZodType<
-  GetAtsUsersGlobals$Outbound,
-  z.ZodTypeDef,
-  GetAtsUsersGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsUsersGlobals$ {
-  /** @deprecated use `GetAtsUsersGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetAtsUsersGlobals$inboundSchema;
-  /** @deprecated use `GetAtsUsersGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetAtsUsersGlobals$outboundSchema;
-  /** @deprecated use `GetAtsUsersGlobals$Outbound` instead. */
-  export type Outbound = GetAtsUsersGlobals$Outbound;
-}
-
-export function getAtsUsersGlobalsToJSON(
-  getAtsUsersGlobals: GetAtsUsersGlobals,
-): string {
-  return JSON.stringify(
-    GetAtsUsersGlobals$outboundSchema.parse(getAtsUsersGlobals),
-  );
-}
-
-export function getAtsUsersGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAtsUsersGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAtsUsersGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsUsersGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetAtsUsersRequest$inboundSchema: z.ZodType<
-  GetAtsUsersRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-  emails: z.array(z.string()).optional(),
-});
 
 /** @internal */
 export type GetAtsUsersRequest$Outbound = {
@@ -148,34 +83,11 @@ export const GetAtsUsersRequest$outboundSchema: z.ZodType<
   emails: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsUsersRequest$ {
-  /** @deprecated use `GetAtsUsersRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAtsUsersRequest$inboundSchema;
-  /** @deprecated use `GetAtsUsersRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAtsUsersRequest$outboundSchema;
-  /** @deprecated use `GetAtsUsersRequest$Outbound` instead. */
-  export type Outbound = GetAtsUsersRequest$Outbound;
-}
-
 export function getAtsUsersRequestToJSON(
   getAtsUsersRequest: GetAtsUsersRequest,
 ): string {
   return JSON.stringify(
     GetAtsUsersRequest$outboundSchema.parse(getAtsUsersRequest),
-  );
-}
-
-export function getAtsUsersRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAtsUsersRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAtsUsersRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsUsersRequest' from JSON`,
   );
 }
 
@@ -191,45 +103,6 @@ export const GetAtsUsersResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetAtsUsersResponse$Outbound = {
-  Result: models.GetAtsUsersPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetAtsUsersResponse$outboundSchema: z.ZodType<
-  GetAtsUsersResponse$Outbound,
-  z.ZodTypeDef,
-  GetAtsUsersResponse
-> = z.object({
-  result: models.GetAtsUsersPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsUsersResponse$ {
-  /** @deprecated use `GetAtsUsersResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAtsUsersResponse$inboundSchema;
-  /** @deprecated use `GetAtsUsersResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAtsUsersResponse$outboundSchema;
-  /** @deprecated use `GetAtsUsersResponse$Outbound` instead. */
-  export type Outbound = GetAtsUsersResponse$Outbound;
-}
-
-export function getAtsUsersResponseToJSON(
-  getAtsUsersResponse: GetAtsUsersResponse,
-): string {
-  return JSON.stringify(
-    GetAtsUsersResponse$outboundSchema.parse(getAtsUsersResponse),
-  );
-}
 
 export function getAtsUsersResponseFromJSON(
   jsonString: string,

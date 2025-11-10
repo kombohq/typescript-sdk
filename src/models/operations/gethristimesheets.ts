@@ -26,7 +26,13 @@ export type GetHrisTimesheetsRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -68,88 +74,6 @@ export type GetHrisTimesheetsResponse = {
 };
 
 /** @internal */
-export const GetHrisTimesheetsGlobals$inboundSchema: z.ZodType<
-  GetHrisTimesheetsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetHrisTimesheetsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetHrisTimesheetsGlobals$outboundSchema: z.ZodType<
-  GetHrisTimesheetsGlobals$Outbound,
-  z.ZodTypeDef,
-  GetHrisTimesheetsGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimesheetsGlobals$ {
-  /** @deprecated use `GetHrisTimesheetsGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetHrisTimesheetsGlobals$inboundSchema;
-  /** @deprecated use `GetHrisTimesheetsGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetHrisTimesheetsGlobals$outboundSchema;
-  /** @deprecated use `GetHrisTimesheetsGlobals$Outbound` instead. */
-  export type Outbound = GetHrisTimesheetsGlobals$Outbound;
-}
-
-export function getHrisTimesheetsGlobalsToJSON(
-  getHrisTimesheetsGlobals: GetHrisTimesheetsGlobals,
-): string {
-  return JSON.stringify(
-    GetHrisTimesheetsGlobals$outboundSchema.parse(getHrisTimesheetsGlobals),
-  );
-}
-
-export function getHrisTimesheetsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisTimesheetsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisTimesheetsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisTimesheetsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetHrisTimesheetsRequest$inboundSchema: z.ZodType<
-  GetHrisTimesheetsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-  employee_id: z.string().optional(),
-  started_before: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  started_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  ended_before: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  ended_after: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-});
-
-/** @internal */
 export type GetHrisTimesheetsRequest$Outbound = {
   cursor?: string | undefined;
   page_size: number;
@@ -183,34 +107,11 @@ export const GetHrisTimesheetsRequest$outboundSchema: z.ZodType<
   ended_after: z.date().transform(v => v.toISOString()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimesheetsRequest$ {
-  /** @deprecated use `GetHrisTimesheetsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetHrisTimesheetsRequest$inboundSchema;
-  /** @deprecated use `GetHrisTimesheetsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetHrisTimesheetsRequest$outboundSchema;
-  /** @deprecated use `GetHrisTimesheetsRequest$Outbound` instead. */
-  export type Outbound = GetHrisTimesheetsRequest$Outbound;
-}
-
 export function getHrisTimesheetsRequestToJSON(
   getHrisTimesheetsRequest: GetHrisTimesheetsRequest,
 ): string {
   return JSON.stringify(
     GetHrisTimesheetsRequest$outboundSchema.parse(getHrisTimesheetsRequest),
-  );
-}
-
-export function getHrisTimesheetsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisTimesheetsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisTimesheetsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisTimesheetsRequest' from JSON`,
   );
 }
 
@@ -226,45 +127,6 @@ export const GetHrisTimesheetsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetHrisTimesheetsResponse$Outbound = {
-  Result: models.GetHrisTimesheetsPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetHrisTimesheetsResponse$outboundSchema: z.ZodType<
-  GetHrisTimesheetsResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisTimesheetsResponse
-> = z.object({
-  result: models.GetHrisTimesheetsPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimesheetsResponse$ {
-  /** @deprecated use `GetHrisTimesheetsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisTimesheetsResponse$inboundSchema;
-  /** @deprecated use `GetHrisTimesheetsResponse$outboundSchema` instead. */
-  export const outboundSchema = GetHrisTimesheetsResponse$outboundSchema;
-  /** @deprecated use `GetHrisTimesheetsResponse$Outbound` instead. */
-  export type Outbound = GetHrisTimesheetsResponse$Outbound;
-}
-
-export function getHrisTimesheetsResponseToJSON(
-  getHrisTimesheetsResponse: GetHrisTimesheetsResponse,
-): string {
-  return JSON.stringify(
-    GetHrisTimesheetsResponse$outboundSchema.parse(getHrisTimesheetsResponse),
-  );
-}
 
 export function getHrisTimesheetsResponseFromJSON(
   jsonString: string,

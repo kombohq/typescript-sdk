@@ -81,26 +81,6 @@ export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType$i
   );
 
 /** @internal */
-export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType
-  > =
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType$ {
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType$inboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType$outboundSchema;
-}
-
-/** @internal */
 export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$inboundSchema:
   z.ZodType<
     GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult,
@@ -116,63 +96,6 @@ export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult
     is_passthrough_enabled: z.boolean(),
     is_writable: z.literal(false),
   });
-
-/** @internal */
-export type GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$Outbound =
-  {
-    id: string;
-    key: string;
-    model: string;
-    type: string;
-    label: string | null;
-    is_passthrough_enabled: boolean;
-    is_writable: false;
-  };
-
-/** @internal */
-export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$outboundSchema:
-  z.ZodType<
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$Outbound,
-    z.ZodTypeDef,
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult
-  > = z.object({
-    id: z.string(),
-    key: z.string(),
-    model: z.string(),
-    type:
-      GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType$outboundSchema,
-    label: z.nullable(z.string()),
-    is_passthrough_enabled: z.boolean(),
-    is_writable: z.literal(false),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$ {
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$Outbound` instead. */
-  export type Outbound =
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$Outbound;
-}
-
-export function getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResultToJSON(
-  getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult:
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$outboundSchema
-      .parse(
-        getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult,
-      ),
-  );
-}
 
 export function getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -204,56 +127,6 @@ export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$i
     next: z.nullable(z.string()),
   });
 
-/** @internal */
-export type GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$Outbound =
-  {
-    results: Array<
-      GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$Outbound
-    >;
-    next: string | null;
-  };
-
-/** @internal */
-export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$outboundSchema:
-  z.ZodType<
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData
-  > = z.object({
-    results: z.array(
-      z.lazy(() =>
-        GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$outboundSchema
-      ),
-    ),
-    next: z.nullable(z.string()),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$ {
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$Outbound;
-}
-
-export function getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseDataToJSON(
-  getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData:
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$outboundSchema
-      .parse(getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData),
-  );
-}
-
 export function getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -281,53 +154,6 @@ export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$inbou
       GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$inboundSchema
     ),
   });
-
-/** @internal */
-export type GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$Outbound =
-  {
-    status: "success";
-    data:
-      GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$Outbound;
-  };
-
-/** @internal */
-export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$outboundSchema:
-  z.ZodType<
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$outboundSchema
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$ {
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$inboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$outboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$Outbound` instead. */
-  export type Outbound =
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$Outbound;
-}
-
-export function getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseToJSON(
-  getIntegrationsIntegrationIdIntegrationFieldsPositiveResponse:
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$outboundSchema
-      .parse(getIntegrationsIntegrationIdIntegrationFieldsPositiveResponse),
-  );
-}
 
 export function getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseFromJSON(
   jsonString: string,

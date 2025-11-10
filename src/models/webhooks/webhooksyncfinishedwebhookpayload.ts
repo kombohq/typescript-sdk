@@ -14,7 +14,7 @@ export type WebhookSyncFinishedWebhookPayloadRequest = {
    * HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature.
    */
   x_kombo_signature: string;
-  sync_finished_webhook_payload: models.SyncFinishedWebhookPayload;
+  body: models.SyncFinishedWebhookPayload;
 };
 
 /** @internal */
@@ -24,18 +24,16 @@ export const WebhookSyncFinishedWebhookPayloadRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   "X-Kombo-Signature": z.string(),
-  SyncFinishedWebhookPayload: models.SyncFinishedWebhookPayload$inboundSchema,
+  body: models.SyncFinishedWebhookPayload$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "X-Kombo-Signature": "x_kombo_signature",
-    "SyncFinishedWebhookPayload": "sync_finished_webhook_payload",
   });
 });
-
 /** @internal */
 export type WebhookSyncFinishedWebhookPayloadRequest$Outbound = {
   "X-Kombo-Signature": string;
-  SyncFinishedWebhookPayload: models.SyncFinishedWebhookPayload$Outbound;
+  body: models.SyncFinishedWebhookPayload$Outbound;
 };
 
 /** @internal */
@@ -45,29 +43,12 @@ export const WebhookSyncFinishedWebhookPayloadRequest$outboundSchema: z.ZodType<
   WebhookSyncFinishedWebhookPayloadRequest
 > = z.object({
   x_kombo_signature: z.string(),
-  sync_finished_webhook_payload:
-    models.SyncFinishedWebhookPayload$outboundSchema,
+  body: models.SyncFinishedWebhookPayload$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     x_kombo_signature: "X-Kombo-Signature",
-    sync_finished_webhook_payload: "SyncFinishedWebhookPayload",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookSyncFinishedWebhookPayloadRequest$ {
-  /** @deprecated use `WebhookSyncFinishedWebhookPayloadRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    WebhookSyncFinishedWebhookPayloadRequest$inboundSchema;
-  /** @deprecated use `WebhookSyncFinishedWebhookPayloadRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    WebhookSyncFinishedWebhookPayloadRequest$outboundSchema;
-  /** @deprecated use `WebhookSyncFinishedWebhookPayloadRequest$Outbound` instead. */
-  export type Outbound = WebhookSyncFinishedWebhookPayloadRequest$Outbound;
-}
 
 export function webhookSyncFinishedWebhookPayloadRequestToJSON(
   webhookSyncFinishedWebhookPayloadRequest:
@@ -79,7 +60,6 @@ export function webhookSyncFinishedWebhookPayloadRequestToJSON(
     ),
   );
 }
-
 export function webhookSyncFinishedWebhookPayloadRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<

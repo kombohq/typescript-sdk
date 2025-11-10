@@ -144,7 +144,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.ats.moveApplicationToStage({
     application_id: "GRKdd9dibYKKCrmGRSMJf3wu",
-    put_ats_applications_application_id_stage_request_body: {
+    body: {
       stage_id: "3PJ8PZhZZa1eEdd2DtPNtVup",
     },
   });
@@ -173,7 +173,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await atsMoveApplicationToStage(kombo, {
     application_id: "GRKdd9dibYKKCrmGRSMJf3wu",
-    put_ats_applications_application_id_stage_request_body: {
+    body: {
       stage_id: "3PJ8PZhZZa1eEdd2DtPNtVup",
     },
   });
@@ -256,7 +256,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.ats.addApplicationResultLink({
     application_id: "8Xi6iZrwusZqJmDGXs49GBmJ",
-    post_ats_applications_application_id_result_links_request_body: {
+    body: {
       label: "Assessment Result",
       url: "https://example.com/test-results/5BtP1WC1UboS7CF3yxjKcvjG",
       details: {
@@ -299,7 +299,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await atsAddApplicationResultLink(kombo, {
     application_id: "8Xi6iZrwusZqJmDGXs49GBmJ",
-    post_ats_applications_application_id_result_links_request_body: {
+    body: {
       label: "Assessment Result",
       url: "https://example.com/test-results/5BtP1WC1UboS7CF3yxjKcvjG",
       details: {
@@ -382,7 +382,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.ats.addApplicationNote({
     application_id: "8Xi6iZrwusZqJmDGXs49GBmJ",
-    post_ats_applications_application_id_notes_request_body: {
+    body: {
       content: "A new message from the candidate is available in YourChat!",
       content_type: "PLAIN_TEXT",
     },
@@ -412,7 +412,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await atsAddApplicationNote(kombo, {
     application_id: "8Xi6iZrwusZqJmDGXs49GBmJ",
-    post_ats_applications_application_id_notes_request_body: {
+    body: {
       content: "A new message from the candidate is available in YourChat!",
       content_type: "PLAIN_TEXT",
     },
@@ -571,7 +571,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.ats.addApplicationAttachment({
     application_id: "GRKdd9dibYKKCrmGRSMJf3wu",
-    post_ats_applications_application_id_attachments_request_body: {
+    body: {
       attachment: {
         name: "Frank Doe CV.txt",
         content_type: "text/plain",
@@ -605,7 +605,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await atsAddApplicationAttachment(kombo, {
     application_id: "GRKdd9dibYKKCrmGRSMJf3wu",
-    post_ats_applications_application_id_attachments_request_body: {
+    body: {
       attachment: {
         name: "Frank Doe CV.txt",
         content_type: "text/plain",
@@ -679,7 +679,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.ats.rejectApplication({
     application_id: "GRKdd9dibYKKCrmGRSMJf3wu",
-    post_ats_applications_application_id_reject_request_body: {
+    body: {
       rejection_reason_id: "3PJ8PZhZZa1eEdd2DtPNtVup",
       note: "Candidate was a great culture fit but didn't bring the hard skills we need.",
     },
@@ -709,7 +709,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await atsRejectApplication(kombo, {
     application_id: "GRKdd9dibYKKCrmGRSMJf3wu",
-    post_ats_applications_application_id_reject_request_body: {
+    body: {
       rejection_reason_id: "3PJ8PZhZZa1eEdd2DtPNtVup",
       note: "Candidate was a great culture fit but didn't bring the hard skills we need.",
     },
@@ -1198,7 +1198,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.ats.addCandidateAttachment({
     candidate_id: "GRKdd9dibYKKCrmGRSMJf3wu",
-    post_ats_candidates_candidate_id_attachments_request_body: {
+    body: {
       attachment: {
         name: "Frank Doe CV.txt",
         content_type: "text/plain",
@@ -1232,7 +1232,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await atsAddCandidateAttachment(kombo, {
     candidate_id: "GRKdd9dibYKKCrmGRSMJf3wu",
-    post_ats_candidates_candidate_id_attachments_request_body: {
+    body: {
       attachment: {
         name: "Frank Doe CV.txt",
         content_type: "text/plain",
@@ -1325,7 +1325,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.ats.addCandidateResultLink({
     candidate_id: "8Xi6iZrwusZqJmDGXs49GBmJ",
-    post_ats_candidates_candidate_id_result_links_request_body: {
+    body: {
       label: "Assessment Result",
       url: "https://example.com/test-results/5BtP1WC1UboS7CF3yxjKcvjG",
       details: {
@@ -1368,7 +1368,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await atsAddCandidateResultLink(kombo, {
     candidate_id: "8Xi6iZrwusZqJmDGXs49GBmJ",
-    post_ats_candidates_candidate_id_result_links_request_body: {
+    body: {
       label: "Assessment Result",
       url: "https://example.com/test-results/5BtP1WC1UboS7CF3yxjKcvjG",
       details: {
@@ -1451,7 +1451,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.ats.addCandidateTag({
     candidate_id: "8Xi6iZrwusZqJmDGXs49GBmJ",
-    post_ats_candidates_candidate_id_tags_request_body: {
+    body: {
       tag: {
         name: "Excellent Fit",
       },
@@ -1482,7 +1482,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await atsAddCandidateTag(kombo, {
     candidate_id: "8Xi6iZrwusZqJmDGXs49GBmJ",
-    post_ats_candidates_candidate_id_tags_request_body: {
+    body: {
       tag: {
         name: "Excellent Fit",
       },
@@ -1553,7 +1553,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.ats.removeCandidateTag({
     candidate_id: "8Xi6iZrwusZqJmDGXs49GBmJ",
-    delete_ats_candidates_candidate_id_tags_request_body: {
+    body: {
       tag: {
         name: "Excellent Fit",
       },
@@ -1584,7 +1584,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await atsRemoveCandidateTag(kombo, {
     candidate_id: "8Xi6iZrwusZqJmDGXs49GBmJ",
-    delete_ats_candidates_candidate_id_tags_request_body: {
+    body: {
       tag: {
         name: "Excellent Fit",
       },
@@ -1952,7 +1952,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.ats.createApplication({
     job_id: "BDpgnpZ148nrGh4mYHNxJBgx",
-    post_ats_jobs_job_id_applications_request_body: {
+    body: {
       stage_id: "8x3YKRDcuRnwShdh96ShBNn1",
       candidate: {
         first_name: "Frank",
@@ -2021,7 +2021,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await atsCreateApplication(kombo, {
     job_id: "BDpgnpZ148nrGh4mYHNxJBgx",
-    post_ats_jobs_job_id_applications_request_body: {
+    body: {
       stage_id: "8x3YKRDcuRnwShdh96ShBNn1",
       candidate: {
         first_name: "Frank",

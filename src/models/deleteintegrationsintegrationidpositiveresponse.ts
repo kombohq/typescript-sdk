@@ -22,44 +22,6 @@ export const DeleteIntegrationsIntegrationIdPositiveResponseData$inboundSchema:
     unknown
   > = z.object({});
 
-/** @internal */
-export type DeleteIntegrationsIntegrationIdPositiveResponseData$Outbound = {};
-
-/** @internal */
-export const DeleteIntegrationsIntegrationIdPositiveResponseData$outboundSchema:
-  z.ZodType<
-    DeleteIntegrationsIntegrationIdPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    DeleteIntegrationsIntegrationIdPositiveResponseData
-  > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteIntegrationsIntegrationIdPositiveResponseData$ {
-  /** @deprecated use `DeleteIntegrationsIntegrationIdPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteIntegrationsIntegrationIdPositiveResponseData$inboundSchema;
-  /** @deprecated use `DeleteIntegrationsIntegrationIdPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteIntegrationsIntegrationIdPositiveResponseData$outboundSchema;
-  /** @deprecated use `DeleteIntegrationsIntegrationIdPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    DeleteIntegrationsIntegrationIdPositiveResponseData$Outbound;
-}
-
-export function deleteIntegrationsIntegrationIdPositiveResponseDataToJSON(
-  deleteIntegrationsIntegrationIdPositiveResponseData:
-    DeleteIntegrationsIntegrationIdPositiveResponseData,
-): string {
-  return JSON.stringify(
-    DeleteIntegrationsIntegrationIdPositiveResponseData$outboundSchema.parse(
-      deleteIntegrationsIntegrationIdPositiveResponseData,
-    ),
-  );
-}
-
 export function deleteIntegrationsIntegrationIdPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -88,52 +50,6 @@ export const DeleteIntegrationsIntegrationIdPositiveResponse$inboundSchema:
       DeleteIntegrationsIntegrationIdPositiveResponseData$inboundSchema
     ),
   });
-
-/** @internal */
-export type DeleteIntegrationsIntegrationIdPositiveResponse$Outbound = {
-  status: "success";
-  data: DeleteIntegrationsIntegrationIdPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const DeleteIntegrationsIntegrationIdPositiveResponse$outboundSchema:
-  z.ZodType<
-    DeleteIntegrationsIntegrationIdPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    DeleteIntegrationsIntegrationIdPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      DeleteIntegrationsIntegrationIdPositiveResponseData$outboundSchema
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteIntegrationsIntegrationIdPositiveResponse$ {
-  /** @deprecated use `DeleteIntegrationsIntegrationIdPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteIntegrationsIntegrationIdPositiveResponse$inboundSchema;
-  /** @deprecated use `DeleteIntegrationsIntegrationIdPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteIntegrationsIntegrationIdPositiveResponse$outboundSchema;
-  /** @deprecated use `DeleteIntegrationsIntegrationIdPositiveResponse$Outbound` instead. */
-  export type Outbound =
-    DeleteIntegrationsIntegrationIdPositiveResponse$Outbound;
-}
-
-export function deleteIntegrationsIntegrationIdPositiveResponseToJSON(
-  deleteIntegrationsIntegrationIdPositiveResponse:
-    DeleteIntegrationsIntegrationIdPositiveResponse,
-): string {
-  return JSON.stringify(
-    DeleteIntegrationsIntegrationIdPositiveResponse$outboundSchema.parse(
-      deleteIntegrationsIntegrationIdPositiveResponse,
-    ),
-  );
-}
 
 export function deleteIntegrationsIntegrationIdPositiveResponseFromJSON(
   jsonString: string,

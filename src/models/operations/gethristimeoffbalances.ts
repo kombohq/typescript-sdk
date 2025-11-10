@@ -26,7 +26,13 @@ export type GetHrisTimeOffBalancesRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -50,79 +56,6 @@ export type GetHrisTimeOffBalancesRequest = {
 export type GetHrisTimeOffBalancesResponse = {
   result: models.GetHrisTimeOffBalancesPositiveResponse;
 };
-
-/** @internal */
-export const GetHrisTimeOffBalancesGlobals$inboundSchema: z.ZodType<
-  GetHrisTimeOffBalancesGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetHrisTimeOffBalancesGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetHrisTimeOffBalancesGlobals$outboundSchema: z.ZodType<
-  GetHrisTimeOffBalancesGlobals$Outbound,
-  z.ZodTypeDef,
-  GetHrisTimeOffBalancesGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimeOffBalancesGlobals$ {
-  /** @deprecated use `GetHrisTimeOffBalancesGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetHrisTimeOffBalancesGlobals$inboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetHrisTimeOffBalancesGlobals$outboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesGlobals$Outbound` instead. */
-  export type Outbound = GetHrisTimeOffBalancesGlobals$Outbound;
-}
-
-export function getHrisTimeOffBalancesGlobalsToJSON(
-  getHrisTimeOffBalancesGlobals: GetHrisTimeOffBalancesGlobals,
-): string {
-  return JSON.stringify(
-    GetHrisTimeOffBalancesGlobals$outboundSchema.parse(
-      getHrisTimeOffBalancesGlobals,
-    ),
-  );
-}
-
-export function getHrisTimeOffBalancesGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisTimeOffBalancesGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisTimeOffBalancesGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisTimeOffBalancesGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetHrisTimeOffBalancesRequest$inboundSchema: z.ZodType<
-  GetHrisTimeOffBalancesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-  employee_id: z.string().optional(),
-});
 
 /** @internal */
 export type GetHrisTimeOffBalancesRequest$Outbound = {
@@ -150,19 +83,6 @@ export const GetHrisTimeOffBalancesRequest$outboundSchema: z.ZodType<
   employee_id: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimeOffBalancesRequest$ {
-  /** @deprecated use `GetHrisTimeOffBalancesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetHrisTimeOffBalancesRequest$inboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetHrisTimeOffBalancesRequest$outboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesRequest$Outbound` instead. */
-  export type Outbound = GetHrisTimeOffBalancesRequest$Outbound;
-}
-
 export function getHrisTimeOffBalancesRequestToJSON(
   getHrisTimeOffBalancesRequest: GetHrisTimeOffBalancesRequest,
 ): string {
@@ -170,16 +90,6 @@ export function getHrisTimeOffBalancesRequestToJSON(
     GetHrisTimeOffBalancesRequest$outboundSchema.parse(
       getHrisTimeOffBalancesRequest,
     ),
-  );
-}
-
-export function getHrisTimeOffBalancesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisTimeOffBalancesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisTimeOffBalancesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisTimeOffBalancesRequest' from JSON`,
   );
 }
 
@@ -195,47 +105,6 @@ export const GetHrisTimeOffBalancesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetHrisTimeOffBalancesResponse$Outbound = {
-  Result: models.GetHrisTimeOffBalancesPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetHrisTimeOffBalancesResponse$outboundSchema: z.ZodType<
-  GetHrisTimeOffBalancesResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisTimeOffBalancesResponse
-> = z.object({
-  result: models.GetHrisTimeOffBalancesPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimeOffBalancesResponse$ {
-  /** @deprecated use `GetHrisTimeOffBalancesResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisTimeOffBalancesResponse$inboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesResponse$outboundSchema` instead. */
-  export const outboundSchema = GetHrisTimeOffBalancesResponse$outboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesResponse$Outbound` instead. */
-  export type Outbound = GetHrisTimeOffBalancesResponse$Outbound;
-}
-
-export function getHrisTimeOffBalancesResponseToJSON(
-  getHrisTimeOffBalancesResponse: GetHrisTimeOffBalancesResponse,
-): string {
-  return JSON.stringify(
-    GetHrisTimeOffBalancesResponse$outboundSchema.parse(
-      getHrisTimeOffBalancesResponse,
-    ),
-  );
-}
 
 export function getHrisTimeOffBalancesResponseFromJSON(
   jsonString: string,

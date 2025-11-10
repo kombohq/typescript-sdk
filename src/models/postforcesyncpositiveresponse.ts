@@ -48,23 +48,6 @@ export const PostForceSyncPositiveResponseType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(PostForceSyncPositiveResponseType);
 
 /** @internal */
-export const PostForceSyncPositiveResponseType$outboundSchema: z.ZodNativeEnum<
-  typeof PostForceSyncPositiveResponseType
-> = PostForceSyncPositiveResponseType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostForceSyncPositiveResponseType$ {
-  /** @deprecated use `PostForceSyncPositiveResponseType$inboundSchema` instead. */
-  export const inboundSchema = PostForceSyncPositiveResponseType$inboundSchema;
-  /** @deprecated use `PostForceSyncPositiveResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    PostForceSyncPositiveResponseType$outboundSchema;
-}
-
-/** @internal */
 export const PostForceSyncPositiveResponseData$inboundSchema: z.ZodType<
   PostForceSyncPositiveResponseData,
   z.ZodTypeDef,
@@ -74,48 +57,6 @@ export const PostForceSyncPositiveResponseData$inboundSchema: z.ZodType<
   sync_id: z.string(),
   type: PostForceSyncPositiveResponseType$inboundSchema,
 });
-
-/** @internal */
-export type PostForceSyncPositiveResponseData$Outbound = {
-  already_queued: boolean;
-  sync_id: string;
-  type: string;
-};
-
-/** @internal */
-export const PostForceSyncPositiveResponseData$outboundSchema: z.ZodType<
-  PostForceSyncPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  PostForceSyncPositiveResponseData
-> = z.object({
-  already_queued: z.boolean(),
-  sync_id: z.string(),
-  type: PostForceSyncPositiveResponseType$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostForceSyncPositiveResponseData$ {
-  /** @deprecated use `PostForceSyncPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema = PostForceSyncPositiveResponseData$inboundSchema;
-  /** @deprecated use `PostForceSyncPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    PostForceSyncPositiveResponseData$outboundSchema;
-  /** @deprecated use `PostForceSyncPositiveResponseData$Outbound` instead. */
-  export type Outbound = PostForceSyncPositiveResponseData$Outbound;
-}
-
-export function postForceSyncPositiveResponseDataToJSON(
-  postForceSyncPositiveResponseData: PostForceSyncPositiveResponseData,
-): string {
-  return JSON.stringify(
-    PostForceSyncPositiveResponseData$outboundSchema.parse(
-      postForceSyncPositiveResponseData,
-    ),
-  );
-}
 
 export function postForceSyncPositiveResponseDataFromJSON(
   jsonString: string,
@@ -136,45 +77,6 @@ export const PostForceSyncPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => PostForceSyncPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type PostForceSyncPositiveResponse$Outbound = {
-  status: "success";
-  data: PostForceSyncPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const PostForceSyncPositiveResponse$outboundSchema: z.ZodType<
-  PostForceSyncPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  PostForceSyncPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => PostForceSyncPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostForceSyncPositiveResponse$ {
-  /** @deprecated use `PostForceSyncPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema = PostForceSyncPositiveResponse$inboundSchema;
-  /** @deprecated use `PostForceSyncPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema = PostForceSyncPositiveResponse$outboundSchema;
-  /** @deprecated use `PostForceSyncPositiveResponse$Outbound` instead. */
-  export type Outbound = PostForceSyncPositiveResponse$Outbound;
-}
-
-export function postForceSyncPositiveResponseToJSON(
-  postForceSyncPositiveResponse: PostForceSyncPositiveResponse,
-): string {
-  return JSON.stringify(
-    PostForceSyncPositiveResponse$outboundSchema.parse(
-      postForceSyncPositiveResponse,
-    ),
-  );
-}
 
 export function postForceSyncPositiveResponseFromJSON(
   jsonString: string,

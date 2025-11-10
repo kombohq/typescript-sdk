@@ -7,18 +7,8 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
-import {
-  Schema1Union1,
-  Schema1Union1$inboundSchema,
-  Schema1Union1$Outbound,
-  Schema1Union1$outboundSchema,
-} from "./schema1union1.js";
-import {
-  Schema2Union2,
-  Schema2Union2$inboundSchema,
-  Schema2Union2$Outbound,
-  Schema2Union2$outboundSchema,
-} from "./schema2union2.js";
+import { Schema1Union1, Schema1Union1$inboundSchema } from "./schema1union1.js";
+import { Schema2Union2, Schema2Union2$inboundSchema } from "./schema2union2.js";
 
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey8 = {
   FirstName: "first_name",
@@ -438,24 +428,6 @@ export const GetHrisEmployeesFormPositiveResponseUnifiedKey8$inboundSchema:
     .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey8);
 
 /** @internal */
-export const GetHrisEmployeesFormPositiveResponseUnifiedKey8$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey8> =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey8$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseUnifiedKey8$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey8$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey8$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey8$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey8$outboundSchema;
-}
-
-/** @internal */
 export const GetHrisEmployeesFormPositiveResponseFileRestrictions$inboundSchema:
   z.ZodType<
     GetHrisEmployeesFormPositiveResponseFileRestrictions,
@@ -465,50 +437,6 @@ export const GetHrisEmployeesFormPositiveResponseFileRestrictions$inboundSchema:
     accepted_mime_types: z.array(z.string()),
     max_file_size: z.nullable(z.number()).optional(),
   });
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseFileRestrictions$Outbound = {
-  accepted_mime_types: Array<string>;
-  max_file_size?: number | null | undefined;
-};
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseFileRestrictions$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesFormPositiveResponseFileRestrictions$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeesFormPositiveResponseFileRestrictions
-  > = z.object({
-    accepted_mime_types: z.array(z.string()),
-    max_file_size: z.nullable(z.number()).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseFileRestrictions$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseFileRestrictions$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseFileRestrictions$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseFileRestrictions$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseFileRestrictions$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseFileRestrictions$Outbound` instead. */
-  export type Outbound =
-    GetHrisEmployeesFormPositiveResponseFileRestrictions$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseFileRestrictionsToJSON(
-  getHrisEmployeesFormPositiveResponseFileRestrictions:
-    GetHrisEmployeesFormPositiveResponseFileRestrictions,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseFileRestrictions$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseFileRestrictions,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseFileRestrictionsFromJSON(
   jsonString: string,
@@ -544,52 +472,6 @@ export const PropertiesFile$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type PropertiesFile$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "file";
-  file_restrictions:
-    GetHrisEmployeesFormPositiveResponseFileRestrictions$Outbound;
-};
-
-/** @internal */
-export const PropertiesFile$outboundSchema: z.ZodType<
-  PropertiesFile$Outbound,
-  z.ZodTypeDef,
-  PropertiesFile
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey8$outboundSchema,
-  ).optional(),
-  type: z.literal("file"),
-  file_restrictions: z.lazy(() =>
-    GetHrisEmployeesFormPositiveResponseFileRestrictions$outboundSchema
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesFile$ {
-  /** @deprecated use `PropertiesFile$inboundSchema` instead. */
-  export const inboundSchema = PropertiesFile$inboundSchema;
-  /** @deprecated use `PropertiesFile$outboundSchema` instead. */
-  export const outboundSchema = PropertiesFile$outboundSchema;
-  /** @deprecated use `PropertiesFile$Outbound` instead. */
-  export type Outbound = PropertiesFile$Outbound;
-}
-
-export function propertiesFileToJSON(propertiesFile: PropertiesFile): string {
-  return JSON.stringify(PropertiesFile$outboundSchema.parse(propertiesFile));
-}
-
 export function propertiesFileFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesFile, SDKValidationError> {
@@ -604,24 +486,6 @@ export function propertiesFileFromJSON(
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey7$inboundSchema:
   z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey7> = z
     .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey7);
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseUnifiedKey7$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey7> =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey7$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseUnifiedKey7$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey7$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey7$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey7$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey7$outboundSchema;
-}
 
 /** @internal */
 export const PropertiesArray$inboundSchema: z.ZodType<
@@ -641,55 +505,6 @@ export const PropertiesArray$inboundSchema: z.ZodType<
   max_items: z.nullable(z.number()).optional(),
 });
 
-/** @internal */
-export type PropertiesArray$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "array";
-  item_type: Schema2Union2$Outbound;
-  min_items?: number | null | undefined;
-  max_items?: number | null | undefined;
-};
-
-/** @internal */
-export const PropertiesArray$outboundSchema: z.ZodType<
-  PropertiesArray$Outbound,
-  z.ZodTypeDef,
-  PropertiesArray
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey7$outboundSchema,
-  ).optional(),
-  type: z.literal("array"),
-  item_type: Schema2Union2$outboundSchema,
-  min_items: z.nullable(z.number()).optional(),
-  max_items: z.nullable(z.number()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesArray$ {
-  /** @deprecated use `PropertiesArray$inboundSchema` instead. */
-  export const inboundSchema = PropertiesArray$inboundSchema;
-  /** @deprecated use `PropertiesArray$outboundSchema` instead. */
-  export const outboundSchema = PropertiesArray$outboundSchema;
-  /** @deprecated use `PropertiesArray$Outbound` instead. */
-  export type Outbound = PropertiesArray$Outbound;
-}
-
-export function propertiesArrayToJSON(
-  propertiesArray: PropertiesArray,
-): string {
-  return JSON.stringify(PropertiesArray$outboundSchema.parse(propertiesArray));
-}
-
 export function propertiesArrayFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesArray, SDKValidationError> {
@@ -704,24 +519,6 @@ export function propertiesArrayFromJSON(
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey6$inboundSchema:
   z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey6> = z
     .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey6);
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseUnifiedKey6$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey6> =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey6$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseUnifiedKey6$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey6$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey6$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey6$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey6$outboundSchema;
-}
 
 /** @internal */
 export const PropertiesObject$inboundSchema: z.ZodType<
@@ -739,53 +536,6 @@ export const PropertiesObject$inboundSchema: z.ZodType<
   properties: z.record(Schema1Union1$inboundSchema),
 });
 
-/** @internal */
-export type PropertiesObject$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "object";
-  properties: { [k: string]: Schema1Union1$Outbound };
-};
-
-/** @internal */
-export const PropertiesObject$outboundSchema: z.ZodType<
-  PropertiesObject$Outbound,
-  z.ZodTypeDef,
-  PropertiesObject
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey6$outboundSchema,
-  ).optional(),
-  type: z.literal("object"),
-  properties: z.record(Schema1Union1$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesObject$ {
-  /** @deprecated use `PropertiesObject$inboundSchema` instead. */
-  export const inboundSchema = PropertiesObject$inboundSchema;
-  /** @deprecated use `PropertiesObject$outboundSchema` instead. */
-  export const outboundSchema = PropertiesObject$outboundSchema;
-  /** @deprecated use `PropertiesObject$Outbound` instead. */
-  export type Outbound = PropertiesObject$Outbound;
-}
-
-export function propertiesObjectToJSON(
-  propertiesObject: PropertiesObject,
-): string {
-  return JSON.stringify(
-    PropertiesObject$outboundSchema.parse(propertiesObject),
-  );
-}
-
 export function propertiesObjectFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesObject, SDKValidationError> {
@@ -802,24 +552,6 @@ export const GetHrisEmployeesFormPositiveResponseUnifiedKey5$inboundSchema:
     .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey5);
 
 /** @internal */
-export const GetHrisEmployeesFormPositiveResponseUnifiedKey5$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey5> =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey5$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseUnifiedKey5$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey5$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey5$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey5$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey5$outboundSchema;
-}
-
-/** @internal */
 export const PropertiesCheckbox$inboundSchema: z.ZodType<
   PropertiesCheckbox,
   z.ZodTypeDef,
@@ -833,51 +565,6 @@ export const PropertiesCheckbox$inboundSchema: z.ZodType<
   ).optional(),
   type: z.literal("checkbox"),
 });
-
-/** @internal */
-export type PropertiesCheckbox$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "checkbox";
-};
-
-/** @internal */
-export const PropertiesCheckbox$outboundSchema: z.ZodType<
-  PropertiesCheckbox$Outbound,
-  z.ZodTypeDef,
-  PropertiesCheckbox
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey5$outboundSchema,
-  ).optional(),
-  type: z.literal("checkbox"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesCheckbox$ {
-  /** @deprecated use `PropertiesCheckbox$inboundSchema` instead. */
-  export const inboundSchema = PropertiesCheckbox$inboundSchema;
-  /** @deprecated use `PropertiesCheckbox$outboundSchema` instead. */
-  export const outboundSchema = PropertiesCheckbox$outboundSchema;
-  /** @deprecated use `PropertiesCheckbox$Outbound` instead. */
-  export type Outbound = PropertiesCheckbox$Outbound;
-}
-
-export function propertiesCheckboxToJSON(
-  propertiesCheckbox: PropertiesCheckbox,
-): string {
-  return JSON.stringify(
-    PropertiesCheckbox$outboundSchema.parse(propertiesCheckbox),
-  );
-}
 
 export function propertiesCheckboxFromJSON(
   jsonString: string,
@@ -899,50 +586,6 @@ export const GetHrisEmployeesFormPositiveResponseOptionsReferenced2$inboundSchem
     type: z.literal("referenced"),
     link: z.string(),
   });
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseOptionsReferenced2$Outbound = {
-  type: "referenced";
-  link: string;
-};
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseOptionsReferenced2$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced2$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced2
-  > = z.object({
-    type: z.literal("referenced"),
-    link: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseOptionsReferenced2$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsReferenced2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced2$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsReferenced2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced2$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsReferenced2$Outbound` instead. */
-  export type Outbound =
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced2$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseOptionsReferenced2ToJSON(
-  getHrisEmployeesFormPositiveResponseOptionsReferenced2:
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced2,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced2$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseOptionsReferenced2,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseOptionsReferenced2FromJSON(
   jsonString: string,
@@ -966,45 +609,6 @@ export const GetHrisEmployeesFormPositiveResponseRemoteId2$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([z.string(), z.number()]);
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseRemoteId2$Outbound =
-  | string
-  | number;
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseRemoteId2$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesFormPositiveResponseRemoteId2$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeesFormPositiveResponseRemoteId2
-  > = z.union([z.string(), z.number()]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseRemoteId2$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseRemoteId2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseRemoteId2$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseRemoteId2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseRemoteId2$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseRemoteId2$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesFormPositiveResponseRemoteId2$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseRemoteId2ToJSON(
-  getHrisEmployeesFormPositiveResponseRemoteId2:
-    GetHrisEmployeesFormPositiveResponseRemoteId2,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseRemoteId2$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseRemoteId2,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseRemoteId2FromJSON(
   jsonString: string,
@@ -1031,53 +635,6 @@ export const GetHrisEmployeesFormPositiveResponseEntry2$inboundSchema:
       unified_value: z.string().optional(),
       remote_id: z.union([z.string(), z.number()]),
     });
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseEntry2$Outbound = {
-  id: string;
-  label: string;
-  unified_value?: string | undefined;
-  remote_id: string | number;
-};
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseEntry2$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesFormPositiveResponseEntry2$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeesFormPositiveResponseEntry2
-  > = z.object({
-    id: z.string(),
-    label: z.string(),
-    unified_value: z.string().optional(),
-    remote_id: z.union([z.string(), z.number()]),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseEntry2$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseEntry2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseEntry2$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseEntry2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseEntry2$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseEntry2$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesFormPositiveResponseEntry2$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseEntry2ToJSON(
-  getHrisEmployeesFormPositiveResponseEntry2:
-    GetHrisEmployeesFormPositiveResponseEntry2,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseEntry2$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseEntry2,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseEntry2FromJSON(
   jsonString: string,
@@ -1107,52 +664,6 @@ export const GetHrisEmployeesFormPositiveResponseOptionsInline2$inboundSchema:
       z.lazy(() => GetHrisEmployeesFormPositiveResponseEntry2$inboundSchema),
     ),
   });
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseOptionsInline2$Outbound = {
-  type: "inline";
-  entries: Array<GetHrisEmployeesFormPositiveResponseEntry2$Outbound>;
-};
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseOptionsInline2$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesFormPositiveResponseOptionsInline2$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeesFormPositiveResponseOptionsInline2
-  > = z.object({
-    type: z.literal("inline"),
-    entries: z.array(
-      z.lazy(() => GetHrisEmployeesFormPositiveResponseEntry2$outboundSchema),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseOptionsInline2$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsInline2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseOptionsInline2$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsInline2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseOptionsInline2$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsInline2$Outbound` instead. */
-  export type Outbound =
-    GetHrisEmployeesFormPositiveResponseOptionsInline2$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseOptionsInline2ToJSON(
-  getHrisEmployeesFormPositiveResponseOptionsInline2:
-    GetHrisEmployeesFormPositiveResponseOptionsInline2,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseOptionsInline2$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseOptionsInline2,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseOptionsInline2FromJSON(
   jsonString: string,
@@ -1184,53 +695,6 @@ export const GetHrisEmployeesFormPositiveResponseOptionsUnion2$inboundSchema:
       GetHrisEmployeesFormPositiveResponseOptionsReferenced2$inboundSchema
     ),
   ]);
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseOptionsUnion2$Outbound =
-  | GetHrisEmployeesFormPositiveResponseOptionsInline2$Outbound
-  | GetHrisEmployeesFormPositiveResponseOptionsReferenced2$Outbound;
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseOptionsUnion2$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesFormPositiveResponseOptionsUnion2$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeesFormPositiveResponseOptionsUnion2
-  > = z.union([
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsInline2$outboundSchema
-    ),
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsReferenced2$outboundSchema
-    ),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseOptionsUnion2$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsUnion2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseOptionsUnion2$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsUnion2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseOptionsUnion2$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsUnion2$Outbound` instead. */
-  export type Outbound =
-    GetHrisEmployeesFormPositiveResponseOptionsUnion2$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseOptionsUnion2ToJSON(
-  getHrisEmployeesFormPositiveResponseOptionsUnion2:
-    GetHrisEmployeesFormPositiveResponseOptionsUnion2,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseOptionsUnion2$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseOptionsUnion2,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseOptionsUnion2FromJSON(
   jsonString: string,
@@ -1271,64 +735,6 @@ export const PropertiesMultiSelect$inboundSchema: z.ZodType<
   ]),
 });
 
-/** @internal */
-export type PropertiesMultiSelect$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "multi_select";
-  min_items?: number | null | undefined;
-  max_items?: number | null | undefined;
-  options:
-    | GetHrisEmployeesFormPositiveResponseOptionsInline2$Outbound
-    | GetHrisEmployeesFormPositiveResponseOptionsReferenced2$Outbound;
-};
-
-/** @internal */
-export const PropertiesMultiSelect$outboundSchema: z.ZodType<
-  PropertiesMultiSelect$Outbound,
-  z.ZodTypeDef,
-  PropertiesMultiSelect
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(z.string()).optional(),
-  type: z.literal("multi_select"),
-  min_items: z.nullable(z.number()).optional(),
-  max_items: z.nullable(z.number()).optional(),
-  options: z.union([
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsInline2$outboundSchema
-    ),
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsReferenced2$outboundSchema
-    ),
-  ]),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesMultiSelect$ {
-  /** @deprecated use `PropertiesMultiSelect$inboundSchema` instead. */
-  export const inboundSchema = PropertiesMultiSelect$inboundSchema;
-  /** @deprecated use `PropertiesMultiSelect$outboundSchema` instead. */
-  export const outboundSchema = PropertiesMultiSelect$outboundSchema;
-  /** @deprecated use `PropertiesMultiSelect$Outbound` instead. */
-  export type Outbound = PropertiesMultiSelect$Outbound;
-}
-
-export function propertiesMultiSelectToJSON(
-  propertiesMultiSelect: PropertiesMultiSelect,
-): string {
-  return JSON.stringify(
-    PropertiesMultiSelect$outboundSchema.parse(propertiesMultiSelect),
-  );
-}
-
 export function propertiesMultiSelectFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesMultiSelect, SDKValidationError> {
@@ -1345,24 +751,6 @@ export const GetHrisEmployeesFormPositiveResponseUnifiedKey4$inboundSchema:
     .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey4);
 
 /** @internal */
-export const GetHrisEmployeesFormPositiveResponseUnifiedKey4$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey4> =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey4$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseUnifiedKey4$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey4$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey4$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey4$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey4$outboundSchema;
-}
-
-/** @internal */
 export const GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchema:
   z.ZodType<
     GetHrisEmployeesFormPositiveResponseOptionsReferenced1,
@@ -1372,50 +760,6 @@ export const GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchem
     type: z.literal("referenced"),
     link: z.string(),
   });
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseOptionsReferenced1$Outbound = {
-  type: "referenced";
-  link: string;
-};
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseOptionsReferenced1$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced1$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced1
-  > = z.object({
-    type: z.literal("referenced"),
-    link: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseOptionsReferenced1$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsReferenced1$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced1$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsReferenced1$Outbound` instead. */
-  export type Outbound =
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced1$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseOptionsReferenced1ToJSON(
-  getHrisEmployeesFormPositiveResponseOptionsReferenced1:
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced1,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseOptionsReferenced1$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseOptionsReferenced1,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseOptionsReferenced1FromJSON(
   jsonString: string,
@@ -1439,45 +783,6 @@ export const GetHrisEmployeesFormPositiveResponseRemoteId1$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.union([z.string(), z.number()]);
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseRemoteId1$Outbound =
-  | string
-  | number;
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseRemoteId1$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesFormPositiveResponseRemoteId1$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeesFormPositiveResponseRemoteId1
-  > = z.union([z.string(), z.number()]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseRemoteId1$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseRemoteId1$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseRemoteId1$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseRemoteId1$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseRemoteId1$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseRemoteId1$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesFormPositiveResponseRemoteId1$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseRemoteId1ToJSON(
-  getHrisEmployeesFormPositiveResponseRemoteId1:
-    GetHrisEmployeesFormPositiveResponseRemoteId1,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseRemoteId1$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseRemoteId1,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseRemoteId1FromJSON(
   jsonString: string,
@@ -1504,53 +809,6 @@ export const GetHrisEmployeesFormPositiveResponseEntry1$inboundSchema:
       unified_value: z.string().optional(),
       remote_id: z.union([z.string(), z.number()]),
     });
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseEntry1$Outbound = {
-  id: string;
-  label: string;
-  unified_value?: string | undefined;
-  remote_id: string | number;
-};
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseEntry1$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesFormPositiveResponseEntry1$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeesFormPositiveResponseEntry1
-  > = z.object({
-    id: z.string(),
-    label: z.string(),
-    unified_value: z.string().optional(),
-    remote_id: z.union([z.string(), z.number()]),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseEntry1$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseEntry1$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseEntry1$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseEntry1$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseEntry1$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseEntry1$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesFormPositiveResponseEntry1$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseEntry1ToJSON(
-  getHrisEmployeesFormPositiveResponseEntry1:
-    GetHrisEmployeesFormPositiveResponseEntry1,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseEntry1$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseEntry1,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseEntry1FromJSON(
   jsonString: string,
@@ -1580,52 +838,6 @@ export const GetHrisEmployeesFormPositiveResponseOptionsInline1$inboundSchema:
       z.lazy(() => GetHrisEmployeesFormPositiveResponseEntry1$inboundSchema),
     ),
   });
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseOptionsInline1$Outbound = {
-  type: "inline";
-  entries: Array<GetHrisEmployeesFormPositiveResponseEntry1$Outbound>;
-};
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseOptionsInline1$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesFormPositiveResponseOptionsInline1$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeesFormPositiveResponseOptionsInline1
-  > = z.object({
-    type: z.literal("inline"),
-    entries: z.array(
-      z.lazy(() => GetHrisEmployeesFormPositiveResponseEntry1$outboundSchema),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseOptionsInline1$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsInline1$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseOptionsInline1$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsInline1$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseOptionsInline1$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsInline1$Outbound` instead. */
-  export type Outbound =
-    GetHrisEmployeesFormPositiveResponseOptionsInline1$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseOptionsInline1ToJSON(
-  getHrisEmployeesFormPositiveResponseOptionsInline1:
-    GetHrisEmployeesFormPositiveResponseOptionsInline1,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseOptionsInline1$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseOptionsInline1,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseOptionsInline1FromJSON(
   jsonString: string,
@@ -1657,53 +869,6 @@ export const GetHrisEmployeesFormPositiveResponseOptionsUnion1$inboundSchema:
       GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchema
     ),
   ]);
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseOptionsUnion1$Outbound =
-  | GetHrisEmployeesFormPositiveResponseOptionsInline1$Outbound
-  | GetHrisEmployeesFormPositiveResponseOptionsReferenced1$Outbound;
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseOptionsUnion1$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesFormPositiveResponseOptionsUnion1$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeesFormPositiveResponseOptionsUnion1
-  > = z.union([
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsInline1$outboundSchema
-    ),
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsReferenced1$outboundSchema
-    ),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseOptionsUnion1$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsUnion1$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseOptionsUnion1$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsUnion1$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseOptionsUnion1$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseOptionsUnion1$Outbound` instead. */
-  export type Outbound =
-    GetHrisEmployeesFormPositiveResponseOptionsUnion1$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseOptionsUnion1ToJSON(
-  getHrisEmployeesFormPositiveResponseOptionsUnion1:
-    GetHrisEmployeesFormPositiveResponseOptionsUnion1,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseOptionsUnion1$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseOptionsUnion1,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseOptionsUnion1FromJSON(
   jsonString: string,
@@ -1744,62 +909,6 @@ export const PropertiesSingleSelect$inboundSchema: z.ZodType<
   ]),
 });
 
-/** @internal */
-export type PropertiesSingleSelect$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "single_select";
-  options:
-    | GetHrisEmployeesFormPositiveResponseOptionsInline1$Outbound
-    | GetHrisEmployeesFormPositiveResponseOptionsReferenced1$Outbound;
-};
-
-/** @internal */
-export const PropertiesSingleSelect$outboundSchema: z.ZodType<
-  PropertiesSingleSelect$Outbound,
-  z.ZodTypeDef,
-  PropertiesSingleSelect
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey4$outboundSchema,
-  ).optional(),
-  type: z.literal("single_select"),
-  options: z.union([
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsInline1$outboundSchema
-    ),
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsReferenced1$outboundSchema
-    ),
-  ]),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesSingleSelect$ {
-  /** @deprecated use `PropertiesSingleSelect$inboundSchema` instead. */
-  export const inboundSchema = PropertiesSingleSelect$inboundSchema;
-  /** @deprecated use `PropertiesSingleSelect$outboundSchema` instead. */
-  export const outboundSchema = PropertiesSingleSelect$outboundSchema;
-  /** @deprecated use `PropertiesSingleSelect$Outbound` instead. */
-  export type Outbound = PropertiesSingleSelect$Outbound;
-}
-
-export function propertiesSingleSelectToJSON(
-  propertiesSingleSelect: PropertiesSingleSelect,
-): string {
-  return JSON.stringify(
-    PropertiesSingleSelect$outboundSchema.parse(propertiesSingleSelect),
-  );
-}
-
 export function propertiesSingleSelectFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesSingleSelect, SDKValidationError> {
@@ -1816,24 +925,6 @@ export const GetHrisEmployeesFormPositiveResponseUnifiedKey3$inboundSchema:
     .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey3);
 
 /** @internal */
-export const GetHrisEmployeesFormPositiveResponseUnifiedKey3$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey3> =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseUnifiedKey3$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey3$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey3$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey3$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey3$outboundSchema;
-}
-
-/** @internal */
 export const PropertiesDate$inboundSchema: z.ZodType<
   PropertiesDate,
   z.ZodTypeDef,
@@ -1847,47 +938,6 @@ export const PropertiesDate$inboundSchema: z.ZodType<
   ).optional(),
   type: z.literal("date"),
 });
-
-/** @internal */
-export type PropertiesDate$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "date";
-};
-
-/** @internal */
-export const PropertiesDate$outboundSchema: z.ZodType<
-  PropertiesDate$Outbound,
-  z.ZodTypeDef,
-  PropertiesDate
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey3$outboundSchema,
-  ).optional(),
-  type: z.literal("date"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesDate$ {
-  /** @deprecated use `PropertiesDate$inboundSchema` instead. */
-  export const inboundSchema = PropertiesDate$inboundSchema;
-  /** @deprecated use `PropertiesDate$outboundSchema` instead. */
-  export const outboundSchema = PropertiesDate$outboundSchema;
-  /** @deprecated use `PropertiesDate$Outbound` instead. */
-  export type Outbound = PropertiesDate$Outbound;
-}
-
-export function propertiesDateToJSON(propertiesDate: PropertiesDate): string {
-  return JSON.stringify(PropertiesDate$outboundSchema.parse(propertiesDate));
-}
 
 export function propertiesDateFromJSON(
   jsonString: string,
@@ -1903,24 +953,6 @@ export function propertiesDateFromJSON(
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey2$inboundSchema:
   z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey2> = z
     .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey2);
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseUnifiedKey2$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey2> =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseUnifiedKey2$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey2$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey2$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey2$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey2$outboundSchema;
-}
 
 /** @internal */
 export const PropertiesNumber$inboundSchema: z.ZodType<
@@ -1939,55 +971,6 @@ export const PropertiesNumber$inboundSchema: z.ZodType<
   max: z.nullable(z.number()).optional(),
 });
 
-/** @internal */
-export type PropertiesNumber$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "number";
-  min?: number | null | undefined;
-  max?: number | null | undefined;
-};
-
-/** @internal */
-export const PropertiesNumber$outboundSchema: z.ZodType<
-  PropertiesNumber$Outbound,
-  z.ZodTypeDef,
-  PropertiesNumber
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey2$outboundSchema,
-  ).optional(),
-  type: z.literal("number"),
-  min: z.nullable(z.number()).optional(),
-  max: z.nullable(z.number()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesNumber$ {
-  /** @deprecated use `PropertiesNumber$inboundSchema` instead. */
-  export const inboundSchema = PropertiesNumber$inboundSchema;
-  /** @deprecated use `PropertiesNumber$outboundSchema` instead. */
-  export const outboundSchema = PropertiesNumber$outboundSchema;
-  /** @deprecated use `PropertiesNumber$Outbound` instead. */
-  export type Outbound = PropertiesNumber$Outbound;
-}
-
-export function propertiesNumberToJSON(
-  propertiesNumber: PropertiesNumber,
-): string {
-  return JSON.stringify(
-    PropertiesNumber$outboundSchema.parse(propertiesNumber),
-  );
-}
-
 export function propertiesNumberFromJSON(
   jsonString: string,
 ): SafeParseResult<PropertiesNumber, SDKValidationError> {
@@ -2002,24 +985,6 @@ export function propertiesNumberFromJSON(
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey1$inboundSchema:
   z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey1> = z
     .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey1);
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseUnifiedKey1$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey1> =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseUnifiedKey1$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey1$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey1$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseUnifiedKey1$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseUnifiedKey1$outboundSchema;
-}
 
 /** @internal */
 export const PropertiesText$inboundSchema: z.ZodType<
@@ -2038,53 +1003,6 @@ export const PropertiesText$inboundSchema: z.ZodType<
   max_length: z.nullable(z.number()).optional(),
   reg_exp: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type PropertiesText$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "text";
-  min_length?: number | null | undefined;
-  max_length?: number | null | undefined;
-  reg_exp?: string | null | undefined;
-};
-
-/** @internal */
-export const PropertiesText$outboundSchema: z.ZodType<
-  PropertiesText$Outbound,
-  z.ZodTypeDef,
-  PropertiesText
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey1$outboundSchema,
-  ).optional(),
-  type: z.literal("text"),
-  min_length: z.nullable(z.number()).optional(),
-  max_length: z.nullable(z.number()).optional(),
-  reg_exp: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PropertiesText$ {
-  /** @deprecated use `PropertiesText$inboundSchema` instead. */
-  export const inboundSchema = PropertiesText$inboundSchema;
-  /** @deprecated use `PropertiesText$outboundSchema` instead. */
-  export const outboundSchema = PropertiesText$outboundSchema;
-  /** @deprecated use `PropertiesText$Outbound` instead. */
-  export type Outbound = PropertiesText$Outbound;
-}
-
-export function propertiesTextToJSON(propertiesText: PropertiesText): string {
-  return JSON.stringify(PropertiesText$outboundSchema.parse(propertiesText));
-}
 
 export function propertiesTextFromJSON(
   jsonString: string,
@@ -2112,52 +1030,6 @@ export const Properties$inboundSchema: z.ZodType<
   z.lazy(() => PropertiesDate$inboundSchema),
   z.lazy(() => PropertiesCheckbox$inboundSchema),
 ]);
-
-/** @internal */
-export type Properties$Outbound =
-  | PropertiesSingleSelect$Outbound
-  | PropertiesMultiSelect$Outbound
-  | PropertiesObject$Outbound
-  | PropertiesArray$Outbound
-  | PropertiesFile$Outbound
-  | PropertiesText$Outbound
-  | PropertiesNumber$Outbound
-  | PropertiesDate$Outbound
-  | PropertiesCheckbox$Outbound;
-
-/** @internal */
-export const Properties$outboundSchema: z.ZodType<
-  Properties$Outbound,
-  z.ZodTypeDef,
-  Properties
-> = z.union([
-  z.lazy(() => PropertiesSingleSelect$outboundSchema),
-  z.lazy(() => PropertiesMultiSelect$outboundSchema),
-  z.lazy(() => PropertiesObject$outboundSchema),
-  z.lazy(() => PropertiesArray$outboundSchema),
-  z.lazy(() => PropertiesFile$outboundSchema),
-  z.lazy(() => PropertiesText$outboundSchema),
-  z.lazy(() => PropertiesNumber$outboundSchema),
-  z.lazy(() => PropertiesDate$outboundSchema),
-  z.lazy(() => PropertiesCheckbox$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Properties$ {
-  /** @deprecated use `Properties$inboundSchema` instead. */
-  export const inboundSchema = Properties$inboundSchema;
-  /** @deprecated use `Properties$outboundSchema` instead. */
-  export const outboundSchema = Properties$outboundSchema;
-  /** @deprecated use `Properties$Outbound` instead. */
-  export type Outbound = Properties$Outbound;
-}
-
-export function propertiesToJSON(properties: Properties): string {
-  return JSON.stringify(Properties$outboundSchema.parse(properties));
-}
 
 export function propertiesFromJSON(
   jsonString: string,
@@ -2190,69 +1062,6 @@ export const GetHrisEmployeesFormPositiveResponseData$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseData$Outbound = {
-  properties: {
-    [k: string]:
-      | PropertiesSingleSelect$Outbound
-      | PropertiesMultiSelect$Outbound
-      | PropertiesObject$Outbound
-      | PropertiesArray$Outbound
-      | PropertiesFile$Outbound
-      | PropertiesText$Outbound
-      | PropertiesNumber$Outbound
-      | PropertiesDate$Outbound
-      | PropertiesCheckbox$Outbound;
-  };
-};
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseData$outboundSchema: z.ZodType<
-  GetHrisEmployeesFormPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  GetHrisEmployeesFormPositiveResponseData
-> = z.object({
-  properties: z.record(
-    z.union([
-      z.lazy(() => PropertiesSingleSelect$outboundSchema),
-      z.lazy(() => PropertiesMultiSelect$outboundSchema),
-      z.lazy(() => PropertiesObject$outboundSchema),
-      z.lazy(() => PropertiesArray$outboundSchema),
-      z.lazy(() => PropertiesFile$outboundSchema),
-      z.lazy(() => PropertiesText$outboundSchema),
-      z.lazy(() => PropertiesNumber$outboundSchema),
-      z.lazy(() => PropertiesDate$outboundSchema),
-      z.lazy(() => PropertiesCheckbox$outboundSchema),
-    ]),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseData$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesFormPositiveResponseData$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseDataToJSON(
-  getHrisEmployeesFormPositiveResponseData:
-    GetHrisEmployeesFormPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseData$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseData,
-    ),
-  );
-}
-
 export function getHrisEmployeesFormPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -2278,47 +1087,6 @@ export const GetHrisEmployeesFormPositiveResponseWarning$inboundSchema:
   > = z.object({
     message: z.string(),
   });
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponseWarning$Outbound = {
-  message: string;
-};
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponseWarning$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeesFormPositiveResponseWarning$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeesFormPositiveResponseWarning
-  > = z.object({
-    message: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponseWarning$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseWarning$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponseWarning$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseWarning$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponseWarning$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponseWarning$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesFormPositiveResponseWarning$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseWarningToJSON(
-  getHrisEmployeesFormPositiveResponseWarning:
-    GetHrisEmployeesFormPositiveResponseWarning,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponseWarning$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponseWarning,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -2348,51 +1116,6 @@ export const GetHrisEmployeesFormPositiveResponse$inboundSchema: z.ZodType<
     z.lazy(() => GetHrisEmployeesFormPositiveResponseWarning$inboundSchema),
   ),
 });
-
-/** @internal */
-export type GetHrisEmployeesFormPositiveResponse$Outbound = {
-  status: "success";
-  data: GetHrisEmployeesFormPositiveResponseData$Outbound;
-  warnings: Array<GetHrisEmployeesFormPositiveResponseWarning$Outbound>;
-};
-
-/** @internal */
-export const GetHrisEmployeesFormPositiveResponse$outboundSchema: z.ZodType<
-  GetHrisEmployeesFormPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisEmployeesFormPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisEmployeesFormPositiveResponseData$outboundSchema),
-  warnings: z.array(
-    z.lazy(() => GetHrisEmployeesFormPositiveResponseWarning$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesFormPositiveResponse$ {
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeesFormPositiveResponse$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeesFormPositiveResponse$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesFormPositiveResponse$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesFormPositiveResponse$Outbound;
-}
-
-export function getHrisEmployeesFormPositiveResponseToJSON(
-  getHrisEmployeesFormPositiveResponse: GetHrisEmployeesFormPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesFormPositiveResponse$outboundSchema.parse(
-      getHrisEmployeesFormPositiveResponse,
-    ),
-  );
-}
 
 export function getHrisEmployeesFormPositiveResponseFromJSON(
   jsonString: string,

@@ -25,44 +25,6 @@ export const GetCheckApiKeyPositiveResponseData$inboundSchema: z.ZodType<
   environment_id: z.string(),
 });
 
-/** @internal */
-export type GetCheckApiKeyPositiveResponseData$Outbound = {
-  environment_id: string;
-};
-
-/** @internal */
-export const GetCheckApiKeyPositiveResponseData$outboundSchema: z.ZodType<
-  GetCheckApiKeyPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  GetCheckApiKeyPositiveResponseData
-> = z.object({
-  environment_id: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCheckApiKeyPositiveResponseData$ {
-  /** @deprecated use `GetCheckApiKeyPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema = GetCheckApiKeyPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetCheckApiKeyPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetCheckApiKeyPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetCheckApiKeyPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetCheckApiKeyPositiveResponseData$Outbound;
-}
-
-export function getCheckApiKeyPositiveResponseDataToJSON(
-  getCheckApiKeyPositiveResponseData: GetCheckApiKeyPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetCheckApiKeyPositiveResponseData$outboundSchema.parse(
-      getCheckApiKeyPositiveResponseData,
-    ),
-  );
-}
-
 export function getCheckApiKeyPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetCheckApiKeyPositiveResponseData, SDKValidationError> {
@@ -83,45 +45,6 @@ export const GetCheckApiKeyPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetCheckApiKeyPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetCheckApiKeyPositiveResponse$Outbound = {
-  status: "success";
-  data: GetCheckApiKeyPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetCheckApiKeyPositiveResponse$outboundSchema: z.ZodType<
-  GetCheckApiKeyPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetCheckApiKeyPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetCheckApiKeyPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetCheckApiKeyPositiveResponse$ {
-  /** @deprecated use `GetCheckApiKeyPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema = GetCheckApiKeyPositiveResponse$inboundSchema;
-  /** @deprecated use `GetCheckApiKeyPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema = GetCheckApiKeyPositiveResponse$outboundSchema;
-  /** @deprecated use `GetCheckApiKeyPositiveResponse$Outbound` instead. */
-  export type Outbound = GetCheckApiKeyPositiveResponse$Outbound;
-}
-
-export function getCheckApiKeyPositiveResponseToJSON(
-  getCheckApiKeyPositiveResponse: GetCheckApiKeyPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetCheckApiKeyPositiveResponse$outboundSchema.parse(
-      getCheckApiKeyPositiveResponse,
-    ),
-  );
-}
 
 export function getCheckApiKeyPositiveResponseFromJSON(
   jsonString: string,

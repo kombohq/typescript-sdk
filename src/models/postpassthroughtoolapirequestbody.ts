@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 /**
  * The HTTP method (e.g., `GET`) of the request.
@@ -104,32 +101,8 @@ export type PostPassthroughToolApiRequestBody = {
 };
 
 /** @internal */
-export const Method$inboundSchema: z.ZodNativeEnum<typeof Method> = z
+export const Method$outboundSchema: z.ZodNativeEnum<typeof Method> = z
   .nativeEnum(Method);
-
-/** @internal */
-export const Method$outboundSchema: z.ZodNativeEnum<typeof Method> =
-  Method$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Method$ {
-  /** @deprecated use `Method$inboundSchema` instead. */
-  export const inboundSchema = Method$inboundSchema;
-  /** @deprecated use `Method$outboundSchema` instead. */
-  export const outboundSchema = Method$outboundSchema;
-}
-
-/** @internal */
-export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z
-  .object({
-    name: z.string(),
-    content_type: z.string().optional(),
-    data_url: z.string().optional(),
-    data: z.string().optional(),
-  });
 
 /** @internal */
 export type Value$Outbound = {
@@ -151,39 +124,9 @@ export const Value$outboundSchema: z.ZodType<
   data: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Value$ {
-  /** @deprecated use `Value$inboundSchema` instead. */
-  export const inboundSchema = Value$inboundSchema;
-  /** @deprecated use `Value$outboundSchema` instead. */
-  export const outboundSchema = Value$outboundSchema;
-  /** @deprecated use `Value$Outbound` instead. */
-  export type Outbound = Value$Outbound;
-}
-
 export function valueToJSON(value: Value): string {
   return JSON.stringify(Value$outboundSchema.parse(value));
 }
-
-export function valueFromJSON(
-  jsonString: string,
-): SafeParseResult<Value, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Value$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Value' from JSON`,
-  );
-}
-
-/** @internal */
-export const ValueUnion$inboundSchema: z.ZodType<
-  ValueUnion,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.lazy(() => Value$inboundSchema), z.string()]);
 
 /** @internal */
 export type ValueUnion$Outbound = Value$Outbound | string;
@@ -195,42 +138,9 @@ export const ValueUnion$outboundSchema: z.ZodType<
   ValueUnion
 > = z.union([z.lazy(() => Value$outboundSchema), z.string()]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ValueUnion$ {
-  /** @deprecated use `ValueUnion$inboundSchema` instead. */
-  export const inboundSchema = ValueUnion$inboundSchema;
-  /** @deprecated use `ValueUnion$outboundSchema` instead. */
-  export const outboundSchema = ValueUnion$outboundSchema;
-  /** @deprecated use `ValueUnion$Outbound` instead. */
-  export type Outbound = ValueUnion$Outbound;
-}
-
 export function valueUnionToJSON(valueUnion: ValueUnion): string {
   return JSON.stringify(ValueUnion$outboundSchema.parse(valueUnion));
 }
-
-export function valueUnionFromJSON(
-  jsonString: string,
-): SafeParseResult<ValueUnion, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ValueUnion$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ValueUnion' from JSON`,
-  );
-}
-
-/** @internal */
-export const MultipartFormDatum$inboundSchema: z.ZodType<
-  MultipartFormDatum,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string(),
-  value: z.union([z.lazy(() => Value$inboundSchema), z.string()]),
-});
 
 /** @internal */
 export type MultipartFormDatum$Outbound = {
@@ -248,19 +158,6 @@ export const MultipartFormDatum$outboundSchema: z.ZodType<
   value: z.union([z.lazy(() => Value$outboundSchema), z.string()]),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace MultipartFormDatum$ {
-  /** @deprecated use `MultipartFormDatum$inboundSchema` instead. */
-  export const inboundSchema = MultipartFormDatum$inboundSchema;
-  /** @deprecated use `MultipartFormDatum$outboundSchema` instead. */
-  export const outboundSchema = MultipartFormDatum$outboundSchema;
-  /** @deprecated use `MultipartFormDatum$Outbound` instead. */
-  export type Outbound = MultipartFormDatum$Outbound;
-}
-
 export function multipartFormDatumToJSON(
   multipartFormDatum: MultipartFormDatum,
 ): string {
@@ -268,33 +165,6 @@ export function multipartFormDatumToJSON(
     MultipartFormDatum$outboundSchema.parse(multipartFormDatum),
   );
 }
-
-export function multipartFormDatumFromJSON(
-  jsonString: string,
-): SafeParseResult<MultipartFormDatum, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => MultipartFormDatum$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'MultipartFormDatum' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostPassthroughToolApiRequestBody$inboundSchema: z.ZodType<
-  PostPassthroughToolApiRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  method: Method$inboundSchema,
-  path: z.string(),
-  headers: z.record(z.string()).optional(),
-  params: z.record(z.string()).optional(),
-  data: z.any().optional(),
-  response_as_base64: z.boolean().optional(),
-  multipart_form_data: z.array(z.lazy(() => MultipartFormDatum$inboundSchema))
-    .optional(),
-  api_options: z.record(z.string()).optional(),
-});
 
 /** @internal */
 export type PostPassthroughToolApiRequestBody$Outbound = {
@@ -325,20 +195,6 @@ export const PostPassthroughToolApiRequestBody$outboundSchema: z.ZodType<
   api_options: z.record(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostPassthroughToolApiRequestBody$ {
-  /** @deprecated use `PostPassthroughToolApiRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PostPassthroughToolApiRequestBody$inboundSchema;
-  /** @deprecated use `PostPassthroughToolApiRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PostPassthroughToolApiRequestBody$outboundSchema;
-  /** @deprecated use `PostPassthroughToolApiRequestBody$Outbound` instead. */
-  export type Outbound = PostPassthroughToolApiRequestBody$Outbound;
-}
-
 export function postPassthroughToolApiRequestBodyToJSON(
   postPassthroughToolApiRequestBody: PostPassthroughToolApiRequestBody,
 ): string {
@@ -346,15 +202,5 @@ export function postPassthroughToolApiRequestBodyToJSON(
     PostPassthroughToolApiRequestBody$outboundSchema.parse(
       postPassthroughToolApiRequestBody,
     ),
-  );
-}
-
-export function postPassthroughToolApiRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PostPassthroughToolApiRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostPassthroughToolApiRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostPassthroughToolApiRequestBody' from JSON`,
   );
 }

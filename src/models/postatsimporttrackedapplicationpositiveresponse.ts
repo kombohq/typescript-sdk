@@ -148,54 +148,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicatio
     application_remote_id: z.string(),
   });
 
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$Outbound =
-  {
-    id_type: "application_and_candidate_remote_ids";
-    candidate_remote_id: string;
-    application_remote_id: string;
-  };
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds
-  > = z.object({
-    id_type: z.literal("application_and_candidate_remote_ids"),
-    candidate_remote_id: z.string(),
-    application_remote_id: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIdsToJSON(
-  postAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds:
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$outboundSchema
-      .parse(
-        postAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds,
-      ),
-  );
-}
-
 export function postAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIdsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -222,54 +174,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicatio
     application_remote_id: z.string(),
     job_remote_id: z.string(),
   });
-
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$Outbound =
-  {
-    id_type: "application_and_job_remote_ids";
-    application_remote_id: string;
-    job_remote_id: string;
-  };
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds
-  > = z.object({
-    id_type: z.literal("application_and_job_remote_ids"),
-    application_remote_id: z.string(),
-    job_remote_id: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIdsToJSON(
-  postAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds:
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$outboundSchema
-      .parse(
-        postAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds,
-      ),
-  );
-}
 
 export function postAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIdsFromJSON(
   jsonString: string,
@@ -301,52 +205,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$inbo
     ),
   ]);
 
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$Outbound =
-  | PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$Outbound
-  | PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$Outbound;
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion
-  > = z.union([
-    z.lazy(() =>
-      PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$outboundSchema
-    ),
-    z.lazy(() =>
-      PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$outboundSchema
-    ),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseErecruiterUnionToJSON(
-  postAtsImportTrackedApplicationPositiveResponseErecruiterUnion:
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$outboundSchema
-      .parse(postAtsImportTrackedApplicationPositiveResponseErecruiterUnion),
-  );
-}
-
 export function postAtsImportTrackedApplicationPositiveResponseErecruiterUnionFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -373,52 +231,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplic
     application_remote_id: z.string(),
   });
 
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$Outbound =
-  {
-    id_type: "application_remote_id";
-    application_remote_id: string;
-  };
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID
-  > = z.object({
-    id_type: z.literal("application_remote_id"),
-    application_remote_id: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteIDToJSON(
-  postAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID:
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$outboundSchema
-      .parse(
-        postAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID,
-      ),
-  );
-}
-
 export function postAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteIDFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -443,48 +255,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$
   > = z.lazy(() =>
     PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$inboundSchema
   );
-
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$Outbound =
-  PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$Outbound;
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$outboundSchema
-  );
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnionToJSON(
-  postAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion:
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$outboundSchema
-      .parse(
-        postAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion,
-      ),
-  );
-}
 
 export function postAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnionFromJSON(
   jsonString: string,
@@ -512,52 +282,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID
     placement_id: z.string(),
   });
 
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$Outbound =
-  {
-    id_type: "placement_id";
-    placement_id: string;
-  };
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID
-  > = z.object({
-    id_type: z.literal("placement_id"),
-    placement_id: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseRecruiteePlacementIDToJSON(
-  postAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID:
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$outboundSchema
-      .parse(
-        postAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID,
-      ),
-  );
-}
-
 export function postAtsImportTrackedApplicationPositiveResponseRecruiteePlacementIDFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -582,46 +306,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$inbou
   > = z.lazy(() =>
     PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$inboundSchema
   );
-
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$Outbound =
-  PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$Outbound;
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$outboundSchema
-  );
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseRecruiteeUnionToJSON(
-  postAtsImportTrackedApplicationPositiveResponseRecruiteeUnion:
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$outboundSchema
-      .parse(postAtsImportTrackedApplicationPositiveResponseRecruiteeUnion),
-  );
-}
 
 export function postAtsImportTrackedApplicationPositiveResponseRecruiteeUnionFromJSON(
   jsonString: string,
@@ -649,52 +333,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicatio
     application_id: z.string(),
   });
 
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$Outbound =
-  {
-    id_type: "application_id";
-    application_id: string;
-  };
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID
-  > = z.object({
-    id_type: z.literal("application_id"),
-    application_id: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationIDToJSON(
-  postAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID:
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$outboundSchema
-      .parse(
-        postAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID,
-      ),
-  );
-}
-
 export function postAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationIDFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -719,46 +357,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$inbo
   > = z.lazy(() =>
     PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$inboundSchema
   );
-
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$Outbound =
-  PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$Outbound;
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$outboundSchema
-  );
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseGreenhouseUnionToJSON(
-  postAtsImportTrackedApplicationPositiveResponseGreenhouseUnion:
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$outboundSchema
-      .parse(postAtsImportTrackedApplicationPositiveResponseGreenhouseUnion),
-  );
-}
 
 export function postAtsImportTrackedApplicationPositiveResponseGreenhouseUnionFromJSON(
   jsonString: string,
@@ -786,52 +384,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$
     application_id: z.string(),
   });
 
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$Outbound =
-  {
-    id_type: "application_id";
-    application_id: string;
-  };
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID
-  > = z.object({
-    id_type: z.literal("application_id"),
-    application_id: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationIDToJSON(
-  postAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID:
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$outboundSchema
-      .parse(
-        postAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID,
-      ),
-  );
-}
-
 export function postAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationIDFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -856,46 +408,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$inboundS
   > = z.lazy(() =>
     PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$inboundSchema
   );
-
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$Outbound =
-  PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$Outbound;
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$outboundSchema
-  );
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseOnlyfyUnionToJSON(
-  postAtsImportTrackedApplicationPositiveResponseOnlyfyUnion:
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$outboundSchema
-      .parse(postAtsImportTrackedApplicationPositiveResponseOnlyfyUnion),
-  );
-}
 
 export function postAtsImportTrackedApplicationPositiveResponseOnlyfyUnionFromJSON(
   jsonString: string,
@@ -924,54 +436,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandi
     job_remote_id: z.string(),
   });
 
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$Outbound =
-  {
-    id_type: "candidate_and_job_remote_ids";
-    candidate_remote_id: string;
-    job_remote_id: string;
-  };
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds
-  > = z.object({
-    id_type: z.literal("candidate_and_job_remote_ids"),
-    candidate_remote_id: z.string(),
-    job_remote_id: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIdsToJSON(
-  postAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds:
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$outboundSchema
-      .parse(
-        postAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds,
-      ),
-  );
-}
-
 export function postAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIdsFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -996,48 +460,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion
   > = z.lazy(() =>
     PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$inboundSchema
   );
-
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion$Outbound =
-  PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$Outbound;
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$outboundSchema
-  );
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnionToJSON(
-  postAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion:
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion$outboundSchema
-      .parse(
-        postAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion,
-      ),
-  );
-}
 
 export function postAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnionFromJSON(
   jsonString: string,
@@ -1085,77 +507,6 @@ export const ImportedId$inboundSchema: z.ZodType<
   ).optional(),
 });
 
-/** @internal */
-export type ImportedId$Outbound = {
-  erecruiter?:
-    | PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$Outbound
-    | PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$Outbound
-    | undefined;
-  successfactors?:
-    | PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$Outbound
-    | undefined;
-  recruitee?:
-    | PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$Outbound
-    | undefined;
-  greenhouse?:
-    | PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$Outbound
-    | undefined;
-  onlyfy?:
-    | PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$Outbound
-    | undefined;
-  smartrecruiters?:
-    | PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$Outbound
-    | undefined;
-};
-
-/** @internal */
-export const ImportedId$outboundSchema: z.ZodType<
-  ImportedId$Outbound,
-  z.ZodTypeDef,
-  ImportedId
-> = z.object({
-  erecruiter: z.union([
-    z.lazy(() =>
-      PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$outboundSchema
-    ),
-    z.lazy(() =>
-      PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$outboundSchema
-    ),
-  ]).optional(),
-  successfactors: z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$outboundSchema
-  ).optional(),
-  recruitee: z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$outboundSchema
-  ).optional(),
-  greenhouse: z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$outboundSchema
-  ).optional(),
-  onlyfy: z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$outboundSchema
-  ).optional(),
-  smartrecruiters: z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$outboundSchema
-  ).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ImportedId$ {
-  /** @deprecated use `ImportedId$inboundSchema` instead. */
-  export const inboundSchema = ImportedId$inboundSchema;
-  /** @deprecated use `ImportedId$outboundSchema` instead. */
-  export const outboundSchema = ImportedId$outboundSchema;
-  /** @deprecated use `ImportedId$Outbound` instead. */
-  export type Outbound = ImportedId$Outbound;
-}
-
-export function importedIdToJSON(importedId: ImportedId): string {
-  return JSON.stringify(ImportedId$outboundSchema.parse(importedId));
-}
-
 export function importedIdFromJSON(
   jsonString: string,
 ): SafeParseResult<ImportedId, SDKValidationError> {
@@ -1179,52 +530,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseData$inboundSchema:
     ),
     imported_id: z.lazy(() => ImportedId$inboundSchema),
   });
-
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseData$Outbound = {
-  id: string;
-  tracked_at: string | null;
-  imported_id: ImportedId$Outbound;
-};
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseData$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseData
-  > = z.object({
-    id: z.string(),
-    tracked_at: z.nullable(z.date().transform(v => v.toISOString())),
-    imported_id: z.lazy(() => ImportedId$outboundSchema),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseData$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseData$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseData$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseData$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseDataToJSON(
-  postAtsImportTrackedApplicationPositiveResponseData:
-    PostAtsImportTrackedApplicationPositiveResponseData,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseData$outboundSchema.parse(
-      postAtsImportTrackedApplicationPositiveResponseData,
-    ),
-  );
-}
 
 export function postAtsImportTrackedApplicationPositiveResponseDataFromJSON(
   jsonString: string,
@@ -1251,48 +556,6 @@ export const PostAtsImportTrackedApplicationPositiveResponseWarning$inboundSchem
   > = z.object({
     message: z.string(),
   });
-
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponseWarning$Outbound = {
-  message: string;
-};
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponseWarning$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponseWarning$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponseWarning
-  > = z.object({
-    message: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponseWarning$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseWarning$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseWarning$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseWarning$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponseWarning$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponseWarning$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponseWarning$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseWarningToJSON(
-  postAtsImportTrackedApplicationPositiveResponseWarning:
-    PostAtsImportTrackedApplicationPositiveResponseWarning,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponseWarning$outboundSchema.parse(
-      postAtsImportTrackedApplicationPositiveResponseWarning,
-    ),
-  );
-}
 
 export function postAtsImportTrackedApplicationPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -1326,60 +589,6 @@ export const PostAtsImportTrackedApplicationPositiveResponse$inboundSchema:
       ),
     ),
   });
-
-/** @internal */
-export type PostAtsImportTrackedApplicationPositiveResponse$Outbound = {
-  status: "success";
-  data: PostAtsImportTrackedApplicationPositiveResponseData$Outbound;
-  warnings: Array<
-    PostAtsImportTrackedApplicationPositiveResponseWarning$Outbound
-  >;
-};
-
-/** @internal */
-export const PostAtsImportTrackedApplicationPositiveResponse$outboundSchema:
-  z.ZodType<
-    PostAtsImportTrackedApplicationPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    PostAtsImportTrackedApplicationPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PostAtsImportTrackedApplicationPositiveResponseData$outboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        PostAtsImportTrackedApplicationPositiveResponseWarning$outboundSchema
-      ),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsImportTrackedApplicationPositiveResponse$ {
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponse$inboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsImportTrackedApplicationPositiveResponse$outboundSchema;
-  /** @deprecated use `PostAtsImportTrackedApplicationPositiveResponse$Outbound` instead. */
-  export type Outbound =
-    PostAtsImportTrackedApplicationPositiveResponse$Outbound;
-}
-
-export function postAtsImportTrackedApplicationPositiveResponseToJSON(
-  postAtsImportTrackedApplicationPositiveResponse:
-    PostAtsImportTrackedApplicationPositiveResponse,
-): string {
-  return JSON.stringify(
-    PostAtsImportTrackedApplicationPositiveResponse$outboundSchema.parse(
-      postAtsImportTrackedApplicationPositiveResponse,
-    ),
-  );
-}
 
 export function postAtsImportTrackedApplicationPositiveResponseFromJSON(
   jsonString: string,

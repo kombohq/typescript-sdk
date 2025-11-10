@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 /**
  * Category of the integration you want your customer to create.
@@ -292,120 +289,24 @@ export type PostConnectCreateLinkRequestBody = {
 };
 
 /** @internal */
-export const PostConnectCreateLinkRequestBodyIntegrationCategory$inboundSchema:
+export const PostConnectCreateLinkRequestBodyIntegrationCategory$outboundSchema:
   z.ZodNativeEnum<typeof PostConnectCreateLinkRequestBodyIntegrationCategory> =
     z.nativeEnum(PostConnectCreateLinkRequestBodyIntegrationCategory);
 
 /** @internal */
-export const PostConnectCreateLinkRequestBodyIntegrationCategory$outboundSchema:
-  z.ZodNativeEnum<typeof PostConnectCreateLinkRequestBodyIntegrationCategory> =
-    PostConnectCreateLinkRequestBodyIntegrationCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostConnectCreateLinkRequestBodyIntegrationCategory$ {
-  /** @deprecated use `PostConnectCreateLinkRequestBodyIntegrationCategory$inboundSchema` instead. */
-  export const inboundSchema =
-    PostConnectCreateLinkRequestBodyIntegrationCategory$inboundSchema;
-  /** @deprecated use `PostConnectCreateLinkRequestBodyIntegrationCategory$outboundSchema` instead. */
-  export const outboundSchema =
-    PostConnectCreateLinkRequestBodyIntegrationCategory$outboundSchema;
-}
-
-/** @internal */
-export const IntegrationTool$inboundSchema: z.ZodNativeEnum<
+export const IntegrationTool$outboundSchema: z.ZodNativeEnum<
   typeof IntegrationTool
 > = z.nativeEnum(IntegrationTool);
 
 /** @internal */
-export const IntegrationTool$outboundSchema: z.ZodNativeEnum<
-  typeof IntegrationTool
-> = IntegrationTool$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IntegrationTool$ {
-  /** @deprecated use `IntegrationTool$inboundSchema` instead. */
-  export const inboundSchema = IntegrationTool$inboundSchema;
-  /** @deprecated use `IntegrationTool$outboundSchema` instead. */
-  export const outboundSchema = IntegrationTool$outboundSchema;
-}
-
-/** @internal */
-export const PostConnectCreateLinkRequestBodyLanguage$inboundSchema:
+export const PostConnectCreateLinkRequestBodyLanguage$outboundSchema:
   z.ZodNativeEnum<typeof PostConnectCreateLinkRequestBodyLanguage> = z
     .nativeEnum(PostConnectCreateLinkRequestBodyLanguage);
 
 /** @internal */
-export const PostConnectCreateLinkRequestBodyLanguage$outboundSchema:
-  z.ZodNativeEnum<typeof PostConnectCreateLinkRequestBodyLanguage> =
-    PostConnectCreateLinkRequestBodyLanguage$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostConnectCreateLinkRequestBodyLanguage$ {
-  /** @deprecated use `PostConnectCreateLinkRequestBodyLanguage$inboundSchema` instead. */
-  export const inboundSchema =
-    PostConnectCreateLinkRequestBodyLanguage$inboundSchema;
-  /** @deprecated use `PostConnectCreateLinkRequestBodyLanguage$outboundSchema` instead. */
-  export const outboundSchema =
-    PostConnectCreateLinkRequestBodyLanguage$outboundSchema;
-}
-
-/** @internal */
-export const PostConnectCreateLinkRequestBodyLinkType$inboundSchema:
+export const PostConnectCreateLinkRequestBodyLinkType$outboundSchema:
   z.ZodNativeEnum<typeof PostConnectCreateLinkRequestBodyLinkType> = z
     .nativeEnum(PostConnectCreateLinkRequestBodyLinkType);
-
-/** @internal */
-export const PostConnectCreateLinkRequestBodyLinkType$outboundSchema:
-  z.ZodNativeEnum<typeof PostConnectCreateLinkRequestBodyLinkType> =
-    PostConnectCreateLinkRequestBodyLinkType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostConnectCreateLinkRequestBodyLinkType$ {
-  /** @deprecated use `PostConnectCreateLinkRequestBodyLinkType$inboundSchema` instead. */
-  export const inboundSchema =
-    PostConnectCreateLinkRequestBodyLinkType$inboundSchema;
-  /** @deprecated use `PostConnectCreateLinkRequestBodyLinkType$outboundSchema` instead. */
-  export const outboundSchema =
-    PostConnectCreateLinkRequestBodyLinkType$outboundSchema;
-}
-
-/** @internal */
-export const PostConnectCreateLinkRequestBody$inboundSchema: z.ZodType<
-  PostConnectCreateLinkRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  end_user_email: z.string(),
-  end_user_organization_name: z.string(),
-  end_user_origin_id: z.nullable(z.string()).optional(),
-  remote_environment: z.nullable(z.string()).optional(),
-  integration_category:
-    PostConnectCreateLinkRequestBodyIntegrationCategory$inboundSchema.default(
-      "HRIS",
-    ),
-  integration_tool: z.nullable(IntegrationTool$inboundSchema).optional(),
-  language: z.nullable(
-    PostConnectCreateLinkRequestBodyLanguage$inboundSchema.default("en"),
-  ),
-  scope_config_id: z.nullable(z.string()).optional(),
-  enable_filtering: z.boolean().default(false),
-  enable_field_mapping: z.boolean().default(false),
-  link_type: PostConnectCreateLinkRequestBodyLinkType$inboundSchema.default(
-    "EMBEDDED",
-  ),
-});
 
 /** @internal */
 export type PostConnectCreateLinkRequestBody$Outbound = {
@@ -448,19 +349,6 @@ export const PostConnectCreateLinkRequestBody$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostConnectCreateLinkRequestBody$ {
-  /** @deprecated use `PostConnectCreateLinkRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PostConnectCreateLinkRequestBody$inboundSchema;
-  /** @deprecated use `PostConnectCreateLinkRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PostConnectCreateLinkRequestBody$outboundSchema;
-  /** @deprecated use `PostConnectCreateLinkRequestBody$Outbound` instead. */
-  export type Outbound = PostConnectCreateLinkRequestBody$Outbound;
-}
-
 export function postConnectCreateLinkRequestBodyToJSON(
   postConnectCreateLinkRequestBody: PostConnectCreateLinkRequestBody,
 ): string {
@@ -468,15 +356,5 @@ export function postConnectCreateLinkRequestBodyToJSON(
     PostConnectCreateLinkRequestBody$outboundSchema.parse(
       postConnectCreateLinkRequestBody,
     ),
-  );
-}
-
-export function postConnectCreateLinkRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PostConnectCreateLinkRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostConnectCreateLinkRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostConnectCreateLinkRequestBody' from JSON`,
   );
 }

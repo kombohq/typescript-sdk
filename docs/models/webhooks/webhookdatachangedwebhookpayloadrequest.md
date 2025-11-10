@@ -7,7 +7,7 @@ import { WebhookDataChangedWebhookPayloadRequest } from "@kombo-api/sdk/models/w
 
 let value: WebhookDataChangedWebhookPayloadRequest = {
   x_kombo_signature: "<value>",
-  data_changed_webhook_payload: {
+  body: {
     id: "<id>",
     type: "data-changed",
     data: {
@@ -29,4 +29,4 @@ let value: WebhookDataChangedWebhookPayloadRequest = {
 | Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `x_kombo_signature`                                                                                                 | *string*                                                                                                            | :heavy_check_mark:                                                                                                  | HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature. |
-| `data_changed_webhook_payload`                                                                                      | [models.DataChangedWebhookPayload](../../models/datachangedwebhookpayload.md)                                       | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| `body`                                                                                                              | [models.DataChangedWebhookPayload](../../models/datachangedwebhookpayload.md)                                       | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |

@@ -64,34 +64,3 @@ export const KomboGeneralError$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type KomboGeneralError$Outbound = {
-  status: string;
-  error: models.KomboGeneralErrorError$Outbound;
-};
-
-/** @internal */
-export const KomboGeneralError$outboundSchema: z.ZodType<
-  KomboGeneralError$Outbound,
-  z.ZodTypeDef,
-  KomboGeneralError
-> = z.instanceof(KomboGeneralError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: models.KomboGeneralErrorStatus$outboundSchema,
-    error: z.lazy(() => models.KomboGeneralErrorError$outboundSchema),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KomboGeneralError$ {
-  /** @deprecated use `KomboGeneralError$inboundSchema` instead. */
-  export const inboundSchema = KomboGeneralError$inboundSchema;
-  /** @deprecated use `KomboGeneralError$outboundSchema` instead. */
-  export const outboundSchema = KomboGeneralError$outboundSchema;
-  /** @deprecated use `KomboGeneralError$Outbound` instead. */
-  export type Outbound = KomboGeneralError$Outbound;
-}

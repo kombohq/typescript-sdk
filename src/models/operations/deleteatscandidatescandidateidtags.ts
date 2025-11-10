@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type DeleteAtsCandidatesCandidateIdTagsGlobals = {
@@ -24,97 +20,13 @@ export type DeleteAtsCandidatesCandidateIdTagsRequest = {
   /**
    * DELETE /ats/candidates/:candidate_id/tags Request body
    */
-  delete_ats_candidates_candidate_id_tags_request_body:
-    models.DeleteAtsCandidatesCandidateIdTagsRequestBody;
+  body: models.DeleteAtsCandidatesCandidateIdTagsRequestBody;
 };
-
-/** @internal */
-export const DeleteAtsCandidatesCandidateIdTagsGlobals$inboundSchema: z.ZodType<
-  DeleteAtsCandidatesCandidateIdTagsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type DeleteAtsCandidatesCandidateIdTagsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const DeleteAtsCandidatesCandidateIdTagsGlobals$outboundSchema:
-  z.ZodType<
-    DeleteAtsCandidatesCandidateIdTagsGlobals$Outbound,
-    z.ZodTypeDef,
-    DeleteAtsCandidatesCandidateIdTagsGlobals
-  > = z.object({
-    integration_id: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAtsCandidatesCandidateIdTagsGlobals$ {
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteAtsCandidatesCandidateIdTagsGlobals$inboundSchema;
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteAtsCandidatesCandidateIdTagsGlobals$outboundSchema;
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsGlobals$Outbound` instead. */
-  export type Outbound = DeleteAtsCandidatesCandidateIdTagsGlobals$Outbound;
-}
-
-export function deleteAtsCandidatesCandidateIdTagsGlobalsToJSON(
-  deleteAtsCandidatesCandidateIdTagsGlobals:
-    DeleteAtsCandidatesCandidateIdTagsGlobals,
-): string {
-  return JSON.stringify(
-    DeleteAtsCandidatesCandidateIdTagsGlobals$outboundSchema.parse(
-      deleteAtsCandidatesCandidateIdTagsGlobals,
-    ),
-  );
-}
-
-export function deleteAtsCandidatesCandidateIdTagsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  DeleteAtsCandidatesCandidateIdTagsGlobals,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DeleteAtsCandidatesCandidateIdTagsGlobals$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'DeleteAtsCandidatesCandidateIdTagsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const DeleteAtsCandidatesCandidateIdTagsRequest$inboundSchema: z.ZodType<
-  DeleteAtsCandidatesCandidateIdTagsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  candidate_id: z.string(),
-  DeleteAtsCandidatesCandidateIdTagsRequestBody:
-    models.DeleteAtsCandidatesCandidateIdTagsRequestBody$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "DeleteAtsCandidatesCandidateIdTagsRequestBody":
-      "delete_ats_candidates_candidate_id_tags_request_body",
-  });
-});
 
 /** @internal */
 export type DeleteAtsCandidatesCandidateIdTagsRequest$Outbound = {
   candidate_id: string;
-  DeleteAtsCandidatesCandidateIdTagsRequestBody:
-    models.DeleteAtsCandidatesCandidateIdTagsRequestBody$Outbound;
+  body: models.DeleteAtsCandidatesCandidateIdTagsRequestBody$Outbound;
 };
 
 /** @internal */
@@ -125,29 +37,8 @@ export const DeleteAtsCandidatesCandidateIdTagsRequest$outboundSchema:
     DeleteAtsCandidatesCandidateIdTagsRequest
   > = z.object({
     candidate_id: z.string(),
-    delete_ats_candidates_candidate_id_tags_request_body:
-      models.DeleteAtsCandidatesCandidateIdTagsRequestBody$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      delete_ats_candidates_candidate_id_tags_request_body:
-        "DeleteAtsCandidatesCandidateIdTagsRequestBody",
-    });
+    body: models.DeleteAtsCandidatesCandidateIdTagsRequestBody$outboundSchema,
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAtsCandidatesCandidateIdTagsRequest$ {
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteAtsCandidatesCandidateIdTagsRequest$inboundSchema;
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteAtsCandidatesCandidateIdTagsRequest$outboundSchema;
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsRequest$Outbound` instead. */
-  export type Outbound = DeleteAtsCandidatesCandidateIdTagsRequest$Outbound;
-}
 
 export function deleteAtsCandidatesCandidateIdTagsRequestToJSON(
   deleteAtsCandidatesCandidateIdTagsRequest:
@@ -157,21 +48,5 @@ export function deleteAtsCandidatesCandidateIdTagsRequestToJSON(
     DeleteAtsCandidatesCandidateIdTagsRequest$outboundSchema.parse(
       deleteAtsCandidatesCandidateIdTagsRequest,
     ),
-  );
-}
-
-export function deleteAtsCandidatesCandidateIdTagsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  DeleteAtsCandidatesCandidateIdTagsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DeleteAtsCandidatesCandidateIdTagsRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'DeleteAtsCandidatesCandidateIdTagsRequest' from JSON`,
   );
 }

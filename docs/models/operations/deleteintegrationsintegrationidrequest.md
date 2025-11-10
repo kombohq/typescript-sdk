@@ -7,7 +7,7 @@ import { DeleteIntegrationsIntegrationIdRequest } from "@kombo-api/sdk/models/op
 
 let value: DeleteIntegrationsIntegrationIdRequest = {
   integration_id: "<id>",
-  delete_integrations_integration_id_request_body: {},
+  body: {},
 };
 ```
 
@@ -16,4 +16,4 @@ let value: DeleteIntegrationsIntegrationIdRequest = {
 | Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
 | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `integration_id`                                                                                                | *string*                                                                                                        | :heavy_check_mark:                                                                                              | DELETE /integrations/:integration_id Parameter                                                                  |
-| `delete_integrations_integration_id_request_body`                                                               | [models.DeleteIntegrationsIntegrationIdRequestBody](../../models/deleteintegrationsintegrationidrequestbody.md) | :heavy_check_mark:                                                                                              | DELETE /integrations/:integration_id Request body                                                               |
+| `body`                                                                                                          | [models.DeleteIntegrationsIntegrationIdRequestBody](../../models/deleteintegrationsintegrationidrequestbody.md) | :heavy_check_mark:                                                                                              | DELETE /integrations/:integration_id Request body                                                               |

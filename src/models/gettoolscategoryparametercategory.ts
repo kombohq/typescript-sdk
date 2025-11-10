@@ -15,23 +15,6 @@ export type GetToolsCategoryParameterCategory = ClosedEnum<
 >;
 
 /** @internal */
-export const GetToolsCategoryParameterCategory$inboundSchema: z.ZodNativeEnum<
-  typeof GetToolsCategoryParameterCategory
-> = z.nativeEnum(GetToolsCategoryParameterCategory);
-
-/** @internal */
 export const GetToolsCategoryParameterCategory$outboundSchema: z.ZodNativeEnum<
   typeof GetToolsCategoryParameterCategory
-> = GetToolsCategoryParameterCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetToolsCategoryParameterCategory$ {
-  /** @deprecated use `GetToolsCategoryParameterCategory$inboundSchema` instead. */
-  export const inboundSchema = GetToolsCategoryParameterCategory$inboundSchema;
-  /** @deprecated use `GetToolsCategoryParameterCategory$outboundSchema` instead. */
-  export const outboundSchema =
-    GetToolsCategoryParameterCategory$outboundSchema;
-}
+> = z.nativeEnum(GetToolsCategoryParameterCategory);

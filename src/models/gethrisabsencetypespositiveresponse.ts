@@ -76,24 +76,6 @@ export const GetHrisAbsenceTypesPositiveResponseUnit$inboundSchema:
     .nativeEnum(GetHrisAbsenceTypesPositiveResponseUnit);
 
 /** @internal */
-export const GetHrisAbsenceTypesPositiveResponseUnit$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisAbsenceTypesPositiveResponseUnit> =
-    GetHrisAbsenceTypesPositiveResponseUnit$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisAbsenceTypesPositiveResponseUnit$ {
-  /** @deprecated use `GetHrisAbsenceTypesPositiveResponseUnit$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisAbsenceTypesPositiveResponseUnit$inboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesPositiveResponseUnit$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisAbsenceTypesPositiveResponseUnit$outboundSchema;
-}
-
-/** @internal */
 export const GetHrisAbsenceTypesPositiveResponseResult$inboundSchema: z.ZodType<
   GetHrisAbsenceTypesPositiveResponseResult,
   z.ZodTypeDef,
@@ -110,61 +92,6 @@ export const GetHrisAbsenceTypesPositiveResponseResult$inboundSchema: z.ZodType<
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ),
 });
-
-/** @internal */
-export type GetHrisAbsenceTypesPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string;
-  name: string | null;
-  unit: string | null;
-  half_days_supported: boolean | null;
-  exact_times_supported: boolean | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const GetHrisAbsenceTypesPositiveResponseResult$outboundSchema:
-  z.ZodType<
-    GetHrisAbsenceTypesPositiveResponseResult$Outbound,
-    z.ZodTypeDef,
-    GetHrisAbsenceTypesPositiveResponseResult
-  > = z.object({
-    id: z.string(),
-    remote_id: z.string(),
-    name: z.nullable(z.string()),
-    unit: z.nullable(GetHrisAbsenceTypesPositiveResponseUnit$outboundSchema),
-    half_days_supported: z.nullable(z.boolean()),
-    exact_times_supported: z.nullable(z.boolean()),
-    changed_at: z.date().transform(v => v.toISOString()),
-    remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisAbsenceTypesPositiveResponseResult$ {
-  /** @deprecated use `GetHrisAbsenceTypesPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisAbsenceTypesPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisAbsenceTypesPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesPositiveResponseResult$Outbound` instead. */
-  export type Outbound = GetHrisAbsenceTypesPositiveResponseResult$Outbound;
-}
-
-export function getHrisAbsenceTypesPositiveResponseResultToJSON(
-  getHrisAbsenceTypesPositiveResponseResult:
-    GetHrisAbsenceTypesPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetHrisAbsenceTypesPositiveResponseResult$outboundSchema.parse(
-      getHrisAbsenceTypesPositiveResponseResult,
-    ),
-  );
-}
 
 export function getHrisAbsenceTypesPositiveResponseResultFromJSON(
   jsonString: string,
@@ -194,50 +121,6 @@ export const GetHrisAbsenceTypesPositiveResponseData$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetHrisAbsenceTypesPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetHrisAbsenceTypesPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetHrisAbsenceTypesPositiveResponseData$outboundSchema: z.ZodType<
-  GetHrisAbsenceTypesPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  GetHrisAbsenceTypesPositiveResponseData
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisAbsenceTypesPositiveResponseResult$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisAbsenceTypesPositiveResponseData$ {
-  /** @deprecated use `GetHrisAbsenceTypesPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisAbsenceTypesPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisAbsenceTypesPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetHrisAbsenceTypesPositiveResponseData$Outbound;
-}
-
-export function getHrisAbsenceTypesPositiveResponseDataToJSON(
-  getHrisAbsenceTypesPositiveResponseData:
-    GetHrisAbsenceTypesPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetHrisAbsenceTypesPositiveResponseData$outboundSchema.parse(
-      getHrisAbsenceTypesPositiveResponseData,
-    ),
-  );
-}
-
 export function getHrisAbsenceTypesPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -263,47 +146,6 @@ export const GetHrisAbsenceTypesPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetHrisAbsenceTypesPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetHrisAbsenceTypesPositiveResponse$Outbound = {
-  status: "success";
-  data: GetHrisAbsenceTypesPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetHrisAbsenceTypesPositiveResponse$outboundSchema: z.ZodType<
-  GetHrisAbsenceTypesPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisAbsenceTypesPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisAbsenceTypesPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisAbsenceTypesPositiveResponse$ {
-  /** @deprecated use `GetHrisAbsenceTypesPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisAbsenceTypesPositiveResponse$inboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisAbsenceTypesPositiveResponse$outboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesPositiveResponse$Outbound` instead. */
-  export type Outbound = GetHrisAbsenceTypesPositiveResponse$Outbound;
-}
-
-export function getHrisAbsenceTypesPositiveResponseToJSON(
-  getHrisAbsenceTypesPositiveResponse: GetHrisAbsenceTypesPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetHrisAbsenceTypesPositiveResponse$outboundSchema.parse(
-      getHrisAbsenceTypesPositiveResponse,
-    ),
-  );
-}
 
 export function getHrisAbsenceTypesPositiveResponseFromJSON(
   jsonString: string,

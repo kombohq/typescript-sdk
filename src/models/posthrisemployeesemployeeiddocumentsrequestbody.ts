@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 export type Document = {
   /**
@@ -48,18 +45,6 @@ export type PostHrisEmployeesEmployeeIdDocumentsRequestBody = {
 };
 
 /** @internal */
-export const Document$inboundSchema: z.ZodType<
-  Document,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string(),
-  content_type: z.string().optional(),
-  data_url: z.string().optional(),
-  data: z.string().optional(),
-});
-
-/** @internal */
 export type Document$Outbound = {
   name: string;
   content_type?: string | undefined;
@@ -79,43 +64,9 @@ export const Document$outboundSchema: z.ZodType<
   data: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Document$ {
-  /** @deprecated use `Document$inboundSchema` instead. */
-  export const inboundSchema = Document$inboundSchema;
-  /** @deprecated use `Document$outboundSchema` instead. */
-  export const outboundSchema = Document$outboundSchema;
-  /** @deprecated use `Document$Outbound` instead. */
-  export type Outbound = Document$Outbound;
-}
-
 export function documentToJSON(document: Document): string {
   return JSON.stringify(Document$outboundSchema.parse(document));
 }
-
-export function documentFromJSON(
-  jsonString: string,
-): SafeParseResult<Document, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Document$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Document' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostHrisEmployeesEmployeeIdDocumentsRequestBody$inboundSchema:
-  z.ZodType<
-    PostHrisEmployeesEmployeeIdDocumentsRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    category_id: z.string(),
-    document: z.lazy(() => Document$inboundSchema),
-  });
 
 /** @internal */
 export type PostHrisEmployeesEmployeeIdDocumentsRequestBody$Outbound = {
@@ -134,22 +85,6 @@ export const PostHrisEmployeesEmployeeIdDocumentsRequestBody$outboundSchema:
     document: z.lazy(() => Document$outboundSchema),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisEmployeesEmployeeIdDocumentsRequestBody$ {
-  /** @deprecated use `PostHrisEmployeesEmployeeIdDocumentsRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisEmployeesEmployeeIdDocumentsRequestBody$inboundSchema;
-  /** @deprecated use `PostHrisEmployeesEmployeeIdDocumentsRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisEmployeesEmployeeIdDocumentsRequestBody$outboundSchema;
-  /** @deprecated use `PostHrisEmployeesEmployeeIdDocumentsRequestBody$Outbound` instead. */
-  export type Outbound =
-    PostHrisEmployeesEmployeeIdDocumentsRequestBody$Outbound;
-}
-
 export function postHrisEmployeesEmployeeIdDocumentsRequestBodyToJSON(
   postHrisEmployeesEmployeeIdDocumentsRequestBody:
     PostHrisEmployeesEmployeeIdDocumentsRequestBody,
@@ -158,21 +93,5 @@ export function postHrisEmployeesEmployeeIdDocumentsRequestBodyToJSON(
     PostHrisEmployeesEmployeeIdDocumentsRequestBody$outboundSchema.parse(
       postHrisEmployeesEmployeeIdDocumentsRequestBody,
     ),
-  );
-}
-
-export function postHrisEmployeesEmployeeIdDocumentsRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostHrisEmployeesEmployeeIdDocumentsRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostHrisEmployeesEmployeeIdDocumentsRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostHrisEmployeesEmployeeIdDocumentsRequestBody' from JSON`,
   );
 }

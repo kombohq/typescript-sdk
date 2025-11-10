@@ -73,41 +73,9 @@ export const KomboAtsErrorStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(KomboAtsErrorStatus);
 
 /** @internal */
-export const KomboAtsErrorStatus$outboundSchema: z.ZodNativeEnum<
-  typeof KomboAtsErrorStatus
-> = KomboAtsErrorStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KomboAtsErrorStatus$ {
-  /** @deprecated use `KomboAtsErrorStatus$inboundSchema` instead. */
-  export const inboundSchema = KomboAtsErrorStatus$inboundSchema;
-  /** @deprecated use `KomboAtsErrorStatus$outboundSchema` instead. */
-  export const outboundSchema = KomboAtsErrorStatus$outboundSchema;
-}
-
-/** @internal */
 export const KomboAtsErrorCode$inboundSchema: z.ZodNativeEnum<
   typeof KomboAtsErrorCode
 > = z.nativeEnum(KomboAtsErrorCode);
-
-/** @internal */
-export const KomboAtsErrorCode$outboundSchema: z.ZodNativeEnum<
-  typeof KomboAtsErrorCode
-> = KomboAtsErrorCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KomboAtsErrorCode$ {
-  /** @deprecated use `KomboAtsErrorCode$inboundSchema` instead. */
-  export const inboundSchema = KomboAtsErrorCode$inboundSchema;
-  /** @deprecated use `KomboAtsErrorCode$outboundSchema` instead. */
-  export const outboundSchema = KomboAtsErrorCode$outboundSchema;
-}
 
 /** @internal */
 export const KomboAtsErrorError$inboundSchema: z.ZodType<
@@ -120,47 +88,6 @@ export const KomboAtsErrorError$inboundSchema: z.ZodType<
   message: z.string(),
   log_url: z.nullable(z.string()),
 });
-
-/** @internal */
-export type KomboAtsErrorError$Outbound = {
-  code: string | null;
-  title: string | null;
-  message: string;
-  log_url: string | null;
-};
-
-/** @internal */
-export const KomboAtsErrorError$outboundSchema: z.ZodType<
-  KomboAtsErrorError$Outbound,
-  z.ZodTypeDef,
-  KomboAtsErrorError
-> = z.object({
-  code: z.nullable(KomboAtsErrorCode$outboundSchema),
-  title: z.nullable(z.string()),
-  message: z.string(),
-  log_url: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KomboAtsErrorError$ {
-  /** @deprecated use `KomboAtsErrorError$inboundSchema` instead. */
-  export const inboundSchema = KomboAtsErrorError$inboundSchema;
-  /** @deprecated use `KomboAtsErrorError$outboundSchema` instead. */
-  export const outboundSchema = KomboAtsErrorError$outboundSchema;
-  /** @deprecated use `KomboAtsErrorError$Outbound` instead. */
-  export type Outbound = KomboAtsErrorError$Outbound;
-}
-
-export function komboAtsErrorErrorToJSON(
-  komboAtsErrorError: KomboAtsErrorError,
-): string {
-  return JSON.stringify(
-    KomboAtsErrorError$outboundSchema.parse(komboAtsErrorError),
-  );
-}
 
 export function komboAtsErrorErrorFromJSON(
   jsonString: string,

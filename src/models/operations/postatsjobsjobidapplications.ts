@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostAtsJobsJobIdApplicationsGlobals = {
@@ -24,90 +20,13 @@ export type PostAtsJobsJobIdApplicationsRequest = {
   /**
    * POST /ats/jobs/:job_id/applications Request body
    */
-  post_ats_jobs_job_id_applications_request_body:
-    models.PostAtsJobsJobIdApplicationsRequestBody;
+  body: models.PostAtsJobsJobIdApplicationsRequestBody;
 };
-
-/** @internal */
-export const PostAtsJobsJobIdApplicationsGlobals$inboundSchema: z.ZodType<
-  PostAtsJobsJobIdApplicationsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type PostAtsJobsJobIdApplicationsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const PostAtsJobsJobIdApplicationsGlobals$outboundSchema: z.ZodType<
-  PostAtsJobsJobIdApplicationsGlobals$Outbound,
-  z.ZodTypeDef,
-  PostAtsJobsJobIdApplicationsGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsJobsJobIdApplicationsGlobals$ {
-  /** @deprecated use `PostAtsJobsJobIdApplicationsGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsJobsJobIdApplicationsGlobals$inboundSchema;
-  /** @deprecated use `PostAtsJobsJobIdApplicationsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsJobsJobIdApplicationsGlobals$outboundSchema;
-  /** @deprecated use `PostAtsJobsJobIdApplicationsGlobals$Outbound` instead. */
-  export type Outbound = PostAtsJobsJobIdApplicationsGlobals$Outbound;
-}
-
-export function postAtsJobsJobIdApplicationsGlobalsToJSON(
-  postAtsJobsJobIdApplicationsGlobals: PostAtsJobsJobIdApplicationsGlobals,
-): string {
-  return JSON.stringify(
-    PostAtsJobsJobIdApplicationsGlobals$outboundSchema.parse(
-      postAtsJobsJobIdApplicationsGlobals,
-    ),
-  );
-}
-
-export function postAtsJobsJobIdApplicationsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<PostAtsJobsJobIdApplicationsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsJobsJobIdApplicationsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostAtsJobsJobIdApplicationsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAtsJobsJobIdApplicationsRequest$inboundSchema: z.ZodType<
-  PostAtsJobsJobIdApplicationsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  job_id: z.string(),
-  PostAtsJobsJobIdApplicationsRequestBody:
-    models.PostAtsJobsJobIdApplicationsRequestBody$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "PostAtsJobsJobIdApplicationsRequestBody":
-      "post_ats_jobs_job_id_applications_request_body",
-  });
-});
 
 /** @internal */
 export type PostAtsJobsJobIdApplicationsRequest$Outbound = {
   job_id: string;
-  PostAtsJobsJobIdApplicationsRequestBody:
-    models.PostAtsJobsJobIdApplicationsRequestBody$Outbound;
+  body: models.PostAtsJobsJobIdApplicationsRequestBody$Outbound;
 };
 
 /** @internal */
@@ -117,29 +36,8 @@ export const PostAtsJobsJobIdApplicationsRequest$outboundSchema: z.ZodType<
   PostAtsJobsJobIdApplicationsRequest
 > = z.object({
   job_id: z.string(),
-  post_ats_jobs_job_id_applications_request_body:
-    models.PostAtsJobsJobIdApplicationsRequestBody$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    post_ats_jobs_job_id_applications_request_body:
-      "PostAtsJobsJobIdApplicationsRequestBody",
-  });
+  body: models.PostAtsJobsJobIdApplicationsRequestBody$outboundSchema,
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsJobsJobIdApplicationsRequest$ {
-  /** @deprecated use `PostAtsJobsJobIdApplicationsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsJobsJobIdApplicationsRequest$inboundSchema;
-  /** @deprecated use `PostAtsJobsJobIdApplicationsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsJobsJobIdApplicationsRequest$outboundSchema;
-  /** @deprecated use `PostAtsJobsJobIdApplicationsRequest$Outbound` instead. */
-  export type Outbound = PostAtsJobsJobIdApplicationsRequest$Outbound;
-}
 
 export function postAtsJobsJobIdApplicationsRequestToJSON(
   postAtsJobsJobIdApplicationsRequest: PostAtsJobsJobIdApplicationsRequest,
@@ -148,16 +46,5 @@ export function postAtsJobsJobIdApplicationsRequestToJSON(
     PostAtsJobsJobIdApplicationsRequest$outboundSchema.parse(
       postAtsJobsJobIdApplicationsRequest,
     ),
-  );
-}
-
-export function postAtsJobsJobIdApplicationsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<PostAtsJobsJobIdApplicationsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsJobsJobIdApplicationsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostAtsJobsJobIdApplicationsRequest' from JSON`,
   );
 }

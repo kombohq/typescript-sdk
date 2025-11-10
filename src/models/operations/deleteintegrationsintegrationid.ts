@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type DeleteIntegrationsIntegrationIdRequest = {
@@ -17,31 +13,13 @@ export type DeleteIntegrationsIntegrationIdRequest = {
   /**
    * DELETE /integrations/:integration_id Request body
    */
-  delete_integrations_integration_id_request_body:
-    models.DeleteIntegrationsIntegrationIdRequestBody;
+  body: models.DeleteIntegrationsIntegrationIdRequestBody;
 };
-
-/** @internal */
-export const DeleteIntegrationsIntegrationIdRequest$inboundSchema: z.ZodType<
-  DeleteIntegrationsIntegrationIdRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string(),
-  DeleteIntegrationsIntegrationIdRequestBody:
-    models.DeleteIntegrationsIntegrationIdRequestBody$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "DeleteIntegrationsIntegrationIdRequestBody":
-      "delete_integrations_integration_id_request_body",
-  });
-});
 
 /** @internal */
 export type DeleteIntegrationsIntegrationIdRequest$Outbound = {
   integration_id: string;
-  DeleteIntegrationsIntegrationIdRequestBody:
-    models.DeleteIntegrationsIntegrationIdRequestBody$Outbound;
+  body: models.DeleteIntegrationsIntegrationIdRequestBody$Outbound;
 };
 
 /** @internal */
@@ -51,29 +29,8 @@ export const DeleteIntegrationsIntegrationIdRequest$outboundSchema: z.ZodType<
   DeleteIntegrationsIntegrationIdRequest
 > = z.object({
   integration_id: z.string(),
-  delete_integrations_integration_id_request_body:
-    models.DeleteIntegrationsIntegrationIdRequestBody$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    delete_integrations_integration_id_request_body:
-      "DeleteIntegrationsIntegrationIdRequestBody",
-  });
+  body: models.DeleteIntegrationsIntegrationIdRequestBody$outboundSchema,
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteIntegrationsIntegrationIdRequest$ {
-  /** @deprecated use `DeleteIntegrationsIntegrationIdRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteIntegrationsIntegrationIdRequest$inboundSchema;
-  /** @deprecated use `DeleteIntegrationsIntegrationIdRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteIntegrationsIntegrationIdRequest$outboundSchema;
-  /** @deprecated use `DeleteIntegrationsIntegrationIdRequest$Outbound` instead. */
-  export type Outbound = DeleteIntegrationsIntegrationIdRequest$Outbound;
-}
 
 export function deleteIntegrationsIntegrationIdRequestToJSON(
   deleteIntegrationsIntegrationIdRequest:
@@ -83,16 +40,5 @@ export function deleteIntegrationsIntegrationIdRequestToJSON(
     DeleteIntegrationsIntegrationIdRequest$outboundSchema.parse(
       deleteIntegrationsIntegrationIdRequest,
     ),
-  );
-}
-
-export function deleteIntegrationsIntegrationIdRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteIntegrationsIntegrationIdRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DeleteIntegrationsIntegrationIdRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteIntegrationsIntegrationIdRequest' from JSON`,
   );
 }

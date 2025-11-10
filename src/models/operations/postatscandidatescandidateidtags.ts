@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostAtsCandidatesCandidateIdTagsGlobals = {
@@ -24,96 +20,13 @@ export type PostAtsCandidatesCandidateIdTagsRequest = {
   /**
    * POST /ats/candidates/:candidate_id/tags Request body
    */
-  post_ats_candidates_candidate_id_tags_request_body:
-    models.PostAtsCandidatesCandidateIdTagsRequestBody;
+  body: models.PostAtsCandidatesCandidateIdTagsRequestBody;
 };
-
-/** @internal */
-export const PostAtsCandidatesCandidateIdTagsGlobals$inboundSchema: z.ZodType<
-  PostAtsCandidatesCandidateIdTagsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type PostAtsCandidatesCandidateIdTagsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const PostAtsCandidatesCandidateIdTagsGlobals$outboundSchema: z.ZodType<
-  PostAtsCandidatesCandidateIdTagsGlobals$Outbound,
-  z.ZodTypeDef,
-  PostAtsCandidatesCandidateIdTagsGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsCandidatesCandidateIdTagsGlobals$ {
-  /** @deprecated use `PostAtsCandidatesCandidateIdTagsGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsCandidatesCandidateIdTagsGlobals$inboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdTagsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsCandidatesCandidateIdTagsGlobals$outboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdTagsGlobals$Outbound` instead. */
-  export type Outbound = PostAtsCandidatesCandidateIdTagsGlobals$Outbound;
-}
-
-export function postAtsCandidatesCandidateIdTagsGlobalsToJSON(
-  postAtsCandidatesCandidateIdTagsGlobals:
-    PostAtsCandidatesCandidateIdTagsGlobals,
-): string {
-  return JSON.stringify(
-    PostAtsCandidatesCandidateIdTagsGlobals$outboundSchema.parse(
-      postAtsCandidatesCandidateIdTagsGlobals,
-    ),
-  );
-}
-
-export function postAtsCandidatesCandidateIdTagsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsCandidatesCandidateIdTagsGlobals,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsCandidatesCandidateIdTagsGlobals$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostAtsCandidatesCandidateIdTagsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAtsCandidatesCandidateIdTagsRequest$inboundSchema: z.ZodType<
-  PostAtsCandidatesCandidateIdTagsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  candidate_id: z.string(),
-  PostAtsCandidatesCandidateIdTagsRequestBody:
-    models.PostAtsCandidatesCandidateIdTagsRequestBody$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "PostAtsCandidatesCandidateIdTagsRequestBody":
-      "post_ats_candidates_candidate_id_tags_request_body",
-  });
-});
 
 /** @internal */
 export type PostAtsCandidatesCandidateIdTagsRequest$Outbound = {
   candidate_id: string;
-  PostAtsCandidatesCandidateIdTagsRequestBody:
-    models.PostAtsCandidatesCandidateIdTagsRequestBody$Outbound;
+  body: models.PostAtsCandidatesCandidateIdTagsRequestBody$Outbound;
 };
 
 /** @internal */
@@ -123,29 +36,8 @@ export const PostAtsCandidatesCandidateIdTagsRequest$outboundSchema: z.ZodType<
   PostAtsCandidatesCandidateIdTagsRequest
 > = z.object({
   candidate_id: z.string(),
-  post_ats_candidates_candidate_id_tags_request_body:
-    models.PostAtsCandidatesCandidateIdTagsRequestBody$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    post_ats_candidates_candidate_id_tags_request_body:
-      "PostAtsCandidatesCandidateIdTagsRequestBody",
-  });
+  body: models.PostAtsCandidatesCandidateIdTagsRequestBody$outboundSchema,
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsCandidatesCandidateIdTagsRequest$ {
-  /** @deprecated use `PostAtsCandidatesCandidateIdTagsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsCandidatesCandidateIdTagsRequest$inboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdTagsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsCandidatesCandidateIdTagsRequest$outboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdTagsRequest$Outbound` instead. */
-  export type Outbound = PostAtsCandidatesCandidateIdTagsRequest$Outbound;
-}
 
 export function postAtsCandidatesCandidateIdTagsRequestToJSON(
   postAtsCandidatesCandidateIdTagsRequest:
@@ -155,21 +47,5 @@ export function postAtsCandidatesCandidateIdTagsRequestToJSON(
     PostAtsCandidatesCandidateIdTagsRequest$outboundSchema.parse(
       postAtsCandidatesCandidateIdTagsRequest,
     ),
-  );
-}
-
-export function postAtsCandidatesCandidateIdTagsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsCandidatesCandidateIdTagsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsCandidatesCandidateIdTagsRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostAtsCandidatesCandidateIdTagsRequest' from JSON`,
   );
 }

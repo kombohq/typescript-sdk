@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 /**
  * Language of the connection flow UI.
@@ -76,71 +73,16 @@ export type PostIntegrationsIntegrationIdRelinkRequestBody = {
 };
 
 /** @internal */
-export const PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$inboundSchema:
+export const PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$outboundSchema:
   z.ZodNativeEnum<
     typeof PostIntegrationsIntegrationIdRelinkRequestBodyLanguage
   > = z.nativeEnum(PostIntegrationsIntegrationIdRelinkRequestBodyLanguage);
 
 /** @internal */
-export const PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$outboundSchema:
-  z.ZodNativeEnum<
-    typeof PostIntegrationsIntegrationIdRelinkRequestBodyLanguage
-  > = PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$ {
-  /** @deprecated use `PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$inboundSchema` instead. */
-  export const inboundSchema =
-    PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$inboundSchema;
-  /** @deprecated use `PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$outboundSchema` instead. */
-  export const outboundSchema =
-    PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$outboundSchema;
-}
-
-/** @internal */
-export const PostIntegrationsIntegrationIdRelinkRequestBodyLinkType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof PostIntegrationsIntegrationIdRelinkRequestBodyLinkType
-  > = z.nativeEnum(PostIntegrationsIntegrationIdRelinkRequestBodyLinkType);
-
-/** @internal */
 export const PostIntegrationsIntegrationIdRelinkRequestBodyLinkType$outboundSchema:
   z.ZodNativeEnum<
     typeof PostIntegrationsIntegrationIdRelinkRequestBodyLinkType
-  > = PostIntegrationsIntegrationIdRelinkRequestBodyLinkType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostIntegrationsIntegrationIdRelinkRequestBodyLinkType$ {
-  /** @deprecated use `PostIntegrationsIntegrationIdRelinkRequestBodyLinkType$inboundSchema` instead. */
-  export const inboundSchema =
-    PostIntegrationsIntegrationIdRelinkRequestBodyLinkType$inboundSchema;
-  /** @deprecated use `PostIntegrationsIntegrationIdRelinkRequestBodyLinkType$outboundSchema` instead. */
-  export const outboundSchema =
-    PostIntegrationsIntegrationIdRelinkRequestBodyLinkType$outboundSchema;
-}
-
-/** @internal */
-export const PostIntegrationsIntegrationIdRelinkRequestBody$inboundSchema:
-  z.ZodType<
-    PostIntegrationsIntegrationIdRelinkRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    language: z.nullable(
-      PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$inboundSchema
-        .default("en"),
-    ),
-    scope_config_id: z.nullable(z.string()).optional(),
-    link_type:
-      PostIntegrationsIntegrationIdRelinkRequestBodyLinkType$inboundSchema
-        .default("EMBEDDED"),
-  });
+  > = z.nativeEnum(PostIntegrationsIntegrationIdRelinkRequestBodyLinkType);
 
 /** @internal */
 export type PostIntegrationsIntegrationIdRelinkRequestBody$Outbound = {
@@ -166,22 +108,6 @@ export const PostIntegrationsIntegrationIdRelinkRequestBody$outboundSchema:
         .default("EMBEDDED"),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostIntegrationsIntegrationIdRelinkRequestBody$ {
-  /** @deprecated use `PostIntegrationsIntegrationIdRelinkRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PostIntegrationsIntegrationIdRelinkRequestBody$inboundSchema;
-  /** @deprecated use `PostIntegrationsIntegrationIdRelinkRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PostIntegrationsIntegrationIdRelinkRequestBody$outboundSchema;
-  /** @deprecated use `PostIntegrationsIntegrationIdRelinkRequestBody$Outbound` instead. */
-  export type Outbound =
-    PostIntegrationsIntegrationIdRelinkRequestBody$Outbound;
-}
-
 export function postIntegrationsIntegrationIdRelinkRequestBodyToJSON(
   postIntegrationsIntegrationIdRelinkRequestBody:
     PostIntegrationsIntegrationIdRelinkRequestBody,
@@ -190,21 +116,5 @@ export function postIntegrationsIntegrationIdRelinkRequestBodyToJSON(
     PostIntegrationsIntegrationIdRelinkRequestBody$outboundSchema.parse(
       postIntegrationsIntegrationIdRelinkRequestBody,
     ),
-  );
-}
-
-export function postIntegrationsIntegrationIdRelinkRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostIntegrationsIntegrationIdRelinkRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostIntegrationsIntegrationIdRelinkRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostIntegrationsIntegrationIdRelinkRequestBody' from JSON`,
   );
 }

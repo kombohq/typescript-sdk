@@ -25,47 +25,6 @@ export const PostConnectCreateLinkPositiveResponseData$inboundSchema: z.ZodType<
   link: z.string(),
 });
 
-/** @internal */
-export type PostConnectCreateLinkPositiveResponseData$Outbound = {
-  link: string;
-};
-
-/** @internal */
-export const PostConnectCreateLinkPositiveResponseData$outboundSchema:
-  z.ZodType<
-    PostConnectCreateLinkPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    PostConnectCreateLinkPositiveResponseData
-  > = z.object({
-    link: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostConnectCreateLinkPositiveResponseData$ {
-  /** @deprecated use `PostConnectCreateLinkPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    PostConnectCreateLinkPositiveResponseData$inboundSchema;
-  /** @deprecated use `PostConnectCreateLinkPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    PostConnectCreateLinkPositiveResponseData$outboundSchema;
-  /** @deprecated use `PostConnectCreateLinkPositiveResponseData$Outbound` instead. */
-  export type Outbound = PostConnectCreateLinkPositiveResponseData$Outbound;
-}
-
-export function postConnectCreateLinkPositiveResponseDataToJSON(
-  postConnectCreateLinkPositiveResponseData:
-    PostConnectCreateLinkPositiveResponseData,
-): string {
-  return JSON.stringify(
-    PostConnectCreateLinkPositiveResponseData$outboundSchema.parse(
-      postConnectCreateLinkPositiveResponseData,
-    ),
-  );
-}
-
 export function postConnectCreateLinkPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -91,47 +50,6 @@ export const PostConnectCreateLinkPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => PostConnectCreateLinkPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type PostConnectCreateLinkPositiveResponse$Outbound = {
-  status: "success";
-  data: PostConnectCreateLinkPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const PostConnectCreateLinkPositiveResponse$outboundSchema: z.ZodType<
-  PostConnectCreateLinkPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  PostConnectCreateLinkPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => PostConnectCreateLinkPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostConnectCreateLinkPositiveResponse$ {
-  /** @deprecated use `PostConnectCreateLinkPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    PostConnectCreateLinkPositiveResponse$inboundSchema;
-  /** @deprecated use `PostConnectCreateLinkPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    PostConnectCreateLinkPositiveResponse$outboundSchema;
-  /** @deprecated use `PostConnectCreateLinkPositiveResponse$Outbound` instead. */
-  export type Outbound = PostConnectCreateLinkPositiveResponse$Outbound;
-}
-
-export function postConnectCreateLinkPositiveResponseToJSON(
-  postConnectCreateLinkPositiveResponse: PostConnectCreateLinkPositiveResponse,
-): string {
-  return JSON.stringify(
-    PostConnectCreateLinkPositiveResponse$outboundSchema.parse(
-      postConnectCreateLinkPositiveResponse,
-    ),
-  );
-}
 
 export function postConnectCreateLinkPositiveResponseFromJSON(
   jsonString: string,

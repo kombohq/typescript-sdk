@@ -179,23 +179,6 @@ export const GetAtsOffersPositiveResponseStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetAtsOffersPositiveResponseStatus);
 
 /** @internal */
-export const GetAtsOffersPositiveResponseStatus$outboundSchema: z.ZodNativeEnum<
-  typeof GetAtsOffersPositiveResponseStatus
-> = GetAtsOffersPositiveResponseStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsOffersPositiveResponseStatus$ {
-  /** @deprecated use `GetAtsOffersPositiveResponseStatus$inboundSchema` instead. */
-  export const inboundSchema = GetAtsOffersPositiveResponseStatus$inboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsOffersPositiveResponseStatus$outboundSchema;
-}
-
-/** @internal */
 export const GetAtsOffersPositiveResponseEmailAddress$inboundSchema: z.ZodType<
   GetAtsOffersPositiveResponseEmailAddress,
   z.ZodTypeDef,
@@ -204,48 +187,6 @@ export const GetAtsOffersPositiveResponseEmailAddress$inboundSchema: z.ZodType<
   email_address: z.nullable(z.string()).optional(),
   type: z.nullable(z.string()),
 });
-
-/** @internal */
-export type GetAtsOffersPositiveResponseEmailAddress$Outbound = {
-  email_address?: string | null | undefined;
-  type: string | null;
-};
-
-/** @internal */
-export const GetAtsOffersPositiveResponseEmailAddress$outboundSchema: z.ZodType<
-  GetAtsOffersPositiveResponseEmailAddress$Outbound,
-  z.ZodTypeDef,
-  GetAtsOffersPositiveResponseEmailAddress
-> = z.object({
-  email_address: z.nullable(z.string()).optional(),
-  type: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsOffersPositiveResponseEmailAddress$ {
-  /** @deprecated use `GetAtsOffersPositiveResponseEmailAddress$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAtsOffersPositiveResponseEmailAddress$inboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseEmailAddress$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsOffersPositiveResponseEmailAddress$outboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseEmailAddress$Outbound` instead. */
-  export type Outbound = GetAtsOffersPositiveResponseEmailAddress$Outbound;
-}
-
-export function getAtsOffersPositiveResponseEmailAddressToJSON(
-  getAtsOffersPositiveResponseEmailAddress:
-    GetAtsOffersPositiveResponseEmailAddress,
-): string {
-  return JSON.stringify(
-    GetAtsOffersPositiveResponseEmailAddress$outboundSchema.parse(
-      getAtsOffersPositiveResponseEmailAddress,
-    ),
-  );
-}
 
 export function getAtsOffersPositiveResponseEmailAddressFromJSON(
   jsonString: string,
@@ -280,60 +221,6 @@ export const GetAtsOffersPositiveResponseCandidate$inboundSchema: z.ZodType<
   ).optional(),
 });
 
-/** @internal */
-export type GetAtsOffersPositiveResponseCandidate$Outbound = {
-  id: string;
-  remote_id: string;
-  first_name: string | null;
-  last_name: string | null;
-  email_addresses?:
-    | Array<GetAtsOffersPositiveResponseEmailAddress$Outbound>
-    | null
-    | undefined;
-};
-
-/** @internal */
-export const GetAtsOffersPositiveResponseCandidate$outboundSchema: z.ZodType<
-  GetAtsOffersPositiveResponseCandidate$Outbound,
-  z.ZodTypeDef,
-  GetAtsOffersPositiveResponseCandidate
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  email_addresses: z.nullable(
-    z.array(
-      z.lazy(() => GetAtsOffersPositiveResponseEmailAddress$outboundSchema),
-    ),
-  ).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsOffersPositiveResponseCandidate$ {
-  /** @deprecated use `GetAtsOffersPositiveResponseCandidate$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAtsOffersPositiveResponseCandidate$inboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseCandidate$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsOffersPositiveResponseCandidate$outboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseCandidate$Outbound` instead. */
-  export type Outbound = GetAtsOffersPositiveResponseCandidate$Outbound;
-}
-
-export function getAtsOffersPositiveResponseCandidateToJSON(
-  getAtsOffersPositiveResponseCandidate: GetAtsOffersPositiveResponseCandidate,
-): string {
-  return JSON.stringify(
-    GetAtsOffersPositiveResponseCandidate$outboundSchema.parse(
-      getAtsOffersPositiveResponseCandidate,
-    ),
-  );
-}
-
 export function getAtsOffersPositiveResponseCandidateFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAtsOffersPositiveResponseCandidate, SDKValidationError> {
@@ -356,47 +243,6 @@ export const GetAtsOffersPositiveResponseJob$inboundSchema: z.ZodType<
   name: z.nullable(z.string()),
 });
 
-/** @internal */
-export type GetAtsOffersPositiveResponseJob$Outbound = {
-  id: string;
-  remote_id: string;
-  name: string | null;
-};
-
-/** @internal */
-export const GetAtsOffersPositiveResponseJob$outboundSchema: z.ZodType<
-  GetAtsOffersPositiveResponseJob$Outbound,
-  z.ZodTypeDef,
-  GetAtsOffersPositiveResponseJob
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  name: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsOffersPositiveResponseJob$ {
-  /** @deprecated use `GetAtsOffersPositiveResponseJob$inboundSchema` instead. */
-  export const inboundSchema = GetAtsOffersPositiveResponseJob$inboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseJob$outboundSchema` instead. */
-  export const outboundSchema = GetAtsOffersPositiveResponseJob$outboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseJob$Outbound` instead. */
-  export type Outbound = GetAtsOffersPositiveResponseJob$Outbound;
-}
-
-export function getAtsOffersPositiveResponseJobToJSON(
-  getAtsOffersPositiveResponseJob: GetAtsOffersPositiveResponseJob,
-): string {
-  return JSON.stringify(
-    GetAtsOffersPositiveResponseJob$outboundSchema.parse(
-      getAtsOffersPositiveResponseJob,
-    ),
-  );
-}
-
 export function getAtsOffersPositiveResponseJobFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAtsOffersPositiveResponseJob, SDKValidationError> {
@@ -418,50 +264,6 @@ export const GetAtsOffersPositiveResponseApplication$inboundSchema: z.ZodType<
   ),
   job: z.nullable(z.lazy(() => GetAtsOffersPositiveResponseJob$inboundSchema)),
 });
-
-/** @internal */
-export type GetAtsOffersPositiveResponseApplication$Outbound = {
-  candidate: GetAtsOffersPositiveResponseCandidate$Outbound | null;
-  job: GetAtsOffersPositiveResponseJob$Outbound | null;
-};
-
-/** @internal */
-export const GetAtsOffersPositiveResponseApplication$outboundSchema: z.ZodType<
-  GetAtsOffersPositiveResponseApplication$Outbound,
-  z.ZodTypeDef,
-  GetAtsOffersPositiveResponseApplication
-> = z.object({
-  candidate: z.nullable(
-    z.lazy(() => GetAtsOffersPositiveResponseCandidate$outboundSchema),
-  ),
-  job: z.nullable(z.lazy(() => GetAtsOffersPositiveResponseJob$outboundSchema)),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsOffersPositiveResponseApplication$ {
-  /** @deprecated use `GetAtsOffersPositiveResponseApplication$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAtsOffersPositiveResponseApplication$inboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseApplication$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsOffersPositiveResponseApplication$outboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseApplication$Outbound` instead. */
-  export type Outbound = GetAtsOffersPositiveResponseApplication$Outbound;
-}
-
-export function getAtsOffersPositiveResponseApplicationToJSON(
-  getAtsOffersPositiveResponseApplication:
-    GetAtsOffersPositiveResponseApplication,
-): string {
-  return JSON.stringify(
-    GetAtsOffersPositiveResponseApplication$outboundSchema.parse(
-      getAtsOffersPositiveResponseApplication,
-    ),
-  );
-}
 
 export function getAtsOffersPositiveResponseApplicationFromJSON(
   jsonString: string,
@@ -508,66 +310,6 @@ export const GetAtsOffersPositiveResponseResult$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetAtsOffersPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string | null;
-  status: string | null;
-  employment_start_date: string | null;
-  application_id: string | null;
-  custom_fields: { [k: string]: any } | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-  remote_created_at: string | null;
-  remote_updated_at: string | null;
-  application: GetAtsOffersPositiveResponseApplication$Outbound | null;
-};
-
-/** @internal */
-export const GetAtsOffersPositiveResponseResult$outboundSchema: z.ZodType<
-  GetAtsOffersPositiveResponseResult$Outbound,
-  z.ZodTypeDef,
-  GetAtsOffersPositiveResponseResult
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  status: z.nullable(GetAtsOffersPositiveResponseStatus$outboundSchema),
-  employment_start_date: z.nullable(z.date().transform(v => v.toISOString())),
-  application_id: z.nullable(z.string()),
-  custom_fields: z.nullable(z.record(z.any())),
-  changed_at: z.date().transform(v => v.toISOString()),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  remote_created_at: z.nullable(z.date().transform(v => v.toISOString())),
-  remote_updated_at: z.nullable(z.date().transform(v => v.toISOString())),
-  application: z.nullable(
-    z.lazy(() => GetAtsOffersPositiveResponseApplication$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsOffersPositiveResponseResult$ {
-  /** @deprecated use `GetAtsOffersPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema = GetAtsOffersPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsOffersPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseResult$Outbound` instead. */
-  export type Outbound = GetAtsOffersPositiveResponseResult$Outbound;
-}
-
-export function getAtsOffersPositiveResponseResultToJSON(
-  getAtsOffersPositiveResponseResult: GetAtsOffersPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetAtsOffersPositiveResponseResult$outboundSchema.parse(
-      getAtsOffersPositiveResponseResult,
-    ),
-  );
-}
-
 export function getAtsOffersPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAtsOffersPositiveResponseResult, SDKValidationError> {
@@ -591,47 +333,6 @@ export const GetAtsOffersPositiveResponseData$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetAtsOffersPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetAtsOffersPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetAtsOffersPositiveResponseData$outboundSchema: z.ZodType<
-  GetAtsOffersPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  GetAtsOffersPositiveResponseData
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetAtsOffersPositiveResponseResult$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsOffersPositiveResponseData$ {
-  /** @deprecated use `GetAtsOffersPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema = GetAtsOffersPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema = GetAtsOffersPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetAtsOffersPositiveResponseData$Outbound;
-}
-
-export function getAtsOffersPositiveResponseDataToJSON(
-  getAtsOffersPositiveResponseData: GetAtsOffersPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetAtsOffersPositiveResponseData$outboundSchema.parse(
-      getAtsOffersPositiveResponseData,
-    ),
-  );
-}
-
 export function getAtsOffersPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAtsOffersPositiveResponseData, SDKValidationError> {
@@ -651,45 +352,6 @@ export const GetAtsOffersPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetAtsOffersPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetAtsOffersPositiveResponse$Outbound = {
-  status: "success";
-  data: GetAtsOffersPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetAtsOffersPositiveResponse$outboundSchema: z.ZodType<
-  GetAtsOffersPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetAtsOffersPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAtsOffersPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsOffersPositiveResponse$ {
-  /** @deprecated use `GetAtsOffersPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAtsOffersPositiveResponse$inboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAtsOffersPositiveResponse$outboundSchema;
-  /** @deprecated use `GetAtsOffersPositiveResponse$Outbound` instead. */
-  export type Outbound = GetAtsOffersPositiveResponse$Outbound;
-}
-
-export function getAtsOffersPositiveResponseToJSON(
-  getAtsOffersPositiveResponse: GetAtsOffersPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetAtsOffersPositiveResponse$outboundSchema.parse(
-      getAtsOffersPositiveResponse,
-    ),
-  );
-}
 
 export function getAtsOffersPositiveResponseFromJSON(
   jsonString: string,

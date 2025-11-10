@@ -64,34 +64,3 @@ export const KomboHrisError$inboundSchema: z.ZodType<
       body: v.body$,
     });
   });
-
-/** @internal */
-export type KomboHrisError$Outbound = {
-  status: string;
-  error: models.KomboHrisErrorError$Outbound;
-};
-
-/** @internal */
-export const KomboHrisError$outboundSchema: z.ZodType<
-  KomboHrisError$Outbound,
-  z.ZodTypeDef,
-  KomboHrisError
-> = z.instanceof(KomboHrisError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    status: models.KomboHrisErrorStatus$outboundSchema,
-    error: z.lazy(() => models.KomboHrisErrorError$outboundSchema),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KomboHrisError$ {
-  /** @deprecated use `KomboHrisError$inboundSchema` instead. */
-  export const inboundSchema = KomboHrisError$inboundSchema;
-  /** @deprecated use `KomboHrisError$outboundSchema` instead. */
-  export const outboundSchema = KomboHrisError$outboundSchema;
-  /** @deprecated use `KomboHrisError$Outbound` instead. */
-  export type Outbound = KomboHrisError$Outbound;
-}

@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 /**
  * Status of the assessment.
@@ -156,36 +153,10 @@ export type PutAssessmentOrdersAssessmentOrderIdResultRequestBody = {
 };
 
 /** @internal */
-export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus$inboundSchema:
-  z.ZodNativeEnum<
-    typeof PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus
-  > = z.nativeEnum(PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus);
-
-/** @internal */
 export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus$outboundSchema:
   z.ZodNativeEnum<
     typeof PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus
-  > = PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus$ {
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus$inboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus$outboundSchema;
-}
-
-/** @internal */
-export const Score$inboundSchema: z.ZodType<Score, z.ZodTypeDef, unknown> = z
-  .object({
-    value: z.number(),
-    max: z.number(),
-  });
+  > = z.nativeEnum(PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus);
 
 /** @internal */
 export type Score$Outbound = {
@@ -203,66 +174,14 @@ export const Score$outboundSchema: z.ZodType<
   max: z.number(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Score$ {
-  /** @deprecated use `Score$inboundSchema` instead. */
-  export const inboundSchema = Score$inboundSchema;
-  /** @deprecated use `Score$outboundSchema` instead. */
-  export const outboundSchema = Score$outboundSchema;
-  /** @deprecated use `Score$Outbound` instead. */
-  export type Outbound = Score$Outbound;
-}
-
 export function scoreToJSON(score: Score): string {
   return JSON.stringify(Score$outboundSchema.parse(score));
 }
 
-export function scoreFromJSON(
-  jsonString: string,
-): SafeParseResult<Score, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Score$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Score' from JSON`,
-  );
-}
-
-/** @internal */
-export const AttributeStatus$inboundSchema: z.ZodNativeEnum<
-  typeof AttributeStatus
-> = z.nativeEnum(AttributeStatus);
-
 /** @internal */
 export const AttributeStatus$outboundSchema: z.ZodNativeEnum<
   typeof AttributeStatus
-> = AttributeStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AttributeStatus$ {
-  /** @deprecated use `AttributeStatus$inboundSchema` instead. */
-  export const inboundSchema = AttributeStatus$inboundSchema;
-  /** @deprecated use `AttributeStatus$outboundSchema` instead. */
-  export const outboundSchema = AttributeStatus$outboundSchema;
-}
-
-/** @internal */
-export const AttributeSubResult$inboundSchema: z.ZodType<
-  AttributeSubResult,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: z.literal("SUB_RESULT"),
-  id: z.string(),
-  label: z.string(),
-  score: z.lazy(() => Score$inboundSchema),
-  status: AttributeStatus$inboundSchema,
-});
+> = z.nativeEnum(AttributeStatus);
 
 /** @internal */
 export type AttributeSubResult$Outbound = {
@@ -286,19 +205,6 @@ export const AttributeSubResult$outboundSchema: z.ZodType<
   status: AttributeStatus$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AttributeSubResult$ {
-  /** @deprecated use `AttributeSubResult$inboundSchema` instead. */
-  export const inboundSchema = AttributeSubResult$inboundSchema;
-  /** @deprecated use `AttributeSubResult$outboundSchema` instead. */
-  export const outboundSchema = AttributeSubResult$outboundSchema;
-  /** @deprecated use `AttributeSubResult$Outbound` instead. */
-  export type Outbound = AttributeSubResult$Outbound;
-}
-
 export function attributeSubResultToJSON(
   attributeSubResult: AttributeSubResult,
 ): string {
@@ -306,27 +212,6 @@ export function attributeSubResultToJSON(
     AttributeSubResult$outboundSchema.parse(attributeSubResult),
   );
 }
-
-export function attributeSubResultFromJSON(
-  jsonString: string,
-): SafeParseResult<AttributeSubResult, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AttributeSubResult$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AttributeSubResult' from JSON`,
-  );
-}
-
-/** @internal */
-export const AttributeText$inboundSchema: z.ZodType<
-  AttributeText,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: z.literal("TEXT"),
-  label: z.string(),
-  value: z.string(),
-});
 
 /** @internal */
 export type AttributeText$Outbound = {
@@ -346,42 +231,9 @@ export const AttributeText$outboundSchema: z.ZodType<
   value: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AttributeText$ {
-  /** @deprecated use `AttributeText$inboundSchema` instead. */
-  export const inboundSchema = AttributeText$inboundSchema;
-  /** @deprecated use `AttributeText$outboundSchema` instead. */
-  export const outboundSchema = AttributeText$outboundSchema;
-  /** @deprecated use `AttributeText$Outbound` instead. */
-  export type Outbound = AttributeText$Outbound;
-}
-
 export function attributeTextToJSON(attributeText: AttributeText): string {
   return JSON.stringify(AttributeText$outboundSchema.parse(attributeText));
 }
-
-export function attributeTextFromJSON(
-  jsonString: string,
-): SafeParseResult<AttributeText, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AttributeText$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AttributeText' from JSON`,
-  );
-}
-
-/** @internal */
-export const Attribute$inboundSchema: z.ZodType<
-  Attribute,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => AttributeSubResult$inboundSchema),
-  z.lazy(() => AttributeText$inboundSchema),
-]);
 
 /** @internal */
 export type Attribute$Outbound =
@@ -398,45 +250,9 @@ export const Attribute$outboundSchema: z.ZodType<
   z.lazy(() => AttributeText$outboundSchema),
 ]);
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Attribute$ {
-  /** @deprecated use `Attribute$inboundSchema` instead. */
-  export const inboundSchema = Attribute$inboundSchema;
-  /** @deprecated use `Attribute$outboundSchema` instead. */
-  export const outboundSchema = Attribute$outboundSchema;
-  /** @deprecated use `Attribute$Outbound` instead. */
-  export type Outbound = Attribute$Outbound;
-}
-
 export function attributeToJSON(attribute: Attribute): string {
   return JSON.stringify(Attribute$outboundSchema.parse(attribute));
 }
-
-export function attributeFromJSON(
-  jsonString: string,
-): SafeParseResult<Attribute, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Attribute$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Attribute' from JSON`,
-  );
-}
-
-/** @internal */
-export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$inboundSchema:
-  z.ZodType<
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    name: z.string(),
-    content_type: z.string().optional(),
-    data_url: z.string().optional(),
-    data: z.string().optional(),
-  });
 
 /** @internal */
 export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$Outbound =
@@ -460,22 +276,6 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$out
     data: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$ {
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$inboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$outboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$Outbound` instead. */
-  export type Outbound =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$Outbound;
-}
-
 export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachmentToJSON(
   putAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment:
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment,
@@ -485,35 +285,6 @@ export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachmentT
       .parse(putAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment),
   );
 }
-
-export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachmentFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment' from JSON`,
-  );
-}
-
-/** @internal */
-export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$inboundSchema:
-  z.ZodType<
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    scoreLabel: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "scoreLabel": "score_label",
-    });
-  });
 
 /** @internal */
 export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$Outbound =
@@ -535,22 +306,6 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiter
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$ {
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$inboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$outboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$Outbound` instead. */
-  export type Outbound =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$Outbound;
-}
-
 export function putAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruitersToJSON(
   putAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters:
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters,
@@ -562,33 +317,6 @@ export function putAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecrui
       ),
   );
 }
-
-export function putAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruitersFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters' from JSON`,
-  );
-}
-
-/** @internal */
-export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$inboundSchema:
-  z.ZodType<
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    smartrecruiters: z.lazy(() =>
-      PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$inboundSchema
-    ).optional(),
-  });
 
 /** @internal */
 export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$Outbound =
@@ -610,22 +338,6 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$o
     ).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$ {
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$inboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$outboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$Outbound` instead. */
-  export type Outbound =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$Outbound;
-}
-
 export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFieldsToJSON(
   putAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields:
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields,
@@ -635,52 +347,6 @@ export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteField
       .parse(putAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields),
   );
 }
-
-export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFieldsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields' from JSON`,
-  );
-}
-
-/** @internal */
-export const PutAssessmentOrdersAssessmentOrderIdResultRequestBody$inboundSchema:
-  z.ZodType<
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    status:
-      PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus$inboundSchema,
-    result_url: z.string(),
-    completed_at: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ).optional(),
-    score: z.number().optional(),
-    max_score: z.number().optional(),
-    attributes: z.array(
-      z.union([
-        z.lazy(() => AttributeSubResult$inboundSchema),
-        z.lazy(() => AttributeText$inboundSchema),
-      ]),
-    ).optional(),
-    attachments: z.array(
-      z.lazy(() =>
-        PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$inboundSchema
-      ),
-    ).optional(),
-    remote_fields: z.lazy(() =>
-      PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$inboundSchema
-    ).optional(),
-  });
 
 /** @internal */
 export type PutAssessmentOrdersAssessmentOrderIdResultRequestBody$Outbound = {
@@ -731,22 +397,6 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBody$outboundSchem
     ).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentOrdersAssessmentOrderIdResultRequestBody$ {
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBody$inboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBody$outboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultRequestBody$Outbound` instead. */
-  export type Outbound =
-    PutAssessmentOrdersAssessmentOrderIdResultRequestBody$Outbound;
-}
-
 export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyToJSON(
   putAssessmentOrdersAssessmentOrderIdResultRequestBody:
     PutAssessmentOrdersAssessmentOrderIdResultRequestBody,
@@ -755,21 +405,5 @@ export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyToJSON(
     PutAssessmentOrdersAssessmentOrderIdResultRequestBody$outboundSchema.parse(
       putAssessmentOrdersAssessmentOrderIdResultRequestBody,
     ),
-  );
-}
-
-export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutAssessmentOrdersAssessmentOrderIdResultRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutAssessmentOrdersAssessmentOrderIdResultRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PutAssessmentOrdersAssessmentOrderIdResultRequestBody' from JSON`,
   );
 }

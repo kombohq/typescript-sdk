@@ -61,55 +61,6 @@ export const GetHrisEmployeeDocumentCategoriesPositiveResponseResult$inboundSche
     ),
   });
 
-/** @internal */
-export type GetHrisEmployeeDocumentCategoriesPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string | null;
-  name: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const GetHrisEmployeeDocumentCategoriesPositiveResponseResult$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeeDocumentCategoriesPositiveResponseResult$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeeDocumentCategoriesPositiveResponseResult
-  > = z.object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()),
-    name: z.nullable(z.string()),
-    changed_at: z.date().transform(v => v.toISOString()),
-    remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeeDocumentCategoriesPositiveResponseResult$ {
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeeDocumentCategoriesPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeeDocumentCategoriesPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesPositiveResponseResult$Outbound` instead. */
-  export type Outbound =
-    GetHrisEmployeeDocumentCategoriesPositiveResponseResult$Outbound;
-}
-
-export function getHrisEmployeeDocumentCategoriesPositiveResponseResultToJSON(
-  getHrisEmployeeDocumentCategoriesPositiveResponseResult:
-    GetHrisEmployeeDocumentCategoriesPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeeDocumentCategoriesPositiveResponseResult$outboundSchema
-      .parse(getHrisEmployeeDocumentCategoriesPositiveResponseResult),
-  );
-}
-
 export function getHrisEmployeeDocumentCategoriesPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -140,56 +91,6 @@ export const GetHrisEmployeeDocumentCategoriesPositiveResponseData$inboundSchema
     ),
   });
 
-/** @internal */
-export type GetHrisEmployeeDocumentCategoriesPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<
-    GetHrisEmployeeDocumentCategoriesPositiveResponseResult$Outbound
-  >;
-};
-
-/** @internal */
-export const GetHrisEmployeeDocumentCategoriesPositiveResponseData$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeeDocumentCategoriesPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeeDocumentCategoriesPositiveResponseData
-  > = z.object({
-    next: z.nullable(z.string()),
-    results: z.array(
-      z.lazy(() =>
-        GetHrisEmployeeDocumentCategoriesPositiveResponseResult$outboundSchema
-      ),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeeDocumentCategoriesPositiveResponseData$ {
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeeDocumentCategoriesPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeeDocumentCategoriesPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    GetHrisEmployeeDocumentCategoriesPositiveResponseData$Outbound;
-}
-
-export function getHrisEmployeeDocumentCategoriesPositiveResponseDataToJSON(
-  getHrisEmployeeDocumentCategoriesPositiveResponseData:
-    GetHrisEmployeeDocumentCategoriesPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeeDocumentCategoriesPositiveResponseData$outboundSchema.parse(
-      getHrisEmployeeDocumentCategoriesPositiveResponseData,
-    ),
-  );
-}
-
 export function getHrisEmployeeDocumentCategoriesPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -218,52 +119,6 @@ export const GetHrisEmployeeDocumentCategoriesPositiveResponse$inboundSchema:
       GetHrisEmployeeDocumentCategoriesPositiveResponseData$inboundSchema
     ),
   });
-
-/** @internal */
-export type GetHrisEmployeeDocumentCategoriesPositiveResponse$Outbound = {
-  status: "success";
-  data: GetHrisEmployeeDocumentCategoriesPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetHrisEmployeeDocumentCategoriesPositiveResponse$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeeDocumentCategoriesPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeeDocumentCategoriesPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      GetHrisEmployeeDocumentCategoriesPositiveResponseData$outboundSchema
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeeDocumentCategoriesPositiveResponse$ {
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeeDocumentCategoriesPositiveResponse$inboundSchema;
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeeDocumentCategoriesPositiveResponse$outboundSchema;
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesPositiveResponse$Outbound` instead. */
-  export type Outbound =
-    GetHrisEmployeeDocumentCategoriesPositiveResponse$Outbound;
-}
-
-export function getHrisEmployeeDocumentCategoriesPositiveResponseToJSON(
-  getHrisEmployeeDocumentCategoriesPositiveResponse:
-    GetHrisEmployeeDocumentCategoriesPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeeDocumentCategoriesPositiveResponse$outboundSchema.parse(
-      getHrisEmployeeDocumentCategoriesPositiveResponse,
-    ),
-  );
-}
 
 export function getHrisEmployeeDocumentCategoriesPositiveResponseFromJSON(
   jsonString: string,

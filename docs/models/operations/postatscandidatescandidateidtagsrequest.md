@@ -7,7 +7,7 @@ import { PostAtsCandidatesCandidateIdTagsRequest } from "@kombo-api/sdk/models/o
 
 let value: PostAtsCandidatesCandidateIdTagsRequest = {
   candidate_id: "<id>",
-  post_ats_candidates_candidate_id_tags_request_body: {
+  body: {
     tag: {
       name: "<value>",
     },
@@ -20,4 +20,4 @@ let value: PostAtsCandidatesCandidateIdTagsRequest = {
 | Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | `candidate_id`                                                                                                    | *string*                                                                                                          | :heavy_check_mark:                                                                                                | The Kombo ID of the candidate you want to add the tag to.                                                         |
-| `post_ats_candidates_candidate_id_tags_request_body`                                                              | [models.PostAtsCandidatesCandidateIdTagsRequestBody](../../models/postatscandidatescandidateidtagsrequestbody.md) | :heavy_check_mark:                                                                                                | POST /ats/candidates/:candidate_id/tags Request body                                                              |
+| `body`                                                                                                            | [models.PostAtsCandidatesCandidateIdTagsRequestBody](../../models/postatscandidatescandidateidtagsrequestbody.md) | :heavy_check_mark:                                                                                                | POST /ats/candidates/:candidate_id/tags Request body                                                              |

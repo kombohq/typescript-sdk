@@ -26,7 +26,13 @@ export type GetHrisEmployeeDocumentCategoriesRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -46,87 +52,6 @@ export type GetHrisEmployeeDocumentCategoriesRequest = {
 export type GetHrisEmployeeDocumentCategoriesResponse = {
   result: models.GetHrisEmployeeDocumentCategoriesPositiveResponse;
 };
-
-/** @internal */
-export const GetHrisEmployeeDocumentCategoriesGlobals$inboundSchema: z.ZodType<
-  GetHrisEmployeeDocumentCategoriesGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetHrisEmployeeDocumentCategoriesGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetHrisEmployeeDocumentCategoriesGlobals$outboundSchema: z.ZodType<
-  GetHrisEmployeeDocumentCategoriesGlobals$Outbound,
-  z.ZodTypeDef,
-  GetHrisEmployeeDocumentCategoriesGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeeDocumentCategoriesGlobals$ {
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeeDocumentCategoriesGlobals$inboundSchema;
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeeDocumentCategoriesGlobals$outboundSchema;
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesGlobals$Outbound` instead. */
-  export type Outbound = GetHrisEmployeeDocumentCategoriesGlobals$Outbound;
-}
-
-export function getHrisEmployeeDocumentCategoriesGlobalsToJSON(
-  getHrisEmployeeDocumentCategoriesGlobals:
-    GetHrisEmployeeDocumentCategoriesGlobals,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeeDocumentCategoriesGlobals$outboundSchema.parse(
-      getHrisEmployeeDocumentCategoriesGlobals,
-    ),
-  );
-}
-
-export function getHrisEmployeeDocumentCategoriesGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetHrisEmployeeDocumentCategoriesGlobals,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetHrisEmployeeDocumentCategoriesGlobals$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetHrisEmployeeDocumentCategoriesGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetHrisEmployeeDocumentCategoriesRequest$inboundSchema: z.ZodType<
-  GetHrisEmployeeDocumentCategoriesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-});
 
 /** @internal */
 export type GetHrisEmployeeDocumentCategoriesRequest$Outbound = {
@@ -152,21 +77,6 @@ export const GetHrisEmployeeDocumentCategoriesRequest$outboundSchema: z.ZodType<
   remote_ids: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeeDocumentCategoriesRequest$ {
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeeDocumentCategoriesRequest$inboundSchema;
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeeDocumentCategoriesRequest$outboundSchema;
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesRequest$Outbound` instead. */
-  export type Outbound = GetHrisEmployeeDocumentCategoriesRequest$Outbound;
-}
-
 export function getHrisEmployeeDocumentCategoriesRequestToJSON(
   getHrisEmployeeDocumentCategoriesRequest:
     GetHrisEmployeeDocumentCategoriesRequest,
@@ -175,22 +85,6 @@ export function getHrisEmployeeDocumentCategoriesRequestToJSON(
     GetHrisEmployeeDocumentCategoriesRequest$outboundSchema.parse(
       getHrisEmployeeDocumentCategoriesRequest,
     ),
-  );
-}
-
-export function getHrisEmployeeDocumentCategoriesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetHrisEmployeeDocumentCategoriesRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetHrisEmployeeDocumentCategoriesRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetHrisEmployeeDocumentCategoriesRequest' from JSON`,
   );
 }
 
@@ -207,52 +101,6 @@ export const GetHrisEmployeeDocumentCategoriesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetHrisEmployeeDocumentCategoriesResponse$Outbound = {
-  Result: models.GetHrisEmployeeDocumentCategoriesPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetHrisEmployeeDocumentCategoriesResponse$outboundSchema:
-  z.ZodType<
-    GetHrisEmployeeDocumentCategoriesResponse$Outbound,
-    z.ZodTypeDef,
-    GetHrisEmployeeDocumentCategoriesResponse
-  > = z.object({
-    result:
-      models.GetHrisEmployeeDocumentCategoriesPositiveResponse$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      result: "Result",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeeDocumentCategoriesResponse$ {
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmployeeDocumentCategoriesResponse$inboundSchema;
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmployeeDocumentCategoriesResponse$outboundSchema;
-  /** @deprecated use `GetHrisEmployeeDocumentCategoriesResponse$Outbound` instead. */
-  export type Outbound = GetHrisEmployeeDocumentCategoriesResponse$Outbound;
-}
-
-export function getHrisEmployeeDocumentCategoriesResponseToJSON(
-  getHrisEmployeeDocumentCategoriesResponse:
-    GetHrisEmployeeDocumentCategoriesResponse,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeeDocumentCategoriesResponse$outboundSchema.parse(
-      getHrisEmployeeDocumentCategoriesResponse,
-    ),
-  );
-}
 
 export function getHrisEmployeeDocumentCategoriesResponseFromJSON(
   jsonString: string,

@@ -4,10 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 /**
  * Content type of the note. Currently only `PLAIN_TEXT` is supported.
@@ -140,33 +137,8 @@ export type PostAtsApplicationsApplicationIdNotesRequestBody = {
 };
 
 /** @internal */
-export const ContentType$inboundSchema: z.ZodNativeEnum<typeof ContentType> = z
+export const ContentType$outboundSchema: z.ZodNativeEnum<typeof ContentType> = z
   .nativeEnum(ContentType);
-
-/** @internal */
-export const ContentType$outboundSchema: z.ZodNativeEnum<typeof ContentType> =
-  ContentType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentType$ {
-  /** @deprecated use `ContentType$inboundSchema` instead. */
-  export const inboundSchema = ContentType$inboundSchema;
-  /** @deprecated use `ContentType$outboundSchema` instead. */
-  export const outboundSchema = ContentType$outboundSchema;
-}
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$inboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    user_id: z.string().optional(),
-  });
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$Outbound =
@@ -184,22 +156,6 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$outbound
     user_id: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$Outbound;
-}
-
 export function postAtsApplicationsApplicationIdNotesRequestBodyTeamtailorToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyTeamtailor:
     PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor,
@@ -209,35 +165,6 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyTeamtailorToJSON
       .parse(postAtsApplicationsApplicationIdNotesRequestBodyTeamtailor),
   );
 }
-
-export function postAtsApplicationsApplicationIdNotesRequestBodyTeamtailorFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$inboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "On-Behalf-Of": z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "On-Behalf-Of": "on_behalf_of",
-    });
-  });
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$Outbound =
@@ -259,22 +186,6 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$outboun
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$Outbound;
-}
-
 export function postAtsApplicationsApplicationIdNotesRequestBodyPostHeadersToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyPostHeaders:
     PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders,
@@ -284,33 +195,6 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyPostHeadersToJSO
       .parse(postAtsApplicationsApplicationIdNotesRequestBodyPostHeaders),
   );
 }
-
-export function postAtsApplicationsApplicationIdNotesRequestBodyPostHeadersFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$inboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    post_headers: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$inboundSchema
-    ).optional(),
-  });
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$Outbound =
@@ -332,22 +216,6 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$outbound
     ).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$Outbound;
-}
-
 export function postAtsApplicationsApplicationIdNotesRequestBodyGreenhouseToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyGreenhouse:
     PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse,
@@ -357,32 +225,6 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyGreenhouseToJSON
       .parse(postAtsApplicationsApplicationIdNotesRequestBodyGreenhouse),
   );
 }
-
-export function postAtsApplicationsApplicationIdNotesRequestBodyGreenhouseFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$inboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    visibility: z.any().optional(),
-    is_json: z.boolean().optional(),
-  });
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$Outbound =
@@ -402,22 +244,6 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$outboundS
     is_json: z.boolean().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$Outbound;
-}
-
 export function postAtsApplicationsApplicationIdNotesRequestBodyRecruiteeToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyRecruitee:
     PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee,
@@ -427,31 +253,6 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyRecruiteeToJSON(
       .parse(postAtsApplicationsApplicationIdNotesRequestBodyRecruitee),
   );
 }
-
-export function postAtsApplicationsApplicationIdNotesRequestBodyRecruiteeFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$inboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    action: z.string().optional(),
-  });
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$Outbound =
@@ -469,22 +270,6 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$outboundSc
     action: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$Outbound;
-}
-
 export function postAtsApplicationsApplicationIdNotesRequestBodyBullhornToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyBullhorn:
     PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn,
@@ -494,31 +279,6 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyBullhornToJSON(
       .parse(postAtsApplicationsApplicationIdNotesRequestBodyBullhorn),
   );
 }
-
-export function postAtsApplicationsApplicationIdNotesRequestBodyBullhornFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$inboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdNotesRequestBodyWorkable,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    on_behalf_of_user_remote_id: z.string().optional(),
-  });
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$Outbound =
@@ -536,22 +296,6 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$outboundSc
     on_behalf_of_user_remote_id: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$Outbound;
-}
-
 export function postAtsApplicationsApplicationIdNotesRequestBodyWorkableToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyWorkable:
     PostAtsApplicationsApplicationIdNotesRequestBodyWorkable,
@@ -561,45 +305,6 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyWorkableToJSON(
       .parse(postAtsApplicationsApplicationIdNotesRequestBodyWorkable),
   );
 }
-
-export function postAtsApplicationsApplicationIdNotesRequestBodyWorkableFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsApplicationsApplicationIdNotesRequestBodyWorkable,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PostAtsApplicationsApplicationIdNotesRequestBodyWorkable' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$inboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    teamtailor: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$inboundSchema
-    ).optional(),
-    greenhouse: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$inboundSchema
-    ).optional(),
-    recruitee: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$inboundSchema
-    ).optional(),
-    bullhorn: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$inboundSchema
-    ).optional(),
-    workable: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$inboundSchema
-    ).optional(),
-  });
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$Outbound =
@@ -645,22 +350,6 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$outbou
     ).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$Outbound;
-}
-
 export function postAtsApplicationsApplicationIdNotesRequestBodyRemoteFieldsToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyRemoteFields:
     PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields,
@@ -670,35 +359,6 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyRemoteFieldsToJS
       .parse(postAtsApplicationsApplicationIdNotesRequestBodyRemoteFields),
   );
 }
-
-export function postAtsApplicationsApplicationIdNotesRequestBodyRemoteFieldsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAtsApplicationsApplicationIdNotesRequestBody$inboundSchema:
-  z.ZodType<
-    PostAtsApplicationsApplicationIdNotesRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    content: z.string(),
-    content_type: ContentType$inboundSchema,
-    remote_fields: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$inboundSchema
-    ).optional(),
-  });
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBody$Outbound = {
@@ -723,22 +383,6 @@ export const PostAtsApplicationsApplicationIdNotesRequestBody$outboundSchema:
     ).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsApplicationsApplicationIdNotesRequestBody$ {
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBody$inboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsApplicationsApplicationIdNotesRequestBody$outboundSchema;
-  /** @deprecated use `PostAtsApplicationsApplicationIdNotesRequestBody$Outbound` instead. */
-  export type Outbound =
-    PostAtsApplicationsApplicationIdNotesRequestBody$Outbound;
-}
-
 export function postAtsApplicationsApplicationIdNotesRequestBodyToJSON(
   postAtsApplicationsApplicationIdNotesRequestBody:
     PostAtsApplicationsApplicationIdNotesRequestBody,
@@ -747,21 +391,5 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyToJSON(
     PostAtsApplicationsApplicationIdNotesRequestBody$outboundSchema.parse(
       postAtsApplicationsApplicationIdNotesRequestBody,
     ),
-  );
-}
-
-export function postAtsApplicationsApplicationIdNotesRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsApplicationsApplicationIdNotesRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsApplicationsApplicationIdNotesRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostAtsApplicationsApplicationIdNotesRequestBody' from JSON`,
   );
 }

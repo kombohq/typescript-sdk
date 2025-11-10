@@ -171,56 +171,6 @@ export const GetAssessmentOrdersOpenPositiveResponseCandidate$inboundSchema:
     remote_id: z.nullable(z.string()).optional(),
   });
 
-/** @internal */
-export type GetAssessmentOrdersOpenPositiveResponseCandidate$Outbound = {
-  email: string;
-  first_name?: string | null | undefined;
-  last_name?: string | null | undefined;
-  phone?: string | null | undefined;
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const GetAssessmentOrdersOpenPositiveResponseCandidate$outboundSchema:
-  z.ZodType<
-    GetAssessmentOrdersOpenPositiveResponseCandidate$Outbound,
-    z.ZodTypeDef,
-    GetAssessmentOrdersOpenPositiveResponseCandidate
-  > = z.object({
-    email: z.string(),
-    first_name: z.nullable(z.string()).optional(),
-    last_name: z.nullable(z.string()).optional(),
-    phone: z.nullable(z.string()).optional(),
-    remote_id: z.nullable(z.string()).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAssessmentOrdersOpenPositiveResponseCandidate$ {
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseCandidate$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseCandidate$inboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseCandidate$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseCandidate$outboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseCandidate$Outbound` instead. */
-  export type Outbound =
-    GetAssessmentOrdersOpenPositiveResponseCandidate$Outbound;
-}
-
-export function getAssessmentOrdersOpenPositiveResponseCandidateToJSON(
-  getAssessmentOrdersOpenPositiveResponseCandidate:
-    GetAssessmentOrdersOpenPositiveResponseCandidate,
-): string {
-  return JSON.stringify(
-    GetAssessmentOrdersOpenPositiveResponseCandidate$outboundSchema.parse(
-      getAssessmentOrdersOpenPositiveResponseCandidate,
-    ),
-  );
-}
-
 export function getAssessmentOrdersOpenPositiveResponseCandidateFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -246,48 +196,6 @@ export const GetAssessmentOrdersOpenPositiveResponseApplication$inboundSchema:
   > = z.object({
     remote_id: z.nullable(z.string()).optional(),
   });
-
-/** @internal */
-export type GetAssessmentOrdersOpenPositiveResponseApplication$Outbound = {
-  remote_id?: string | null | undefined;
-};
-
-/** @internal */
-export const GetAssessmentOrdersOpenPositiveResponseApplication$outboundSchema:
-  z.ZodType<
-    GetAssessmentOrdersOpenPositiveResponseApplication$Outbound,
-    z.ZodTypeDef,
-    GetAssessmentOrdersOpenPositiveResponseApplication
-  > = z.object({
-    remote_id: z.nullable(z.string()).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAssessmentOrdersOpenPositiveResponseApplication$ {
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseApplication$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseApplication$inboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseApplication$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseApplication$outboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseApplication$Outbound` instead. */
-  export type Outbound =
-    GetAssessmentOrdersOpenPositiveResponseApplication$Outbound;
-}
-
-export function getAssessmentOrdersOpenPositiveResponseApplicationToJSON(
-  getAssessmentOrdersOpenPositiveResponseApplication:
-    GetAssessmentOrdersOpenPositiveResponseApplication,
-): string {
-  return JSON.stringify(
-    GetAssessmentOrdersOpenPositiveResponseApplication$outboundSchema.parse(
-      getAssessmentOrdersOpenPositiveResponseApplication,
-    ),
-  );
-}
 
 export function getAssessmentOrdersOpenPositiveResponseApplicationFromJSON(
   jsonString: string,
@@ -321,60 +229,6 @@ export const GetAssessmentOrdersOpenPositiveResponseLocation$inboundSchema:
     zip_code: z.nullable(z.string()).optional(),
   });
 
-/** @internal */
-export type GetAssessmentOrdersOpenPositiveResponseLocation$Outbound = {
-  city?: string | null | undefined;
-  country?: string | null | undefined;
-  raw?: string | null | undefined;
-  state?: string | null | undefined;
-  street_1?: string | null | undefined;
-  street_2?: string | null | undefined;
-  zip_code?: string | null | undefined;
-};
-
-/** @internal */
-export const GetAssessmentOrdersOpenPositiveResponseLocation$outboundSchema:
-  z.ZodType<
-    GetAssessmentOrdersOpenPositiveResponseLocation$Outbound,
-    z.ZodTypeDef,
-    GetAssessmentOrdersOpenPositiveResponseLocation
-  > = z.object({
-    city: z.nullable(z.string()).optional(),
-    country: z.nullable(z.string()).optional(),
-    raw: z.nullable(z.string()).optional(),
-    state: z.nullable(z.string()).optional(),
-    street_1: z.nullable(z.string()).optional(),
-    street_2: z.nullable(z.string()).optional(),
-    zip_code: z.nullable(z.string()).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAssessmentOrdersOpenPositiveResponseLocation$ {
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseLocation$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseLocation$inboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseLocation$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseLocation$outboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseLocation$Outbound` instead. */
-  export type Outbound =
-    GetAssessmentOrdersOpenPositiveResponseLocation$Outbound;
-}
-
-export function getAssessmentOrdersOpenPositiveResponseLocationToJSON(
-  getAssessmentOrdersOpenPositiveResponseLocation:
-    GetAssessmentOrdersOpenPositiveResponseLocation,
-): string {
-  return JSON.stringify(
-    GetAssessmentOrdersOpenPositiveResponseLocation$outboundSchema.parse(
-      getAssessmentOrdersOpenPositiveResponseLocation,
-    ),
-  );
-}
-
 export function getAssessmentOrdersOpenPositiveResponseLocationFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -398,25 +252,6 @@ export const GetAssessmentOrdersOpenPositiveResponseHiringTeamRole$inboundSchema
   > = z.nativeEnum(GetAssessmentOrdersOpenPositiveResponseHiringTeamRole);
 
 /** @internal */
-export const GetAssessmentOrdersOpenPositiveResponseHiringTeamRole$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetAssessmentOrdersOpenPositiveResponseHiringTeamRole
-  > = GetAssessmentOrdersOpenPositiveResponseHiringTeamRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAssessmentOrdersOpenPositiveResponseHiringTeamRole$ {
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseHiringTeamRole$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseHiringTeamRole$inboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseHiringTeamRole$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseHiringTeamRole$outboundSchema;
-}
-
-/** @internal */
 export const GetAssessmentOrdersOpenPositiveResponseHiringTeam$inboundSchema:
   z.ZodType<
     GetAssessmentOrdersOpenPositiveResponseHiringTeam,
@@ -431,58 +266,6 @@ export const GetAssessmentOrdersOpenPositiveResponseHiringTeam$inboundSchema:
       GetAssessmentOrdersOpenPositiveResponseHiringTeamRole$inboundSchema,
     ),
   });
-
-/** @internal */
-export type GetAssessmentOrdersOpenPositiveResponseHiringTeam$Outbound = {
-  remote_id: string;
-  email: string | null;
-  first_name: string | null;
-  last_name: string | null;
-  hiring_team_roles: Array<string>;
-};
-
-/** @internal */
-export const GetAssessmentOrdersOpenPositiveResponseHiringTeam$outboundSchema:
-  z.ZodType<
-    GetAssessmentOrdersOpenPositiveResponseHiringTeam$Outbound,
-    z.ZodTypeDef,
-    GetAssessmentOrdersOpenPositiveResponseHiringTeam
-  > = z.object({
-    remote_id: z.string(),
-    email: z.nullable(z.string()),
-    first_name: z.nullable(z.string()),
-    last_name: z.nullable(z.string()),
-    hiring_team_roles: z.array(
-      GetAssessmentOrdersOpenPositiveResponseHiringTeamRole$outboundSchema,
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAssessmentOrdersOpenPositiveResponseHiringTeam$ {
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseHiringTeam$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseHiringTeam$inboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseHiringTeam$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseHiringTeam$outboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseHiringTeam$Outbound` instead. */
-  export type Outbound =
-    GetAssessmentOrdersOpenPositiveResponseHiringTeam$Outbound;
-}
-
-export function getAssessmentOrdersOpenPositiveResponseHiringTeamToJSON(
-  getAssessmentOrdersOpenPositiveResponseHiringTeam:
-    GetAssessmentOrdersOpenPositiveResponseHiringTeam,
-): string {
-  return JSON.stringify(
-    GetAssessmentOrdersOpenPositiveResponseHiringTeam$outboundSchema.parse(
-      getAssessmentOrdersOpenPositiveResponseHiringTeam,
-    ),
-  );
-}
 
 export function getAssessmentOrdersOpenPositiveResponseHiringTeamFromJSON(
   jsonString: string,
@@ -518,66 +301,6 @@ export const GetAssessmentOrdersOpenPositiveResponseJob$inboundSchema:
       ),
     });
 
-/** @internal */
-export type GetAssessmentOrdersOpenPositiveResponseJob$Outbound = {
-  remote_id?: string | null | undefined;
-  name?: string | null | undefined;
-  location?:
-    | GetAssessmentOrdersOpenPositiveResponseLocation$Outbound
-    | null
-    | undefined;
-  hiring_team: Array<
-    GetAssessmentOrdersOpenPositiveResponseHiringTeam$Outbound
-  >;
-};
-
-/** @internal */
-export const GetAssessmentOrdersOpenPositiveResponseJob$outboundSchema:
-  z.ZodType<
-    GetAssessmentOrdersOpenPositiveResponseJob$Outbound,
-    z.ZodTypeDef,
-    GetAssessmentOrdersOpenPositiveResponseJob
-  > = z.object({
-    remote_id: z.nullable(z.string()).optional(),
-    name: z.nullable(z.string()).optional(),
-    location: z.nullable(
-      z.lazy(() =>
-        GetAssessmentOrdersOpenPositiveResponseLocation$outboundSchema
-      ),
-    ).optional(),
-    hiring_team: z.array(
-      z.lazy(() =>
-        GetAssessmentOrdersOpenPositiveResponseHiringTeam$outboundSchema
-      ),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAssessmentOrdersOpenPositiveResponseJob$ {
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseJob$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseJob$inboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseJob$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseJob$outboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseJob$Outbound` instead. */
-  export type Outbound = GetAssessmentOrdersOpenPositiveResponseJob$Outbound;
-}
-
-export function getAssessmentOrdersOpenPositiveResponseJobToJSON(
-  getAssessmentOrdersOpenPositiveResponseJob:
-    GetAssessmentOrdersOpenPositiveResponseJob,
-): string {
-  return JSON.stringify(
-    GetAssessmentOrdersOpenPositiveResponseJob$outboundSchema.parse(
-      getAssessmentOrdersOpenPositiveResponseJob,
-    ),
-  );
-}
-
 export function getAssessmentOrdersOpenPositiveResponseJobFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -612,61 +335,6 @@ export const GetAssessmentOrdersOpenPositiveResponseResult$inboundSchema:
     job: z.lazy(() => GetAssessmentOrdersOpenPositiveResponseJob$inboundSchema),
   });
 
-/** @internal */
-export type GetAssessmentOrdersOpenPositiveResponseResult$Outbound = {
-  id: string;
-  package_id: string;
-  candidate: GetAssessmentOrdersOpenPositiveResponseCandidate$Outbound;
-  application: GetAssessmentOrdersOpenPositiveResponseApplication$Outbound;
-  job: GetAssessmentOrdersOpenPositiveResponseJob$Outbound;
-};
-
-/** @internal */
-export const GetAssessmentOrdersOpenPositiveResponseResult$outboundSchema:
-  z.ZodType<
-    GetAssessmentOrdersOpenPositiveResponseResult$Outbound,
-    z.ZodTypeDef,
-    GetAssessmentOrdersOpenPositiveResponseResult
-  > = z.object({
-    id: z.string(),
-    package_id: z.string(),
-    candidate: z.lazy(() =>
-      GetAssessmentOrdersOpenPositiveResponseCandidate$outboundSchema
-    ),
-    application: z.lazy(() =>
-      GetAssessmentOrdersOpenPositiveResponseApplication$outboundSchema
-    ),
-    job: z.lazy(() =>
-      GetAssessmentOrdersOpenPositiveResponseJob$outboundSchema
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAssessmentOrdersOpenPositiveResponseResult$ {
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseResult$Outbound` instead. */
-  export type Outbound = GetAssessmentOrdersOpenPositiveResponseResult$Outbound;
-}
-
-export function getAssessmentOrdersOpenPositiveResponseResultToJSON(
-  getAssessmentOrdersOpenPositiveResponseResult:
-    GetAssessmentOrdersOpenPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetAssessmentOrdersOpenPositiveResponseResult$outboundSchema.parse(
-      getAssessmentOrdersOpenPositiveResponseResult,
-    ),
-  );
-}
-
 export function getAssessmentOrdersOpenPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -696,53 +364,6 @@ export const GetAssessmentOrdersOpenPositiveResponseData$inboundSchema:
     ),
   });
 
-/** @internal */
-export type GetAssessmentOrdersOpenPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetAssessmentOrdersOpenPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetAssessmentOrdersOpenPositiveResponseData$outboundSchema:
-  z.ZodType<
-    GetAssessmentOrdersOpenPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    GetAssessmentOrdersOpenPositiveResponseData
-  > = z.object({
-    next: z.nullable(z.string()),
-    results: z.array(
-      z.lazy(() =>
-        GetAssessmentOrdersOpenPositiveResponseResult$outboundSchema
-      ),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAssessmentOrdersOpenPositiveResponseData$ {
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAssessmentOrdersOpenPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetAssessmentOrdersOpenPositiveResponseData$Outbound;
-}
-
-export function getAssessmentOrdersOpenPositiveResponseDataToJSON(
-  getAssessmentOrdersOpenPositiveResponseData:
-    GetAssessmentOrdersOpenPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetAssessmentOrdersOpenPositiveResponseData$outboundSchema.parse(
-      getAssessmentOrdersOpenPositiveResponseData,
-    ),
-  );
-}
-
 export function getAssessmentOrdersOpenPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -768,50 +389,6 @@ export const GetAssessmentOrdersOpenPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetAssessmentOrdersOpenPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetAssessmentOrdersOpenPositiveResponse$Outbound = {
-  status: "success";
-  data: GetAssessmentOrdersOpenPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetAssessmentOrdersOpenPositiveResponse$outboundSchema: z.ZodType<
-  GetAssessmentOrdersOpenPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetAssessmentOrdersOpenPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() =>
-    GetAssessmentOrdersOpenPositiveResponseData$outboundSchema
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAssessmentOrdersOpenPositiveResponse$ {
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAssessmentOrdersOpenPositiveResponse$inboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAssessmentOrdersOpenPositiveResponse$outboundSchema;
-  /** @deprecated use `GetAssessmentOrdersOpenPositiveResponse$Outbound` instead. */
-  export type Outbound = GetAssessmentOrdersOpenPositiveResponse$Outbound;
-}
-
-export function getAssessmentOrdersOpenPositiveResponseToJSON(
-  getAssessmentOrdersOpenPositiveResponse:
-    GetAssessmentOrdersOpenPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetAssessmentOrdersOpenPositiveResponse$outboundSchema.parse(
-      getAssessmentOrdersOpenPositiveResponse,
-    ),
-  );
-}
 
 export function getAssessmentOrdersOpenPositiveResponseFromJSON(
   jsonString: string,

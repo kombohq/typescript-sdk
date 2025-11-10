@@ -120,65 +120,27 @@ export type DataChangedWebhookPayload = {
 export const DataChangedWebhookPayloadType$inboundSchema: z.ZodNativeEnum<
   typeof DataChangedWebhookPayloadType
 > = z.nativeEnum(DataChangedWebhookPayloadType);
-
 /** @internal */
 export const DataChangedWebhookPayloadType$outboundSchema: z.ZodNativeEnum<
   typeof DataChangedWebhookPayloadType
 > = DataChangedWebhookPayloadType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DataChangedWebhookPayloadType$ {
-  /** @deprecated use `DataChangedWebhookPayloadType$inboundSchema` instead. */
-  export const inboundSchema = DataChangedWebhookPayloadType$inboundSchema;
-  /** @deprecated use `DataChangedWebhookPayloadType$outboundSchema` instead. */
-  export const outboundSchema = DataChangedWebhookPayloadType$outboundSchema;
-}
-
 /** @internal */
 export const DataChangedWebhookPayloadIntegrationCategory$inboundSchema:
   z.ZodNativeEnum<typeof DataChangedWebhookPayloadIntegrationCategory> = z
     .nativeEnum(DataChangedWebhookPayloadIntegrationCategory);
-
 /** @internal */
 export const DataChangedWebhookPayloadIntegrationCategory$outboundSchema:
   z.ZodNativeEnum<typeof DataChangedWebhookPayloadIntegrationCategory> =
     DataChangedWebhookPayloadIntegrationCategory$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DataChangedWebhookPayloadIntegrationCategory$ {
-  /** @deprecated use `DataChangedWebhookPayloadIntegrationCategory$inboundSchema` instead. */
-  export const inboundSchema =
-    DataChangedWebhookPayloadIntegrationCategory$inboundSchema;
-  /** @deprecated use `DataChangedWebhookPayloadIntegrationCategory$outboundSchema` instead. */
-  export const outboundSchema =
-    DataChangedWebhookPayloadIntegrationCategory$outboundSchema;
-}
-
 /** @internal */
 export const Name$inboundSchema: z.ZodNativeEnum<typeof Name> = z.nativeEnum(
   Name,
 );
-
 /** @internal */
 export const Name$outboundSchema: z.ZodNativeEnum<typeof Name> =
   Name$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Name$ {
-  /** @deprecated use `Name$inboundSchema` instead. */
-  export const inboundSchema = Name$inboundSchema;
-  /** @deprecated use `Name$outboundSchema` instead. */
-  export const outboundSchema = Name$outboundSchema;
-}
 
 /** @internal */
 export const ChangedModel$inboundSchema: z.ZodType<
@@ -188,7 +150,6 @@ export const ChangedModel$inboundSchema: z.ZodType<
 > = z.object({
   name: Name$inboundSchema,
 });
-
 /** @internal */
 export type ChangedModel$Outbound = {
   name: string;
@@ -203,23 +164,9 @@ export const ChangedModel$outboundSchema: z.ZodType<
   name: Name$outboundSchema,
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ChangedModel$ {
-  /** @deprecated use `ChangedModel$inboundSchema` instead. */
-  export const inboundSchema = ChangedModel$inboundSchema;
-  /** @deprecated use `ChangedModel$outboundSchema` instead. */
-  export const outboundSchema = ChangedModel$outboundSchema;
-  /** @deprecated use `ChangedModel$Outbound` instead. */
-  export type Outbound = ChangedModel$Outbound;
-}
-
 export function changedModelToJSON(changedModel: ChangedModel): string {
   return JSON.stringify(ChangedModel$outboundSchema.parse(changedModel));
 }
-
 export function changedModelFromJSON(
   jsonString: string,
 ): SafeParseResult<ChangedModel, SDKValidationError> {
@@ -242,7 +189,6 @@ export const DataChangedWebhookPayloadData$inboundSchema: z.ZodType<
     DataChangedWebhookPayloadIntegrationCategory$inboundSchema,
   changed_models: z.array(z.lazy(() => ChangedModel$inboundSchema)),
 });
-
 /** @internal */
 export type DataChangedWebhookPayloadData$Outbound = {
   integration_id: string;
@@ -264,19 +210,6 @@ export const DataChangedWebhookPayloadData$outboundSchema: z.ZodType<
   changed_models: z.array(z.lazy(() => ChangedModel$outboundSchema)),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DataChangedWebhookPayloadData$ {
-  /** @deprecated use `DataChangedWebhookPayloadData$inboundSchema` instead. */
-  export const inboundSchema = DataChangedWebhookPayloadData$inboundSchema;
-  /** @deprecated use `DataChangedWebhookPayloadData$outboundSchema` instead. */
-  export const outboundSchema = DataChangedWebhookPayloadData$outboundSchema;
-  /** @deprecated use `DataChangedWebhookPayloadData$Outbound` instead. */
-  export type Outbound = DataChangedWebhookPayloadData$Outbound;
-}
-
 export function dataChangedWebhookPayloadDataToJSON(
   dataChangedWebhookPayloadData: DataChangedWebhookPayloadData,
 ): string {
@@ -286,7 +219,6 @@ export function dataChangedWebhookPayloadDataToJSON(
     ),
   );
 }
-
 export function dataChangedWebhookPayloadDataFromJSON(
   jsonString: string,
 ): SafeParseResult<DataChangedWebhookPayloadData, SDKValidationError> {
@@ -307,7 +239,6 @@ export const DataChangedWebhookPayload$inboundSchema: z.ZodType<
   type: DataChangedWebhookPayloadType$inboundSchema,
   data: z.lazy(() => DataChangedWebhookPayloadData$inboundSchema),
 });
-
 /** @internal */
 export type DataChangedWebhookPayload$Outbound = {
   id: string;
@@ -326,19 +257,6 @@ export const DataChangedWebhookPayload$outboundSchema: z.ZodType<
   data: z.lazy(() => DataChangedWebhookPayloadData$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DataChangedWebhookPayload$ {
-  /** @deprecated use `DataChangedWebhookPayload$inboundSchema` instead. */
-  export const inboundSchema = DataChangedWebhookPayload$inboundSchema;
-  /** @deprecated use `DataChangedWebhookPayload$outboundSchema` instead. */
-  export const outboundSchema = DataChangedWebhookPayload$outboundSchema;
-  /** @deprecated use `DataChangedWebhookPayload$Outbound` instead. */
-  export type Outbound = DataChangedWebhookPayload$Outbound;
-}
-
 export function dataChangedWebhookPayloadToJSON(
   dataChangedWebhookPayload: DataChangedWebhookPayload,
 ): string {
@@ -346,7 +264,6 @@ export function dataChangedWebhookPayloadToJSON(
     DataChangedWebhookPayload$outboundSchema.parse(dataChangedWebhookPayload),
   );
 }
-
 export function dataChangedWebhookPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<DataChangedWebhookPayload, SDKValidationError> {

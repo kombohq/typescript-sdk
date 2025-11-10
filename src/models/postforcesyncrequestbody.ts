@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 /**
  * The type of the triggered sync.
@@ -30,34 +27,9 @@ export type PostForceSyncRequestBody = {
 };
 
 /** @internal */
-export const PostForceSyncRequestBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof PostForceSyncRequestBodyType
-> = z.nativeEnum(PostForceSyncRequestBodyType);
-
-/** @internal */
 export const PostForceSyncRequestBodyType$outboundSchema: z.ZodNativeEnum<
   typeof PostForceSyncRequestBodyType
-> = PostForceSyncRequestBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostForceSyncRequestBodyType$ {
-  /** @deprecated use `PostForceSyncRequestBodyType$inboundSchema` instead. */
-  export const inboundSchema = PostForceSyncRequestBodyType$inboundSchema;
-  /** @deprecated use `PostForceSyncRequestBodyType$outboundSchema` instead. */
-  export const outboundSchema = PostForceSyncRequestBodyType$outboundSchema;
-}
-
-/** @internal */
-export const PostForceSyncRequestBody$inboundSchema: z.ZodType<
-  PostForceSyncRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: PostForceSyncRequestBodyType$inboundSchema.default("FULL"),
-});
+> = z.nativeEnum(PostForceSyncRequestBodyType);
 
 /** @internal */
 export type PostForceSyncRequestBody$Outbound = {
@@ -73,33 +45,10 @@ export const PostForceSyncRequestBody$outboundSchema: z.ZodType<
   type: PostForceSyncRequestBodyType$outboundSchema.default("FULL"),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostForceSyncRequestBody$ {
-  /** @deprecated use `PostForceSyncRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PostForceSyncRequestBody$inboundSchema;
-  /** @deprecated use `PostForceSyncRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PostForceSyncRequestBody$outboundSchema;
-  /** @deprecated use `PostForceSyncRequestBody$Outbound` instead. */
-  export type Outbound = PostForceSyncRequestBody$Outbound;
-}
-
 export function postForceSyncRequestBodyToJSON(
   postForceSyncRequestBody: PostForceSyncRequestBody,
 ): string {
   return JSON.stringify(
     PostForceSyncRequestBody$outboundSchema.parse(postForceSyncRequestBody),
-  );
-}
-
-export function postForceSyncRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PostForceSyncRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostForceSyncRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostForceSyncRequestBody' from JSON`,
   );
 }
