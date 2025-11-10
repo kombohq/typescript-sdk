@@ -6,7 +6,7 @@ management:
   speakeasyVersion: 1.651.0
   generationVersion: 2.745.2
   releaseVersion: 0.2.0
-  configChecksum: d5de43c14be2453ce05b64b74b594964
+  configChecksum: 85439b9ff4eb501f708a73bf593a8ee4
   repoURL: https://github.com/kombohq/typescript-sdk.git
   installationURL: https://github.com/kombohq/typescript-sdk
   published: true
@@ -7588,4 +7588,3 @@ generatedTests:
   unlinkSharedEnvVariable: "2025-10-24T00:07:28Z"
   updateStaticIps: "2025-10-24T00:07:28Z"
   getProjectClientCerts: "2025-10-27T19:04:15Z"
-releaseNotes: "## Typescript SDK Changes Detected:\n* `kombo.ats.createCandidate()`: \n  *  `request.remoteFields.piloga` **Added**\n* `kombo.ats.createApplication()`: \n  *  `request.body.remoteFields.piloga` **Added**\n"

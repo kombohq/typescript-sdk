@@ -66,7 +66,8 @@
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "vitest run"
   },
   "peerDependencies": {
     
@@ -75,8 +76,10 @@
     "@eslint/js": "^9.19.0",
     "eslint": "^9.19.0",
     "globals": "^15.14.0",
+    "nock": "^14.0.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.26.0"
+    "typescript-eslint": "^8.26.0",
+    "vitest": "^4.0.8"
   },
   "dependencies": {
     "zod": "^3.25.0 || ^4.0.0"

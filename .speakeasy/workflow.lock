@@ -15,7 +15,7 @@ targets:
         sourceRevisionDigest: sha256:300e3ee288c337a26e44e51212767370e6d6c078ffecc08939b1c51c1eb47ccf
         sourceBlobDigest: sha256:f9b489e42fe38afc9701e659de06bbbe1286025e7e1e1e8aee2587b0a98657c2
         codeSamplesNamespace: kombo-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:f66dfb3babcbe70833a5f19d3b175f45f75ac9b6bd7f826707e19520baccd5c8
+        codeSamplesRevisionDigest: sha256:de52100744f1a1e44acc594865a086003ea9232ac01b594364932ba66b237f10
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
