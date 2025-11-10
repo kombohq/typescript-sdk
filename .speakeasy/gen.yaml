@@ -31,7 +31,9 @@ typescript:
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
-    devDependencies: {}
+    devDependencies:
+      nock: ^14.0.0
+      vitest: ^4.0.8
     peerDependencies: {}
   additionalPackageJSON:
     description: The official TypeScript/JavaScript SDK for the Kombo Unified API
@@ -44,7 +46,8 @@ typescript:
       - ATS
       - Assessment
     license: MIT
-  additionalScripts: {}
+  additionalScripts:
+    test: vitest run
   alwaysIncludeInboundAndOutbound: false
   author: Kombo Technologies GmbH <support@kombo.dev> (https://www.kombo.dev)
   baseErrorName: KomboError
