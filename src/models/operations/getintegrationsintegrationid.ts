@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetIntegrationsIntegrationIdRequest = {
   /**
@@ -13,15 +10,6 @@ export type GetIntegrationsIntegrationIdRequest = {
    */
   integration_id: string;
 };
-
-/** @internal */
-export const GetIntegrationsIntegrationIdRequest$inboundSchema: z.ZodType<
-  GetIntegrationsIntegrationIdRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string(),
-});
 
 /** @internal */
 export type GetIntegrationsIntegrationIdRequest$Outbound = {
@@ -37,21 +25,6 @@ export const GetIntegrationsIntegrationIdRequest$outboundSchema: z.ZodType<
   integration_id: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationsIntegrationIdRequest$ {
-  /** @deprecated use `GetIntegrationsIntegrationIdRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    GetIntegrationsIntegrationIdRequest$inboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationsIntegrationIdRequest$outboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdRequest$Outbound` instead. */
-  export type Outbound = GetIntegrationsIntegrationIdRequest$Outbound;
-}
-
 export function getIntegrationsIntegrationIdRequestToJSON(
   getIntegrationsIntegrationIdRequest: GetIntegrationsIntegrationIdRequest,
 ): string {
@@ -59,16 +32,5 @@ export function getIntegrationsIntegrationIdRequestToJSON(
     GetIntegrationsIntegrationIdRequest$outboundSchema.parse(
       getIntegrationsIntegrationIdRequest,
     ),
-  );
-}
-
-export function getIntegrationsIntegrationIdRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetIntegrationsIntegrationIdRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetIntegrationsIntegrationIdRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetIntegrationsIntegrationIdRequest' from JSON`,
   );
 }

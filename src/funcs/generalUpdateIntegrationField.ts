@@ -92,12 +92,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON(
-    "body",
-    payload
-      .PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody,
-    { explode: true },
-  );
+  const body = encodeJSON("body", payload.body, { explode: true });
 
   const pathParams = {
     integration_field_id: encodeSimple(

@@ -7,7 +7,7 @@ import { WebhookIntegrationDeletedWebhookPayloadRequest } from "@kombo-api/sdk/m
 
 let value: WebhookIntegrationDeletedWebhookPayloadRequest = {
   x_kombo_signature: "<value>",
-  integration_deleted_webhook_payload: {
+  body: {
     id: "<id>",
     type: "integration-deleted",
     data: {
@@ -30,4 +30,4 @@ let value: WebhookIntegrationDeletedWebhookPayloadRequest = {
 | Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `x_kombo_signature`                                                                                                 | *string*                                                                                                            | :heavy_check_mark:                                                                                                  | HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature. |
-| `integration_deleted_webhook_payload`                                                                               | [models.IntegrationDeletedWebhookPayload](../../models/integrationdeletedwebhookpayload.md)                         | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| `body`                                                                                                              | [models.IntegrationDeletedWebhookPayload](../../models/integrationdeletedwebhookpayload.md)                         | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |

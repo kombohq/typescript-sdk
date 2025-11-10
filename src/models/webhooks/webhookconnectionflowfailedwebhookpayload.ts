@@ -14,8 +14,7 @@ export type WebhookConnectionFlowFailedWebhookPayloadRequest = {
    * HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature.
    */
   x_kombo_signature: string;
-  connection_flow_failed_webhook_payload:
-    models.ConnectionFlowFailedWebhookPayload;
+  body: models.ConnectionFlowFailedWebhookPayload;
 };
 
 /** @internal */
@@ -26,21 +25,16 @@ export const WebhookConnectionFlowFailedWebhookPayloadRequest$inboundSchema:
     unknown
   > = z.object({
     "X-Kombo-Signature": z.string(),
-    ConnectionFlowFailedWebhookPayload:
-      models.ConnectionFlowFailedWebhookPayload$inboundSchema,
+    body: models.ConnectionFlowFailedWebhookPayload$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "X-Kombo-Signature": "x_kombo_signature",
-      "ConnectionFlowFailedWebhookPayload":
-        "connection_flow_failed_webhook_payload",
     });
   });
-
 /** @internal */
 export type WebhookConnectionFlowFailedWebhookPayloadRequest$Outbound = {
   "X-Kombo-Signature": string;
-  ConnectionFlowFailedWebhookPayload:
-    models.ConnectionFlowFailedWebhookPayload$Outbound;
+  body: models.ConnectionFlowFailedWebhookPayload$Outbound;
 };
 
 /** @internal */
@@ -51,31 +45,12 @@ export const WebhookConnectionFlowFailedWebhookPayloadRequest$outboundSchema:
     WebhookConnectionFlowFailedWebhookPayloadRequest
   > = z.object({
     x_kombo_signature: z.string(),
-    connection_flow_failed_webhook_payload:
-      models.ConnectionFlowFailedWebhookPayload$outboundSchema,
+    body: models.ConnectionFlowFailedWebhookPayload$outboundSchema,
   }).transform((v) => {
     return remap$(v, {
       x_kombo_signature: "X-Kombo-Signature",
-      connection_flow_failed_webhook_payload:
-        "ConnectionFlowFailedWebhookPayload",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookConnectionFlowFailedWebhookPayloadRequest$ {
-  /** @deprecated use `WebhookConnectionFlowFailedWebhookPayloadRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    WebhookConnectionFlowFailedWebhookPayloadRequest$inboundSchema;
-  /** @deprecated use `WebhookConnectionFlowFailedWebhookPayloadRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    WebhookConnectionFlowFailedWebhookPayloadRequest$outboundSchema;
-  /** @deprecated use `WebhookConnectionFlowFailedWebhookPayloadRequest$Outbound` instead. */
-  export type Outbound =
-    WebhookConnectionFlowFailedWebhookPayloadRequest$Outbound;
-}
 
 export function webhookConnectionFlowFailedWebhookPayloadRequestToJSON(
   webhookConnectionFlowFailedWebhookPayloadRequest:
@@ -87,7 +62,6 @@ export function webhookConnectionFlowFailedWebhookPayloadRequestToJSON(
     ),
   );
 }
-
 export function webhookConnectionFlowFailedWebhookPayloadRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<

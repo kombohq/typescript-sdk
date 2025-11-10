@@ -4,12 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  ClosedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../types/enums.js";
+import { catchUnrecognizedEnum, ClosedEnum, OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -554,29 +549,6 @@ export const GetAtsJobsPositiveResponseEmploymentType$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const GetAtsJobsPositiveResponseEmploymentType$outboundSchema: z.ZodType<
-  GetAtsJobsPositiveResponseEmploymentType,
-  z.ZodTypeDef,
-  GetAtsJobsPositiveResponseEmploymentType
-> = z.union([
-  z.nativeEnum(GetAtsJobsPositiveResponseEmploymentType),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsJobsPositiveResponseEmploymentType$ {
-  /** @deprecated use `GetAtsJobsPositiveResponseEmploymentType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAtsJobsPositiveResponseEmploymentType$inboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponseEmploymentType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsJobsPositiveResponseEmploymentType$outboundSchema;
-}
-
-/** @internal */
 export const GetAtsJobsPositiveResponseStatus$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseStatus,
   z.ZodTypeDef,
@@ -586,27 +558,6 @@ export const GetAtsJobsPositiveResponseStatus$inboundSchema: z.ZodType<
     z.nativeEnum(GetAtsJobsPositiveResponseStatus),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const GetAtsJobsPositiveResponseStatus$outboundSchema: z.ZodType<
-  GetAtsJobsPositiveResponseStatus,
-  z.ZodTypeDef,
-  GetAtsJobsPositiveResponseStatus
-> = z.union([
-  z.nativeEnum(GetAtsJobsPositiveResponseStatus),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsJobsPositiveResponseStatus$ {
-  /** @deprecated use `GetAtsJobsPositiveResponseStatus$inboundSchema` instead. */
-  export const inboundSchema = GetAtsJobsPositiveResponseStatus$inboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponseStatus$outboundSchema` instead. */
-  export const outboundSchema = GetAtsJobsPositiveResponseStatus$outboundSchema;
-}
 
 /** @internal */
 export const Visibility$inboundSchema: z.ZodType<
@@ -620,27 +571,6 @@ export const Visibility$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const Visibility$outboundSchema: z.ZodType<
-  Visibility,
-  z.ZodTypeDef,
-  Visibility
-> = z.union([
-  z.nativeEnum(Visibility),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Visibility$ {
-  /** @deprecated use `Visibility$inboundSchema` instead. */
-  export const inboundSchema = Visibility$inboundSchema;
-  /** @deprecated use `Visibility$outboundSchema` instead. */
-  export const outboundSchema = Visibility$outboundSchema;
-}
-
-/** @internal */
 export const RemoteWorkStatus$inboundSchema: z.ZodType<
   RemoteWorkStatus,
   z.ZodTypeDef,
@@ -652,27 +582,6 @@ export const RemoteWorkStatus$inboundSchema: z.ZodType<
   ]);
 
 /** @internal */
-export const RemoteWorkStatus$outboundSchema: z.ZodType<
-  RemoteWorkStatus,
-  z.ZodTypeDef,
-  RemoteWorkStatus
-> = z.union([
-  z.nativeEnum(RemoteWorkStatus),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace RemoteWorkStatus$ {
-  /** @deprecated use `RemoteWorkStatus$inboundSchema` instead. */
-  export const inboundSchema = RemoteWorkStatus$inboundSchema;
-  /** @deprecated use `RemoteWorkStatus$outboundSchema` instead. */
-  export const outboundSchema = RemoteWorkStatus$outboundSchema;
-}
-
-/** @internal */
 export const SalaryPeriod$inboundSchema: z.ZodType<
   SalaryPeriod,
   z.ZodTypeDef,
@@ -682,27 +591,6 @@ export const SalaryPeriod$inboundSchema: z.ZodType<
     z.nativeEnum(SalaryPeriod),
     z.string().transform(catchUnrecognizedEnum),
   ]);
-
-/** @internal */
-export const SalaryPeriod$outboundSchema: z.ZodType<
-  SalaryPeriod,
-  z.ZodTypeDef,
-  SalaryPeriod
-> = z.union([
-  z.nativeEnum(SalaryPeriod),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SalaryPeriod$ {
-  /** @deprecated use `SalaryPeriod$inboundSchema` instead. */
-  export const inboundSchema = SalaryPeriod$inboundSchema;
-  /** @deprecated use `SalaryPeriod$outboundSchema` instead. */
-  export const outboundSchema = SalaryPeriod$outboundSchema;
-}
 
 /** @internal */
 export const GetAtsJobsPositiveResponseLocation$inboundSchema: z.ZodType<
@@ -718,56 +606,6 @@ export const GetAtsJobsPositiveResponseLocation$inboundSchema: z.ZodType<
   street_2: z.nullable(z.string()).optional(),
   zip_code: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type GetAtsJobsPositiveResponseLocation$Outbound = {
-  city?: string | null | undefined;
-  country?: string | null | undefined;
-  raw?: string | null | undefined;
-  state?: string | null | undefined;
-  street_1?: string | null | undefined;
-  street_2?: string | null | undefined;
-  zip_code?: string | null | undefined;
-};
-
-/** @internal */
-export const GetAtsJobsPositiveResponseLocation$outboundSchema: z.ZodType<
-  GetAtsJobsPositiveResponseLocation$Outbound,
-  z.ZodTypeDef,
-  GetAtsJobsPositiveResponseLocation
-> = z.object({
-  city: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.string()).optional(),
-  state: z.nullable(z.string()).optional(),
-  street_1: z.nullable(z.string()).optional(),
-  street_2: z.nullable(z.string()).optional(),
-  zip_code: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsJobsPositiveResponseLocation$ {
-  /** @deprecated use `GetAtsJobsPositiveResponseLocation$inboundSchema` instead. */
-  export const inboundSchema = GetAtsJobsPositiveResponseLocation$inboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponseLocation$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsJobsPositiveResponseLocation$outboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponseLocation$Outbound` instead. */
-  export type Outbound = GetAtsJobsPositiveResponseLocation$Outbound;
-}
-
-export function getAtsJobsPositiveResponseLocationToJSON(
-  getAtsJobsPositiveResponseLocation: GetAtsJobsPositiveResponseLocation,
-): string {
-  return JSON.stringify(
-    GetAtsJobsPositiveResponseLocation$outboundSchema.parse(
-      getAtsJobsPositiveResponseLocation,
-    ),
-  );
-}
 
 export function getAtsJobsPositiveResponseLocationFromJSON(
   jsonString: string,
@@ -789,43 +627,6 @@ export const Stage$inboundSchema: z.ZodType<Stage, z.ZodTypeDef, unknown> = z
     index: z.nullable(z.number().int()).optional(),
   });
 
-/** @internal */
-export type Stage$Outbound = {
-  id: string;
-  remote_id: string | null;
-  name: string | null;
-  index?: number | null | undefined;
-};
-
-/** @internal */
-export const Stage$outboundSchema: z.ZodType<
-  Stage$Outbound,
-  z.ZodTypeDef,
-  Stage
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  name: z.nullable(z.string()),
-  index: z.nullable(z.number().int()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Stage$ {
-  /** @deprecated use `Stage$inboundSchema` instead. */
-  export const inboundSchema = Stage$inboundSchema;
-  /** @deprecated use `Stage$outboundSchema` instead. */
-  export const outboundSchema = Stage$outboundSchema;
-  /** @deprecated use `Stage$Outbound` instead. */
-  export type Outbound = Stage$Outbound;
-}
-
-export function stageToJSON(stage: Stage): string {
-  return JSON.stringify(Stage$outboundSchema.parse(stage));
-}
-
 export function stageFromJSON(
   jsonString: string,
 ): SafeParseResult<Stage, SDKValidationError> {
@@ -846,39 +647,6 @@ export const FormatUnknown$inboundSchema: z.ZodType<
   type: z.literal("UNKNOWN"),
 });
 
-/** @internal */
-export type FormatUnknown$Outbound = {
-  raw_question?: any | undefined;
-  type: "UNKNOWN";
-};
-
-/** @internal */
-export const FormatUnknown$outboundSchema: z.ZodType<
-  FormatUnknown$Outbound,
-  z.ZodTypeDef,
-  FormatUnknown
-> = z.object({
-  raw_question: z.any().optional(),
-  type: z.literal("UNKNOWN"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FormatUnknown$ {
-  /** @deprecated use `FormatUnknown$inboundSchema` instead. */
-  export const inboundSchema = FormatUnknown$inboundSchema;
-  /** @deprecated use `FormatUnknown$outboundSchema` instead. */
-  export const outboundSchema = FormatUnknown$outboundSchema;
-  /** @deprecated use `FormatUnknown$Outbound` instead. */
-  export type Outbound = FormatUnknown$Outbound;
-}
-
-export function formatUnknownToJSON(formatUnknown: FormatUnknown): string {
-  return JSON.stringify(FormatUnknown$outboundSchema.parse(formatUnknown));
-}
-
 export function formatUnknownFromJSON(
   jsonString: string,
 ): SafeParseResult<FormatUnknown, SDKValidationError> {
@@ -898,41 +666,6 @@ export const FormatInformation$inboundSchema: z.ZodType<
   type: z.literal("INFORMATION"),
 });
 
-/** @internal */
-export type FormatInformation$Outbound = {
-  type: "INFORMATION";
-};
-
-/** @internal */
-export const FormatInformation$outboundSchema: z.ZodType<
-  FormatInformation$Outbound,
-  z.ZodTypeDef,
-  FormatInformation
-> = z.object({
-  type: z.literal("INFORMATION"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FormatInformation$ {
-  /** @deprecated use `FormatInformation$inboundSchema` instead. */
-  export const inboundSchema = FormatInformation$inboundSchema;
-  /** @deprecated use `FormatInformation$outboundSchema` instead. */
-  export const outboundSchema = FormatInformation$outboundSchema;
-  /** @deprecated use `FormatInformation$Outbound` instead. */
-  export type Outbound = FormatInformation$Outbound;
-}
-
-export function formatInformationToJSON(
-  formatInformation: FormatInformation,
-): string {
-  return JSON.stringify(
-    FormatInformation$outboundSchema.parse(formatInformation),
-  );
-}
-
 export function formatInformationFromJSON(
   jsonString: string,
 ): SafeParseResult<FormatInformation, SDKValidationError> {
@@ -950,41 +683,6 @@ export const Option2$inboundSchema: z.ZodType<Option2, z.ZodTypeDef, unknown> =
     remote_id: z.nullable(z.string()).optional(),
     name: z.string(),
   });
-
-/** @internal */
-export type Option2$Outbound = {
-  id: string;
-  remote_id?: string | null | undefined;
-  name: string;
-};
-
-/** @internal */
-export const Option2$outboundSchema: z.ZodType<
-  Option2$Outbound,
-  z.ZodTypeDef,
-  Option2
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()).optional(),
-  name: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Option2$ {
-  /** @deprecated use `Option2$inboundSchema` instead. */
-  export const inboundSchema = Option2$inboundSchema;
-  /** @deprecated use `Option2$outboundSchema` instead. */
-  export const outboundSchema = Option2$outboundSchema;
-  /** @deprecated use `Option2$Outbound` instead. */
-  export type Outbound = Option2$Outbound;
-}
-
-export function option2ToJSON(option2: Option2): string {
-  return JSON.stringify(Option2$outboundSchema.parse(option2));
-}
 
 export function option2FromJSON(
   jsonString: string,
@@ -1006,43 +704,6 @@ export const FormatMultiSelect$inboundSchema: z.ZodType<
   type: z.literal("MULTI_SELECT"),
 });
 
-/** @internal */
-export type FormatMultiSelect$Outbound = {
-  options: Array<Option2$Outbound>;
-  type: "MULTI_SELECT";
-};
-
-/** @internal */
-export const FormatMultiSelect$outboundSchema: z.ZodType<
-  FormatMultiSelect$Outbound,
-  z.ZodTypeDef,
-  FormatMultiSelect
-> = z.object({
-  options: z.array(z.lazy(() => Option2$outboundSchema)),
-  type: z.literal("MULTI_SELECT"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FormatMultiSelect$ {
-  /** @deprecated use `FormatMultiSelect$inboundSchema` instead. */
-  export const inboundSchema = FormatMultiSelect$inboundSchema;
-  /** @deprecated use `FormatMultiSelect$outboundSchema` instead. */
-  export const outboundSchema = FormatMultiSelect$outboundSchema;
-  /** @deprecated use `FormatMultiSelect$Outbound` instead. */
-  export type Outbound = FormatMultiSelect$Outbound;
-}
-
-export function formatMultiSelectToJSON(
-  formatMultiSelect: FormatMultiSelect,
-): string {
-  return JSON.stringify(
-    FormatMultiSelect$outboundSchema.parse(formatMultiSelect),
-  );
-}
-
 export function formatMultiSelectFromJSON(
   jsonString: string,
 ): SafeParseResult<FormatMultiSelect, SDKValidationError> {
@@ -1061,37 +722,6 @@ export const FormatDate$inboundSchema: z.ZodType<
 > = z.object({
   type: z.literal("DATE"),
 });
-
-/** @internal */
-export type FormatDate$Outbound = {
-  type: "DATE";
-};
-
-/** @internal */
-export const FormatDate$outboundSchema: z.ZodType<
-  FormatDate$Outbound,
-  z.ZodTypeDef,
-  FormatDate
-> = z.object({
-  type: z.literal("DATE"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FormatDate$ {
-  /** @deprecated use `FormatDate$inboundSchema` instead. */
-  export const inboundSchema = FormatDate$inboundSchema;
-  /** @deprecated use `FormatDate$outboundSchema` instead. */
-  export const outboundSchema = FormatDate$outboundSchema;
-  /** @deprecated use `FormatDate$Outbound` instead. */
-  export type Outbound = FormatDate$Outbound;
-}
-
-export function formatDateToJSON(formatDate: FormatDate): string {
-  return JSON.stringify(FormatDate$outboundSchema.parse(formatDate));
-}
 
 export function formatDateFromJSON(
   jsonString: string,
@@ -1112,37 +742,6 @@ export const FormatBoolean$inboundSchema: z.ZodType<
   type: z.literal("BOOLEAN"),
 });
 
-/** @internal */
-export type FormatBoolean$Outbound = {
-  type: "BOOLEAN";
-};
-
-/** @internal */
-export const FormatBoolean$outboundSchema: z.ZodType<
-  FormatBoolean$Outbound,
-  z.ZodTypeDef,
-  FormatBoolean
-> = z.object({
-  type: z.literal("BOOLEAN"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FormatBoolean$ {
-  /** @deprecated use `FormatBoolean$inboundSchema` instead. */
-  export const inboundSchema = FormatBoolean$inboundSchema;
-  /** @deprecated use `FormatBoolean$outboundSchema` instead. */
-  export const outboundSchema = FormatBoolean$outboundSchema;
-  /** @deprecated use `FormatBoolean$Outbound` instead. */
-  export type Outbound = FormatBoolean$Outbound;
-}
-
-export function formatBooleanToJSON(formatBoolean: FormatBoolean): string {
-  return JSON.stringify(FormatBoolean$outboundSchema.parse(formatBoolean));
-}
-
 export function formatBooleanFromJSON(
   jsonString: string,
 ): SafeParseResult<FormatBoolean, SDKValidationError> {
@@ -1158,62 +757,12 @@ export const DisplayType3$inboundSchema: z.ZodNativeEnum<typeof DisplayType3> =
   z.nativeEnum(DisplayType3);
 
 /** @internal */
-export const DisplayType3$outboundSchema: z.ZodNativeEnum<typeof DisplayType3> =
-  DisplayType3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisplayType3$ {
-  /** @deprecated use `DisplayType3$inboundSchema` instead. */
-  export const inboundSchema = DisplayType3$inboundSchema;
-  /** @deprecated use `DisplayType3$outboundSchema` instead. */
-  export const outboundSchema = DisplayType3$outboundSchema;
-}
-
-/** @internal */
 export const Option1$inboundSchema: z.ZodType<Option1, z.ZodTypeDef, unknown> =
   z.object({
     id: z.string(),
     remote_id: z.nullable(z.string()).optional(),
     name: z.string(),
   });
-
-/** @internal */
-export type Option1$Outbound = {
-  id: string;
-  remote_id?: string | null | undefined;
-  name: string;
-};
-
-/** @internal */
-export const Option1$outboundSchema: z.ZodType<
-  Option1$Outbound,
-  z.ZodTypeDef,
-  Option1
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()).optional(),
-  name: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Option1$ {
-  /** @deprecated use `Option1$inboundSchema` instead. */
-  export const inboundSchema = Option1$inboundSchema;
-  /** @deprecated use `Option1$outboundSchema` instead. */
-  export const outboundSchema = Option1$outboundSchema;
-  /** @deprecated use `Option1$Outbound` instead. */
-  export type Outbound = Option1$Outbound;
-}
-
-export function option1ToJSON(option1: Option1): string {
-  return JSON.stringify(Option1$outboundSchema.parse(option1));
-}
 
 export function option1FromJSON(
   jsonString: string,
@@ -1236,45 +785,6 @@ export const FormatSingleSelect$inboundSchema: z.ZodType<
   type: z.literal("SINGLE_SELECT"),
 });
 
-/** @internal */
-export type FormatSingleSelect$Outbound = {
-  display_type?: string | null | undefined;
-  options: Array<Option1$Outbound>;
-  type: "SINGLE_SELECT";
-};
-
-/** @internal */
-export const FormatSingleSelect$outboundSchema: z.ZodType<
-  FormatSingleSelect$Outbound,
-  z.ZodTypeDef,
-  FormatSingleSelect
-> = z.object({
-  display_type: z.nullable(DisplayType3$outboundSchema).optional(),
-  options: z.array(z.lazy(() => Option1$outboundSchema)),
-  type: z.literal("SINGLE_SELECT"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FormatSingleSelect$ {
-  /** @deprecated use `FormatSingleSelect$inboundSchema` instead. */
-  export const inboundSchema = FormatSingleSelect$inboundSchema;
-  /** @deprecated use `FormatSingleSelect$outboundSchema` instead. */
-  export const outboundSchema = FormatSingleSelect$outboundSchema;
-  /** @deprecated use `FormatSingleSelect$Outbound` instead. */
-  export type Outbound = FormatSingleSelect$Outbound;
-}
-
-export function formatSingleSelectToJSON(
-  formatSingleSelect: FormatSingleSelect,
-): string {
-  return JSON.stringify(
-    FormatSingleSelect$outboundSchema.parse(formatSingleSelect),
-  );
-}
-
 export function formatSingleSelectFromJSON(
   jsonString: string,
 ): SafeParseResult<FormatSingleSelect, SDKValidationError> {
@@ -1296,41 +806,6 @@ export const FormatFile$inboundSchema: z.ZodType<
   type: z.literal("FILE"),
 });
 
-/** @internal */
-export type FormatFile$Outbound = {
-  accepted_mime_types?: Array<string> | null | undefined;
-  max_file_size_bytes?: number | null | undefined;
-  type: "FILE";
-};
-
-/** @internal */
-export const FormatFile$outboundSchema: z.ZodType<
-  FormatFile$Outbound,
-  z.ZodTypeDef,
-  FormatFile
-> = z.object({
-  accepted_mime_types: z.nullable(z.array(z.string())).optional(),
-  max_file_size_bytes: z.nullable(z.number().int()).optional(),
-  type: z.literal("FILE"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FormatFile$ {
-  /** @deprecated use `FormatFile$inboundSchema` instead. */
-  export const inboundSchema = FormatFile$inboundSchema;
-  /** @deprecated use `FormatFile$outboundSchema` instead. */
-  export const outboundSchema = FormatFile$outboundSchema;
-  /** @deprecated use `FormatFile$Outbound` instead. */
-  export type Outbound = FormatFile$Outbound;
-}
-
-export function formatFileToJSON(formatFile: FormatFile): string {
-  return JSON.stringify(FormatFile$outboundSchema.parse(formatFile));
-}
-
 export function formatFileFromJSON(
   jsonString: string,
 ): SafeParseResult<FormatFile, SDKValidationError> {
@@ -1346,21 +821,6 @@ export const DisplayType2$inboundSchema: z.ZodNativeEnum<typeof DisplayType2> =
   z.nativeEnum(DisplayType2);
 
 /** @internal */
-export const DisplayType2$outboundSchema: z.ZodNativeEnum<typeof DisplayType2> =
-  DisplayType2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisplayType2$ {
-  /** @deprecated use `DisplayType2$inboundSchema` instead. */
-  export const inboundSchema = DisplayType2$inboundSchema;
-  /** @deprecated use `DisplayType2$outboundSchema` instead. */
-  export const outboundSchema = DisplayType2$outboundSchema;
-}
-
-/** @internal */
 export const FormatNumber$inboundSchema: z.ZodType<
   FormatNumber,
   z.ZodTypeDef,
@@ -1371,43 +831,6 @@ export const FormatNumber$inboundSchema: z.ZodType<
   min: z.nullable(z.number()).optional(),
   type: z.literal("NUMBER"),
 });
-
-/** @internal */
-export type FormatNumber$Outbound = {
-  display_type: string | null;
-  max?: number | null | undefined;
-  min?: number | null | undefined;
-  type: "NUMBER";
-};
-
-/** @internal */
-export const FormatNumber$outboundSchema: z.ZodType<
-  FormatNumber$Outbound,
-  z.ZodTypeDef,
-  FormatNumber
-> = z.object({
-  display_type: z.nullable(DisplayType2$outboundSchema.default("FIELD")),
-  max: z.nullable(z.number()).optional(),
-  min: z.nullable(z.number()).optional(),
-  type: z.literal("NUMBER"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FormatNumber$ {
-  /** @deprecated use `FormatNumber$inboundSchema` instead. */
-  export const inboundSchema = FormatNumber$inboundSchema;
-  /** @deprecated use `FormatNumber$outboundSchema` instead. */
-  export const outboundSchema = FormatNumber$outboundSchema;
-  /** @deprecated use `FormatNumber$Outbound` instead. */
-  export type Outbound = FormatNumber$Outbound;
-}
-
-export function formatNumberToJSON(formatNumber: FormatNumber): string {
-  return JSON.stringify(FormatNumber$outboundSchema.parse(formatNumber));
-}
 
 export function formatNumberFromJSON(
   jsonString: string,
@@ -1424,21 +847,6 @@ export const DisplayType1$inboundSchema: z.ZodNativeEnum<typeof DisplayType1> =
   z.nativeEnum(DisplayType1);
 
 /** @internal */
-export const DisplayType1$outboundSchema: z.ZodNativeEnum<typeof DisplayType1> =
-  DisplayType1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DisplayType1$ {
-  /** @deprecated use `DisplayType1$inboundSchema` instead. */
-  export const inboundSchema = DisplayType1$inboundSchema;
-  /** @deprecated use `DisplayType1$outboundSchema` instead. */
-  export const outboundSchema = DisplayType1$outboundSchema;
-}
-
-/** @internal */
 export const FormatText$inboundSchema: z.ZodType<
   FormatText,
   z.ZodTypeDef,
@@ -1448,41 +856,6 @@ export const FormatText$inboundSchema: z.ZodType<
   max_length: z.nullable(z.number().int()).optional(),
   type: z.literal("TEXT"),
 });
-
-/** @internal */
-export type FormatText$Outbound = {
-  display_type?: string | null | undefined;
-  max_length?: number | null | undefined;
-  type: "TEXT";
-};
-
-/** @internal */
-export const FormatText$outboundSchema: z.ZodType<
-  FormatText$Outbound,
-  z.ZodTypeDef,
-  FormatText
-> = z.object({
-  display_type: z.nullable(DisplayType1$outboundSchema).optional(),
-  max_length: z.nullable(z.number().int()).optional(),
-  type: z.literal("TEXT"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace FormatText$ {
-  /** @deprecated use `FormatText$inboundSchema` instead. */
-  export const inboundSchema = FormatText$inboundSchema;
-  /** @deprecated use `FormatText$outboundSchema` instead. */
-  export const outboundSchema = FormatText$outboundSchema;
-  /** @deprecated use `FormatText$Outbound` instead. */
-  export type Outbound = FormatText$Outbound;
-}
-
-export function formatTextToJSON(formatText: FormatText): string {
-  return JSON.stringify(FormatText$outboundSchema.parse(formatText));
-}
 
 export function formatTextFromJSON(
   jsonString: string,
@@ -1508,52 +881,6 @@ export const Format$inboundSchema: z.ZodType<Format, z.ZodTypeDef, unknown> = z
     z.lazy(() => FormatUnknown$inboundSchema),
   ]);
 
-/** @internal */
-export type Format$Outbound =
-  | FormatSingleSelect$Outbound
-  | FormatMultiSelect$Outbound
-  | FormatText$Outbound
-  | FormatNumber$Outbound
-  | FormatFile$Outbound
-  | FormatBoolean$Outbound
-  | FormatDate$Outbound
-  | FormatInformation$Outbound
-  | FormatUnknown$Outbound;
-
-/** @internal */
-export const Format$outboundSchema: z.ZodType<
-  Format$Outbound,
-  z.ZodTypeDef,
-  Format
-> = z.union([
-  z.lazy(() => FormatSingleSelect$outboundSchema),
-  z.lazy(() => FormatMultiSelect$outboundSchema),
-  z.lazy(() => FormatText$outboundSchema),
-  z.lazy(() => FormatNumber$outboundSchema),
-  z.lazy(() => FormatFile$outboundSchema),
-  z.lazy(() => FormatBoolean$outboundSchema),
-  z.lazy(() => FormatDate$outboundSchema),
-  z.lazy(() => FormatInformation$outboundSchema),
-  z.lazy(() => FormatUnknown$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Format$ {
-  /** @deprecated use `Format$inboundSchema` instead. */
-  export const inboundSchema = Format$inboundSchema;
-  /** @deprecated use `Format$outboundSchema` instead. */
-  export const outboundSchema = Format$outboundSchema;
-  /** @deprecated use `Format$Outbound` instead. */
-  export type Outbound = Format$Outbound;
-}
-
-export function formatToJSON(format: Format): string {
-  return JSON.stringify(Format$outboundSchema.parse(format));
-}
-
 export function formatFromJSON(
   jsonString: string,
 ): SafeParseResult<Format, SDKValidationError> {
@@ -1570,59 +897,11 @@ export const GetAtsJobsPositiveResponseCategory$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetAtsJobsPositiveResponseCategory);
 
 /** @internal */
-export const GetAtsJobsPositiveResponseCategory$outboundSchema: z.ZodNativeEnum<
-  typeof GetAtsJobsPositiveResponseCategory
-> = GetAtsJobsPositiveResponseCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsJobsPositiveResponseCategory$ {
-  /** @deprecated use `GetAtsJobsPositiveResponseCategory$inboundSchema` instead. */
-  export const inboundSchema = GetAtsJobsPositiveResponseCategory$inboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponseCategory$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsJobsPositiveResponseCategory$outboundSchema;
-}
-
-/** @internal */
 export const PreconditionOptions$inboundSchema: z.ZodType<
   PreconditionOptions,
   z.ZodTypeDef,
   unknown
 > = z.union([z.array(z.string()), z.array(z.boolean())]);
-
-/** @internal */
-export type PreconditionOptions$Outbound = Array<string> | Array<boolean>;
-
-/** @internal */
-export const PreconditionOptions$outboundSchema: z.ZodType<
-  PreconditionOptions$Outbound,
-  z.ZodTypeDef,
-  PreconditionOptions
-> = z.union([z.array(z.string()), z.array(z.boolean())]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PreconditionOptions$ {
-  /** @deprecated use `PreconditionOptions$inboundSchema` instead. */
-  export const inboundSchema = PreconditionOptions$inboundSchema;
-  /** @deprecated use `PreconditionOptions$outboundSchema` instead. */
-  export const outboundSchema = PreconditionOptions$outboundSchema;
-  /** @deprecated use `PreconditionOptions$Outbound` instead. */
-  export type Outbound = PreconditionOptions$Outbound;
-}
-
-export function preconditionOptionsToJSON(
-  preconditionOptions: PreconditionOptions,
-): string {
-  return JSON.stringify(
-    PreconditionOptions$outboundSchema.parse(preconditionOptions),
-  );
-}
 
 export function preconditionOptionsFromJSON(
   jsonString: string,
@@ -1666,84 +945,6 @@ export const ScreeningQuestion$inboundSchema: z.ZodType<
   ).optional(),
 });
 
-/** @internal */
-export type ScreeningQuestion$Outbound = {
-  id: string;
-  remote_id: string | null;
-  title: string | null;
-  description: string | null;
-  format?:
-    | FormatSingleSelect$Outbound
-    | FormatMultiSelect$Outbound
-    | FormatText$Outbound
-    | FormatNumber$Outbound
-    | FormatFile$Outbound
-    | FormatBoolean$Outbound
-    | FormatDate$Outbound
-    | FormatInformation$Outbound
-    | FormatUnknown$Outbound
-    | null
-    | undefined;
-  category: string | null;
-  index?: number | null | undefined;
-  required: boolean | null;
-  precondition_question_id?: string | null | undefined;
-  precondition_options?: Array<string> | Array<boolean> | null | undefined;
-};
-
-/** @internal */
-export const ScreeningQuestion$outboundSchema: z.ZodType<
-  ScreeningQuestion$Outbound,
-  z.ZodTypeDef,
-  ScreeningQuestion
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  title: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  format: z.nullable(
-    z.union([
-      z.lazy(() => FormatSingleSelect$outboundSchema),
-      z.lazy(() => FormatMultiSelect$outboundSchema),
-      z.lazy(() => FormatText$outboundSchema),
-      z.lazy(() => FormatNumber$outboundSchema),
-      z.lazy(() => FormatFile$outboundSchema),
-      z.lazy(() => FormatBoolean$outboundSchema),
-      z.lazy(() => FormatDate$outboundSchema),
-      z.lazy(() => FormatInformation$outboundSchema),
-      z.lazy(() => FormatUnknown$outboundSchema),
-    ]),
-  ).optional(),
-  category: z.nullable(GetAtsJobsPositiveResponseCategory$outboundSchema),
-  index: z.nullable(z.number().int()).optional(),
-  required: z.nullable(z.boolean()),
-  precondition_question_id: z.nullable(z.string()).optional(),
-  precondition_options: z.nullable(
-    z.union([z.array(z.string()), z.array(z.boolean())]),
-  ).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ScreeningQuestion$ {
-  /** @deprecated use `ScreeningQuestion$inboundSchema` instead. */
-  export const inboundSchema = ScreeningQuestion$inboundSchema;
-  /** @deprecated use `ScreeningQuestion$outboundSchema` instead. */
-  export const outboundSchema = ScreeningQuestion$outboundSchema;
-  /** @deprecated use `ScreeningQuestion$Outbound` instead. */
-  export type Outbound = ScreeningQuestion$Outbound;
-}
-
-export function screeningQuestionToJSON(
-  screeningQuestion: ScreeningQuestion,
-): string {
-  return JSON.stringify(
-    ScreeningQuestion$outboundSchema.parse(screeningQuestion),
-  );
-}
-
 export function screeningQuestionFromJSON(
   jsonString: string,
 ): SafeParseResult<ScreeningQuestion, SDKValidationError> {
@@ -1760,41 +961,9 @@ export const JobPostingStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(JobPostingStatus);
 
 /** @internal */
-export const JobPostingStatus$outboundSchema: z.ZodNativeEnum<
-  typeof JobPostingStatus
-> = JobPostingStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobPostingStatus$ {
-  /** @deprecated use `JobPostingStatus$inboundSchema` instead. */
-  export const inboundSchema = JobPostingStatus$inboundSchema;
-  /** @deprecated use `JobPostingStatus$outboundSchema` instead. */
-  export const outboundSchema = JobPostingStatus$outboundSchema;
-}
-
-/** @internal */
 export const JobPostingVisibility$inboundSchema: z.ZodNativeEnum<
   typeof JobPostingVisibility
 > = z.nativeEnum(JobPostingVisibility);
-
-/** @internal */
-export const JobPostingVisibility$outboundSchema: z.ZodNativeEnum<
-  typeof JobPostingVisibility
-> = JobPostingVisibility$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobPostingVisibility$ {
-  /** @deprecated use `JobPostingVisibility$inboundSchema` instead. */
-  export const inboundSchema = JobPostingVisibility$inboundSchema;
-  /** @deprecated use `JobPostingVisibility$outboundSchema` instead. */
-  export const outboundSchema = JobPostingVisibility$outboundSchema;
-}
 
 /** @internal */
 export const JobPosting$inboundSchema: z.ZodType<
@@ -1810,49 +979,6 @@ export const JobPosting$inboundSchema: z.ZodType<
   visibility: z.nullable(JobPostingVisibility$inboundSchema),
   url: z.nullable(z.string()),
 });
-
-/** @internal */
-export type JobPosting$Outbound = {
-  id: string;
-  remote_id: string | null;
-  title: string | null;
-  description_html: string | null;
-  status: string | null;
-  visibility: string | null;
-  url: string | null;
-};
-
-/** @internal */
-export const JobPosting$outboundSchema: z.ZodType<
-  JobPosting$Outbound,
-  z.ZodTypeDef,
-  JobPosting
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  title: z.nullable(z.string()),
-  description_html: z.nullable(z.string()),
-  status: z.nullable(JobPostingStatus$outboundSchema),
-  visibility: z.nullable(JobPostingVisibility$outboundSchema),
-  url: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace JobPosting$ {
-  /** @deprecated use `JobPosting$inboundSchema` instead. */
-  export const inboundSchema = JobPosting$inboundSchema;
-  /** @deprecated use `JobPosting$outboundSchema` instead. */
-  export const outboundSchema = JobPosting$outboundSchema;
-  /** @deprecated use `JobPosting$Outbound` instead. */
-  export type Outbound = JobPosting$Outbound;
-}
-
-export function jobPostingToJSON(jobPosting: JobPosting): string {
-  return JSON.stringify(JobPosting$outboundSchema.parse(jobPosting));
-}
 
 export function jobPostingFromJSON(
   jsonString: string,
@@ -1870,24 +996,6 @@ export const GetAtsJobsPositiveResponseHiringTeamRole$inboundSchema:
     .nativeEnum(GetAtsJobsPositiveResponseHiringTeamRole);
 
 /** @internal */
-export const GetAtsJobsPositiveResponseHiringTeamRole$outboundSchema:
-  z.ZodNativeEnum<typeof GetAtsJobsPositiveResponseHiringTeamRole> =
-    GetAtsJobsPositiveResponseHiringTeamRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsJobsPositiveResponseHiringTeamRole$ {
-  /** @deprecated use `GetAtsJobsPositiveResponseHiringTeamRole$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAtsJobsPositiveResponseHiringTeamRole$inboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponseHiringTeamRole$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsJobsPositiveResponseHiringTeamRole$outboundSchema;
-}
-
-/** @internal */
 export const GetAtsJobsPositiveResponseHiringTeam$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseHiringTeam,
   z.ZodTypeDef,
@@ -1902,57 +1010,6 @@ export const GetAtsJobsPositiveResponseHiringTeam$inboundSchema: z.ZodType<
     GetAtsJobsPositiveResponseHiringTeamRole$inboundSchema,
   ),
 });
-
-/** @internal */
-export type GetAtsJobsPositiveResponseHiringTeam$Outbound = {
-  id: string;
-  remote_id: string | null;
-  first_name: string | null;
-  last_name: string | null;
-  email?: string | null | undefined;
-  hiring_team_roles: Array<string>;
-};
-
-/** @internal */
-export const GetAtsJobsPositiveResponseHiringTeam$outboundSchema: z.ZodType<
-  GetAtsJobsPositiveResponseHiringTeam$Outbound,
-  z.ZodTypeDef,
-  GetAtsJobsPositiveResponseHiringTeam
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  email: z.nullable(z.string()).optional(),
-  hiring_team_roles: z.array(
-    GetAtsJobsPositiveResponseHiringTeamRole$outboundSchema,
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsJobsPositiveResponseHiringTeam$ {
-  /** @deprecated use `GetAtsJobsPositiveResponseHiringTeam$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAtsJobsPositiveResponseHiringTeam$inboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponseHiringTeam$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsJobsPositiveResponseHiringTeam$outboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponseHiringTeam$Outbound` instead. */
-  export type Outbound = GetAtsJobsPositiveResponseHiringTeam$Outbound;
-}
-
-export function getAtsJobsPositiveResponseHiringTeamToJSON(
-  getAtsJobsPositiveResponseHiringTeam: GetAtsJobsPositiveResponseHiringTeam,
-): string {
-  return JSON.stringify(
-    GetAtsJobsPositiveResponseHiringTeam$outboundSchema.parse(
-      getAtsJobsPositiveResponseHiringTeam,
-    ),
-  );
-}
 
 export function getAtsJobsPositiveResponseHiringTeamFromJSON(
   jsonString: string,
@@ -2023,116 +1080,6 @@ export const GetAtsJobsPositiveResponseResult$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetAtsJobsPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string;
-  name: string | null;
-  job_code: string | null;
-  description: string | null;
-  confidential: boolean | null;
-  weekly_hours: number | null;
-  employment_type?: string | null | undefined;
-  status?: string | null | undefined;
-  visibility?: string | null | undefined;
-  category: string | null;
-  department: string | null;
-  post_url: string | null;
-  experience_level: string | null;
-  remote_work_status?: string | null | undefined;
-  salary_amount: number | null;
-  salary_amount_from: number | null;
-  salary_amount_to: number | null;
-  salary_currency: string | null;
-  salary_period?: string | null | undefined;
-  location?: GetAtsJobsPositiveResponseLocation$Outbound | null | undefined;
-  custom_fields: { [k: string]: any } | null;
-  remote_url: string | null;
-  opened_at: string | null;
-  closed_at: string | null;
-  remote_created_at: string | null;
-  remote_updated_at: string | null;
-  contact_id: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-  stages: Array<Stage$Outbound>;
-  screening_questions: Array<ScreeningQuestion$Outbound>;
-  job_postings: Array<JobPosting$Outbound>;
-  hiring_team: Array<GetAtsJobsPositiveResponseHiringTeam$Outbound>;
-};
-
-/** @internal */
-export const GetAtsJobsPositiveResponseResult$outboundSchema: z.ZodType<
-  GetAtsJobsPositiveResponseResult$Outbound,
-  z.ZodTypeDef,
-  GetAtsJobsPositiveResponseResult
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  name: z.nullable(z.string()),
-  job_code: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  confidential: z.nullable(z.boolean()),
-  weekly_hours: z.nullable(z.number()),
-  employment_type: z.nullable(
-    GetAtsJobsPositiveResponseEmploymentType$outboundSchema,
-  ).optional(),
-  status: z.nullable(GetAtsJobsPositiveResponseStatus$outboundSchema)
-    .optional(),
-  visibility: z.nullable(Visibility$outboundSchema).optional(),
-  category: z.nullable(z.string()),
-  department: z.nullable(z.string()),
-  post_url: z.nullable(z.string()),
-  experience_level: z.nullable(z.string()),
-  remote_work_status: z.nullable(RemoteWorkStatus$outboundSchema).optional(),
-  salary_amount: z.nullable(z.number()),
-  salary_amount_from: z.nullable(z.number()),
-  salary_amount_to: z.nullable(z.number()),
-  salary_currency: z.nullable(z.string()),
-  salary_period: z.nullable(SalaryPeriod$outboundSchema).optional(),
-  location: z.nullable(
-    z.lazy(() => GetAtsJobsPositiveResponseLocation$outboundSchema),
-  ).optional(),
-  custom_fields: z.nullable(z.record(z.any())),
-  remote_url: z.nullable(z.string()),
-  opened_at: z.nullable(z.date().transform(v => v.toISOString())),
-  closed_at: z.nullable(z.date().transform(v => v.toISOString())),
-  remote_created_at: z.nullable(z.date().transform(v => v.toISOString())),
-  remote_updated_at: z.nullable(z.date().transform(v => v.toISOString())),
-  contact_id: z.nullable(z.string()),
-  changed_at: z.date().transform(v => v.toISOString()),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  stages: z.array(z.lazy(() => Stage$outboundSchema)),
-  screening_questions: z.array(z.lazy(() => ScreeningQuestion$outboundSchema)),
-  job_postings: z.array(z.lazy(() => JobPosting$outboundSchema)),
-  hiring_team: z.array(
-    z.lazy(() => GetAtsJobsPositiveResponseHiringTeam$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsJobsPositiveResponseResult$ {
-  /** @deprecated use `GetAtsJobsPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema = GetAtsJobsPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema = GetAtsJobsPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponseResult$Outbound` instead. */
-  export type Outbound = GetAtsJobsPositiveResponseResult$Outbound;
-}
-
-export function getAtsJobsPositiveResponseResultToJSON(
-  getAtsJobsPositiveResponseResult: GetAtsJobsPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetAtsJobsPositiveResponseResult$outboundSchema.parse(
-      getAtsJobsPositiveResponseResult,
-    ),
-  );
-}
-
 export function getAtsJobsPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAtsJobsPositiveResponseResult, SDKValidationError> {
@@ -2155,47 +1102,6 @@ export const GetAtsJobsPositiveResponseData$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetAtsJobsPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetAtsJobsPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetAtsJobsPositiveResponseData$outboundSchema: z.ZodType<
-  GetAtsJobsPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  GetAtsJobsPositiveResponseData
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetAtsJobsPositiveResponseResult$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsJobsPositiveResponseData$ {
-  /** @deprecated use `GetAtsJobsPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema = GetAtsJobsPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema = GetAtsJobsPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetAtsJobsPositiveResponseData$Outbound;
-}
-
-export function getAtsJobsPositiveResponseDataToJSON(
-  getAtsJobsPositiveResponseData: GetAtsJobsPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetAtsJobsPositiveResponseData$outboundSchema.parse(
-      getAtsJobsPositiveResponseData,
-    ),
-  );
-}
-
 export function getAtsJobsPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetAtsJobsPositiveResponseData, SDKValidationError> {
@@ -2215,43 +1121,6 @@ export const GetAtsJobsPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetAtsJobsPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetAtsJobsPositiveResponse$Outbound = {
-  status: "success";
-  data: GetAtsJobsPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetAtsJobsPositiveResponse$outboundSchema: z.ZodType<
-  GetAtsJobsPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetAtsJobsPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAtsJobsPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsJobsPositiveResponse$ {
-  /** @deprecated use `GetAtsJobsPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAtsJobsPositiveResponse$inboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAtsJobsPositiveResponse$outboundSchema;
-  /** @deprecated use `GetAtsJobsPositiveResponse$Outbound` instead. */
-  export type Outbound = GetAtsJobsPositiveResponse$Outbound;
-}
-
-export function getAtsJobsPositiveResponseToJSON(
-  getAtsJobsPositiveResponse: GetAtsJobsPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetAtsJobsPositiveResponse$outboundSchema.parse(getAtsJobsPositiveResponse),
-  );
-}
 
 export function getAtsJobsPositiveResponseFromJSON(
   jsonString: string,

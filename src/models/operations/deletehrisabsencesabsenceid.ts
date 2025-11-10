@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type DeleteHrisAbsencesAbsenceIdGlobals = {
@@ -24,89 +20,13 @@ export type DeleteHrisAbsencesAbsenceIdRequest = {
   /**
    * DELETE /hris/absences/:absence_id Request body
    */
-  delete_hris_absences_absence_id_request_body:
-    models.DeleteHrisAbsencesAbsenceIdRequestBody;
+  body: models.DeleteHrisAbsencesAbsenceIdRequestBody;
 };
-
-/** @internal */
-export const DeleteHrisAbsencesAbsenceIdGlobals$inboundSchema: z.ZodType<
-  DeleteHrisAbsencesAbsenceIdGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type DeleteHrisAbsencesAbsenceIdGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const DeleteHrisAbsencesAbsenceIdGlobals$outboundSchema: z.ZodType<
-  DeleteHrisAbsencesAbsenceIdGlobals$Outbound,
-  z.ZodTypeDef,
-  DeleteHrisAbsencesAbsenceIdGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteHrisAbsencesAbsenceIdGlobals$ {
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdGlobals$inboundSchema` instead. */
-  export const inboundSchema = DeleteHrisAbsencesAbsenceIdGlobals$inboundSchema;
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteHrisAbsencesAbsenceIdGlobals$outboundSchema;
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdGlobals$Outbound` instead. */
-  export type Outbound = DeleteHrisAbsencesAbsenceIdGlobals$Outbound;
-}
-
-export function deleteHrisAbsencesAbsenceIdGlobalsToJSON(
-  deleteHrisAbsencesAbsenceIdGlobals: DeleteHrisAbsencesAbsenceIdGlobals,
-): string {
-  return JSON.stringify(
-    DeleteHrisAbsencesAbsenceIdGlobals$outboundSchema.parse(
-      deleteHrisAbsencesAbsenceIdGlobals,
-    ),
-  );
-}
-
-export function deleteHrisAbsencesAbsenceIdGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteHrisAbsencesAbsenceIdGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DeleteHrisAbsencesAbsenceIdGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteHrisAbsencesAbsenceIdGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const DeleteHrisAbsencesAbsenceIdRequest$inboundSchema: z.ZodType<
-  DeleteHrisAbsencesAbsenceIdRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  absence_id: z.string(),
-  DeleteHrisAbsencesAbsenceIdRequestBody:
-    models.DeleteHrisAbsencesAbsenceIdRequestBody$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "DeleteHrisAbsencesAbsenceIdRequestBody":
-      "delete_hris_absences_absence_id_request_body",
-  });
-});
 
 /** @internal */
 export type DeleteHrisAbsencesAbsenceIdRequest$Outbound = {
   absence_id: string;
-  DeleteHrisAbsencesAbsenceIdRequestBody:
-    models.DeleteHrisAbsencesAbsenceIdRequestBody$Outbound;
+  body: models.DeleteHrisAbsencesAbsenceIdRequestBody$Outbound;
 };
 
 /** @internal */
@@ -116,28 +36,8 @@ export const DeleteHrisAbsencesAbsenceIdRequest$outboundSchema: z.ZodType<
   DeleteHrisAbsencesAbsenceIdRequest
 > = z.object({
   absence_id: z.string(),
-  delete_hris_absences_absence_id_request_body:
-    models.DeleteHrisAbsencesAbsenceIdRequestBody$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    delete_hris_absences_absence_id_request_body:
-      "DeleteHrisAbsencesAbsenceIdRequestBody",
-  });
+  body: models.DeleteHrisAbsencesAbsenceIdRequestBody$outboundSchema,
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteHrisAbsencesAbsenceIdRequest$ {
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdRequest$inboundSchema` instead. */
-  export const inboundSchema = DeleteHrisAbsencesAbsenceIdRequest$inboundSchema;
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteHrisAbsencesAbsenceIdRequest$outboundSchema;
-  /** @deprecated use `DeleteHrisAbsencesAbsenceIdRequest$Outbound` instead. */
-  export type Outbound = DeleteHrisAbsencesAbsenceIdRequest$Outbound;
-}
 
 export function deleteHrisAbsencesAbsenceIdRequestToJSON(
   deleteHrisAbsencesAbsenceIdRequest: DeleteHrisAbsencesAbsenceIdRequest,
@@ -146,16 +46,5 @@ export function deleteHrisAbsencesAbsenceIdRequestToJSON(
     DeleteHrisAbsencesAbsenceIdRequest$outboundSchema.parse(
       deleteHrisAbsencesAbsenceIdRequest,
     ),
-  );
-}
-
-export function deleteHrisAbsencesAbsenceIdRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteHrisAbsencesAbsenceIdRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DeleteHrisAbsencesAbsenceIdRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteHrisAbsencesAbsenceIdRequest' from JSON`,
   );
 }

@@ -106,11 +106,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON(
-    "body",
-    payload.PostHrisEmployeesEmployeeIdDocumentsRequestBody,
-    { explode: true },
-  );
+  const body = encodeJSON("body", payload.body, { explode: true });
 
   const pathParams = {
     employee_id: encodeSimple("employee_id", payload.employee_id, {

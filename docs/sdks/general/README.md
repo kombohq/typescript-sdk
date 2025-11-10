@@ -330,7 +330,7 @@ async function run() {
   const result = await kombo.general.sendPassthroughRequest({
     tool: "personio",
     api: "personnel",
-    post_passthrough_tool_api_request_body: {
+    body: {
       method: "GET",
       path: "/company/employees",
     },
@@ -361,7 +361,7 @@ async function run() {
   const res = await generalSendPassthroughRequest(kombo, {
     tool: "personio",
     api: "personnel",
-    post_passthrough_tool_api_request_body: {
+    body: {
       method: "GET",
       path: "/company/employees",
     },
@@ -415,7 +415,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.general.deleteIntegration({
     integration_id: "<id>",
-    delete_integrations_integration_id_request_body: {},
+    body: {},
   });
 
   console.log(result);
@@ -441,7 +441,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await generalDeleteIntegration(kombo, {
     integration_id: "<id>",
-    delete_integrations_integration_id_request_body: {},
+    body: {},
   });
   if (res.ok) {
     const { value: result } = res;
@@ -577,7 +577,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.general.createReconnectionLink({
     integration_id: "personio:93fCvorjZ2jas7ZekX1V1n5d",
-    post_integrations_integration_id_relink_request_body: {
+    body: {
       scope_config_id: "9Pv6aCFwNDEzPNmwjSsY9SQx",
     },
   });
@@ -605,7 +605,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await generalCreateReconnectionLink(kombo, {
     integration_id: "personio:93fCvorjZ2jas7ZekX1V1n5d",
-    post_integrations_integration_id_relink_request_body: {
+    body: {
       scope_config_id: "9Pv6aCFwNDEzPNmwjSsY9SQx",
     },
   });
@@ -737,7 +737,7 @@ async function run() {
   const result = await kombo.general.updateIntegrationField({
     integration_id: "integration_id",
     integration_field_id: "integration_field_id",
-    patch_integrations_integration_id_integration_fields_integration_field_id_request_body: {
+    body: {
       enable_passthrough: true,
     },
   });
@@ -766,7 +766,7 @@ async function run() {
   const res = await generalUpdateIntegrationField(kombo, {
     integration_id: "integration_id",
     integration_field_id: "integration_field_id",
-    patch_integrations_integration_id_integration_fields_integration_field_id_request_body: {
+    body: {
       enable_passthrough: true,
     },
   });
@@ -898,7 +898,7 @@ async function run() {
   const result = await kombo.general.updateCustomFieldMapping({
     integration_id: "integration_id",
     custom_field_id: "custom_field_id",
-    put_integrations_integration_id_custom_fields_custom_field_id_request_body: {
+    body: {
       integration_field_id: "integration_field_id",
     },
   });
@@ -927,7 +927,7 @@ async function run() {
   const res = await generalUpdateCustomFieldMapping(kombo, {
     integration_id: "integration_id",
     custom_field_id: "custom_field_id",
-    put_integrations_integration_id_custom_fields_custom_field_id_request_body: {
+    body: {
       integration_field_id: "integration_field_id",
     },
   });

@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 export type PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody = {
   /**
@@ -13,16 +10,6 @@ export type PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody = {
    */
   integration_field_id: string | null;
 };
-
-/** @internal */
-export const PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$inboundSchema:
-  z.ZodType<
-    PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integration_field_id: z.nullable(z.string()),
-  });
 
 /** @internal */
 export type PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$Outbound =
@@ -40,22 +27,6 @@ export const PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$ou
     integration_field_id: z.nullable(z.string()),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$ {
-  /** @deprecated use `PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$inboundSchema;
-  /** @deprecated use `PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$outboundSchema;
-  /** @deprecated use `PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$Outbound` instead. */
-  export type Outbound =
-    PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$Outbound;
-}
-
 export function putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBodyToJSON(
   putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody:
     PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody,
@@ -63,20 +34,5 @@ export function putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody
   return JSON.stringify(
     PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$outboundSchema
       .parse(putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody),
-  );
-}
-
-export function putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody' from JSON`,
   );
 }

@@ -36,47 +36,6 @@ export const PostHrisEmployeesFormPositiveResponseData$inboundSchema: z.ZodType<
   id: z.nullable(z.string()),
 });
 
-/** @internal */
-export type PostHrisEmployeesFormPositiveResponseData$Outbound = {
-  id: string | null;
-};
-
-/** @internal */
-export const PostHrisEmployeesFormPositiveResponseData$outboundSchema:
-  z.ZodType<
-    PostHrisEmployeesFormPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    PostHrisEmployeesFormPositiveResponseData
-  > = z.object({
-    id: z.nullable(z.string()),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisEmployeesFormPositiveResponseData$ {
-  /** @deprecated use `PostHrisEmployeesFormPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisEmployeesFormPositiveResponseData$inboundSchema;
-  /** @deprecated use `PostHrisEmployeesFormPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisEmployeesFormPositiveResponseData$outboundSchema;
-  /** @deprecated use `PostHrisEmployeesFormPositiveResponseData$Outbound` instead. */
-  export type Outbound = PostHrisEmployeesFormPositiveResponseData$Outbound;
-}
-
-export function postHrisEmployeesFormPositiveResponseDataToJSON(
-  postHrisEmployeesFormPositiveResponseData:
-    PostHrisEmployeesFormPositiveResponseData,
-): string {
-  return JSON.stringify(
-    PostHrisEmployeesFormPositiveResponseData$outboundSchema.parse(
-      postHrisEmployeesFormPositiveResponseData,
-    ),
-  );
-}
-
 export function postHrisEmployeesFormPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -102,47 +61,6 @@ export const PostHrisEmployeesFormPositiveResponseWarning$inboundSchema:
   > = z.object({
     message: z.string(),
   });
-
-/** @internal */
-export type PostHrisEmployeesFormPositiveResponseWarning$Outbound = {
-  message: string;
-};
-
-/** @internal */
-export const PostHrisEmployeesFormPositiveResponseWarning$outboundSchema:
-  z.ZodType<
-    PostHrisEmployeesFormPositiveResponseWarning$Outbound,
-    z.ZodTypeDef,
-    PostHrisEmployeesFormPositiveResponseWarning
-  > = z.object({
-    message: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisEmployeesFormPositiveResponseWarning$ {
-  /** @deprecated use `PostHrisEmployeesFormPositiveResponseWarning$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisEmployeesFormPositiveResponseWarning$inboundSchema;
-  /** @deprecated use `PostHrisEmployeesFormPositiveResponseWarning$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisEmployeesFormPositiveResponseWarning$outboundSchema;
-  /** @deprecated use `PostHrisEmployeesFormPositiveResponseWarning$Outbound` instead. */
-  export type Outbound = PostHrisEmployeesFormPositiveResponseWarning$Outbound;
-}
-
-export function postHrisEmployeesFormPositiveResponseWarningToJSON(
-  postHrisEmployeesFormPositiveResponseWarning:
-    PostHrisEmployeesFormPositiveResponseWarning,
-): string {
-  return JSON.stringify(
-    PostHrisEmployeesFormPositiveResponseWarning$outboundSchema.parse(
-      postHrisEmployeesFormPositiveResponseWarning,
-    ),
-  );
-}
 
 export function postHrisEmployeesFormPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -172,51 +90,6 @@ export const PostHrisEmployeesFormPositiveResponse$inboundSchema: z.ZodType<
     z.lazy(() => PostHrisEmployeesFormPositiveResponseWarning$inboundSchema),
   ),
 });
-
-/** @internal */
-export type PostHrisEmployeesFormPositiveResponse$Outbound = {
-  status: "success";
-  data: PostHrisEmployeesFormPositiveResponseData$Outbound;
-  warnings: Array<PostHrisEmployeesFormPositiveResponseWarning$Outbound>;
-};
-
-/** @internal */
-export const PostHrisEmployeesFormPositiveResponse$outboundSchema: z.ZodType<
-  PostHrisEmployeesFormPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  PostHrisEmployeesFormPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => PostHrisEmployeesFormPositiveResponseData$outboundSchema),
-  warnings: z.array(
-    z.lazy(() => PostHrisEmployeesFormPositiveResponseWarning$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisEmployeesFormPositiveResponse$ {
-  /** @deprecated use `PostHrisEmployeesFormPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisEmployeesFormPositiveResponse$inboundSchema;
-  /** @deprecated use `PostHrisEmployeesFormPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisEmployeesFormPositiveResponse$outboundSchema;
-  /** @deprecated use `PostHrisEmployeesFormPositiveResponse$Outbound` instead. */
-  export type Outbound = PostHrisEmployeesFormPositiveResponse$Outbound;
-}
-
-export function postHrisEmployeesFormPositiveResponseToJSON(
-  postHrisEmployeesFormPositiveResponse: PostHrisEmployeesFormPositiveResponse,
-): string {
-  return JSON.stringify(
-    PostHrisEmployeesFormPositiveResponse$outboundSchema.parse(
-      postHrisEmployeesFormPositiveResponse,
-    ),
-  );
-}
 
 export function postHrisEmployeesFormPositiveResponseFromJSON(
   jsonString: string,

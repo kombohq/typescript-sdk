@@ -85,59 +85,6 @@ export const GetHrisLegalEntitiesPositiveResponseAddress$inboundSchema:
     zip_code: z.nullable(z.string()).optional(),
   });
 
-/** @internal */
-export type GetHrisLegalEntitiesPositiveResponseAddress$Outbound = {
-  city?: string | null | undefined;
-  country?: string | null | undefined;
-  raw?: string | null | undefined;
-  state?: string | null | undefined;
-  street_1?: string | null | undefined;
-  street_2?: string | null | undefined;
-  zip_code?: string | null | undefined;
-};
-
-/** @internal */
-export const GetHrisLegalEntitiesPositiveResponseAddress$outboundSchema:
-  z.ZodType<
-    GetHrisLegalEntitiesPositiveResponseAddress$Outbound,
-    z.ZodTypeDef,
-    GetHrisLegalEntitiesPositiveResponseAddress
-  > = z.object({
-    city: z.nullable(z.string()).optional(),
-    country: z.nullable(z.string()).optional(),
-    raw: z.nullable(z.string()).optional(),
-    state: z.nullable(z.string()).optional(),
-    street_1: z.nullable(z.string()).optional(),
-    street_2: z.nullable(z.string()).optional(),
-    zip_code: z.nullable(z.string()).optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLegalEntitiesPositiveResponseAddress$ {
-  /** @deprecated use `GetHrisLegalEntitiesPositiveResponseAddress$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisLegalEntitiesPositiveResponseAddress$inboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesPositiveResponseAddress$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisLegalEntitiesPositiveResponseAddress$outboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesPositiveResponseAddress$Outbound` instead. */
-  export type Outbound = GetHrisLegalEntitiesPositiveResponseAddress$Outbound;
-}
-
-export function getHrisLegalEntitiesPositiveResponseAddressToJSON(
-  getHrisLegalEntitiesPositiveResponseAddress:
-    GetHrisLegalEntitiesPositiveResponseAddress,
-): string {
-  return JSON.stringify(
-    GetHrisLegalEntitiesPositiveResponseAddress$outboundSchema.parse(
-      getHrisLegalEntitiesPositiveResponseAddress,
-    ),
-  );
-}
-
 export function getHrisLegalEntitiesPositiveResponseAddressFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -172,62 +119,6 @@ export const GetHrisLegalEntitiesPositiveResponseResult$inboundSchema:
       ),
     });
 
-/** @internal */
-export type GetHrisLegalEntitiesPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string | null;
-  name: string | null;
-  address?:
-    | GetHrisLegalEntitiesPositiveResponseAddress$Outbound
-    | null
-    | undefined;
-  changed_at: string;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const GetHrisLegalEntitiesPositiveResponseResult$outboundSchema:
-  z.ZodType<
-    GetHrisLegalEntitiesPositiveResponseResult$Outbound,
-    z.ZodTypeDef,
-    GetHrisLegalEntitiesPositiveResponseResult
-  > = z.object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()),
-    name: z.nullable(z.string()),
-    address: z.nullable(
-      z.lazy(() => GetHrisLegalEntitiesPositiveResponseAddress$outboundSchema),
-    ).optional(),
-    changed_at: z.date().transform(v => v.toISOString()),
-    remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLegalEntitiesPositiveResponseResult$ {
-  /** @deprecated use `GetHrisLegalEntitiesPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisLegalEntitiesPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisLegalEntitiesPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesPositiveResponseResult$Outbound` instead. */
-  export type Outbound = GetHrisLegalEntitiesPositiveResponseResult$Outbound;
-}
-
-export function getHrisLegalEntitiesPositiveResponseResultToJSON(
-  getHrisLegalEntitiesPositiveResponseResult:
-    GetHrisLegalEntitiesPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetHrisLegalEntitiesPositiveResponseResult$outboundSchema.parse(
-      getHrisLegalEntitiesPositiveResponseResult,
-    ),
-  );
-}
-
 export function getHrisLegalEntitiesPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -256,50 +147,6 @@ export const GetHrisLegalEntitiesPositiveResponseData$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetHrisLegalEntitiesPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetHrisLegalEntitiesPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetHrisLegalEntitiesPositiveResponseData$outboundSchema: z.ZodType<
-  GetHrisLegalEntitiesPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  GetHrisLegalEntitiesPositiveResponseData
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisLegalEntitiesPositiveResponseResult$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLegalEntitiesPositiveResponseData$ {
-  /** @deprecated use `GetHrisLegalEntitiesPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisLegalEntitiesPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisLegalEntitiesPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetHrisLegalEntitiesPositiveResponseData$Outbound;
-}
-
-export function getHrisLegalEntitiesPositiveResponseDataToJSON(
-  getHrisLegalEntitiesPositiveResponseData:
-    GetHrisLegalEntitiesPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetHrisLegalEntitiesPositiveResponseData$outboundSchema.parse(
-      getHrisLegalEntitiesPositiveResponseData,
-    ),
-  );
-}
-
 export function getHrisLegalEntitiesPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -325,47 +172,6 @@ export const GetHrisLegalEntitiesPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetHrisLegalEntitiesPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetHrisLegalEntitiesPositiveResponse$Outbound = {
-  status: "success";
-  data: GetHrisLegalEntitiesPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetHrisLegalEntitiesPositiveResponse$outboundSchema: z.ZodType<
-  GetHrisLegalEntitiesPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisLegalEntitiesPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisLegalEntitiesPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLegalEntitiesPositiveResponse$ {
-  /** @deprecated use `GetHrisLegalEntitiesPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisLegalEntitiesPositiveResponse$inboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisLegalEntitiesPositiveResponse$outboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesPositiveResponse$Outbound` instead. */
-  export type Outbound = GetHrisLegalEntitiesPositiveResponse$Outbound;
-}
-
-export function getHrisLegalEntitiesPositiveResponseToJSON(
-  getHrisLegalEntitiesPositiveResponse: GetHrisLegalEntitiesPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetHrisLegalEntitiesPositiveResponse$outboundSchema.parse(
-      getHrisLegalEntitiesPositiveResponse,
-    ),
-  );
-}
 
 export function getHrisLegalEntitiesPositiveResponseFromJSON(
   jsonString: string,

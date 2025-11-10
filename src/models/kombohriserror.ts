@@ -71,41 +71,9 @@ export const KomboHrisErrorStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(KomboHrisErrorStatus);
 
 /** @internal */
-export const KomboHrisErrorStatus$outboundSchema: z.ZodNativeEnum<
-  typeof KomboHrisErrorStatus
-> = KomboHrisErrorStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KomboHrisErrorStatus$ {
-  /** @deprecated use `KomboHrisErrorStatus$inboundSchema` instead. */
-  export const inboundSchema = KomboHrisErrorStatus$inboundSchema;
-  /** @deprecated use `KomboHrisErrorStatus$outboundSchema` instead. */
-  export const outboundSchema = KomboHrisErrorStatus$outboundSchema;
-}
-
-/** @internal */
 export const KomboHrisErrorCode$inboundSchema: z.ZodNativeEnum<
   typeof KomboHrisErrorCode
 > = z.nativeEnum(KomboHrisErrorCode);
-
-/** @internal */
-export const KomboHrisErrorCode$outboundSchema: z.ZodNativeEnum<
-  typeof KomboHrisErrorCode
-> = KomboHrisErrorCode$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KomboHrisErrorCode$ {
-  /** @deprecated use `KomboHrisErrorCode$inboundSchema` instead. */
-  export const inboundSchema = KomboHrisErrorCode$inboundSchema;
-  /** @deprecated use `KomboHrisErrorCode$outboundSchema` instead. */
-  export const outboundSchema = KomboHrisErrorCode$outboundSchema;
-}
 
 /** @internal */
 export const KomboHrisErrorError$inboundSchema: z.ZodType<
@@ -118,47 +86,6 @@ export const KomboHrisErrorError$inboundSchema: z.ZodType<
   message: z.string(),
   log_url: z.nullable(z.string()),
 });
-
-/** @internal */
-export type KomboHrisErrorError$Outbound = {
-  code: string | null;
-  title: string | null;
-  message: string;
-  log_url: string | null;
-};
-
-/** @internal */
-export const KomboHrisErrorError$outboundSchema: z.ZodType<
-  KomboHrisErrorError$Outbound,
-  z.ZodTypeDef,
-  KomboHrisErrorError
-> = z.object({
-  code: z.nullable(KomboHrisErrorCode$outboundSchema),
-  title: z.nullable(z.string()),
-  message: z.string(),
-  log_url: z.nullable(z.string()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace KomboHrisErrorError$ {
-  /** @deprecated use `KomboHrisErrorError$inboundSchema` instead. */
-  export const inboundSchema = KomboHrisErrorError$inboundSchema;
-  /** @deprecated use `KomboHrisErrorError$outboundSchema` instead. */
-  export const outboundSchema = KomboHrisErrorError$outboundSchema;
-  /** @deprecated use `KomboHrisErrorError$Outbound` instead. */
-  export type Outbound = KomboHrisErrorError$Outbound;
-}
-
-export function komboHrisErrorErrorToJSON(
-  komboHrisErrorError: KomboHrisErrorError,
-): string {
-  return JSON.stringify(
-    KomboHrisErrorError$outboundSchema.parse(komboHrisErrorError),
-  );
-}
 
 export function komboHrisErrorErrorFromJSON(
   jsonString: string,

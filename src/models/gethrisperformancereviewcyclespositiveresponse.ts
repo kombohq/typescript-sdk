@@ -68,60 +68,6 @@ export const GetHrisPerformanceReviewCyclesPositiveResponseResult$inboundSchema:
     ),
   });
 
-/** @internal */
-export type GetHrisPerformanceReviewCyclesPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string;
-  name: string | null;
-  review_period_start_date: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const GetHrisPerformanceReviewCyclesPositiveResponseResult$outboundSchema:
-  z.ZodType<
-    GetHrisPerformanceReviewCyclesPositiveResponseResult$Outbound,
-    z.ZodTypeDef,
-    GetHrisPerformanceReviewCyclesPositiveResponseResult
-  > = z.object({
-    id: z.string(),
-    remote_id: z.string(),
-    name: z.nullable(z.string()),
-    review_period_start_date: z.nullable(
-      z.date().transform(v => v.toISOString()),
-    ),
-    changed_at: z.date().transform(v => v.toISOString()),
-    remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisPerformanceReviewCyclesPositiveResponseResult$ {
-  /** @deprecated use `GetHrisPerformanceReviewCyclesPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisPerformanceReviewCyclesPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewCyclesPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisPerformanceReviewCyclesPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewCyclesPositiveResponseResult$Outbound` instead. */
-  export type Outbound =
-    GetHrisPerformanceReviewCyclesPositiveResponseResult$Outbound;
-}
-
-export function getHrisPerformanceReviewCyclesPositiveResponseResultToJSON(
-  getHrisPerformanceReviewCyclesPositiveResponseResult:
-    GetHrisPerformanceReviewCyclesPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetHrisPerformanceReviewCyclesPositiveResponseResult$outboundSchema.parse(
-      getHrisPerformanceReviewCyclesPositiveResponseResult,
-    ),
-  );
-}
-
 export function getHrisPerformanceReviewCyclesPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -153,54 +99,6 @@ export const GetHrisPerformanceReviewCyclesPositiveResponseData$inboundSchema:
     ),
   });
 
-/** @internal */
-export type GetHrisPerformanceReviewCyclesPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetHrisPerformanceReviewCyclesPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetHrisPerformanceReviewCyclesPositiveResponseData$outboundSchema:
-  z.ZodType<
-    GetHrisPerformanceReviewCyclesPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    GetHrisPerformanceReviewCyclesPositiveResponseData
-  > = z.object({
-    next: z.nullable(z.string()),
-    results: z.array(
-      z.lazy(() =>
-        GetHrisPerformanceReviewCyclesPositiveResponseResult$outboundSchema
-      ),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisPerformanceReviewCyclesPositiveResponseData$ {
-  /** @deprecated use `GetHrisPerformanceReviewCyclesPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisPerformanceReviewCyclesPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewCyclesPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisPerformanceReviewCyclesPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewCyclesPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    GetHrisPerformanceReviewCyclesPositiveResponseData$Outbound;
-}
-
-export function getHrisPerformanceReviewCyclesPositiveResponseDataToJSON(
-  getHrisPerformanceReviewCyclesPositiveResponseData:
-    GetHrisPerformanceReviewCyclesPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetHrisPerformanceReviewCyclesPositiveResponseData$outboundSchema.parse(
-      getHrisPerformanceReviewCyclesPositiveResponseData,
-    ),
-  );
-}
-
 export function getHrisPerformanceReviewCyclesPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -229,52 +127,6 @@ export const GetHrisPerformanceReviewCyclesPositiveResponse$inboundSchema:
       GetHrisPerformanceReviewCyclesPositiveResponseData$inboundSchema
     ),
   });
-
-/** @internal */
-export type GetHrisPerformanceReviewCyclesPositiveResponse$Outbound = {
-  status: "success";
-  data: GetHrisPerformanceReviewCyclesPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetHrisPerformanceReviewCyclesPositiveResponse$outboundSchema:
-  z.ZodType<
-    GetHrisPerformanceReviewCyclesPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    GetHrisPerformanceReviewCyclesPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      GetHrisPerformanceReviewCyclesPositiveResponseData$outboundSchema
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisPerformanceReviewCyclesPositiveResponse$ {
-  /** @deprecated use `GetHrisPerformanceReviewCyclesPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisPerformanceReviewCyclesPositiveResponse$inboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewCyclesPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisPerformanceReviewCyclesPositiveResponse$outboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewCyclesPositiveResponse$Outbound` instead. */
-  export type Outbound =
-    GetHrisPerformanceReviewCyclesPositiveResponse$Outbound;
-}
-
-export function getHrisPerformanceReviewCyclesPositiveResponseToJSON(
-  getHrisPerformanceReviewCyclesPositiveResponse:
-    GetHrisPerformanceReviewCyclesPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetHrisPerformanceReviewCyclesPositiveResponse$outboundSchema.parse(
-      getHrisPerformanceReviewCyclesPositiveResponse,
-    ),
-  );
-}
 
 export function getHrisPerformanceReviewCyclesPositiveResponseFromJSON(
   jsonString: string,

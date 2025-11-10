@@ -26,7 +26,13 @@ export type GetHrisLegalEntitiesRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -50,79 +56,6 @@ export type GetHrisLegalEntitiesRequest = {
 export type GetHrisLegalEntitiesResponse = {
   result: models.GetHrisLegalEntitiesPositiveResponse;
 };
-
-/** @internal */
-export const GetHrisLegalEntitiesGlobals$inboundSchema: z.ZodType<
-  GetHrisLegalEntitiesGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetHrisLegalEntitiesGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetHrisLegalEntitiesGlobals$outboundSchema: z.ZodType<
-  GetHrisLegalEntitiesGlobals$Outbound,
-  z.ZodTypeDef,
-  GetHrisLegalEntitiesGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLegalEntitiesGlobals$ {
-  /** @deprecated use `GetHrisLegalEntitiesGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetHrisLegalEntitiesGlobals$inboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetHrisLegalEntitiesGlobals$outboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesGlobals$Outbound` instead. */
-  export type Outbound = GetHrisLegalEntitiesGlobals$Outbound;
-}
-
-export function getHrisLegalEntitiesGlobalsToJSON(
-  getHrisLegalEntitiesGlobals: GetHrisLegalEntitiesGlobals,
-): string {
-  return JSON.stringify(
-    GetHrisLegalEntitiesGlobals$outboundSchema.parse(
-      getHrisLegalEntitiesGlobals,
-    ),
-  );
-}
-
-export function getHrisLegalEntitiesGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisLegalEntitiesGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisLegalEntitiesGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisLegalEntitiesGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetHrisLegalEntitiesRequest$inboundSchema: z.ZodType<
-  GetHrisLegalEntitiesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-  name_contains: z.string().optional(),
-});
 
 /** @internal */
 export type GetHrisLegalEntitiesRequest$Outbound = {
@@ -150,19 +83,6 @@ export const GetHrisLegalEntitiesRequest$outboundSchema: z.ZodType<
   name_contains: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLegalEntitiesRequest$ {
-  /** @deprecated use `GetHrisLegalEntitiesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetHrisLegalEntitiesRequest$inboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetHrisLegalEntitiesRequest$outboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesRequest$Outbound` instead. */
-  export type Outbound = GetHrisLegalEntitiesRequest$Outbound;
-}
-
 export function getHrisLegalEntitiesRequestToJSON(
   getHrisLegalEntitiesRequest: GetHrisLegalEntitiesRequest,
 ): string {
@@ -170,16 +90,6 @@ export function getHrisLegalEntitiesRequestToJSON(
     GetHrisLegalEntitiesRequest$outboundSchema.parse(
       getHrisLegalEntitiesRequest,
     ),
-  );
-}
-
-export function getHrisLegalEntitiesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisLegalEntitiesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisLegalEntitiesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisLegalEntitiesRequest' from JSON`,
   );
 }
 
@@ -195,47 +105,6 @@ export const GetHrisLegalEntitiesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetHrisLegalEntitiesResponse$Outbound = {
-  Result: models.GetHrisLegalEntitiesPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetHrisLegalEntitiesResponse$outboundSchema: z.ZodType<
-  GetHrisLegalEntitiesResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisLegalEntitiesResponse
-> = z.object({
-  result: models.GetHrisLegalEntitiesPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLegalEntitiesResponse$ {
-  /** @deprecated use `GetHrisLegalEntitiesResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisLegalEntitiesResponse$inboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesResponse$outboundSchema` instead. */
-  export const outboundSchema = GetHrisLegalEntitiesResponse$outboundSchema;
-  /** @deprecated use `GetHrisLegalEntitiesResponse$Outbound` instead. */
-  export type Outbound = GetHrisLegalEntitiesResponse$Outbound;
-}
-
-export function getHrisLegalEntitiesResponseToJSON(
-  getHrisLegalEntitiesResponse: GetHrisLegalEntitiesResponse,
-): string {
-  return JSON.stringify(
-    GetHrisLegalEntitiesResponse$outboundSchema.parse(
-      getHrisLegalEntitiesResponse,
-    ),
-  );
-}
 
 export function getHrisLegalEntitiesResponseFromJSON(
   jsonString: string,

@@ -68,26 +68,6 @@ export const GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$inboun
   );
 
 /** @internal */
-export const GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$outboundSchema:
-  z.ZodNativeEnum<
-    typeof GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus
-  > =
-    GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$ {
-  /** @deprecated use `GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$inboundSchema;
-  /** @deprecated use `GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$outboundSchema;
-}
-
-/** @internal */
 export const GetConnectIntegrationByTokenTokenPositiveResponseData$inboundSchema:
   z.ZodType<
     GetConnectIntegrationByTokenTokenPositiveResponseData,
@@ -102,59 +82,6 @@ export const GetConnectIntegrationByTokenTokenPositiveResponseData$inboundSchema
     setup_status:
       GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$inboundSchema,
   });
-
-/** @internal */
-export type GetConnectIntegrationByTokenTokenPositiveResponseData$Outbound = {
-  tool: string;
-  id: string;
-  end_user_origin_id: string | null;
-  end_user_organization_name: string;
-  end_user_email: string | null;
-  setup_status: string;
-};
-
-/** @internal */
-export const GetConnectIntegrationByTokenTokenPositiveResponseData$outboundSchema:
-  z.ZodType<
-    GetConnectIntegrationByTokenTokenPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    GetConnectIntegrationByTokenTokenPositiveResponseData
-  > = z.object({
-    tool: z.string(),
-    id: z.string(),
-    end_user_origin_id: z.nullable(z.string()),
-    end_user_organization_name: z.string(),
-    end_user_email: z.nullable(z.string()),
-    setup_status:
-      GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$outboundSchema,
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConnectIntegrationByTokenTokenPositiveResponseData$ {
-  /** @deprecated use `GetConnectIntegrationByTokenTokenPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConnectIntegrationByTokenTokenPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetConnectIntegrationByTokenTokenPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConnectIntegrationByTokenTokenPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetConnectIntegrationByTokenTokenPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    GetConnectIntegrationByTokenTokenPositiveResponseData$Outbound;
-}
-
-export function getConnectIntegrationByTokenTokenPositiveResponseDataToJSON(
-  getConnectIntegrationByTokenTokenPositiveResponseData:
-    GetConnectIntegrationByTokenTokenPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetConnectIntegrationByTokenTokenPositiveResponseData$outboundSchema.parse(
-      getConnectIntegrationByTokenTokenPositiveResponseData,
-    ),
-  );
-}
 
 export function getConnectIntegrationByTokenTokenPositiveResponseDataFromJSON(
   jsonString: string,
@@ -184,52 +111,6 @@ export const GetConnectIntegrationByTokenTokenPositiveResponse$inboundSchema:
       GetConnectIntegrationByTokenTokenPositiveResponseData$inboundSchema
     ),
   });
-
-/** @internal */
-export type GetConnectIntegrationByTokenTokenPositiveResponse$Outbound = {
-  status: "success";
-  data: GetConnectIntegrationByTokenTokenPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetConnectIntegrationByTokenTokenPositiveResponse$outboundSchema:
-  z.ZodType<
-    GetConnectIntegrationByTokenTokenPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    GetConnectIntegrationByTokenTokenPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      GetConnectIntegrationByTokenTokenPositiveResponseData$outboundSchema
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConnectIntegrationByTokenTokenPositiveResponse$ {
-  /** @deprecated use `GetConnectIntegrationByTokenTokenPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConnectIntegrationByTokenTokenPositiveResponse$inboundSchema;
-  /** @deprecated use `GetConnectIntegrationByTokenTokenPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConnectIntegrationByTokenTokenPositiveResponse$outboundSchema;
-  /** @deprecated use `GetConnectIntegrationByTokenTokenPositiveResponse$Outbound` instead. */
-  export type Outbound =
-    GetConnectIntegrationByTokenTokenPositiveResponse$Outbound;
-}
-
-export function getConnectIntegrationByTokenTokenPositiveResponseToJSON(
-  getConnectIntegrationByTokenTokenPositiveResponse:
-    GetConnectIntegrationByTokenTokenPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetConnectIntegrationByTokenTokenPositiveResponse$outboundSchema.parse(
-      getConnectIntegrationByTokenTokenPositiveResponse,
-    ),
-  );
-}
 
 export function getConnectIntegrationByTokenTokenPositiveResponseFromJSON(
   jsonString: string,

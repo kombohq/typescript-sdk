@@ -13,33 +13,6 @@ export type Schema1 = {};
 export const Schema1$inboundSchema: z.ZodType<Schema1, z.ZodTypeDef, unknown> =
   z.object({});
 
-/** @internal */
-export type Schema1$Outbound = {};
-
-/** @internal */
-export const Schema1$outboundSchema: z.ZodType<
-  Schema1$Outbound,
-  z.ZodTypeDef,
-  Schema1
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1$ {
-  /** @deprecated use `Schema1$inboundSchema` instead. */
-  export const inboundSchema = Schema1$inboundSchema;
-  /** @deprecated use `Schema1$outboundSchema` instead. */
-  export const outboundSchema = Schema1$outboundSchema;
-  /** @deprecated use `Schema1$Outbound` instead. */
-  export type Outbound = Schema1$Outbound;
-}
-
-export function schema1ToJSON(schema1: Schema1): string {
-  return JSON.stringify(Schema1$outboundSchema.parse(schema1));
-}
-
 export function schema1FromJSON(
   jsonString: string,
 ): SafeParseResult<Schema1, SDKValidationError> {

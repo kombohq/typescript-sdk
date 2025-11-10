@@ -30,44 +30,6 @@ export const PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$inboundSch
     unknown
   > = z.object({});
 
-/** @internal */
-export type PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$Outbound =
-  {};
-
-/** @internal */
-export const PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$outboundSchema:
-  z.ZodType<
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData
-  > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$ {
-  /** @deprecated use `PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$inboundSchema;
-  /** @deprecated use `PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$outboundSchema;
-  /** @deprecated use `PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$Outbound;
-}
-
-export function postHrisEmployeesEmployeeIdDocumentsPositiveResponseDataToJSON(
-  postHrisEmployeesEmployeeIdDocumentsPositiveResponseData:
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData,
-): string {
-  return JSON.stringify(
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$outboundSchema
-      .parse(postHrisEmployeesEmployeeIdDocumentsPositiveResponseData),
-  );
-}
-
 export function postHrisEmployeesEmployeeIdDocumentsPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -92,48 +54,6 @@ export const PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$inbound
   > = z.object({
     message: z.string(),
   });
-
-/** @internal */
-export type PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$Outbound =
-  {
-    message: string;
-  };
-
-/** @internal */
-export const PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$outboundSchema:
-  z.ZodType<
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$Outbound,
-    z.ZodTypeDef,
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning
-  > = z.object({
-    message: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$ {
-  /** @deprecated use `PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$inboundSchema;
-  /** @deprecated use `PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$outboundSchema;
-  /** @deprecated use `PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$Outbound` instead. */
-  export type Outbound =
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$Outbound;
-}
-
-export function postHrisEmployeesEmployeeIdDocumentsPositiveResponseWarningToJSON(
-  postHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning:
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning,
-): string {
-  return JSON.stringify(
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$outboundSchema
-      .parse(postHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning),
-  );
-}
 
 export function postHrisEmployeesEmployeeIdDocumentsPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -167,60 +87,6 @@ export const PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$inboundSchema:
       ),
     ),
   });
-
-/** @internal */
-export type PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$Outbound = {
-  status: "success";
-  data: PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$Outbound;
-  warnings: Array<
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$Outbound
-  >;
-};
-
-/** @internal */
-export const PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$outboundSchema:
-  z.ZodType<
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$outboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$outboundSchema
-      ),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$ {
-  /** @deprecated use `PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$inboundSchema;
-  /** @deprecated use `PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$outboundSchema;
-  /** @deprecated use `PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$Outbound` instead. */
-  export type Outbound =
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$Outbound;
-}
-
-export function postHrisEmployeesEmployeeIdDocumentsPositiveResponseToJSON(
-  postHrisEmployeesEmployeeIdDocumentsPositiveResponse:
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponse,
-): string {
-  return JSON.stringify(
-    PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$outboundSchema.parse(
-      postHrisEmployeesEmployeeIdDocumentsPositiveResponse,
-    ),
-  );
-}
 
 export function postHrisEmployeesEmployeeIdDocumentsPositiveResponseFromJSON(
   jsonString: string,

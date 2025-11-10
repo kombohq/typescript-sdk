@@ -26,7 +26,13 @@ export type GetAtsRejectionReasonsRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -46,78 +52,6 @@ export type GetAtsRejectionReasonsRequest = {
 export type GetAtsRejectionReasonsResponse = {
   result: models.GetAtsRejectionReasonsPositiveResponse;
 };
-
-/** @internal */
-export const GetAtsRejectionReasonsGlobals$inboundSchema: z.ZodType<
-  GetAtsRejectionReasonsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetAtsRejectionReasonsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetAtsRejectionReasonsGlobals$outboundSchema: z.ZodType<
-  GetAtsRejectionReasonsGlobals$Outbound,
-  z.ZodTypeDef,
-  GetAtsRejectionReasonsGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsRejectionReasonsGlobals$ {
-  /** @deprecated use `GetAtsRejectionReasonsGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetAtsRejectionReasonsGlobals$inboundSchema;
-  /** @deprecated use `GetAtsRejectionReasonsGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetAtsRejectionReasonsGlobals$outboundSchema;
-  /** @deprecated use `GetAtsRejectionReasonsGlobals$Outbound` instead. */
-  export type Outbound = GetAtsRejectionReasonsGlobals$Outbound;
-}
-
-export function getAtsRejectionReasonsGlobalsToJSON(
-  getAtsRejectionReasonsGlobals: GetAtsRejectionReasonsGlobals,
-): string {
-  return JSON.stringify(
-    GetAtsRejectionReasonsGlobals$outboundSchema.parse(
-      getAtsRejectionReasonsGlobals,
-    ),
-  );
-}
-
-export function getAtsRejectionReasonsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAtsRejectionReasonsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAtsRejectionReasonsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsRejectionReasonsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetAtsRejectionReasonsRequest$inboundSchema: z.ZodType<
-  GetAtsRejectionReasonsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-});
 
 /** @internal */
 export type GetAtsRejectionReasonsRequest$Outbound = {
@@ -143,19 +77,6 @@ export const GetAtsRejectionReasonsRequest$outboundSchema: z.ZodType<
   remote_ids: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsRejectionReasonsRequest$ {
-  /** @deprecated use `GetAtsRejectionReasonsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAtsRejectionReasonsRequest$inboundSchema;
-  /** @deprecated use `GetAtsRejectionReasonsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAtsRejectionReasonsRequest$outboundSchema;
-  /** @deprecated use `GetAtsRejectionReasonsRequest$Outbound` instead. */
-  export type Outbound = GetAtsRejectionReasonsRequest$Outbound;
-}
-
 export function getAtsRejectionReasonsRequestToJSON(
   getAtsRejectionReasonsRequest: GetAtsRejectionReasonsRequest,
 ): string {
@@ -163,16 +84,6 @@ export function getAtsRejectionReasonsRequestToJSON(
     GetAtsRejectionReasonsRequest$outboundSchema.parse(
       getAtsRejectionReasonsRequest,
     ),
-  );
-}
-
-export function getAtsRejectionReasonsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAtsRejectionReasonsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAtsRejectionReasonsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsRejectionReasonsRequest' from JSON`,
   );
 }
 
@@ -188,47 +99,6 @@ export const GetAtsRejectionReasonsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetAtsRejectionReasonsResponse$Outbound = {
-  Result: models.GetAtsRejectionReasonsPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetAtsRejectionReasonsResponse$outboundSchema: z.ZodType<
-  GetAtsRejectionReasonsResponse$Outbound,
-  z.ZodTypeDef,
-  GetAtsRejectionReasonsResponse
-> = z.object({
-  result: models.GetAtsRejectionReasonsPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsRejectionReasonsResponse$ {
-  /** @deprecated use `GetAtsRejectionReasonsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAtsRejectionReasonsResponse$inboundSchema;
-  /** @deprecated use `GetAtsRejectionReasonsResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAtsRejectionReasonsResponse$outboundSchema;
-  /** @deprecated use `GetAtsRejectionReasonsResponse$Outbound` instead. */
-  export type Outbound = GetAtsRejectionReasonsResponse$Outbound;
-}
-
-export function getAtsRejectionReasonsResponseToJSON(
-  getAtsRejectionReasonsResponse: GetAtsRejectionReasonsResponse,
-): string {
-  return JSON.stringify(
-    GetAtsRejectionReasonsResponse$outboundSchema.parse(
-      getAtsRejectionReasonsResponse,
-    ),
-  );
-}
 
 export function getAtsRejectionReasonsResponseFromJSON(
   jsonString: string,

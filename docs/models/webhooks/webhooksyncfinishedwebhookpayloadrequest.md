@@ -7,7 +7,7 @@ import { WebhookSyncFinishedWebhookPayloadRequest } from "@kombo-api/sdk/models/
 
 let value: WebhookSyncFinishedWebhookPayloadRequest = {
   x_kombo_signature: "<value>",
-  sync_finished_webhook_payload: {
+  body: {
     id: "<id>",
     type: "sync-finished",
     data: {
@@ -35,4 +35,4 @@ let value: WebhookSyncFinishedWebhookPayloadRequest = {
 | Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `x_kombo_signature`                                                                                                 | *string*                                                                                                            | :heavy_check_mark:                                                                                                  | HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature. |
-| `sync_finished_webhook_payload`                                                                                     | [models.SyncFinishedWebhookPayload](../../models/syncfinishedwebhookpayload.md)                                     | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| `body`                                                                                                              | [models.SyncFinishedWebhookPayload](../../models/syncfinishedwebhookpayload.md)                                     | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |

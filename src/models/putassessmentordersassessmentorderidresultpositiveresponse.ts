@@ -33,44 +33,6 @@ export const PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$inbo
     unknown
   > = z.object({});
 
-/** @internal */
-export type PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$Outbound =
-  {};
-
-/** @internal */
-export const PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$outboundSchema:
-  z.ZodType<
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData
-  > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$ {
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$inboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$outboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$Outbound;
-}
-
-export function putAssessmentOrdersAssessmentOrderIdResultPositiveResponseDataToJSON(
-  putAssessmentOrdersAssessmentOrderIdResultPositiveResponseData:
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData,
-): string {
-  return JSON.stringify(
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$outboundSchema
-      .parse(putAssessmentOrdersAssessmentOrderIdResultPositiveResponseData),
-  );
-}
-
 export function putAssessmentOrdersAssessmentOrderIdResultPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -95,48 +57,6 @@ export const PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$i
   > = z.object({
     message: z.string(),
   });
-
-/** @internal */
-export type PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$Outbound =
-  {
-    message: string;
-  };
-
-/** @internal */
-export const PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$outboundSchema:
-  z.ZodType<
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$Outbound,
-    z.ZodTypeDef,
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning
-  > = z.object({
-    message: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$ {
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$inboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$outboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$Outbound` instead. */
-  export type Outbound =
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$Outbound;
-}
-
-export function putAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarningToJSON(
-  putAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning:
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning,
-): string {
-  return JSON.stringify(
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$outboundSchema
-      .parse(putAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning),
-  );
-}
 
 export function putAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -170,61 +90,6 @@ export const PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse$inboundS
       ),
     ),
   });
-
-/** @internal */
-export type PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse$Outbound =
-  {
-    status: "success";
-    data:
-      PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$Outbound;
-    warnings: Array<
-      PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$Outbound
-    >;
-  };
-
-/** @internal */
-export const PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse$outboundSchema:
-  z.ZodType<
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseData$outboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        PutAssessmentOrdersAssessmentOrderIdResultPositiveResponseWarning$outboundSchema
-      ),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse$ {
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse$inboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse$outboundSchema;
-  /** @deprecated use `PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse$Outbound` instead. */
-  export type Outbound =
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse$Outbound;
-}
-
-export function putAssessmentOrdersAssessmentOrderIdResultPositiveResponseToJSON(
-  putAssessmentOrdersAssessmentOrderIdResultPositiveResponse:
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse,
-): string {
-  return JSON.stringify(
-    PutAssessmentOrdersAssessmentOrderIdResultPositiveResponse$outboundSchema
-      .parse(putAssessmentOrdersAssessmentOrderIdResultPositiveResponse),
-  );
-}
 
 export function putAssessmentOrdersAssessmentOrderIdResultPositiveResponseFromJSON(
   jsonString: string,

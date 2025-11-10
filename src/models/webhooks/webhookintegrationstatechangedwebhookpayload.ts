@@ -14,8 +14,7 @@ export type WebhookIntegrationStateChangedWebhookPayloadRequest = {
    * HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature.
    */
   x_kombo_signature: string;
-  integration_state_changed_webhook_payload:
-    models.IntegrationStateChangedWebhookPayload;
+  body: models.IntegrationStateChangedWebhookPayload;
 };
 
 /** @internal */
@@ -26,21 +25,16 @@ export const WebhookIntegrationStateChangedWebhookPayloadRequest$inboundSchema:
     unknown
   > = z.object({
     "X-Kombo-Signature": z.string(),
-    IntegrationStateChangedWebhookPayload:
-      models.IntegrationStateChangedWebhookPayload$inboundSchema,
+    body: models.IntegrationStateChangedWebhookPayload$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "X-Kombo-Signature": "x_kombo_signature",
-      "IntegrationStateChangedWebhookPayload":
-        "integration_state_changed_webhook_payload",
     });
   });
-
 /** @internal */
 export type WebhookIntegrationStateChangedWebhookPayloadRequest$Outbound = {
   "X-Kombo-Signature": string;
-  IntegrationStateChangedWebhookPayload:
-    models.IntegrationStateChangedWebhookPayload$Outbound;
+  body: models.IntegrationStateChangedWebhookPayload$Outbound;
 };
 
 /** @internal */
@@ -51,31 +45,12 @@ export const WebhookIntegrationStateChangedWebhookPayloadRequest$outboundSchema:
     WebhookIntegrationStateChangedWebhookPayloadRequest
   > = z.object({
     x_kombo_signature: z.string(),
-    integration_state_changed_webhook_payload:
-      models.IntegrationStateChangedWebhookPayload$outboundSchema,
+    body: models.IntegrationStateChangedWebhookPayload$outboundSchema,
   }).transform((v) => {
     return remap$(v, {
       x_kombo_signature: "X-Kombo-Signature",
-      integration_state_changed_webhook_payload:
-        "IntegrationStateChangedWebhookPayload",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookIntegrationStateChangedWebhookPayloadRequest$ {
-  /** @deprecated use `WebhookIntegrationStateChangedWebhookPayloadRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    WebhookIntegrationStateChangedWebhookPayloadRequest$inboundSchema;
-  /** @deprecated use `WebhookIntegrationStateChangedWebhookPayloadRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    WebhookIntegrationStateChangedWebhookPayloadRequest$outboundSchema;
-  /** @deprecated use `WebhookIntegrationStateChangedWebhookPayloadRequest$Outbound` instead. */
-  export type Outbound =
-    WebhookIntegrationStateChangedWebhookPayloadRequest$Outbound;
-}
 
 export function webhookIntegrationStateChangedWebhookPayloadRequestToJSON(
   webhookIntegrationStateChangedWebhookPayloadRequest:
@@ -87,7 +62,6 @@ export function webhookIntegrationStateChangedWebhookPayloadRequestToJSON(
     ),
   );
 }
-
 export function webhookIntegrationStateChangedWebhookPayloadRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<

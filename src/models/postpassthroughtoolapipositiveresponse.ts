@@ -45,33 +45,6 @@ export type PostPassthroughToolApiPositiveResponse = {
 export const Headers$inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> =
   z.union([z.string(), z.array(z.string())]);
 
-/** @internal */
-export type Headers$Outbound = string | Array<string>;
-
-/** @internal */
-export const Headers$outboundSchema: z.ZodType<
-  Headers$Outbound,
-  z.ZodTypeDef,
-  Headers
-> = z.union([z.string(), z.array(z.string())]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Headers$ {
-  /** @deprecated use `Headers$inboundSchema` instead. */
-  export const inboundSchema = Headers$inboundSchema;
-  /** @deprecated use `Headers$outboundSchema` instead. */
-  export const outboundSchema = Headers$outboundSchema;
-  /** @deprecated use `Headers$Outbound` instead. */
-  export type Outbound = Headers$Outbound;
-}
-
-export function headersToJSON(headers: Headers): string {
-  return JSON.stringify(Headers$outboundSchema.parse(headers));
-}
-
 export function headersFromJSON(
   jsonString: string,
 ): SafeParseResult<Headers, SDKValidationError> {
@@ -91,53 +64,6 @@ export const PostPassthroughToolApiPositiveResponseData$inboundSchema:
       headers: z.record(z.union([z.string(), z.array(z.string())])),
       data: z.any().optional(),
     });
-
-/** @internal */
-export type PostPassthroughToolApiPositiveResponseData$Outbound = {
-  url: string;
-  status: number;
-  headers: { [k: string]: string | Array<string> };
-  data?: any | undefined;
-};
-
-/** @internal */
-export const PostPassthroughToolApiPositiveResponseData$outboundSchema:
-  z.ZodType<
-    PostPassthroughToolApiPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    PostPassthroughToolApiPositiveResponseData
-  > = z.object({
-    url: z.string(),
-    status: z.number().int(),
-    headers: z.record(z.union([z.string(), z.array(z.string())])),
-    data: z.any().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostPassthroughToolApiPositiveResponseData$ {
-  /** @deprecated use `PostPassthroughToolApiPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    PostPassthroughToolApiPositiveResponseData$inboundSchema;
-  /** @deprecated use `PostPassthroughToolApiPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    PostPassthroughToolApiPositiveResponseData$outboundSchema;
-  /** @deprecated use `PostPassthroughToolApiPositiveResponseData$Outbound` instead. */
-  export type Outbound = PostPassthroughToolApiPositiveResponseData$Outbound;
-}
-
-export function postPassthroughToolApiPositiveResponseDataToJSON(
-  postPassthroughToolApiPositiveResponseData:
-    PostPassthroughToolApiPositiveResponseData,
-): string {
-  return JSON.stringify(
-    PostPassthroughToolApiPositiveResponseData$outboundSchema.parse(
-      postPassthroughToolApiPositiveResponseData,
-    ),
-  );
-}
 
 export function postPassthroughToolApiPositiveResponseDataFromJSON(
   jsonString: string,
@@ -164,47 +90,6 @@ export const PostPassthroughToolApiPositiveResponseWarning$inboundSchema:
   > = z.object({
     message: z.string(),
   });
-
-/** @internal */
-export type PostPassthroughToolApiPositiveResponseWarning$Outbound = {
-  message: string;
-};
-
-/** @internal */
-export const PostPassthroughToolApiPositiveResponseWarning$outboundSchema:
-  z.ZodType<
-    PostPassthroughToolApiPositiveResponseWarning$Outbound,
-    z.ZodTypeDef,
-    PostPassthroughToolApiPositiveResponseWarning
-  > = z.object({
-    message: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostPassthroughToolApiPositiveResponseWarning$ {
-  /** @deprecated use `PostPassthroughToolApiPositiveResponseWarning$inboundSchema` instead. */
-  export const inboundSchema =
-    PostPassthroughToolApiPositiveResponseWarning$inboundSchema;
-  /** @deprecated use `PostPassthroughToolApiPositiveResponseWarning$outboundSchema` instead. */
-  export const outboundSchema =
-    PostPassthroughToolApiPositiveResponseWarning$outboundSchema;
-  /** @deprecated use `PostPassthroughToolApiPositiveResponseWarning$Outbound` instead. */
-  export type Outbound = PostPassthroughToolApiPositiveResponseWarning$Outbound;
-}
-
-export function postPassthroughToolApiPositiveResponseWarningToJSON(
-  postPassthroughToolApiPositiveResponseWarning:
-    PostPassthroughToolApiPositiveResponseWarning,
-): string {
-  return JSON.stringify(
-    PostPassthroughToolApiPositiveResponseWarning$outboundSchema.parse(
-      postPassthroughToolApiPositiveResponseWarning,
-    ),
-  );
-}
 
 export function postPassthroughToolApiPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -234,52 +119,6 @@ export const PostPassthroughToolApiPositiveResponse$inboundSchema: z.ZodType<
     z.lazy(() => PostPassthroughToolApiPositiveResponseWarning$inboundSchema),
   ),
 });
-
-/** @internal */
-export type PostPassthroughToolApiPositiveResponse$Outbound = {
-  status: "success";
-  data: PostPassthroughToolApiPositiveResponseData$Outbound;
-  warnings: Array<PostPassthroughToolApiPositiveResponseWarning$Outbound>;
-};
-
-/** @internal */
-export const PostPassthroughToolApiPositiveResponse$outboundSchema: z.ZodType<
-  PostPassthroughToolApiPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  PostPassthroughToolApiPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => PostPassthroughToolApiPositiveResponseData$outboundSchema),
-  warnings: z.array(
-    z.lazy(() => PostPassthroughToolApiPositiveResponseWarning$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostPassthroughToolApiPositiveResponse$ {
-  /** @deprecated use `PostPassthroughToolApiPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    PostPassthroughToolApiPositiveResponse$inboundSchema;
-  /** @deprecated use `PostPassthroughToolApiPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    PostPassthroughToolApiPositiveResponse$outboundSchema;
-  /** @deprecated use `PostPassthroughToolApiPositiveResponse$Outbound` instead. */
-  export type Outbound = PostPassthroughToolApiPositiveResponse$Outbound;
-}
-
-export function postPassthroughToolApiPositiveResponseToJSON(
-  postPassthroughToolApiPositiveResponse:
-    PostPassthroughToolApiPositiveResponse,
-): string {
-  return JSON.stringify(
-    PostPassthroughToolApiPositiveResponse$outboundSchema.parse(
-      postPassthroughToolApiPositiveResponse,
-    ),
-  );
-}
 
 export function postPassthroughToolApiPositiveResponseFromJSON(
   jsonString: string,

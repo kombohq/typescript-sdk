@@ -108,41 +108,6 @@ export const Break$inboundSchema: z.ZodType<Break, z.ZodTypeDef, unknown> = z
     ),
   });
 
-/** @internal */
-export type Break$Outbound = {
-  ended_at: string;
-  paid: boolean;
-  started_at: string;
-};
-
-/** @internal */
-export const Break$outboundSchema: z.ZodType<
-  Break$Outbound,
-  z.ZodTypeDef,
-  Break
-> = z.object({
-  ended_at: z.date().transform(v => v.toISOString()),
-  paid: z.boolean(),
-  started_at: z.date().transform(v => v.toISOString()),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Break$ {
-  /** @deprecated use `Break$inboundSchema` instead. */
-  export const inboundSchema = Break$inboundSchema;
-  /** @deprecated use `Break$outboundSchema` instead. */
-  export const outboundSchema = Break$outboundSchema;
-  /** @deprecated use `Break$Outbound` instead. */
-  export type Outbound = Break$Outbound;
-}
-
-export function breakToJSON(value: Break): string {
-  return JSON.stringify(Break$outboundSchema.parse(value));
-}
-
 export function breakFromJSON(
   jsonString: string,
 ): SafeParseResult<Break, SDKValidationError> {
@@ -184,74 +149,6 @@ export const GetHrisTimesheetsPositiveResponseResult$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetHrisTimesheetsPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string | null;
-  employee_id: string;
-  started_at: string | null;
-  ended_at: string | null;
-  timezone: string | null;
-  payable_hours: number | null;
-  unpaid_break_minutes: number | null;
-  breaks?: Array<Break$Outbound> | null | undefined;
-  approval_status: string | null;
-  approved_at: string | null;
-  comment: string | null;
-  custom_fields: { [k: string]: any } | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const GetHrisTimesheetsPositiveResponseResult$outboundSchema: z.ZodType<
-  GetHrisTimesheetsPositiveResponseResult$Outbound,
-  z.ZodTypeDef,
-  GetHrisTimesheetsPositiveResponseResult
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  employee_id: z.string(),
-  started_at: z.nullable(z.date().transform(v => v.toISOString())),
-  ended_at: z.nullable(z.date().transform(v => v.toISOString())),
-  timezone: z.nullable(z.string()),
-  payable_hours: z.nullable(z.number()),
-  unpaid_break_minutes: z.nullable(z.number()),
-  breaks: z.nullable(z.array(z.lazy(() => Break$outboundSchema))).optional(),
-  approval_status: z.nullable(z.string()),
-  approved_at: z.nullable(z.date().transform(v => v.toISOString())),
-  comment: z.nullable(z.string()),
-  custom_fields: z.nullable(z.record(z.any())),
-  changed_at: z.date().transform(v => v.toISOString()),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimesheetsPositiveResponseResult$ {
-  /** @deprecated use `GetHrisTimesheetsPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisTimesheetsPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetHrisTimesheetsPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisTimesheetsPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetHrisTimesheetsPositiveResponseResult$Outbound` instead. */
-  export type Outbound = GetHrisTimesheetsPositiveResponseResult$Outbound;
-}
-
-export function getHrisTimesheetsPositiveResponseResultToJSON(
-  getHrisTimesheetsPositiveResponseResult:
-    GetHrisTimesheetsPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetHrisTimesheetsPositiveResponseResult$outboundSchema.parse(
-      getHrisTimesheetsPositiveResponseResult,
-    ),
-  );
-}
-
 export function getHrisTimesheetsPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -280,49 +177,6 @@ export const GetHrisTimesheetsPositiveResponseData$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetHrisTimesheetsPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetHrisTimesheetsPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetHrisTimesheetsPositiveResponseData$outboundSchema: z.ZodType<
-  GetHrisTimesheetsPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  GetHrisTimesheetsPositiveResponseData
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisTimesheetsPositiveResponseResult$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimesheetsPositiveResponseData$ {
-  /** @deprecated use `GetHrisTimesheetsPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisTimesheetsPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetHrisTimesheetsPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisTimesheetsPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetHrisTimesheetsPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetHrisTimesheetsPositiveResponseData$Outbound;
-}
-
-export function getHrisTimesheetsPositiveResponseDataToJSON(
-  getHrisTimesheetsPositiveResponseData: GetHrisTimesheetsPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetHrisTimesheetsPositiveResponseData$outboundSchema.parse(
-      getHrisTimesheetsPositiveResponseData,
-    ),
-  );
-}
-
 export function getHrisTimesheetsPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetHrisTimesheetsPositiveResponseData, SDKValidationError> {
@@ -343,46 +197,6 @@ export const GetHrisTimesheetsPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetHrisTimesheetsPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetHrisTimesheetsPositiveResponse$Outbound = {
-  status: "success";
-  data: GetHrisTimesheetsPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetHrisTimesheetsPositiveResponse$outboundSchema: z.ZodType<
-  GetHrisTimesheetsPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisTimesheetsPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisTimesheetsPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimesheetsPositiveResponse$ {
-  /** @deprecated use `GetHrisTimesheetsPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisTimesheetsPositiveResponse$inboundSchema;
-  /** @deprecated use `GetHrisTimesheetsPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisTimesheetsPositiveResponse$outboundSchema;
-  /** @deprecated use `GetHrisTimesheetsPositiveResponse$Outbound` instead. */
-  export type Outbound = GetHrisTimesheetsPositiveResponse$Outbound;
-}
-
-export function getHrisTimesheetsPositiveResponseToJSON(
-  getHrisTimesheetsPositiveResponse: GetHrisTimesheetsPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetHrisTimesheetsPositiveResponse$outboundSchema.parse(
-      getHrisTimesheetsPositiveResponse,
-    ),
-  );
-}
 
 export function getHrisTimesheetsPositiveResponseFromJSON(
   jsonString: string,

@@ -90,49 +90,21 @@ export const ConnectionFlowFailedWebhookPayloadType$inboundSchema:
   z.ZodNativeEnum<typeof ConnectionFlowFailedWebhookPayloadType> = z.nativeEnum(
     ConnectionFlowFailedWebhookPayloadType,
   );
-
 /** @internal */
 export const ConnectionFlowFailedWebhookPayloadType$outboundSchema:
   z.ZodNativeEnum<typeof ConnectionFlowFailedWebhookPayloadType> =
     ConnectionFlowFailedWebhookPayloadType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectionFlowFailedWebhookPayloadType$ {
-  /** @deprecated use `ConnectionFlowFailedWebhookPayloadType$inboundSchema` instead. */
-  export const inboundSchema =
-    ConnectionFlowFailedWebhookPayloadType$inboundSchema;
-  /** @deprecated use `ConnectionFlowFailedWebhookPayloadType$outboundSchema` instead. */
-  export const outboundSchema =
-    ConnectionFlowFailedWebhookPayloadType$outboundSchema;
-}
 
 /** @internal */
 export const ConnectionFlowFailedWebhookPayloadIntegrationCategory$inboundSchema:
   z.ZodNativeEnum<
     typeof ConnectionFlowFailedWebhookPayloadIntegrationCategory
   > = z.nativeEnum(ConnectionFlowFailedWebhookPayloadIntegrationCategory);
-
 /** @internal */
 export const ConnectionFlowFailedWebhookPayloadIntegrationCategory$outboundSchema:
   z.ZodNativeEnum<
     typeof ConnectionFlowFailedWebhookPayloadIntegrationCategory
   > = ConnectionFlowFailedWebhookPayloadIntegrationCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectionFlowFailedWebhookPayloadIntegrationCategory$ {
-  /** @deprecated use `ConnectionFlowFailedWebhookPayloadIntegrationCategory$inboundSchema` instead. */
-  export const inboundSchema =
-    ConnectionFlowFailedWebhookPayloadIntegrationCategory$inboundSchema;
-  /** @deprecated use `ConnectionFlowFailedWebhookPayloadIntegrationCategory$outboundSchema` instead. */
-  export const outboundSchema =
-    ConnectionFlowFailedWebhookPayloadIntegrationCategory$outboundSchema;
-}
 
 /** @internal */
 export const ConnectionFlowFailedWebhookPayloadEndUser$inboundSchema: z.ZodType<
@@ -144,7 +116,6 @@ export const ConnectionFlowFailedWebhookPayloadEndUser$inboundSchema: z.ZodType<
   creator_email: z.nullable(z.string()),
   origin_id: z.nullable(z.string()),
 });
-
 /** @internal */
 export type ConnectionFlowFailedWebhookPayloadEndUser$Outbound = {
   organization_name: string;
@@ -164,21 +135,6 @@ export const ConnectionFlowFailedWebhookPayloadEndUser$outboundSchema:
     origin_id: z.nullable(z.string()),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectionFlowFailedWebhookPayloadEndUser$ {
-  /** @deprecated use `ConnectionFlowFailedWebhookPayloadEndUser$inboundSchema` instead. */
-  export const inboundSchema =
-    ConnectionFlowFailedWebhookPayloadEndUser$inboundSchema;
-  /** @deprecated use `ConnectionFlowFailedWebhookPayloadEndUser$outboundSchema` instead. */
-  export const outboundSchema =
-    ConnectionFlowFailedWebhookPayloadEndUser$outboundSchema;
-  /** @deprecated use `ConnectionFlowFailedWebhookPayloadEndUser$Outbound` instead. */
-  export type Outbound = ConnectionFlowFailedWebhookPayloadEndUser$Outbound;
-}
-
 export function connectionFlowFailedWebhookPayloadEndUserToJSON(
   connectionFlowFailedWebhookPayloadEndUser:
     ConnectionFlowFailedWebhookPayloadEndUser,
@@ -189,7 +145,6 @@ export function connectionFlowFailedWebhookPayloadEndUserToJSON(
     ),
   );
 }
-
 export function connectionFlowFailedWebhookPayloadEndUserFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -220,7 +175,6 @@ export const ConnectionFlowFailedWebhookPayloadData$inboundSchema: z.ZodType<
   ),
   log_url: z.string(),
 });
-
 /** @internal */
 export type ConnectionFlowFailedWebhookPayloadData$Outbound = {
   integration_tool: string;
@@ -244,21 +198,6 @@ export const ConnectionFlowFailedWebhookPayloadData$outboundSchema: z.ZodType<
   log_url: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectionFlowFailedWebhookPayloadData$ {
-  /** @deprecated use `ConnectionFlowFailedWebhookPayloadData$inboundSchema` instead. */
-  export const inboundSchema =
-    ConnectionFlowFailedWebhookPayloadData$inboundSchema;
-  /** @deprecated use `ConnectionFlowFailedWebhookPayloadData$outboundSchema` instead. */
-  export const outboundSchema =
-    ConnectionFlowFailedWebhookPayloadData$outboundSchema;
-  /** @deprecated use `ConnectionFlowFailedWebhookPayloadData$Outbound` instead. */
-  export type Outbound = ConnectionFlowFailedWebhookPayloadData$Outbound;
-}
-
 export function connectionFlowFailedWebhookPayloadDataToJSON(
   connectionFlowFailedWebhookPayloadData:
     ConnectionFlowFailedWebhookPayloadData,
@@ -269,7 +208,6 @@ export function connectionFlowFailedWebhookPayloadDataToJSON(
     ),
   );
 }
-
 export function connectionFlowFailedWebhookPayloadDataFromJSON(
   jsonString: string,
 ): SafeParseResult<ConnectionFlowFailedWebhookPayloadData, SDKValidationError> {
@@ -291,7 +229,6 @@ export const ConnectionFlowFailedWebhookPayload$inboundSchema: z.ZodType<
   type: ConnectionFlowFailedWebhookPayloadType$inboundSchema,
   data: z.lazy(() => ConnectionFlowFailedWebhookPayloadData$inboundSchema),
 });
-
 /** @internal */
 export type ConnectionFlowFailedWebhookPayload$Outbound = {
   id: string;
@@ -310,20 +247,6 @@ export const ConnectionFlowFailedWebhookPayload$outboundSchema: z.ZodType<
   data: z.lazy(() => ConnectionFlowFailedWebhookPayloadData$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ConnectionFlowFailedWebhookPayload$ {
-  /** @deprecated use `ConnectionFlowFailedWebhookPayload$inboundSchema` instead. */
-  export const inboundSchema = ConnectionFlowFailedWebhookPayload$inboundSchema;
-  /** @deprecated use `ConnectionFlowFailedWebhookPayload$outboundSchema` instead. */
-  export const outboundSchema =
-    ConnectionFlowFailedWebhookPayload$outboundSchema;
-  /** @deprecated use `ConnectionFlowFailedWebhookPayload$Outbound` instead. */
-  export type Outbound = ConnectionFlowFailedWebhookPayload$Outbound;
-}
-
 export function connectionFlowFailedWebhookPayloadToJSON(
   connectionFlowFailedWebhookPayload: ConnectionFlowFailedWebhookPayload,
 ): string {
@@ -333,7 +256,6 @@ export function connectionFlowFailedWebhookPayloadToJSON(
     ),
   );
 }
-
 export function connectionFlowFailedWebhookPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<ConnectionFlowFailedWebhookPayload, SDKValidationError> {

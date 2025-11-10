@@ -29,43 +29,6 @@ export const PutAssessmentPackagesPositiveResponseData$inboundSchema: z.ZodType<
   unknown
 > = z.object({});
 
-/** @internal */
-export type PutAssessmentPackagesPositiveResponseData$Outbound = {};
-
-/** @internal */
-export const PutAssessmentPackagesPositiveResponseData$outboundSchema:
-  z.ZodType<
-    PutAssessmentPackagesPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    PutAssessmentPackagesPositiveResponseData
-  > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentPackagesPositiveResponseData$ {
-  /** @deprecated use `PutAssessmentPackagesPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentPackagesPositiveResponseData$inboundSchema;
-  /** @deprecated use `PutAssessmentPackagesPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentPackagesPositiveResponseData$outboundSchema;
-  /** @deprecated use `PutAssessmentPackagesPositiveResponseData$Outbound` instead. */
-  export type Outbound = PutAssessmentPackagesPositiveResponseData$Outbound;
-}
-
-export function putAssessmentPackagesPositiveResponseDataToJSON(
-  putAssessmentPackagesPositiveResponseData:
-    PutAssessmentPackagesPositiveResponseData,
-): string {
-  return JSON.stringify(
-    PutAssessmentPackagesPositiveResponseData$outboundSchema.parse(
-      putAssessmentPackagesPositiveResponseData,
-    ),
-  );
-}
-
 export function putAssessmentPackagesPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -91,47 +54,6 @@ export const PutAssessmentPackagesPositiveResponseWarning$inboundSchema:
   > = z.object({
     message: z.string(),
   });
-
-/** @internal */
-export type PutAssessmentPackagesPositiveResponseWarning$Outbound = {
-  message: string;
-};
-
-/** @internal */
-export const PutAssessmentPackagesPositiveResponseWarning$outboundSchema:
-  z.ZodType<
-    PutAssessmentPackagesPositiveResponseWarning$Outbound,
-    z.ZodTypeDef,
-    PutAssessmentPackagesPositiveResponseWarning
-  > = z.object({
-    message: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentPackagesPositiveResponseWarning$ {
-  /** @deprecated use `PutAssessmentPackagesPositiveResponseWarning$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentPackagesPositiveResponseWarning$inboundSchema;
-  /** @deprecated use `PutAssessmentPackagesPositiveResponseWarning$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentPackagesPositiveResponseWarning$outboundSchema;
-  /** @deprecated use `PutAssessmentPackagesPositiveResponseWarning$Outbound` instead. */
-  export type Outbound = PutAssessmentPackagesPositiveResponseWarning$Outbound;
-}
-
-export function putAssessmentPackagesPositiveResponseWarningToJSON(
-  putAssessmentPackagesPositiveResponseWarning:
-    PutAssessmentPackagesPositiveResponseWarning,
-): string {
-  return JSON.stringify(
-    PutAssessmentPackagesPositiveResponseWarning$outboundSchema.parse(
-      putAssessmentPackagesPositiveResponseWarning,
-    ),
-  );
-}
 
 export function putAssessmentPackagesPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -161,51 +83,6 @@ export const PutAssessmentPackagesPositiveResponse$inboundSchema: z.ZodType<
     z.lazy(() => PutAssessmentPackagesPositiveResponseWarning$inboundSchema),
   ),
 });
-
-/** @internal */
-export type PutAssessmentPackagesPositiveResponse$Outbound = {
-  status: "success";
-  data: PutAssessmentPackagesPositiveResponseData$Outbound;
-  warnings: Array<PutAssessmentPackagesPositiveResponseWarning$Outbound>;
-};
-
-/** @internal */
-export const PutAssessmentPackagesPositiveResponse$outboundSchema: z.ZodType<
-  PutAssessmentPackagesPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  PutAssessmentPackagesPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => PutAssessmentPackagesPositiveResponseData$outboundSchema),
-  warnings: z.array(
-    z.lazy(() => PutAssessmentPackagesPositiveResponseWarning$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentPackagesPositiveResponse$ {
-  /** @deprecated use `PutAssessmentPackagesPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentPackagesPositiveResponse$inboundSchema;
-  /** @deprecated use `PutAssessmentPackagesPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentPackagesPositiveResponse$outboundSchema;
-  /** @deprecated use `PutAssessmentPackagesPositiveResponse$Outbound` instead. */
-  export type Outbound = PutAssessmentPackagesPositiveResponse$Outbound;
-}
-
-export function putAssessmentPackagesPositiveResponseToJSON(
-  putAssessmentPackagesPositiveResponse: PutAssessmentPackagesPositiveResponse,
-): string {
-  return JSON.stringify(
-    PutAssessmentPackagesPositiveResponse$outboundSchema.parse(
-      putAssessmentPackagesPositiveResponse,
-    ),
-  );
-}
 
 export function putAssessmentPackagesPositiveResponseFromJSON(
   jsonString: string,

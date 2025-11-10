@@ -26,7 +26,13 @@ export type GetHrisAbsenceTypesRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -46,76 +52,6 @@ export type GetHrisAbsenceTypesRequest = {
 export type GetHrisAbsenceTypesResponse = {
   result: models.GetHrisAbsenceTypesPositiveResponse;
 };
-
-/** @internal */
-export const GetHrisAbsenceTypesGlobals$inboundSchema: z.ZodType<
-  GetHrisAbsenceTypesGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetHrisAbsenceTypesGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetHrisAbsenceTypesGlobals$outboundSchema: z.ZodType<
-  GetHrisAbsenceTypesGlobals$Outbound,
-  z.ZodTypeDef,
-  GetHrisAbsenceTypesGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisAbsenceTypesGlobals$ {
-  /** @deprecated use `GetHrisAbsenceTypesGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetHrisAbsenceTypesGlobals$inboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetHrisAbsenceTypesGlobals$outboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesGlobals$Outbound` instead. */
-  export type Outbound = GetHrisAbsenceTypesGlobals$Outbound;
-}
-
-export function getHrisAbsenceTypesGlobalsToJSON(
-  getHrisAbsenceTypesGlobals: GetHrisAbsenceTypesGlobals,
-): string {
-  return JSON.stringify(
-    GetHrisAbsenceTypesGlobals$outboundSchema.parse(getHrisAbsenceTypesGlobals),
-  );
-}
-
-export function getHrisAbsenceTypesGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisAbsenceTypesGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisAbsenceTypesGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisAbsenceTypesGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetHrisAbsenceTypesRequest$inboundSchema: z.ZodType<
-  GetHrisAbsenceTypesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-});
 
 /** @internal */
 export type GetHrisAbsenceTypesRequest$Outbound = {
@@ -141,34 +77,11 @@ export const GetHrisAbsenceTypesRequest$outboundSchema: z.ZodType<
   remote_ids: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisAbsenceTypesRequest$ {
-  /** @deprecated use `GetHrisAbsenceTypesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetHrisAbsenceTypesRequest$inboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetHrisAbsenceTypesRequest$outboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesRequest$Outbound` instead. */
-  export type Outbound = GetHrisAbsenceTypesRequest$Outbound;
-}
-
 export function getHrisAbsenceTypesRequestToJSON(
   getHrisAbsenceTypesRequest: GetHrisAbsenceTypesRequest,
 ): string {
   return JSON.stringify(
     GetHrisAbsenceTypesRequest$outboundSchema.parse(getHrisAbsenceTypesRequest),
-  );
-}
-
-export function getHrisAbsenceTypesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisAbsenceTypesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisAbsenceTypesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisAbsenceTypesRequest' from JSON`,
   );
 }
 
@@ -184,47 +97,6 @@ export const GetHrisAbsenceTypesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetHrisAbsenceTypesResponse$Outbound = {
-  Result: models.GetHrisAbsenceTypesPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetHrisAbsenceTypesResponse$outboundSchema: z.ZodType<
-  GetHrisAbsenceTypesResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisAbsenceTypesResponse
-> = z.object({
-  result: models.GetHrisAbsenceTypesPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisAbsenceTypesResponse$ {
-  /** @deprecated use `GetHrisAbsenceTypesResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisAbsenceTypesResponse$inboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesResponse$outboundSchema` instead. */
-  export const outboundSchema = GetHrisAbsenceTypesResponse$outboundSchema;
-  /** @deprecated use `GetHrisAbsenceTypesResponse$Outbound` instead. */
-  export type Outbound = GetHrisAbsenceTypesResponse$Outbound;
-}
-
-export function getHrisAbsenceTypesResponseToJSON(
-  getHrisAbsenceTypesResponse: GetHrisAbsenceTypesResponse,
-): string {
-  return JSON.stringify(
-    GetHrisAbsenceTypesResponse$outboundSchema.parse(
-      getHrisAbsenceTypesResponse,
-    ),
-  );
-}
 
 export function getHrisAbsenceTypesResponseFromJSON(
   jsonString: string,

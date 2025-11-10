@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 export const PutAssessmentPackagesRequestBodyType = {
   Behavioral: "BEHAVIORAL",
@@ -40,40 +37,10 @@ export type PutAssessmentPackagesRequestBody = {
 };
 
 /** @internal */
-export const PutAssessmentPackagesRequestBodyType$inboundSchema:
+export const PutAssessmentPackagesRequestBodyType$outboundSchema:
   z.ZodNativeEnum<typeof PutAssessmentPackagesRequestBodyType> = z.nativeEnum(
     PutAssessmentPackagesRequestBodyType,
   );
-
-/** @internal */
-export const PutAssessmentPackagesRequestBodyType$outboundSchema:
-  z.ZodNativeEnum<typeof PutAssessmentPackagesRequestBodyType> =
-    PutAssessmentPackagesRequestBodyType$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentPackagesRequestBodyType$ {
-  /** @deprecated use `PutAssessmentPackagesRequestBodyType$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentPackagesRequestBodyType$inboundSchema;
-  /** @deprecated use `PutAssessmentPackagesRequestBodyType$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentPackagesRequestBodyType$outboundSchema;
-}
-
-/** @internal */
-export const PutAssessmentPackagesRequestBodyPackage$inboundSchema: z.ZodType<
-  PutAssessmentPackagesRequestBodyPackage,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  type: PutAssessmentPackagesRequestBodyType$inboundSchema,
-  name: z.string(),
-  description: z.string(),
-});
 
 /** @internal */
 export type PutAssessmentPackagesRequestBodyPackage$Outbound = {
@@ -95,21 +62,6 @@ export const PutAssessmentPackagesRequestBodyPackage$outboundSchema: z.ZodType<
   description: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentPackagesRequestBodyPackage$ {
-  /** @deprecated use `PutAssessmentPackagesRequestBodyPackage$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAssessmentPackagesRequestBodyPackage$inboundSchema;
-  /** @deprecated use `PutAssessmentPackagesRequestBodyPackage$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAssessmentPackagesRequestBodyPackage$outboundSchema;
-  /** @deprecated use `PutAssessmentPackagesRequestBodyPackage$Outbound` instead. */
-  export type Outbound = PutAssessmentPackagesRequestBodyPackage$Outbound;
-}
-
 export function putAssessmentPackagesRequestBodyPackageToJSON(
   putAssessmentPackagesRequestBodyPackage:
     PutAssessmentPackagesRequestBodyPackage,
@@ -120,33 +72,6 @@ export function putAssessmentPackagesRequestBodyPackageToJSON(
     ),
   );
 }
-
-export function putAssessmentPackagesRequestBodyPackageFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutAssessmentPackagesRequestBodyPackage,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutAssessmentPackagesRequestBodyPackage$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PutAssessmentPackagesRequestBodyPackage' from JSON`,
-  );
-}
-
-/** @internal */
-export const PutAssessmentPackagesRequestBody$inboundSchema: z.ZodType<
-  PutAssessmentPackagesRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  packages: z.array(
-    z.lazy(() => PutAssessmentPackagesRequestBodyPackage$inboundSchema),
-  ),
-});
 
 /** @internal */
 export type PutAssessmentPackagesRequestBody$Outbound = {
@@ -164,19 +89,6 @@ export const PutAssessmentPackagesRequestBody$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAssessmentPackagesRequestBody$ {
-  /** @deprecated use `PutAssessmentPackagesRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PutAssessmentPackagesRequestBody$inboundSchema;
-  /** @deprecated use `PutAssessmentPackagesRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PutAssessmentPackagesRequestBody$outboundSchema;
-  /** @deprecated use `PutAssessmentPackagesRequestBody$Outbound` instead. */
-  export type Outbound = PutAssessmentPackagesRequestBody$Outbound;
-}
-
 export function putAssessmentPackagesRequestBodyToJSON(
   putAssessmentPackagesRequestBody: PutAssessmentPackagesRequestBody,
 ): string {
@@ -184,15 +96,5 @@ export function putAssessmentPackagesRequestBodyToJSON(
     PutAssessmentPackagesRequestBody$outboundSchema.parse(
       putAssessmentPackagesRequestBody,
     ),
-  );
-}
-
-export function putAssessmentPackagesRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PutAssessmentPackagesRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PutAssessmentPackagesRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PutAssessmentPackagesRequestBody' from JSON`,
   );
 }

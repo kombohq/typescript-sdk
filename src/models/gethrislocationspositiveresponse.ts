@@ -88,58 +88,6 @@ export const GetHrisLocationsPositiveResponseAddress$inboundSchema: z.ZodType<
   zip_code: z.nullable(z.string()).optional(),
 });
 
-/** @internal */
-export type GetHrisLocationsPositiveResponseAddress$Outbound = {
-  city?: string | null | undefined;
-  country?: string | null | undefined;
-  raw?: string | null | undefined;
-  state?: string | null | undefined;
-  street_1?: string | null | undefined;
-  street_2?: string | null | undefined;
-  zip_code?: string | null | undefined;
-};
-
-/** @internal */
-export const GetHrisLocationsPositiveResponseAddress$outboundSchema: z.ZodType<
-  GetHrisLocationsPositiveResponseAddress$Outbound,
-  z.ZodTypeDef,
-  GetHrisLocationsPositiveResponseAddress
-> = z.object({
-  city: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.string()).optional(),
-  state: z.nullable(z.string()).optional(),
-  street_1: z.nullable(z.string()).optional(),
-  street_2: z.nullable(z.string()).optional(),
-  zip_code: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLocationsPositiveResponseAddress$ {
-  /** @deprecated use `GetHrisLocationsPositiveResponseAddress$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisLocationsPositiveResponseAddress$inboundSchema;
-  /** @deprecated use `GetHrisLocationsPositiveResponseAddress$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisLocationsPositiveResponseAddress$outboundSchema;
-  /** @deprecated use `GetHrisLocationsPositiveResponseAddress$Outbound` instead. */
-  export type Outbound = GetHrisLocationsPositiveResponseAddress$Outbound;
-}
-
-export function getHrisLocationsPositiveResponseAddressToJSON(
-  getHrisLocationsPositiveResponseAddress:
-    GetHrisLocationsPositiveResponseAddress,
-): string {
-  return JSON.stringify(
-    GetHrisLocationsPositiveResponseAddress$outboundSchema.parse(
-      getHrisLocationsPositiveResponseAddress,
-    ),
-  );
-}
-
 export function getHrisLocationsPositiveResponseAddressFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -175,60 +123,6 @@ export const GetHrisLocationsPositiveResponseResult$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetHrisLocationsPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string | null;
-  name: string | null;
-  address?: GetHrisLocationsPositiveResponseAddress$Outbound | null | undefined;
-  type: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const GetHrisLocationsPositiveResponseResult$outboundSchema: z.ZodType<
-  GetHrisLocationsPositiveResponseResult$Outbound,
-  z.ZodTypeDef,
-  GetHrisLocationsPositiveResponseResult
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  name: z.nullable(z.string()),
-  address: z.nullable(
-    z.lazy(() => GetHrisLocationsPositiveResponseAddress$outboundSchema),
-  ).optional(),
-  type: z.nullable(z.string()),
-  changed_at: z.date().transform(v => v.toISOString()),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLocationsPositiveResponseResult$ {
-  /** @deprecated use `GetHrisLocationsPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisLocationsPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetHrisLocationsPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisLocationsPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetHrisLocationsPositiveResponseResult$Outbound` instead. */
-  export type Outbound = GetHrisLocationsPositiveResponseResult$Outbound;
-}
-
-export function getHrisLocationsPositiveResponseResultToJSON(
-  getHrisLocationsPositiveResponseResult:
-    GetHrisLocationsPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetHrisLocationsPositiveResponseResult$outboundSchema.parse(
-      getHrisLocationsPositiveResponseResult,
-    ),
-  );
-}
-
 export function getHrisLocationsPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<GetHrisLocationsPositiveResponseResult, SDKValidationError> {
@@ -252,49 +146,6 @@ export const GetHrisLocationsPositiveResponseData$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetHrisLocationsPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetHrisLocationsPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetHrisLocationsPositiveResponseData$outboundSchema: z.ZodType<
-  GetHrisLocationsPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  GetHrisLocationsPositiveResponseData
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisLocationsPositiveResponseResult$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLocationsPositiveResponseData$ {
-  /** @deprecated use `GetHrisLocationsPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisLocationsPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetHrisLocationsPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisLocationsPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetHrisLocationsPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetHrisLocationsPositiveResponseData$Outbound;
-}
-
-export function getHrisLocationsPositiveResponseDataToJSON(
-  getHrisLocationsPositiveResponseData: GetHrisLocationsPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetHrisLocationsPositiveResponseData$outboundSchema.parse(
-      getHrisLocationsPositiveResponseData,
-    ),
-  );
-}
-
 export function getHrisLocationsPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetHrisLocationsPositiveResponseData, SDKValidationError> {
@@ -315,45 +166,6 @@ export const GetHrisLocationsPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetHrisLocationsPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetHrisLocationsPositiveResponse$Outbound = {
-  status: "success";
-  data: GetHrisLocationsPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetHrisLocationsPositiveResponse$outboundSchema: z.ZodType<
-  GetHrisLocationsPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisLocationsPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisLocationsPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLocationsPositiveResponse$ {
-  /** @deprecated use `GetHrisLocationsPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisLocationsPositiveResponse$inboundSchema;
-  /** @deprecated use `GetHrisLocationsPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema = GetHrisLocationsPositiveResponse$outboundSchema;
-  /** @deprecated use `GetHrisLocationsPositiveResponse$Outbound` instead. */
-  export type Outbound = GetHrisLocationsPositiveResponse$Outbound;
-}
-
-export function getHrisLocationsPositiveResponseToJSON(
-  getHrisLocationsPositiveResponse: GetHrisLocationsPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetHrisLocationsPositiveResponse$outboundSchema.parse(
-      getHrisLocationsPositiveResponse,
-    ),
-  );
-}
 
 export function getHrisLocationsPositiveResponseFromJSON(
   jsonString: string,

@@ -26,7 +26,13 @@ export type GetHrisPerformanceReviewsRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -64,81 +70,6 @@ export type GetHrisPerformanceReviewsResponse = {
 };
 
 /** @internal */
-export const GetHrisPerformanceReviewsGlobals$inboundSchema: z.ZodType<
-  GetHrisPerformanceReviewsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetHrisPerformanceReviewsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetHrisPerformanceReviewsGlobals$outboundSchema: z.ZodType<
-  GetHrisPerformanceReviewsGlobals$Outbound,
-  z.ZodTypeDef,
-  GetHrisPerformanceReviewsGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisPerformanceReviewsGlobals$ {
-  /** @deprecated use `GetHrisPerformanceReviewsGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetHrisPerformanceReviewsGlobals$inboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetHrisPerformanceReviewsGlobals$outboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsGlobals$Outbound` instead. */
-  export type Outbound = GetHrisPerformanceReviewsGlobals$Outbound;
-}
-
-export function getHrisPerformanceReviewsGlobalsToJSON(
-  getHrisPerformanceReviewsGlobals: GetHrisPerformanceReviewsGlobals,
-): string {
-  return JSON.stringify(
-    GetHrisPerformanceReviewsGlobals$outboundSchema.parse(
-      getHrisPerformanceReviewsGlobals,
-    ),
-  );
-}
-
-export function getHrisPerformanceReviewsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisPerformanceReviewsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisPerformanceReviewsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisPerformanceReviewsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetHrisPerformanceReviewsRequest$inboundSchema: z.ZodType<
-  GetHrisPerformanceReviewsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-  types: z.array(z.string()).optional(),
-  review_cycle_ids: z.array(z.string()).optional(),
-  reviewee_ids: z.array(z.string()).optional(),
-});
-
-/** @internal */
 export type GetHrisPerformanceReviewsRequest$Outbound = {
   cursor?: string | undefined;
   page_size: number;
@@ -168,19 +99,6 @@ export const GetHrisPerformanceReviewsRequest$outboundSchema: z.ZodType<
   reviewee_ids: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisPerformanceReviewsRequest$ {
-  /** @deprecated use `GetHrisPerformanceReviewsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetHrisPerformanceReviewsRequest$inboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetHrisPerformanceReviewsRequest$outboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsRequest$Outbound` instead. */
-  export type Outbound = GetHrisPerformanceReviewsRequest$Outbound;
-}
-
 export function getHrisPerformanceReviewsRequestToJSON(
   getHrisPerformanceReviewsRequest: GetHrisPerformanceReviewsRequest,
 ): string {
@@ -188,16 +106,6 @@ export function getHrisPerformanceReviewsRequestToJSON(
     GetHrisPerformanceReviewsRequest$outboundSchema.parse(
       getHrisPerformanceReviewsRequest,
     ),
-  );
-}
-
-export function getHrisPerformanceReviewsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisPerformanceReviewsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisPerformanceReviewsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisPerformanceReviewsRequest' from JSON`,
   );
 }
 
@@ -213,48 +121,6 @@ export const GetHrisPerformanceReviewsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetHrisPerformanceReviewsResponse$Outbound = {
-  Result: models.GetHrisPerformanceReviewsPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetHrisPerformanceReviewsResponse$outboundSchema: z.ZodType<
-  GetHrisPerformanceReviewsResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisPerformanceReviewsResponse
-> = z.object({
-  result: models.GetHrisPerformanceReviewsPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisPerformanceReviewsResponse$ {
-  /** @deprecated use `GetHrisPerformanceReviewsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisPerformanceReviewsResponse$inboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisPerformanceReviewsResponse$outboundSchema;
-  /** @deprecated use `GetHrisPerformanceReviewsResponse$Outbound` instead. */
-  export type Outbound = GetHrisPerformanceReviewsResponse$Outbound;
-}
-
-export function getHrisPerformanceReviewsResponseToJSON(
-  getHrisPerformanceReviewsResponse: GetHrisPerformanceReviewsResponse,
-): string {
-  return JSON.stringify(
-    GetHrisPerformanceReviewsResponse$outboundSchema.parse(
-      getHrisPerformanceReviewsResponse,
-    ),
-  );
-}
 
 export function getHrisPerformanceReviewsResponseFromJSON(
   jsonString: string,

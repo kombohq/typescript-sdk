@@ -408,7 +408,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.hris.addEmployeeDocument({
     employee_id: "GRKdd9dibYKKCrmGRSMJf3wu",
-    post_hris_employees_employee_id_documents_request_body: {
+    body: {
       category_id: "3Cjwu7nA7pH5cX5X1NAPmb7M",
       document: {
         name: "Frank Doe Employment Contract.txt",
@@ -442,7 +442,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await hrisAddEmployeeDocument(kombo, {
     employee_id: "GRKdd9dibYKKCrmGRSMJf3wu",
-    post_hris_employees_employee_id_documents_request_body: {
+    body: {
       category_id: "3Cjwu7nA7pH5cX5X1NAPmb7M",
       document: {
         name: "Frank Doe Employment Contract.txt",
@@ -1168,7 +1168,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.hris.deleteAbsence({
     absence_id: "wXJMxwDvPAjrJ4CyqdV9",
-    delete_hris_absences_absence_id_request_body: {},
+    body: {},
   });
 
   console.log(result);
@@ -1195,7 +1195,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await hrisDeleteAbsence(kombo, {
     absence_id: "wXJMxwDvPAjrJ4CyqdV9",
-    delete_hris_absences_absence_id_request_body: {},
+    body: {},
   });
   if (res.ok) {
     const { value: result } = res;

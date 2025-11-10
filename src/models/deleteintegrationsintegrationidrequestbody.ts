@@ -3,16 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 export type DeleteIntegrationsIntegrationIdRequestBody = {};
-
-/** @internal */
-export const DeleteIntegrationsIntegrationIdRequestBody$inboundSchema:
-  z.ZodType<DeleteIntegrationsIntegrationIdRequestBody, z.ZodTypeDef, unknown> =
-    z.object({});
 
 /** @internal */
 export type DeleteIntegrationsIntegrationIdRequestBody$Outbound = {};
@@ -25,21 +17,6 @@ export const DeleteIntegrationsIntegrationIdRequestBody$outboundSchema:
     DeleteIntegrationsIntegrationIdRequestBody
   > = z.object({});
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteIntegrationsIntegrationIdRequestBody$ {
-  /** @deprecated use `DeleteIntegrationsIntegrationIdRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteIntegrationsIntegrationIdRequestBody$inboundSchema;
-  /** @deprecated use `DeleteIntegrationsIntegrationIdRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteIntegrationsIntegrationIdRequestBody$outboundSchema;
-  /** @deprecated use `DeleteIntegrationsIntegrationIdRequestBody$Outbound` instead. */
-  export type Outbound = DeleteIntegrationsIntegrationIdRequestBody$Outbound;
-}
-
 export function deleteIntegrationsIntegrationIdRequestBodyToJSON(
   deleteIntegrationsIntegrationIdRequestBody:
     DeleteIntegrationsIntegrationIdRequestBody,
@@ -48,21 +25,5 @@ export function deleteIntegrationsIntegrationIdRequestBodyToJSON(
     DeleteIntegrationsIntegrationIdRequestBody$outboundSchema.parse(
       deleteIntegrationsIntegrationIdRequestBody,
     ),
-  );
-}
-
-export function deleteIntegrationsIntegrationIdRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  DeleteIntegrationsIntegrationIdRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DeleteIntegrationsIntegrationIdRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'DeleteIntegrationsIntegrationIdRequestBody' from JSON`,
   );
 }

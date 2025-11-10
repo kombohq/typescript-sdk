@@ -101,11 +101,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON(
-    "body",
-    payload.PostIntegrationsIntegrationIdRelinkRequestBody,
-    { explode: true },
-  );
+  const body = encodeJSON("body", payload.body, { explode: true });
 
   const pathParams = {
     integration_id: encodeSimple("integration_id", payload.integration_id, {

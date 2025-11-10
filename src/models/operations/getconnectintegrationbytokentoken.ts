@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetConnectIntegrationByTokenTokenRequest = {
   /**
@@ -13,15 +10,6 @@ export type GetConnectIntegrationByTokenTokenRequest = {
    */
   token: string;
 };
-
-/** @internal */
-export const GetConnectIntegrationByTokenTokenRequest$inboundSchema: z.ZodType<
-  GetConnectIntegrationByTokenTokenRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  token: z.string(),
-});
 
 /** @internal */
 export type GetConnectIntegrationByTokenTokenRequest$Outbound = {
@@ -37,21 +25,6 @@ export const GetConnectIntegrationByTokenTokenRequest$outboundSchema: z.ZodType<
   token: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetConnectIntegrationByTokenTokenRequest$ {
-  /** @deprecated use `GetConnectIntegrationByTokenTokenRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    GetConnectIntegrationByTokenTokenRequest$inboundSchema;
-  /** @deprecated use `GetConnectIntegrationByTokenTokenRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetConnectIntegrationByTokenTokenRequest$outboundSchema;
-  /** @deprecated use `GetConnectIntegrationByTokenTokenRequest$Outbound` instead. */
-  export type Outbound = GetConnectIntegrationByTokenTokenRequest$Outbound;
-}
-
 export function getConnectIntegrationByTokenTokenRequestToJSON(
   getConnectIntegrationByTokenTokenRequest:
     GetConnectIntegrationByTokenTokenRequest,
@@ -60,21 +33,5 @@ export function getConnectIntegrationByTokenTokenRequestToJSON(
     GetConnectIntegrationByTokenTokenRequest$outboundSchema.parse(
       getConnectIntegrationByTokenTokenRequest,
     ),
-  );
-}
-
-export function getConnectIntegrationByTokenTokenRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConnectIntegrationByTokenTokenRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConnectIntegrationByTokenTokenRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetConnectIntegrationByTokenTokenRequest' from JSON`,
   );
 }

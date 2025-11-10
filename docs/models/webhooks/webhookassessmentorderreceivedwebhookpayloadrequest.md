@@ -7,7 +7,7 @@ import { WebhookAssessmentOrderReceivedWebhookPayloadRequest } from "@kombo-api/
 
 let value: WebhookAssessmentOrderReceivedWebhookPayloadRequest = {
   x_kombo_signature: "<value>",
-  assessment_order_received_webhook_payload: {
+  body: {
     id: "<id>",
     type: "assessment:order-received",
     data: {
@@ -42,4 +42,4 @@ let value: WebhookAssessmentOrderReceivedWebhookPayloadRequest = {
 | Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `x_kombo_signature`                                                                                                 | *string*                                                                                                            | :heavy_check_mark:                                                                                                  | HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature. |
-| `assessment_order_received_webhook_payload`                                                                         | [models.AssessmentOrderReceivedWebhookPayload](../../models/assessmentorderreceivedwebhookpayload.md)               | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| `body`                                                                                                              | [models.AssessmentOrderReceivedWebhookPayload](../../models/assessmentorderreceivedwebhookpayload.md)               | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |

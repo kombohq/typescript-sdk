@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest = {
@@ -21,35 +17,15 @@ export type PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest = {
   /**
    * PUT /integrations/:integration_id/custom-fields/:custom_field_id Request body
    */
-  put_integrations_integration_id_custom_fields_custom_field_id_request_body:
-    models.PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody;
+  body: models.PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody;
 };
-
-/** @internal */
-export const PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$inboundSchema:
-  z.ZodType<
-    PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integration_id: z.string(),
-    custom_field_id: z.string(),
-    PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody:
-      models
-        .PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody":
-        "put_integrations_integration_id_custom_fields_custom_field_id_request_body",
-    });
-  });
 
 /** @internal */
 export type PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$Outbound =
   {
     integration_id: string;
     custom_field_id: string;
-    PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody:
+    body:
       models.PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$Outbound;
   };
 
@@ -62,31 +38,10 @@ export const PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$outbou
   > = z.object({
     integration_id: z.string(),
     custom_field_id: z.string(),
-    put_integrations_integration_id_custom_fields_custom_field_id_request_body:
+    body:
       models
         .PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      put_integrations_integration_id_custom_fields_custom_field_id_request_body:
-        "PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody",
-    });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$ {
-  /** @deprecated use `PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$inboundSchema;
-  /** @deprecated use `PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$outboundSchema;
-  /** @deprecated use `PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$Outbound` instead. */
-  export type Outbound =
-    PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$Outbound;
-}
 
 export function putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestToJSON(
   putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest:
@@ -95,20 +50,5 @@ export function putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestToJS
   return JSON.stringify(
     PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$outboundSchema
       .parse(putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest),
-  );
-}
-
-export function putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest' from JSON`,
   );
 }

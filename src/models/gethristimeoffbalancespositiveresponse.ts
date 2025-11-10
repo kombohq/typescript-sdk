@@ -145,68 +145,14 @@ export const GetHrisTimeOffBalancesPositiveResponseBalanceUnit$inboundSchema:
     .nativeEnum(GetHrisTimeOffBalancesPositiveResponseBalanceUnit);
 
 /** @internal */
-export const GetHrisTimeOffBalancesPositiveResponseBalanceUnit$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisTimeOffBalancesPositiveResponseBalanceUnit> =
-    GetHrisTimeOffBalancesPositiveResponseBalanceUnit$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimeOffBalancesPositiveResponseBalanceUnit$ {
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseBalanceUnit$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisTimeOffBalancesPositiveResponseBalanceUnit$inboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseBalanceUnit$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisTimeOffBalancesPositiveResponseBalanceUnit$outboundSchema;
-}
-
-/** @internal */
 export const GetHrisTimeOffBalancesPositiveResponseUsedUnit$inboundSchema:
   z.ZodNativeEnum<typeof GetHrisTimeOffBalancesPositiveResponseUsedUnit> = z
     .nativeEnum(GetHrisTimeOffBalancesPositiveResponseUsedUnit);
 
 /** @internal */
-export const GetHrisTimeOffBalancesPositiveResponseUsedUnit$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisTimeOffBalancesPositiveResponseUsedUnit> =
-    GetHrisTimeOffBalancesPositiveResponseUsedUnit$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimeOffBalancesPositiveResponseUsedUnit$ {
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseUsedUnit$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisTimeOffBalancesPositiveResponseUsedUnit$inboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseUsedUnit$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisTimeOffBalancesPositiveResponseUsedUnit$outboundSchema;
-}
-
-/** @internal */
 export const GetHrisTimeOffBalancesPositiveResponseUnit$inboundSchema:
   z.ZodNativeEnum<typeof GetHrisTimeOffBalancesPositiveResponseUnit> = z
     .nativeEnum(GetHrisTimeOffBalancesPositiveResponseUnit);
-
-/** @internal */
-export const GetHrisTimeOffBalancesPositiveResponseUnit$outboundSchema:
-  z.ZodNativeEnum<typeof GetHrisTimeOffBalancesPositiveResponseUnit> =
-    GetHrisTimeOffBalancesPositiveResponseUnit$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimeOffBalancesPositiveResponseUnit$ {
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseUnit$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisTimeOffBalancesPositiveResponseUnit$inboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseUnit$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisTimeOffBalancesPositiveResponseUnit$outboundSchema;
-}
 
 /** @internal */
 export const GetHrisTimeOffBalancesPositiveResponseType$inboundSchema:
@@ -227,61 +173,6 @@ export const GetHrisTimeOffBalancesPositiveResponseType$inboundSchema:
         z.string().datetime({ offset: true }).transform(v => new Date(v)),
       ),
     });
-
-/** @internal */
-export type GetHrisTimeOffBalancesPositiveResponseType$Outbound = {
-  id: string;
-  remote_id: string;
-  name: string | null;
-  unit: string | null;
-  half_days_supported: boolean | null;
-  exact_times_supported: boolean | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const GetHrisTimeOffBalancesPositiveResponseType$outboundSchema:
-  z.ZodType<
-    GetHrisTimeOffBalancesPositiveResponseType$Outbound,
-    z.ZodTypeDef,
-    GetHrisTimeOffBalancesPositiveResponseType
-  > = z.object({
-    id: z.string(),
-    remote_id: z.string(),
-    name: z.nullable(z.string()),
-    unit: z.nullable(GetHrisTimeOffBalancesPositiveResponseUnit$outboundSchema),
-    half_days_supported: z.nullable(z.boolean()),
-    exact_times_supported: z.nullable(z.boolean()),
-    changed_at: z.date().transform(v => v.toISOString()),
-    remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimeOffBalancesPositiveResponseType$ {
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisTimeOffBalancesPositiveResponseType$inboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisTimeOffBalancesPositiveResponseType$outboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseType$Outbound` instead. */
-  export type Outbound = GetHrisTimeOffBalancesPositiveResponseType$Outbound;
-}
-
-export function getHrisTimeOffBalancesPositiveResponseTypeToJSON(
-  getHrisTimeOffBalancesPositiveResponseType:
-    GetHrisTimeOffBalancesPositiveResponseType,
-): string {
-  return JSON.stringify(
-    GetHrisTimeOffBalancesPositiveResponseType$outboundSchema.parse(
-      getHrisTimeOffBalancesPositiveResponseType,
-    ),
-  );
-}
 
 export function getHrisTimeOffBalancesPositiveResponseTypeFromJSON(
   jsonString: string,
@@ -329,73 +220,6 @@ export const GetHrisTimeOffBalancesPositiveResponseResult$inboundSchema:
     ),
   });
 
-/** @internal */
-export type GetHrisTimeOffBalancesPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string | null;
-  employee_id: string;
-  type_id: string;
-  balance: number | null;
-  balance_unit: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-  used: number | null;
-  used_unit: string | null;
-  type: GetHrisTimeOffBalancesPositiveResponseType$Outbound;
-};
-
-/** @internal */
-export const GetHrisTimeOffBalancesPositiveResponseResult$outboundSchema:
-  z.ZodType<
-    GetHrisTimeOffBalancesPositiveResponseResult$Outbound,
-    z.ZodTypeDef,
-    GetHrisTimeOffBalancesPositiveResponseResult
-  > = z.object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()),
-    employee_id: z.string(),
-    type_id: z.string(),
-    balance: z.nullable(z.number()),
-    balance_unit: z.nullable(
-      GetHrisTimeOffBalancesPositiveResponseBalanceUnit$outboundSchema,
-    ),
-    changed_at: z.date().transform(v => v.toISOString()),
-    remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-    used: z.nullable(z.number()),
-    used_unit: z.nullable(
-      GetHrisTimeOffBalancesPositiveResponseUsedUnit$outboundSchema,
-    ),
-    type: z.lazy(() =>
-      GetHrisTimeOffBalancesPositiveResponseType$outboundSchema
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimeOffBalancesPositiveResponseResult$ {
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisTimeOffBalancesPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisTimeOffBalancesPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseResult$Outbound` instead. */
-  export type Outbound = GetHrisTimeOffBalancesPositiveResponseResult$Outbound;
-}
-
-export function getHrisTimeOffBalancesPositiveResponseResultToJSON(
-  getHrisTimeOffBalancesPositiveResponseResult:
-    GetHrisTimeOffBalancesPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetHrisTimeOffBalancesPositiveResponseResult$outboundSchema.parse(
-      getHrisTimeOffBalancesPositiveResponseResult,
-    ),
-  );
-}
-
 export function getHrisTimeOffBalancesPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -424,51 +248,6 @@ export const GetHrisTimeOffBalancesPositiveResponseData$inboundSchema:
       ),
     });
 
-/** @internal */
-export type GetHrisTimeOffBalancesPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetHrisTimeOffBalancesPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetHrisTimeOffBalancesPositiveResponseData$outboundSchema:
-  z.ZodType<
-    GetHrisTimeOffBalancesPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    GetHrisTimeOffBalancesPositiveResponseData
-  > = z.object({
-    next: z.nullable(z.string()),
-    results: z.array(
-      z.lazy(() => GetHrisTimeOffBalancesPositiveResponseResult$outboundSchema),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimeOffBalancesPositiveResponseData$ {
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisTimeOffBalancesPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisTimeOffBalancesPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetHrisTimeOffBalancesPositiveResponseData$Outbound;
-}
-
-export function getHrisTimeOffBalancesPositiveResponseDataToJSON(
-  getHrisTimeOffBalancesPositiveResponseData:
-    GetHrisTimeOffBalancesPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetHrisTimeOffBalancesPositiveResponseData$outboundSchema.parse(
-      getHrisTimeOffBalancesPositiveResponseData,
-    ),
-  );
-}
-
 export function getHrisTimeOffBalancesPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -494,48 +273,6 @@ export const GetHrisTimeOffBalancesPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetHrisTimeOffBalancesPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetHrisTimeOffBalancesPositiveResponse$Outbound = {
-  status: "success";
-  data: GetHrisTimeOffBalancesPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetHrisTimeOffBalancesPositiveResponse$outboundSchema: z.ZodType<
-  GetHrisTimeOffBalancesPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisTimeOffBalancesPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisTimeOffBalancesPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisTimeOffBalancesPositiveResponse$ {
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisTimeOffBalancesPositiveResponse$inboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisTimeOffBalancesPositiveResponse$outboundSchema;
-  /** @deprecated use `GetHrisTimeOffBalancesPositiveResponse$Outbound` instead. */
-  export type Outbound = GetHrisTimeOffBalancesPositiveResponse$Outbound;
-}
-
-export function getHrisTimeOffBalancesPositiveResponseToJSON(
-  getHrisTimeOffBalancesPositiveResponse:
-    GetHrisTimeOffBalancesPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetHrisTimeOffBalancesPositiveResponse$outboundSchema.parse(
-      getHrisTimeOffBalancesPositiveResponse,
-    ),
-  );
-}
 
 export function getHrisTimeOffBalancesPositiveResponseFromJSON(
   jsonString: string,

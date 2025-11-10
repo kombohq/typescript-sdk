@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostPassthroughToolApiGlobals = {
@@ -28,89 +24,14 @@ export type PostPassthroughToolApiRequest = {
   /**
    * POST /passthrough/:tool/:api Request body
    */
-  post_passthrough_tool_api_request_body:
-    models.PostPassthroughToolApiRequestBody;
+  body: models.PostPassthroughToolApiRequestBody;
 };
-
-/** @internal */
-export const PostPassthroughToolApiGlobals$inboundSchema: z.ZodType<
-  PostPassthroughToolApiGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type PostPassthroughToolApiGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const PostPassthroughToolApiGlobals$outboundSchema: z.ZodType<
-  PostPassthroughToolApiGlobals$Outbound,
-  z.ZodTypeDef,
-  PostPassthroughToolApiGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostPassthroughToolApiGlobals$ {
-  /** @deprecated use `PostPassthroughToolApiGlobals$inboundSchema` instead. */
-  export const inboundSchema = PostPassthroughToolApiGlobals$inboundSchema;
-  /** @deprecated use `PostPassthroughToolApiGlobals$outboundSchema` instead. */
-  export const outboundSchema = PostPassthroughToolApiGlobals$outboundSchema;
-  /** @deprecated use `PostPassthroughToolApiGlobals$Outbound` instead. */
-  export type Outbound = PostPassthroughToolApiGlobals$Outbound;
-}
-
-export function postPassthroughToolApiGlobalsToJSON(
-  postPassthroughToolApiGlobals: PostPassthroughToolApiGlobals,
-): string {
-  return JSON.stringify(
-    PostPassthroughToolApiGlobals$outboundSchema.parse(
-      postPassthroughToolApiGlobals,
-    ),
-  );
-}
-
-export function postPassthroughToolApiGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<PostPassthroughToolApiGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostPassthroughToolApiGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostPassthroughToolApiGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostPassthroughToolApiRequest$inboundSchema: z.ZodType<
-  PostPassthroughToolApiRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  tool: z.string(),
-  api: z.string(),
-  PostPassthroughToolApiRequestBody:
-    models.PostPassthroughToolApiRequestBody$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "PostPassthroughToolApiRequestBody":
-      "post_passthrough_tool_api_request_body",
-  });
-});
 
 /** @internal */
 export type PostPassthroughToolApiRequest$Outbound = {
   tool: string;
   api: string;
-  PostPassthroughToolApiRequestBody:
-    models.PostPassthroughToolApiRequestBody$Outbound;
+  body: models.PostPassthroughToolApiRequestBody$Outbound;
 };
 
 /** @internal */
@@ -121,26 +42,8 @@ export const PostPassthroughToolApiRequest$outboundSchema: z.ZodType<
 > = z.object({
   tool: z.string(),
   api: z.string(),
-  post_passthrough_tool_api_request_body:
-    models.PostPassthroughToolApiRequestBody$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    post_passthrough_tool_api_request_body: "PostPassthroughToolApiRequestBody",
-  });
+  body: models.PostPassthroughToolApiRequestBody$outboundSchema,
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostPassthroughToolApiRequest$ {
-  /** @deprecated use `PostPassthroughToolApiRequest$inboundSchema` instead. */
-  export const inboundSchema = PostPassthroughToolApiRequest$inboundSchema;
-  /** @deprecated use `PostPassthroughToolApiRequest$outboundSchema` instead. */
-  export const outboundSchema = PostPassthroughToolApiRequest$outboundSchema;
-  /** @deprecated use `PostPassthroughToolApiRequest$Outbound` instead. */
-  export type Outbound = PostPassthroughToolApiRequest$Outbound;
-}
 
 export function postPassthroughToolApiRequestToJSON(
   postPassthroughToolApiRequest: PostPassthroughToolApiRequest,
@@ -149,15 +52,5 @@ export function postPassthroughToolApiRequestToJSON(
     PostPassthroughToolApiRequest$outboundSchema.parse(
       postPassthroughToolApiRequest,
     ),
-  );
-}
-
-export function postPassthroughToolApiRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<PostPassthroughToolApiRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostPassthroughToolApiRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostPassthroughToolApiRequest' from JSON`,
   );
 }

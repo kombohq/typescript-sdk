@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostAtsCandidatesCandidateIdAttachmentsGlobals = {
@@ -24,100 +20,13 @@ export type PostAtsCandidatesCandidateIdAttachmentsRequest = {
   /**
    * POST /ats/candidates/:candidate_id/attachments Request body
    */
-  post_ats_candidates_candidate_id_attachments_request_body:
-    models.PostAtsCandidatesCandidateIdAttachmentsRequestBody;
+  body: models.PostAtsCandidatesCandidateIdAttachmentsRequestBody;
 };
-
-/** @internal */
-export const PostAtsCandidatesCandidateIdAttachmentsGlobals$inboundSchema:
-  z.ZodType<
-    PostAtsCandidatesCandidateIdAttachmentsGlobals,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integration_id: z.string().optional(),
-  });
-
-/** @internal */
-export type PostAtsCandidatesCandidateIdAttachmentsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const PostAtsCandidatesCandidateIdAttachmentsGlobals$outboundSchema:
-  z.ZodType<
-    PostAtsCandidatesCandidateIdAttachmentsGlobals$Outbound,
-    z.ZodTypeDef,
-    PostAtsCandidatesCandidateIdAttachmentsGlobals
-  > = z.object({
-    integration_id: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsCandidatesCandidateIdAttachmentsGlobals$ {
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsCandidatesCandidateIdAttachmentsGlobals$inboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsCandidatesCandidateIdAttachmentsGlobals$outboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsGlobals$Outbound` instead. */
-  export type Outbound =
-    PostAtsCandidatesCandidateIdAttachmentsGlobals$Outbound;
-}
-
-export function postAtsCandidatesCandidateIdAttachmentsGlobalsToJSON(
-  postAtsCandidatesCandidateIdAttachmentsGlobals:
-    PostAtsCandidatesCandidateIdAttachmentsGlobals,
-): string {
-  return JSON.stringify(
-    PostAtsCandidatesCandidateIdAttachmentsGlobals$outboundSchema.parse(
-      postAtsCandidatesCandidateIdAttachmentsGlobals,
-    ),
-  );
-}
-
-export function postAtsCandidatesCandidateIdAttachmentsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsCandidatesCandidateIdAttachmentsGlobals,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsCandidatesCandidateIdAttachmentsGlobals$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostAtsCandidatesCandidateIdAttachmentsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAtsCandidatesCandidateIdAttachmentsRequest$inboundSchema:
-  z.ZodType<
-    PostAtsCandidatesCandidateIdAttachmentsRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    candidate_id: z.string(),
-    PostAtsCandidatesCandidateIdAttachmentsRequestBody:
-      models.PostAtsCandidatesCandidateIdAttachmentsRequestBody$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "PostAtsCandidatesCandidateIdAttachmentsRequestBody":
-        "post_ats_candidates_candidate_id_attachments_request_body",
-    });
-  });
 
 /** @internal */
 export type PostAtsCandidatesCandidateIdAttachmentsRequest$Outbound = {
   candidate_id: string;
-  PostAtsCandidatesCandidateIdAttachmentsRequestBody:
-    models.PostAtsCandidatesCandidateIdAttachmentsRequestBody$Outbound;
+  body: models.PostAtsCandidatesCandidateIdAttachmentsRequestBody$Outbound;
 };
 
 /** @internal */
@@ -128,30 +37,9 @@ export const PostAtsCandidatesCandidateIdAttachmentsRequest$outboundSchema:
     PostAtsCandidatesCandidateIdAttachmentsRequest
   > = z.object({
     candidate_id: z.string(),
-    post_ats_candidates_candidate_id_attachments_request_body:
+    body:
       models.PostAtsCandidatesCandidateIdAttachmentsRequestBody$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      post_ats_candidates_candidate_id_attachments_request_body:
-        "PostAtsCandidatesCandidateIdAttachmentsRequestBody",
-    });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsCandidatesCandidateIdAttachmentsRequest$ {
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsCandidatesCandidateIdAttachmentsRequest$inboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsCandidatesCandidateIdAttachmentsRequest$outboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsRequest$Outbound` instead. */
-  export type Outbound =
-    PostAtsCandidatesCandidateIdAttachmentsRequest$Outbound;
-}
 
 export function postAtsCandidatesCandidateIdAttachmentsRequestToJSON(
   postAtsCandidatesCandidateIdAttachmentsRequest:
@@ -161,21 +49,5 @@ export function postAtsCandidatesCandidateIdAttachmentsRequestToJSON(
     PostAtsCandidatesCandidateIdAttachmentsRequest$outboundSchema.parse(
       postAtsCandidatesCandidateIdAttachmentsRequest,
     ),
-  );
-}
-
-export function postAtsCandidatesCandidateIdAttachmentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsCandidatesCandidateIdAttachmentsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsCandidatesCandidateIdAttachmentsRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostAtsCandidatesCandidateIdAttachmentsRequest' from JSON`,
   );
 }

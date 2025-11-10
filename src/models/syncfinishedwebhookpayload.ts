@@ -113,45 +113,19 @@ export type SyncFinishedWebhookPayload = {
 export const SyncFinishedWebhookPayloadType$inboundSchema: z.ZodNativeEnum<
   typeof SyncFinishedWebhookPayloadType
 > = z.nativeEnum(SyncFinishedWebhookPayloadType);
-
 /** @internal */
 export const SyncFinishedWebhookPayloadType$outboundSchema: z.ZodNativeEnum<
   typeof SyncFinishedWebhookPayloadType
 > = SyncFinishedWebhookPayloadType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SyncFinishedWebhookPayloadType$ {
-  /** @deprecated use `SyncFinishedWebhookPayloadType$inboundSchema` instead. */
-  export const inboundSchema = SyncFinishedWebhookPayloadType$inboundSchema;
-  /** @deprecated use `SyncFinishedWebhookPayloadType$outboundSchema` instead. */
-  export const outboundSchema = SyncFinishedWebhookPayloadType$outboundSchema;
-}
-
 /** @internal */
 export const SyncFinishedWebhookPayloadIntegrationCategory$inboundSchema:
   z.ZodNativeEnum<typeof SyncFinishedWebhookPayloadIntegrationCategory> = z
     .nativeEnum(SyncFinishedWebhookPayloadIntegrationCategory);
-
 /** @internal */
 export const SyncFinishedWebhookPayloadIntegrationCategory$outboundSchema:
   z.ZodNativeEnum<typeof SyncFinishedWebhookPayloadIntegrationCategory> =
     SyncFinishedWebhookPayloadIntegrationCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SyncFinishedWebhookPayloadIntegrationCategory$ {
-  /** @deprecated use `SyncFinishedWebhookPayloadIntegrationCategory$inboundSchema` instead. */
-  export const inboundSchema =
-    SyncFinishedWebhookPayloadIntegrationCategory$inboundSchema;
-  /** @deprecated use `SyncFinishedWebhookPayloadIntegrationCategory$outboundSchema` instead. */
-  export const outboundSchema =
-    SyncFinishedWebhookPayloadIntegrationCategory$outboundSchema;
-}
 
 /** @internal */
 export const SyncFinishedWebhookPayloadEndUser$inboundSchema: z.ZodType<
@@ -163,7 +137,6 @@ export const SyncFinishedWebhookPayloadEndUser$inboundSchema: z.ZodType<
   creator_email: z.nullable(z.string()),
   origin_id: z.nullable(z.string()),
 });
-
 /** @internal */
 export type SyncFinishedWebhookPayloadEndUser$Outbound = {
   organization_name: string;
@@ -182,20 +155,6 @@ export const SyncFinishedWebhookPayloadEndUser$outboundSchema: z.ZodType<
   origin_id: z.nullable(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SyncFinishedWebhookPayloadEndUser$ {
-  /** @deprecated use `SyncFinishedWebhookPayloadEndUser$inboundSchema` instead. */
-  export const inboundSchema = SyncFinishedWebhookPayloadEndUser$inboundSchema;
-  /** @deprecated use `SyncFinishedWebhookPayloadEndUser$outboundSchema` instead. */
-  export const outboundSchema =
-    SyncFinishedWebhookPayloadEndUser$outboundSchema;
-  /** @deprecated use `SyncFinishedWebhookPayloadEndUser$Outbound` instead. */
-  export type Outbound = SyncFinishedWebhookPayloadEndUser$Outbound;
-}
-
 export function syncFinishedWebhookPayloadEndUserToJSON(
   syncFinishedWebhookPayloadEndUser: SyncFinishedWebhookPayloadEndUser,
 ): string {
@@ -205,7 +164,6 @@ export function syncFinishedWebhookPayloadEndUserToJSON(
     ),
   );
 }
-
 export function syncFinishedWebhookPayloadEndUserFromJSON(
   jsonString: string,
 ): SafeParseResult<SyncFinishedWebhookPayloadEndUser, SDKValidationError> {
@@ -238,7 +196,6 @@ export const SyncFinishedWebhookPayloadData$inboundSchema: z.ZodType<
   end_user: z.lazy(() => SyncFinishedWebhookPayloadEndUser$inboundSchema),
   log_url: z.string(),
 });
-
 /** @internal */
 export type SyncFinishedWebhookPayloadData$Outbound = {
   sync_id: string;
@@ -272,19 +229,6 @@ export const SyncFinishedWebhookPayloadData$outboundSchema: z.ZodType<
   log_url: z.string(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SyncFinishedWebhookPayloadData$ {
-  /** @deprecated use `SyncFinishedWebhookPayloadData$inboundSchema` instead. */
-  export const inboundSchema = SyncFinishedWebhookPayloadData$inboundSchema;
-  /** @deprecated use `SyncFinishedWebhookPayloadData$outboundSchema` instead. */
-  export const outboundSchema = SyncFinishedWebhookPayloadData$outboundSchema;
-  /** @deprecated use `SyncFinishedWebhookPayloadData$Outbound` instead. */
-  export type Outbound = SyncFinishedWebhookPayloadData$Outbound;
-}
-
 export function syncFinishedWebhookPayloadDataToJSON(
   syncFinishedWebhookPayloadData: SyncFinishedWebhookPayloadData,
 ): string {
@@ -294,7 +238,6 @@ export function syncFinishedWebhookPayloadDataToJSON(
     ),
   );
 }
-
 export function syncFinishedWebhookPayloadDataFromJSON(
   jsonString: string,
 ): SafeParseResult<SyncFinishedWebhookPayloadData, SDKValidationError> {
@@ -315,7 +258,6 @@ export const SyncFinishedWebhookPayload$inboundSchema: z.ZodType<
   type: SyncFinishedWebhookPayloadType$inboundSchema,
   data: z.lazy(() => SyncFinishedWebhookPayloadData$inboundSchema),
 });
-
 /** @internal */
 export type SyncFinishedWebhookPayload$Outbound = {
   id: string;
@@ -334,19 +276,6 @@ export const SyncFinishedWebhookPayload$outboundSchema: z.ZodType<
   data: z.lazy(() => SyncFinishedWebhookPayloadData$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace SyncFinishedWebhookPayload$ {
-  /** @deprecated use `SyncFinishedWebhookPayload$inboundSchema` instead. */
-  export const inboundSchema = SyncFinishedWebhookPayload$inboundSchema;
-  /** @deprecated use `SyncFinishedWebhookPayload$outboundSchema` instead. */
-  export const outboundSchema = SyncFinishedWebhookPayload$outboundSchema;
-  /** @deprecated use `SyncFinishedWebhookPayload$Outbound` instead. */
-  export type Outbound = SyncFinishedWebhookPayload$Outbound;
-}
-
 export function syncFinishedWebhookPayloadToJSON(
   syncFinishedWebhookPayload: SyncFinishedWebhookPayload,
 ): string {
@@ -354,7 +283,6 @@ export function syncFinishedWebhookPayloadToJSON(
     SyncFinishedWebhookPayload$outboundSchema.parse(syncFinishedWebhookPayload),
   );
 }
-
 export function syncFinishedWebhookPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<SyncFinishedWebhookPayload, SDKValidationError> {

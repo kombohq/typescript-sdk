@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PutAtsApplicationsApplicationIdStageGlobals = {
@@ -24,99 +20,13 @@ export type PutAtsApplicationsApplicationIdStageRequest = {
   /**
    * PUT /ats/applications/:application_id/stage Request body
    */
-  put_ats_applications_application_id_stage_request_body:
-    models.PutAtsApplicationsApplicationIdStageRequestBody;
+  body: models.PutAtsApplicationsApplicationIdStageRequestBody;
 };
-
-/** @internal */
-export const PutAtsApplicationsApplicationIdStageGlobals$inboundSchema:
-  z.ZodType<
-    PutAtsApplicationsApplicationIdStageGlobals,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integration_id: z.string().optional(),
-  });
-
-/** @internal */
-export type PutAtsApplicationsApplicationIdStageGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const PutAtsApplicationsApplicationIdStageGlobals$outboundSchema:
-  z.ZodType<
-    PutAtsApplicationsApplicationIdStageGlobals$Outbound,
-    z.ZodTypeDef,
-    PutAtsApplicationsApplicationIdStageGlobals
-  > = z.object({
-    integration_id: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAtsApplicationsApplicationIdStageGlobals$ {
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAtsApplicationsApplicationIdStageGlobals$inboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAtsApplicationsApplicationIdStageGlobals$outboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageGlobals$Outbound` instead. */
-  export type Outbound = PutAtsApplicationsApplicationIdStageGlobals$Outbound;
-}
-
-export function putAtsApplicationsApplicationIdStageGlobalsToJSON(
-  putAtsApplicationsApplicationIdStageGlobals:
-    PutAtsApplicationsApplicationIdStageGlobals,
-): string {
-  return JSON.stringify(
-    PutAtsApplicationsApplicationIdStageGlobals$outboundSchema.parse(
-      putAtsApplicationsApplicationIdStageGlobals,
-    ),
-  );
-}
-
-export function putAtsApplicationsApplicationIdStageGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutAtsApplicationsApplicationIdStageGlobals,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutAtsApplicationsApplicationIdStageGlobals$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PutAtsApplicationsApplicationIdStageGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const PutAtsApplicationsApplicationIdStageRequest$inboundSchema:
-  z.ZodType<
-    PutAtsApplicationsApplicationIdStageRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    application_id: z.string(),
-    PutAtsApplicationsApplicationIdStageRequestBody:
-      models.PutAtsApplicationsApplicationIdStageRequestBody$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "PutAtsApplicationsApplicationIdStageRequestBody":
-        "put_ats_applications_application_id_stage_request_body",
-    });
-  });
 
 /** @internal */
 export type PutAtsApplicationsApplicationIdStageRequest$Outbound = {
   application_id: string;
-  PutAtsApplicationsApplicationIdStageRequestBody:
-    models.PutAtsApplicationsApplicationIdStageRequestBody$Outbound;
+  body: models.PutAtsApplicationsApplicationIdStageRequestBody$Outbound;
 };
 
 /** @internal */
@@ -127,29 +37,8 @@ export const PutAtsApplicationsApplicationIdStageRequest$outboundSchema:
     PutAtsApplicationsApplicationIdStageRequest
   > = z.object({
     application_id: z.string(),
-    put_ats_applications_application_id_stage_request_body:
-      models.PutAtsApplicationsApplicationIdStageRequestBody$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      put_ats_applications_application_id_stage_request_body:
-        "PutAtsApplicationsApplicationIdStageRequestBody",
-    });
+    body: models.PutAtsApplicationsApplicationIdStageRequestBody$outboundSchema,
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAtsApplicationsApplicationIdStageRequest$ {
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAtsApplicationsApplicationIdStageRequest$inboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAtsApplicationsApplicationIdStageRequest$outboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequest$Outbound` instead. */
-  export type Outbound = PutAtsApplicationsApplicationIdStageRequest$Outbound;
-}
 
 export function putAtsApplicationsApplicationIdStageRequestToJSON(
   putAtsApplicationsApplicationIdStageRequest:
@@ -159,21 +48,5 @@ export function putAtsApplicationsApplicationIdStageRequestToJSON(
     PutAtsApplicationsApplicationIdStageRequest$outboundSchema.parse(
       putAtsApplicationsApplicationIdStageRequest,
     ),
-  );
-}
-
-export function putAtsApplicationsApplicationIdStageRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutAtsApplicationsApplicationIdStageRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutAtsApplicationsApplicationIdStageRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PutAtsApplicationsApplicationIdStageRequest' from JSON`,
   );
 }

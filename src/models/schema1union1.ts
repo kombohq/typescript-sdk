@@ -7,18 +7,8 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
-import {
-  Schema1,
-  Schema1$inboundSchema,
-  Schema1$Outbound,
-  Schema1$outboundSchema,
-} from "./schema1.js";
-import {
-  Schema2Union1,
-  Schema2Union1$inboundSchema,
-  Schema2Union1$Outbound,
-  Schema2Union1$outboundSchema,
-} from "./schema2union1.js";
+import { Schema1, Schema1$inboundSchema } from "./schema1.js";
+import { Schema2Union1, Schema2Union1$inboundSchema } from "./schema2union1.js";
 
 export const Schema1UnifiedKey8 = {
   FirstName: "first_name",
@@ -366,22 +356,6 @@ export const Schema1UnifiedKey8$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(Schema1UnifiedKey8);
 
 /** @internal */
-export const Schema1UnifiedKey8$outboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey8
-> = Schema1UnifiedKey8$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1UnifiedKey8$ {
-  /** @deprecated use `Schema1UnifiedKey8$inboundSchema` instead. */
-  export const inboundSchema = Schema1UnifiedKey8$inboundSchema;
-  /** @deprecated use `Schema1UnifiedKey8$outboundSchema` instead. */
-  export const outboundSchema = Schema1UnifiedKey8$outboundSchema;
-}
-
-/** @internal */
 export const Schema1FileRestrictions$inboundSchema: z.ZodType<
   Schema1FileRestrictions,
   z.ZodTypeDef,
@@ -390,43 +364,6 @@ export const Schema1FileRestrictions$inboundSchema: z.ZodType<
   accepted_mime_types: z.array(z.string()),
   max_file_size: z.nullable(z.number()).optional(),
 });
-
-/** @internal */
-export type Schema1FileRestrictions$Outbound = {
-  accepted_mime_types: Array<string>;
-  max_file_size?: number | null | undefined;
-};
-
-/** @internal */
-export const Schema1FileRestrictions$outboundSchema: z.ZodType<
-  Schema1FileRestrictions$Outbound,
-  z.ZodTypeDef,
-  Schema1FileRestrictions
-> = z.object({
-  accepted_mime_types: z.array(z.string()),
-  max_file_size: z.nullable(z.number()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1FileRestrictions$ {
-  /** @deprecated use `Schema1FileRestrictions$inboundSchema` instead. */
-  export const inboundSchema = Schema1FileRestrictions$inboundSchema;
-  /** @deprecated use `Schema1FileRestrictions$outboundSchema` instead. */
-  export const outboundSchema = Schema1FileRestrictions$outboundSchema;
-  /** @deprecated use `Schema1FileRestrictions$Outbound` instead. */
-  export type Outbound = Schema1FileRestrictions$Outbound;
-}
-
-export function schema1FileRestrictionsToJSON(
-  schema1FileRestrictions: Schema1FileRestrictions,
-): string {
-  return JSON.stringify(
-    Schema1FileRestrictions$outboundSchema.parse(schema1FileRestrictions),
-  );
-}
 
 export function schema1FileRestrictionsFromJSON(
   jsonString: string,
@@ -452,47 +389,6 @@ export const Schema1File$inboundSchema: z.ZodType<
   file_restrictions: z.lazy(() => Schema1FileRestrictions$inboundSchema),
 });
 
-/** @internal */
-export type Schema1File$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "file";
-  file_restrictions: Schema1FileRestrictions$Outbound;
-};
-
-/** @internal */
-export const Schema1File$outboundSchema: z.ZodType<
-  Schema1File$Outbound,
-  z.ZodTypeDef,
-  Schema1File
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey8$outboundSchema).optional(),
-  type: z.literal("file"),
-  file_restrictions: z.lazy(() => Schema1FileRestrictions$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1File$ {
-  /** @deprecated use `Schema1File$inboundSchema` instead. */
-  export const inboundSchema = Schema1File$inboundSchema;
-  /** @deprecated use `Schema1File$outboundSchema` instead. */
-  export const outboundSchema = Schema1File$outboundSchema;
-  /** @deprecated use `Schema1File$Outbound` instead. */
-  export type Outbound = Schema1File$Outbound;
-}
-
-export function schema1FileToJSON(schema1File: Schema1File): string {
-  return JSON.stringify(Schema1File$outboundSchema.parse(schema1File));
-}
-
 export function schema1FileFromJSON(
   jsonString: string,
 ): SafeParseResult<Schema1File, SDKValidationError> {
@@ -507,22 +403,6 @@ export function schema1FileFromJSON(
 export const Schema1UnifiedKey7$inboundSchema: z.ZodNativeEnum<
   typeof Schema1UnifiedKey7
 > = z.nativeEnum(Schema1UnifiedKey7);
-
-/** @internal */
-export const Schema1UnifiedKey7$outboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey7
-> = Schema1UnifiedKey7$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1UnifiedKey7$ {
-  /** @deprecated use `Schema1UnifiedKey7$inboundSchema` instead. */
-  export const inboundSchema = Schema1UnifiedKey7$inboundSchema;
-  /** @deprecated use `Schema1UnifiedKey7$outboundSchema` instead. */
-  export const outboundSchema = Schema1UnifiedKey7$outboundSchema;
-}
 
 /** @internal */
 export const Schema1Array1$inboundSchema: z.ZodType<
@@ -540,51 +420,6 @@ export const Schema1Array1$inboundSchema: z.ZodType<
   max_items: z.nullable(z.number()).optional(),
 });
 
-/** @internal */
-export type Schema1Array1$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "array";
-  item_type: Schema2Union1$Outbound;
-  min_items?: number | null | undefined;
-  max_items?: number | null | undefined;
-};
-
-/** @internal */
-export const Schema1Array1$outboundSchema: z.ZodType<
-  Schema1Array1$Outbound,
-  z.ZodTypeDef,
-  Schema1Array1
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey7$outboundSchema).optional(),
-  type: z.literal("array"),
-  item_type: Schema2Union1$outboundSchema,
-  min_items: z.nullable(z.number()).optional(),
-  max_items: z.nullable(z.number()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1Array1$ {
-  /** @deprecated use `Schema1Array1$inboundSchema` instead. */
-  export const inboundSchema = Schema1Array1$inboundSchema;
-  /** @deprecated use `Schema1Array1$outboundSchema` instead. */
-  export const outboundSchema = Schema1Array1$outboundSchema;
-  /** @deprecated use `Schema1Array1$Outbound` instead. */
-  export type Outbound = Schema1Array1$Outbound;
-}
-
-export function schema1Array1ToJSON(schema1Array1: Schema1Array1): string {
-  return JSON.stringify(Schema1Array1$outboundSchema.parse(schema1Array1));
-}
-
 export function schema1Array1FromJSON(
   jsonString: string,
 ): SafeParseResult<Schema1Array1, SDKValidationError> {
@@ -601,22 +436,6 @@ export const Schema1UnifiedKey6$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(Schema1UnifiedKey6);
 
 /** @internal */
-export const Schema1UnifiedKey6$outboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey6
-> = Schema1UnifiedKey6$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1UnifiedKey6$ {
-  /** @deprecated use `Schema1UnifiedKey6$inboundSchema` instead. */
-  export const inboundSchema = Schema1UnifiedKey6$inboundSchema;
-  /** @deprecated use `Schema1UnifiedKey6$outboundSchema` instead. */
-  export const outboundSchema = Schema1UnifiedKey6$outboundSchema;
-}
-
-/** @internal */
 export const Schema1Object$inboundSchema: z.ZodType<
   Schema1Object,
   z.ZodTypeDef,
@@ -629,47 +448,6 @@ export const Schema1Object$inboundSchema: z.ZodType<
   type: z.literal("object"),
   properties: Schema1$inboundSchema,
 });
-
-/** @internal */
-export type Schema1Object$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "object";
-  properties: Schema1$Outbound;
-};
-
-/** @internal */
-export const Schema1Object$outboundSchema: z.ZodType<
-  Schema1Object$Outbound,
-  z.ZodTypeDef,
-  Schema1Object
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey6$outboundSchema).optional(),
-  type: z.literal("object"),
-  properties: Schema1$outboundSchema,
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1Object$ {
-  /** @deprecated use `Schema1Object$inboundSchema` instead. */
-  export const inboundSchema = Schema1Object$inboundSchema;
-  /** @deprecated use `Schema1Object$outboundSchema` instead. */
-  export const outboundSchema = Schema1Object$outboundSchema;
-  /** @deprecated use `Schema1Object$Outbound` instead. */
-  export type Outbound = Schema1Object$Outbound;
-}
-
-export function schema1ObjectToJSON(schema1Object: Schema1Object): string {
-  return JSON.stringify(Schema1Object$outboundSchema.parse(schema1Object));
-}
 
 export function schema1ObjectFromJSON(
   jsonString: string,
@@ -687,22 +465,6 @@ export const Schema1UnifiedKey5$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(Schema1UnifiedKey5);
 
 /** @internal */
-export const Schema1UnifiedKey5$outboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey5
-> = Schema1UnifiedKey5$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1UnifiedKey5$ {
-  /** @deprecated use `Schema1UnifiedKey5$inboundSchema` instead. */
-  export const inboundSchema = Schema1UnifiedKey5$inboundSchema;
-  /** @deprecated use `Schema1UnifiedKey5$outboundSchema` instead. */
-  export const outboundSchema = Schema1UnifiedKey5$outboundSchema;
-}
-
-/** @internal */
 export const Schema1Checkbox$inboundSchema: z.ZodType<
   Schema1Checkbox,
   z.ZodTypeDef,
@@ -714,47 +476,6 @@ export const Schema1Checkbox$inboundSchema: z.ZodType<
   unified_key: z.nullable(Schema1UnifiedKey5$inboundSchema).optional(),
   type: z.literal("checkbox"),
 });
-
-/** @internal */
-export type Schema1Checkbox$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "checkbox";
-};
-
-/** @internal */
-export const Schema1Checkbox$outboundSchema: z.ZodType<
-  Schema1Checkbox$Outbound,
-  z.ZodTypeDef,
-  Schema1Checkbox
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey5$outboundSchema).optional(),
-  type: z.literal("checkbox"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1Checkbox$ {
-  /** @deprecated use `Schema1Checkbox$inboundSchema` instead. */
-  export const inboundSchema = Schema1Checkbox$inboundSchema;
-  /** @deprecated use `Schema1Checkbox$outboundSchema` instead. */
-  export const outboundSchema = Schema1Checkbox$outboundSchema;
-  /** @deprecated use `Schema1Checkbox$Outbound` instead. */
-  export type Outbound = Schema1Checkbox$Outbound;
-}
-
-export function schema1CheckboxToJSON(
-  schema1Checkbox: Schema1Checkbox,
-): string {
-  return JSON.stringify(Schema1Checkbox$outboundSchema.parse(schema1Checkbox));
-}
 
 export function schema1CheckboxFromJSON(
   jsonString: string,
@@ -776,43 +497,6 @@ export const Schema1OptionsReferenced2$inboundSchema: z.ZodType<
   link: z.string(),
 });
 
-/** @internal */
-export type Schema1OptionsReferenced2$Outbound = {
-  type: "referenced";
-  link: string;
-};
-
-/** @internal */
-export const Schema1OptionsReferenced2$outboundSchema: z.ZodType<
-  Schema1OptionsReferenced2$Outbound,
-  z.ZodTypeDef,
-  Schema1OptionsReferenced2
-> = z.object({
-  type: z.literal("referenced"),
-  link: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1OptionsReferenced2$ {
-  /** @deprecated use `Schema1OptionsReferenced2$inboundSchema` instead. */
-  export const inboundSchema = Schema1OptionsReferenced2$inboundSchema;
-  /** @deprecated use `Schema1OptionsReferenced2$outboundSchema` instead. */
-  export const outboundSchema = Schema1OptionsReferenced2$outboundSchema;
-  /** @deprecated use `Schema1OptionsReferenced2$Outbound` instead. */
-  export type Outbound = Schema1OptionsReferenced2$Outbound;
-}
-
-export function schema1OptionsReferenced2ToJSON(
-  schema1OptionsReferenced2: Schema1OptionsReferenced2,
-): string {
-  return JSON.stringify(
-    Schema1OptionsReferenced2$outboundSchema.parse(schema1OptionsReferenced2),
-  );
-}
-
 export function schema1OptionsReferenced2FromJSON(
   jsonString: string,
 ): SafeParseResult<Schema1OptionsReferenced2, SDKValidationError> {
@@ -829,37 +513,6 @@ export const Schema1RemoteId2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number()]);
-
-/** @internal */
-export type Schema1RemoteId2$Outbound = string | number;
-
-/** @internal */
-export const Schema1RemoteId2$outboundSchema: z.ZodType<
-  Schema1RemoteId2$Outbound,
-  z.ZodTypeDef,
-  Schema1RemoteId2
-> = z.union([z.string(), z.number()]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1RemoteId2$ {
-  /** @deprecated use `Schema1RemoteId2$inboundSchema` instead. */
-  export const inboundSchema = Schema1RemoteId2$inboundSchema;
-  /** @deprecated use `Schema1RemoteId2$outboundSchema` instead. */
-  export const outboundSchema = Schema1RemoteId2$outboundSchema;
-  /** @deprecated use `Schema1RemoteId2$Outbound` instead. */
-  export type Outbound = Schema1RemoteId2$Outbound;
-}
-
-export function schema1RemoteId2ToJSON(
-  schema1RemoteId2: Schema1RemoteId2,
-): string {
-  return JSON.stringify(
-    Schema1RemoteId2$outboundSchema.parse(schema1RemoteId2),
-  );
-}
 
 export function schema1RemoteId2FromJSON(
   jsonString: string,
@@ -883,43 +536,6 @@ export const Schema1Entry2$inboundSchema: z.ZodType<
   remote_id: z.union([z.string(), z.number()]),
 });
 
-/** @internal */
-export type Schema1Entry2$Outbound = {
-  id: string;
-  label: string;
-  unified_value?: string | undefined;
-  remote_id: string | number;
-};
-
-/** @internal */
-export const Schema1Entry2$outboundSchema: z.ZodType<
-  Schema1Entry2$Outbound,
-  z.ZodTypeDef,
-  Schema1Entry2
-> = z.object({
-  id: z.string(),
-  label: z.string(),
-  unified_value: z.string().optional(),
-  remote_id: z.union([z.string(), z.number()]),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1Entry2$ {
-  /** @deprecated use `Schema1Entry2$inboundSchema` instead. */
-  export const inboundSchema = Schema1Entry2$inboundSchema;
-  /** @deprecated use `Schema1Entry2$outboundSchema` instead. */
-  export const outboundSchema = Schema1Entry2$outboundSchema;
-  /** @deprecated use `Schema1Entry2$Outbound` instead. */
-  export type Outbound = Schema1Entry2$Outbound;
-}
-
-export function schema1Entry2ToJSON(schema1Entry2: Schema1Entry2): string {
-  return JSON.stringify(Schema1Entry2$outboundSchema.parse(schema1Entry2));
-}
-
 export function schema1Entry2FromJSON(
   jsonString: string,
 ): SafeParseResult<Schema1Entry2, SDKValidationError> {
@@ -940,43 +556,6 @@ export const Schema1OptionsInline2$inboundSchema: z.ZodType<
   entries: z.array(z.lazy(() => Schema1Entry2$inboundSchema)),
 });
 
-/** @internal */
-export type Schema1OptionsInline2$Outbound = {
-  type: "inline";
-  entries: Array<Schema1Entry2$Outbound>;
-};
-
-/** @internal */
-export const Schema1OptionsInline2$outboundSchema: z.ZodType<
-  Schema1OptionsInline2$Outbound,
-  z.ZodTypeDef,
-  Schema1OptionsInline2
-> = z.object({
-  type: z.literal("inline"),
-  entries: z.array(z.lazy(() => Schema1Entry2$outboundSchema)),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1OptionsInline2$ {
-  /** @deprecated use `Schema1OptionsInline2$inboundSchema` instead. */
-  export const inboundSchema = Schema1OptionsInline2$inboundSchema;
-  /** @deprecated use `Schema1OptionsInline2$outboundSchema` instead. */
-  export const outboundSchema = Schema1OptionsInline2$outboundSchema;
-  /** @deprecated use `Schema1OptionsInline2$Outbound` instead. */
-  export type Outbound = Schema1OptionsInline2$Outbound;
-}
-
-export function schema1OptionsInline2ToJSON(
-  schema1OptionsInline2: Schema1OptionsInline2,
-): string {
-  return JSON.stringify(
-    Schema1OptionsInline2$outboundSchema.parse(schema1OptionsInline2),
-  );
-}
-
 export function schema1OptionsInline2FromJSON(
   jsonString: string,
 ): SafeParseResult<Schema1OptionsInline2, SDKValidationError> {
@@ -996,42 +575,6 @@ export const Schema1OptionsUnion2$inboundSchema: z.ZodType<
   z.lazy(() => Schema1OptionsInline2$inboundSchema),
   z.lazy(() => Schema1OptionsReferenced2$inboundSchema),
 ]);
-
-/** @internal */
-export type Schema1OptionsUnion2$Outbound =
-  | Schema1OptionsInline2$Outbound
-  | Schema1OptionsReferenced2$Outbound;
-
-/** @internal */
-export const Schema1OptionsUnion2$outboundSchema: z.ZodType<
-  Schema1OptionsUnion2$Outbound,
-  z.ZodTypeDef,
-  Schema1OptionsUnion2
-> = z.union([
-  z.lazy(() => Schema1OptionsInline2$outboundSchema),
-  z.lazy(() => Schema1OptionsReferenced2$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1OptionsUnion2$ {
-  /** @deprecated use `Schema1OptionsUnion2$inboundSchema` instead. */
-  export const inboundSchema = Schema1OptionsUnion2$inboundSchema;
-  /** @deprecated use `Schema1OptionsUnion2$outboundSchema` instead. */
-  export const outboundSchema = Schema1OptionsUnion2$outboundSchema;
-  /** @deprecated use `Schema1OptionsUnion2$Outbound` instead. */
-  export type Outbound = Schema1OptionsUnion2$Outbound;
-}
-
-export function schema1OptionsUnion2ToJSON(
-  schema1OptionsUnion2: Schema1OptionsUnion2,
-): string {
-  return JSON.stringify(
-    Schema1OptionsUnion2$outboundSchema.parse(schema1OptionsUnion2),
-  );
-}
 
 export function schema1OptionsUnion2FromJSON(
   jsonString: string,
@@ -1062,58 +605,6 @@ export const Schema1MultiSelect$inboundSchema: z.ZodType<
   ]),
 });
 
-/** @internal */
-export type Schema1MultiSelect$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "multi_select";
-  min_items?: number | null | undefined;
-  max_items?: number | null | undefined;
-  options: Schema1OptionsInline2$Outbound | Schema1OptionsReferenced2$Outbound;
-};
-
-/** @internal */
-export const Schema1MultiSelect$outboundSchema: z.ZodType<
-  Schema1MultiSelect$Outbound,
-  z.ZodTypeDef,
-  Schema1MultiSelect
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(z.string()).optional(),
-  type: z.literal("multi_select"),
-  min_items: z.nullable(z.number()).optional(),
-  max_items: z.nullable(z.number()).optional(),
-  options: z.union([
-    z.lazy(() => Schema1OptionsInline2$outboundSchema),
-    z.lazy(() => Schema1OptionsReferenced2$outboundSchema),
-  ]),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1MultiSelect$ {
-  /** @deprecated use `Schema1MultiSelect$inboundSchema` instead. */
-  export const inboundSchema = Schema1MultiSelect$inboundSchema;
-  /** @deprecated use `Schema1MultiSelect$outboundSchema` instead. */
-  export const outboundSchema = Schema1MultiSelect$outboundSchema;
-  /** @deprecated use `Schema1MultiSelect$Outbound` instead. */
-  export type Outbound = Schema1MultiSelect$Outbound;
-}
-
-export function schema1MultiSelectToJSON(
-  schema1MultiSelect: Schema1MultiSelect,
-): string {
-  return JSON.stringify(
-    Schema1MultiSelect$outboundSchema.parse(schema1MultiSelect),
-  );
-}
-
 export function schema1MultiSelectFromJSON(
   jsonString: string,
 ): SafeParseResult<Schema1MultiSelect, SDKValidationError> {
@@ -1130,22 +621,6 @@ export const Schema1UnifiedKey4$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(Schema1UnifiedKey4);
 
 /** @internal */
-export const Schema1UnifiedKey4$outboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey4
-> = Schema1UnifiedKey4$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1UnifiedKey4$ {
-  /** @deprecated use `Schema1UnifiedKey4$inboundSchema` instead. */
-  export const inboundSchema = Schema1UnifiedKey4$inboundSchema;
-  /** @deprecated use `Schema1UnifiedKey4$outboundSchema` instead. */
-  export const outboundSchema = Schema1UnifiedKey4$outboundSchema;
-}
-
-/** @internal */
 export const Schema1OptionsReferenced1$inboundSchema: z.ZodType<
   Schema1OptionsReferenced1,
   z.ZodTypeDef,
@@ -1154,43 +629,6 @@ export const Schema1OptionsReferenced1$inboundSchema: z.ZodType<
   type: z.literal("referenced"),
   link: z.string(),
 });
-
-/** @internal */
-export type Schema1OptionsReferenced1$Outbound = {
-  type: "referenced";
-  link: string;
-};
-
-/** @internal */
-export const Schema1OptionsReferenced1$outboundSchema: z.ZodType<
-  Schema1OptionsReferenced1$Outbound,
-  z.ZodTypeDef,
-  Schema1OptionsReferenced1
-> = z.object({
-  type: z.literal("referenced"),
-  link: z.string(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1OptionsReferenced1$ {
-  /** @deprecated use `Schema1OptionsReferenced1$inboundSchema` instead. */
-  export const inboundSchema = Schema1OptionsReferenced1$inboundSchema;
-  /** @deprecated use `Schema1OptionsReferenced1$outboundSchema` instead. */
-  export const outboundSchema = Schema1OptionsReferenced1$outboundSchema;
-  /** @deprecated use `Schema1OptionsReferenced1$Outbound` instead. */
-  export type Outbound = Schema1OptionsReferenced1$Outbound;
-}
-
-export function schema1OptionsReferenced1ToJSON(
-  schema1OptionsReferenced1: Schema1OptionsReferenced1,
-): string {
-  return JSON.stringify(
-    Schema1OptionsReferenced1$outboundSchema.parse(schema1OptionsReferenced1),
-  );
-}
 
 export function schema1OptionsReferenced1FromJSON(
   jsonString: string,
@@ -1208,37 +646,6 @@ export const Schema1RemoteId1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([z.string(), z.number()]);
-
-/** @internal */
-export type Schema1RemoteId1$Outbound = string | number;
-
-/** @internal */
-export const Schema1RemoteId1$outboundSchema: z.ZodType<
-  Schema1RemoteId1$Outbound,
-  z.ZodTypeDef,
-  Schema1RemoteId1
-> = z.union([z.string(), z.number()]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1RemoteId1$ {
-  /** @deprecated use `Schema1RemoteId1$inboundSchema` instead. */
-  export const inboundSchema = Schema1RemoteId1$inboundSchema;
-  /** @deprecated use `Schema1RemoteId1$outboundSchema` instead. */
-  export const outboundSchema = Schema1RemoteId1$outboundSchema;
-  /** @deprecated use `Schema1RemoteId1$Outbound` instead. */
-  export type Outbound = Schema1RemoteId1$Outbound;
-}
-
-export function schema1RemoteId1ToJSON(
-  schema1RemoteId1: Schema1RemoteId1,
-): string {
-  return JSON.stringify(
-    Schema1RemoteId1$outboundSchema.parse(schema1RemoteId1),
-  );
-}
 
 export function schema1RemoteId1FromJSON(
   jsonString: string,
@@ -1262,43 +669,6 @@ export const Schema1Entry1$inboundSchema: z.ZodType<
   remote_id: z.union([z.string(), z.number()]),
 });
 
-/** @internal */
-export type Schema1Entry1$Outbound = {
-  id: string;
-  label: string;
-  unified_value?: string | undefined;
-  remote_id: string | number;
-};
-
-/** @internal */
-export const Schema1Entry1$outboundSchema: z.ZodType<
-  Schema1Entry1$Outbound,
-  z.ZodTypeDef,
-  Schema1Entry1
-> = z.object({
-  id: z.string(),
-  label: z.string(),
-  unified_value: z.string().optional(),
-  remote_id: z.union([z.string(), z.number()]),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1Entry1$ {
-  /** @deprecated use `Schema1Entry1$inboundSchema` instead. */
-  export const inboundSchema = Schema1Entry1$inboundSchema;
-  /** @deprecated use `Schema1Entry1$outboundSchema` instead. */
-  export const outboundSchema = Schema1Entry1$outboundSchema;
-  /** @deprecated use `Schema1Entry1$Outbound` instead. */
-  export type Outbound = Schema1Entry1$Outbound;
-}
-
-export function schema1Entry1ToJSON(schema1Entry1: Schema1Entry1): string {
-  return JSON.stringify(Schema1Entry1$outboundSchema.parse(schema1Entry1));
-}
-
 export function schema1Entry1FromJSON(
   jsonString: string,
 ): SafeParseResult<Schema1Entry1, SDKValidationError> {
@@ -1319,43 +689,6 @@ export const Schema1OptionsInline1$inboundSchema: z.ZodType<
   entries: z.array(z.lazy(() => Schema1Entry1$inboundSchema)),
 });
 
-/** @internal */
-export type Schema1OptionsInline1$Outbound = {
-  type: "inline";
-  entries: Array<Schema1Entry1$Outbound>;
-};
-
-/** @internal */
-export const Schema1OptionsInline1$outboundSchema: z.ZodType<
-  Schema1OptionsInline1$Outbound,
-  z.ZodTypeDef,
-  Schema1OptionsInline1
-> = z.object({
-  type: z.literal("inline"),
-  entries: z.array(z.lazy(() => Schema1Entry1$outboundSchema)),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1OptionsInline1$ {
-  /** @deprecated use `Schema1OptionsInline1$inboundSchema` instead. */
-  export const inboundSchema = Schema1OptionsInline1$inboundSchema;
-  /** @deprecated use `Schema1OptionsInline1$outboundSchema` instead. */
-  export const outboundSchema = Schema1OptionsInline1$outboundSchema;
-  /** @deprecated use `Schema1OptionsInline1$Outbound` instead. */
-  export type Outbound = Schema1OptionsInline1$Outbound;
-}
-
-export function schema1OptionsInline1ToJSON(
-  schema1OptionsInline1: Schema1OptionsInline1,
-): string {
-  return JSON.stringify(
-    Schema1OptionsInline1$outboundSchema.parse(schema1OptionsInline1),
-  );
-}
-
 export function schema1OptionsInline1FromJSON(
   jsonString: string,
 ): SafeParseResult<Schema1OptionsInline1, SDKValidationError> {
@@ -1375,42 +708,6 @@ export const Schema1OptionsUnion1$inboundSchema: z.ZodType<
   z.lazy(() => Schema1OptionsInline1$inboundSchema),
   z.lazy(() => Schema1OptionsReferenced1$inboundSchema),
 ]);
-
-/** @internal */
-export type Schema1OptionsUnion1$Outbound =
-  | Schema1OptionsInline1$Outbound
-  | Schema1OptionsReferenced1$Outbound;
-
-/** @internal */
-export const Schema1OptionsUnion1$outboundSchema: z.ZodType<
-  Schema1OptionsUnion1$Outbound,
-  z.ZodTypeDef,
-  Schema1OptionsUnion1
-> = z.union([
-  z.lazy(() => Schema1OptionsInline1$outboundSchema),
-  z.lazy(() => Schema1OptionsReferenced1$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1OptionsUnion1$ {
-  /** @deprecated use `Schema1OptionsUnion1$inboundSchema` instead. */
-  export const inboundSchema = Schema1OptionsUnion1$inboundSchema;
-  /** @deprecated use `Schema1OptionsUnion1$outboundSchema` instead. */
-  export const outboundSchema = Schema1OptionsUnion1$outboundSchema;
-  /** @deprecated use `Schema1OptionsUnion1$Outbound` instead. */
-  export type Outbound = Schema1OptionsUnion1$Outbound;
-}
-
-export function schema1OptionsUnion1ToJSON(
-  schema1OptionsUnion1: Schema1OptionsUnion1,
-): string {
-  return JSON.stringify(
-    Schema1OptionsUnion1$outboundSchema.parse(schema1OptionsUnion1),
-  );
-}
 
 export function schema1OptionsUnion1FromJSON(
   jsonString: string,
@@ -1439,54 +736,6 @@ export const Schema1SingleSelect$inboundSchema: z.ZodType<
   ]),
 });
 
-/** @internal */
-export type Schema1SingleSelect$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "single_select";
-  options: Schema1OptionsInline1$Outbound | Schema1OptionsReferenced1$Outbound;
-};
-
-/** @internal */
-export const Schema1SingleSelect$outboundSchema: z.ZodType<
-  Schema1SingleSelect$Outbound,
-  z.ZodTypeDef,
-  Schema1SingleSelect
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey4$outboundSchema).optional(),
-  type: z.literal("single_select"),
-  options: z.union([
-    z.lazy(() => Schema1OptionsInline1$outboundSchema),
-    z.lazy(() => Schema1OptionsReferenced1$outboundSchema),
-  ]),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1SingleSelect$ {
-  /** @deprecated use `Schema1SingleSelect$inboundSchema` instead. */
-  export const inboundSchema = Schema1SingleSelect$inboundSchema;
-  /** @deprecated use `Schema1SingleSelect$outboundSchema` instead. */
-  export const outboundSchema = Schema1SingleSelect$outboundSchema;
-  /** @deprecated use `Schema1SingleSelect$Outbound` instead. */
-  export type Outbound = Schema1SingleSelect$Outbound;
-}
-
-export function schema1SingleSelectToJSON(
-  schema1SingleSelect: Schema1SingleSelect,
-): string {
-  return JSON.stringify(
-    Schema1SingleSelect$outboundSchema.parse(schema1SingleSelect),
-  );
-}
-
 export function schema1SingleSelectFromJSON(
   jsonString: string,
 ): SafeParseResult<Schema1SingleSelect, SDKValidationError> {
@@ -1503,22 +752,6 @@ export const Schema1UnifiedKey3$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(Schema1UnifiedKey3);
 
 /** @internal */
-export const Schema1UnifiedKey3$outboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey3
-> = Schema1UnifiedKey3$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1UnifiedKey3$ {
-  /** @deprecated use `Schema1UnifiedKey3$inboundSchema` instead. */
-  export const inboundSchema = Schema1UnifiedKey3$inboundSchema;
-  /** @deprecated use `Schema1UnifiedKey3$outboundSchema` instead. */
-  export const outboundSchema = Schema1UnifiedKey3$outboundSchema;
-}
-
-/** @internal */
 export const Schema1Date$inboundSchema: z.ZodType<
   Schema1Date,
   z.ZodTypeDef,
@@ -1530,45 +763,6 @@ export const Schema1Date$inboundSchema: z.ZodType<
   unified_key: z.nullable(Schema1UnifiedKey3$inboundSchema).optional(),
   type: z.literal("date"),
 });
-
-/** @internal */
-export type Schema1Date$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "date";
-};
-
-/** @internal */
-export const Schema1Date$outboundSchema: z.ZodType<
-  Schema1Date$Outbound,
-  z.ZodTypeDef,
-  Schema1Date
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey3$outboundSchema).optional(),
-  type: z.literal("date"),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1Date$ {
-  /** @deprecated use `Schema1Date$inboundSchema` instead. */
-  export const inboundSchema = Schema1Date$inboundSchema;
-  /** @deprecated use `Schema1Date$outboundSchema` instead. */
-  export const outboundSchema = Schema1Date$outboundSchema;
-  /** @deprecated use `Schema1Date$Outbound` instead. */
-  export type Outbound = Schema1Date$Outbound;
-}
-
-export function schema1DateToJSON(schema1Date: Schema1Date): string {
-  return JSON.stringify(Schema1Date$outboundSchema.parse(schema1Date));
-}
 
 export function schema1DateFromJSON(
   jsonString: string,
@@ -1586,22 +780,6 @@ export const Schema1UnifiedKey2$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(Schema1UnifiedKey2);
 
 /** @internal */
-export const Schema1UnifiedKey2$outboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey2
-> = Schema1UnifiedKey2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1UnifiedKey2$ {
-  /** @deprecated use `Schema1UnifiedKey2$inboundSchema` instead. */
-  export const inboundSchema = Schema1UnifiedKey2$inboundSchema;
-  /** @deprecated use `Schema1UnifiedKey2$outboundSchema` instead. */
-  export const outboundSchema = Schema1UnifiedKey2$outboundSchema;
-}
-
-/** @internal */
 export const Schema1Number$inboundSchema: z.ZodType<
   Schema1Number,
   z.ZodTypeDef,
@@ -1615,49 +793,6 @@ export const Schema1Number$inboundSchema: z.ZodType<
   min: z.nullable(z.number()).optional(),
   max: z.nullable(z.number()).optional(),
 });
-
-/** @internal */
-export type Schema1Number$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "number";
-  min?: number | null | undefined;
-  max?: number | null | undefined;
-};
-
-/** @internal */
-export const Schema1Number$outboundSchema: z.ZodType<
-  Schema1Number$Outbound,
-  z.ZodTypeDef,
-  Schema1Number
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey2$outboundSchema).optional(),
-  type: z.literal("number"),
-  min: z.nullable(z.number()).optional(),
-  max: z.nullable(z.number()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1Number$ {
-  /** @deprecated use `Schema1Number$inboundSchema` instead. */
-  export const inboundSchema = Schema1Number$inboundSchema;
-  /** @deprecated use `Schema1Number$outboundSchema` instead. */
-  export const outboundSchema = Schema1Number$outboundSchema;
-  /** @deprecated use `Schema1Number$Outbound` instead. */
-  export type Outbound = Schema1Number$Outbound;
-}
-
-export function schema1NumberToJSON(schema1Number: Schema1Number): string {
-  return JSON.stringify(Schema1Number$outboundSchema.parse(schema1Number));
-}
 
 export function schema1NumberFromJSON(
   jsonString: string,
@@ -1675,22 +810,6 @@ export const Schema1UnifiedKey1$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(Schema1UnifiedKey1);
 
 /** @internal */
-export const Schema1UnifiedKey1$outboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey1
-> = Schema1UnifiedKey1$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1UnifiedKey1$ {
-  /** @deprecated use `Schema1UnifiedKey1$inboundSchema` instead. */
-  export const inboundSchema = Schema1UnifiedKey1$inboundSchema;
-  /** @deprecated use `Schema1UnifiedKey1$outboundSchema` instead. */
-  export const outboundSchema = Schema1UnifiedKey1$outboundSchema;
-}
-
-/** @internal */
 export const Schema1Text$inboundSchema: z.ZodType<
   Schema1Text,
   z.ZodTypeDef,
@@ -1705,51 +824,6 @@ export const Schema1Text$inboundSchema: z.ZodType<
   max_length: z.nullable(z.number()).optional(),
   reg_exp: z.nullable(z.string()).optional(),
 });
-
-/** @internal */
-export type Schema1Text$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "text";
-  min_length?: number | null | undefined;
-  max_length?: number | null | undefined;
-  reg_exp?: string | null | undefined;
-};
-
-/** @internal */
-export const Schema1Text$outboundSchema: z.ZodType<
-  Schema1Text$Outbound,
-  z.ZodTypeDef,
-  Schema1Text
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey1$outboundSchema).optional(),
-  type: z.literal("text"),
-  min_length: z.nullable(z.number()).optional(),
-  max_length: z.nullable(z.number()).optional(),
-  reg_exp: z.nullable(z.string()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1Text$ {
-  /** @deprecated use `Schema1Text$inboundSchema` instead. */
-  export const inboundSchema = Schema1Text$inboundSchema;
-  /** @deprecated use `Schema1Text$outboundSchema` instead. */
-  export const outboundSchema = Schema1Text$outboundSchema;
-  /** @deprecated use `Schema1Text$Outbound` instead. */
-  export type Outbound = Schema1Text$Outbound;
-}
-
-export function schema1TextToJSON(schema1Text: Schema1Text): string {
-  return JSON.stringify(Schema1Text$outboundSchema.parse(schema1Text));
-}
 
 export function schema1TextFromJSON(
   jsonString: string,
@@ -1777,52 +851,6 @@ export const Schema1Union1$inboundSchema: z.ZodType<
   z.lazy(() => Schema1Date$inboundSchema),
   z.lazy(() => Schema1Checkbox$inboundSchema),
 ]);
-
-/** @internal */
-export type Schema1Union1$Outbound =
-  | Schema1SingleSelect$Outbound
-  | Schema1MultiSelect$Outbound
-  | Schema1Object$Outbound
-  | Schema1Array1$Outbound
-  | Schema1File$Outbound
-  | Schema1Text$Outbound
-  | Schema1Number$Outbound
-  | Schema1Date$Outbound
-  | Schema1Checkbox$Outbound;
-
-/** @internal */
-export const Schema1Union1$outboundSchema: z.ZodType<
-  Schema1Union1$Outbound,
-  z.ZodTypeDef,
-  Schema1Union1
-> = z.union([
-  z.lazy(() => Schema1SingleSelect$outboundSchema),
-  z.lazy(() => Schema1MultiSelect$outboundSchema),
-  z.lazy(() => Schema1Object$outboundSchema),
-  z.lazy(() => Schema1Array1$outboundSchema),
-  z.lazy(() => Schema1File$outboundSchema),
-  z.lazy(() => Schema1Text$outboundSchema),
-  z.lazy(() => Schema1Number$outboundSchema),
-  z.lazy(() => Schema1Date$outboundSchema),
-  z.lazy(() => Schema1Checkbox$outboundSchema),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema1Union1$ {
-  /** @deprecated use `Schema1Union1$inboundSchema` instead. */
-  export const inboundSchema = Schema1Union1$inboundSchema;
-  /** @deprecated use `Schema1Union1$outboundSchema` instead. */
-  export const outboundSchema = Schema1Union1$outboundSchema;
-  /** @deprecated use `Schema1Union1$Outbound` instead. */
-  export type Outbound = Schema1Union1$Outbound;
-}
-
-export function schema1Union1ToJSON(schema1Union1: Schema1Union1): string {
-  return JSON.stringify(Schema1Union1$outboundSchema.parse(schema1Union1));
-}
 
 export function schema1Union1FromJSON(
   jsonString: string,

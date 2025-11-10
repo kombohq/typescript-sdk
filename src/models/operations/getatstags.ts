@@ -26,7 +26,13 @@ export type GetAtsTagsRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -46,76 +52,6 @@ export type GetAtsTagsRequest = {
 export type GetAtsTagsResponse = {
   result: models.GetAtsTagsPositiveResponse;
 };
-
-/** @internal */
-export const GetAtsTagsGlobals$inboundSchema: z.ZodType<
-  GetAtsTagsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetAtsTagsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetAtsTagsGlobals$outboundSchema: z.ZodType<
-  GetAtsTagsGlobals$Outbound,
-  z.ZodTypeDef,
-  GetAtsTagsGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsTagsGlobals$ {
-  /** @deprecated use `GetAtsTagsGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetAtsTagsGlobals$inboundSchema;
-  /** @deprecated use `GetAtsTagsGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetAtsTagsGlobals$outboundSchema;
-  /** @deprecated use `GetAtsTagsGlobals$Outbound` instead. */
-  export type Outbound = GetAtsTagsGlobals$Outbound;
-}
-
-export function getAtsTagsGlobalsToJSON(
-  getAtsTagsGlobals: GetAtsTagsGlobals,
-): string {
-  return JSON.stringify(
-    GetAtsTagsGlobals$outboundSchema.parse(getAtsTagsGlobals),
-  );
-}
-
-export function getAtsTagsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAtsTagsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAtsTagsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsTagsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetAtsTagsRequest$inboundSchema: z.ZodType<
-  GetAtsTagsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-});
 
 /** @internal */
 export type GetAtsTagsRequest$Outbound = {
@@ -141,34 +77,11 @@ export const GetAtsTagsRequest$outboundSchema: z.ZodType<
   remote_ids: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsTagsRequest$ {
-  /** @deprecated use `GetAtsTagsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAtsTagsRequest$inboundSchema;
-  /** @deprecated use `GetAtsTagsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAtsTagsRequest$outboundSchema;
-  /** @deprecated use `GetAtsTagsRequest$Outbound` instead. */
-  export type Outbound = GetAtsTagsRequest$Outbound;
-}
-
 export function getAtsTagsRequestToJSON(
   getAtsTagsRequest: GetAtsTagsRequest,
 ): string {
   return JSON.stringify(
     GetAtsTagsRequest$outboundSchema.parse(getAtsTagsRequest),
-  );
-}
-
-export function getAtsTagsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAtsTagsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAtsTagsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsTagsRequest' from JSON`,
   );
 }
 
@@ -184,45 +97,6 @@ export const GetAtsTagsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetAtsTagsResponse$Outbound = {
-  Result: models.GetAtsTagsPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetAtsTagsResponse$outboundSchema: z.ZodType<
-  GetAtsTagsResponse$Outbound,
-  z.ZodTypeDef,
-  GetAtsTagsResponse
-> = z.object({
-  result: models.GetAtsTagsPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsTagsResponse$ {
-  /** @deprecated use `GetAtsTagsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAtsTagsResponse$inboundSchema;
-  /** @deprecated use `GetAtsTagsResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAtsTagsResponse$outboundSchema;
-  /** @deprecated use `GetAtsTagsResponse$Outbound` instead. */
-  export type Outbound = GetAtsTagsResponse$Outbound;
-}
-
-export function getAtsTagsResponseToJSON(
-  getAtsTagsResponse: GetAtsTagsResponse,
-): string {
-  return JSON.stringify(
-    GetAtsTagsResponse$outboundSchema.parse(getAtsTagsResponse),
-  );
-}
 
 export function getAtsTagsResponseFromJSON(
   jsonString: string,

@@ -32,44 +32,6 @@ export const PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$inbound
     unknown
   > = z.object({});
 
-/** @internal */
-export type PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$Outbound =
-  {};
-
-/** @internal */
-export const PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$outboundSchema:
-  z.ZodType<
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData
-  > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$ {
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$inboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$outboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$Outbound;
-}
-
-export function postAtsCandidatesCandidateIdAttachmentsPositiveResponseDataToJSON(
-  postAtsCandidatesCandidateIdAttachmentsPositiveResponseData:
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData,
-): string {
-  return JSON.stringify(
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$outboundSchema
-      .parse(postAtsCandidatesCandidateIdAttachmentsPositiveResponseData),
-  );
-}
-
 export function postAtsCandidatesCandidateIdAttachmentsPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -94,48 +56,6 @@ export const PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$inbo
   > = z.object({
     message: z.string(),
   });
-
-/** @internal */
-export type PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$Outbound =
-  {
-    message: string;
-  };
-
-/** @internal */
-export const PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$outboundSchema:
-  z.ZodType<
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$Outbound,
-    z.ZodTypeDef,
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning
-  > = z.object({
-    message: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$ {
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$inboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$outboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$Outbound` instead. */
-  export type Outbound =
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$Outbound;
-}
-
-export function postAtsCandidatesCandidateIdAttachmentsPositiveResponseWarningToJSON(
-  postAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning:
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning,
-): string {
-  return JSON.stringify(
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$outboundSchema
-      .parse(postAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning),
-  );
-}
 
 export function postAtsCandidatesCandidateIdAttachmentsPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -169,59 +89,6 @@ export const PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$inboundSche
       ),
     ),
   });
-
-/** @internal */
-export type PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$Outbound = {
-  status: "success";
-  data: PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$Outbound;
-  warnings: Array<
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$Outbound
-  >;
-};
-
-/** @internal */
-export const PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$outboundSchema:
-  z.ZodType<
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$outboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$outboundSchema
-      ),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$ {
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$inboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$outboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$Outbound` instead. */
-  export type Outbound =
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$Outbound;
-}
-
-export function postAtsCandidatesCandidateIdAttachmentsPositiveResponseToJSON(
-  postAtsCandidatesCandidateIdAttachmentsPositiveResponse:
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponse,
-): string {
-  return JSON.stringify(
-    PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$outboundSchema
-      .parse(postAtsCandidatesCandidateIdAttachmentsPositiveResponse),
-  );
-}
 
 export function postAtsCandidatesCandidateIdAttachmentsPositiveResponseFromJSON(
   jsonString: string,

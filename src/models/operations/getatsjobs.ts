@@ -26,7 +26,13 @@ export type GetAtsJobsRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -88,85 +94,6 @@ export type GetAtsJobsResponse = {
 };
 
 /** @internal */
-export const GetAtsJobsGlobals$inboundSchema: z.ZodType<
-  GetAtsJobsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetAtsJobsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetAtsJobsGlobals$outboundSchema: z.ZodType<
-  GetAtsJobsGlobals$Outbound,
-  z.ZodTypeDef,
-  GetAtsJobsGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsJobsGlobals$ {
-  /** @deprecated use `GetAtsJobsGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetAtsJobsGlobals$inboundSchema;
-  /** @deprecated use `GetAtsJobsGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetAtsJobsGlobals$outboundSchema;
-  /** @deprecated use `GetAtsJobsGlobals$Outbound` instead. */
-  export type Outbound = GetAtsJobsGlobals$Outbound;
-}
-
-export function getAtsJobsGlobalsToJSON(
-  getAtsJobsGlobals: GetAtsJobsGlobals,
-): string {
-  return JSON.stringify(
-    GetAtsJobsGlobals$outboundSchema.parse(getAtsJobsGlobals),
-  );
-}
-
-export function getAtsJobsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAtsJobsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAtsJobsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsJobsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetAtsJobsRequest$inboundSchema: z.ZodType<
-  GetAtsJobsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-  job_codes: z.array(z.string()).optional(),
-  post_url: z.string().optional(),
-  statuses: z.array(z.string()).optional(),
-  employment_types: z.array(z.string()).optional(),
-  visibilities: z.array(z.string()).optional(),
-  remote_created_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  name_contains: z.string().optional(),
-});
-
-/** @internal */
 export type GetAtsJobsRequest$Outbound = {
   cursor?: string | undefined;
   page_size: number;
@@ -204,34 +131,11 @@ export const GetAtsJobsRequest$outboundSchema: z.ZodType<
   name_contains: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsJobsRequest$ {
-  /** @deprecated use `GetAtsJobsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAtsJobsRequest$inboundSchema;
-  /** @deprecated use `GetAtsJobsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAtsJobsRequest$outboundSchema;
-  /** @deprecated use `GetAtsJobsRequest$Outbound` instead. */
-  export type Outbound = GetAtsJobsRequest$Outbound;
-}
-
 export function getAtsJobsRequestToJSON(
   getAtsJobsRequest: GetAtsJobsRequest,
 ): string {
   return JSON.stringify(
     GetAtsJobsRequest$outboundSchema.parse(getAtsJobsRequest),
-  );
-}
-
-export function getAtsJobsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAtsJobsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAtsJobsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsJobsRequest' from JSON`,
   );
 }
 
@@ -247,45 +151,6 @@ export const GetAtsJobsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetAtsJobsResponse$Outbound = {
-  Result: models.GetAtsJobsPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetAtsJobsResponse$outboundSchema: z.ZodType<
-  GetAtsJobsResponse$Outbound,
-  z.ZodTypeDef,
-  GetAtsJobsResponse
-> = z.object({
-  result: models.GetAtsJobsPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsJobsResponse$ {
-  /** @deprecated use `GetAtsJobsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAtsJobsResponse$inboundSchema;
-  /** @deprecated use `GetAtsJobsResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAtsJobsResponse$outboundSchema;
-  /** @deprecated use `GetAtsJobsResponse$Outbound` instead. */
-  export type Outbound = GetAtsJobsResponse$Outbound;
-}
-
-export function getAtsJobsResponseToJSON(
-  getAtsJobsResponse: GetAtsJobsResponse,
-): string {
-  return JSON.stringify(
-    GetAtsJobsResponse$outboundSchema.parse(getAtsJobsResponse),
-  );
-}
 
 export function getAtsJobsResponseFromJSON(
   jsonString: string,

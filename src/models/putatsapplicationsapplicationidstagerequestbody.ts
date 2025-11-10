@@ -4,9 +4,6 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 /**
  * Headers we will pass with `POST` requests to Greenhouse.
@@ -72,20 +69,6 @@ export type PutAtsApplicationsApplicationIdStageRequestBody = {
 };
 
 /** @internal */
-export const PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$inboundSchema:
-  z.ZodType<
-    PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    "On-Behalf-Of": z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "On-Behalf-Of": "on_behalf_of",
-    });
-  });
-
-/** @internal */
 export type PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$Outbound =
   {
     "On-Behalf-Of"?: string | null | undefined;
@@ -105,22 +88,6 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$outbound
     });
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$ {
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$inboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$outboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$Outbound` instead. */
-  export type Outbound =
-    PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$Outbound;
-}
-
 export function putAtsApplicationsApplicationIdStageRequestBodyPostHeadersToJSON(
   putAtsApplicationsApplicationIdStageRequestBodyPostHeaders:
     PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders,
@@ -130,33 +97,6 @@ export function putAtsApplicationsApplicationIdStageRequestBodyPostHeadersToJSON
       .parse(putAtsApplicationsApplicationIdStageRequestBodyPostHeaders),
   );
 }
-
-export function putAtsApplicationsApplicationIdStageRequestBodyPostHeadersFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders' from JSON`,
-  );
-}
-
-/** @internal */
-export const PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$inboundSchema:
-  z.ZodType<
-    PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    post_headers: z.lazy(() =>
-      PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$inboundSchema
-    ).optional(),
-  });
 
 /** @internal */
 export type PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$Outbound =
@@ -178,22 +118,6 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$outboundS
     ).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$ {
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$inboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$outboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$Outbound` instead. */
-  export type Outbound =
-    PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$Outbound;
-}
-
 export function putAtsApplicationsApplicationIdStageRequestBodyGreenhouseToJSON(
   putAtsApplicationsApplicationIdStageRequestBodyGreenhouse:
     PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse,
@@ -203,31 +127,6 @@ export function putAtsApplicationsApplicationIdStageRequestBodyGreenhouseToJSON(
       .parse(putAtsApplicationsApplicationIdStageRequestBodyGreenhouse),
   );
 }
-
-export function putAtsApplicationsApplicationIdStageRequestBodyGreenhouseFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse' from JSON`,
-  );
-}
-
-/** @internal */
-export const PutAtsApplicationsApplicationIdStageRequestBodyWorkable$inboundSchema:
-  z.ZodType<
-    PutAtsApplicationsApplicationIdStageRequestBodyWorkable,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    on_behalf_of_user_remote_id: z.string().optional(),
-  });
 
 /** @internal */
 export type PutAtsApplicationsApplicationIdStageRequestBodyWorkable$Outbound = {
@@ -244,22 +143,6 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyWorkable$outboundSch
     on_behalf_of_user_remote_id: z.string().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAtsApplicationsApplicationIdStageRequestBodyWorkable$ {
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBodyWorkable$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAtsApplicationsApplicationIdStageRequestBodyWorkable$inboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBodyWorkable$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAtsApplicationsApplicationIdStageRequestBodyWorkable$outboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBodyWorkable$Outbound` instead. */
-  export type Outbound =
-    PutAtsApplicationsApplicationIdStageRequestBodyWorkable$Outbound;
-}
-
 export function putAtsApplicationsApplicationIdStageRequestBodyWorkableToJSON(
   putAtsApplicationsApplicationIdStageRequestBodyWorkable:
     PutAtsApplicationsApplicationIdStageRequestBodyWorkable,
@@ -269,36 +152,6 @@ export function putAtsApplicationsApplicationIdStageRequestBodyWorkableToJSON(
       .parse(putAtsApplicationsApplicationIdStageRequestBodyWorkable),
   );
 }
-
-export function putAtsApplicationsApplicationIdStageRequestBodyWorkableFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutAtsApplicationsApplicationIdStageRequestBodyWorkable,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutAtsApplicationsApplicationIdStageRequestBodyWorkable$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PutAtsApplicationsApplicationIdStageRequestBodyWorkable' from JSON`,
-  );
-}
-
-/** @internal */
-export const PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$inboundSchema:
-  z.ZodType<
-    PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    greenhouse: z.lazy(() =>
-      PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$inboundSchema
-    ).optional(),
-    workable: z.lazy(() =>
-      PutAtsApplicationsApplicationIdStageRequestBodyWorkable$inboundSchema
-    ).optional(),
-  });
 
 /** @internal */
 export type PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$Outbound =
@@ -326,22 +179,6 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$outboun
     ).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$ {
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$inboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$outboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$Outbound` instead. */
-  export type Outbound =
-    PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$Outbound;
-}
-
 export function putAtsApplicationsApplicationIdStageRequestBodyRemoteFieldsToJSON(
   putAtsApplicationsApplicationIdStageRequestBodyRemoteFields:
     PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields,
@@ -351,34 +188,6 @@ export function putAtsApplicationsApplicationIdStageRequestBodyRemoteFieldsToJSO
       .parse(putAtsApplicationsApplicationIdStageRequestBodyRemoteFields),
   );
 }
-
-export function putAtsApplicationsApplicationIdStageRequestBodyRemoteFieldsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields' from JSON`,
-  );
-}
-
-/** @internal */
-export const PutAtsApplicationsApplicationIdStageRequestBody$inboundSchema:
-  z.ZodType<
-    PutAtsApplicationsApplicationIdStageRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    stage_id: z.string(),
-    remote_fields: z.lazy(() =>
-      PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$inboundSchema
-    ).optional(),
-  });
 
 /** @internal */
 export type PutAtsApplicationsApplicationIdStageRequestBody$Outbound = {
@@ -401,22 +210,6 @@ export const PutAtsApplicationsApplicationIdStageRequestBody$outboundSchema:
     ).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutAtsApplicationsApplicationIdStageRequestBody$ {
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PutAtsApplicationsApplicationIdStageRequestBody$inboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PutAtsApplicationsApplicationIdStageRequestBody$outboundSchema;
-  /** @deprecated use `PutAtsApplicationsApplicationIdStageRequestBody$Outbound` instead. */
-  export type Outbound =
-    PutAtsApplicationsApplicationIdStageRequestBody$Outbound;
-}
-
 export function putAtsApplicationsApplicationIdStageRequestBodyToJSON(
   putAtsApplicationsApplicationIdStageRequestBody:
     PutAtsApplicationsApplicationIdStageRequestBody,
@@ -425,21 +218,5 @@ export function putAtsApplicationsApplicationIdStageRequestBodyToJSON(
     PutAtsApplicationsApplicationIdStageRequestBody$outboundSchema.parse(
       putAtsApplicationsApplicationIdStageRequestBody,
     ),
-  );
-}
-
-export function putAtsApplicationsApplicationIdStageRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutAtsApplicationsApplicationIdStageRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutAtsApplicationsApplicationIdStageRequestBody$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PutAtsApplicationsApplicationIdStageRequestBody' from JSON`,
   );
 }

@@ -7,7 +7,7 @@ import { WebhookIntegrationStateChangedWebhookPayloadRequest } from "@kombo-api/
 
 let value: WebhookIntegrationStateChangedWebhookPayloadRequest = {
   x_kombo_signature: "<value>",
-  integration_state_changed_webhook_payload: {
+  body: {
     id: "<id>",
     type: "integration-state-changed",
     data: {
@@ -32,4 +32,4 @@ let value: WebhookIntegrationStateChangedWebhookPayloadRequest = {
 | Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `x_kombo_signature`                                                                                                 | *string*                                                                                                            | :heavy_check_mark:                                                                                                  | HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature. |
-| `integration_state_changed_webhook_payload`                                                                         | [models.IntegrationStateChangedWebhookPayload](../../models/integrationstatechangedwebhookpayload.md)               | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| `body`                                                                                                              | [models.IntegrationStateChangedWebhookPayload](../../models/integrationstatechangedwebhookpayload.md)               | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |

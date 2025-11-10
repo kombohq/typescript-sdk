@@ -30,45 +30,6 @@ export const DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$inboundSchem
     unknown
   > = z.object({});
 
-/** @internal */
-export type DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$Outbound =
-  {};
-
-/** @internal */
-export const DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$outboundSchema:
-  z.ZodType<
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseData
-  > = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$ {
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$inboundSchema;
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$outboundSchema;
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$Outbound` instead. */
-  export type Outbound =
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$Outbound;
-}
-
-export function deleteAtsCandidatesCandidateIdTagsPositiveResponseDataToJSON(
-  deleteAtsCandidatesCandidateIdTagsPositiveResponseData:
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseData,
-): string {
-  return JSON.stringify(
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$outboundSchema.parse(
-      deleteAtsCandidatesCandidateIdTagsPositiveResponseData,
-    ),
-  );
-}
-
 export function deleteAtsCandidatesCandidateIdTagsPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -93,48 +54,6 @@ export const DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$inboundSc
   > = z.object({
     message: z.string(),
   });
-
-/** @internal */
-export type DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$Outbound =
-  {
-    message: string;
-  };
-
-/** @internal */
-export const DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$outboundSchema:
-  z.ZodType<
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$Outbound,
-    z.ZodTypeDef,
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning
-  > = z.object({
-    message: z.string(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$ {
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$inboundSchema;
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$outboundSchema;
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$Outbound` instead. */
-  export type Outbound =
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$Outbound;
-}
-
-export function deleteAtsCandidatesCandidateIdTagsPositiveResponseWarningToJSON(
-  deleteAtsCandidatesCandidateIdTagsPositiveResponseWarning:
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning,
-): string {
-  return JSON.stringify(
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$outboundSchema
-      .parse(deleteAtsCandidatesCandidateIdTagsPositiveResponseWarning),
-  );
-}
 
 export function deleteAtsCandidatesCandidateIdTagsPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -168,60 +87,6 @@ export const DeleteAtsCandidatesCandidateIdTagsPositiveResponse$inboundSchema:
       ),
     ),
   });
-
-/** @internal */
-export type DeleteAtsCandidatesCandidateIdTagsPositiveResponse$Outbound = {
-  status: "success";
-  data: DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$Outbound;
-  warnings: Array<
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$Outbound
-  >;
-};
-
-/** @internal */
-export const DeleteAtsCandidatesCandidateIdTagsPositiveResponse$outboundSchema:
-  z.ZodType<
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponse$Outbound,
-    z.ZodTypeDef,
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponse
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      DeleteAtsCandidatesCandidateIdTagsPositiveResponseData$outboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        DeleteAtsCandidatesCandidateIdTagsPositiveResponseWarning$outboundSchema
-      ),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace DeleteAtsCandidatesCandidateIdTagsPositiveResponse$ {
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponse$inboundSchema;
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponse$outboundSchema;
-  /** @deprecated use `DeleteAtsCandidatesCandidateIdTagsPositiveResponse$Outbound` instead. */
-  export type Outbound =
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponse$Outbound;
-}
-
-export function deleteAtsCandidatesCandidateIdTagsPositiveResponseToJSON(
-  deleteAtsCandidatesCandidateIdTagsPositiveResponse:
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponse,
-): string {
-  return JSON.stringify(
-    DeleteAtsCandidatesCandidateIdTagsPositiveResponse$outboundSchema.parse(
-      deleteAtsCandidatesCandidateIdTagsPositiveResponse,
-    ),
-  );
-}
 
 export function deleteAtsCandidatesCandidateIdTagsPositiveResponseFromJSON(
   jsonString: string,

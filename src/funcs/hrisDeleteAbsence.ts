@@ -100,11 +100,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON(
-    "body",
-    payload.DeleteHrisAbsencesAbsenceIdRequestBody,
-    { explode: true },
-  );
+  const body = encodeJSON("body", payload.body, { explode: true });
 
   const pathParams = {
     absence_id: encodeSimple("absence_id", payload.absence_id, {

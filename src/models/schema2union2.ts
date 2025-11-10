@@ -6,47 +6,26 @@ import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
-import {
-  Schema1Union2,
-  Schema1Union2$inboundSchema,
-  Schema1Union2$Outbound,
-  Schema1Union2$outboundSchema,
-} from "./schema1union2.js";
+import { Schema1Union2, Schema1Union2$inboundSchema } from "./schema1union2.js";
 import {
   Schema2Checkbox,
   Schema2Checkbox$inboundSchema,
-  Schema2Checkbox$Outbound,
-  Schema2Checkbox$outboundSchema,
   Schema2Date,
   Schema2Date$inboundSchema,
-  Schema2Date$Outbound,
-  Schema2Date$outboundSchema,
   Schema2File,
   Schema2File$inboundSchema,
-  Schema2File$Outbound,
-  Schema2File$outboundSchema,
   Schema2MultiSelect,
   Schema2MultiSelect$inboundSchema,
-  Schema2MultiSelect$Outbound,
-  Schema2MultiSelect$outboundSchema,
   Schema2Number,
   Schema2Number$inboundSchema,
-  Schema2Number$Outbound,
-  Schema2Number$outboundSchema,
   Schema2SingleSelect,
   Schema2SingleSelect$inboundSchema,
-  Schema2SingleSelect$Outbound,
-  Schema2SingleSelect$outboundSchema,
   Schema2Text,
   Schema2Text$inboundSchema,
-  Schema2Text$Outbound,
-  Schema2Text$outboundSchema,
   Schema2UnifiedKey6,
   Schema2UnifiedKey6$inboundSchema,
-  Schema2UnifiedKey6$outboundSchema,
   Schema2UnifiedKey7,
   Schema2UnifiedKey7$inboundSchema,
-  Schema2UnifiedKey7$outboundSchema,
 } from "./schema2union1.js";
 
 export type Schema2Object2 = {
@@ -103,47 +82,6 @@ export const Schema2Object2$inboundSchema: z.ZodType<
   properties: z.record(z.lazy(() => Schema1Union2$inboundSchema)),
 });
 
-/** @internal */
-export type Schema2Object2$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "object";
-  properties: { [k: string]: Schema1Union2$Outbound };
-};
-
-/** @internal */
-export const Schema2Object2$outboundSchema: z.ZodType<
-  Schema2Object2$Outbound,
-  z.ZodTypeDef,
-  Schema2Object2
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema2UnifiedKey6$outboundSchema).optional(),
-  type: z.literal("object"),
-  properties: z.record(z.lazy(() => Schema1Union2$outboundSchema)),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema2Object2$ {
-  /** @deprecated use `Schema2Object2$inboundSchema` instead. */
-  export const inboundSchema = Schema2Object2$inboundSchema;
-  /** @deprecated use `Schema2Object2$outboundSchema` instead. */
-  export const outboundSchema = Schema2Object2$outboundSchema;
-  /** @deprecated use `Schema2Object2$Outbound` instead. */
-  export type Outbound = Schema2Object2$Outbound;
-}
-
-export function schema2Object2ToJSON(schema2Object2: Schema2Object2): string {
-  return JSON.stringify(Schema2Object2$outboundSchema.parse(schema2Object2));
-}
-
 export function schema2Object2FromJSON(
   jsonString: string,
 ): SafeParseResult<Schema2Object2, SDKValidationError> {
@@ -170,52 +108,6 @@ export const Schema2Union2$inboundSchema: z.ZodType<
   Schema2Date$inboundSchema,
   Schema2Checkbox$inboundSchema,
 ]);
-
-/** @internal */
-export type Schema2Union2$Outbound =
-  | Schema2SingleSelect$Outbound
-  | Schema2MultiSelect$Outbound
-  | Schema2Object2$Outbound
-  | Schema2Array2$Outbound
-  | Schema2File$Outbound
-  | Schema2Text$Outbound
-  | Schema2Number$Outbound
-  | Schema2Date$Outbound
-  | Schema2Checkbox$Outbound;
-
-/** @internal */
-export const Schema2Union2$outboundSchema: z.ZodType<
-  Schema2Union2$Outbound,
-  z.ZodTypeDef,
-  Schema2Union2
-> = z.union([
-  Schema2SingleSelect$outboundSchema,
-  Schema2MultiSelect$outboundSchema,
-  z.lazy(() => Schema2Object2$outboundSchema),
-  z.lazy(() => Schema2Array2$outboundSchema),
-  Schema2File$outboundSchema,
-  Schema2Text$outboundSchema,
-  Schema2Number$outboundSchema,
-  Schema2Date$outboundSchema,
-  Schema2Checkbox$outboundSchema,
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema2Union2$ {
-  /** @deprecated use `Schema2Union2$inboundSchema` instead. */
-  export const inboundSchema = Schema2Union2$inboundSchema;
-  /** @deprecated use `Schema2Union2$outboundSchema` instead. */
-  export const outboundSchema = Schema2Union2$outboundSchema;
-  /** @deprecated use `Schema2Union2$Outbound` instead. */
-  export type Outbound = Schema2Union2$Outbound;
-}
-
-export function schema2Union2ToJSON(schema2Union2: Schema2Union2): string {
-  return JSON.stringify(Schema2Union2$outboundSchema.parse(schema2Union2));
-}
 
 export function schema2Union2FromJSON(
   jsonString: string,
@@ -252,70 +144,6 @@ export const Schema2Array2$inboundSchema: z.ZodType<
   min_items: z.nullable(z.number()).optional(),
   max_items: z.nullable(z.number()).optional(),
 });
-
-/** @internal */
-export type Schema2Array2$Outbound = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "array";
-  item_type:
-    | Schema2SingleSelect$Outbound
-    | Schema2MultiSelect$Outbound
-    | Schema2Object2$Outbound
-    | Schema2Array2$Outbound
-    | Schema2File$Outbound
-    | Schema2Text$Outbound
-    | Schema2Number$Outbound
-    | Schema2Date$Outbound
-    | Schema2Checkbox$Outbound;
-  min_items?: number | null | undefined;
-  max_items?: number | null | undefined;
-};
-
-/** @internal */
-export const Schema2Array2$outboundSchema: z.ZodType<
-  Schema2Array2$Outbound,
-  z.ZodTypeDef,
-  Schema2Array2
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema2UnifiedKey7$outboundSchema).optional(),
-  type: z.literal("array"),
-  item_type: z.union([
-    Schema2SingleSelect$outboundSchema,
-    Schema2MultiSelect$outboundSchema,
-    z.lazy(() => Schema2Object2$outboundSchema),
-    z.lazy(() => Schema2Array2$outboundSchema),
-    Schema2File$outboundSchema,
-    Schema2Text$outboundSchema,
-    Schema2Number$outboundSchema,
-    Schema2Date$outboundSchema,
-    Schema2Checkbox$outboundSchema,
-  ]),
-  min_items: z.nullable(z.number()).optional(),
-  max_items: z.nullable(z.number()).optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Schema2Array2$ {
-  /** @deprecated use `Schema2Array2$inboundSchema` instead. */
-  export const inboundSchema = Schema2Array2$inboundSchema;
-  /** @deprecated use `Schema2Array2$outboundSchema` instead. */
-  export const outboundSchema = Schema2Array2$outboundSchema;
-  /** @deprecated use `Schema2Array2$Outbound` instead. */
-  export type Outbound = Schema2Array2$Outbound;
-}
-
-export function schema2Array2ToJSON(schema2Array2: Schema2Array2): string {
-  return JSON.stringify(Schema2Array2$outboundSchema.parse(schema2Array2));
-}
 
 export function schema2Array2FromJSON(
   jsonString: string,

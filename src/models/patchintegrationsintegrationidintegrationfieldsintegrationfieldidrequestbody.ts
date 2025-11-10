@@ -3,24 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 export type PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody =
   {
     enable_passthrough: boolean | null;
   };
-
-/** @internal */
-export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$inboundSchema:
-  z.ZodType<
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    enable_passthrough: z.nullable(z.boolean()),
-  });
 
 /** @internal */
 export type PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$Outbound =
@@ -38,22 +25,6 @@ export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRe
     enable_passthrough: z.nullable(z.boolean()),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$ {
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$inboundSchema` instead. */
-  export const inboundSchema =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$inboundSchema;
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$outboundSchema` instead. */
-  export const outboundSchema =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$outboundSchema;
-  /** @deprecated use `PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$Outbound` instead. */
-  export type Outbound =
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$Outbound;
-}
-
 export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBodyToJSON(
   patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody:
     PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody,
@@ -63,20 +34,5 @@ export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldI
       .parse(
         patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody,
       ),
-  );
-}
-
-export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody' from JSON`,
   );
 }

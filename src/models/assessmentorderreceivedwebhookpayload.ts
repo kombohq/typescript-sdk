@@ -198,47 +198,19 @@ export type AssessmentOrderReceivedWebhookPayload = {
 export const AssessmentOrderReceivedWebhookPayloadType$inboundSchema:
   z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadType> = z
     .nativeEnum(AssessmentOrderReceivedWebhookPayloadType);
-
 /** @internal */
 export const AssessmentOrderReceivedWebhookPayloadType$outboundSchema:
   z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadType> =
     AssessmentOrderReceivedWebhookPayloadType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentOrderReceivedWebhookPayloadType$ {
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadType$inboundSchema` instead. */
-  export const inboundSchema =
-    AssessmentOrderReceivedWebhookPayloadType$inboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadType$outboundSchema` instead. */
-  export const outboundSchema =
-    AssessmentOrderReceivedWebhookPayloadType$outboundSchema;
-}
-
 /** @internal */
 export const AssessmentOrderReceivedWebhookPayloadStatus$inboundSchema:
   z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadStatus> = z
     .nativeEnum(AssessmentOrderReceivedWebhookPayloadStatus);
-
 /** @internal */
 export const AssessmentOrderReceivedWebhookPayloadStatus$outboundSchema:
   z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadStatus> =
     AssessmentOrderReceivedWebhookPayloadStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentOrderReceivedWebhookPayloadStatus$ {
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    AssessmentOrderReceivedWebhookPayloadStatus$inboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    AssessmentOrderReceivedWebhookPayloadStatus$outboundSchema;
-}
 
 /** @internal */
 export const AssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema:
@@ -253,7 +225,6 @@ export const AssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema:
     phone: z.nullable(z.string()).optional(),
     remote_id: z.nullable(z.string()).optional(),
   });
-
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadCandidate$Outbound = {
   email: string;
@@ -277,22 +248,6 @@ export const AssessmentOrderReceivedWebhookPayloadCandidate$outboundSchema:
     remote_id: z.nullable(z.string()).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentOrderReceivedWebhookPayloadCandidate$ {
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema` instead. */
-  export const inboundSchema =
-    AssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadCandidate$outboundSchema` instead. */
-  export const outboundSchema =
-    AssessmentOrderReceivedWebhookPayloadCandidate$outboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadCandidate$Outbound` instead. */
-  export type Outbound =
-    AssessmentOrderReceivedWebhookPayloadCandidate$Outbound;
-}
-
 export function assessmentOrderReceivedWebhookPayloadCandidateToJSON(
   assessmentOrderReceivedWebhookPayloadCandidate:
     AssessmentOrderReceivedWebhookPayloadCandidate,
@@ -303,7 +258,6 @@ export function assessmentOrderReceivedWebhookPayloadCandidateToJSON(
     ),
   );
 }
-
 export function assessmentOrderReceivedWebhookPayloadCandidateFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -329,7 +283,6 @@ export const AssessmentOrderReceivedWebhookPayloadApplication$inboundSchema:
   > = z.object({
     remote_id: z.nullable(z.string()).optional(),
   });
-
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadApplication$Outbound = {
   remote_id?: string | null | undefined;
@@ -345,22 +298,6 @@ export const AssessmentOrderReceivedWebhookPayloadApplication$outboundSchema:
     remote_id: z.nullable(z.string()).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentOrderReceivedWebhookPayloadApplication$ {
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadApplication$inboundSchema` instead. */
-  export const inboundSchema =
-    AssessmentOrderReceivedWebhookPayloadApplication$inboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadApplication$outboundSchema` instead. */
-  export const outboundSchema =
-    AssessmentOrderReceivedWebhookPayloadApplication$outboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadApplication$Outbound` instead. */
-  export type Outbound =
-    AssessmentOrderReceivedWebhookPayloadApplication$Outbound;
-}
-
 export function assessmentOrderReceivedWebhookPayloadApplicationToJSON(
   assessmentOrderReceivedWebhookPayloadApplication:
     AssessmentOrderReceivedWebhookPayloadApplication,
@@ -371,7 +308,6 @@ export function assessmentOrderReceivedWebhookPayloadApplicationToJSON(
     ),
   );
 }
-
 export function assessmentOrderReceivedWebhookPayloadApplicationFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -403,7 +339,6 @@ export const AssessmentOrderReceivedWebhookPayloadLocation$inboundSchema:
     street_2: z.nullable(z.string()).optional(),
     zip_code: z.nullable(z.string()).optional(),
   });
-
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadLocation$Outbound = {
   city?: string | null | undefined;
@@ -431,21 +366,6 @@ export const AssessmentOrderReceivedWebhookPayloadLocation$outboundSchema:
     zip_code: z.nullable(z.string()).optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentOrderReceivedWebhookPayloadLocation$ {
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadLocation$inboundSchema` instead. */
-  export const inboundSchema =
-    AssessmentOrderReceivedWebhookPayloadLocation$inboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadLocation$outboundSchema` instead. */
-  export const outboundSchema =
-    AssessmentOrderReceivedWebhookPayloadLocation$outboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadLocation$Outbound` instead. */
-  export type Outbound = AssessmentOrderReceivedWebhookPayloadLocation$Outbound;
-}
-
 export function assessmentOrderReceivedWebhookPayloadLocationToJSON(
   assessmentOrderReceivedWebhookPayloadLocation:
     AssessmentOrderReceivedWebhookPayloadLocation,
@@ -456,7 +376,6 @@ export function assessmentOrderReceivedWebhookPayloadLocationToJSON(
     ),
   );
 }
-
 export function assessmentOrderReceivedWebhookPayloadLocationFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -477,24 +396,10 @@ export function assessmentOrderReceivedWebhookPayloadLocationFromJSON(
 export const AssessmentOrderReceivedWebhookPayloadHiringTeamRole$inboundSchema:
   z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadHiringTeamRole> =
     z.nativeEnum(AssessmentOrderReceivedWebhookPayloadHiringTeamRole);
-
 /** @internal */
 export const AssessmentOrderReceivedWebhookPayloadHiringTeamRole$outboundSchema:
   z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadHiringTeamRole> =
     AssessmentOrderReceivedWebhookPayloadHiringTeamRole$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentOrderReceivedWebhookPayloadHiringTeamRole$ {
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadHiringTeamRole$inboundSchema` instead. */
-  export const inboundSchema =
-    AssessmentOrderReceivedWebhookPayloadHiringTeamRole$inboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadHiringTeamRole$outboundSchema` instead. */
-  export const outboundSchema =
-    AssessmentOrderReceivedWebhookPayloadHiringTeamRole$outboundSchema;
-}
 
 /** @internal */
 export const AssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema:
@@ -511,7 +416,6 @@ export const AssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema:
       AssessmentOrderReceivedWebhookPayloadHiringTeamRole$inboundSchema,
     ),
   });
-
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadHiringTeam$Outbound = {
   remote_id: string;
@@ -537,22 +441,6 @@ export const AssessmentOrderReceivedWebhookPayloadHiringTeam$outboundSchema:
     ),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentOrderReceivedWebhookPayloadHiringTeam$ {
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema` instead. */
-  export const inboundSchema =
-    AssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadHiringTeam$outboundSchema` instead. */
-  export const outboundSchema =
-    AssessmentOrderReceivedWebhookPayloadHiringTeam$outboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadHiringTeam$Outbound` instead. */
-  export type Outbound =
-    AssessmentOrderReceivedWebhookPayloadHiringTeam$Outbound;
-}
-
 export function assessmentOrderReceivedWebhookPayloadHiringTeamToJSON(
   assessmentOrderReceivedWebhookPayloadHiringTeam:
     AssessmentOrderReceivedWebhookPayloadHiringTeam,
@@ -563,7 +451,6 @@ export function assessmentOrderReceivedWebhookPayloadHiringTeamToJSON(
     ),
   );
 }
-
 export function assessmentOrderReceivedWebhookPayloadHiringTeamFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -595,7 +482,6 @@ export const AssessmentOrderReceivedWebhookPayloadJob$inboundSchema: z.ZodType<
     z.lazy(() => AssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema),
   ),
 });
-
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadJob$Outbound = {
   remote_id?: string | null | undefined;
@@ -625,21 +511,6 @@ export const AssessmentOrderReceivedWebhookPayloadJob$outboundSchema: z.ZodType<
   ),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentOrderReceivedWebhookPayloadJob$ {
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadJob$inboundSchema` instead. */
-  export const inboundSchema =
-    AssessmentOrderReceivedWebhookPayloadJob$inboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadJob$outboundSchema` instead. */
-  export const outboundSchema =
-    AssessmentOrderReceivedWebhookPayloadJob$outboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadJob$Outbound` instead. */
-  export type Outbound = AssessmentOrderReceivedWebhookPayloadJob$Outbound;
-}
-
 export function assessmentOrderReceivedWebhookPayloadJobToJSON(
   assessmentOrderReceivedWebhookPayloadJob:
     AssessmentOrderReceivedWebhookPayloadJob,
@@ -650,7 +521,6 @@ export function assessmentOrderReceivedWebhookPayloadJobToJSON(
     ),
   );
 }
-
 export function assessmentOrderReceivedWebhookPayloadJobFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -685,7 +555,6 @@ export const AssessmentOrderReceivedWebhookPayloadData$inboundSchema: z.ZodType<
   ),
   job: z.lazy(() => AssessmentOrderReceivedWebhookPayloadJob$inboundSchema),
 });
-
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadData$Outbound = {
   id: string;
@@ -717,21 +586,6 @@ export const AssessmentOrderReceivedWebhookPayloadData$outboundSchema:
     job: z.lazy(() => AssessmentOrderReceivedWebhookPayloadJob$outboundSchema),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentOrderReceivedWebhookPayloadData$ {
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadData$inboundSchema` instead. */
-  export const inboundSchema =
-    AssessmentOrderReceivedWebhookPayloadData$inboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadData$outboundSchema` instead. */
-  export const outboundSchema =
-    AssessmentOrderReceivedWebhookPayloadData$outboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayloadData$Outbound` instead. */
-  export type Outbound = AssessmentOrderReceivedWebhookPayloadData$Outbound;
-}
-
 export function assessmentOrderReceivedWebhookPayloadDataToJSON(
   assessmentOrderReceivedWebhookPayloadData:
     AssessmentOrderReceivedWebhookPayloadData,
@@ -742,7 +596,6 @@ export function assessmentOrderReceivedWebhookPayloadDataToJSON(
     ),
   );
 }
-
 export function assessmentOrderReceivedWebhookPayloadDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -769,7 +622,6 @@ export const AssessmentOrderReceivedWebhookPayload$inboundSchema: z.ZodType<
   type: AssessmentOrderReceivedWebhookPayloadType$inboundSchema,
   data: z.lazy(() => AssessmentOrderReceivedWebhookPayloadData$inboundSchema),
 });
-
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayload$Outbound = {
   id: string;
@@ -788,21 +640,6 @@ export const AssessmentOrderReceivedWebhookPayload$outboundSchema: z.ZodType<
   data: z.lazy(() => AssessmentOrderReceivedWebhookPayloadData$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentOrderReceivedWebhookPayload$ {
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayload$inboundSchema` instead. */
-  export const inboundSchema =
-    AssessmentOrderReceivedWebhookPayload$inboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayload$outboundSchema` instead. */
-  export const outboundSchema =
-    AssessmentOrderReceivedWebhookPayload$outboundSchema;
-  /** @deprecated use `AssessmentOrderReceivedWebhookPayload$Outbound` instead. */
-  export type Outbound = AssessmentOrderReceivedWebhookPayload$Outbound;
-}
-
 export function assessmentOrderReceivedWebhookPayloadToJSON(
   assessmentOrderReceivedWebhookPayload: AssessmentOrderReceivedWebhookPayload,
 ): string {
@@ -812,7 +649,6 @@ export function assessmentOrderReceivedWebhookPayloadToJSON(
     ),
   );
 }
-
 export function assessmentOrderReceivedWebhookPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<AssessmentOrderReceivedWebhookPayload, SDKValidationError> {

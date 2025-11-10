@@ -14,7 +14,7 @@ export type WebhookDataChangedWebhookPayloadRequest = {
    * HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature.
    */
   x_kombo_signature: string;
-  data_changed_webhook_payload: models.DataChangedWebhookPayload;
+  body: models.DataChangedWebhookPayload;
 };
 
 /** @internal */
@@ -24,18 +24,16 @@ export const WebhookDataChangedWebhookPayloadRequest$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   "X-Kombo-Signature": z.string(),
-  DataChangedWebhookPayload: models.DataChangedWebhookPayload$inboundSchema,
+  body: models.DataChangedWebhookPayload$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "X-Kombo-Signature": "x_kombo_signature",
-    "DataChangedWebhookPayload": "data_changed_webhook_payload",
   });
 });
-
 /** @internal */
 export type WebhookDataChangedWebhookPayloadRequest$Outbound = {
   "X-Kombo-Signature": string;
-  DataChangedWebhookPayload: models.DataChangedWebhookPayload$Outbound;
+  body: models.DataChangedWebhookPayload$Outbound;
 };
 
 /** @internal */
@@ -45,28 +43,12 @@ export const WebhookDataChangedWebhookPayloadRequest$outboundSchema: z.ZodType<
   WebhookDataChangedWebhookPayloadRequest
 > = z.object({
   x_kombo_signature: z.string(),
-  data_changed_webhook_payload: models.DataChangedWebhookPayload$outboundSchema,
+  body: models.DataChangedWebhookPayload$outboundSchema,
 }).transform((v) => {
   return remap$(v, {
     x_kombo_signature: "X-Kombo-Signature",
-    data_changed_webhook_payload: "DataChangedWebhookPayload",
   });
 });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookDataChangedWebhookPayloadRequest$ {
-  /** @deprecated use `WebhookDataChangedWebhookPayloadRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    WebhookDataChangedWebhookPayloadRequest$inboundSchema;
-  /** @deprecated use `WebhookDataChangedWebhookPayloadRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    WebhookDataChangedWebhookPayloadRequest$outboundSchema;
-  /** @deprecated use `WebhookDataChangedWebhookPayloadRequest$Outbound` instead. */
-  export type Outbound = WebhookDataChangedWebhookPayloadRequest$Outbound;
-}
 
 export function webhookDataChangedWebhookPayloadRequestToJSON(
   webhookDataChangedWebhookPayloadRequest:
@@ -78,7 +60,6 @@ export function webhookDataChangedWebhookPayloadRequestToJSON(
     ),
   );
 }
-
 export function webhookDataChangedWebhookPayloadRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<

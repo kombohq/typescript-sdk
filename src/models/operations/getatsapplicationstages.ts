@@ -26,7 +26,13 @@ export type GetAtsApplicationStagesRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -46,78 +52,6 @@ export type GetAtsApplicationStagesRequest = {
 export type GetAtsApplicationStagesResponse = {
   result: models.GetAtsApplicationStagesPositiveResponse;
 };
-
-/** @internal */
-export const GetAtsApplicationStagesGlobals$inboundSchema: z.ZodType<
-  GetAtsApplicationStagesGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetAtsApplicationStagesGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetAtsApplicationStagesGlobals$outboundSchema: z.ZodType<
-  GetAtsApplicationStagesGlobals$Outbound,
-  z.ZodTypeDef,
-  GetAtsApplicationStagesGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsApplicationStagesGlobals$ {
-  /** @deprecated use `GetAtsApplicationStagesGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetAtsApplicationStagesGlobals$inboundSchema;
-  /** @deprecated use `GetAtsApplicationStagesGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetAtsApplicationStagesGlobals$outboundSchema;
-  /** @deprecated use `GetAtsApplicationStagesGlobals$Outbound` instead. */
-  export type Outbound = GetAtsApplicationStagesGlobals$Outbound;
-}
-
-export function getAtsApplicationStagesGlobalsToJSON(
-  getAtsApplicationStagesGlobals: GetAtsApplicationStagesGlobals,
-): string {
-  return JSON.stringify(
-    GetAtsApplicationStagesGlobals$outboundSchema.parse(
-      getAtsApplicationStagesGlobals,
-    ),
-  );
-}
-
-export function getAtsApplicationStagesGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAtsApplicationStagesGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAtsApplicationStagesGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsApplicationStagesGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetAtsApplicationStagesRequest$inboundSchema: z.ZodType<
-  GetAtsApplicationStagesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-});
 
 /** @internal */
 export type GetAtsApplicationStagesRequest$Outbound = {
@@ -143,19 +77,6 @@ export const GetAtsApplicationStagesRequest$outboundSchema: z.ZodType<
   remote_ids: z.array(z.string()).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsApplicationStagesRequest$ {
-  /** @deprecated use `GetAtsApplicationStagesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetAtsApplicationStagesRequest$inboundSchema;
-  /** @deprecated use `GetAtsApplicationStagesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetAtsApplicationStagesRequest$outboundSchema;
-  /** @deprecated use `GetAtsApplicationStagesRequest$Outbound` instead. */
-  export type Outbound = GetAtsApplicationStagesRequest$Outbound;
-}
-
 export function getAtsApplicationStagesRequestToJSON(
   getAtsApplicationStagesRequest: GetAtsApplicationStagesRequest,
 ): string {
@@ -163,16 +84,6 @@ export function getAtsApplicationStagesRequestToJSON(
     GetAtsApplicationStagesRequest$outboundSchema.parse(
       getAtsApplicationStagesRequest,
     ),
-  );
-}
-
-export function getAtsApplicationStagesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetAtsApplicationStagesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetAtsApplicationStagesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsApplicationStagesRequest' from JSON`,
   );
 }
 
@@ -188,47 +99,6 @@ export const GetAtsApplicationStagesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetAtsApplicationStagesResponse$Outbound = {
-  Result: models.GetAtsApplicationStagesPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetAtsApplicationStagesResponse$outboundSchema: z.ZodType<
-  GetAtsApplicationStagesResponse$Outbound,
-  z.ZodTypeDef,
-  GetAtsApplicationStagesResponse
-> = z.object({
-  result: models.GetAtsApplicationStagesPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsApplicationStagesResponse$ {
-  /** @deprecated use `GetAtsApplicationStagesResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAtsApplicationStagesResponse$inboundSchema;
-  /** @deprecated use `GetAtsApplicationStagesResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAtsApplicationStagesResponse$outboundSchema;
-  /** @deprecated use `GetAtsApplicationStagesResponse$Outbound` instead. */
-  export type Outbound = GetAtsApplicationStagesResponse$Outbound;
-}
-
-export function getAtsApplicationStagesResponseToJSON(
-  getAtsApplicationStagesResponse: GetAtsApplicationStagesResponse,
-): string {
-  return JSON.stringify(
-    GetAtsApplicationStagesResponse$outboundSchema.parse(
-      getAtsApplicationStagesResponse,
-    ),
-  );
-}
 
 export function getAtsApplicationStagesResponseFromJSON(
   jsonString: string,

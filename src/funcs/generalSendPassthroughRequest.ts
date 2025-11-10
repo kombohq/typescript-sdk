@@ -239,9 +239,7 @@ async function $do(
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.PostPassthroughToolApiRequestBody, {
-    explode: true,
-  });
+  const body = encodeJSON("body", payload.body, { explode: true });
 
   const pathParams = {
     api: encodeSimple("api", payload.api, {

@@ -26,7 +26,13 @@ export type GetHrisEmployeesRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -84,83 +90,6 @@ export type GetHrisEmployeesResponse = {
 };
 
 /** @internal */
-export const GetHrisEmployeesGlobals$inboundSchema: z.ZodType<
-  GetHrisEmployeesGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetHrisEmployeesGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetHrisEmployeesGlobals$outboundSchema: z.ZodType<
-  GetHrisEmployeesGlobals$Outbound,
-  z.ZodTypeDef,
-  GetHrisEmployeesGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesGlobals$ {
-  /** @deprecated use `GetHrisEmployeesGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetHrisEmployeesGlobals$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetHrisEmployeesGlobals$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesGlobals$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesGlobals$Outbound;
-}
-
-export function getHrisEmployeesGlobalsToJSON(
-  getHrisEmployeesGlobals: GetHrisEmployeesGlobals,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesGlobals$outboundSchema.parse(getHrisEmployeesGlobals),
-  );
-}
-
-export function getHrisEmployeesGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisEmployeesGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisEmployeesGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisEmployeesGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetHrisEmployeesRequest$inboundSchema: z.ZodType<
-  GetHrisEmployeesRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-  employment_statuses: z.array(z.string()).optional(),
-  group_ids: z.array(z.string()).optional(),
-  legal_entity_ids: z.array(z.string()).optional(),
-  work_location_ids: z.array(z.string()).optional(),
-  work_emails: z.array(z.string()).optional(),
-  personal_emails: z.array(z.string()).optional(),
-  custom_fields: z.string().optional(),
-});
-
-/** @internal */
 export type GetHrisEmployeesRequest$Outbound = {
   cursor?: string | undefined;
   page_size: number;
@@ -198,34 +127,11 @@ export const GetHrisEmployeesRequest$outboundSchema: z.ZodType<
   custom_fields: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesRequest$ {
-  /** @deprecated use `GetHrisEmployeesRequest$inboundSchema` instead. */
-  export const inboundSchema = GetHrisEmployeesRequest$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesRequest$outboundSchema` instead. */
-  export const outboundSchema = GetHrisEmployeesRequest$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesRequest$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesRequest$Outbound;
-}
-
 export function getHrisEmployeesRequestToJSON(
   getHrisEmployeesRequest: GetHrisEmployeesRequest,
 ): string {
   return JSON.stringify(
     GetHrisEmployeesRequest$outboundSchema.parse(getHrisEmployeesRequest),
-  );
-}
-
-export function getHrisEmployeesRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisEmployeesRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisEmployeesRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisEmployeesRequest' from JSON`,
   );
 }
 
@@ -241,45 +147,6 @@ export const GetHrisEmployeesResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetHrisEmployeesResponse$Outbound = {
-  Result: models.GetHrisEmployeesPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetHrisEmployeesResponse$outboundSchema: z.ZodType<
-  GetHrisEmployeesResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisEmployeesResponse
-> = z.object({
-  result: models.GetHrisEmployeesPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmployeesResponse$ {
-  /** @deprecated use `GetHrisEmployeesResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisEmployeesResponse$inboundSchema;
-  /** @deprecated use `GetHrisEmployeesResponse$outboundSchema` instead. */
-  export const outboundSchema = GetHrisEmployeesResponse$outboundSchema;
-  /** @deprecated use `GetHrisEmployeesResponse$Outbound` instead. */
-  export type Outbound = GetHrisEmployeesResponse$Outbound;
-}
-
-export function getHrisEmployeesResponseToJSON(
-  getHrisEmployeesResponse: GetHrisEmployeesResponse,
-): string {
-  return JSON.stringify(
-    GetHrisEmployeesResponse$outboundSchema.parse(getHrisEmployeesResponse),
-  );
-}
 
 export function getHrisEmployeesResponseFromJSON(
   jsonString: string,

@@ -14,7 +14,7 @@ export type WebhookIntegrationCreatedWebhookPayloadRequest = {
    * HMAC signature for webhook verification. See the webhook documentation for details on how to verify this signature.
    */
   x_kombo_signature: string;
-  integration_created_webhook_payload: models.IntegrationCreatedWebhookPayload;
+  body: models.IntegrationCreatedWebhookPayload;
 };
 
 /** @internal */
@@ -25,20 +25,16 @@ export const WebhookIntegrationCreatedWebhookPayloadRequest$inboundSchema:
     unknown
   > = z.object({
     "X-Kombo-Signature": z.string(),
-    IntegrationCreatedWebhookPayload:
-      models.IntegrationCreatedWebhookPayload$inboundSchema,
+    body: models.IntegrationCreatedWebhookPayload$inboundSchema,
   }).transform((v) => {
     return remap$(v, {
       "X-Kombo-Signature": "x_kombo_signature",
-      "IntegrationCreatedWebhookPayload": "integration_created_webhook_payload",
     });
   });
-
 /** @internal */
 export type WebhookIntegrationCreatedWebhookPayloadRequest$Outbound = {
   "X-Kombo-Signature": string;
-  IntegrationCreatedWebhookPayload:
-    models.IntegrationCreatedWebhookPayload$Outbound;
+  body: models.IntegrationCreatedWebhookPayload$Outbound;
 };
 
 /** @internal */
@@ -49,30 +45,12 @@ export const WebhookIntegrationCreatedWebhookPayloadRequest$outboundSchema:
     WebhookIntegrationCreatedWebhookPayloadRequest
   > = z.object({
     x_kombo_signature: z.string(),
-    integration_created_webhook_payload:
-      models.IntegrationCreatedWebhookPayload$outboundSchema,
+    body: models.IntegrationCreatedWebhookPayload$outboundSchema,
   }).transform((v) => {
     return remap$(v, {
       x_kombo_signature: "X-Kombo-Signature",
-      integration_created_webhook_payload: "IntegrationCreatedWebhookPayload",
     });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace WebhookIntegrationCreatedWebhookPayloadRequest$ {
-  /** @deprecated use `WebhookIntegrationCreatedWebhookPayloadRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    WebhookIntegrationCreatedWebhookPayloadRequest$inboundSchema;
-  /** @deprecated use `WebhookIntegrationCreatedWebhookPayloadRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    WebhookIntegrationCreatedWebhookPayloadRequest$outboundSchema;
-  /** @deprecated use `WebhookIntegrationCreatedWebhookPayloadRequest$Outbound` instead. */
-  export type Outbound =
-    WebhookIntegrationCreatedWebhookPayloadRequest$Outbound;
-}
 
 export function webhookIntegrationCreatedWebhookPayloadRequestToJSON(
   webhookIntegrationCreatedWebhookPayloadRequest:
@@ -84,7 +62,6 @@ export function webhookIntegrationCreatedWebhookPayloadRequestToJSON(
     ),
   );
 }
-
 export function webhookIntegrationCreatedWebhookPayloadRequestFromJSON(
   jsonString: string,
 ): SafeParseResult<

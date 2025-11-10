@@ -4,11 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../types/enums.js";
+import { catchUnrecognizedEnum, OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -165,30 +161,6 @@ export const GetHrisEmploymentsPositiveResponsePayPeriod$inboundSchema:
     ]);
 
 /** @internal */
-export const GetHrisEmploymentsPositiveResponsePayPeriod$outboundSchema:
-  z.ZodType<
-    GetHrisEmploymentsPositiveResponsePayPeriod,
-    z.ZodTypeDef,
-    GetHrisEmploymentsPositiveResponsePayPeriod
-  > = z.union([
-    z.nativeEnum(GetHrisEmploymentsPositiveResponsePayPeriod),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmploymentsPositiveResponsePayPeriod$ {
-  /** @deprecated use `GetHrisEmploymentsPositiveResponsePayPeriod$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmploymentsPositiveResponsePayPeriod$inboundSchema;
-  /** @deprecated use `GetHrisEmploymentsPositiveResponsePayPeriod$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmploymentsPositiveResponsePayPeriod$outboundSchema;
-}
-
-/** @internal */
 export const GetHrisEmploymentsPositiveResponsePayFrequency$inboundSchema:
   z.ZodType<
     GetHrisEmploymentsPositiveResponsePayFrequency,
@@ -201,30 +173,6 @@ export const GetHrisEmploymentsPositiveResponsePayFrequency$inboundSchema:
     ]);
 
 /** @internal */
-export const GetHrisEmploymentsPositiveResponsePayFrequency$outboundSchema:
-  z.ZodType<
-    GetHrisEmploymentsPositiveResponsePayFrequency,
-    z.ZodTypeDef,
-    GetHrisEmploymentsPositiveResponsePayFrequency
-  > = z.union([
-    z.nativeEnum(GetHrisEmploymentsPositiveResponsePayFrequency),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmploymentsPositiveResponsePayFrequency$ {
-  /** @deprecated use `GetHrisEmploymentsPositiveResponsePayFrequency$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmploymentsPositiveResponsePayFrequency$inboundSchema;
-  /** @deprecated use `GetHrisEmploymentsPositiveResponsePayFrequency$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmploymentsPositiveResponsePayFrequency$outboundSchema;
-}
-
-/** @internal */
 export const GetHrisEmploymentsPositiveResponseEmploymentType$inboundSchema:
   z.ZodType<
     GetHrisEmploymentsPositiveResponseEmploymentType,
@@ -235,30 +183,6 @@ export const GetHrisEmploymentsPositiveResponseEmploymentType$inboundSchema:
       z.nativeEnum(GetHrisEmploymentsPositiveResponseEmploymentType),
       z.string().transform(catchUnrecognizedEnum),
     ]);
-
-/** @internal */
-export const GetHrisEmploymentsPositiveResponseEmploymentType$outboundSchema:
-  z.ZodType<
-    GetHrisEmploymentsPositiveResponseEmploymentType,
-    z.ZodTypeDef,
-    GetHrisEmploymentsPositiveResponseEmploymentType
-  > = z.union([
-    z.nativeEnum(GetHrisEmploymentsPositiveResponseEmploymentType),
-    z.string().and(z.custom<Unrecognized<string>>()),
-  ]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmploymentsPositiveResponseEmploymentType$ {
-  /** @deprecated use `GetHrisEmploymentsPositiveResponseEmploymentType$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmploymentsPositiveResponseEmploymentType$inboundSchema;
-  /** @deprecated use `GetHrisEmploymentsPositiveResponseEmploymentType$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmploymentsPositiveResponseEmploymentType$outboundSchema;
-}
 
 /** @internal */
 export const GetHrisEmploymentsPositiveResponseResult$inboundSchema: z.ZodType<
@@ -291,76 +215,6 @@ export const GetHrisEmploymentsPositiveResponseResult$inboundSchema: z.ZodType<
   custom_fields: z.nullable(z.record(z.any())),
 });
 
-/** @internal */
-export type GetHrisEmploymentsPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string | null;
-  employee_id: string;
-  job_title: string | null;
-  pay_rate: number | null;
-  pay_period?: string | null | undefined;
-  pay_frequency?: string | null | undefined;
-  employment_type?: string | null | undefined;
-  pay_currency: string | null;
-  effective_date: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-  custom_fields: { [k: string]: any } | null;
-};
-
-/** @internal */
-export const GetHrisEmploymentsPositiveResponseResult$outboundSchema: z.ZodType<
-  GetHrisEmploymentsPositiveResponseResult$Outbound,
-  z.ZodTypeDef,
-  GetHrisEmploymentsPositiveResponseResult
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  employee_id: z.string(),
-  job_title: z.nullable(z.string()),
-  pay_rate: z.nullable(z.number()),
-  pay_period: z.nullable(
-    GetHrisEmploymentsPositiveResponsePayPeriod$outboundSchema,
-  ).optional(),
-  pay_frequency: z.nullable(
-    GetHrisEmploymentsPositiveResponsePayFrequency$outboundSchema,
-  ).optional(),
-  employment_type: z.nullable(
-    GetHrisEmploymentsPositiveResponseEmploymentType$outboundSchema,
-  ).optional(),
-  pay_currency: z.nullable(z.string()),
-  effective_date: z.nullable(z.date().transform(v => v.toISOString())),
-  changed_at: z.date().transform(v => v.toISOString()),
-  remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  custom_fields: z.nullable(z.record(z.any())),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmploymentsPositiveResponseResult$ {
-  /** @deprecated use `GetHrisEmploymentsPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmploymentsPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetHrisEmploymentsPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmploymentsPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetHrisEmploymentsPositiveResponseResult$Outbound` instead. */
-  export type Outbound = GetHrisEmploymentsPositiveResponseResult$Outbound;
-}
-
-export function getHrisEmploymentsPositiveResponseResultToJSON(
-  getHrisEmploymentsPositiveResponseResult:
-    GetHrisEmploymentsPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetHrisEmploymentsPositiveResponseResult$outboundSchema.parse(
-      getHrisEmploymentsPositiveResponseResult,
-    ),
-  );
-}
-
 export function getHrisEmploymentsPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -389,50 +243,6 @@ export const GetHrisEmploymentsPositiveResponseData$inboundSchema: z.ZodType<
   ),
 });
 
-/** @internal */
-export type GetHrisEmploymentsPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetHrisEmploymentsPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetHrisEmploymentsPositiveResponseData$outboundSchema: z.ZodType<
-  GetHrisEmploymentsPositiveResponseData$Outbound,
-  z.ZodTypeDef,
-  GetHrisEmploymentsPositiveResponseData
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisEmploymentsPositiveResponseResult$outboundSchema),
-  ),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmploymentsPositiveResponseData$ {
-  /** @deprecated use `GetHrisEmploymentsPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetHrisEmploymentsPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetHrisEmploymentsPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmploymentsPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetHrisEmploymentsPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetHrisEmploymentsPositiveResponseData$Outbound;
-}
-
-export function getHrisEmploymentsPositiveResponseDataToJSON(
-  getHrisEmploymentsPositiveResponseData:
-    GetHrisEmploymentsPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetHrisEmploymentsPositiveResponseData$outboundSchema.parse(
-      getHrisEmploymentsPositiveResponseData,
-    ),
-  );
-}
-
 export function getHrisEmploymentsPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<GetHrisEmploymentsPositiveResponseData, SDKValidationError> {
@@ -453,46 +263,6 @@ export const GetHrisEmploymentsPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetHrisEmploymentsPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetHrisEmploymentsPositiveResponse$Outbound = {
-  status: "success";
-  data: GetHrisEmploymentsPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetHrisEmploymentsPositiveResponse$outboundSchema: z.ZodType<
-  GetHrisEmploymentsPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisEmploymentsPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisEmploymentsPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisEmploymentsPositiveResponse$ {
-  /** @deprecated use `GetHrisEmploymentsPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisEmploymentsPositiveResponse$inboundSchema;
-  /** @deprecated use `GetHrisEmploymentsPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetHrisEmploymentsPositiveResponse$outboundSchema;
-  /** @deprecated use `GetHrisEmploymentsPositiveResponse$Outbound` instead. */
-  export type Outbound = GetHrisEmploymentsPositiveResponse$Outbound;
-}
-
-export function getHrisEmploymentsPositiveResponseToJSON(
-  getHrisEmploymentsPositiveResponse: GetHrisEmploymentsPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetHrisEmploymentsPositiveResponse$outboundSchema.parse(
-      getHrisEmploymentsPositiveResponse,
-    ),
-  );
-}
 
 export function getHrisEmploymentsPositiveResponseFromJSON(
   jsonString: string,

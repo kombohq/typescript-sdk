@@ -61,55 +61,6 @@ export const GetAtsRejectionReasonsPositiveResponseResult$inboundSchema:
     ),
   });
 
-/** @internal */
-export type GetAtsRejectionReasonsPositiveResponseResult$Outbound = {
-  id: string;
-  remote_id: string;
-  name: string | null;
-  changed_at: string;
-  remote_deleted_at: string | null;
-};
-
-/** @internal */
-export const GetAtsRejectionReasonsPositiveResponseResult$outboundSchema:
-  z.ZodType<
-    GetAtsRejectionReasonsPositiveResponseResult$Outbound,
-    z.ZodTypeDef,
-    GetAtsRejectionReasonsPositiveResponseResult
-  > = z.object({
-    id: z.string(),
-    remote_id: z.string(),
-    name: z.nullable(z.string()),
-    changed_at: z.date().transform(v => v.toISOString()),
-    remote_deleted_at: z.nullable(z.date().transform(v => v.toISOString())),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsRejectionReasonsPositiveResponseResult$ {
-  /** @deprecated use `GetAtsRejectionReasonsPositiveResponseResult$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAtsRejectionReasonsPositiveResponseResult$inboundSchema;
-  /** @deprecated use `GetAtsRejectionReasonsPositiveResponseResult$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsRejectionReasonsPositiveResponseResult$outboundSchema;
-  /** @deprecated use `GetAtsRejectionReasonsPositiveResponseResult$Outbound` instead. */
-  export type Outbound = GetAtsRejectionReasonsPositiveResponseResult$Outbound;
-}
-
-export function getAtsRejectionReasonsPositiveResponseResultToJSON(
-  getAtsRejectionReasonsPositiveResponseResult:
-    GetAtsRejectionReasonsPositiveResponseResult,
-): string {
-  return JSON.stringify(
-    GetAtsRejectionReasonsPositiveResponseResult$outboundSchema.parse(
-      getAtsRejectionReasonsPositiveResponseResult,
-    ),
-  );
-}
-
 export function getAtsRejectionReasonsPositiveResponseResultFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -138,51 +89,6 @@ export const GetAtsRejectionReasonsPositiveResponseData$inboundSchema:
       ),
     });
 
-/** @internal */
-export type GetAtsRejectionReasonsPositiveResponseData$Outbound = {
-  next: string | null;
-  results: Array<GetAtsRejectionReasonsPositiveResponseResult$Outbound>;
-};
-
-/** @internal */
-export const GetAtsRejectionReasonsPositiveResponseData$outboundSchema:
-  z.ZodType<
-    GetAtsRejectionReasonsPositiveResponseData$Outbound,
-    z.ZodTypeDef,
-    GetAtsRejectionReasonsPositiveResponseData
-  > = z.object({
-    next: z.nullable(z.string()),
-    results: z.array(
-      z.lazy(() => GetAtsRejectionReasonsPositiveResponseResult$outboundSchema),
-    ),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsRejectionReasonsPositiveResponseData$ {
-  /** @deprecated use `GetAtsRejectionReasonsPositiveResponseData$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAtsRejectionReasonsPositiveResponseData$inboundSchema;
-  /** @deprecated use `GetAtsRejectionReasonsPositiveResponseData$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsRejectionReasonsPositiveResponseData$outboundSchema;
-  /** @deprecated use `GetAtsRejectionReasonsPositiveResponseData$Outbound` instead. */
-  export type Outbound = GetAtsRejectionReasonsPositiveResponseData$Outbound;
-}
-
-export function getAtsRejectionReasonsPositiveResponseDataToJSON(
-  getAtsRejectionReasonsPositiveResponseData:
-    GetAtsRejectionReasonsPositiveResponseData,
-): string {
-  return JSON.stringify(
-    GetAtsRejectionReasonsPositiveResponseData$outboundSchema.parse(
-      getAtsRejectionReasonsPositiveResponseData,
-    ),
-  );
-}
-
 export function getAtsRejectionReasonsPositiveResponseDataFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -208,48 +114,6 @@ export const GetAtsRejectionReasonsPositiveResponse$inboundSchema: z.ZodType<
   status: z.literal("success"),
   data: z.lazy(() => GetAtsRejectionReasonsPositiveResponseData$inboundSchema),
 });
-
-/** @internal */
-export type GetAtsRejectionReasonsPositiveResponse$Outbound = {
-  status: "success";
-  data: GetAtsRejectionReasonsPositiveResponseData$Outbound;
-};
-
-/** @internal */
-export const GetAtsRejectionReasonsPositiveResponse$outboundSchema: z.ZodType<
-  GetAtsRejectionReasonsPositiveResponse$Outbound,
-  z.ZodTypeDef,
-  GetAtsRejectionReasonsPositiveResponse
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAtsRejectionReasonsPositiveResponseData$outboundSchema),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsRejectionReasonsPositiveResponse$ {
-  /** @deprecated use `GetAtsRejectionReasonsPositiveResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAtsRejectionReasonsPositiveResponse$inboundSchema;
-  /** @deprecated use `GetAtsRejectionReasonsPositiveResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsRejectionReasonsPositiveResponse$outboundSchema;
-  /** @deprecated use `GetAtsRejectionReasonsPositiveResponse$Outbound` instead. */
-  export type Outbound = GetAtsRejectionReasonsPositiveResponse$Outbound;
-}
-
-export function getAtsRejectionReasonsPositiveResponseToJSON(
-  getAtsRejectionReasonsPositiveResponse:
-    GetAtsRejectionReasonsPositiveResponse,
-): string {
-  return JSON.stringify(
-    GetAtsRejectionReasonsPositiveResponse$outboundSchema.parse(
-      getAtsRejectionReasonsPositiveResponse,
-    ),
-  );
-}
 
 export function getAtsRejectionReasonsPositiveResponseFromJSON(
   jsonString: string,

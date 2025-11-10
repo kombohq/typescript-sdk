@@ -94,47 +94,19 @@ export const IntegrationDeletedWebhookPayloadType$inboundSchema:
   z.ZodNativeEnum<typeof IntegrationDeletedWebhookPayloadType> = z.nativeEnum(
     IntegrationDeletedWebhookPayloadType,
   );
-
 /** @internal */
 export const IntegrationDeletedWebhookPayloadType$outboundSchema:
   z.ZodNativeEnum<typeof IntegrationDeletedWebhookPayloadType> =
     IntegrationDeletedWebhookPayloadType$inboundSchema;
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IntegrationDeletedWebhookPayloadType$ {
-  /** @deprecated use `IntegrationDeletedWebhookPayloadType$inboundSchema` instead. */
-  export const inboundSchema =
-    IntegrationDeletedWebhookPayloadType$inboundSchema;
-  /** @deprecated use `IntegrationDeletedWebhookPayloadType$outboundSchema` instead. */
-  export const outboundSchema =
-    IntegrationDeletedWebhookPayloadType$outboundSchema;
-}
-
 /** @internal */
 export const IntegrationDeletedWebhookPayloadCategory$inboundSchema:
   z.ZodNativeEnum<typeof IntegrationDeletedWebhookPayloadCategory> = z
     .nativeEnum(IntegrationDeletedWebhookPayloadCategory);
-
 /** @internal */
 export const IntegrationDeletedWebhookPayloadCategory$outboundSchema:
   z.ZodNativeEnum<typeof IntegrationDeletedWebhookPayloadCategory> =
     IntegrationDeletedWebhookPayloadCategory$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IntegrationDeletedWebhookPayloadCategory$ {
-  /** @deprecated use `IntegrationDeletedWebhookPayloadCategory$inboundSchema` instead. */
-  export const inboundSchema =
-    IntegrationDeletedWebhookPayloadCategory$inboundSchema;
-  /** @deprecated use `IntegrationDeletedWebhookPayloadCategory$outboundSchema` instead. */
-  export const outboundSchema =
-    IntegrationDeletedWebhookPayloadCategory$outboundSchema;
-}
 
 /** @internal */
 export const IntegrationDeletedWebhookPayloadEndUser$inboundSchema: z.ZodType<
@@ -146,7 +118,6 @@ export const IntegrationDeletedWebhookPayloadEndUser$inboundSchema: z.ZodType<
   creator_email: z.nullable(z.string()),
   origin_id: z.nullable(z.string()),
 });
-
 /** @internal */
 export type IntegrationDeletedWebhookPayloadEndUser$Outbound = {
   organization_name: string;
@@ -165,21 +136,6 @@ export const IntegrationDeletedWebhookPayloadEndUser$outboundSchema: z.ZodType<
   origin_id: z.nullable(z.string()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IntegrationDeletedWebhookPayloadEndUser$ {
-  /** @deprecated use `IntegrationDeletedWebhookPayloadEndUser$inboundSchema` instead. */
-  export const inboundSchema =
-    IntegrationDeletedWebhookPayloadEndUser$inboundSchema;
-  /** @deprecated use `IntegrationDeletedWebhookPayloadEndUser$outboundSchema` instead. */
-  export const outboundSchema =
-    IntegrationDeletedWebhookPayloadEndUser$outboundSchema;
-  /** @deprecated use `IntegrationDeletedWebhookPayloadEndUser$Outbound` instead. */
-  export type Outbound = IntegrationDeletedWebhookPayloadEndUser$Outbound;
-}
-
 export function integrationDeletedWebhookPayloadEndUserToJSON(
   integrationDeletedWebhookPayloadEndUser:
     IntegrationDeletedWebhookPayloadEndUser,
@@ -190,7 +146,6 @@ export function integrationDeletedWebhookPayloadEndUserToJSON(
     ),
   );
 }
-
 export function integrationDeletedWebhookPayloadEndUserFromJSON(
   jsonString: string,
 ): SafeParseResult<
@@ -219,7 +174,6 @@ export const IntegrationDeletedWebhookPayloadData$inboundSchema: z.ZodType<
   end_user: z.lazy(() => IntegrationDeletedWebhookPayloadEndUser$inboundSchema),
   deleted_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
-
 /** @internal */
 export type IntegrationDeletedWebhookPayloadData$Outbound = {
   id: string;
@@ -244,21 +198,6 @@ export const IntegrationDeletedWebhookPayloadData$outboundSchema: z.ZodType<
   deleted_at: z.date().transform(v => v.toISOString()),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IntegrationDeletedWebhookPayloadData$ {
-  /** @deprecated use `IntegrationDeletedWebhookPayloadData$inboundSchema` instead. */
-  export const inboundSchema =
-    IntegrationDeletedWebhookPayloadData$inboundSchema;
-  /** @deprecated use `IntegrationDeletedWebhookPayloadData$outboundSchema` instead. */
-  export const outboundSchema =
-    IntegrationDeletedWebhookPayloadData$outboundSchema;
-  /** @deprecated use `IntegrationDeletedWebhookPayloadData$Outbound` instead. */
-  export type Outbound = IntegrationDeletedWebhookPayloadData$Outbound;
-}
-
 export function integrationDeletedWebhookPayloadDataToJSON(
   integrationDeletedWebhookPayloadData: IntegrationDeletedWebhookPayloadData,
 ): string {
@@ -268,7 +207,6 @@ export function integrationDeletedWebhookPayloadDataToJSON(
     ),
   );
 }
-
 export function integrationDeletedWebhookPayloadDataFromJSON(
   jsonString: string,
 ): SafeParseResult<IntegrationDeletedWebhookPayloadData, SDKValidationError> {
@@ -290,7 +228,6 @@ export const IntegrationDeletedWebhookPayload$inboundSchema: z.ZodType<
   type: IntegrationDeletedWebhookPayloadType$inboundSchema,
   data: z.lazy(() => IntegrationDeletedWebhookPayloadData$inboundSchema),
 });
-
 /** @internal */
 export type IntegrationDeletedWebhookPayload$Outbound = {
   id: string;
@@ -309,19 +246,6 @@ export const IntegrationDeletedWebhookPayload$outboundSchema: z.ZodType<
   data: z.lazy(() => IntegrationDeletedWebhookPayloadData$outboundSchema),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace IntegrationDeletedWebhookPayload$ {
-  /** @deprecated use `IntegrationDeletedWebhookPayload$inboundSchema` instead. */
-  export const inboundSchema = IntegrationDeletedWebhookPayload$inboundSchema;
-  /** @deprecated use `IntegrationDeletedWebhookPayload$outboundSchema` instead. */
-  export const outboundSchema = IntegrationDeletedWebhookPayload$outboundSchema;
-  /** @deprecated use `IntegrationDeletedWebhookPayload$Outbound` instead. */
-  export type Outbound = IntegrationDeletedWebhookPayload$Outbound;
-}
-
 export function integrationDeletedWebhookPayloadToJSON(
   integrationDeletedWebhookPayload: IntegrationDeletedWebhookPayload,
 ): string {
@@ -331,7 +255,6 @@ export function integrationDeletedWebhookPayloadToJSON(
     ),
   );
 }
-
 export function integrationDeletedWebhookPayloadFromJSON(
   jsonString: string,
 ): SafeParseResult<IntegrationDeletedWebhookPayload, SDKValidationError> {

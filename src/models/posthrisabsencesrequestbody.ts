@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 /**
  * The state that the absence should be created in. Some tools may approve absences automatically if they were created for an absence type that does not require approval.
@@ -116,55 +113,14 @@ export type PostHrisAbsencesRequestBody = {
 };
 
 /** @internal */
-export const PostHrisAbsencesRequestBodyStatus$inboundSchema: z.ZodNativeEnum<
+export const PostHrisAbsencesRequestBodyStatus$outboundSchema: z.ZodNativeEnum<
   typeof PostHrisAbsencesRequestBodyStatus
 > = z.nativeEnum(PostHrisAbsencesRequestBodyStatus);
 
 /** @internal */
-export const PostHrisAbsencesRequestBodyStatus$outboundSchema: z.ZodNativeEnum<
-  typeof PostHrisAbsencesRequestBodyStatus
-> = PostHrisAbsencesRequestBodyStatus$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisAbsencesRequestBodyStatus$ {
-  /** @deprecated use `PostHrisAbsencesRequestBodyStatus$inboundSchema` instead. */
-  export const inboundSchema = PostHrisAbsencesRequestBodyStatus$inboundSchema;
-  /** @deprecated use `PostHrisAbsencesRequestBodyStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisAbsencesRequestBodyStatus$outboundSchema;
-}
-
-/** @internal */
-export const PostHrisAbsencesRequestBodyUnit$inboundSchema: z.ZodNativeEnum<
-  typeof PostHrisAbsencesRequestBodyUnit
-> = z.nativeEnum(PostHrisAbsencesRequestBodyUnit);
-
-/** @internal */
 export const PostHrisAbsencesRequestBodyUnit$outboundSchema: z.ZodNativeEnum<
   typeof PostHrisAbsencesRequestBodyUnit
-> = PostHrisAbsencesRequestBodyUnit$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisAbsencesRequestBodyUnit$ {
-  /** @deprecated use `PostHrisAbsencesRequestBodyUnit$inboundSchema` instead. */
-  export const inboundSchema = PostHrisAbsencesRequestBodyUnit$inboundSchema;
-  /** @deprecated use `PostHrisAbsencesRequestBodyUnit$outboundSchema` instead. */
-  export const outboundSchema = PostHrisAbsencesRequestBodyUnit$outboundSchema;
-}
-
-/** @internal */
-export const PostHrisAbsencesRequestBodyAdpworkforcenow$inboundSchema:
-  z.ZodType<PostHrisAbsencesRequestBodyAdpworkforcenow, z.ZodTypeDef, unknown> =
-    z.object({
-      employment_id: z.string().optional(),
-      paid_leave: z.boolean().optional(),
-    });
+> = z.nativeEnum(PostHrisAbsencesRequestBodyUnit);
 
 /** @internal */
 export type PostHrisAbsencesRequestBodyAdpworkforcenow$Outbound = {
@@ -183,21 +139,6 @@ export const PostHrisAbsencesRequestBodyAdpworkforcenow$outboundSchema:
     paid_leave: z.boolean().optional(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisAbsencesRequestBodyAdpworkforcenow$ {
-  /** @deprecated use `PostHrisAbsencesRequestBodyAdpworkforcenow$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisAbsencesRequestBodyAdpworkforcenow$inboundSchema;
-  /** @deprecated use `PostHrisAbsencesRequestBodyAdpworkforcenow$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisAbsencesRequestBodyAdpworkforcenow$outboundSchema;
-  /** @deprecated use `PostHrisAbsencesRequestBodyAdpworkforcenow$Outbound` instead. */
-  export type Outbound = PostHrisAbsencesRequestBodyAdpworkforcenow$Outbound;
-}
-
 export function postHrisAbsencesRequestBodyAdpworkforcenowToJSON(
   postHrisAbsencesRequestBodyAdpworkforcenow:
     PostHrisAbsencesRequestBodyAdpworkforcenow,
@@ -208,33 +149,6 @@ export function postHrisAbsencesRequestBodyAdpworkforcenowToJSON(
     ),
   );
 }
-
-export function postHrisAbsencesRequestBodyAdpworkforcenowFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostHrisAbsencesRequestBodyAdpworkforcenow,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostHrisAbsencesRequestBodyAdpworkforcenow$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostHrisAbsencesRequestBodyAdpworkforcenow' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostHrisAbsencesRequestBodyRemoteFields$inboundSchema: z.ZodType<
-  PostHrisAbsencesRequestBodyRemoteFields,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  adpworkforcenow: z.lazy(() =>
-    PostHrisAbsencesRequestBodyAdpworkforcenow$inboundSchema
-  ).optional(),
-});
 
 /** @internal */
 export type PostHrisAbsencesRequestBodyRemoteFields$Outbound = {
@@ -254,21 +168,6 @@ export const PostHrisAbsencesRequestBodyRemoteFields$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisAbsencesRequestBodyRemoteFields$ {
-  /** @deprecated use `PostHrisAbsencesRequestBodyRemoteFields$inboundSchema` instead. */
-  export const inboundSchema =
-    PostHrisAbsencesRequestBodyRemoteFields$inboundSchema;
-  /** @deprecated use `PostHrisAbsencesRequestBodyRemoteFields$outboundSchema` instead. */
-  export const outboundSchema =
-    PostHrisAbsencesRequestBodyRemoteFields$outboundSchema;
-  /** @deprecated use `PostHrisAbsencesRequestBodyRemoteFields$Outbound` instead. */
-  export type Outbound = PostHrisAbsencesRequestBodyRemoteFields$Outbound;
-}
-
 export function postHrisAbsencesRequestBodyRemoteFieldsToJSON(
   postHrisAbsencesRequestBodyRemoteFields:
     PostHrisAbsencesRequestBodyRemoteFields,
@@ -279,45 +178,6 @@ export function postHrisAbsencesRequestBodyRemoteFieldsToJSON(
     ),
   );
 }
-
-export function postHrisAbsencesRequestBodyRemoteFieldsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostHrisAbsencesRequestBodyRemoteFields,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostHrisAbsencesRequestBodyRemoteFields$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostHrisAbsencesRequestBodyRemoteFields' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostHrisAbsencesRequestBody$inboundSchema: z.ZodType<
-  PostHrisAbsencesRequestBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  employee_id: z.string(),
-  absence_type_id: z.string(),
-  status: PostHrisAbsencesRequestBodyStatus$inboundSchema.default("REQUESTED"),
-  start_date: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  end_date: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  start_half_day: z.boolean().default(false),
-  end_half_day: z.boolean().default(false),
-  amount: z.number().optional(),
-  unit: PostHrisAbsencesRequestBodyUnit$inboundSchema.optional(),
-  employee_note: z.nullable(z.string()),
-  start_time: z.string().optional(),
-  end_time: z.string().optional(),
-  remote_fields: z.lazy(() =>
-    PostHrisAbsencesRequestBodyRemoteFields$inboundSchema
-  ).optional(),
-});
 
 /** @internal */
 export type PostHrisAbsencesRequestBody$Outbound = {
@@ -359,19 +219,6 @@ export const PostHrisAbsencesRequestBody$outboundSchema: z.ZodType<
   ).optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostHrisAbsencesRequestBody$ {
-  /** @deprecated use `PostHrisAbsencesRequestBody$inboundSchema` instead. */
-  export const inboundSchema = PostHrisAbsencesRequestBody$inboundSchema;
-  /** @deprecated use `PostHrisAbsencesRequestBody$outboundSchema` instead. */
-  export const outboundSchema = PostHrisAbsencesRequestBody$outboundSchema;
-  /** @deprecated use `PostHrisAbsencesRequestBody$Outbound` instead. */
-  export type Outbound = PostHrisAbsencesRequestBody$Outbound;
-}
-
 export function postHrisAbsencesRequestBodyToJSON(
   postHrisAbsencesRequestBody: PostHrisAbsencesRequestBody,
 ): string {
@@ -379,15 +226,5 @@ export function postHrisAbsencesRequestBodyToJSON(
     PostHrisAbsencesRequestBody$outboundSchema.parse(
       postHrisAbsencesRequestBody,
     ),
-  );
-}
-
-export function postHrisAbsencesRequestBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<PostHrisAbsencesRequestBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostHrisAbsencesRequestBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostHrisAbsencesRequestBody' from JSON`,
   );
 }

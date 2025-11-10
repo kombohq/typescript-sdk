@@ -341,7 +341,7 @@ const kombo = new Kombo({
 async function run() {
   const result = await kombo.assessment.updateOrderResult({
     assessment_order_id: "GRKdd9dibYKKCrmGRSMJf3wu",
-    put_assessment_orders_assessment_order_id_result_request_body: {
+    body: {
       status: "COMPLETED",
       result_url: "https://example.com",
       completed_at: new Date("2023-04-04T00:00:00Z"),
@@ -398,7 +398,7 @@ const kombo = new KomboCore({
 async function run() {
   const res = await assessmentUpdateOrderResult(kombo, {
     assessment_order_id: "GRKdd9dibYKKCrmGRSMJf3wu",
-    put_assessment_orders_assessment_order_id_result_request_body: {
+    body: {
       status: "COMPLETED",
       result_url: "https://example.com",
       completed_at: new Date("2023-04-04T00:00:00Z"),

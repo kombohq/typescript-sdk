@@ -3,10 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostAtsCandidatesCandidateIdResultLinksGlobals = {
@@ -24,100 +20,13 @@ export type PostAtsCandidatesCandidateIdResultLinksRequest = {
   /**
    * POST /ats/candidates/:candidate_id/result-links Request body
    */
-  post_ats_candidates_candidate_id_result_links_request_body:
-    models.PostAtsCandidatesCandidateIdResultLinksRequestBody;
+  body: models.PostAtsCandidatesCandidateIdResultLinksRequestBody;
 };
-
-/** @internal */
-export const PostAtsCandidatesCandidateIdResultLinksGlobals$inboundSchema:
-  z.ZodType<
-    PostAtsCandidatesCandidateIdResultLinksGlobals,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integration_id: z.string().optional(),
-  });
-
-/** @internal */
-export type PostAtsCandidatesCandidateIdResultLinksGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const PostAtsCandidatesCandidateIdResultLinksGlobals$outboundSchema:
-  z.ZodType<
-    PostAtsCandidatesCandidateIdResultLinksGlobals$Outbound,
-    z.ZodTypeDef,
-    PostAtsCandidatesCandidateIdResultLinksGlobals
-  > = z.object({
-    integration_id: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsCandidatesCandidateIdResultLinksGlobals$ {
-  /** @deprecated use `PostAtsCandidatesCandidateIdResultLinksGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsCandidatesCandidateIdResultLinksGlobals$inboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdResultLinksGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsCandidatesCandidateIdResultLinksGlobals$outboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdResultLinksGlobals$Outbound` instead. */
-  export type Outbound =
-    PostAtsCandidatesCandidateIdResultLinksGlobals$Outbound;
-}
-
-export function postAtsCandidatesCandidateIdResultLinksGlobalsToJSON(
-  postAtsCandidatesCandidateIdResultLinksGlobals:
-    PostAtsCandidatesCandidateIdResultLinksGlobals,
-): string {
-  return JSON.stringify(
-    PostAtsCandidatesCandidateIdResultLinksGlobals$outboundSchema.parse(
-      postAtsCandidatesCandidateIdResultLinksGlobals,
-    ),
-  );
-}
-
-export function postAtsCandidatesCandidateIdResultLinksGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsCandidatesCandidateIdResultLinksGlobals,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsCandidatesCandidateIdResultLinksGlobals$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostAtsCandidatesCandidateIdResultLinksGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAtsCandidatesCandidateIdResultLinksRequest$inboundSchema:
-  z.ZodType<
-    PostAtsCandidatesCandidateIdResultLinksRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    candidate_id: z.string(),
-    PostAtsCandidatesCandidateIdResultLinksRequestBody:
-      models.PostAtsCandidatesCandidateIdResultLinksRequestBody$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "PostAtsCandidatesCandidateIdResultLinksRequestBody":
-        "post_ats_candidates_candidate_id_result_links_request_body",
-    });
-  });
 
 /** @internal */
 export type PostAtsCandidatesCandidateIdResultLinksRequest$Outbound = {
   candidate_id: string;
-  PostAtsCandidatesCandidateIdResultLinksRequestBody:
-    models.PostAtsCandidatesCandidateIdResultLinksRequestBody$Outbound;
+  body: models.PostAtsCandidatesCandidateIdResultLinksRequestBody$Outbound;
 };
 
 /** @internal */
@@ -128,30 +37,9 @@ export const PostAtsCandidatesCandidateIdResultLinksRequest$outboundSchema:
     PostAtsCandidatesCandidateIdResultLinksRequest
   > = z.object({
     candidate_id: z.string(),
-    post_ats_candidates_candidate_id_result_links_request_body:
+    body:
       models.PostAtsCandidatesCandidateIdResultLinksRequestBody$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      post_ats_candidates_candidate_id_result_links_request_body:
-        "PostAtsCandidatesCandidateIdResultLinksRequestBody",
-    });
   });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAtsCandidatesCandidateIdResultLinksRequest$ {
-  /** @deprecated use `PostAtsCandidatesCandidateIdResultLinksRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAtsCandidatesCandidateIdResultLinksRequest$inboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdResultLinksRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAtsCandidatesCandidateIdResultLinksRequest$outboundSchema;
-  /** @deprecated use `PostAtsCandidatesCandidateIdResultLinksRequest$Outbound` instead. */
-  export type Outbound =
-    PostAtsCandidatesCandidateIdResultLinksRequest$Outbound;
-}
 
 export function postAtsCandidatesCandidateIdResultLinksRequestToJSON(
   postAtsCandidatesCandidateIdResultLinksRequest:
@@ -161,21 +49,5 @@ export function postAtsCandidatesCandidateIdResultLinksRequestToJSON(
     PostAtsCandidatesCandidateIdResultLinksRequest$outboundSchema.parse(
       postAtsCandidatesCandidateIdResultLinksRequest,
     ),
-  );
-}
-
-export function postAtsCandidatesCandidateIdResultLinksRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAtsCandidatesCandidateIdResultLinksRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAtsCandidatesCandidateIdResultLinksRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostAtsCandidatesCandidateIdResultLinksRequest' from JSON`,
   );
 }

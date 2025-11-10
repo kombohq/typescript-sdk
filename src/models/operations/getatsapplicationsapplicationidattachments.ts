@@ -3,9 +3,6 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../../lib/schemas.js";
-import { Result as SafeParseResult } from "../../types/fp.js";
-import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetAtsApplicationsApplicationIdAttachmentsGlobals = {
   /**
@@ -22,84 +19,6 @@ export type GetAtsApplicationsApplicationIdAttachmentsRequest = {
 };
 
 /** @internal */
-export const GetAtsApplicationsApplicationIdAttachmentsGlobals$inboundSchema:
-  z.ZodType<
-    GetAtsApplicationsApplicationIdAttachmentsGlobals,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integration_id: z.string().optional(),
-  });
-
-/** @internal */
-export type GetAtsApplicationsApplicationIdAttachmentsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetAtsApplicationsApplicationIdAttachmentsGlobals$outboundSchema:
-  z.ZodType<
-    GetAtsApplicationsApplicationIdAttachmentsGlobals$Outbound,
-    z.ZodTypeDef,
-    GetAtsApplicationsApplicationIdAttachmentsGlobals
-  > = z.object({
-    integration_id: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsApplicationsApplicationIdAttachmentsGlobals$ {
-  /** @deprecated use `GetAtsApplicationsApplicationIdAttachmentsGlobals$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAtsApplicationsApplicationIdAttachmentsGlobals$inboundSchema;
-  /** @deprecated use `GetAtsApplicationsApplicationIdAttachmentsGlobals$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsApplicationsApplicationIdAttachmentsGlobals$outboundSchema;
-  /** @deprecated use `GetAtsApplicationsApplicationIdAttachmentsGlobals$Outbound` instead. */
-  export type Outbound =
-    GetAtsApplicationsApplicationIdAttachmentsGlobals$Outbound;
-}
-
-export function getAtsApplicationsApplicationIdAttachmentsGlobalsToJSON(
-  getAtsApplicationsApplicationIdAttachmentsGlobals:
-    GetAtsApplicationsApplicationIdAttachmentsGlobals,
-): string {
-  return JSON.stringify(
-    GetAtsApplicationsApplicationIdAttachmentsGlobals$outboundSchema.parse(
-      getAtsApplicationsApplicationIdAttachmentsGlobals,
-    ),
-  );
-}
-
-export function getAtsApplicationsApplicationIdAttachmentsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetAtsApplicationsApplicationIdAttachmentsGlobals,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetAtsApplicationsApplicationIdAttachmentsGlobals$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetAtsApplicationsApplicationIdAttachmentsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetAtsApplicationsApplicationIdAttachmentsRequest$inboundSchema:
-  z.ZodType<
-    GetAtsApplicationsApplicationIdAttachmentsRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    application_id: z.string(),
-  });
-
-/** @internal */
 export type GetAtsApplicationsApplicationIdAttachmentsRequest$Outbound = {
   application_id: string;
 };
@@ -114,22 +33,6 @@ export const GetAtsApplicationsApplicationIdAttachmentsRequest$outboundSchema:
     application_id: z.string(),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAtsApplicationsApplicationIdAttachmentsRequest$ {
-  /** @deprecated use `GetAtsApplicationsApplicationIdAttachmentsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    GetAtsApplicationsApplicationIdAttachmentsRequest$inboundSchema;
-  /** @deprecated use `GetAtsApplicationsApplicationIdAttachmentsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetAtsApplicationsApplicationIdAttachmentsRequest$outboundSchema;
-  /** @deprecated use `GetAtsApplicationsApplicationIdAttachmentsRequest$Outbound` instead. */
-  export type Outbound =
-    GetAtsApplicationsApplicationIdAttachmentsRequest$Outbound;
-}
-
 export function getAtsApplicationsApplicationIdAttachmentsRequestToJSON(
   getAtsApplicationsApplicationIdAttachmentsRequest:
     GetAtsApplicationsApplicationIdAttachmentsRequest,
@@ -138,21 +41,5 @@ export function getAtsApplicationsApplicationIdAttachmentsRequestToJSON(
     GetAtsApplicationsApplicationIdAttachmentsRequest$outboundSchema.parse(
       getAtsApplicationsApplicationIdAttachmentsRequest,
     ),
-  );
-}
-
-export function getAtsApplicationsApplicationIdAttachmentsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetAtsApplicationsApplicationIdAttachmentsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetAtsApplicationsApplicationIdAttachmentsRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetAtsApplicationsApplicationIdAttachmentsRequest' from JSON`,
   );
 }

@@ -26,7 +26,13 @@ export type GetHrisLocationsRequest = {
    */
   page_size?: number | undefined;
   /**
-   * Filter the entries based on the modification date in format YYYY-MM-DDTHH:mm:ss.sssZ. Returns records where either the record itself OR its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged. If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden. For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   * Filter the entries based on the modification date in format `YYYY-MM-DDTHH:mm:ss.sssZ`. Returns records where either the record itself **OR** its nested data has been updated since this timestamp, even if the record's own `changed_at` field remains unchanged.
+   *
+   * @remarks
+   *
+   * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
+   *
+   * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    */
   updated_after?: Date | undefined;
   /**
@@ -50,77 +56,6 @@ export type GetHrisLocationsRequest = {
 export type GetHrisLocationsResponse = {
   result: models.GetHrisLocationsPositiveResponse;
 };
-
-/** @internal */
-export const GetHrisLocationsGlobals$inboundSchema: z.ZodType<
-  GetHrisLocationsGlobals,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/** @internal */
-export type GetHrisLocationsGlobals$Outbound = {
-  integration_id?: string | undefined;
-};
-
-/** @internal */
-export const GetHrisLocationsGlobals$outboundSchema: z.ZodType<
-  GetHrisLocationsGlobals$Outbound,
-  z.ZodTypeDef,
-  GetHrisLocationsGlobals
-> = z.object({
-  integration_id: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLocationsGlobals$ {
-  /** @deprecated use `GetHrisLocationsGlobals$inboundSchema` instead. */
-  export const inboundSchema = GetHrisLocationsGlobals$inboundSchema;
-  /** @deprecated use `GetHrisLocationsGlobals$outboundSchema` instead. */
-  export const outboundSchema = GetHrisLocationsGlobals$outboundSchema;
-  /** @deprecated use `GetHrisLocationsGlobals$Outbound` instead. */
-  export type Outbound = GetHrisLocationsGlobals$Outbound;
-}
-
-export function getHrisLocationsGlobalsToJSON(
-  getHrisLocationsGlobals: GetHrisLocationsGlobals,
-): string {
-  return JSON.stringify(
-    GetHrisLocationsGlobals$outboundSchema.parse(getHrisLocationsGlobals),
-  );
-}
-
-export function getHrisLocationsGlobalsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisLocationsGlobals, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisLocationsGlobals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisLocationsGlobals' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetHrisLocationsRequest$inboundSchema: z.ZodType<
-  GetHrisLocationsRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ).optional(),
-  include_deleted: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-  name_contains: z.string().optional(),
-});
 
 /** @internal */
 export type GetHrisLocationsRequest$Outbound = {
@@ -148,34 +83,11 @@ export const GetHrisLocationsRequest$outboundSchema: z.ZodType<
   name_contains: z.string().optional(),
 });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLocationsRequest$ {
-  /** @deprecated use `GetHrisLocationsRequest$inboundSchema` instead. */
-  export const inboundSchema = GetHrisLocationsRequest$inboundSchema;
-  /** @deprecated use `GetHrisLocationsRequest$outboundSchema` instead. */
-  export const outboundSchema = GetHrisLocationsRequest$outboundSchema;
-  /** @deprecated use `GetHrisLocationsRequest$Outbound` instead. */
-  export type Outbound = GetHrisLocationsRequest$Outbound;
-}
-
 export function getHrisLocationsRequestToJSON(
   getHrisLocationsRequest: GetHrisLocationsRequest,
 ): string {
   return JSON.stringify(
     GetHrisLocationsRequest$outboundSchema.parse(getHrisLocationsRequest),
-  );
-}
-
-export function getHrisLocationsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<GetHrisLocationsRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetHrisLocationsRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetHrisLocationsRequest' from JSON`,
   );
 }
 
@@ -191,45 +103,6 @@ export const GetHrisLocationsResponse$inboundSchema: z.ZodType<
     "Result": "result",
   });
 });
-
-/** @internal */
-export type GetHrisLocationsResponse$Outbound = {
-  Result: models.GetHrisLocationsPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetHrisLocationsResponse$outboundSchema: z.ZodType<
-  GetHrisLocationsResponse$Outbound,
-  z.ZodTypeDef,
-  GetHrisLocationsResponse
-> = z.object({
-  result: models.GetHrisLocationsPositiveResponse$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    result: "Result",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetHrisLocationsResponse$ {
-  /** @deprecated use `GetHrisLocationsResponse$inboundSchema` instead. */
-  export const inboundSchema = GetHrisLocationsResponse$inboundSchema;
-  /** @deprecated use `GetHrisLocationsResponse$outboundSchema` instead. */
-  export const outboundSchema = GetHrisLocationsResponse$outboundSchema;
-  /** @deprecated use `GetHrisLocationsResponse$Outbound` instead. */
-  export type Outbound = GetHrisLocationsResponse$Outbound;
-}
-
-export function getHrisLocationsResponseToJSON(
-  getHrisLocationsResponse: GetHrisLocationsResponse,
-): string {
-  return JSON.stringify(
-    GetHrisLocationsResponse$outboundSchema.parse(getHrisLocationsResponse),
-  );
-}
 
 export function getHrisLocationsResponseFromJSON(
   jsonString: string,

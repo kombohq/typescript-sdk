@@ -29,18 +29,6 @@ export type GetIntegrationsIntegrationIdIntegrationFieldsResponse = {
 };
 
 /** @internal */
-export const GetIntegrationsIntegrationIdIntegrationFieldsRequest$inboundSchema:
-  z.ZodType<
-    GetIntegrationsIntegrationIdIntegrationFieldsRequest,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    integration_id: z.string(),
-    cursor: z.string().optional(),
-    page_size: z.number().int().default(100),
-  });
-
-/** @internal */
 export type GetIntegrationsIntegrationIdIntegrationFieldsRequest$Outbound = {
   integration_id: string;
   cursor?: string | undefined;
@@ -59,22 +47,6 @@ export const GetIntegrationsIntegrationIdIntegrationFieldsRequest$outboundSchema
     page_size: z.number().int().default(100),
   });
 
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationsIntegrationIdIntegrationFieldsRequest$ {
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsRequest$inboundSchema` instead. */
-  export const inboundSchema =
-    GetIntegrationsIntegrationIdIntegrationFieldsRequest$inboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsRequest$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationsIntegrationIdIntegrationFieldsRequest$outboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsRequest$Outbound` instead. */
-  export type Outbound =
-    GetIntegrationsIntegrationIdIntegrationFieldsRequest$Outbound;
-}
-
 export function getIntegrationsIntegrationIdIntegrationFieldsRequestToJSON(
   getIntegrationsIntegrationIdIntegrationFieldsRequest:
     GetIntegrationsIntegrationIdIntegrationFieldsRequest,
@@ -83,22 +55,6 @@ export function getIntegrationsIntegrationIdIntegrationFieldsRequestToJSON(
     GetIntegrationsIntegrationIdIntegrationFieldsRequest$outboundSchema.parse(
       getIntegrationsIntegrationIdIntegrationFieldsRequest,
     ),
-  );
-}
-
-export function getIntegrationsIntegrationIdIntegrationFieldsRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetIntegrationsIntegrationIdIntegrationFieldsRequest,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetIntegrationsIntegrationIdIntegrationFieldsRequest$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetIntegrationsIntegrationIdIntegrationFieldsRequest' from JSON`,
   );
 }
 
@@ -117,55 +73,6 @@ export const GetIntegrationsIntegrationIdIntegrationFieldsResponse$inboundSchema
       "Result": "result",
     });
   });
-
-/** @internal */
-export type GetIntegrationsIntegrationIdIntegrationFieldsResponse$Outbound = {
-  Result:
-    models.GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$Outbound;
-};
-
-/** @internal */
-export const GetIntegrationsIntegrationIdIntegrationFieldsResponse$outboundSchema:
-  z.ZodType<
-    GetIntegrationsIntegrationIdIntegrationFieldsResponse$Outbound,
-    z.ZodTypeDef,
-    GetIntegrationsIntegrationIdIntegrationFieldsResponse
-  > = z.object({
-    result:
-      models
-        .GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      result: "Result",
-    });
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetIntegrationsIntegrationIdIntegrationFieldsResponse$ {
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsResponse$inboundSchema` instead. */
-  export const inboundSchema =
-    GetIntegrationsIntegrationIdIntegrationFieldsResponse$inboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsResponse$outboundSchema` instead. */
-  export const outboundSchema =
-    GetIntegrationsIntegrationIdIntegrationFieldsResponse$outboundSchema;
-  /** @deprecated use `GetIntegrationsIntegrationIdIntegrationFieldsResponse$Outbound` instead. */
-  export type Outbound =
-    GetIntegrationsIntegrationIdIntegrationFieldsResponse$Outbound;
-}
-
-export function getIntegrationsIntegrationIdIntegrationFieldsResponseToJSON(
-  getIntegrationsIntegrationIdIntegrationFieldsResponse:
-    GetIntegrationsIntegrationIdIntegrationFieldsResponse,
-): string {
-  return JSON.stringify(
-    GetIntegrationsIntegrationIdIntegrationFieldsResponse$outboundSchema.parse(
-      getIntegrationsIntegrationIdIntegrationFieldsResponse,
-    ),
-  );
-}
 
 export function getIntegrationsIntegrationIdIntegrationFieldsResponseFromJSON(
   jsonString: string,
