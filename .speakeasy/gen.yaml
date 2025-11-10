@@ -21,6 +21,7 @@ generation:
   sdkHooksConfigAccess: true
   schemas:
     allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: body
   tests:
     generateTests: false
     generateNewTests: true
@@ -43,6 +44,8 @@ typescript:
       - ATS
       - Assessment
     license: MIT
+  additionalScripts: {}
+  alwaysIncludeInboundAndOutbound: false
   author: Kombo Technologies GmbH <support@kombo.dev> (https://www.kombo.dev)
   baseErrorName: KomboError
   clientServerStatusCodesAsErrors: true
@@ -52,6 +55,7 @@ typescript:
   enableMCPServer: false
   enableReactQuery: false
   enumFormat: union
+  exportZodModelNamespace: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
   generateExamples: true
