@@ -4,9 +4,8 @@ sources:
     kombo-prepared-spec:
         inputs:
             - location: https://api.kombo.dev/internal/sdk.openapi.yaml
-              auth:
-                authHeader: Authorization
-                authSecret: $openapi_doc_auth_token
+              authHeader: Authorization
+              authSecret: $openapi_doc_auth_token
         registry:
             location: registry.speakeasyapi.dev/kombo-ayg/api/kombo-api
 targets:
