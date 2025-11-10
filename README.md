@@ -35,7 +35,6 @@ Developer-friendly & type-safe TypeScript SDK for the [Kombo Unified API](https:
   * [Debugging](#debugging)
   * [Requirements](#requirements)
 * [Development](#development)
-  * [Maturity](#maturity)
   * [Contributions](#contributions)
 
 <!-- End Table of Contents [toc] -->
@@ -542,3 +541,9 @@ While we value open-source contributions to this SDK, this library is generated 
 We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
 
 ### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=@kombo-api/sdk&utm_campaign=typescript)
+
+<!-- No Summary [summary] -->
+<!-- No SDK Example Usage [usage] -->
+<!-- No Authentication [security] -->
+<!-- No Global Parameters [global-parameters] -->
+<!-- No Server Selection [server] -->
