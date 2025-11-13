@@ -100,6 +100,7 @@ let value: GetHrisEmployeesPositiveResponseData = {
         last_name: "Doe",
         display_full_name: "John Doe",
         id: "26vafvWSRmbhNcxJYqjCzuJg",
+        employee_number: "3243422",
         work_email: "john.doe@acme.com",
         remote_id: "32",
         employment_status: "INACTIVE",

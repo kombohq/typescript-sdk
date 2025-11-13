@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
-import { catchUnrecognizedEnum, OpenEnum } from "../types/enums.js";
+import * as openEnums from "../types/enums.js";
+import { OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -154,11 +155,7 @@ export const GetHrisEmploymentsPositiveResponsePayPeriod$inboundSchema:
     GetHrisEmploymentsPositiveResponsePayPeriod,
     z.ZodTypeDef,
     unknown
-  > = z
-    .union([
-      z.nativeEnum(GetHrisEmploymentsPositiveResponsePayPeriod),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  > = openEnums.inboundSchema(GetHrisEmploymentsPositiveResponsePayPeriod);
 
 /** @internal */
 export const GetHrisEmploymentsPositiveResponsePayFrequency$inboundSchema:
@@ -166,11 +163,7 @@ export const GetHrisEmploymentsPositiveResponsePayFrequency$inboundSchema:
     GetHrisEmploymentsPositiveResponsePayFrequency,
     z.ZodTypeDef,
     unknown
-  > = z
-    .union([
-      z.nativeEnum(GetHrisEmploymentsPositiveResponsePayFrequency),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  > = openEnums.inboundSchema(GetHrisEmploymentsPositiveResponsePayFrequency);
 
 /** @internal */
 export const GetHrisEmploymentsPositiveResponseEmploymentType$inboundSchema:
@@ -178,11 +171,7 @@ export const GetHrisEmploymentsPositiveResponseEmploymentType$inboundSchema:
     GetHrisEmploymentsPositiveResponseEmploymentType,
     z.ZodTypeDef,
     unknown
-  > = z
-    .union([
-      z.nativeEnum(GetHrisEmploymentsPositiveResponseEmploymentType),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  > = openEnums.inboundSchema(GetHrisEmploymentsPositiveResponseEmploymentType);
 
 /** @internal */
 export const GetHrisEmploymentsPositiveResponseResult$inboundSchema: z.ZodType<

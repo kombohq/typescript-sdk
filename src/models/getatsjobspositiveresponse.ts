@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
-import { catchUnrecognizedEnum, ClosedEnum, OpenEnum } from "../types/enums.js";
+import * as openEnums from "../types/enums.js";
+import { ClosedEnum, OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -542,55 +543,35 @@ export const GetAtsJobsPositiveResponseEmploymentType$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseEmploymentType,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(GetAtsJobsPositiveResponseEmploymentType),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(GetAtsJobsPositiveResponseEmploymentType);
 
 /** @internal */
 export const GetAtsJobsPositiveResponseStatus$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseStatus,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(GetAtsJobsPositiveResponseStatus),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(GetAtsJobsPositiveResponseStatus);
 
 /** @internal */
 export const Visibility$inboundSchema: z.ZodType<
   Visibility,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(Visibility),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(Visibility);
 
 /** @internal */
 export const RemoteWorkStatus$inboundSchema: z.ZodType<
   RemoteWorkStatus,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(RemoteWorkStatus),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(RemoteWorkStatus);
 
 /** @internal */
 export const SalaryPeriod$inboundSchema: z.ZodType<
   SalaryPeriod,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(SalaryPeriod),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(SalaryPeriod);
 
 /** @internal */
 export const GetAtsJobsPositiveResponseLocation$inboundSchema: z.ZodType<
