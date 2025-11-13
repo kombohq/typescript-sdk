@@ -4,7 +4,8 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
-import { catchUnrecognizedEnum, ClosedEnum, OpenEnum } from "../types/enums.js";
+import * as openEnums from "../types/enums.js";
+import { ClosedEnum, OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -356,6 +357,10 @@ export type Manager = {
    */
   id: string;
   /**
+   * The employee’s organization-internal employee number.
+   */
+  employee_number: string | null;
+  /**
    * The employee’s work email address. If the email address is invalid, we will set this to `null`.
    */
   work_email?: string | null | undefined;
@@ -688,44 +693,28 @@ export const GetHrisEmployeesPositiveResponseGender$inboundSchema: z.ZodType<
   GetHrisEmployeesPositiveResponseGender,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(GetHrisEmployeesPositiveResponseGender),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(GetHrisEmployeesPositiveResponseGender);
 
 /** @internal */
 export const Ethnicity$inboundSchema: z.ZodType<
   Ethnicity,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(Ethnicity),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(Ethnicity);
 
 /** @internal */
 export const MaritalStatus$inboundSchema: z.ZodType<
   MaritalStatus,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(MaritalStatus),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(MaritalStatus);
 
 /** @internal */
 export const EmploymentStatus$inboundSchema: z.ZodType<
   EmploymentStatus,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmploymentStatus),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmploymentStatus);
 
 /** @internal */
 export const GetHrisEmployeesPositiveResponseEmploymentType$inboundSchema:
@@ -733,11 +722,7 @@ export const GetHrisEmployeesPositiveResponseEmploymentType$inboundSchema:
     GetHrisEmployeesPositiveResponseEmploymentType,
     z.ZodTypeDef,
     unknown
-  > = z
-    .union([
-      z.nativeEnum(GetHrisEmployeesPositiveResponseEmploymentType),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  > = openEnums.inboundSchema(GetHrisEmployeesPositiveResponseEmploymentType);
 
 /** @internal */
 export const HomeAddress$inboundSchema: z.ZodType<
@@ -820,11 +805,7 @@ export const GetHrisEmployeesPositiveResponsePayPeriod$inboundSchema: z.ZodType<
   GetHrisEmployeesPositiveResponsePayPeriod,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(GetHrisEmployeesPositiveResponsePayPeriod),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(GetHrisEmployeesPositiveResponsePayPeriod);
 
 /** @internal */
 export const GetHrisEmployeesPositiveResponsePayFrequency$inboundSchema:
@@ -832,22 +813,14 @@ export const GetHrisEmployeesPositiveResponsePayFrequency$inboundSchema:
     GetHrisEmployeesPositiveResponsePayFrequency,
     z.ZodTypeDef,
     unknown
-  > = z
-    .union([
-      z.nativeEnum(GetHrisEmployeesPositiveResponsePayFrequency),
-      z.string().transform(catchUnrecognizedEnum),
-    ]);
+  > = openEnums.inboundSchema(GetHrisEmployeesPositiveResponsePayFrequency);
 
 /** @internal */
 export const EmploymentEmploymentType$inboundSchema: z.ZodType<
   EmploymentEmploymentType,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(EmploymentEmploymentType),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(EmploymentEmploymentType);
 
 /** @internal */
 export const Employment$inboundSchema: z.ZodType<
@@ -936,11 +909,7 @@ export const ManagerEmploymentStatus$inboundSchema: z.ZodType<
   ManagerEmploymentStatus,
   z.ZodTypeDef,
   unknown
-> = z
-  .union([
-    z.nativeEnum(ManagerEmploymentStatus),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+> = openEnums.inboundSchema(ManagerEmploymentStatus);
 
 /** @internal */
 export const Manager$inboundSchema: z.ZodType<Manager, z.ZodTypeDef, unknown> =
@@ -949,6 +918,7 @@ export const Manager$inboundSchema: z.ZodType<Manager, z.ZodTypeDef, unknown> =
     last_name: z.nullable(z.string()),
     display_full_name: z.nullable(z.string()),
     id: z.string(),
+    employee_number: z.nullable(z.string()),
     work_email: z.nullable(z.string()).optional(),
     remote_id: z.string(),
     employment_status: z.nullable(ManagerEmploymentStatus$inboundSchema)

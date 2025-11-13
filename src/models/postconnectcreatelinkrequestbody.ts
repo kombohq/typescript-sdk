@@ -172,6 +172,8 @@ export const IntegrationTool = {
   Absenceio: "absenceio",
   Manatal: "manatal",
   Avionte: "avionte",
+  A3innuvanomina: "a3innuvanomina",
+  Mhmhr: "mhmhr",
   Scim: "scim",
   Softgardenpartner: "softgardenpartner",
   Datevhr: "datevhr",
