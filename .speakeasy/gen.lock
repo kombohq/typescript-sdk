@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: e880ae26f208899297c81ae7f20cb4e4
+  docChecksum: 56a37c99f064e4b29f56f9d2fea39bdf
   docVersion: 1.0.0
-  speakeasyVersion: 1.656.1
-  generationVersion: 2.753.1
-  releaseVersion: 0.2.1
-  configChecksum: 734c920719b1ec0621dcd893977942df
+  speakeasyVersion: 1.658.2
+  generationVersion: 2.755.9
+  releaseVersion: 0.2.2
+  configChecksum: 1f786f240fef9d0f6244c77267124670
   repoURL: https://github.com/kombohq/typescript-sdk.git
   installationURL: https://github.com/kombohq/typescript-sdk
   published: true
@@ -14,7 +14,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.12
-    core: 3.26.6
+    core: 3.26.7
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
@@ -5537,14 +5537,14 @@ examples:
         application/json: {"properties": {"firstName": "John", "startDate": "2025-01-01T00:00:00Z", "workLocation": {"site": "8e422bf8cav", "keyNumbers": {"0": 142, "1": 525, "2": 63}}}}
       responses:
         "200":
-          application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg"}, "warnings": [{"message": "This is an example warning!"}]}
+          application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "12345", "prehire_id": null}, "warnings": [{"message": "This is an example warning!"}]}
     speakeasy-default-post-hris-employees-form:
       parameters:
         header:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg"}, "warnings": [{"message": "<value>"}]}
+          application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "12345", "prehire_id": null}, "warnings": [{"message": "<value>"}]}
         default:
           application/json: {"status": "error", "error": {"code": "INTEGRATION.AUTHENTICATION_INVALID", "title": "<value>", "message": "<value>", "log_url": "https://authorized-dandelion.com"}}
     Error Response:
@@ -7590,4 +7590,4 @@ generatedTests:
   getProjectClientCerts: "2025-10-27T19:04:15Z"
 releaseNotes: |
   ## Typescript SDK Changes Detected:
-  * `kombo.hris.getEmployees()`:  `response.data.results.[].manager.employeeNumber` **Added**
+  * `kombo.hris.createEmployeeWithForm()`:  `response.data` **Changed**
