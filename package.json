@@ -1,6 +1,6 @@
 {
   "name": "@kombo-api/sdk",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Kombo Technologies GmbH <support@kombo.dev> (https://www.kombo.dev)",
   "description": "The official TypeScript/JavaScript SDK for the Kombo Unified API",
   "homepage": "https://github.com/kombohq/typescript-sdk#readme",

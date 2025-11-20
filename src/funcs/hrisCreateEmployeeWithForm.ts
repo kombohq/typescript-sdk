@@ -56,7 +56,7 @@ import { Result } from "../types/fp.js";
  */
 export function hrisCreateEmployeeWithForm(
   client: KomboCore,
-  request?: models.PostHrisEmployeesFormRequestBody | undefined,
+  request: models.PostHrisEmployeesFormRequestBody,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -81,7 +81,7 @@ export function hrisCreateEmployeeWithForm(
 
 async function $do(
   client: KomboCore,
-  request?: models.PostHrisEmployeesFormRequestBody | undefined,
+  request: models.PostHrisEmployeesFormRequestBody,
   options?: RequestOptions,
 ): Promise<
   [
@@ -103,18 +103,14 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      models.PostHrisEmployeesFormRequestBody$outboundSchema.optional().parse(
-        value,
-      ),
+      models.PostHrisEmployeesFormRequestBody$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = payload === undefined
-    ? null
-    : encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/hris/employees/form")();
 

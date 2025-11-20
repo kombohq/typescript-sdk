@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 56a37c99f064e4b29f56f9d2fea39bdf
+  docChecksum: 49de8ed28eca4d8ac2ec7aed2f262494
   docVersion: 1.0.0
   speakeasyVersion: 1.658.2
   generationVersion: 2.755.9
-  releaseVersion: 0.2.2
-  configChecksum: 1f786f240fef9d0f6244c77267124670
+  releaseVersion: 0.2.3
+  configChecksum: 5cb554b2fb7a0dccf91207a1940bdbd7
   repoURL: https://github.com/kombohq/typescript-sdk.git
   installationURL: https://github.com/kombohq/typescript-sdk
   published: true
@@ -5542,6 +5542,8 @@ examples:
       parameters:
         header:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
+      requestBody:
+        application/json: {"properties": {"key": 3571.27}}
       responses:
         "200":
           application/json: {"status": "success", "data": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "12345", "prehire_id": null}, "warnings": [{"message": "<value>"}]}
@@ -5551,6 +5553,8 @@ examples:
       parameters:
         header:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
+      requestBody:
+        application/json: {"properties": {"key": 3571.27}}
       responses:
         default:
           application/json: {"status": "error", "error": {"code": "INTEGRATION.MODEL_NOT_AVAILABLE", "title": "This data model isn't supported for the selected integration.", "message": "The \"employees\" model is not yet available for Greenhouse. Please reach out to Kombo if you need this functionality.", "log_url": "https://app.kombo.dev/my-prod/logs?interactionId=123456"}}
@@ -5558,6 +5562,8 @@ examples:
       parameters:
         header:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
+      requestBody:
+        application/json: {"properties": {"key": 3571.27}}
       responses:
         default:
           application/json: {"status": "error", "error": {"code": null, "title": null, "message": "The message is always in the response.", "log_url": null}}
@@ -7590,4 +7596,4 @@ generatedTests:
   getProjectClientCerts: "2025-10-27T19:04:15Z"
 releaseNotes: |
   ## Typescript SDK Changes Detected:
-  * `kombo.hris.createEmployeeWithForm()`:  `response.data` **Changed**
+  * `kombo.hris.createEmployeeWithForm()`:  `request` **Changed** **Breaking** :warning:
