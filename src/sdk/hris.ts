@@ -173,7 +173,7 @@ export class Hris extends ClientSDK {
    * ```
    */
   async createEmployeeWithForm(
-    request?: models.PostHrisEmployeesFormRequestBody | undefined,
+    request: models.PostHrisEmployeesFormRequestBody,
     options?: RequestOptions,
   ): Promise<models.PostHrisEmployeesFormPositiveResponse> {
     return unwrapAsync(hrisCreateEmployeeWithForm(
