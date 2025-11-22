@@ -11,10 +11,10 @@ let value: IntegrationDeletedWebhookPayloadData = {
   category: "ATS",
   end_user: {
     organization_name: "<value>",
-    creator_email: null,
+    creator_email: "Chanel.Bechtelar40@gmail.com",
     origin_id: "<id>",
   },
-  deleted_at: new Date("2024-04-28T17:13:54.417Z"),
+  deleted_at: new Date("2023-05-07T10:21:09.462Z"),
 };
 ```
 

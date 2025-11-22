@@ -11,12 +11,12 @@ let value: IntegrationStateChangedWebhookPayloadData = {
   integration_category: "ATS",
   end_user: {
     organization_name: "<value>",
-    creator_email: "Tyrel.Romaguera@gmail.com",
+    creator_email: "Cathrine_Simonis@hotmail.com",
     origin_id: "<id>",
   },
-  qa_status: "PENDING",
-  state: "INACTIVE",
-  updated_at: new Date("2023-07-04T11:57:43.166Z"),
+  qa_status: "PASSED",
+  state: "ACTIVE",
+  updated_at: new Date("2025-01-22T08:02:56.637Z"),
 };
 ```
 

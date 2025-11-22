@@ -12,13 +12,13 @@ let value: WebhookConnectionFlowFailedWebhookPayloadRequest = {
     type: "connection-flow-failed",
     data: {
       integration_tool: "<value>",
-      integration_category: "ATS",
+      integration_category: "HRIS",
       end_user: {
         organization_name: "<value>",
-        creator_email: "Wilhelmine.Stehr@gmail.com",
+        creator_email: "Caden_Reynolds16@hotmail.com",
         origin_id: "<id>",
       },
-      log_url: "https://ecstatic-captain.info/",
+      log_url: "https://prestigious-space.name/",
     },
   },
 };

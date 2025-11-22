@@ -11,11 +11,21 @@ let value: InlineAssessmentOrderReceivedWebhookPayloadData = {
   status: "COMPLETED",
   integration_id: "<id>",
   candidate: {
-    email: "Mateo_Oberbrunner@gmail.com",
+    email: "Rudolph.Denesik@yahoo.com",
   },
   application: {},
   job: {
-    hiring_team: [],
+    hiring_team: [
+      {
+        remote_id: "<id>",
+        email: "Bernadine.Sawayn-Hackett1@yahoo.com",
+        first_name: "Jalen",
+        last_name: "Bailey",
+        hiring_team_roles: [
+          "HIRING_MANAGER",
+        ],
+      },
+    ],
   },
 };
 ```
