@@ -10,10 +10,10 @@ let value: ConnectionFlowFailedWebhookPayloadData = {
   integration_category: "HRIS",
   end_user: {
     organization_name: "<value>",
-    creator_email: "Wilhelmine.Stehr@gmail.com",
+    creator_email: "Caden_Reynolds16@hotmail.com",
     origin_id: "<id>",
   },
-  log_url: "https://slimy-cheetah.com/",
+  log_url: "https://fruitful-alb.net/",
 };
 ```
 

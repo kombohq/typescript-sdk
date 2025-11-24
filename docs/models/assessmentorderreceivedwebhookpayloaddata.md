@@ -11,18 +11,18 @@ let value: AssessmentOrderReceivedWebhookPayloadData = {
   status: "CANCELLED",
   integration_id: "<id>",
   candidate: {
-    email: "Hazle.Daugherty15@hotmail.com",
+    email: "Ed_Maggio0@gmail.com",
   },
   application: {},
   job: {
     hiring_team: [
       {
         remote_id: "<id>",
-        email: "Presley33@hotmail.com",
-        first_name: "Jevon",
-        last_name: "Hane",
+        email: "Jaydon_Schimmel71@hotmail.com",
+        first_name: null,
+        last_name: "Buckridge",
         hiring_team_roles: [
-          "HIRING_MANAGER",
+          "RECRUITER",
         ],
       },
     ],

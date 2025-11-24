@@ -14,11 +14,7 @@ let value: WebhookDataChangedWebhookPayloadRequest = {
       integration_id: "<id>",
       integration_tool: "<value>",
       integration_category: "ATS",
-      changed_models: [
-        {
-          name: "ats_offers",
-        },
-      ],
+      changed_models: [],
     },
   },
 };

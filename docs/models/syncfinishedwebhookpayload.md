@@ -11,18 +11,18 @@ let value: SyncFinishedWebhookPayload = {
   data: {
     sync_id: "<id>",
     sync_state: "<value>",
-    sync_started_at: new Date("2023-01-08T00:32:22.802Z"),
-    sync_ended_at: new Date("2025-04-22T06:32:08.936Z"),
-    sync_duration_seconds: 145543,
+    sync_started_at: new Date("2023-10-09T05:46:10.483Z"),
+    sync_ended_at: new Date("2023-09-11T14:02:10.039Z"),
+    sync_duration_seconds: 56309,
     integration_id: "<id>",
     integration_tool: "<value>",
     integration_category: "ATS",
     end_user: {
       organization_name: "<value>",
-      creator_email: "Ashley14@hotmail.com",
+      creator_email: "Austen11@yahoo.com",
       origin_id: "<id>",
     },
-    log_url: "https://coordinated-lounge.org",
+    log_url: "https://sad-tenant.com/",
   },
 };
 ```
