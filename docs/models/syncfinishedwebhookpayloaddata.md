@@ -16,10 +16,10 @@ let value: SyncFinishedWebhookPayloadData = {
   integration_category: "ASSESSMENT",
   end_user: {
     organization_name: "<value>",
-    creator_email: "Ashley14@hotmail.com",
+    creator_email: "Austen11@yahoo.com",
     origin_id: "<id>",
   },
-  log_url: "https://physical-bowling.org/",
+  log_url: "https://mean-provider.name/",
 };
 ```
 

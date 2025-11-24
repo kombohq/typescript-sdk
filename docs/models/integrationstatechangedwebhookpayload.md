@@ -14,12 +14,12 @@ let value: IntegrationStateChangedWebhookPayload = {
     integration_category: "HRIS",
     end_user: {
       organization_name: "<value>",
-      creator_email: "Tyrel.Romaguera@gmail.com",
+      creator_email: "Cathrine_Simonis@hotmail.com",
       origin_id: "<id>",
     },
-    qa_status: "PASSED",
+    qa_status: "FAILED",
     state: "ACTIVE",
-    updated_at: new Date("2024-11-14T00:09:26.906Z"),
+    updated_at: new Date("2025-10-15T12:49:34.797Z"),
   },
 };
 ```
