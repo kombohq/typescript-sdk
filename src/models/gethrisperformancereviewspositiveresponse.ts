@@ -55,7 +55,9 @@ export type SummaryRatingNumeric = {
 /**
  * The summary rating of the performance review.
  */
-export type SummaryRating = SummaryRatingNumeric | SummaryRatingSingleSelect;
+export type SummaryRating =
+  | (SummaryRatingNumeric & { type: "NUMERIC" })
+  | (SummaryRatingSingleSelect & { type: "SINGLE_SELECT" });
 
 /**
  * The employee receiving the review.
@@ -173,8 +175,8 @@ export type GetHrisPerformanceReviewsPositiveResponseResult = {
    * The summary rating of the performance review.
    */
   summary_rating?:
-    | SummaryRatingNumeric
-    | SummaryRatingSingleSelect
+    | (SummaryRatingNumeric & { type: "NUMERIC" })
+    | (SummaryRatingSingleSelect & { type: "SINGLE_SELECT" })
     | null
     | undefined;
   /**
@@ -263,8 +265,12 @@ export const SummaryRating$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => SummaryRatingNumeric$inboundSchema),
-  z.lazy(() => SummaryRatingSingleSelect$inboundSchema),
+  z.lazy(() => SummaryRatingNumeric$inboundSchema).and(
+    z.object({ type: z.literal("NUMERIC") }),
+  ),
+  z.lazy(() => SummaryRatingSingleSelect$inboundSchema).and(
+    z.object({ type: z.literal("SINGLE_SELECT") }),
+  ),
 ]);
 
 export function summaryRatingFromJSON(
@@ -374,8 +380,12 @@ export const GetHrisPerformanceReviewsPositiveResponseResult$inboundSchema:
     summary_comment: z.nullable(z.string()),
     summary_rating: z.nullable(
       z.union([
-        z.lazy(() => SummaryRatingNumeric$inboundSchema),
-        z.lazy(() => SummaryRatingSingleSelect$inboundSchema),
+        z.lazy(() => SummaryRatingNumeric$inboundSchema).and(
+          z.object({ type: z.literal("NUMERIC") }),
+        ),
+        z.lazy(() => SummaryRatingSingleSelect$inboundSchema).and(
+          z.object({ type: z.literal("SINGLE_SELECT") }),
+        ),
       ]),
     ).optional(),
     changed_at: z.string().datetime({ offset: true }).transform(v =>

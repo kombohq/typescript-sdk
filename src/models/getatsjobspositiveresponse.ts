@@ -213,15 +213,15 @@ export type FormatText = {
 };
 
 export type Format =
-  | FormatSingleSelect
-  | FormatMultiSelect
-  | FormatText
-  | FormatNumber
-  | FormatFile
-  | FormatBoolean
-  | FormatDate
-  | FormatInformation
-  | FormatUnknown;
+  | (FormatSingleSelect & { type: "SINGLE_SELECT" })
+  | (FormatMultiSelect & { type: "MULTI_SELECT" })
+  | (FormatText & { type: "TEXT" })
+  | (FormatNumber & { type: "NUMBER" })
+  | (FormatFile & { type: "FILE" })
+  | (FormatBoolean & { type: "BOOLEAN" })
+  | (FormatDate & { type: "DATE" })
+  | (FormatInformation & { type: "INFORMATION" })
+  | (FormatUnknown & { type: "UNKNOWN" });
 
 /**
  * The category of the screening question (default `null`). "EEO" questions are related to Equal Employment Opportunity (e.g. "What is your veteran status?"), while "DEMOGRAPHIC" questions are for other diversity and demographic data collection.
@@ -257,15 +257,15 @@ export type ScreeningQuestion = {
    */
   description: string | null;
   format?:
-    | FormatSingleSelect
-    | FormatMultiSelect
-    | FormatText
-    | FormatNumber
-    | FormatFile
-    | FormatBoolean
-    | FormatDate
-    | FormatInformation
-    | FormatUnknown
+    | (FormatSingleSelect & { type: "SINGLE_SELECT" })
+    | (FormatMultiSelect & { type: "MULTI_SELECT" })
+    | (FormatText & { type: "TEXT" })
+    | (FormatNumber & { type: "NUMBER" })
+    | (FormatFile & { type: "FILE" })
+    | (FormatBoolean & { type: "BOOLEAN" })
+    | (FormatDate & { type: "DATE" })
+    | (FormatInformation & { type: "INFORMATION" })
+    | (FormatUnknown & { type: "UNKNOWN" })
     | null
     | undefined;
   /**
@@ -851,15 +851,33 @@ export function formatTextFromJSON(
 /** @internal */
 export const Format$inboundSchema: z.ZodType<Format, z.ZodTypeDef, unknown> = z
   .union([
-    z.lazy(() => FormatSingleSelect$inboundSchema),
-    z.lazy(() => FormatMultiSelect$inboundSchema),
-    z.lazy(() => FormatText$inboundSchema),
-    z.lazy(() => FormatNumber$inboundSchema),
-    z.lazy(() => FormatFile$inboundSchema),
-    z.lazy(() => FormatBoolean$inboundSchema),
-    z.lazy(() => FormatDate$inboundSchema),
-    z.lazy(() => FormatInformation$inboundSchema),
-    z.lazy(() => FormatUnknown$inboundSchema),
+    z.lazy(() => FormatSingleSelect$inboundSchema).and(
+      z.object({ type: z.literal("SINGLE_SELECT") }),
+    ),
+    z.lazy(() => FormatMultiSelect$inboundSchema).and(
+      z.object({ type: z.literal("MULTI_SELECT") }),
+    ),
+    z.lazy(() => FormatText$inboundSchema).and(
+      z.object({ type: z.literal("TEXT") }),
+    ),
+    z.lazy(() => FormatNumber$inboundSchema).and(
+      z.object({ type: z.literal("NUMBER") }),
+    ),
+    z.lazy(() => FormatFile$inboundSchema).and(
+      z.object({ type: z.literal("FILE") }),
+    ),
+    z.lazy(() => FormatBoolean$inboundSchema).and(
+      z.object({ type: z.literal("BOOLEAN") }),
+    ),
+    z.lazy(() => FormatDate$inboundSchema).and(
+      z.object({ type: z.literal("DATE") }),
+    ),
+    z.lazy(() => FormatInformation$inboundSchema).and(
+      z.object({ type: z.literal("INFORMATION") }),
+    ),
+    z.lazy(() => FormatUnknown$inboundSchema).and(
+      z.object({ type: z.literal("UNKNOWN") }),
+    ),
   ]);
 
 export function formatFromJSON(
@@ -906,15 +924,33 @@ export const ScreeningQuestion$inboundSchema: z.ZodType<
   description: z.nullable(z.string()),
   format: z.nullable(
     z.union([
-      z.lazy(() => FormatSingleSelect$inboundSchema),
-      z.lazy(() => FormatMultiSelect$inboundSchema),
-      z.lazy(() => FormatText$inboundSchema),
-      z.lazy(() => FormatNumber$inboundSchema),
-      z.lazy(() => FormatFile$inboundSchema),
-      z.lazy(() => FormatBoolean$inboundSchema),
-      z.lazy(() => FormatDate$inboundSchema),
-      z.lazy(() => FormatInformation$inboundSchema),
-      z.lazy(() => FormatUnknown$inboundSchema),
+      z.lazy(() => FormatSingleSelect$inboundSchema).and(
+        z.object({ type: z.literal("SINGLE_SELECT") }),
+      ),
+      z.lazy(() => FormatMultiSelect$inboundSchema).and(
+        z.object({ type: z.literal("MULTI_SELECT") }),
+      ),
+      z.lazy(() => FormatText$inboundSchema).and(
+        z.object({ type: z.literal("TEXT") }),
+      ),
+      z.lazy(() => FormatNumber$inboundSchema).and(
+        z.object({ type: z.literal("NUMBER") }),
+      ),
+      z.lazy(() => FormatFile$inboundSchema).and(
+        z.object({ type: z.literal("FILE") }),
+      ),
+      z.lazy(() => FormatBoolean$inboundSchema).and(
+        z.object({ type: z.literal("BOOLEAN") }),
+      ),
+      z.lazy(() => FormatDate$inboundSchema).and(
+        z.object({ type: z.literal("DATE") }),
+      ),
+      z.lazy(() => FormatInformation$inboundSchema).and(
+        z.object({ type: z.literal("INFORMATION") }),
+      ),
+      z.lazy(() => FormatUnknown$inboundSchema).and(
+        z.object({ type: z.literal("UNKNOWN") }),
+      ),
     ]),
   ).optional(),
   category: z.nullable(GetAtsJobsPositiveResponseCategory$inboundSchema),

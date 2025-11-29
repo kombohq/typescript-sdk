@@ -53,7 +53,7 @@ export type GetToolsCategoryPositiveResponseReadModelCoverageStatus =
  * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
  * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
  */
-export const GetToolsCategoryPositiveResponseFieldCoverageStatus = {
+export const GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus = {
   Supported: "SUPPORTED",
   Unsupported: "UNSUPPORTED",
   NotImplemented: "NOT_IMPLEMENTED",
@@ -69,11 +69,12 @@ export const GetToolsCategoryPositiveResponseFieldCoverageStatus = {
  * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
  * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
  */
-export type GetToolsCategoryPositiveResponseFieldCoverageStatus = ClosedEnum<
-  typeof GetToolsCategoryPositiveResponseFieldCoverageStatus
->;
+export type GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus =
+  ClosedEnum<
+    typeof GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus
+  >;
 
-export type GetToolsCategoryPositiveResponseField = {
+export type GetToolsCategoryPositiveResponseReadModelField = {
   /**
    * Key of the field in the model (e.g. first_name).
    */
@@ -88,7 +89,7 @@ export type GetToolsCategoryPositiveResponseField = {
    * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
    * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
    */
-  coverage_status: GetToolsCategoryPositiveResponseFieldCoverageStatus;
+  coverage_status: GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus;
 };
 
 /**
@@ -114,7 +115,7 @@ export type GetToolsCategoryPositiveResponseReadModel = {
    * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
    */
   coverage_status: GetToolsCategoryPositiveResponseReadModelCoverageStatus;
-  fields: Array<GetToolsCategoryPositiveResponseField>;
+  fields: Array<GetToolsCategoryPositiveResponseReadModelField>;
 };
 
 /**
@@ -127,7 +128,7 @@ export type GetToolsCategoryPositiveResponseReadModel = {
  * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
  * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
  */
-export const WriteActionCoverageStatus = {
+export const GetToolsCategoryPositiveResponseWriteActionCoverageStatus = {
   Supported: "SUPPORTED",
   Unsupported: "UNSUPPORTED",
   NotImplemented: "NOT_IMPLEMENTED",
@@ -143,14 +144,63 @@ export const WriteActionCoverageStatus = {
  * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
  * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
  */
-export type WriteActionCoverageStatus = ClosedEnum<
-  typeof WriteActionCoverageStatus
->;
+export type GetToolsCategoryPositiveResponseWriteActionCoverageStatus =
+  ClosedEnum<typeof GetToolsCategoryPositiveResponseWriteActionCoverageStatus>;
+
+/**
+ * The status of a datapoint of an integrated tool:
+ *
+ * @remarks
+ *
+ * - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+ * - `UNSUPPORTED`: the tool does not support the datapoint.
+ * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+ * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+ */
+export const GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus = {
+  Supported: "SUPPORTED",
+  Unsupported: "UNSUPPORTED",
+  NotImplemented: "NOT_IMPLEMENTED",
+  Unknown: "UNKNOWN",
+} as const;
+/**
+ * The status of a datapoint of an integrated tool:
+ *
+ * @remarks
+ *
+ * - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+ * - `UNSUPPORTED`: the tool does not support the datapoint.
+ * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+ * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+ */
+export type GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus =
+  ClosedEnum<
+    typeof GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus
+  >;
+
+export type GetToolsCategoryPositiveResponseWriteActionField = {
+  /**
+   * Key of the input field (e.g. `candidate.first_name`).
+   */
+  id: string;
+  /**
+   * The status of a datapoint of an integrated tool:
+   *
+   * @remarks
+   *
+   * - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+   * - `UNSUPPORTED`: the tool does not support the datapoint.
+   * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+   * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+   */
+  coverage_status:
+    GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus;
+};
 
 /**
  * List of supported write actions for this tool.
  */
-export type WriteAction = {
+export type GetToolsCategoryPositiveResponseWriteAction = {
   id: string;
   label: string;
   /**
@@ -163,7 +213,8 @@ export type WriteAction = {
    * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
    * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
    */
-  coverage_status: WriteActionCoverageStatus;
+  coverage_status: GetToolsCategoryPositiveResponseWriteActionCoverageStatus;
+  fields: Array<GetToolsCategoryPositiveResponseWriteActionField>;
 };
 
 /**
@@ -215,7 +266,7 @@ export type Feature = {
  */
 export type Coverage = {
   read_models: Array<GetToolsCategoryPositiveResponseReadModel>;
-  write_actions: Array<WriteAction>;
+  write_actions: Array<GetToolsCategoryPositiveResponseWriteAction>;
   features: Array<Feature>;
 };
 
@@ -283,29 +334,38 @@ export const GetToolsCategoryPositiveResponseReadModelCoverageStatus$inboundSche
   > = z.nativeEnum(GetToolsCategoryPositiveResponseReadModelCoverageStatus);
 
 /** @internal */
-export const GetToolsCategoryPositiveResponseFieldCoverageStatus$inboundSchema:
-  z.ZodNativeEnum<typeof GetToolsCategoryPositiveResponseFieldCoverageStatus> =
-    z.nativeEnum(GetToolsCategoryPositiveResponseFieldCoverageStatus);
+export const GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus
+  > = z.nativeEnum(
+    GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus,
+  );
 
 /** @internal */
-export const GetToolsCategoryPositiveResponseField$inboundSchema: z.ZodType<
-  GetToolsCategoryPositiveResponseField,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  coverage_status:
-    GetToolsCategoryPositiveResponseFieldCoverageStatus$inboundSchema,
-});
+export const GetToolsCategoryPositiveResponseReadModelField$inboundSchema:
+  z.ZodType<
+    GetToolsCategoryPositiveResponseReadModelField,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.string(),
+    coverage_status:
+      GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus$inboundSchema,
+  });
 
-export function getToolsCategoryPositiveResponseFieldFromJSON(
+export function getToolsCategoryPositiveResponseReadModelFieldFromJSON(
   jsonString: string,
-): SafeParseResult<GetToolsCategoryPositiveResponseField, SDKValidationError> {
+): SafeParseResult<
+  GetToolsCategoryPositiveResponseReadModelField,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      GetToolsCategoryPositiveResponseField$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetToolsCategoryPositiveResponseField' from JSON`,
+      GetToolsCategoryPositiveResponseReadModelField$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetToolsCategoryPositiveResponseReadModelField' from JSON`,
   );
 }
 
@@ -320,7 +380,7 @@ export const GetToolsCategoryPositiveResponseReadModel$inboundSchema: z.ZodType<
   coverage_status:
     GetToolsCategoryPositiveResponseReadModelCoverageStatus$inboundSchema,
   fields: z.array(
-    z.lazy(() => GetToolsCategoryPositiveResponseField$inboundSchema),
+    z.lazy(() => GetToolsCategoryPositiveResponseReadModelField$inboundSchema),
   ),
 });
 
@@ -341,28 +401,78 @@ export function getToolsCategoryPositiveResponseReadModelFromJSON(
 }
 
 /** @internal */
-export const WriteActionCoverageStatus$inboundSchema: z.ZodNativeEnum<
-  typeof WriteActionCoverageStatus
-> = z.nativeEnum(WriteActionCoverageStatus);
+export const GetToolsCategoryPositiveResponseWriteActionCoverageStatus$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetToolsCategoryPositiveResponseWriteActionCoverageStatus
+  > = z.nativeEnum(GetToolsCategoryPositiveResponseWriteActionCoverageStatus);
 
 /** @internal */
-export const WriteAction$inboundSchema: z.ZodType<
-  WriteAction,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  label: z.string(),
-  coverage_status: WriteActionCoverageStatus$inboundSchema,
-});
+export const GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus
+  > = z.nativeEnum(
+    GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus,
+  );
 
-export function writeActionFromJSON(
+/** @internal */
+export const GetToolsCategoryPositiveResponseWriteActionField$inboundSchema:
+  z.ZodType<
+    GetToolsCategoryPositiveResponseWriteActionField,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.string(),
+    coverage_status:
+      GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus$inboundSchema,
+  });
+
+export function getToolsCategoryPositiveResponseWriteActionFieldFromJSON(
   jsonString: string,
-): SafeParseResult<WriteAction, SDKValidationError> {
+): SafeParseResult<
+  GetToolsCategoryPositiveResponseWriteActionField,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => WriteAction$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'WriteAction' from JSON`,
+    (x) =>
+      GetToolsCategoryPositiveResponseWriteActionField$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetToolsCategoryPositiveResponseWriteActionField' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetToolsCategoryPositiveResponseWriteAction$inboundSchema:
+  z.ZodType<
+    GetToolsCategoryPositiveResponseWriteAction,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.string(),
+    label: z.string(),
+    coverage_status:
+      GetToolsCategoryPositiveResponseWriteActionCoverageStatus$inboundSchema,
+    fields: z.array(
+      z.lazy(() =>
+        GetToolsCategoryPositiveResponseWriteActionField$inboundSchema
+      ),
+    ),
+  });
+
+export function getToolsCategoryPositiveResponseWriteActionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetToolsCategoryPositiveResponseWriteAction,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetToolsCategoryPositiveResponseWriteAction$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetToolsCategoryPositiveResponseWriteAction' from JSON`,
   );
 }
 
@@ -398,7 +508,9 @@ export const Coverage$inboundSchema: z.ZodType<
   read_models: z.array(
     z.lazy(() => GetToolsCategoryPositiveResponseReadModel$inboundSchema),
   ),
-  write_actions: z.array(z.lazy(() => WriteAction$inboundSchema)),
+  write_actions: z.array(
+    z.lazy(() => GetToolsCategoryPositiveResponseWriteAction$inboundSchema),
+  ),
   features: z.array(z.lazy(() => Feature$inboundSchema)),
 });
 

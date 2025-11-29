@@ -42,6 +42,10 @@ export type AssessmentOrderReceivedWebhookPayloadStatus = ClosedEnum<
  */
 export type AssessmentOrderReceivedWebhookPayloadCandidate = {
   /**
+   * The candidate's identifier in the integrated system.
+   */
+  remote_id?: string | null | undefined;
+  /**
    * The candidate's email address.
    */
   email: string;
@@ -57,10 +61,6 @@ export type AssessmentOrderReceivedWebhookPayloadCandidate = {
    * The candidate's phone number.
    */
   phone?: string | null | undefined;
-  /**
-   * The candidate's identifier in the integrated system.
-   */
-  remote_id?: string | null | undefined;
 };
 
 /**
@@ -219,19 +219,19 @@ export const AssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    remote_id: z.nullable(z.string()).optional(),
     email: z.string(),
     first_name: z.nullable(z.string()).optional(),
     last_name: z.nullable(z.string()).optional(),
     phone: z.nullable(z.string()).optional(),
-    remote_id: z.nullable(z.string()).optional(),
   });
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadCandidate$Outbound = {
+  remote_id?: string | null | undefined;
   email: string;
   first_name?: string | null | undefined;
   last_name?: string | null | undefined;
   phone?: string | null | undefined;
-  remote_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -241,11 +241,11 @@ export const AssessmentOrderReceivedWebhookPayloadCandidate$outboundSchema:
     z.ZodTypeDef,
     AssessmentOrderReceivedWebhookPayloadCandidate
   > = z.object({
+    remote_id: z.nullable(z.string()).optional(),
     email: z.string(),
     first_name: z.nullable(z.string()).optional(),
     last_name: z.nullable(z.string()).optional(),
     phone: z.nullable(z.string()).optional(),
-    remote_id: z.nullable(z.string()).optional(),
   });
 
 export function assessmentOrderReceivedWebhookPayloadCandidateToJSON(

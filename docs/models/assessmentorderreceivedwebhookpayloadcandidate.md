@@ -16,8 +16,8 @@ let value: AssessmentOrderReceivedWebhookPayloadCandidate = {
 
 | Field                                                | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `remote_id`                                          | *string*                                             | :heavy_minus_sign:                                   | The candidate's identifier in the integrated system. |
 | `email`                                              | *string*                                             | :heavy_check_mark:                                   | The candidate's email address.                       |
 | `first_name`                                         | *string*                                             | :heavy_minus_sign:                                   | The candidate's first name.                          |
 | `last_name`                                          | *string*                                             | :heavy_minus_sign:                                   | The candidate's last name.                           |
 | `phone`                                              | *string*                                             | :heavy_minus_sign:                                   | The candidate's phone number.                        |
-| `remote_id`                                          | *string*                                             | :heavy_minus_sign:                                   | The candidate's identifier in the integrated system. |

@@ -29,15 +29,15 @@ import {
 import { Schema2Union2, Schema2Union2$inboundSchema } from "./schema2union2.js";
 
 export type Schema1Union2 =
-  | Schema1SingleSelect
-  | Schema1MultiSelect
-  | Schema1Object
-  | Schema1Array2
-  | Schema1File
-  | Schema1Text
-  | Schema1Number
-  | Schema1Date
-  | Schema1Checkbox;
+  | (Schema1SingleSelect & { type: "single_select" })
+  | (Schema1MultiSelect & { type: "multi_select" })
+  | (Schema1Object & { type: "object" })
+  | (Schema1Array2 & { type: "array" })
+  | (Schema1File & { type: "file" })
+  | (Schema1Text & { type: "text" })
+  | (Schema1Number & { type: "number" })
+  | (Schema1Date & { type: "date" })
+  | (Schema1Checkbox & { type: "checkbox" });
 
 export type Schema1Array2 = {
   label: string;
@@ -56,15 +56,21 @@ export const Schema1Union2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  Schema1SingleSelect$inboundSchema,
-  Schema1MultiSelect$inboundSchema,
-  Schema1Object$inboundSchema,
-  z.lazy(() => Schema1Array2$inboundSchema),
-  Schema1File$inboundSchema,
-  Schema1Text$inboundSchema,
-  Schema1Number$inboundSchema,
-  Schema1Date$inboundSchema,
-  Schema1Checkbox$inboundSchema,
+  Schema1SingleSelect$inboundSchema.and(
+    z.object({ type: z.literal("single_select") }),
+  ),
+  Schema1MultiSelect$inboundSchema.and(
+    z.object({ type: z.literal("multi_select") }),
+  ),
+  Schema1Object$inboundSchema.and(z.object({ type: z.literal("object") })),
+  z.lazy(() => Schema1Array2$inboundSchema).and(
+    z.object({ type: z.literal("array") }),
+  ),
+  Schema1File$inboundSchema.and(z.object({ type: z.literal("file") })),
+  Schema1Text$inboundSchema.and(z.object({ type: z.literal("text") })),
+  Schema1Number$inboundSchema.and(z.object({ type: z.literal("number") })),
+  Schema1Date$inboundSchema.and(z.object({ type: z.literal("date") })),
+  Schema1Checkbox$inboundSchema.and(z.object({ type: z.literal("checkbox") })),
 ]);
 
 export function schema1Union2FromJSON(

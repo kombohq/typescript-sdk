@@ -1,4 +1,4 @@
-# WriteActionCoverageStatus
+# GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus
 
 The status of a datapoint of an integrated tool:
 
@@ -10,9 +10,10 @@ The status of a datapoint of an integrated tool:
 ## Example Usage
 
 ```typescript
-import { WriteActionCoverageStatus } from "@kombo-api/sdk/models";
+import { GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus } from "@kombo-api/sdk/models";
 
-let value: WriteActionCoverageStatus = "UNKNOWN";
+let value: GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus =
+  "SUPPORTED";
 ```
 
 ## Values

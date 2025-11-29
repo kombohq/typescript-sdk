@@ -168,8 +168,8 @@ export type Schema1OptionsInline2 = {
 };
 
 export type Schema1OptionsUnion2 =
-  | Schema1OptionsInline2
-  | Schema1OptionsReferenced2;
+  | (Schema1OptionsInline2 & { type: "inline" })
+  | (Schema1OptionsReferenced2 & { type: "referenced" });
 
 export type Schema1MultiSelect = {
   label: string;
@@ -179,7 +179,9 @@ export type Schema1MultiSelect = {
   type: "multi_select";
   min_items?: number | null | undefined;
   max_items?: number | null | undefined;
-  options: Schema1OptionsInline2 | Schema1OptionsReferenced2;
+  options:
+    | (Schema1OptionsInline2 & { type: "inline" })
+    | (Schema1OptionsReferenced2 & { type: "referenced" });
 };
 
 export const Schema1UnifiedKey4 = {
@@ -226,8 +228,8 @@ export type Schema1OptionsInline1 = {
 };
 
 export type Schema1OptionsUnion1 =
-  | Schema1OptionsInline1
-  | Schema1OptionsReferenced1;
+  | (Schema1OptionsInline1 & { type: "inline" })
+  | (Schema1OptionsReferenced1 & { type: "referenced" });
 
 export type Schema1SingleSelect = {
   label: string;
@@ -235,7 +237,9 @@ export type Schema1SingleSelect = {
   description?: string | null | undefined;
   unified_key?: Schema1UnifiedKey4 | null | undefined;
   type: "single_select";
-  options: Schema1OptionsInline1 | Schema1OptionsReferenced1;
+  options:
+    | (Schema1OptionsInline1 & { type: "inline" })
+    | (Schema1OptionsReferenced1 & { type: "referenced" });
 };
 
 export const Schema1UnifiedKey3 = {
@@ -340,15 +344,15 @@ export type Schema1Text = {
 };
 
 export type Schema1Union1 =
-  | Schema1SingleSelect
-  | Schema1MultiSelect
-  | Schema1Object
-  | Schema1Array1
-  | Schema1File
-  | Schema1Text
-  | Schema1Number
-  | Schema1Date
-  | Schema1Checkbox;
+  | (Schema1SingleSelect & { type: "single_select" })
+  | (Schema1MultiSelect & { type: "multi_select" })
+  | (Schema1Object & { type: "object" })
+  | (Schema1Array1 & { type: "array" })
+  | (Schema1File & { type: "file" })
+  | (Schema1Text & { type: "text" })
+  | (Schema1Number & { type: "number" })
+  | (Schema1Date & { type: "date" })
+  | (Schema1Checkbox & { type: "checkbox" });
 
 /** @internal */
 export const Schema1UnifiedKey8$inboundSchema: z.ZodNativeEnum<
@@ -572,8 +576,12 @@ export const Schema1OptionsUnion2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Schema1OptionsInline2$inboundSchema),
-  z.lazy(() => Schema1OptionsReferenced2$inboundSchema),
+  z.lazy(() => Schema1OptionsInline2$inboundSchema).and(
+    z.object({ type: z.literal("inline") }),
+  ),
+  z.lazy(() => Schema1OptionsReferenced2$inboundSchema).and(
+    z.object({ type: z.literal("referenced") }),
+  ),
 ]);
 
 export function schema1OptionsUnion2FromJSON(
@@ -600,8 +608,12 @@ export const Schema1MultiSelect$inboundSchema: z.ZodType<
   min_items: z.nullable(z.number()).optional(),
   max_items: z.nullable(z.number()).optional(),
   options: z.union([
-    z.lazy(() => Schema1OptionsInline2$inboundSchema),
-    z.lazy(() => Schema1OptionsReferenced2$inboundSchema),
+    z.lazy(() => Schema1OptionsInline2$inboundSchema).and(
+      z.object({ type: z.literal("inline") }),
+    ),
+    z.lazy(() => Schema1OptionsReferenced2$inboundSchema).and(
+      z.object({ type: z.literal("referenced") }),
+    ),
   ]),
 });
 
@@ -705,8 +717,12 @@ export const Schema1OptionsUnion1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Schema1OptionsInline1$inboundSchema),
-  z.lazy(() => Schema1OptionsReferenced1$inboundSchema),
+  z.lazy(() => Schema1OptionsInline1$inboundSchema).and(
+    z.object({ type: z.literal("inline") }),
+  ),
+  z.lazy(() => Schema1OptionsReferenced1$inboundSchema).and(
+    z.object({ type: z.literal("referenced") }),
+  ),
 ]);
 
 export function schema1OptionsUnion1FromJSON(
@@ -731,8 +747,12 @@ export const Schema1SingleSelect$inboundSchema: z.ZodType<
   unified_key: z.nullable(Schema1UnifiedKey4$inboundSchema).optional(),
   type: z.literal("single_select"),
   options: z.union([
-    z.lazy(() => Schema1OptionsInline1$inboundSchema),
-    z.lazy(() => Schema1OptionsReferenced1$inboundSchema),
+    z.lazy(() => Schema1OptionsInline1$inboundSchema).and(
+      z.object({ type: z.literal("inline") }),
+    ),
+    z.lazy(() => Schema1OptionsReferenced1$inboundSchema).and(
+      z.object({ type: z.literal("referenced") }),
+    ),
   ]),
 });
 
@@ -841,15 +861,33 @@ export const Schema1Union1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Schema1SingleSelect$inboundSchema),
-  z.lazy(() => Schema1MultiSelect$inboundSchema),
-  z.lazy(() => Schema1Object$inboundSchema),
-  z.lazy(() => Schema1Array1$inboundSchema),
-  z.lazy(() => Schema1File$inboundSchema),
-  z.lazy(() => Schema1Text$inboundSchema),
-  z.lazy(() => Schema1Number$inboundSchema),
-  z.lazy(() => Schema1Date$inboundSchema),
-  z.lazy(() => Schema1Checkbox$inboundSchema),
+  z.lazy(() => Schema1SingleSelect$inboundSchema).and(
+    z.object({ type: z.literal("single_select") }),
+  ),
+  z.lazy(() => Schema1MultiSelect$inboundSchema).and(
+    z.object({ type: z.literal("multi_select") }),
+  ),
+  z.lazy(() => Schema1Object$inboundSchema).and(
+    z.object({ type: z.literal("object") }),
+  ),
+  z.lazy(() => Schema1Array1$inboundSchema).and(
+    z.object({ type: z.literal("array") }),
+  ),
+  z.lazy(() => Schema1File$inboundSchema).and(
+    z.object({ type: z.literal("file") }),
+  ),
+  z.lazy(() => Schema1Text$inboundSchema).and(
+    z.object({ type: z.literal("text") }),
+  ),
+  z.lazy(() => Schema1Number$inboundSchema).and(
+    z.object({ type: z.literal("number") }),
+  ),
+  z.lazy(() => Schema1Date$inboundSchema).and(
+    z.object({ type: z.literal("date") }),
+  ),
+  z.lazy(() => Schema1Checkbox$inboundSchema).and(
+    z.object({ type: z.literal("checkbox") }),
+  ),
 ]);
 
 export function schema1Union1FromJSON(
