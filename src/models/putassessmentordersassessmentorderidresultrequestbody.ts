@@ -55,7 +55,9 @@ export type AttributeText = {
   value: string;
 };
 
-export type Attribute = AttributeSubResult | AttributeText;
+export type Attribute =
+  | (AttributeSubResult & { type: "SUB_RESULT" })
+  | (AttributeText & { type: "TEXT" });
 
 export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment = {
   /**
@@ -137,7 +139,12 @@ export type PutAssessmentOrdersAssessmentOrderIdResultRequestBody = {
    *
    * - If an ATS only supports writing text attributes, we will transform non `TEXT` attributes into formatted plain text values.
    */
-  attributes?: Array<AttributeSubResult | AttributeText> | undefined;
+  attributes?:
+    | Array<
+      | (AttributeSubResult & { type: "SUB_RESULT" })
+      | (AttributeText & { type: "TEXT" })
+    >
+    | undefined;
   /**
    * An array of attachments containing the assessment result.
    */
@@ -237,8 +244,8 @@ export function attributeTextToJSON(attributeText: AttributeText): string {
 
 /** @internal */
 export type Attribute$Outbound =
-  | AttributeSubResult$Outbound
-  | AttributeText$Outbound;
+  | (AttributeSubResult$Outbound & { type: "SUB_RESULT" })
+  | (AttributeText$Outbound & { type: "TEXT" });
 
 /** @internal */
 export const Attribute$outboundSchema: z.ZodType<
@@ -246,8 +253,12 @@ export const Attribute$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Attribute
 > = z.union([
-  z.lazy(() => AttributeSubResult$outboundSchema),
-  z.lazy(() => AttributeText$outboundSchema),
+  z.lazy(() => AttributeSubResult$outboundSchema).and(
+    z.object({ type: z.literal("SUB_RESULT") }),
+  ),
+  z.lazy(() => AttributeText$outboundSchema).and(
+    z.object({ type: z.literal("TEXT") }),
+  ),
 ]);
 
 export function attributeToJSON(attribute: Attribute): string {
@@ -356,7 +367,10 @@ export type PutAssessmentOrdersAssessmentOrderIdResultRequestBody$Outbound = {
   score?: number | undefined;
   max_score?: number | undefined;
   attributes?:
-    | Array<AttributeSubResult$Outbound | AttributeText$Outbound>
+    | Array<
+      | (AttributeSubResult$Outbound & { type: "SUB_RESULT" })
+      | (AttributeText$Outbound & { type: "TEXT" })
+    >
     | undefined;
   attachments?:
     | Array<
@@ -383,8 +397,12 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBody$outboundSchem
     max_score: z.number().optional(),
     attributes: z.array(
       z.union([
-        z.lazy(() => AttributeSubResult$outboundSchema),
-        z.lazy(() => AttributeText$outboundSchema),
+        z.lazy(() => AttributeSubResult$outboundSchema).and(
+          z.object({ type: z.literal("SUB_RESULT") }),
+        ),
+        z.lazy(() => AttributeText$outboundSchema).and(
+          z.object({ type: z.literal("TEXT") }),
+        ),
       ]),
     ).optional(),
     attachments: z.array(

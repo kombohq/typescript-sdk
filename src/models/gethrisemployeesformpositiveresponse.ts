@@ -188,8 +188,10 @@ export type GetHrisEmployeesFormPositiveResponseOptionsInline2 = {
 };
 
 export type GetHrisEmployeesFormPositiveResponseOptionsUnion2 =
-  | GetHrisEmployeesFormPositiveResponseOptionsInline2
-  | GetHrisEmployeesFormPositiveResponseOptionsReferenced2;
+  | (GetHrisEmployeesFormPositiveResponseOptionsInline2 & { type: "inline" })
+  | (GetHrisEmployeesFormPositiveResponseOptionsReferenced2 & {
+    type: "referenced";
+  });
 
 export type PropertiesMultiSelect = {
   label: string;
@@ -200,8 +202,10 @@ export type PropertiesMultiSelect = {
   min_items?: number | null | undefined;
   max_items?: number | null | undefined;
   options:
-    | GetHrisEmployeesFormPositiveResponseOptionsInline2
-    | GetHrisEmployeesFormPositiveResponseOptionsReferenced2;
+    | (GetHrisEmployeesFormPositiveResponseOptionsInline2 & { type: "inline" })
+    | (GetHrisEmployeesFormPositiveResponseOptionsReferenced2 & {
+      type: "referenced";
+    });
 };
 
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey4 = {
@@ -250,8 +254,10 @@ export type GetHrisEmployeesFormPositiveResponseOptionsInline1 = {
 };
 
 export type GetHrisEmployeesFormPositiveResponseOptionsUnion1 =
-  | GetHrisEmployeesFormPositiveResponseOptionsInline1
-  | GetHrisEmployeesFormPositiveResponseOptionsReferenced1;
+  | (GetHrisEmployeesFormPositiveResponseOptionsInline1 & { type: "inline" })
+  | (GetHrisEmployeesFormPositiveResponseOptionsReferenced1 & {
+    type: "referenced";
+  });
 
 export type PropertiesSingleSelect = {
   label: string;
@@ -263,8 +269,10 @@ export type PropertiesSingleSelect = {
     | undefined;
   type: "single_select";
   options:
-    | GetHrisEmployeesFormPositiveResponseOptionsInline1
-    | GetHrisEmployeesFormPositiveResponseOptionsReferenced1;
+    | (GetHrisEmployeesFormPositiveResponseOptionsInline1 & { type: "inline" })
+    | (GetHrisEmployeesFormPositiveResponseOptionsReferenced1 & {
+      type: "referenced";
+    });
 };
 
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey3 = {
@@ -384,28 +392,28 @@ export type PropertiesText = {
 };
 
 export type Properties =
-  | PropertiesSingleSelect
-  | PropertiesMultiSelect
-  | PropertiesObject
-  | PropertiesArray
-  | PropertiesFile
-  | PropertiesText
-  | PropertiesNumber
-  | PropertiesDate
-  | PropertiesCheckbox;
+  | (PropertiesSingleSelect & { type: "single_select" })
+  | (PropertiesMultiSelect & { type: "multi_select" })
+  | (PropertiesObject & { type: "object" })
+  | (PropertiesArray & { type: "array" })
+  | (PropertiesFile & { type: "file" })
+  | (PropertiesText & { type: "text" })
+  | (PropertiesNumber & { type: "number" })
+  | (PropertiesDate & { type: "date" })
+  | (PropertiesCheckbox & { type: "checkbox" });
 
 export type GetHrisEmployeesFormPositiveResponseData = {
   properties: {
     [k: string]:
-      | PropertiesSingleSelect
-      | PropertiesMultiSelect
-      | PropertiesObject
-      | PropertiesArray
-      | PropertiesFile
-      | PropertiesText
-      | PropertiesNumber
-      | PropertiesDate
-      | PropertiesCheckbox;
+      | (PropertiesSingleSelect & { type: "single_select" })
+      | (PropertiesMultiSelect & { type: "multi_select" })
+      | (PropertiesObject & { type: "object" })
+      | (PropertiesArray & { type: "array" })
+      | (PropertiesFile & { type: "file" })
+      | (PropertiesText & { type: "text" })
+      | (PropertiesNumber & { type: "number" })
+      | (PropertiesDate & { type: "date" })
+      | (PropertiesCheckbox & { type: "checkbox" });
   };
 };
 
@@ -690,10 +698,10 @@ export const GetHrisEmployeesFormPositiveResponseOptionsUnion2$inboundSchema:
   > = z.union([
     z.lazy(() =>
       GetHrisEmployeesFormPositiveResponseOptionsInline2$inboundSchema
-    ),
+    ).and(z.object({ type: z.literal("inline") })),
     z.lazy(() =>
       GetHrisEmployeesFormPositiveResponseOptionsReferenced2$inboundSchema
-    ),
+    ).and(z.object({ type: z.literal("referenced") })),
   ]);
 
 export function getHrisEmployeesFormPositiveResponseOptionsUnion2FromJSON(
@@ -728,10 +736,10 @@ export const PropertiesMultiSelect$inboundSchema: z.ZodType<
   options: z.union([
     z.lazy(() =>
       GetHrisEmployeesFormPositiveResponseOptionsInline2$inboundSchema
-    ),
+    ).and(z.object({ type: z.literal("inline") })),
     z.lazy(() =>
       GetHrisEmployeesFormPositiveResponseOptionsReferenced2$inboundSchema
-    ),
+    ).and(z.object({ type: z.literal("referenced") })),
   ]),
 });
 
@@ -864,10 +872,10 @@ export const GetHrisEmployeesFormPositiveResponseOptionsUnion1$inboundSchema:
   > = z.union([
     z.lazy(() =>
       GetHrisEmployeesFormPositiveResponseOptionsInline1$inboundSchema
-    ),
+    ).and(z.object({ type: z.literal("inline") })),
     z.lazy(() =>
       GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchema
-    ),
+    ).and(z.object({ type: z.literal("referenced") })),
   ]);
 
 export function getHrisEmployeesFormPositiveResponseOptionsUnion1FromJSON(
@@ -902,10 +910,10 @@ export const PropertiesSingleSelect$inboundSchema: z.ZodType<
   options: z.union([
     z.lazy(() =>
       GetHrisEmployeesFormPositiveResponseOptionsInline1$inboundSchema
-    ),
+    ).and(z.object({ type: z.literal("inline") })),
     z.lazy(() =>
       GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchema
-    ),
+    ).and(z.object({ type: z.literal("referenced") })),
   ]),
 });
 
@@ -1020,15 +1028,33 @@ export const Properties$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => PropertiesSingleSelect$inboundSchema),
-  z.lazy(() => PropertiesMultiSelect$inboundSchema),
-  z.lazy(() => PropertiesObject$inboundSchema),
-  z.lazy(() => PropertiesArray$inboundSchema),
-  z.lazy(() => PropertiesFile$inboundSchema),
-  z.lazy(() => PropertiesText$inboundSchema),
-  z.lazy(() => PropertiesNumber$inboundSchema),
-  z.lazy(() => PropertiesDate$inboundSchema),
-  z.lazy(() => PropertiesCheckbox$inboundSchema),
+  z.lazy(() => PropertiesSingleSelect$inboundSchema).and(
+    z.object({ type: z.literal("single_select") }),
+  ),
+  z.lazy(() => PropertiesMultiSelect$inboundSchema).and(
+    z.object({ type: z.literal("multi_select") }),
+  ),
+  z.lazy(() => PropertiesObject$inboundSchema).and(
+    z.object({ type: z.literal("object") }),
+  ),
+  z.lazy(() => PropertiesArray$inboundSchema).and(
+    z.object({ type: z.literal("array") }),
+  ),
+  z.lazy(() => PropertiesFile$inboundSchema).and(
+    z.object({ type: z.literal("file") }),
+  ),
+  z.lazy(() => PropertiesText$inboundSchema).and(
+    z.object({ type: z.literal("text") }),
+  ),
+  z.lazy(() => PropertiesNumber$inboundSchema).and(
+    z.object({ type: z.literal("number") }),
+  ),
+  z.lazy(() => PropertiesDate$inboundSchema).and(
+    z.object({ type: z.literal("date") }),
+  ),
+  z.lazy(() => PropertiesCheckbox$inboundSchema).and(
+    z.object({ type: z.literal("checkbox") }),
+  ),
 ]);
 
 export function propertiesFromJSON(
@@ -1049,15 +1075,33 @@ export const GetHrisEmployeesFormPositiveResponseData$inboundSchema: z.ZodType<
 > = z.object({
   properties: z.record(
     z.union([
-      z.lazy(() => PropertiesSingleSelect$inboundSchema),
-      z.lazy(() => PropertiesMultiSelect$inboundSchema),
-      z.lazy(() => PropertiesObject$inboundSchema),
-      z.lazy(() => PropertiesArray$inboundSchema),
-      z.lazy(() => PropertiesFile$inboundSchema),
-      z.lazy(() => PropertiesText$inboundSchema),
-      z.lazy(() => PropertiesNumber$inboundSchema),
-      z.lazy(() => PropertiesDate$inboundSchema),
-      z.lazy(() => PropertiesCheckbox$inboundSchema),
+      z.lazy(() => PropertiesSingleSelect$inboundSchema).and(
+        z.object({ type: z.literal("single_select") }),
+      ),
+      z.lazy(() => PropertiesMultiSelect$inboundSchema).and(
+        z.object({ type: z.literal("multi_select") }),
+      ),
+      z.lazy(() => PropertiesObject$inboundSchema).and(
+        z.object({ type: z.literal("object") }),
+      ),
+      z.lazy(() => PropertiesArray$inboundSchema).and(
+        z.object({ type: z.literal("array") }),
+      ),
+      z.lazy(() => PropertiesFile$inboundSchema).and(
+        z.object({ type: z.literal("file") }),
+      ),
+      z.lazy(() => PropertiesText$inboundSchema).and(
+        z.object({ type: z.literal("text") }),
+      ),
+      z.lazy(() => PropertiesNumber$inboundSchema).and(
+        z.object({ type: z.literal("number") }),
+      ),
+      z.lazy(() => PropertiesDate$inboundSchema).and(
+        z.object({ type: z.literal("date") }),
+      ),
+      z.lazy(() => PropertiesCheckbox$inboundSchema).and(
+        z.object({ type: z.literal("checkbox") }),
+      ),
     ]),
   ),
 });

@@ -827,6 +827,16 @@ export type PostAtsCandidatesRequestBodyPiloga = {
 };
 
 /**
+ * Fields specific to Pinpoint.
+ */
+export type PostAtsCandidatesRequestBodyPinpoint = {
+  /**
+   * Fields that we will pass through to Pinpoint's `Candidate` object.
+   */
+  candidate?: { [k: string]: any } | undefined;
+};
+
+/**
  * Additional fields that we will pass through to specific ATS systems.
  */
 export type PostAtsCandidatesRequestBodyRemoteFields = {
@@ -907,6 +917,10 @@ export type PostAtsCandidatesRequestBodyRemoteFields = {
    * Fields specific to P&I Loga.
    */
   piloga?: PostAtsCandidatesRequestBodyPiloga | undefined;
+  /**
+   * Fields specific to Pinpoint.
+   */
+  pinpoint?: PostAtsCandidatesRequestBodyPinpoint | undefined;
 };
 
 export type PostAtsCandidatesRequestBody = {
@@ -3077,6 +3091,30 @@ export function postAtsCandidatesRequestBodyPilogaToJSON(
 }
 
 /** @internal */
+export type PostAtsCandidatesRequestBodyPinpoint$Outbound = {
+  candidate?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyPinpoint$outboundSchema: z.ZodType<
+  PostAtsCandidatesRequestBodyPinpoint$Outbound,
+  z.ZodTypeDef,
+  PostAtsCandidatesRequestBodyPinpoint
+> = z.object({
+  candidate: z.record(z.any()).optional(),
+});
+
+export function postAtsCandidatesRequestBodyPinpointToJSON(
+  postAtsCandidatesRequestBodyPinpoint: PostAtsCandidatesRequestBodyPinpoint,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyPinpoint$outboundSchema.parse(
+      postAtsCandidatesRequestBodyPinpoint,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsCandidatesRequestBodyRemoteFields$Outbound = {
   successfactors?:
     | PostAtsCandidatesRequestBodySuccessfactors$Outbound
@@ -3102,6 +3140,7 @@ export type PostAtsCandidatesRequestBodyRemoteFields$Outbound = {
   recruitee?: PostAtsCandidatesRequestBodyRecruitee$Outbound | undefined;
   umantis?: PostAtsCandidatesRequestBodyUmantis$Outbound | undefined;
   piloga?: PostAtsCandidatesRequestBodyPiloga$Outbound | undefined;
+  pinpoint?: PostAtsCandidatesRequestBodyPinpoint$Outbound | undefined;
 };
 
 /** @internal */
@@ -3156,6 +3195,8 @@ export const PostAtsCandidatesRequestBodyRemoteFields$outboundSchema: z.ZodType<
   umantis: z.lazy(() => PostAtsCandidatesRequestBodyUmantis$outboundSchema)
     .optional(),
   piloga: z.lazy(() => PostAtsCandidatesRequestBodyPiloga$outboundSchema)
+    .optional(),
+  pinpoint: z.lazy(() => PostAtsCandidatesRequestBodyPinpoint$outboundSchema)
     .optional(),
 });
 

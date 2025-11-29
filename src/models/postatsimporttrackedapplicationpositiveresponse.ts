@@ -28,8 +28,14 @@ export type PostAtsImportTrackedApplicationPositiveResponseErecruiterApplication
   };
 
 export type PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion =
-  | PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds
-  | PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds;
+  | (
+    & PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds
+    & { id_type: "application_and_job_remote_ids" }
+  )
+  | (
+    & PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds
+    & { id_type: "application_and_candidate_remote_ids" }
+  );
 
 export type PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID =
   {
@@ -94,8 +100,14 @@ export type PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion 
 
 export type ImportedId = {
   erecruiter?:
-    | PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds
-    | PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds
+    | (
+      & PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds
+      & { id_type: "application_and_job_remote_ids" }
+    )
+    | (
+      & PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds
+      & { id_type: "application_and_candidate_remote_ids" }
+    )
     | undefined;
   successfactors?:
     | PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID
@@ -199,9 +211,11 @@ export const PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$inbo
   > = z.union([
     z.lazy(() =>
       PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$inboundSchema
-    ),
+    ).and(z.object({ id_type: z.literal("application_and_job_remote_ids") })),
     z.lazy(() =>
       PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$inboundSchema
+    ).and(
+      z.object({ id_type: z.literal("application_and_candidate_remote_ids") }),
     ),
   ]);
 
@@ -485,9 +499,11 @@ export const ImportedId$inboundSchema: z.ZodType<
   erecruiter: z.union([
     z.lazy(() =>
       PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$inboundSchema
-    ),
+    ).and(z.object({ id_type: z.literal("application_and_job_remote_ids") })),
     z.lazy(() =>
       PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$inboundSchema
+    ).and(
+      z.object({ id_type: z.literal("application_and_candidate_remote_ids") }),
     ),
   ]).optional(),
   successfactors: z.lazy(() =>

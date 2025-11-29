@@ -114,12 +114,13 @@ export type ScopeConfig = {
  * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
  * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
  */
-export const GetIntegrationsIntegrationIdPositiveResponseCoverageStatus = {
-  Supported: "SUPPORTED",
-  Unsupported: "UNSUPPORTED",
-  NotImplemented: "NOT_IMPLEMENTED",
-  Unknown: "UNKNOWN",
-} as const;
+export const GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus =
+  {
+    Supported: "SUPPORTED",
+    Unsupported: "UNSUPPORTED",
+    NotImplemented: "NOT_IMPLEMENTED",
+    Unknown: "UNKNOWN",
+  } as const;
 /**
  * The status of a datapoint of an integrated tool:
  *
@@ -130,13 +131,15 @@ export const GetIntegrationsIntegrationIdPositiveResponseCoverageStatus = {
  * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
  * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
  */
-export type GetIntegrationsIntegrationIdPositiveResponseCoverageStatus =
-  ClosedEnum<typeof GetIntegrationsIntegrationIdPositiveResponseCoverageStatus>;
+export type GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus =
+  ClosedEnum<
+    typeof GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus
+  >;
 
 /**
  * The setting of the datapoint in the scope config that you configured in the Kombo dashboard.
  */
-export const ScopeConfigSetting = {
+export const ReadModelScopeConfigSetting = {
   Enabled: "ENABLED",
   Disabled: "DISABLED",
   Optional: "OPTIONAL",
@@ -144,7 +147,9 @@ export const ScopeConfigSetting = {
 /**
  * The setting of the datapoint in the scope config that you configured in the Kombo dashboard.
  */
-export type ScopeConfigSetting = ClosedEnum<typeof ScopeConfigSetting>;
+export type ReadModelScopeConfigSetting = ClosedEnum<
+  typeof ReadModelScopeConfigSetting
+>;
 
 /**
  * The status of a datapoint of an integrated tool:
@@ -156,12 +161,13 @@ export type ScopeConfigSetting = ClosedEnum<typeof ScopeConfigSetting>;
  * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
  * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
  */
-export const GetIntegrationsIntegrationIdPositiveResponseFieldCoverageStatus = {
-  Supported: "SUPPORTED",
-  Unsupported: "UNSUPPORTED",
-  NotImplemented: "NOT_IMPLEMENTED",
-  Unknown: "UNKNOWN",
-} as const;
+export const GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus =
+  {
+    Supported: "SUPPORTED",
+    Unsupported: "UNSUPPORTED",
+    NotImplemented: "NOT_IMPLEMENTED",
+    Unknown: "UNKNOWN",
+  } as const;
 /**
  * The status of a datapoint of an integrated tool:
  *
@@ -172,9 +178,9 @@ export const GetIntegrationsIntegrationIdPositiveResponseFieldCoverageStatus = {
  * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
  * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
  */
-export type GetIntegrationsIntegrationIdPositiveResponseFieldCoverageStatus =
+export type GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus =
   ClosedEnum<
-    typeof GetIntegrationsIntegrationIdPositiveResponseFieldCoverageStatus
+    typeof GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus
   >;
 
 /**
@@ -192,7 +198,7 @@ export type FieldScopeConfigSetting = ClosedEnum<
   typeof FieldScopeConfigSetting
 >;
 
-export type GetIntegrationsIntegrationIdPositiveResponseField = {
+export type GetIntegrationsIntegrationIdPositiveResponseReadModelField = {
   /**
    * Key of the field in the API (e.g. first_name).
    */
@@ -212,7 +218,7 @@ export type GetIntegrationsIntegrationIdPositiveResponseField = {
    * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
    */
   coverage_status:
-    GetIntegrationsIntegrationIdPositiveResponseFieldCoverageStatus;
+    GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus;
   /**
    * The setting of the datapoint in the scope config that you configured in the Kombo dashboard.
    */
@@ -246,16 +252,158 @@ export type GetIntegrationsIntegrationIdPositiveResponseReadModel = {
    * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
    * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
    */
-  coverage_status: GetIntegrationsIntegrationIdPositiveResponseCoverageStatus;
+  coverage_status:
+    GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus;
   /**
    * The setting of the datapoint in the scope config that you configured in the Kombo dashboard.
    */
-  scope_config_setting: ScopeConfigSetting;
+  scope_config_setting: ReadModelScopeConfigSetting;
   /**
    * Whether the datapoint is opted out by your customer in the connection flow.
    */
   opted_out_by_customer: boolean;
-  fields: Array<GetIntegrationsIntegrationIdPositiveResponseField>;
+  fields: Array<GetIntegrationsIntegrationIdPositiveResponseReadModelField>;
+};
+
+/**
+ * The status of a datapoint of an integrated tool:
+ *
+ * @remarks
+ *
+ * - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+ * - `UNSUPPORTED`: the tool does not support the datapoint.
+ * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+ * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+ */
+export const GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus =
+  {
+    Supported: "SUPPORTED",
+    Unsupported: "UNSUPPORTED",
+    NotImplemented: "NOT_IMPLEMENTED",
+    Unknown: "UNKNOWN",
+  } as const;
+/**
+ * The status of a datapoint of an integrated tool:
+ *
+ * @remarks
+ *
+ * - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+ * - `UNSUPPORTED`: the tool does not support the datapoint.
+ * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+ * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+ */
+export type GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus =
+  ClosedEnum<
+    typeof GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus
+  >;
+
+/**
+ * The setting of the datapoint in the scope config that you configured in the Kombo dashboard.
+ */
+export const WriteActionScopeConfigSetting = {
+  Enabled: "ENABLED",
+  Disabled: "DISABLED",
+  Optional: "OPTIONAL",
+} as const;
+/**
+ * The setting of the datapoint in the scope config that you configured in the Kombo dashboard.
+ */
+export type WriteActionScopeConfigSetting = ClosedEnum<
+  typeof WriteActionScopeConfigSetting
+>;
+
+/**
+ * The status of a datapoint of an integrated tool:
+ *
+ * @remarks
+ *
+ * - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+ * - `UNSUPPORTED`: the tool does not support the datapoint.
+ * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+ * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+ */
+export const GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus =
+  {
+    Supported: "SUPPORTED",
+    Unsupported: "UNSUPPORTED",
+    NotImplemented: "NOT_IMPLEMENTED",
+    Unknown: "UNKNOWN",
+  } as const;
+/**
+ * The status of a datapoint of an integrated tool:
+ *
+ * @remarks
+ *
+ * - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+ * - `UNSUPPORTED`: the tool does not support the datapoint.
+ * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+ * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+ */
+export type GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus =
+  ClosedEnum<
+    typeof GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus
+  >;
+
+export type GetIntegrationsIntegrationIdPositiveResponseWriteActionField = {
+  /**
+   * Key of the input field (e.g. candidate.first_name).
+   */
+  id: string;
+  /**
+   * Whether the datapoint is available and enabled and not opted out of.
+   */
+  is_available: boolean;
+  /**
+   * The status of a datapoint of an integrated tool:
+   *
+   * @remarks
+   *
+   * - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+   * - `UNSUPPORTED`: the tool does not support the datapoint.
+   * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+   * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+   */
+  coverage_status:
+    GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus;
+};
+
+export type GetIntegrationsIntegrationIdPositiveResponseWriteAction = {
+  /**
+   * ID of the action (e.g. ats_create_candidate).
+   */
+  id: string;
+  /**
+   * Label of the action (e.g. Create candidate).
+   */
+  label: string;
+  /**
+   * Whether the datapoint is available and enabled and not opted out of.
+   */
+  is_available: boolean;
+  /**
+   * The status of a datapoint of an integrated tool:
+   *
+   * @remarks
+   *
+   * - `SUPPORTED`: the tool supports the datapoint and it can be used through Kombo.
+   * - `UNSUPPORTED`: the tool does not support the datapoint.
+   * - `NOT_IMPLEMENTED`: tool supports the datapoint but it was not integrated by Kombo for a given reason (see coverage grid).
+   * - `UNKNOWN`: the datapoint is not integrated yet and Kombo has no information about it's availability in the tool.
+   */
+  coverage_status:
+    GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus;
+  /**
+   * The setting of the datapoint in the scope config that you configured in the Kombo dashboard.
+   */
+  scope_config_setting: WriteActionScopeConfigSetting;
+  /**
+   * Whether the datapoint is opted out by your customer in the connection flow.
+   */
+  opted_out_by_customer: boolean;
+  /**
+   * Field support status for the action. Please note that action fields can't be configured in the scope config or opted out by your customer.
+   */
+  fields: Array<GetIntegrationsIntegrationIdPositiveResponseWriteActionField>;
 };
 
 export type GetIntegrationsIntegrationIdPositiveResponseData = {
@@ -290,6 +438,7 @@ export type GetIntegrationsIntegrationIdPositiveResponseData = {
   created_at: Date;
   beta: boolean;
   read_models: Array<GetIntegrationsIntegrationIdPositiveResponseReadModel>;
+  write_actions: Array<GetIntegrationsIntegrationIdPositiveResponseWriteAction>;
 };
 
 export type GetIntegrationsIntegrationIdPositiveResponse = {
@@ -392,22 +541,24 @@ export function scopeConfigFromJSON(
 }
 
 /** @internal */
-export const GetIntegrationsIntegrationIdPositiveResponseCoverageStatus$inboundSchema:
+export const GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus$inboundSchema:
   z.ZodNativeEnum<
-    typeof GetIntegrationsIntegrationIdPositiveResponseCoverageStatus
-  > = z.nativeEnum(GetIntegrationsIntegrationIdPositiveResponseCoverageStatus);
-
-/** @internal */
-export const ScopeConfigSetting$inboundSchema: z.ZodNativeEnum<
-  typeof ScopeConfigSetting
-> = z.nativeEnum(ScopeConfigSetting);
-
-/** @internal */
-export const GetIntegrationsIntegrationIdPositiveResponseFieldCoverageStatus$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetIntegrationsIntegrationIdPositiveResponseFieldCoverageStatus
+    typeof GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus
   > = z.nativeEnum(
-    GetIntegrationsIntegrationIdPositiveResponseFieldCoverageStatus,
+    GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus,
+  );
+
+/** @internal */
+export const ReadModelScopeConfigSetting$inboundSchema: z.ZodNativeEnum<
+  typeof ReadModelScopeConfigSetting
+> = z.nativeEnum(ReadModelScopeConfigSetting);
+
+/** @internal */
+export const GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus
+  > = z.nativeEnum(
+    GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus,
   );
 
 /** @internal */
@@ -416,33 +567,32 @@ export const FieldScopeConfigSetting$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(FieldScopeConfigSetting);
 
 /** @internal */
-export const GetIntegrationsIntegrationIdPositiveResponseField$inboundSchema:
+export const GetIntegrationsIntegrationIdPositiveResponseReadModelField$inboundSchema:
   z.ZodType<
-    GetIntegrationsIntegrationIdPositiveResponseField,
+    GetIntegrationsIntegrationIdPositiveResponseReadModelField,
     z.ZodTypeDef,
     unknown
   > = z.object({
     id: z.string(),
     is_available: z.boolean(),
     coverage_status:
-      GetIntegrationsIntegrationIdPositiveResponseFieldCoverageStatus$inboundSchema,
+      GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus$inboundSchema,
     scope_config_setting: FieldScopeConfigSetting$inboundSchema,
     opted_out_by_customer: z.boolean(),
   });
 
-export function getIntegrationsIntegrationIdPositiveResponseFieldFromJSON(
+export function getIntegrationsIntegrationIdPositiveResponseReadModelFieldFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetIntegrationsIntegrationIdPositiveResponseField,
+  GetIntegrationsIntegrationIdPositiveResponseReadModelField,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetIntegrationsIntegrationIdPositiveResponseField$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetIntegrationsIntegrationIdPositiveResponseField' from JSON`,
+      GetIntegrationsIntegrationIdPositiveResponseReadModelField$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationsIntegrationIdPositiveResponseReadModelField' from JSON`,
   );
 }
 
@@ -457,12 +607,12 @@ export const GetIntegrationsIntegrationIdPositiveResponseReadModel$inboundSchema
     label: z.string(),
     is_available: z.boolean(),
     coverage_status:
-      GetIntegrationsIntegrationIdPositiveResponseCoverageStatus$inboundSchema,
-    scope_config_setting: ScopeConfigSetting$inboundSchema,
+      GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus$inboundSchema,
+    scope_config_setting: ReadModelScopeConfigSetting$inboundSchema,
     opted_out_by_customer: z.boolean(),
     fields: z.array(
       z.lazy(() =>
-        GetIntegrationsIntegrationIdPositiveResponseField$inboundSchema
+        GetIntegrationsIntegrationIdPositiveResponseReadModelField$inboundSchema
       ),
     ),
   });
@@ -480,6 +630,91 @@ export function getIntegrationsIntegrationIdPositiveResponseReadModelFromJSON(
         JSON.parse(x),
       ),
     `Failed to parse 'GetIntegrationsIntegrationIdPositiveResponseReadModel' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus
+  > = z.nativeEnum(
+    GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus,
+  );
+
+/** @internal */
+export const WriteActionScopeConfigSetting$inboundSchema: z.ZodNativeEnum<
+  typeof WriteActionScopeConfigSetting
+> = z.nativeEnum(WriteActionScopeConfigSetting);
+
+/** @internal */
+export const GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus
+  > = z.nativeEnum(
+    GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus,
+  );
+
+/** @internal */
+export const GetIntegrationsIntegrationIdPositiveResponseWriteActionField$inboundSchema:
+  z.ZodType<
+    GetIntegrationsIntegrationIdPositiveResponseWriteActionField,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.string(),
+    is_available: z.boolean(),
+    coverage_status:
+      GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus$inboundSchema,
+  });
+
+export function getIntegrationsIntegrationIdPositiveResponseWriteActionFieldFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetIntegrationsIntegrationIdPositiveResponseWriteActionField,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetIntegrationsIntegrationIdPositiveResponseWriteActionField$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationsIntegrationIdPositiveResponseWriteActionField' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetIntegrationsIntegrationIdPositiveResponseWriteAction$inboundSchema:
+  z.ZodType<
+    GetIntegrationsIntegrationIdPositiveResponseWriteAction,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id: z.string(),
+    label: z.string(),
+    is_available: z.boolean(),
+    coverage_status:
+      GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus$inboundSchema,
+    scope_config_setting: WriteActionScopeConfigSetting$inboundSchema,
+    opted_out_by_customer: z.boolean(),
+    fields: z.array(
+      z.lazy(() =>
+        GetIntegrationsIntegrationIdPositiveResponseWriteActionField$inboundSchema
+      ),
+    ),
+  });
+
+export function getIntegrationsIntegrationIdPositiveResponseWriteActionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetIntegrationsIntegrationIdPositiveResponseWriteAction,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetIntegrationsIntegrationIdPositiveResponseWriteAction$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetIntegrationsIntegrationIdPositiveResponseWriteAction' from JSON`,
   );
 }
 
@@ -510,6 +745,11 @@ export const GetIntegrationsIntegrationIdPositiveResponseData$inboundSchema:
     read_models: z.array(
       z.lazy(() =>
         GetIntegrationsIntegrationIdPositiveResponseReadModel$inboundSchema
+      ),
+    ),
+    write_actions: z.array(
+      z.lazy(() =>
+        GetIntegrationsIntegrationIdPositiveResponseWriteAction$inboundSchema
       ),
     ),
   });

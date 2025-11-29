@@ -1,4 +1,4 @@
-# GetToolsCategoryPositiveResponseFieldCoverageStatus
+# GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus
 
 The status of a datapoint of an integrated tool:
 
@@ -10,10 +10,11 @@ The status of a datapoint of an integrated tool:
 ## Example Usage
 
 ```typescript
-import { GetToolsCategoryPositiveResponseFieldCoverageStatus } from "@kombo-api/sdk/models";
+import { GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus } from "@kombo-api/sdk/models";
 
-let value: GetToolsCategoryPositiveResponseFieldCoverageStatus =
-  "NOT_IMPLEMENTED";
+let value:
+  GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus =
+    "UNSUPPORTED";
 ```
 
 ## Values

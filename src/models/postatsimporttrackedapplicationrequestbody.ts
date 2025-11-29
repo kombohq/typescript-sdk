@@ -25,8 +25,14 @@ export type PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJo
   };
 
 export type PostAtsImportTrackedApplicationRequestBodyErecruiterUnion =
-  | PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds
-  | PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds;
+  | (
+    & PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds
+    & { id_type: "application_and_job_remote_ids" }
+  )
+  | (
+    & PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds
+    & { id_type: "application_and_candidate_remote_ids" }
+  );
 
 export type PostAtsImportTrackedApplicationRequestBodySuccessfactorsApplicationRemoteID =
   {
@@ -89,8 +95,14 @@ export type PostAtsImportTrackedApplicationRequestBodySmartrecruitersUnion =
 
 export type PostAtsImportTrackedApplicationRequestBody = {
   erecruiter?:
-    | PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds
-    | PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds
+    | (
+      & PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds
+      & { id_type: "application_and_job_remote_ids" }
+    )
+    | (
+      & PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds
+      & { id_type: "application_and_candidate_remote_ids" }
+    )
     | undefined;
   successfactors?:
     | PostAtsImportTrackedApplicationRequestBodySuccessfactorsApplicationRemoteID
@@ -179,8 +191,14 @@ export function postAtsImportTrackedApplicationRequestBodyErecruiterApplicationA
 
 /** @internal */
 export type PostAtsImportTrackedApplicationRequestBodyErecruiterUnion$Outbound =
-  | PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds$Outbound
-  | PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds$Outbound;
+  | (
+    & PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds$Outbound
+    & { id_type: "application_and_job_remote_ids" }
+  )
+  | (
+    & PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds$Outbound
+    & { id_type: "application_and_candidate_remote_ids" }
+  );
 
 /** @internal */
 export const PostAtsImportTrackedApplicationRequestBodyErecruiterUnion$outboundSchema:
@@ -191,9 +209,11 @@ export const PostAtsImportTrackedApplicationRequestBodyErecruiterUnion$outboundS
   > = z.union([
     z.lazy(() =>
       PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds$outboundSchema
-    ),
+    ).and(z.object({ id_type: z.literal("application_and_job_remote_ids") })),
     z.lazy(() =>
       PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds$outboundSchema
+    ).and(
+      z.object({ id_type: z.literal("application_and_candidate_remote_ids") }),
     ),
   ]);
 
@@ -477,8 +497,14 @@ export function postAtsImportTrackedApplicationRequestBodySmartrecruitersUnionTo
 /** @internal */
 export type PostAtsImportTrackedApplicationRequestBody$Outbound = {
   erecruiter?:
-    | PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds$Outbound
-    | PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds$Outbound
+    | (
+      & PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds$Outbound
+      & { id_type: "application_and_job_remote_ids" }
+    )
+    | (
+      & PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds$Outbound
+      & { id_type: "application_and_candidate_remote_ids" }
+    )
     | undefined;
   successfactors?:
     | PostAtsImportTrackedApplicationRequestBodySuccessfactorsApplicationRemoteID$Outbound
@@ -508,9 +534,13 @@ export const PostAtsImportTrackedApplicationRequestBody$outboundSchema:
     erecruiter: z.union([
       z.lazy(() =>
         PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds$outboundSchema
-      ),
+      ).and(z.object({ id_type: z.literal("application_and_job_remote_ids") })),
       z.lazy(() =>
         PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds$outboundSchema
+      ).and(
+        z.object({
+          id_type: z.literal("application_and_candidate_remote_ids"),
+        }),
       ),
     ]).optional(),
     successfactors: z.lazy(() =>
