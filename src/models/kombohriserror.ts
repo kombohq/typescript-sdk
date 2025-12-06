@@ -37,6 +37,7 @@ export const KomboHrisErrorCode = {
   RemoteRateLimitExceeded: "REMOTE.RATE_LIMIT_EXCEEDED",
   RemoteInputInvalid: "REMOTE.INPUT_INVALID",
   RemoteUnknownHttpError: "REMOTE.UNKNOWN_HTTP_ERROR",
+  HrisEmployeeAlreadyExists: "HRIS.EMPLOYEE_ALREADY_EXISTS",
 } as const;
 /**
  * Some errors include an error code that can be used to identify their cause. See the [Error Handling Docs](https://docs.kombo.dev/guides/errors) for more information. For your error handling logic please use the error `code` instead of other properties (e.g. message, http status code, ...).
