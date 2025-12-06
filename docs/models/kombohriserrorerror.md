@@ -8,10 +8,10 @@ Error details with structured code for programmatic handling.
 import { KomboHrisErrorError } from "@kombo-api/sdk/models";
 
 let value: KomboHrisErrorError = {
-  code: "REMOTE.UNKNOWN_HTTP_ERROR",
+  code: "HRIS.EMPLOYEE_ALREADY_EXISTS",
   title: "<value>",
   message: "<value>",
-  log_url: "https://distinct-elevator.net",
+  log_url: "https://superb-courtroom.biz",
 };
 ```
 

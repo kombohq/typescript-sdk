@@ -21,7 +21,7 @@ let value: AttributeSubResult = {
 
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `type`                                                 | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `type`                                                 | *"SUB_RESULT"*                                         | :heavy_check_mark:                                     | N/A                                                    |
 | `id`                                                   | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `label`                                                | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `score`                                                | [models.Score](../models/score.md)                     | :heavy_check_mark:                                     | N/A                                                    |

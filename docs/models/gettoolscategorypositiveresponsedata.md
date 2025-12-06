@@ -54,6 +54,12 @@ let value: GetToolsCategoryPositiveResponseData = {
             id: "hris_create_employee",
             label: "Create employee",
             coverage_status: "SUPPORTED",
+            fields: [
+              {
+                id: "first_name",
+                coverage_status: "SUPPORTED",
+              },
+            ],
           },
         ],
         features: [
