@@ -13,6 +13,10 @@ import { SDKValidationError } from "./errors/sdkvalidationerror.js";
  */
 export type GetAssessmentOrdersOpenPositiveResponseCandidate = {
   /**
+   * The candidate's identifier in the integrated system.
+   */
+  remote_id?: string | null | undefined;
+  /**
    * The candidate's email address.
    */
   email: string;
@@ -28,10 +32,6 @@ export type GetAssessmentOrdersOpenPositiveResponseCandidate = {
    * The candidate's phone number.
    */
   phone?: string | null | undefined;
-  /**
-   * The candidate's identifier in the integrated system.
-   */
-  remote_id?: string | null | undefined;
 };
 
 /**
@@ -164,11 +164,11 @@ export const GetAssessmentOrdersOpenPositiveResponseCandidate$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    remote_id: z.nullable(z.string()).optional(),
     email: z.string(),
     first_name: z.nullable(z.string()).optional(),
     last_name: z.nullable(z.string()).optional(),
     phone: z.nullable(z.string()).optional(),
-    remote_id: z.nullable(z.string()).optional(),
   });
 
 export function getAssessmentOrdersOpenPositiveResponseCandidateFromJSON(

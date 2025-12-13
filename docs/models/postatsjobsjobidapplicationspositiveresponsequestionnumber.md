@@ -18,4 +18,4 @@ let value: PostAtsJobsJobIdApplicationsPositiveResponseQuestionNumber = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `remote_id`        | *string*           | :heavy_check_mark: | N/A                |
 | `title`            | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"NUMBER"*         | :heavy_check_mark: | N/A                |

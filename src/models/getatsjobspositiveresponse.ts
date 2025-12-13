@@ -213,13 +213,13 @@ export type FormatText = {
 };
 
 export type Format =
-  | FormatSingleSelect
-  | FormatMultiSelect
   | FormatText
   | FormatNumber
   | FormatFile
+  | FormatSingleSelect
   | FormatBoolean
   | FormatDate
+  | FormatMultiSelect
   | FormatInformation
   | FormatUnknown;
 
@@ -257,13 +257,13 @@ export type ScreeningQuestion = {
    */
   description: string | null;
   format?:
-    | FormatSingleSelect
-    | FormatMultiSelect
     | FormatText
     | FormatNumber
     | FormatFile
+    | FormatSingleSelect
     | FormatBoolean
     | FormatDate
+    | FormatMultiSelect
     | FormatInformation
     | FormatUnknown
     | null
@@ -851,13 +851,13 @@ export function formatTextFromJSON(
 /** @internal */
 export const Format$inboundSchema: z.ZodType<Format, z.ZodTypeDef, unknown> = z
   .union([
-    z.lazy(() => FormatSingleSelect$inboundSchema),
-    z.lazy(() => FormatMultiSelect$inboundSchema),
     z.lazy(() => FormatText$inboundSchema),
     z.lazy(() => FormatNumber$inboundSchema),
     z.lazy(() => FormatFile$inboundSchema),
+    z.lazy(() => FormatSingleSelect$inboundSchema),
     z.lazy(() => FormatBoolean$inboundSchema),
     z.lazy(() => FormatDate$inboundSchema),
+    z.lazy(() => FormatMultiSelect$inboundSchema),
     z.lazy(() => FormatInformation$inboundSchema),
     z.lazy(() => FormatUnknown$inboundSchema),
   ]);
@@ -906,13 +906,13 @@ export const ScreeningQuestion$inboundSchema: z.ZodType<
   description: z.nullable(z.string()),
   format: z.nullable(
     z.union([
-      z.lazy(() => FormatSingleSelect$inboundSchema),
-      z.lazy(() => FormatMultiSelect$inboundSchema),
       z.lazy(() => FormatText$inboundSchema),
       z.lazy(() => FormatNumber$inboundSchema),
       z.lazy(() => FormatFile$inboundSchema),
+      z.lazy(() => FormatSingleSelect$inboundSchema),
       z.lazy(() => FormatBoolean$inboundSchema),
       z.lazy(() => FormatDate$inboundSchema),
+      z.lazy(() => FormatMultiSelect$inboundSchema),
       z.lazy(() => FormatInformation$inboundSchema),
       z.lazy(() => FormatUnknown$inboundSchema),
     ]),
