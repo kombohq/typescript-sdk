@@ -340,15 +340,15 @@ export type Schema1Text = {
 };
 
 export type Schema1Union1 =
-  | Schema1SingleSelect
-  | Schema1MultiSelect
-  | Schema1Object
-  | Schema1Array1
-  | Schema1File
   | Schema1Text
   | Schema1Number
   | Schema1Date
-  | Schema1Checkbox;
+  | Schema1SingleSelect
+  | Schema1MultiSelect
+  | Schema1Checkbox
+  | Schema1Object
+  | Schema1Array1
+  | Schema1File;
 
 /** @internal */
 export const Schema1UnifiedKey8$inboundSchema: z.ZodNativeEnum<
@@ -841,15 +841,15 @@ export const Schema1Union1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Schema1SingleSelect$inboundSchema),
-  z.lazy(() => Schema1MultiSelect$inboundSchema),
-  z.lazy(() => Schema1Object$inboundSchema),
-  z.lazy(() => Schema1Array1$inboundSchema),
-  z.lazy(() => Schema1File$inboundSchema),
   z.lazy(() => Schema1Text$inboundSchema),
   z.lazy(() => Schema1Number$inboundSchema),
   z.lazy(() => Schema1Date$inboundSchema),
+  z.lazy(() => Schema1SingleSelect$inboundSchema),
+  z.lazy(() => Schema1MultiSelect$inboundSchema),
   z.lazy(() => Schema1Checkbox$inboundSchema),
+  z.lazy(() => Schema1Object$inboundSchema),
+  z.lazy(() => Schema1Array1$inboundSchema),
+  z.lazy(() => Schema1File$inboundSchema),
 ]);
 
 export function schema1Union1FromJSON(

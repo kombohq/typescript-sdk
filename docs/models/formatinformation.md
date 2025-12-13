@@ -14,4 +14,4 @@ let value: FormatInformation = {
 
 | Field                      | Type                       | Required                   | Description                |
 | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `type`                     | *string*                   | :heavy_check_mark:         | This is just a text block. |
+| `type`                     | *"INFORMATION"*            | :heavy_check_mark:         | This is just a text block. |
