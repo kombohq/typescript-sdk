@@ -22,15 +22,16 @@ export type DataChangedWebhookPayloadType = ClosedEnum<
 >;
 
 /**
- * The category of the integration (HRIS, ATS, or ASSESSMENT).
+ * The category of the integration (HRIS, ATS, ASSESSMENT, or LMS).
  */
 export const DataChangedWebhookPayloadIntegrationCategory = {
   Hris: "HRIS",
   Ats: "ATS",
   Assessment: "ASSESSMENT",
+  Lms: "LMS",
 } as const;
 /**
- * The category of the integration (HRIS, ATS, or ASSESSMENT).
+ * The category of the integration (HRIS, ATS, ASSESSMENT, or LMS).
  */
 export type DataChangedWebhookPayloadIntegrationCategory = ClosedEnum<
   typeof DataChangedWebhookPayloadIntegrationCategory
@@ -63,12 +64,19 @@ export const Name = {
   AtsInterviews: "ats_interviews",
   AtsOffers: "ats_offers",
   AtsRejectionReasons: "ats_rejection_reasons",
+  LmsUsers: "lms_users",
+  LmsCourseProviders: "lms_course_providers",
+  LmsCourses: "lms_courses",
+  LmsCourseProgressions: "lms_course_progressions",
+  LmsCourseRevisions: "lms_course_revisions",
+  LmsSkills: "lms_skills",
   HrisJoinEmployeesTeams: "hris_join_employees_teams",
   AtsJoinCandidatesTags: "ats_join_candidates_tags",
   AtsJoinJobsApplicationStages: "ats_join_jobs_application_stages",
   AtsJoinJobsScreeningQuestions: "ats_join_jobs_screening_questions",
   AtsJoinJobsUsers: "ats_join_jobs_users",
   AtsJoinInterviewsUsers: "ats_join_interviews_users",
+  LmsJoinRevisionsSkills: "lms_join_revisions_skills",
 } as const;
 /**
  * The name of the Kombo model or connection that changed.
@@ -95,7 +103,7 @@ export type DataChangedWebhookPayloadData = {
    */
   integration_tool: string;
   /**
-   * The category of the integration (HRIS, ATS, or ASSESSMENT).
+   * The category of the integration (HRIS, ATS, ASSESSMENT, or LMS).
    */
   integration_category: DataChangedWebhookPayloadIntegrationCategory;
   /**

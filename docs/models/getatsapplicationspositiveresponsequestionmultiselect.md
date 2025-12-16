@@ -18,4 +18,4 @@ let value: GetAtsApplicationsPositiveResponseQuestionMultiSelect = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `remote_id`        | *string*           | :heavy_check_mark: | N/A                |
 | `title`            | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"MULTI_SELECT"*   | :heavy_check_mark: | N/A                |

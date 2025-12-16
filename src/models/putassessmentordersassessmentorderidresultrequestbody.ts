@@ -55,7 +55,7 @@ export type AttributeText = {
   value: string;
 };
 
-export type Attribute = AttributeSubResult | AttributeText;
+export type Attribute = AttributeText | AttributeSubResult;
 
 export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment = {
   /**
@@ -137,7 +137,7 @@ export type PutAssessmentOrdersAssessmentOrderIdResultRequestBody = {
    *
    * - If an ATS only supports writing text attributes, we will transform non `TEXT` attributes into formatted plain text values.
    */
-  attributes?: Array<AttributeSubResult | AttributeText> | undefined;
+  attributes?: Array<AttributeText | AttributeSubResult> | undefined;
   /**
    * An array of attachments containing the assessment result.
    */
@@ -237,8 +237,8 @@ export function attributeTextToJSON(attributeText: AttributeText): string {
 
 /** @internal */
 export type Attribute$Outbound =
-  | AttributeSubResult$Outbound
-  | AttributeText$Outbound;
+  | AttributeText$Outbound
+  | AttributeSubResult$Outbound;
 
 /** @internal */
 export const Attribute$outboundSchema: z.ZodType<
@@ -246,8 +246,8 @@ export const Attribute$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Attribute
 > = z.union([
-  z.lazy(() => AttributeSubResult$outboundSchema),
   z.lazy(() => AttributeText$outboundSchema),
+  z.lazy(() => AttributeSubResult$outboundSchema),
 ]);
 
 export function attributeToJSON(attribute: Attribute): string {
@@ -356,7 +356,7 @@ export type PutAssessmentOrdersAssessmentOrderIdResultRequestBody$Outbound = {
   score?: number | undefined;
   max_score?: number | undefined;
   attributes?:
-    | Array<AttributeSubResult$Outbound | AttributeText$Outbound>
+    | Array<AttributeText$Outbound | AttributeSubResult$Outbound>
     | undefined;
   attachments?:
     | Array<
@@ -383,8 +383,8 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBody$outboundSchem
     max_score: z.number().optional(),
     attributes: z.array(
       z.union([
-        z.lazy(() => AttributeSubResult$outboundSchema),
         z.lazy(() => AttributeText$outboundSchema),
+        z.lazy(() => AttributeSubResult$outboundSchema),
       ]),
     ).optional(),
     attachments: z.array(

@@ -12,6 +12,7 @@ export const PostConnectCreateLinkRequestBodyIntegrationCategory = {
   Hris: "HRIS",
   Ats: "ATS",
   Assessment: "ASSESSMENT",
+  Lms: "LMS",
 } as const;
 /**
  * Category of the integration you want your customer to create.
@@ -118,6 +119,7 @@ export const IntegrationTool = {
   Dayforce: "dayforce",
   Hansalog: "hansalog",
   Lattice: "lattice",
+  Hoorayhr: "hoorayhr",
   Trinet: "trinet",
   Paylocity: "paylocity",
   Paycor: "paycor",
@@ -128,6 +130,7 @@ export const IntegrationTool = {
   Avature: "avature",
   Apploi: "apploi",
   Phenom: "phenom",
+  Paradox: "paradox",
   Rippling: "rippling",
   Sapling: "sapling",
   Heyrecruit: "heyrecruit",
@@ -168,12 +171,14 @@ export const IntegrationTool = {
   Coveto: "coveto",
   Peoplefirst: "peoplefirst",
   Sdworx: "sdworx",
+  Itrent: "itrent",
   Crelate: "crelate",
   Absenceio: "absenceio",
   Manatal: "manatal",
   Avionte: "avionte",
   A3innuvanomina: "a3innuvanomina",
   Mhmhr: "mhmhr",
+  Asymbl: "asymbl",
   Scim: "scim",
   Softgardenpartner: "softgardenpartner",
   Datevhr: "datevhr",

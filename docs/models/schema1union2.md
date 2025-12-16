@@ -97,7 +97,7 @@ const value: models.Schema1Array2 = {
   type: "array",
   item_type: {
     label: "<value>",
-    required: false,
+    required: true,
     type: "checkbox",
   },
 };

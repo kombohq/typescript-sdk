@@ -8,7 +8,7 @@ A model or connection that has changed in the integration.
 import { ChangedModel } from "@kombo-api/sdk/models";
 
 let value: ChangedModel = {
-  name: "hris_timesheets",
+  name: "hris_performance_reviews",
 };
 ```
 

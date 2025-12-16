@@ -16,4 +16,4 @@ let value: FormatFile = {
 | --------------------- | --------------------- | --------------------- | --------------------- |
 | `accepted_mime_types` | *string*[]            | :heavy_minus_sign:    | N/A                   |
 | `max_file_size_bytes` | *number*              | :heavy_minus_sign:    | N/A                   |
-| `type`                | *string*              | :heavy_check_mark:    | N/A                   |
+| `type`                | *"FILE"*              | :heavy_check_mark:    | N/A                   |

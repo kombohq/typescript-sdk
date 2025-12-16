@@ -328,15 +328,15 @@ export type Schema2Object1 = {
 };
 
 export type Schema2Union1 =
-  | Schema2SingleSelect
-  | Schema2MultiSelect
-  | Schema2Object1
-  | Schema2Array1
-  | Schema2File
   | Schema2Text
   | Schema2Number
   | Schema2Date
-  | Schema2Checkbox;
+  | Schema2SingleSelect
+  | Schema2MultiSelect
+  | Schema2Checkbox
+  | Schema2Object1
+  | Schema2Array1
+  | Schema2File;
 
 export type Schema2Array1 = {
   label: string;
@@ -345,15 +345,15 @@ export type Schema2Array1 = {
   unified_key?: Schema2UnifiedKey7 | null | undefined;
   type: "array";
   item_type:
-    | Schema2SingleSelect
-    | Schema2MultiSelect
-    | Schema2Object1
-    | Schema2Array1
-    | Schema2File
     | Schema2Text
     | Schema2Number
     | Schema2Date
-    | Schema2Checkbox;
+    | Schema2SingleSelect
+    | Schema2MultiSelect
+    | Schema2Checkbox
+    | Schema2Object1
+    | Schema2Array1
+    | Schema2File;
   min_items?: number | null | undefined;
   max_items?: number | null | undefined;
 };
@@ -823,15 +823,15 @@ export const Schema2Union1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => Schema2SingleSelect$inboundSchema),
-  z.lazy(() => Schema2MultiSelect$inboundSchema),
-  z.lazy(() => Schema2Object1$inboundSchema),
-  z.lazy(() => Schema2Array1$inboundSchema),
-  z.lazy(() => Schema2File$inboundSchema),
   z.lazy(() => Schema2Text$inboundSchema),
   z.lazy(() => Schema2Number$inboundSchema),
   z.lazy(() => Schema2Date$inboundSchema),
+  z.lazy(() => Schema2SingleSelect$inboundSchema),
+  z.lazy(() => Schema2MultiSelect$inboundSchema),
   z.lazy(() => Schema2Checkbox$inboundSchema),
+  z.lazy(() => Schema2Object1$inboundSchema),
+  z.lazy(() => Schema2Array1$inboundSchema),
+  z.lazy(() => Schema2File$inboundSchema),
 ]);
 
 export function schema2Union1FromJSON(
@@ -856,15 +856,15 @@ export const Schema2Array1$inboundSchema: z.ZodType<
   unified_key: z.nullable(Schema2UnifiedKey7$inboundSchema).optional(),
   type: z.literal("array"),
   item_type: z.union([
-    z.lazy(() => Schema2SingleSelect$inboundSchema),
-    z.lazy(() => Schema2MultiSelect$inboundSchema),
-    z.lazy(() => Schema2Object1$inboundSchema),
-    z.lazy(() => Schema2Array1$inboundSchema),
-    z.lazy(() => Schema2File$inboundSchema),
     z.lazy(() => Schema2Text$inboundSchema),
     z.lazy(() => Schema2Number$inboundSchema),
     z.lazy(() => Schema2Date$inboundSchema),
+    z.lazy(() => Schema2SingleSelect$inboundSchema),
+    z.lazy(() => Schema2MultiSelect$inboundSchema),
     z.lazy(() => Schema2Checkbox$inboundSchema),
+    z.lazy(() => Schema2Object1$inboundSchema),
+    z.lazy(() => Schema2Array1$inboundSchema),
+    z.lazy(() => Schema2File$inboundSchema),
   ]),
   min_items: z.nullable(z.number()).optional(),
   max_items: z.nullable(z.number()).optional(),

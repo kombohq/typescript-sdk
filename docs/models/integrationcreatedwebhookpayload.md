@@ -11,7 +11,7 @@ let value: IntegrationCreatedWebhookPayload = {
   data: {
     id: "<id>",
     tool: "<value>",
-    category: "ASSESSMENT",
+    category: "LMS",
     end_user: {
       organization_name: "<value>",
       creator_email: "Annabell.DAmore70@hotmail.com",

@@ -28,6 +28,7 @@ export const IntegrationDeletedWebhookPayloadCategory = {
   Hris: "HRIS",
   Ats: "ATS",
   Assessment: "ASSESSMENT",
+  Lms: "LMS",
 } as const;
 /**
  * The category of the integration.

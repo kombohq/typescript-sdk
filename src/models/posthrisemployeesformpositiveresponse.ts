@@ -7,19 +7,29 @@ import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
+/**
+ * An object containing the temporary pre-hire information from the remote system. This ID may change or become invalid when the pre-hire becomes a full employee. Only populated when `id` is null.
+ */
+export type Prehire = {
+  /**
+   * The temporary ID returned by the remote system when creating a pre-hire.
+   */
+  remote_id: string | null;
+};
+
 export type PostHrisEmployeesFormPositiveResponseData = {
   /**
    * The Kombo id of the created employee. If null, we only created a pre-hire which shows up in the next sync after a successful onboarding.
    */
   id: string | null;
   /**
-   * The raw ID of the created employee in the remote system. This is only populated when `id` is set (i.e., when a full employee was created). For pre-hires, use `prehire_id` instead.
+   * The raw ID of the created employee in the remote system. This is only populated when `id` is set (i.e., when a full employee was created). For pre-hires, use the `prehire` object instead.
    */
   remote_id: string | null;
   /**
-   * The temporary ID returned by the remote system when creating a pre-hire. This ID may change or become invalid when the pre-hire becomes a full employee. Only populated when `id` is null.
+   * An object containing the temporary pre-hire information from the remote system. This ID may change or become invalid when the pre-hire becomes a full employee. Only populated when `id` is null.
    */
-  prehire_id: string | null;
+  prehire: Prehire;
 };
 
 export type PostHrisEmployeesFormPositiveResponseWarning = {
@@ -36,6 +46,22 @@ export type PostHrisEmployeesFormPositiveResponse = {
 };
 
 /** @internal */
+export const Prehire$inboundSchema: z.ZodType<Prehire, z.ZodTypeDef, unknown> =
+  z.object({
+    remote_id: z.nullable(z.string()),
+  });
+
+export function prehireFromJSON(
+  jsonString: string,
+): SafeParseResult<Prehire, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Prehire$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Prehire' from JSON`,
+  );
+}
+
+/** @internal */
 export const PostHrisEmployeesFormPositiveResponseData$inboundSchema: z.ZodType<
   PostHrisEmployeesFormPositiveResponseData,
   z.ZodTypeDef,
@@ -43,7 +69,7 @@ export const PostHrisEmployeesFormPositiveResponseData$inboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()),
   remote_id: z.nullable(z.string()),
-  prehire_id: z.nullable(z.string()),
+  prehire: z.lazy(() => Prehire$inboundSchema),
 });
 
 export function postHrisEmployeesFormPositiveResponseDataFromJSON(

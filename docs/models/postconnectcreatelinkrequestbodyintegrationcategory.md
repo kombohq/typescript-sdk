@@ -13,5 +13,5 @@ let value: PostConnectCreateLinkRequestBodyIntegrationCategory = "ATS";
 ## Values
 
 ```typescript
-"HRIS" | "ATS" | "ASSESSMENT"
+"HRIS" | "ATS" | "ASSESSMENT" | "LMS"
 ```

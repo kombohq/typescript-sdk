@@ -384,28 +384,28 @@ export type PropertiesText = {
 };
 
 export type Properties =
-  | PropertiesSingleSelect
-  | PropertiesMultiSelect
-  | PropertiesObject
-  | PropertiesArray
-  | PropertiesFile
   | PropertiesText
   | PropertiesNumber
   | PropertiesDate
-  | PropertiesCheckbox;
+  | PropertiesSingleSelect
+  | PropertiesMultiSelect
+  | PropertiesCheckbox
+  | PropertiesObject
+  | PropertiesArray
+  | PropertiesFile;
 
 export type GetHrisEmployeesFormPositiveResponseData = {
   properties: {
     [k: string]:
-      | PropertiesSingleSelect
-      | PropertiesMultiSelect
-      | PropertiesObject
-      | PropertiesArray
-      | PropertiesFile
       | PropertiesText
       | PropertiesNumber
       | PropertiesDate
-      | PropertiesCheckbox;
+      | PropertiesSingleSelect
+      | PropertiesMultiSelect
+      | PropertiesCheckbox
+      | PropertiesObject
+      | PropertiesArray
+      | PropertiesFile;
   };
 };
 
@@ -1020,15 +1020,15 @@ export const Properties$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => PropertiesSingleSelect$inboundSchema),
-  z.lazy(() => PropertiesMultiSelect$inboundSchema),
-  z.lazy(() => PropertiesObject$inboundSchema),
-  z.lazy(() => PropertiesArray$inboundSchema),
-  z.lazy(() => PropertiesFile$inboundSchema),
   z.lazy(() => PropertiesText$inboundSchema),
   z.lazy(() => PropertiesNumber$inboundSchema),
   z.lazy(() => PropertiesDate$inboundSchema),
+  z.lazy(() => PropertiesSingleSelect$inboundSchema),
+  z.lazy(() => PropertiesMultiSelect$inboundSchema),
   z.lazy(() => PropertiesCheckbox$inboundSchema),
+  z.lazy(() => PropertiesObject$inboundSchema),
+  z.lazy(() => PropertiesArray$inboundSchema),
+  z.lazy(() => PropertiesFile$inboundSchema),
 ]);
 
 export function propertiesFromJSON(
@@ -1049,15 +1049,15 @@ export const GetHrisEmployeesFormPositiveResponseData$inboundSchema: z.ZodType<
 > = z.object({
   properties: z.record(
     z.union([
-      z.lazy(() => PropertiesSingleSelect$inboundSchema),
-      z.lazy(() => PropertiesMultiSelect$inboundSchema),
-      z.lazy(() => PropertiesObject$inboundSchema),
-      z.lazy(() => PropertiesArray$inboundSchema),
-      z.lazy(() => PropertiesFile$inboundSchema),
       z.lazy(() => PropertiesText$inboundSchema),
       z.lazy(() => PropertiesNumber$inboundSchema),
       z.lazy(() => PropertiesDate$inboundSchema),
+      z.lazy(() => PropertiesSingleSelect$inboundSchema),
+      z.lazy(() => PropertiesMultiSelect$inboundSchema),
       z.lazy(() => PropertiesCheckbox$inboundSchema),
+      z.lazy(() => PropertiesObject$inboundSchema),
+      z.lazy(() => PropertiesArray$inboundSchema),
+      z.lazy(() => PropertiesFile$inboundSchema),
     ]),
   ),
 });

@@ -9,6 +9,7 @@ export const GetToolsCategoryParameterCategory = {
   Hris: "hris",
   Ats: "ats",
   Assessment: "assessment",
+  Lms: "lms",
 } as const;
 export type GetToolsCategoryParameterCategory = ClosedEnum<
   typeof GetToolsCategoryParameterCategory
