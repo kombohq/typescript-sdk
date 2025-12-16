@@ -13,5 +13,5 @@ let value: IntegrationDeletedWebhookPayloadCategory = "HRIS";
 ## Values
 
 ```typescript
-"HRIS" | "ATS" | "ASSESSMENT"
+"HRIS" | "ATS" | "ASSESSMENT" | "LMS"
 ```

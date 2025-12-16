@@ -18,4 +18,4 @@ let value: GetAtsApplicationsPositiveResponseQuestionBoolean = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `remote_id`        | *string*           | :heavy_check_mark: | N/A                |
 | `title`            | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"BOOLEAN"*        | :heavy_check_mark: | N/A                |

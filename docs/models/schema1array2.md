@@ -11,7 +11,7 @@ let value: Schema1Array2 = {
   type: "array",
   item_type: {
     label: "<value>",
-    required: false,
+    required: true,
     type: "checkbox",
   },
 };
@@ -25,7 +25,7 @@ let value: Schema1Array2 = {
 | `required`                                                   | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          |
 | `description`                                                | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
 | `unified_key`                                                | [models.Schema1UnifiedKey7](../models/schema1unifiedkey7.md) | :heavy_minus_sign:                                           | N/A                                                          |
-| `type`                                                       | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `type`                                                       | *"array"*                                                    | :heavy_check_mark:                                           | N/A                                                          |
 | `item_type`                                                  | *models.Schema2Union2*                                       | :heavy_check_mark:                                           | N/A                                                          |
 | `min_items`                                                  | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
 | `max_items`                                                  | *number*                                                     | :heavy_minus_sign:                                           | N/A                                                          |

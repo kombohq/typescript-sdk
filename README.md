@@ -135,14 +135,14 @@ const kombo = new Kombo({
 <details open>
 <summary>Available methods</summary>
 
-### [assessment](docs/sdks/assessment/README.md)
+### [Assessment](docs/sdks/assessment/README.md)
 
 * [getPackages](docs/sdks/assessment/README.md#getpackages) - Get packages
 * [setPackages](docs/sdks/assessment/README.md#setpackages) - Set packages
 * [getOpenOrders](docs/sdks/assessment/README.md#getopenorders) - Get open orders
 * [updateOrderResult](docs/sdks/assessment/README.md#updateorderresult) - Update order result
 
-### [ats](docs/sdks/ats/README.md)
+### [Ats](docs/sdks/ats/README.md)
 
 * [getApplications](docs/sdks/ats/README.md#getapplications) - Get applications
 * [moveApplicationToStage](docs/sdks/ats/README.md#moveapplicationtostage) - Move application to stage
@@ -168,12 +168,12 @@ const kombo = new Kombo({
 * [getInterviews](docs/sdks/ats/README.md#getinterviews) - Get interviews
 * [importTrackedApplication](docs/sdks/ats/README.md#importtrackedapplication) - Import tracked application
 
-### [connect](docs/sdks/connect/README.md)
+### [Connect](docs/sdks/connect/README.md)
 
 * [createConnectionLink](docs/sdks/connect/README.md#createconnectionlink) - Create connection link
 * [getIntegrationByToken](docs/sdks/connect/README.md#getintegrationbytoken) - Get integration by token
 
-### [general](docs/sdks/general/README.md)
+### [General](docs/sdks/general/README.md)
 
 * [checkApiKey](docs/sdks/general/README.md#checkapikey) - Check API key
 * [triggerSync](docs/sdks/general/README.md#triggersync) - Trigger sync
@@ -187,7 +187,7 @@ const kombo = new Kombo({
 * [updateCustomFieldMapping](docs/sdks/general/README.md#updatecustomfieldmapping) - Put custom field mappings
 * [getTools](docs/sdks/general/README.md#gettools) - Get tools
 
-### [hris](docs/sdks/hris/README.md)
+### [Hris](docs/sdks/hris/README.md)
 
 * [getEmployees](docs/sdks/hris/README.md#getemployees) - Get employees
 * [getEmployeeForm](docs/sdks/hris/README.md#getemployeeform) - Get employee form

@@ -749,6 +749,16 @@ export type PostAtsJobsJobIdApplicationsRequestBodyPiloga = {
 };
 
 /**
+ * Fields specific to Pinpoint.
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyPinpoint = {
+  /**
+   * Fields that we will pass through to Pinpoint's `Candidate` object.
+   */
+  candidate?: { [k: string]: any } | undefined;
+};
+
+/**
  * Additional fields that we will pass through to specific ATS systems.
  */
 export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
@@ -833,6 +843,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
    * Fields specific to P&I Loga.
    */
   piloga?: PostAtsJobsJobIdApplicationsRequestBodyPiloga | undefined;
+  /**
+   * Fields specific to Pinpoint.
+   */
+  pinpoint?: PostAtsJobsJobIdApplicationsRequestBodyPinpoint | undefined;
 };
 
 /**
@@ -3079,6 +3093,32 @@ export function postAtsJobsJobIdApplicationsRequestBodyPilogaToJSON(
 }
 
 /** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyPinpoint$Outbound = {
+  candidate?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyPinpoint$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyPinpoint$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyPinpoint
+  > = z.object({
+    candidate: z.record(z.any()).optional(),
+  });
+
+export function postAtsJobsJobIdApplicationsRequestBodyPinpointToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyPinpoint:
+    PostAtsJobsJobIdApplicationsRequestBodyPinpoint,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyPinpoint$outboundSchema.parse(
+      postAtsJobsJobIdApplicationsRequestBodyPinpoint,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
   successfactors?:
     | PostAtsJobsJobIdApplicationsRequestBodySuccessfactors$Outbound
@@ -3124,6 +3164,9 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
     | undefined;
   umantis?: PostAtsJobsJobIdApplicationsRequestBodyUmantis$Outbound | undefined;
   piloga?: PostAtsJobsJobIdApplicationsRequestBodyPiloga$Outbound | undefined;
+  pinpoint?:
+    | PostAtsJobsJobIdApplicationsRequestBodyPinpoint$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -3192,6 +3235,9 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$outboundSchema:
     ).optional(),
     piloga: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyPiloga$outboundSchema
+    ).optional(),
+    pinpoint: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyPinpoint$outboundSchema
     ).optional(),
   });
 

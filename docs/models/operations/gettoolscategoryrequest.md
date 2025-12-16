@@ -6,7 +6,7 @@
 import { GetToolsCategoryRequest } from "@kombo-api/sdk/models/operations";
 
 let value: GetToolsCategoryRequest = {
-  category: "hris",
+  category: "ats",
 };
 ```
 

@@ -1,6 +1,6 @@
 # SyncFinishedWebhookPayloadIntegrationCategory
 
-The category of the integration (HRIS, ATS, or ASSESSMENT).
+The category of the integration (HRIS, ATS, ASSESSMENT, or LMS).
 
 ## Example Usage
 
@@ -13,5 +13,5 @@ let value: SyncFinishedWebhookPayloadIntegrationCategory = "ATS";
 ## Values
 
 ```typescript
-"HRIS" | "ATS" | "ASSESSMENT"
+"HRIS" | "ATS" | "ASSESSMENT" | "LMS"
 ```

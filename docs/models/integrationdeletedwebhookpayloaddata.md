@@ -8,7 +8,7 @@ import { IntegrationDeletedWebhookPayloadData } from "@kombo-api/sdk/models";
 let value: IntegrationDeletedWebhookPayloadData = {
   id: "<id>",
   tool: "<value>",
-  category: "ATS",
+  category: "ASSESSMENT",
   end_user: {
     organization_name: "<value>",
     creator_email: "Chanel.Bechtelar40@gmail.com",

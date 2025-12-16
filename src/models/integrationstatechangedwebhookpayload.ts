@@ -22,15 +22,16 @@ export type IntegrationStateChangedWebhookPayloadType = ClosedEnum<
 >;
 
 /**
- * The category of the integration (HRIS, ATS, or ASSESSMENT).
+ * The category of the integration (HRIS, ATS, ASSESSMENT, or LMS).
  */
 export const IntegrationStateChangedWebhookPayloadIntegrationCategory = {
   Hris: "HRIS",
   Ats: "ATS",
   Assessment: "ASSESSMENT",
+  Lms: "LMS",
 } as const;
 /**
- * The category of the integration (HRIS, ATS, or ASSESSMENT).
+ * The category of the integration (HRIS, ATS, ASSESSMENT, or LMS).
  */
 export type IntegrationStateChangedWebhookPayloadIntegrationCategory =
   ClosedEnum<typeof IntegrationStateChangedWebhookPayloadIntegrationCategory>;
@@ -89,7 +90,7 @@ export type IntegrationStateChangedWebhookPayloadData = {
    */
   integration_id: string;
   /**
-   * The category of the integration (HRIS, ATS, or ASSESSMENT).
+   * The category of the integration (HRIS, ATS, ASSESSMENT, or LMS).
    */
   integration_category:
     IntegrationStateChangedWebhookPayloadIntegrationCategory;

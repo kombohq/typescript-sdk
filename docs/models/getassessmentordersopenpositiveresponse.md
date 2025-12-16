@@ -14,11 +14,11 @@ let value: GetAssessmentOrdersOpenPositiveResponse = {
         id: "B5KQKhAgTv6ZwzrfAbqbhipd",
         package_id: "typescript_test",
         candidate: {
+          remote_id: "12345",
           email: "john.doe@gmail.com",
           first_name: "John",
           last_name: "Doe",
           phone: "+1 123 456 7890",
-          remote_id: "12345",
         },
         application: {
           remote_id: "54321",
@@ -57,5 +57,5 @@ let value: GetAssessmentOrdersOpenPositiveResponse = {
 
 | Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
 | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `status`                                                                                                       | *string*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `status`                                                                                                       | *"success"*                                                                                                    | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
 | `data`                                                                                                         | [models.GetAssessmentOrdersOpenPositiveResponseData](../models/getassessmentordersopenpositiveresponsedata.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |

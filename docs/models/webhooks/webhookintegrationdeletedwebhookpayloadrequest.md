@@ -13,7 +13,7 @@ let value: WebhookIntegrationDeletedWebhookPayloadRequest = {
     data: {
       id: "<id>",
       tool: "<value>",
-      category: "ASSESSMENT",
+      category: "LMS",
       end_user: {
         organization_name: "<value>",
         creator_email: "Chanel.Bechtelar40@gmail.com",

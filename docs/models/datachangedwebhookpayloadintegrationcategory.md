@@ -1,6 +1,6 @@
 # DataChangedWebhookPayloadIntegrationCategory
 
-The category of the integration (HRIS, ATS, or ASSESSMENT).
+The category of the integration (HRIS, ATS, ASSESSMENT, or LMS).
 
 ## Example Usage
 
@@ -13,5 +13,5 @@ let value: DataChangedWebhookPayloadIntegrationCategory = "ASSESSMENT";
 ## Values
 
 ```typescript
-"HRIS" | "ATS" | "ASSESSMENT"
+"HRIS" | "ATS" | "ASSESSMENT" | "LMS"
 ```

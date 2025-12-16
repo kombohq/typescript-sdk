@@ -11,7 +11,7 @@ let value: DataChangedWebhookPayload = {
   data: {
     integration_id: "<id>",
     integration_tool: "<value>",
-    integration_category: "ATS",
+    integration_category: "ASSESSMENT",
     changed_models: [],
   },
 };

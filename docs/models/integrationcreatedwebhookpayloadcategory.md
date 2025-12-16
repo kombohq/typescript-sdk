@@ -7,11 +7,11 @@ The category of the integration.
 ```typescript
 import { IntegrationCreatedWebhookPayloadCategory } from "@kombo-api/sdk/models";
 
-let value: IntegrationCreatedWebhookPayloadCategory = "ASSESSMENT";
+let value: IntegrationCreatedWebhookPayloadCategory = "LMS";
 ```
 
 ## Values
 
 ```typescript
-"HRIS" | "ATS" | "ASSESSMENT"
+"HRIS" | "ATS" | "ASSESSMENT" | "LMS"
 ```
