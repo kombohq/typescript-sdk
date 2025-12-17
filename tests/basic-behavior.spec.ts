@@ -429,7 +429,7 @@ describeSdkSuite("Basic SDK Behavior", () => {
       });
 
       const tags = await ctx.kombo.ats.getTags({
-        ids: ["tag1"],
+        updated_after: new Date("2024-01-01T00:00:00.000Z"),
       });
 
       for await (const _page of tags) {
@@ -440,10 +440,11 @@ describeSdkSuite("Basic SDK Behavior", () => {
       expect(requests).toHaveLength(2);
 
       // Both requests should include the original query parameters
-      expect(requests[0].path).toContain("ids=tag1");
+      // Check that updated_after parameter is present (URL encoded)
+      expect(requests[0].path).toMatch(/updated_after=2024-01-01T00%3A00%3A00\.000Z/);
       expect(requests[0].path).not.toContain("cursor=");
 
-      expect(requests[1].path).toContain("ids=tag1");
+      expect(requests[1].path).toMatch(/updated_after=2024-01-01T00%3A00%3A00\.000Z/);
       expect(requests[1].path).toContain("cursor=cursor_for_page2");
     });
 
