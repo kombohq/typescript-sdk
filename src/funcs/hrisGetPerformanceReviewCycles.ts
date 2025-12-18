@@ -229,7 +229,7 @@ async function $do(
     >;
     "~next"?: { cursor: string };
   } => {
-    const nextCursor = dlv(responseData, "next");
+    const nextCursor = dlv(responseData, "data.next");
     if (typeof nextCursor !== "string") {
       return { next: () => null };
     }

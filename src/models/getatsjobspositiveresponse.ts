@@ -183,7 +183,7 @@ export const DisplayType2 = {
 export type DisplayType2 = ClosedEnum<typeof DisplayType2>;
 
 export type FormatNumber = {
-  display_type?: DisplayType2 | null | undefined;
+  display_type: DisplayType2 | null;
   max?: number | null | undefined;
   min?: number | null | undefined;
   type: "NUMBER";
