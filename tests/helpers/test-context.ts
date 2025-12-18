@@ -1,4 +1,4 @@
-import { describe, beforeAll, afterAll } from "vitest";
+import { describe, beforeAll, afterAll, afterEach } from "vitest";
 import nock from "nock";
 import { Kombo } from "../../src/index";
 
@@ -137,8 +137,11 @@ export function describeSdkSuite(name: string, fn: () => void) {
       nock.disableNetConnect();
     });
 
-    afterAll(() => {
+    afterEach(() => {
       nock.cleanAll();
+    });
+
+    afterAll(() => {
       nock.enableNetConnect();
     });
 
