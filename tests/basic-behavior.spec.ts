@@ -1,6 +1,5 @@
-import { it, expect, describe, beforeEach } from "vitest";
+import { it, expect, describe } from "vitest";
 import { TestContext, describeSdkSuite } from "./helpers/test-context";
-import nock from "nock";
 
 // TODO: test basic error handling behavior
 describeSdkSuite("Basic SDK Behavior", () => {
@@ -162,10 +161,6 @@ describeSdkSuite("Basic SDK Behavior", () => {
   });
 
   describe("Pagination Behavior", () => {
-    beforeEach(() => {
-      nock.cleanAll();
-    });
-
     it("should iterate through multiple pages", async () => {
       const ctx = new TestContext();
 
