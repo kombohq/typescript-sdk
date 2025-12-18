@@ -48,6 +48,7 @@ export type PostAtsJobsJobIdApplicationsRequestBodyLocation = {
    */
   country: string;
   state?: string | undefined;
+  street_1?: string | undefined;
   zip_code?: string | undefined;
 };
 
@@ -1080,6 +1081,7 @@ export type PostAtsJobsJobIdApplicationsRequestBodyLocation$Outbound = {
   city?: string | undefined;
   country: string;
   state?: string | undefined;
+  street_1?: string | undefined;
   zip_code?: string | undefined;
 };
 
@@ -1093,6 +1095,7 @@ export const PostAtsJobsJobIdApplicationsRequestBodyLocation$outboundSchema:
     city: z.string().optional(),
     country: z.string(),
     state: z.string().optional(),
+    street_1: z.string().optional(),
     zip_code: z.string().optional(),
   });
 
