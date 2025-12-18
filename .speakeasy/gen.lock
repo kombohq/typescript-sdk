@@ -3,17 +3,17 @@ id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
   docChecksum: 9b05a214555fdbadc6d870c22f2384d3
   docVersion: 1.0.0
-  speakeasyVersion: 1.680.0
-  generationVersion: 2.788.4
-  releaseVersion: 0.3.1
-  configChecksum: 97db7433ed898c5bb0a227c0964d4f24
+  speakeasyVersion: 1.680.1
+  generationVersion: 2.788.5
+  releaseVersion: 0.3.2
+  configChecksum: be599b2d12a12a0946ed0328cfd725be
   repoURL: https://github.com/kombohq/typescript-sdk.git
   installationURL: https://github.com/kombohq/typescript-sdk
   published: true
 persistentEdits:
-  generation_id: ea055908-1c50-4179-b2e2-8558ba651733
-  pristine_commit_hash: c430fae39b837a99e5bb77725b26fd590b7aaec0
-  pristine_tree_hash: 67f45714f62158be5d9d4d6f4a5d997159885742
+  generation_id: 442e78c0-3b7f-407a-8251-e1f8e9018d72
+  pristine_commit_hash: 34a50490a32305c66048bb5c560e7e5ec9428549
+  pristine_tree_hash: 3de71c6f72efec8f957bcec20118d1bffd424b2a
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -3954,12 +3954,12 @@ trackedFiles:
     pristine_git_object: 29289cf79efbc687c7daf5b66266980eb719cdc8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:dec7815569f0d46a7009484d91b994d7eed25985
-    pristine_git_object: 4c8c155fdc9e096f0fe14e56583216ff83559000
+    last_write_checksum: sha1:751a6c9fbe56e0babb7af5388cff69c0947ca129
+    pristine_git_object: bde65652ac62da8f40aa25b8837b44fe2b61dfba
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:a7ebfac5f7e8f1e123c550654db9d0c406bacf01
-    pristine_git_object: f1b94ba2df1028887bfec386a63530a1d6efc5bd
+    last_write_checksum: sha1:b6702b82c3d13e30dcb2348b23ca57b02e8d252b
+    pristine_git_object: 479cef426275680e93c48f658b03801b249c81e3
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:b9f55b890c4f9f22b9bd199cce5fcc6fb3d15661
@@ -4218,8 +4218,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:848e40e6cae8a65008089e24c20575eaabd463df
-    pristine_git_object: 5b4034413a7695126dd82a914219f3204783e0b9
+    last_write_checksum: sha1:b562a5c6ad7e11dfb6e88cfc84effdc961b5ce1a
+    pristine_git_object: 8ac781865e4d490a2ef50f5b6f354e0301cff491
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -11366,7 +11366,6 @@ generatedTests:
   unlinkSharedEnvVariable: "2025-10-24T00:07:28Z"
   updateStaticIps: "2025-10-24T00:07:28Z"
   getProjectClientCerts: "2025-10-27T19:04:15Z"
-releaseNotes: "## Typescript SDK Changes:\n* `kombo.ats.createCandidate()`: \n  *  `request.candidate.location.street1` **Added**\n* `kombo.ats.createApplication()`: \n  *  `request.body.candidate.location.street1` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore
