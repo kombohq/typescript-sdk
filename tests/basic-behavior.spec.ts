@@ -1,7 +1,6 @@
 import { it, expect, describe } from "vitest";
 import { TestContext, describeSdkSuite } from "./helpers/test-context";
 
-// TODO: test basic error handling behavior
 describeSdkSuite("Basic SDK Behavior", () => {
   it("should include API key in Authorization header", async () => {
     const ctx = new TestContext({ apiKey: "my-custom-api-key" });
