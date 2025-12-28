@@ -40,9 +40,7 @@ let value: GetHrisEmployeesResponse = {
           home_address: {
             city: "Berlin",
             country: "DE",
-            raw: "Sonnenallee 63\n"
-              + "12045 Berlin\n"
-              + "Germany",
+            raw: "Sonnenallee 63\n12045 Berlin\nGermany",
             state: "Berlin",
             street_1: "Sonnenallee 63",
             street_2: null,
@@ -125,9 +123,7 @@ let value: GetHrisEmployeesResponse = {
             address: {
               city: "Berlin",
               country: "DE",
-              raw: "Sonnenallee 63\n"
-                + "12045 Berlin, Berlin\n"
-                + "Germany",
+              raw: "Sonnenallee 63\n12045 Berlin, Berlin\nGermany",
               state: "Berlin",
               street_1: "Sonnenallee 63",
               street_2: null,
@@ -141,9 +137,7 @@ let value: GetHrisEmployeesResponse = {
             address: {
               city: "Berlin",
               country: "DE",
-              raw: "Sonnenallee 63\n"
-                + "12045 Berlin, Berlin\n"
-                + "Germany",
+              raw: "Sonnenallee 63\n12045 Berlin, Berlin\nGermany",
               state: "Berlin",
               street_1: "Sonnenallee 63",
               street_2: null,
