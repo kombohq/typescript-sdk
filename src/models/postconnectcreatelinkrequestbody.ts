@@ -106,6 +106,7 @@ export const IntegrationTool = {
   Gusto: "gusto",
   Breathehr: "breathehr",
   Catalystone: "catalystone",
+  Ceipal: "ceipal",
   Mirus: "mirus",
   Alexishr: "alexishr",
   Simployer: "simployer",

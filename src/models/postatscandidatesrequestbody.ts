@@ -838,6 +838,26 @@ export type PostAtsCandidatesRequestBodyPinpoint = {
 };
 
 /**
+ * Additional candidate fields that will be passed to the Coveto candidate creation.
+ */
+export type PostAtsCandidatesRequestBodyCovetorestCandidate = {
+  /**
+   * The mandant field for the candidate in Coveto.
+   */
+  mandant?: number | undefined;
+};
+
+/**
+ * Fields specific to Coveto REST.
+ */
+export type PostAtsCandidatesRequestBodyCovetorest = {
+  /**
+   * Additional candidate fields that will be passed to the Coveto candidate creation.
+   */
+  candidate?: PostAtsCandidatesRequestBodyCovetorestCandidate | undefined;
+};
+
+/**
  * Additional fields that we will pass through to specific ATS systems.
  */
 export type PostAtsCandidatesRequestBodyRemoteFields = {
@@ -922,6 +942,10 @@ export type PostAtsCandidatesRequestBodyRemoteFields = {
    * Fields specific to Pinpoint.
    */
   pinpoint?: PostAtsCandidatesRequestBodyPinpoint | undefined;
+  /**
+   * Fields specific to Coveto REST.
+   */
+  covetorest?: PostAtsCandidatesRequestBodyCovetorest | undefined;
 };
 
 export type PostAtsCandidatesRequestBody = {
@@ -3118,6 +3142,61 @@ export function postAtsCandidatesRequestBodyPinpointToJSON(
 }
 
 /** @internal */
+export type PostAtsCandidatesRequestBodyCovetorestCandidate$Outbound = {
+  mandant?: number | undefined;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyCovetorestCandidate$outboundSchema:
+  z.ZodType<
+    PostAtsCandidatesRequestBodyCovetorestCandidate$Outbound,
+    z.ZodTypeDef,
+    PostAtsCandidatesRequestBodyCovetorestCandidate
+  > = z.object({
+    mandant: z.number().optional(),
+  });
+
+export function postAtsCandidatesRequestBodyCovetorestCandidateToJSON(
+  postAtsCandidatesRequestBodyCovetorestCandidate:
+    PostAtsCandidatesRequestBodyCovetorestCandidate,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyCovetorestCandidate$outboundSchema.parse(
+      postAtsCandidatesRequestBodyCovetorestCandidate,
+    ),
+  );
+}
+
+/** @internal */
+export type PostAtsCandidatesRequestBodyCovetorest$Outbound = {
+  candidate?:
+    | PostAtsCandidatesRequestBodyCovetorestCandidate$Outbound
+    | undefined;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyCovetorest$outboundSchema: z.ZodType<
+  PostAtsCandidatesRequestBodyCovetorest$Outbound,
+  z.ZodTypeDef,
+  PostAtsCandidatesRequestBodyCovetorest
+> = z.object({
+  candidate: z.lazy(() =>
+    PostAtsCandidatesRequestBodyCovetorestCandidate$outboundSchema
+  ).optional(),
+});
+
+export function postAtsCandidatesRequestBodyCovetorestToJSON(
+  postAtsCandidatesRequestBodyCovetorest:
+    PostAtsCandidatesRequestBodyCovetorest,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyCovetorest$outboundSchema.parse(
+      postAtsCandidatesRequestBodyCovetorest,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsCandidatesRequestBodyRemoteFields$Outbound = {
   successfactors?:
     | PostAtsCandidatesRequestBodySuccessfactors$Outbound
@@ -3144,6 +3223,7 @@ export type PostAtsCandidatesRequestBodyRemoteFields$Outbound = {
   umantis?: PostAtsCandidatesRequestBodyUmantis$Outbound | undefined;
   piloga?: PostAtsCandidatesRequestBodyPiloga$Outbound | undefined;
   pinpoint?: PostAtsCandidatesRequestBodyPinpoint$Outbound | undefined;
+  covetorest?: PostAtsCandidatesRequestBodyCovetorest$Outbound | undefined;
 };
 
 /** @internal */
@@ -3201,6 +3281,9 @@ export const PostAtsCandidatesRequestBodyRemoteFields$outboundSchema: z.ZodType<
     .optional(),
   pinpoint: z.lazy(() => PostAtsCandidatesRequestBodyPinpoint$outboundSchema)
     .optional(),
+  covetorest: z.lazy(() =>
+    PostAtsCandidatesRequestBodyCovetorest$outboundSchema
+  ).optional(),
 });
 
 export function postAtsCandidatesRequestBodyRemoteFieldsToJSON(
