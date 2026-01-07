@@ -125,6 +125,7 @@ async function $do(
     }, { explode: false }),
     encodeFormQuery({
       "cursor": payload?.cursor,
+      "ignore_unsupported_filters": payload?.ignore_unsupported_filters,
       "include_deleted": payload?.include_deleted,
       "name_contains": payload?.name_contains,
       "page_size": payload?.page_size,

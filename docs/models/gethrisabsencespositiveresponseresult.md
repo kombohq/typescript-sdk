@@ -19,8 +19,8 @@ let value: GetHrisAbsencesPositiveResponseResult = {
   unit: "HOURS",
   employee_note: "<value>",
   type_id: "<id>",
-  changed_at: new Date("2025-08-16T01:56:36.907Z"),
-  remote_deleted_at: new Date("2023-06-18T08:36:50.542Z"),
+  changed_at: new Date("2026-08-16T01:56:36.907Z"),
+  remote_deleted_at: new Date("2024-06-17T08:36:50.542Z"),
   type: {
     id: "xzZoKssDaMZAd62kxayzzQvD",
     remote_id: "91",

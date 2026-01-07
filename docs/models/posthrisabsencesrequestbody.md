@@ -8,8 +8,8 @@ import { PostHrisAbsencesRequestBody } from "@kombo-api/sdk/models";
 let value: PostHrisAbsencesRequestBody = {
   employee_id: "<id>",
   absence_type_id: "<id>",
-  start_date: new Date("2023-08-28T13:20:22.412Z"),
-  end_date: new Date("2024-11-29T18:44:41.543Z"),
+  start_date: new Date("2024-08-27T13:20:22.412Z"),
+  end_date: new Date("2025-11-29T18:44:41.543Z"),
   employee_note: "<value>",
 };
 ```

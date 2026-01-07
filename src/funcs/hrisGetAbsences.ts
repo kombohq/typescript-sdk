@@ -117,6 +117,7 @@ async function $do(
       "date_from": payload?.date_from,
       "date_until": payload?.date_until,
       "employee_id": payload?.employee_id,
+      "ignore_unsupported_filters": payload?.ignore_unsupported_filters,
       "include_deleted": payload?.include_deleted,
       "page_size": payload?.page_size,
       "updated_after": payload?.updated_after,

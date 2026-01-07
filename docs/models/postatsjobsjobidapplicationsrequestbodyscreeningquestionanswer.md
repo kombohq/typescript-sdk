@@ -7,7 +7,7 @@ import { PostAtsJobsJobIdApplicationsRequestBodyScreeningQuestionAnswer } from "
 
 let value: PostAtsJobsJobIdApplicationsRequestBodyScreeningQuestionAnswer = {
   question_id: "<id>",
-  answer: "2023-12-19T07:42:19.763Z",
+  answer: "2024-12-18T07:42:19.763Z",
 };
 ```
 
