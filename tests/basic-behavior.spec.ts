@@ -105,7 +105,7 @@ describeSdkSuite("Basic SDK Behavior", () => {
     // Verify and snapshot the request details
     const request = ctx.getLastRequest();
     expect(request.path).toMatchInlineSnapshot(
-      `"/v1/ats/jobs?ids=CPDifhHr7izJhKHmGPkXqknC%2CJ7znt8TJRiwPVA7paC2iCh8u&statuses=OPEN%2CCLOSED&include_deleted=false&page_size=100"`
+      `"/v1/ats/jobs?ids=CPDifhHr7izJhKHmGPkXqknC%2CJ7znt8TJRiwPVA7paC2iCh8u&statuses=OPEN%2CCLOSED&ignore_unsupported_filters=false&include_deleted=false&page_size=100"`
     );
   });
 
