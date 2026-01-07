@@ -7,7 +7,7 @@ import { GetAtsApplicationsPositiveResponseScreeningQuestionAnswer6 } from "@kom
 
 let value: GetAtsApplicationsPositiveResponseScreeningQuestionAnswer6 = {
   answer: {
-    date: new Date("2024-01-19T23:06:00.901Z"),
+    date: new Date("2023-01-19T23:06:00.901Z"),
   },
   question: {
     remote_id: "<id>",

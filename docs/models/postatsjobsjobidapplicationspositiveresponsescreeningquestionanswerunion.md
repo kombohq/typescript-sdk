@@ -93,7 +93,7 @@ const value:
   models.PostAtsJobsJobIdApplicationsPositiveResponseScreeningQuestionAnswer6 =
     {
       answer: {
-        date: new Date("2025-11-01T09:59:19.800Z"),
+        date: new Date("2024-11-01T09:59:19.800Z"),
       },
       question: {
         remote_id: "<id>",

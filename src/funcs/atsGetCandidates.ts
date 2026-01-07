@@ -116,7 +116,6 @@ async function $do(
       "cursor": payload?.cursor,
       "email": payload?.email,
       "first_name": payload?.first_name,
-      "ignore_unsupported_filters": payload?.ignore_unsupported_filters,
       "include_deleted": payload?.include_deleted,
       "last_name": payload?.last_name,
       "page_size": payload?.page_size,

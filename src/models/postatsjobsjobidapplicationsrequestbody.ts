@@ -760,28 +760,6 @@ export type PostAtsJobsJobIdApplicationsRequestBodyPinpoint = {
 };
 
 /**
- * Additional candidate fields that will be passed to the Coveto candidate creation.
- */
-export type PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate = {
-  /**
-   * The mandant field for the candidate in Coveto.
-   */
-  mandant?: number | undefined;
-};
-
-/**
- * Fields specific to Coveto REST.
- */
-export type PostAtsJobsJobIdApplicationsRequestBodyCovetorest = {
-  /**
-   * Additional candidate fields that will be passed to the Coveto candidate creation.
-   */
-  candidate?:
-    | PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate
-    | undefined;
-};
-
-/**
  * Additional fields that we will pass through to specific ATS systems.
  */
 export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
@@ -870,10 +848,6 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
    * Fields specific to Pinpoint.
    */
   pinpoint?: PostAtsJobsJobIdApplicationsRequestBodyPinpoint | undefined;
-  /**
-   * Fields specific to Coveto REST.
-   */
-  covetorest?: PostAtsJobsJobIdApplicationsRequestBodyCovetorest | undefined;
 };
 
 /**
@@ -3148,62 +3122,6 @@ export function postAtsJobsJobIdApplicationsRequestBodyPinpointToJSON(
 }
 
 /** @internal */
-export type PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$Outbound =
-  {
-    mandant?: number | undefined;
-  };
-
-/** @internal */
-export const PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$outboundSchema:
-  z.ZodType<
-    PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$Outbound,
-    z.ZodTypeDef,
-    PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate
-  > = z.object({
-    mandant: z.number().optional(),
-  });
-
-export function postAtsJobsJobIdApplicationsRequestBodyCovetorestCandidateToJSON(
-  postAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate:
-    PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate,
-): string {
-  return JSON.stringify(
-    PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$outboundSchema
-      .parse(postAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate),
-  );
-}
-
-/** @internal */
-export type PostAtsJobsJobIdApplicationsRequestBodyCovetorest$Outbound = {
-  candidate?:
-    | PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$Outbound
-    | undefined;
-};
-
-/** @internal */
-export const PostAtsJobsJobIdApplicationsRequestBodyCovetorest$outboundSchema:
-  z.ZodType<
-    PostAtsJobsJobIdApplicationsRequestBodyCovetorest$Outbound,
-    z.ZodTypeDef,
-    PostAtsJobsJobIdApplicationsRequestBodyCovetorest
-  > = z.object({
-    candidate: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$outboundSchema
-    ).optional(),
-  });
-
-export function postAtsJobsJobIdApplicationsRequestBodyCovetorestToJSON(
-  postAtsJobsJobIdApplicationsRequestBodyCovetorest:
-    PostAtsJobsJobIdApplicationsRequestBodyCovetorest,
-): string {
-  return JSON.stringify(
-    PostAtsJobsJobIdApplicationsRequestBodyCovetorest$outboundSchema.parse(
-      postAtsJobsJobIdApplicationsRequestBodyCovetorest,
-    ),
-  );
-}
-
-/** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
   successfactors?:
     | PostAtsJobsJobIdApplicationsRequestBodySuccessfactors$Outbound
@@ -3251,9 +3169,6 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
   piloga?: PostAtsJobsJobIdApplicationsRequestBodyPiloga$Outbound | undefined;
   pinpoint?:
     | PostAtsJobsJobIdApplicationsRequestBodyPinpoint$Outbound
-    | undefined;
-  covetorest?:
-    | PostAtsJobsJobIdApplicationsRequestBodyCovetorest$Outbound
     | undefined;
 };
 
@@ -3326,9 +3241,6 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$outboundSchema:
     ).optional(),
     pinpoint: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyPinpoint$outboundSchema
-    ).optional(),
-    covetorest: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyCovetorest$outboundSchema
     ).optional(),
   });
 

@@ -14,7 +14,7 @@ let value: IntegrationDeletedWebhookPayloadData = {
     creator_email: "Chanel.Bechtelar40@gmail.com",
     origin_id: "<id>",
   },
-  deleted_at: new Date("2024-05-06T10:21:09.462Z"),
+  deleted_at: new Date("2023-05-07T10:21:09.462Z"),
 };
 ```
 

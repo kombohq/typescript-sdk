@@ -19,7 +19,9 @@ let value: GetHrisLegalEntitiesResponse = {
           address: {
             city: "Berlin",
             country: "DE",
-            raw: "Sonnenallee 63\n12045 Berlin, Berlin\nGermany",
+            raw: "Sonnenallee 63\n"
+              + "12045 Berlin, Berlin\n"
+              + "Germany",
             state: "Berlin",
             street_1: "Sonnenallee 63",
             street_2: null,

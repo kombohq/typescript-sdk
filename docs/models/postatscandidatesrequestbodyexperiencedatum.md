@@ -8,7 +8,7 @@ import { PostAtsCandidatesRequestBodyExperienceDatum } from "@kombo-api/sdk/mode
 let value: PostAtsCandidatesRequestBodyExperienceDatum = {
   company_name: "Rice Inc",
   title: "<value>",
-  start_date: new Date("2024-04-30T10:31:09.661Z"),
+  start_date: new Date("2023-05-01T10:31:09.661Z"),
 };
 ```
 

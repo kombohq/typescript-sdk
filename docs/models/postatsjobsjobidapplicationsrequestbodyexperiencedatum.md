@@ -8,7 +8,7 @@ import { PostAtsJobsJobIdApplicationsRequestBodyExperienceDatum } from "@kombo-a
 let value: PostAtsJobsJobIdApplicationsRequestBodyExperienceDatum = {
   company_name: "Jacobson, Paucek and Corkery",
   title: "<value>",
-  start_date: new Date("2024-04-21T10:16:47.623Z"),
+  start_date: new Date("2023-04-22T10:16:47.623Z"),
 };
 ```
 

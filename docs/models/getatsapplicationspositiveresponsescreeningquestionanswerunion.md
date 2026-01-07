@@ -87,7 +87,7 @@ const value: models.GetAtsApplicationsPositiveResponseScreeningQuestionAnswer5 =
 const value: models.GetAtsApplicationsPositiveResponseScreeningQuestionAnswer6 =
   {
     answer: {
-      date: new Date("2024-01-19T23:06:00.901Z"),
+      date: new Date("2023-01-19T23:06:00.901Z"),
     },
     question: {
       remote_id: "<id>",

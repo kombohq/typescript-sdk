@@ -9,7 +9,7 @@ let value: GetAssessmentPackagesPositiveResponsePackage = {
   id: "<id>",
   name: "<value>",
   description: "lest accurate towards at easily mysteriously final",
-  updated_at: new Date("2025-03-17T07:58:34.041Z"),
+  updated_at: new Date("2024-03-17T07:58:34.041Z"),
   type: "VIDEO_INTERVIEW",
 };
 ```

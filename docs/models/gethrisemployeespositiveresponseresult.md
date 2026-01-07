@@ -22,12 +22,12 @@ let value: GetHrisEmployeesPositiveResponseResult = {
   work_location_id: "<id>",
   legal_entity_id: "<id>",
   manager_id: "<id>",
-  date_of_birth: new Date("2025-06-06T01:19:06.075Z"),
-  start_date: new Date("2024-08-17T10:53:26.235Z"),
+  date_of_birth: new Date("2024-06-06T01:19:06.075Z"),
+  start_date: new Date("2023-08-18T10:53:26.235Z"),
   termination_date: null,
-  remote_created_at: new Date("2025-10-05T08:17:42.425Z"),
-  changed_at: new Date("2026-01-06T22:12:58.413Z"),
-  remote_deleted_at: new Date("2025-08-02T09:33:23.500Z"),
+  remote_created_at: new Date("2024-10-05T08:17:42.425Z"),
+  changed_at: new Date("2025-01-06T22:12:58.413Z"),
+  remote_deleted_at: new Date("2024-08-02T09:33:23.500Z"),
   custom_fields: {
     "key": "<value>",
     "key1": "<value>",
@@ -90,7 +90,9 @@ let value: GetHrisEmployeesPositiveResponseResult = {
     address: {
       city: "Berlin",
       country: "DE",
-      raw: "Sonnenallee 63\n12045 Berlin, Berlin\nGermany",
+      raw: "Sonnenallee 63\n"
+        + "12045 Berlin, Berlin\n"
+        + "Germany",
       state: "Berlin",
       street_1: "Sonnenallee 63",
       street_2: null,
@@ -104,7 +106,9 @@ let value: GetHrisEmployeesPositiveResponseResult = {
     address: {
       city: "Berlin",
       country: "DE",
-      raw: "Sonnenallee 63\n12045 Berlin, Berlin\nGermany",
+      raw: "Sonnenallee 63\n"
+        + "12045 Berlin, Berlin\n"
+        + "Germany",
       state: "Berlin",
       street_1: "Sonnenallee 63",
       street_2: null,
