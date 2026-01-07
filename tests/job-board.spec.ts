@@ -26,7 +26,7 @@ describeSdkSuite("Kombo ATS Jobs API", () => {
     // Verify and snapshot the request details
     const request = ctx.getLastRequest();
     expect(request.path).toMatchInlineSnapshot(
-      `"/v1/ats/jobs?include_deleted=false&page_size=100"`
+      `"/v1/ats/jobs?ignore_unsupported_filters=false&include_deleted=false&page_size=100"`
     );
   });
 });

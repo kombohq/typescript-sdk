@@ -7,4 +7,8 @@ run = 'OPENAPI_DOC_AUTH_TOKEN="$(doppler secrets get SDK_SPEC_ENDPOINT_TOKEN --p
 
 [tasks."test"]
 description = "Run the test suite"
-run = "npm test"
+run = "npm exec -- vitest run"
+
+[tasks."test:update"]
+description = "Run the test suite and update the snapshots"
+run = "npm exec -- vitest run --update"
