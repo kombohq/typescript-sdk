@@ -5,15 +5,15 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.682.0
   generationVersion: 2.791.1
-  releaseVersion: 0.3.3
-  configChecksum: ab29e82c61c906b60a931b2354ab04e5
+  releaseVersion: 0.3.4
+  configChecksum: 6ae56048d1e6a6d7c71088d8d1bf06a9
   repoURL: https://github.com/kombohq/typescript-sdk.git
   installationURL: https://github.com/kombohq/typescript-sdk
   published: true
 persistentEdits:
-  generation_id: 3d480898-38ea-4c13-8908-5cb137e5a2a3
-  pristine_commit_hash: 86811254b433ba8739d041853f3b701d8e88dbd1
-  pristine_tree_hash: 30a198db163f1c85632511180b84c0b5c174fdbf
+  generation_id: ce409730-5eaf-4b43-ac6c-c5557ad1d32b
+  pristine_commit_hash: 020d04ca1fd3d37f83196c936ee24cff58e04333
+  pristine_tree_hash: c64ea68775212cd69178793066cdbdfb7c1c5a41
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -3974,12 +3974,12 @@ trackedFiles:
     pristine_git_object: 29289cf79efbc687c7daf5b66266980eb719cdc8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:4c87edd259dd6e1e52650be09663cd8a176fc2fc
-    pristine_git_object: 401d38df867694d9b7a69eb8ba4eaad205a0461f
+    last_write_checksum: sha1:962cc403ca9dde3b01122f58e742cb05ce826f8e
+    pristine_git_object: 64362dce0afae3227b2fe62240a05219a9afcf7d
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:717cca19279aebbca52060b96786107ac804cda9
-    pristine_git_object: 4c19ec5719c3fe83bdccdd13c725407569314e66
+    last_write_checksum: sha1:dc781898f3a619c12ea7376313677fef3993c6a5
+    pristine_git_object: a85b8e8404cbf52fded10576c0235056356598a5
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:b9f55b890c4f9f22b9bd199cce5fcc6fb3d15661
@@ -4238,8 +4238,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:a35ac0018b7d53c6ec45979a73ebf287f3762726
-    pristine_git_object: 477fc5cde348e90461bbdb6ea785fd7eab6075d4
+    last_write_checksum: sha1:55200188d283140ec76119bd26e7ee3b52099d6e
+    pristine_git_object: 98f6e35707a5b97f14f21470c13dcff659c9f4c0
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -11470,7 +11470,6 @@ generatedTests:
   unlinkSharedEnvVariable: "2025-10-24T00:07:28Z"
   updateStaticIps: "2025-10-24T00:07:28Z"
   getProjectClientCerts: "2025-10-27T19:04:15Z"
-releaseNotes: "## Typescript SDK Changes:\n* `kombo.hris.getEmployees()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.hris.getEmployeeDocumentCategories()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.hris.getGroups()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.hris.getEmployments()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.hris.getLocations()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.hris.getAbsenceTypes()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.hris.getTimeOffBalances()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.hris.getAbsences()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.hris.getLegalEntities()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.hris.getTimesheets()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.hris.getPerformanceReviewCycles()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.hris.getPerformanceReviews()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.ats.getApplications()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.ats.rejectApplication()`: \n  *  `request.body.remoteFields.teamtailor` **Added**\n* `kombo.ats.getCandidates()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.ats.createCandidate()`: \n  *  `request.remoteFields.covetorest` **Added**\n* `kombo.ats.getTags()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.ats.getApplicationStages()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.ats.getJobs()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.ats.createApplication()`: \n  *  `request.body.remoteFields.covetorest` **Added**\n* `kombo.ats.getUsers()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.ats.getOffers()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.ats.getRejectionReasons()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n* `kombo.ats.getInterviews()`: \n  *  `request.ignoreUnsupportedFilters` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore
