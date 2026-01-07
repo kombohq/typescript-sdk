@@ -6,7 +6,7 @@
 import { GetAtsApplicationsPositiveResponseAnswer6 } from "@kombo-api/sdk/models";
 
 let value: GetAtsApplicationsPositiveResponseAnswer6 = {
-  date: new Date("2025-06-19T09:55:20.014Z"),
+  date: new Date("2026-06-19T09:55:20.014Z"),
 };
 ```
 

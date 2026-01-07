@@ -9,17 +9,17 @@ let value: GetAtsOffersPositiveResponseResult = {
   id: "<id>",
   remote_id: "<id>",
   status: null,
-  employment_start_date: new Date("2025-01-18T05:59:18.207Z"),
+  employment_start_date: new Date("2026-01-18T05:59:18.207Z"),
   application_id: "<id>",
   custom_fields: {
     "key": "<value>",
     "key1": "<value>",
     "key2": "<value>",
   },
-  changed_at: new Date("2024-04-17T17:20:26.425Z"),
-  remote_deleted_at: new Date("2023-05-28T16:08:19.897Z"),
-  remote_created_at: new Date("2024-12-18T09:53:02.474Z"),
-  remote_updated_at: new Date("2025-02-12T12:40:39.416Z"),
+  changed_at: new Date("2025-04-17T17:20:26.425Z"),
+  remote_deleted_at: new Date("2024-05-27T16:08:19.897Z"),
+  remote_created_at: new Date("2025-12-18T09:53:02.474Z"),
+  remote_updated_at: new Date("2026-02-12T12:40:39.416Z"),
   application: null,
 };
 ```

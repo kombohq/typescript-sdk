@@ -8,8 +8,8 @@ import { SyncFinishedWebhookPayloadData } from "@kombo-api/sdk/models";
 let value: SyncFinishedWebhookPayloadData = {
   sync_id: "<id>",
   sync_state: "<value>",
-  sync_started_at: new Date("2023-11-29T06:47:24.021Z"),
-  sync_ended_at: new Date("2024-07-22T21:53:56.960Z"),
+  sync_started_at: new Date("2024-11-28T06:47:24.021Z"),
+  sync_ended_at: new Date("2025-07-22T21:53:56.960Z"),
   sync_duration_seconds: 411840,
   integration_id: "<id>",
   integration_tool: "<value>",
