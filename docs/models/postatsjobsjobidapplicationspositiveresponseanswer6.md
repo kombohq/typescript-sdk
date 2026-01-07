@@ -6,7 +6,7 @@
 import { PostAtsJobsJobIdApplicationsPositiveResponseAnswer6 } from "@kombo-api/sdk/models";
 
 let value: PostAtsJobsJobIdApplicationsPositiveResponseAnswer6 = {
-  date: new Date("2024-03-24T12:36:46.543Z"),
+  date: new Date("2025-03-24T12:36:46.543Z"),
 };
 ```
 

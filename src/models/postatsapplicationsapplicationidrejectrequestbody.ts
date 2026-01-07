@@ -28,6 +28,16 @@ export type PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse = {
 };
 
 /**
+ * Fields specific to Teamtailor.
+ */
+export type PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor = {
+  /**
+   * The remote ID of the user that will be displayed in the UI as the one that performed the action. If not provided, the first admin user will be used.
+   */
+  user_id?: string | undefined;
+};
+
+/**
  * Workable specific remote fields for ATS actions.
  */
 export type PostAtsApplicationsApplicationIdRejectRequestBodyWorkable = {
@@ -46,6 +56,12 @@ export type PostAtsApplicationsApplicationIdRejectRequestBodyRemoteFields = {
    */
   greenhouse?:
     | PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse
+    | undefined;
+  /**
+   * Fields specific to Teamtailor.
+   */
+  teamtailor?:
+    | PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor
     | undefined;
   /**
    * Workable specific remote fields for ATS actions.
@@ -133,6 +149,32 @@ export function postAtsApplicationsApplicationIdRejectRequestBodyGreenhouseToJSO
 }
 
 /** @internal */
+export type PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$Outbound =
+  {
+    user_id?: string | undefined;
+  };
+
+/** @internal */
+export const PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$outboundSchema:
+  z.ZodType<
+    PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$Outbound,
+    z.ZodTypeDef,
+    PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor
+  > = z.object({
+    user_id: z.string().optional(),
+  });
+
+export function postAtsApplicationsApplicationIdRejectRequestBodyTeamtailorToJSON(
+  postAtsApplicationsApplicationIdRejectRequestBodyTeamtailor:
+    PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor,
+): string {
+  return JSON.stringify(
+    PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$outboundSchema
+      .parse(postAtsApplicationsApplicationIdRejectRequestBodyTeamtailor),
+  );
+}
+
+/** @internal */
 export type PostAtsApplicationsApplicationIdRejectRequestBodyWorkable$Outbound =
   {
     on_behalf_of_user_remote_id?: string | undefined;
@@ -164,6 +206,9 @@ export type PostAtsApplicationsApplicationIdRejectRequestBodyRemoteFields$Outbou
     greenhouse?:
       | PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse$Outbound
       | undefined;
+    teamtailor?:
+      | PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$Outbound
+      | undefined;
     workable?:
       | PostAtsApplicationsApplicationIdRejectRequestBodyWorkable$Outbound
       | undefined;
@@ -178,6 +223,9 @@ export const PostAtsApplicationsApplicationIdRejectRequestBodyRemoteFields$outbo
   > = z.object({
     greenhouse: z.lazy(() =>
       PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse$outboundSchema
+    ).optional(),
+    teamtailor: z.lazy(() =>
+      PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$outboundSchema
     ).optional(),
     workable: z.lazy(() =>
       PostAtsApplicationsApplicationIdRejectRequestBodyWorkable$outboundSchema

@@ -40,6 +40,10 @@ export type GetHrisEmployeesRequest = {
    */
   include_deleted?: boolean | undefined;
   /**
+   * When set to `true`, filters targeting fields not supported by this integration will be ignored instead of filtering out all results.
+   */
+  ignore_unsupported_filters?: boolean | undefined;
+  /**
    * Filter by a comma-separated list of IDs such as `222k7eCGyUdgt2JWZDNnkDs3,B5DVmypWENfU6eMe6gYDyJG3`.
    */
   ids?: Array<string> | undefined;
@@ -95,6 +99,7 @@ export type GetHrisEmployeesRequest$Outbound = {
   page_size: number;
   updated_after?: string | undefined;
   include_deleted: boolean;
+  ignore_unsupported_filters: boolean;
   ids?: Array<string> | undefined;
   remote_ids?: Array<string> | undefined;
   employment_statuses?: Array<string> | undefined;
@@ -116,6 +121,7 @@ export const GetHrisEmployeesRequest$outboundSchema: z.ZodType<
   page_size: z.number().int().default(100),
   updated_after: z.date().transform(v => v.toISOString()).optional(),
   include_deleted: z.boolean().default(false),
+  ignore_unsupported_filters: z.boolean().default(false),
   ids: z.array(z.string()).optional(),
   remote_ids: z.array(z.string()).optional(),
   employment_statuses: z.array(z.string()).optional(),

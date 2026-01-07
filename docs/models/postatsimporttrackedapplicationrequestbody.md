@@ -6,7 +6,7 @@
 import { PostAtsImportTrackedApplicationRequestBody } from "@kombo-api/sdk/models";
 
 let value: PostAtsImportTrackedApplicationRequestBody = {
-  tracked_at: new Date("2024-09-22T20:09:08.444Z"),
+  tracked_at: new Date("2025-09-22T20:09:08.444Z"),
 };
 ```
 

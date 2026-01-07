@@ -6,9 +6,9 @@
 import { Break } from "@kombo-api/sdk/models";
 
 let value: Break = {
-  ended_at: new Date("2025-01-30T06:09:23.178Z"),
+  ended_at: new Date("2026-01-30T06:09:23.178Z"),
   paid: true,
-  started_at: new Date("2025-03-19T15:02:46.275Z"),
+  started_at: new Date("2026-03-19T15:02:46.275Z"),
 };
 ```
 
