@@ -14,8 +14,8 @@ let value: GetAtsCandidatesCandidateIdAttachmentsPositiveResponseResult = {
   data_url: "https://fruitful-archaeology.net",
   file_name: "example.file",
   content_type: "<value>",
-  remote_created_at: new Date("2025-07-04T21:35:19.873Z"),
-  remote_updated_at: new Date("2024-07-24T00:48:55.510Z"),
+  remote_created_at: new Date("2026-07-04T21:35:19.873Z"),
+  remote_updated_at: new Date("2025-07-24T00:48:55.510Z"),
 };
 ```
 

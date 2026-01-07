@@ -16,7 +16,7 @@ let value: IntegrationStateChangedWebhookPayloadData = {
   },
   qa_status: "PASSED",
   state: "ACTIVE",
-  updated_at: new Date("2025-01-22T08:02:56.637Z"),
+  updated_at: new Date("2026-01-22T08:02:56.637Z"),
 };
 ```
 

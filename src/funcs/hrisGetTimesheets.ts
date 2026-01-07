@@ -124,6 +124,7 @@ async function $do(
       "employee_id": payload?.employee_id,
       "ended_after": payload?.ended_after,
       "ended_before": payload?.ended_before,
+      "ignore_unsupported_filters": payload?.ignore_unsupported_filters,
       "include_deleted": payload?.include_deleted,
       "page_size": payload?.page_size,
       "started_after": payload?.started_after,

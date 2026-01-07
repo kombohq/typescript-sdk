@@ -11,8 +11,8 @@ let value: SyncFinishedWebhookPayload = {
   data: {
     sync_id: "<id>",
     sync_state: "<value>",
-    sync_started_at: new Date("2023-10-09T05:46:10.483Z"),
-    sync_ended_at: new Date("2023-09-11T14:02:10.039Z"),
+    sync_started_at: new Date("2024-10-08T05:46:10.483Z"),
+    sync_ended_at: new Date("2024-09-10T14:02:10.039Z"),
     sync_duration_seconds: 56309,
     integration_id: "<id>",
     integration_tool: "<value>",
