@@ -35,8 +35,8 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@v1
         with:
-          app-id: ${{ secrets.GH_APP_ID }}
-          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
+          app-id: ${{ secrets.SDK_GENERATOR_GITHUB_APP_ID }}
+          private-key: ${{ secrets.SDK_GENERATOR_GITHUB_APP_PRIVATE_KEY }}
   
   generate:
     needs: get-token
