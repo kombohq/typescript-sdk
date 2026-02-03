@@ -9,6 +9,7 @@
 * [sendPassthroughRequest](#sendpassthroughrequest) - Send passthrough request
 * [deleteIntegration](#deleteintegration) - Delete integration
 * [getIntegrationDetails](#getintegrationdetails) - Get integration details
+* [setIntegrationEnabled](#setintegrationenabled) - Set integration enabled
 * [createReconnectionLink](#createreconnectionlink) - Create reconnection link
 * [getIntegrationFields](#getintegrationfields) - Get integration fields
 * [updateIntegrationField](#updateintegrationfield) - Updates an integration fields passthrough setting
@@ -171,6 +172,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 
 |Integration|`{tool}/{api}`|Description|
 |---|---|---|
+|360Learning|`360learning/v2`|360Learning [API v2](https://360learning.readme.io/docs). We automatically handle authentication and use `https://app.360learning.com/api/v2/` as the base URL.|
 |a3innuva Nómina|`a3innuvanomina/laboral`|a3innuva Nómina API [docs](https://a3developers.wolterskluwer.es/). Requests are automatically authenticated using OAuth access tokens (refreshed when needed). Base URL: `https://a3api.wolterskluwer.es/Laboral/api`.|
 |Abacus Umantis|`abacusumantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
 |Abacus|`abacus/api`|Abacus [REST API](https://apihub.abacus.ch/). We automatically authenticate all requests and use `https://\{\{abacusUrl\}\}/api/entity/v1/mandants/\{\{mandantId\}\}` as the base URL.|
@@ -181,7 +183,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |ApplicantStack|`applicantstack/api`|ApplicantStack's [API](https://helpas.payrollservers.info/s/article/API-Integration-Guide). We automatically authenticate all requests and use `https://\{subdomain\}.applicantstack.com/api/` as the base URL.|
 |Apploi|`apploi/rest-api`|The [Apploi API](https://integrate.apploi.com/). We automatically authenticate all requests and use `https://partners.apploi.com/` as the base URL.|
 |Ashby|`ashby/v1`|Ashby's [V1 API](https://developers.ashbyhq.com/reference/introduction). We automatically authenticate all requests with the provided credentials and use `https://api.ashbyhq.com` as the base URL. Please note that Ashby uses an RPC-style API. Please check [the Ashby API documentation](https://developers.ashbyhq.com/reference/introduction) for details on how to use it.|
-|Asymbl|`asymbl/v63`|We use `https://\{customerDomainName\}` as the base URL. Find the official docs [here](https://asymblinc.github.io/ats/ats.html).|
+|Asymbl|`asymbl/v63`|We use `https://\{subdomain\}.my.salesforce.com` as the base URL. Find the official docs [here](https://asymblinc.github.io/ats/ats.html).|
 |Avature|`avature/custom-api`|Avatures's Custom API. Call `Get /openapi` to retrieve the specific custom API schema. We automatically authenticate all requests and use the instance specific custom API URL as the base URL.|
 |Avionté|`avionte/front-office-v1`|Avionte's API. We automatically authenticate all requests and use `https://api.avionte.com/front-office/v1` as the base URL. Documentation for the BOLD Front Office API: https://developer.avionte.com/reference/get-all-talent-tags|
 |BambooHR|`bamboohr/v1`|BambooHR's [API](https://documentation.bamboohr.com/reference/get-employee). We automatically authenticate all requests using the customer credentials `https://api.bamboohr.com/api/gateway.php/\{subdomain\}/v1` as the base URL.|
@@ -224,7 +226,8 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |Google Workspace|`googleworkspace/admin`|[Googles's API](https://developers.google.com/admin-sdk/directory/reference/rest). We automatically authenticate all requests and use 'https://admin.googleapis.com' as the base URL.|
 |Google Workspace|`googleworkspace/people`|[Googles's API](https://developers.google.com/people/api/rest). We automatically authenticate all requests and use 'https://people.googleapis.com' as the base URL.|
 |Greenhouse Job Board|`greenhousejobboard/boards-api`|[Greenhouse Job Board API](https://developers.greenhouse.io/job-board). We automatically authenticate all requests and use 'https://boards-api.greenhouse.io/v1/boards/\{job_board_token\}' as the base URL. Optionally, you can provide a custom job_board_token to use a different job board.|
-|Greenhouse|`greenhouse/harvest`|Greenhouse [Harvest API](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v1` as the base URL.|
+|Greenhouse|`greenhouse/harvest-v2`|Greenhouse [Harvest API v2](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v2` as the base URL.|
+|Greenhouse|`greenhouse/harvest`|Greenhouse [Harvest API v1](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v1` as the base URL.|
 |Hailey HR|`haileyhr/api`|Hailey HR's [API](https://api.haileyhr.app/docs/index.html). We automatically authenticate all requests using the provided credentials and use `https://api.haileyhr.app` as the base URL.|
 |Hansalog|`hansalog/vision`|Hansalog's [Vision API](https://hansalog-vision.document360.io/docs/). We automatically authenticate all requests and use `https://\{subdomain\}.hansalog-cloud.de/vision` as the base URL.|
 |Haufe Umantis|`umantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
@@ -244,10 +247,12 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |JazzHR|`jazzhr/v1`|[JazzHR's v1 API](https://www.resumatorapi.com/v1/#!`).We automatically authenticate all requests and use "https://api.resumatorapi.com/v1/" as the base URL.|
 |JobDiva|`jobdiva/api`|We automatically authenticate all requests and use `https://api.jobdiva.com` as the base URL.|
 |Jobvite|`jobvite/api`|We automatically authenticate all requests and use 'https://api.jobvite.com/api/v2' as the base URL.|
+|Jobvite|`jobvite/v2`|We use `https://api.jobvite.com/api/v2` as the base URL. Find the official docs [here](https://help.jobvite.com/hc/en-us/articles/8870636608925-Jobvite-API).|
 |Jobylon|`jobylon/feed`|The [Jobylon Feed API](https://developer.jobylon.com/feed-api/). We automatically authenticate all requests and use `https://\{subdomain\}.jobylon.com/feeds/\{job_hash\}` as the base URL.|
 |Jobylon|`jobylon/push`|The [Jobylon Push API](https://developer.jobylon.com/push-api-and-webhooks/). We automatically authenticate all requests and use `https://\{subdomain\}.jobylon.com/p1` as the base URL.|
 |JOIN|`join/v2`|Join's [V2 API](https://docs.join.com/reference/getting-started). We automatically authenticate all requests and use `https://api.join.com/v2` as the base URL.|
 |Kenjo|`kenjo/api`|Kenjo's [API](https://kenjo.readme.io/reference/generate-the-api-key). We automatically authenticate all requests using the API key and use `https://api.kenjo.io/` as the base URL.|
+|Lattice Talent|`latticetalent/talent`|Lattice's [Talent API](https://developers.lattice.com/reference/introduction). We automatically authenticate all requests using API key credentials with `https://api.latticehq.com` as the base URL.|
 |Lattice|`lattice/passthrough`|Lattice's [API](https://developers.lattice.com/v2/docs/base-url-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
 |Lattice|`lattice/talent`|Lattice's [Talent API](https://developers.lattice.com/docs/introduction-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
 |Laura|`laura/api`|We automatically authenticate all requests and use `https://\{subdomain\}.rekrytointi.com/api/v1.2` as the base URL.|
@@ -262,6 +267,7 @@ To get started, please pick the relevant API (some tools provide multiple to due
 |Microsoft Entra ID|`entraid/v1`|[AzureAD's API](https://learn.microsoft.com/en-us/graph/api/resources/identity-network-access-overview?view=graph-rest-1.0). We automatically authenticate all requests.|
 |Mysolution|`mysolution/default`|[Mysolution's API](https://swagger.mysolution.nl/). We automatically authenticate all requests and use the customer's domain as base URL.|
 |Nmbrs|`nmbrs/soap`|[Nmbrs SOAP API](https://api.nmbrs.nl/soap/v3/). We automatically authenticate all requests and use `https://api.nmbrs.nl/soap/v3/` as the base URL. Set `data` to your raw XML string (the content that will be placed inside the `\<soap:Body\>` tag). Use `/` as your `path`, as we will always send requests to `https://api.nmbrs.nl/soap/v3/\{service_name\}.asmx`. Set your `method` to `POST`. You need to specify the `api_options` object and set `service_name` to the name of the service you want to call. Available services include `EmployeeService` and `CompanyService`.|
+|Odoo|`odoo/json2`|Odoo's [JSON-2 API](https://www.odoo.com/documentation/19.0/developer/reference/external_api.html). We automatically authenticate all requests and use `https://\{domain\}.odoo.com/json/2` as the base URL. Odoo JSON-2 requests are always `POST` requests and use paths like `/\{model\}/\{method\}` (e.g. `/res.partner/search_read`).|
 |Okta|`okta/v1`|[Okta's API](https://developer.okta.com/docs/api/openapi/okta-management/management/tag/ApiServiceIntegrations/). We automatically authenticate all request ans use 'https://\<your-okta-domain\>/api/v1' as the base URL.|
 |Onlyfy|`onlyfy/v1`|Onlyfy's [Public v1 REST API](https://onlyfy.io/doc/v1#section/Introduction). We automatically authenticate all requests using the `apikey` header and use `https://api.prescreenapp.io/v1` as the base URL.|
 |Oracle HCM|`oraclehcm/api`|Oracle HCM Cloud [REST API](https://docs.oracle.com/en/cloud/saas/human-resources/24d/farws/index.html). We automatically authenticate all requests and use `https://\{domain\}/` as the base URL, where domain is your Oracle Cloud domain.|
@@ -552,6 +558,90 @@ run();
 ### Response
 
 **Promise\<[models.GetIntegrationsIntegrationIdPositiveResponse](../../models/getintegrationsintegrationidpositiveresponse.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.KomboGeneralError | default                  | application/json         |
+| errors.KomboDefaultError | 4XX, 5XX                 | \*/\*                    |
+
+## setIntegrationEnabled
+
+Enable or disable the specified integration. When disabling, all currently running syncs will be cancelled.
+
+All authentication credentials and configuration are preserved. Syncs can be resumed by re-enabling the integration.
+
+You may use this to, for example, pause syncing for customers that are temporarily not using the integration.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="PutIntegrationsIntegrationIdEnabled" method="put" path="/integrations/{integration_id}/enabled" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.general.setIntegrationEnabled({
+    integration_id: "<id>",
+    body: {
+      value: false,
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { generalSetIntegrationEnabled } from "@kombo-api/sdk/funcs/generalSetIntegrationEnabled.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await generalSetIntegrationEnabled(kombo, {
+    integration_id: "<id>",
+    body: {
+      value: false,
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("generalSetIntegrationEnabled failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PutIntegrationsIntegrationIdEnabledRequest](../../models/operations/putintegrationsintegrationidenabledrequest.md)                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.PutIntegrationsIntegrationIdEnabledPositiveResponse](../../models/putintegrationsintegrationidenabledpositiveresponse.md)\>**
 
 ### Errors
 

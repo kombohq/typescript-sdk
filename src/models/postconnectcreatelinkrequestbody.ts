@@ -103,6 +103,7 @@ export const IntegrationTool = {
   Hr4you: "hr4you",
   Cornerstoneondemand: "cornerstoneondemand",
   Zvooverecruit: "zvooverecruit",
+  Odoo: "odoo",
   Comeet: "comeet",
   Compleet: "compleet",
   Compleetpitcher: "compleetpitcher",
@@ -117,6 +118,7 @@ export const IntegrationTool = {
   Asymbl: "asymbl",
   Breezyhr: "breezyhr",
   Flatchr: "flatchr",
+  Dayforce: "dayforce",
   Applicantstack: "applicantstack",
   Reachmee: "reachmee",
   Talentadore: "talentadore",
@@ -158,9 +160,9 @@ export const IntegrationTool = {
   Simployer: "simployer",
   Peple: "peple",
   Youserve: "youserve",
-  Dayforce: "dayforce",
   Hansalog: "hansalog",
   Lattice: "lattice",
+  Latticetalent: "latticetalent",
   Hoorayhr: "hoorayhr",
   Trinet: "trinet",
   Namely: "namely",
@@ -198,6 +200,7 @@ export const IntegrationTool = {
   Peoplexd: "peoplexd",
   Sftp: "sftp",
   Sftpfetch: "sftpfetch",
+  ThreeHundredAndSixtylearning: "360learning",
 } as const;
 /**
  * Pre-define a tool this integration link can be used for.

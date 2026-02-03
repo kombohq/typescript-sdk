@@ -1907,6 +1907,8 @@ Visit our in-depth guides to learn more about:
     "availability_date": "2021-01-01",
     "location": {
       "city": "New York",
+      "zip_code": "10016",
+      "state": "NY",
       "country": "US"
     }
   },
@@ -1963,6 +1965,8 @@ async function run() {
         location: {
           city: "New York",
           country: "US",
+          state: "NY",
+          zip_code: "10016",
         },
         gender: "MALE",
         availability_date: new Date("2021-01-01T00:00:00Z"),
@@ -2032,6 +2036,8 @@ async function run() {
         location: {
           city: "New York",
           country: "US",
+          state: "NY",
+          zip_code: "10016",
         },
         gender: "MALE",
         availability_date: new Date("2021-01-01T00:00:00Z"),

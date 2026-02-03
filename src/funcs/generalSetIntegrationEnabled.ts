@@ -27,82 +27,23 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Create application
+ * Set integration enabled
  *
  * @remarks
- * Create a new application and candidate for the specified job.
+ * Enable or disable the specified integration. When disabling, all currently running syncs will be cancelled.
  *
- * Visit our in-depth guides to learn more about:
+ * All authentication credentials and configuration are preserved. Syncs can be resumed by re-enabling the integration.
  *
- * - 🌐 [Setting the source of the application](/ats/features/implementation-guide/creating-applications#set-the-source-of-the-application)
- * - 📎 [Uploading attachments with the application](/ats/features/implementation-guide/creating-applications#upload-attachments-with-the-application)
- * - ♻️ [Retry behaviour](/ats/features/implementation-guide/creating-applications#retry-behaviour)
- * - ✏️ [Writing answers to screening questions](/ats/features/implementation-guide/creating-applications#write-answers-to-screening-questions)
- * - ⚠️ [Handling ATS-specific limitations](/ats/features/implementation-guide/creating-applications#handle-ats-specific-limitations)
- *
- * <Note>
- *   This endpoint requires the permission **Create applications and candidates** to be enabled in [your scope config](/scopes).
- * </Note>
- *
- * ### Example Request Body
- *
- * ```json
- * {
- *   "candidate": {
- *     "first_name": "Frank",
- *     "last_name": "Doe",
- *     "company": "Acme Inc.",
- *     "title": "Head of Integrations",
- *     "email_address": "frank.doe@example.com",
- *     "phone_number": "+1-541-754-3010",
- *     "gender": "MALE",
- *     "salary_expectations": {
- *       "amount": 100000,
- *       "period": "YEAR"
- *     },
- *     "availability_date": "2021-01-01",
- *     "location": {
- *       "city": "New York",
- *       "zip_code": "10016",
- *       "state": "NY",
- *       "country": "US"
- *     }
- *   },
- *   "stage_id": "8x3YKRDcuRnwShdh96ShBNn1",
- *   "attachments": [
- *     {
- *       "name": "Frank Doe CV.txt",
- *       "data": "SGkgdGhlcmUsIEtvbWJvIGlzIGN1cnJlbnRseSBoaXJpbmcgZW5naW5lZXJzIHRoYXQgbG92ZSB0byB3b3JrIG9uIGRldmVsb3BlciBwcm9kdWN0cy4=",
- *       "type": "CV",
- *       "content_type": "text/plain"
- *     }
- *   ],
- *   "screening_question_answers": [
- *     {
- *       "question_id": "3phFBNXRweGnDmsU9o2vdPuQ",
- *       "answer": "Yes"
- *     },
- *     {
- *       "question_id": "EYJjhMQT3LtVKXnTbnRT8s6U",
- *       "answer": [
- *         "GUzE666zfyjeoCJX6A8n7wh6",
- *         "5WPHzzKAv8cx97KtHRUV96U8",
- *         "7yZfKGzWigXxxRTygqAfHvyE"
- *       ]
- *     }
- *   ],
- *   "remote_fields": {}
- * }
- * ```
+ * You may use this to, for example, pause syncing for customers that are temporarily not using the integration.
  */
-export function atsCreateApplication(
+export function generalSetIntegrationEnabled(
   client: KomboCore,
-  request: operations.PostAtsJobsJobIdApplicationsRequest,
+  request: operations.PutIntegrationsIntegrationIdEnabledRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.PostAtsJobsJobIdApplicationsPositiveResponse,
-    | errors.KomboAtsError
+    models.PutIntegrationsIntegrationIdEnabledPositiveResponse,
+    | errors.KomboGeneralError
     | KomboError
     | ResponseValidationError
     | ConnectionError
@@ -122,13 +63,13 @@ export function atsCreateApplication(
 
 async function $do(
   client: KomboCore,
-  request: operations.PostAtsJobsJobIdApplicationsRequest,
+  request: operations.PutIntegrationsIntegrationIdEnabledRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.PostAtsJobsJobIdApplicationsPositiveResponse,
-      | errors.KomboAtsError
+      models.PutIntegrationsIntegrationIdEnabledPositiveResponse,
+      | errors.KomboGeneralError
       | KomboError
       | ResponseValidationError
       | ConnectionError
@@ -144,9 +85,8 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.PostAtsJobsJobIdApplicationsRequest$outboundSchema.parse(
-        value,
-      ),
+      operations.PutIntegrationsIntegrationIdEnabledRequest$outboundSchema
+        .parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -156,22 +96,17 @@ async function $do(
   const body = encodeJSON("body", payload.body, { explode: true });
 
   const pathParams = {
-    job_id: encodeSimple("job_id", payload.job_id, {
+    integration_id: encodeSimple("integration_id", payload.integration_id, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path = pathToFunc("/ats/jobs/{job_id}/applications")(pathParams);
+  const path = pathToFunc("/integrations/{integration_id}/enabled")(pathParams);
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-    "X-Integration-Id": encodeSimple(
-      "X-Integration-Id",
-      client._options.integration_id,
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const secConfig = await extractSecurity(client._options.api_key);
@@ -181,7 +116,7 @@ async function $do(
   const context = {
     options: client._options,
     base_url: options?.server_url ?? client._baseURL ?? "",
-    operation_id: "PostAtsJobsJobIdApplications",
+    operation_id: "PutIntegrationsIntegrationIdEnabled",
     o_auth2_scopes: null,
 
     resolved_security: requestSecurity,
@@ -195,7 +130,7 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "POST",
+    method: "PUT",
     baseURL: options?.server_url,
     path: path,
     headers: headers,
@@ -224,8 +159,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.PostAtsJobsJobIdApplicationsPositiveResponse,
-    | errors.KomboAtsError
+    models.PutIntegrationsIntegrationIdEnabledPositiveResponse,
+    | errors.KomboGeneralError
     | KomboError
     | ResponseValidationError
     | ConnectionError
@@ -237,9 +172,9 @@ async function $do(
   >(
     M.json(
       200,
-      models.PostAtsJobsJobIdApplicationsPositiveResponse$inboundSchema,
+      models.PutIntegrationsIntegrationIdEnabledPositiveResponse$inboundSchema,
     ),
-    M.jsonErr("default", errors.KomboAtsError$inboundSchema),
+    M.jsonErr("default", errors.KomboGeneralError$inboundSchema),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
