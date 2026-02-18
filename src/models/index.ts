@@ -95,6 +95,8 @@ export * from "./putatsapplicationsapplicationidstagepositiveresponse.js";
 export * from "./putatsapplicationsapplicationidstagerequestbody.js";
 export * from "./putintegrationsintegrationidcustomfieldscustomfieldidpositiveresponse.js";
 export * from "./putintegrationsintegrationidcustomfieldscustomfieldidrequestbody.js";
+export * from "./putintegrationsintegrationidenabledpositiveresponse.js";
+export * from "./putintegrationsintegrationidenabledrequestbody.js";
 export * from "./schema1.js";
 export * from "./schema1union1.js";
 export * from "./schema1union2.js";

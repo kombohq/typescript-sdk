@@ -57,3 +57,4 @@ export * from "./putassessmentordersassessmentorderidresult.js";
 export * from "./putassessmentpackages.js";
 export * from "./putatsapplicationsapplicationidstage.js";
 export * from "./putintegrationsintegrationidcustomfieldscustomfieldid.js";
+export * from "./putintegrationsintegrationidenabled.js";

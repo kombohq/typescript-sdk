@@ -32,7 +32,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisEmployees" method="get" path="/hris/employees" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisEmployees" method="get" path="/hris/employees" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -185,7 +185,7 @@ Follow our [create employee guide here](/hris/features/create-employee) to learn
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisEmployeesForm" method="get" path="/hris/employees/form" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisEmployeesForm" method="get" path="/hris/employees/form" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -278,9 +278,119 @@ Create an employee, based on the form schema.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostHrisEmployeesForm" method="post" path="/hris/employees/form" -->
+<!-- UsageSnippet language="typescript" operationID="PostHrisEmployeesForm" method="post" path="/hris/employees/form" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.createEmployeeWithForm({
+    properties: {
+      "key": 3571.27,
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisCreateEmployeeWithForm } from "@kombo-api/sdk/funcs/hrisCreateEmployeeWithForm.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisCreateEmployeeWithForm(kombo, {
+    properties: {
+      "key": 3571.27,
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisCreateEmployeeWithForm failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostHrisEmployeesForm" method="post" path="/hris/employees/form" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.createEmployeeWithForm({
+    properties: {
+      "key": 3571.27,
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisCreateEmployeeWithForm } from "@kombo-api/sdk/funcs/hrisCreateEmployeeWithForm.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisCreateEmployeeWithForm(kombo, {
+    properties: {
+      "key": 3571.27,
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisCreateEmployeeWithForm failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostHrisEmployeesForm" method="post" path="/hris/employees/form" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -393,9 +503,135 @@ Uploads an document file for the specified employee.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostHrisEmployeesEmployeeIdDocuments" method="post" path="/hris/employees/{employee_id}/documents" -->
+<!-- UsageSnippet language="typescript" operationID="PostHrisEmployeesEmployeeIdDocuments" method="post" path="/hris/employees/{employee_id}/documents" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.addEmployeeDocument({
+    employee_id: "<id>",
+    body: {
+      category_id: "<id>",
+      document: {
+        name: "<value>",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisAddEmployeeDocument } from "@kombo-api/sdk/funcs/hrisAddEmployeeDocument.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisAddEmployeeDocument(kombo, {
+    employee_id: "<id>",
+    body: {
+      category_id: "<id>",
+      document: {
+        name: "<value>",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisAddEmployeeDocument failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostHrisEmployeesEmployeeIdDocuments" method="post" path="/hris/employees/{employee_id}/documents" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.addEmployeeDocument({
+    employee_id: "<id>",
+    body: {
+      category_id: "<id>",
+      document: {
+        name: "<value>",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisAddEmployeeDocument } from "@kombo-api/sdk/funcs/hrisAddEmployeeDocument.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisAddEmployeeDocument(kombo, {
+    employee_id: "<id>",
+    body: {
+      category_id: "<id>",
+      document: {
+        name: "<value>",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisAddEmployeeDocument failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostHrisEmployeesEmployeeIdDocuments" method="post" path="/hris/employees/{employee_id}/documents" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -489,7 +725,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisEmployeeDocumentCategories" method="get" path="/hris/employee-document-categories" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisEmployeeDocumentCategories" method="get" path="/hris/employee-document-categories" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -567,7 +803,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisGroups" method="get" path="/hris/groups" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisGroups" method="get" path="/hris/groups" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -645,7 +881,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisEmployments" method="get" path="/hris/employments" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisEmployments" method="get" path="/hris/employments" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -723,7 +959,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisLocations" method="get" path="/hris/locations" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisLocations" method="get" path="/hris/locations" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -801,7 +1037,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisAbsenceTypes" method="get" path="/hris/absence-types" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisAbsenceTypes" method="get" path="/hris/absence-types" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -879,7 +1115,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisTimeOffBalances" method="get" path="/hris/time-off-balances" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisTimeOffBalances" method="get" path="/hris/time-off-balances" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -957,7 +1193,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisAbsences" method="get" path="/hris/absences" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisAbsences" method="get" path="/hris/absences" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1053,9 +1289,127 @@ Check [this page](/hris/features/creating-absences) for a detailed guide.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostHrisAbsences" method="post" path="/hris/absences" -->
+<!-- UsageSnippet language="typescript" operationID="PostHrisAbsences" method="post" path="/hris/absences" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.createAbsence({
+    employee_id: "<id>",
+    absence_type_id: "<id>",
+    start_date: new Date("2023-09-09T17:57:22.170Z"),
+    end_date: new Date("2024-03-21T09:03:29.368Z"),
+    employee_note: "<value>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisCreateAbsence } from "@kombo-api/sdk/funcs/hrisCreateAbsence.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisCreateAbsence(kombo, {
+    employee_id: "<id>",
+    absence_type_id: "<id>",
+    start_date: new Date("2023-09-09T17:57:22.170Z"),
+    end_date: new Date("2024-03-21T09:03:29.368Z"),
+    employee_note: "<value>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisCreateAbsence failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostHrisAbsences" method="post" path="/hris/absences" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.createAbsence({
+    employee_id: "<id>",
+    absence_type_id: "<id>",
+    start_date: new Date("2023-09-09T17:57:22.170Z"),
+    end_date: new Date("2024-03-21T09:03:29.368Z"),
+    employee_note: "<value>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisCreateAbsence } from "@kombo-api/sdk/funcs/hrisCreateAbsence.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisCreateAbsence(kombo, {
+    employee_id: "<id>",
+    absence_type_id: "<id>",
+    start_date: new Date("2023-09-09T17:57:22.170Z"),
+    end_date: new Date("2024-03-21T09:03:29.368Z"),
+    employee_note: "<value>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisCreateAbsence failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostHrisAbsences" method="post" path="/hris/absences" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1153,9 +1507,115 @@ Delete this absence.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="DeleteHrisAbsencesAbsenceId" method="delete" path="/hris/absences/{absence_id}" -->
+<!-- UsageSnippet language="typescript" operationID="DeleteHrisAbsencesAbsenceId" method="delete" path="/hris/absences/{absence_id}" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.deleteAbsence({
+    absence_id: "<id>",
+    body: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisDeleteAbsence } from "@kombo-api/sdk/funcs/hrisDeleteAbsence.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisDeleteAbsence(kombo, {
+    absence_id: "<id>",
+    body: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisDeleteAbsence failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="DeleteHrisAbsencesAbsenceId" method="delete" path="/hris/absences/{absence_id}" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.deleteAbsence({
+    absence_id: "<id>",
+    body: {},
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisDeleteAbsence } from "@kombo-api/sdk/funcs/hrisDeleteAbsence.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisDeleteAbsence(kombo, {
+    absence_id: "<id>",
+    body: {},
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisDeleteAbsence failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="DeleteHrisAbsencesAbsenceId" method="delete" path="/hris/absences/{absence_id}" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1235,7 +1695,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisLegalEntities" method="get" path="/hris/legal-entities" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisLegalEntities" method="get" path="/hris/legal-entities" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1319,7 +1779,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisTimesheets" method="get" path="/hris/timesheets" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisTimesheets" method="get" path="/hris/timesheets" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1403,7 +1863,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisPerformanceReviewCycles" method="get" path="/hris/performance-review-cycles" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisPerformanceReviewCycles" method="get" path="/hris/performance-review-cycles" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1487,7 +1947,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetHrisPerformanceReviews" method="get" path="/hris/performance-reviews" -->
+<!-- UsageSnippet language="typescript" operationID="GetHrisPerformanceReviews" method="get" path="/hris/performance-reviews" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 

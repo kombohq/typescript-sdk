@@ -43,7 +43,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAtsApplications" method="get" path="/ats/applications" -->
+<!-- UsageSnippet language="typescript" operationID="GetAtsApplications" method="get" path="/ats/applications" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -129,9 +129,123 @@ Moves an application to a specified stage. Use job-specific stages from GET /job
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PutAtsApplicationsApplicationIdStage" method="put" path="/ats/applications/{application_id}/stage" -->
+<!-- UsageSnippet language="typescript" operationID="PutAtsApplicationsApplicationIdStage" method="put" path="/ats/applications/{application_id}/stage" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.moveApplicationToStage({
+    application_id: "<id>",
+    body: {
+      stage_id: "<id>",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsMoveApplicationToStage } from "@kombo-api/sdk/funcs/atsMoveApplicationToStage.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsMoveApplicationToStage(kombo, {
+    application_id: "<id>",
+    body: {
+      stage_id: "<id>",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsMoveApplicationToStage failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PutAtsApplicationsApplicationIdStage" method="put" path="/ats/applications/{application_id}/stage" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.moveApplicationToStage({
+    application_id: "<id>",
+    body: {
+      stage_id: "<id>",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsMoveApplicationToStage } from "@kombo-api/sdk/funcs/atsMoveApplicationToStage.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsMoveApplicationToStage(kombo, {
+    application_id: "<id>",
+    body: {
+      stage_id: "<id>",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsMoveApplicationToStage failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PutAtsApplicationsApplicationIdStage" method="put" path="/ats/applications/{application_id}/stage" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -241,9 +355,127 @@ This can, for example, be used to link a candidate back to a test result/assessm
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdResultLinks" method="post" path="/ats/applications/{application_id}/result-links" -->
+<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdResultLinks" method="post" path="/ats/applications/{application_id}/result-links" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.addApplicationResultLink({
+    application_id: "<id>",
+    body: {
+      label: "<value>",
+      url: "https://firm-runway.biz",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsAddApplicationResultLink } from "@kombo-api/sdk/funcs/atsAddApplicationResultLink.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsAddApplicationResultLink(kombo, {
+    application_id: "<id>",
+    body: {
+      label: "<value>",
+      url: "https://firm-runway.biz",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsAddApplicationResultLink failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdResultLinks" method="post" path="/ats/applications/{application_id}/result-links" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.addApplicationResultLink({
+    application_id: "<id>",
+    body: {
+      label: "<value>",
+      url: "https://firm-runway.biz",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsAddApplicationResultLink } from "@kombo-api/sdk/funcs/atsAddApplicationResultLink.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsAddApplicationResultLink(kombo, {
+    application_id: "<id>",
+    body: {
+      label: "<value>",
+      url: "https://firm-runway.biz",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsAddApplicationResultLink failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdResultLinks" method="post" path="/ats/applications/{application_id}/result-links" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -367,9 +599,127 @@ Add extra information to an application. This can be any extra text information 
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdNotes" method="post" path="/ats/applications/{application_id}/notes" -->
+<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdNotes" method="post" path="/ats/applications/{application_id}/notes" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.addApplicationNote({
+    application_id: "<id>",
+    body: {
+      content: "<value>",
+      content_type: "PLAIN_TEXT",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsAddApplicationNote } from "@kombo-api/sdk/funcs/atsAddApplicationNote.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsAddApplicationNote(kombo, {
+    application_id: "<id>",
+    body: {
+      content: "<value>",
+      content_type: "PLAIN_TEXT",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsAddApplicationNote failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdNotes" method="post" path="/ats/applications/{application_id}/notes" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.addApplicationNote({
+    application_id: "<id>",
+    body: {
+      content: "<value>",
+      content_type: "PLAIN_TEXT",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsAddApplicationNote } from "@kombo-api/sdk/funcs/atsAddApplicationNote.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsAddApplicationNote(kombo, {
+    application_id: "<id>",
+    body: {
+      content: "<value>",
+      content_type: "PLAIN_TEXT",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsAddApplicationNote failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdNotes" method="post" path="/ats/applications/{application_id}/notes" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -459,7 +809,7 @@ Get attachments from an application. If the ATS stores the attachments on the ca
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAtsApplicationsApplicationIdAttachments" method="get" path="/ats/applications/{application_id}/attachments" -->
+<!-- UsageSnippet language="typescript" operationID="GetAtsApplicationsApplicationIdAttachments" method="get" path="/ats/applications/{application_id}/attachments" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -556,9 +906,135 @@ Uploads an attachment file for the specified applicant.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdAttachments" method="post" path="/ats/applications/{application_id}/attachments" -->
+<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdAttachments" method="post" path="/ats/applications/{application_id}/attachments" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.addApplicationAttachment({
+    application_id: "<id>",
+    body: {
+      attachment: {
+        name: "<value>",
+        type: "COVER_LETTER",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsAddApplicationAttachment } from "@kombo-api/sdk/funcs/atsAddApplicationAttachment.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsAddApplicationAttachment(kombo, {
+    application_id: "<id>",
+    body: {
+      attachment: {
+        name: "<value>",
+        type: "COVER_LETTER",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsAddApplicationAttachment failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdAttachments" method="post" path="/ats/applications/{application_id}/attachments" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.addApplicationAttachment({
+    application_id: "<id>",
+    body: {
+      attachment: {
+        name: "<value>",
+        type: "COVER_LETTER",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsAddApplicationAttachment } from "@kombo-api/sdk/funcs/atsAddApplicationAttachment.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsAddApplicationAttachment(kombo, {
+    application_id: "<id>",
+    body: {
+      attachment: {
+        name: "<value>",
+        type: "COVER_LETTER",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsAddApplicationAttachment failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdAttachments" method="post" path="/ats/applications/{application_id}/attachments" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -664,9 +1140,123 @@ Rejects an application with a provided reason. Optionally, you can provide a fre
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdReject" method="post" path="/ats/applications/{application_id}/reject" -->
+<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdReject" method="post" path="/ats/applications/{application_id}/reject" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.rejectApplication({
+    application_id: "<id>",
+    body: {
+      rejection_reason_id: "<id>",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsRejectApplication } from "@kombo-api/sdk/funcs/atsRejectApplication.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsRejectApplication(kombo, {
+    application_id: "<id>",
+    body: {
+      rejection_reason_id: "<id>",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsRejectApplication failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdReject" method="post" path="/ats/applications/{application_id}/reject" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.rejectApplication({
+    application_id: "<id>",
+    body: {
+      rejection_reason_id: "<id>",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsRejectApplication } from "@kombo-api/sdk/funcs/atsRejectApplication.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsRejectApplication(kombo, {
+    application_id: "<id>",
+    body: {
+      rejection_reason_id: "<id>",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsRejectApplication failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsApplicationsApplicationIdReject" method="post" path="/ats/applications/{application_id}/reject" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -752,7 +1342,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAtsCandidates" method="get" path="/ats/candidates" -->
+<!-- UsageSnippet language="typescript" operationID="GetAtsCandidates" method="get" path="/ats/candidates" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -899,9 +1489,163 @@ Create a new candidate and application for the specified job.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostAtsCandidates" method="post" path="/ats/candidates" -->
+<!-- UsageSnippet language="typescript" operationID="PostAtsCandidates" method="post" path="/ats/candidates" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.createCandidate({
+    candidate: {
+      first_name: "Crystal",
+      last_name: "Prohaska",
+      email_address: "Adelia.Littel99@yahoo.com",
+    },
+    application: {
+      job_id: "<id>",
+    },
+    screening_question_answers: [
+      {
+        question_id: "D8yPrjXXvA2XeBksTmrVvKSn",
+        answer: "Yes",
+      },
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsCreateCandidate } from "@kombo-api/sdk/funcs/atsCreateCandidate.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsCreateCandidate(kombo, {
+    candidate: {
+      first_name: "Crystal",
+      last_name: "Prohaska",
+      email_address: "Adelia.Littel99@yahoo.com",
+    },
+    application: {
+      job_id: "<id>",
+    },
+    screening_question_answers: [
+      {
+        question_id: "D8yPrjXXvA2XeBksTmrVvKSn",
+        answer: "Yes",
+      },
+    ],
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsCreateCandidate failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsCandidates" method="post" path="/ats/candidates" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.createCandidate({
+    candidate: {
+      first_name: "Crystal",
+      last_name: "Prohaska",
+      email_address: "Adelia.Littel99@yahoo.com",
+    },
+    application: {
+      job_id: "<id>",
+    },
+    screening_question_answers: [
+      {
+        question_id: "D8yPrjXXvA2XeBksTmrVvKSn",
+        answer: "Yes",
+      },
+    ],
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsCreateCandidate } from "@kombo-api/sdk/funcs/atsCreateCandidate.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsCreateCandidate(kombo, {
+    candidate: {
+      first_name: "Crystal",
+      last_name: "Prohaska",
+      email_address: "Adelia.Littel99@yahoo.com",
+    },
+    application: {
+      job_id: "<id>",
+    },
+    screening_question_answers: [
+      {
+        question_id: "D8yPrjXXvA2XeBksTmrVvKSn",
+        answer: "Yes",
+      },
+    ],
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsCreateCandidate failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsCandidates" method="post" path="/ats/candidates" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1085,7 +1829,7 @@ Get attachments from a candidate, including all attachments of all of their appl
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAtsCandidatesCandidateIdAttachments" method="get" path="/ats/candidates/{candidate_id}/attachments" -->
+<!-- UsageSnippet language="typescript" operationID="GetAtsCandidatesCandidateIdAttachments" method="get" path="/ats/candidates/{candidate_id}/attachments" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1183,9 +1927,135 @@ Uploads an attachment file for the specified candidate.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostAtsCandidatesCandidateIdAttachments" method="post" path="/ats/candidates/{candidate_id}/attachments" -->
+<!-- UsageSnippet language="typescript" operationID="PostAtsCandidatesCandidateIdAttachments" method="post" path="/ats/candidates/{candidate_id}/attachments" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.addCandidateAttachment({
+    candidate_id: "<id>",
+    body: {
+      attachment: {
+        name: "<value>",
+        type: "COVER_LETTER",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsAddCandidateAttachment } from "@kombo-api/sdk/funcs/atsAddCandidateAttachment.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsAddCandidateAttachment(kombo, {
+    candidate_id: "<id>",
+    body: {
+      attachment: {
+        name: "<value>",
+        type: "COVER_LETTER",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsAddCandidateAttachment failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsCandidatesCandidateIdAttachments" method="post" path="/ats/candidates/{candidate_id}/attachments" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.addCandidateAttachment({
+    candidate_id: "<id>",
+    body: {
+      attachment: {
+        name: "<value>",
+        type: "COVER_LETTER",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsAddCandidateAttachment } from "@kombo-api/sdk/funcs/atsAddCandidateAttachment.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsAddCandidateAttachment(kombo, {
+    candidate_id: "<id>",
+    body: {
+      attachment: {
+        name: "<value>",
+        type: "COVER_LETTER",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsAddCandidateAttachment failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsCandidatesCandidateIdAttachments" method="post" path="/ats/candidates/{candidate_id}/attachments" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1310,9 +2180,127 @@ Add a result link to a candidate.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostAtsCandidatesCandidateIdResultLinks" method="post" path="/ats/candidates/{candidate_id}/result-links" -->
+<!-- UsageSnippet language="typescript" operationID="PostAtsCandidatesCandidateIdResultLinks" method="post" path="/ats/candidates/{candidate_id}/result-links" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.addCandidateResultLink({
+    candidate_id: "<id>",
+    body: {
+      label: "<value>",
+      url: "https://thrifty-cellar.net",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsAddCandidateResultLink } from "@kombo-api/sdk/funcs/atsAddCandidateResultLink.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsAddCandidateResultLink(kombo, {
+    candidate_id: "<id>",
+    body: {
+      label: "<value>",
+      url: "https://thrifty-cellar.net",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsAddCandidateResultLink failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsCandidatesCandidateIdResultLinks" method="post" path="/ats/candidates/{candidate_id}/result-links" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.addCandidateResultLink({
+    candidate_id: "<id>",
+    body: {
+      label: "<value>",
+      url: "https://thrifty-cellar.net",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsAddCandidateResultLink } from "@kombo-api/sdk/funcs/atsAddCandidateResultLink.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsAddCandidateResultLink(kombo, {
+    candidate_id: "<id>",
+    body: {
+      label: "<value>",
+      url: "https://thrifty-cellar.net",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsAddCandidateResultLink failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsCandidatesCandidateIdResultLinks" method="post" path="/ats/candidates/{candidate_id}/result-links" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1436,9 +2424,131 @@ Kombo takes care of creating the tag if required, finding out the right ID, and 
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostAtsCandidatesCandidateIdTags" method="post" path="/ats/candidates/{candidate_id}/tags" -->
+<!-- UsageSnippet language="typescript" operationID="PostAtsCandidatesCandidateIdTags" method="post" path="/ats/candidates/{candidate_id}/tags" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.addCandidateTag({
+    candidate_id: "<id>",
+    body: {
+      tag: {
+        name: "<value>",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsAddCandidateTag } from "@kombo-api/sdk/funcs/atsAddCandidateTag.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsAddCandidateTag(kombo, {
+    candidate_id: "<id>",
+    body: {
+      tag: {
+        name: "<value>",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsAddCandidateTag failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsCandidatesCandidateIdTags" method="post" path="/ats/candidates/{candidate_id}/tags" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.addCandidateTag({
+    candidate_id: "<id>",
+    body: {
+      tag: {
+        name: "<value>",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsAddCandidateTag } from "@kombo-api/sdk/funcs/atsAddCandidateTag.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsAddCandidateTag(kombo, {
+    candidate_id: "<id>",
+    body: {
+      tag: {
+        name: "<value>",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsAddCandidateTag failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsCandidatesCandidateIdTags" method="post" path="/ats/candidates/{candidate_id}/tags" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1538,9 +2648,131 @@ This will also succeed if the tag does not exist on the candidate.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="DeleteAtsCandidatesCandidateIdTags" method="delete" path="/ats/candidates/{candidate_id}/tags" -->
+<!-- UsageSnippet language="typescript" operationID="DeleteAtsCandidatesCandidateIdTags" method="delete" path="/ats/candidates/{candidate_id}/tags" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.removeCandidateTag({
+    candidate_id: "<id>",
+    body: {
+      tag: {
+        name: "<value>",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsRemoveCandidateTag } from "@kombo-api/sdk/funcs/atsRemoveCandidateTag.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsRemoveCandidateTag(kombo, {
+    candidate_id: "<id>",
+    body: {
+      tag: {
+        name: "<value>",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsRemoveCandidateTag failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="DeleteAtsCandidatesCandidateIdTags" method="delete" path="/ats/candidates/{candidate_id}/tags" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.removeCandidateTag({
+    candidate_id: "<id>",
+    body: {
+      tag: {
+        name: "<value>",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsRemoveCandidateTag } from "@kombo-api/sdk/funcs/atsRemoveCandidateTag.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsRemoveCandidateTag(kombo, {
+    candidate_id: "<id>",
+    body: {
+      tag: {
+        name: "<value>",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsRemoveCandidateTag failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="DeleteAtsCandidatesCandidateIdTags" method="delete" path="/ats/candidates/{candidate_id}/tags" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1628,7 +2860,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAtsTags" method="get" path="/ats/tags" -->
+<!-- UsageSnippet language="typescript" operationID="GetAtsTags" method="get" path="/ats/tags" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1716,7 +2948,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAtsApplicationStages" method="get" path="/ats/application-stages" -->
+<!-- UsageSnippet language="typescript" operationID="GetAtsApplicationStages" method="get" path="/ats/application-stages" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1802,7 +3034,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAtsJobs" method="get" path="/ats/jobs" -->
+<!-- UsageSnippet language="typescript" operationID="GetAtsJobs" method="get" path="/ats/jobs" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1907,6 +3139,8 @@ Visit our in-depth guides to learn more about:
     "availability_date": "2021-01-01",
     "location": {
       "city": "New York",
+      "zip_code": "10016",
+      "state": "NY",
       "country": "US"
     }
   },
@@ -1937,9 +3171,163 @@ Visit our in-depth guides to learn more about:
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostAtsJobsJobIdApplications" method="post" path="/ats/jobs/{job_id}/applications" -->
+<!-- UsageSnippet language="typescript" operationID="PostAtsJobsJobIdApplications" method="post" path="/ats/jobs/{job_id}/applications" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.createApplication({
+    job_id: "<id>",
+    body: {
+      candidate: {
+        first_name: "Jayda",
+        last_name: "Rogahn",
+        email_address: "Rowena74@hotmail.com",
+      },
+      screening_question_answers: [
+        {
+          question_id: "D8yPrjXXvA2XeBksTmrVvKSn",
+          answer: "Yes",
+        },
+      ],
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsCreateApplication } from "@kombo-api/sdk/funcs/atsCreateApplication.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsCreateApplication(kombo, {
+    job_id: "<id>",
+    body: {
+      candidate: {
+        first_name: "Jayda",
+        last_name: "Rogahn",
+        email_address: "Rowena74@hotmail.com",
+      },
+      screening_question_answers: [
+        {
+          question_id: "D8yPrjXXvA2XeBksTmrVvKSn",
+          answer: "Yes",
+        },
+      ],
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsCreateApplication failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsJobsJobIdApplications" method="post" path="/ats/jobs/{job_id}/applications" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.createApplication({
+    job_id: "<id>",
+    body: {
+      candidate: {
+        first_name: "Jayda",
+        last_name: "Rogahn",
+        email_address: "Rowena74@hotmail.com",
+      },
+      screening_question_answers: [
+        {
+          question_id: "D8yPrjXXvA2XeBksTmrVvKSn",
+          answer: "Yes",
+        },
+      ],
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsCreateApplication } from "@kombo-api/sdk/funcs/atsCreateApplication.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsCreateApplication(kombo, {
+    job_id: "<id>",
+    body: {
+      candidate: {
+        first_name: "Jayda",
+        last_name: "Rogahn",
+        email_address: "Rowena74@hotmail.com",
+      },
+      screening_question_answers: [
+        {
+          question_id: "D8yPrjXXvA2XeBksTmrVvKSn",
+          answer: "Yes",
+        },
+      ],
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsCreateApplication failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsJobsJobIdApplications" method="post" path="/ats/jobs/{job_id}/applications" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -1963,6 +3351,8 @@ async function run() {
         location: {
           city: "New York",
           country: "US",
+          state: "NY",
+          zip_code: "10016",
         },
         gender: "MALE",
         availability_date: new Date("2021-01-01T00:00:00Z"),
@@ -2032,6 +3422,8 @@ async function run() {
         location: {
           city: "New York",
           country: "US",
+          state: "NY",
+          zip_code: "10016",
         },
         gender: "MALE",
         availability_date: new Date("2021-01-01T00:00:00Z"),
@@ -2103,7 +3495,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAtsUsers" method="get" path="/ats/users" -->
+<!-- UsageSnippet language="typescript" operationID="GetAtsUsers" method="get" path="/ats/users" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -2181,7 +3573,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAtsOffers" method="get" path="/ats/offers" -->
+<!-- UsageSnippet language="typescript" operationID="GetAtsOffers" method="get" path="/ats/offers" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -2261,7 +3653,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAtsRejectionReasons" method="get" path="/ats/rejection-reasons" -->
+<!-- UsageSnippet language="typescript" operationID="GetAtsRejectionReasons" method="get" path="/ats/rejection-reasons" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -2339,7 +3731,7 @@ Top level filters use AND, while individual filters use OR if they accept multip
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAtsInterviews" method="get" path="/ats/interviews" -->
+<!-- UsageSnippet language="typescript" operationID="GetAtsInterviews" method="get" path="/ats/interviews" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -2431,9 +3823,111 @@ Once imported, Kombo will automatically fetch and update the application's compl
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostAtsImportTrackedApplication" method="post" path="/ats/import-tracked-application" -->
+<!-- UsageSnippet language="typescript" operationID="PostAtsImportTrackedApplication" method="post" path="/ats/import-tracked-application" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.importTrackedApplication({
+    tracked_at: new Date("2024-07-27T05:49:24.648Z"),
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsImportTrackedApplication } from "@kombo-api/sdk/funcs/atsImportTrackedApplication.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsImportTrackedApplication(kombo, {
+    tracked_at: new Date("2024-07-27T05:49:24.648Z"),
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsImportTrackedApplication failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsImportTrackedApplication" method="post" path="/ats/import-tracked-application" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.importTrackedApplication({
+    tracked_at: new Date("2024-07-27T05:49:24.648Z"),
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsImportTrackedApplication } from "@kombo-api/sdk/funcs/atsImportTrackedApplication.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsImportTrackedApplication(kombo, {
+    tracked_at: new Date("2024-07-27T05:49:24.648Z"),
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("atsImportTrackedApplication failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostAtsImportTrackedApplication" method="post" path="/ats/import-tracked-application" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
