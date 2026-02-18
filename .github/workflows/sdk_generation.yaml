@@ -123,6 +123,9 @@ jobs:
       - name: Install bun
         run: npm rebuild bun
       
+      - name: Bump patch version
+        run: npm version patch --no-git-tag-version
+      
       - name: Publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
