@@ -17,7 +17,7 @@ This is mainly intended for debugging. As you always need to submit the full lis
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAssessmentPackages" method="get" path="/assessment/packages" -->
+<!-- UsageSnippet language="typescript" operationID="GetAssessmentPackages" method="get" path="/assessment/packages" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -112,9 +112,111 @@ Packages that have been previously submitted through this endpoint but aren't in
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PutAssessmentPackages" method="put" path="/assessment/packages" -->
+<!-- UsageSnippet language="typescript" operationID="PutAssessmentPackages" method="put" path="/assessment/packages" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.assessment.setPackages({
+    packages: [],
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { assessmentSetPackages } from "@kombo-api/sdk/funcs/assessmentSetPackages.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await assessmentSetPackages(kombo, {
+    packages: [],
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("assessmentSetPackages failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PutAssessmentPackages" method="put" path="/assessment/packages" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.assessment.setPackages({
+    packages: [],
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { assessmentSetPackages } from "@kombo-api/sdk/funcs/assessmentSetPackages.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await assessmentSetPackages(kombo, {
+    packages: [],
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("assessmentSetPackages failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PutAssessmentPackages" method="put" path="/assessment/packages" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -326,9 +428,127 @@ Updates an assessment or a background check order result.
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PutAssessmentOrdersAssessmentOrderIdResult" method="put" path="/assessment/orders/{assessment_order_id}/result" -->
+<!-- UsageSnippet language="typescript" operationID="PutAssessmentOrdersAssessmentOrderIdResult" method="put" path="/assessment/orders/{assessment_order_id}/result" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.assessment.updateOrderResult({
+    assessment_order_id: "<id>",
+    body: {
+      status: "CANCELLED",
+      result_url: "https://sour-best-seller.net",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { assessmentUpdateOrderResult } from "@kombo-api/sdk/funcs/assessmentUpdateOrderResult.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await assessmentUpdateOrderResult(kombo, {
+    assessment_order_id: "<id>",
+    body: {
+      status: "CANCELLED",
+      result_url: "https://sour-best-seller.net",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("assessmentUpdateOrderResult failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PutAssessmentOrdersAssessmentOrderIdResult" method="put" path="/assessment/orders/{assessment_order_id}/result" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.assessment.updateOrderResult({
+    assessment_order_id: "<id>",
+    body: {
+      status: "CANCELLED",
+      result_url: "https://sour-best-seller.net",
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { assessmentUpdateOrderResult } from "@kombo-api/sdk/funcs/assessmentUpdateOrderResult.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await assessmentUpdateOrderResult(kombo, {
+    assessment_order_id: "<id>",
+    body: {
+      status: "CANCELLED",
+      result_url: "https://sour-best-seller.net",
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("assessmentUpdateOrderResult failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PutAssessmentOrdersAssessmentOrderIdResult" method="put" path="/assessment/orders/{assessment_order_id}/result" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
