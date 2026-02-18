@@ -150,7 +150,7 @@ export type InlineAssessmentOrderReceivedWebhookPayloadJob = {
     | null
     | undefined;
   /**
-   * The hiring team allows you to sync users into your system who can access the job and its applications.
+   * The hiring team allows you to provision users into your system who can access the job and its applications.
    */
   hiring_team: Array<InlineAssessmentOrderReceivedWebhookPayloadHiringTeam>;
 };
