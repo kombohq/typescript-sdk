@@ -1,6 +1,5 @@
 name: SDK Generation
 
-# We're using custom app authentication below, so we need no permissions.
 permissions: {}
 
 on:
@@ -17,15 +16,6 @@ on:
     - cron: 0 0 * * *
 
 jobs:
-  # We're using the "Kombo SDK Generator" GitHub App because this way, the
-  # created PRs can trigger other workflows (specifically the test suite we
-  # always want to run).
-  #
-  # See GitHub docs on limitation:
-  # https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow-from-a-workflow
-  #
-  # See config of the app:
-  # https://github.com/organizations/kombohq/settings/apps/kombo-sdk-generator
   get-token:
     runs-on: ubuntu-latest
     outputs:
@@ -37,19 +27,136 @@ jobs:
         with:
           app-id: ${{ secrets.SDK_GENERATOR_GITHUB_APP_ID }}
           private-key: ${{ secrets.SDK_GENERATOR_GITHUB_APP_PRIVATE_KEY }}
+      
+      - name: Verify token was generated
+        run: |
+          if [ -z "${{ steps.app-token.outputs.token }}" ]; then
+            echo "Error: Token was not generated"
+            exit 1
+          else
+            echo "Token generated successfully (length: ${#GITHUB_TOKEN})"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
   
   generate:
     needs: get-token
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
-    with:
-      enable_sdk_changelog: true
-      force: ${{ github.event.inputs.force }}
-      mode: pr
-      set_version: ${{ github.event.inputs.set_version }}
-      speakeasy_version: latest
-      target: kombo-typescript
-    secrets:
-      github_access_token: ${{ needs.get-token.outputs.token }}
-      npm_token: ${{ secrets.NPM_TOKEN }}
-      openapi_doc_auth_token: ${{ secrets.OPENAPI_DOC_AUTH_TOKEN }}
-      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ needs.get-token.outputs.token }}
+      
+      - name: Checkout sdk-generation-action repository
+        uses: actions/checkout@v4
+        with:
+          repository: speakeasy-api/sdk-generation-action
+          ref: 788702f013dcd7b0716076b1ce4e5f19be009521
+          path: _speakeasy
+      
+      - name: Run Generation Workflow
+        id: run-workflow
+        uses: ./_speakeasy
+        with:
+          speakeasy_version: latest
+          github_access_token: ${{ needs.get-token.outputs.token }}
+          mode: pr
+          force: ${{ github.event.inputs.force }}
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+          openapi_doc_auth_token: ${{ secrets.OPENAPI_DOC_AUTH_TOKEN }}
+          target: kombo-typescript
+          enable_sdk_changelog: true
+          set_version: ${{ github.event.inputs.set_version }}
+      
+      - name: Log Generation Output
+        if: always()
+        uses: ./_speakeasy
+        with:
+          speakeasy_version: latest
+          github_access_token: ${{ needs.get-token.outputs.token }}
+          action: log-result
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+        env:
+          GH_ACTION_RESULT: ${{ job.status }}
+          RESOLVED_SPEAKEASY_VERSION: ${{ steps.run-workflow.outputs.resolved_speakeasy_version }}
+          GH_ACTION_VERSION: 788702f013dcd7b0716076b1ce4e5f19be009521
+          GH_ACTION_STEP: ${{ github.job }}
+  
+  publish-npm:
+    if: ${{ always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && needs.generate.outputs.typescript_regenerated == 'true' && needs.generate.outputs.publish_typescript == 'true' }}
+    name: Publish Typescript SDK
+    runs-on: ubuntu-latest
+    needs: [get-token, generate]
+    defaults:
+      run:
+        working-directory: ${{ needs.generate.outputs.typescript_directory }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.generate.outputs.commit_hash }}
+          token: ${{ needs.get-token.outputs.token }}
+      
+      - name: Checkout sdk-generation-action repository
+        uses: actions/checkout@v4
+        with:
+          repository: speakeasy-api/sdk-generation-action
+          ref: 788702f013dcd7b0716076b1ce4e5f19be009521
+          path: _speakeasy
+      
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.x"
+          registry-url: "https://registry.npmjs.org"
+      
+      - name: Install dependencies
+        run: npm install --ignore-scripts
+      
+      - name: Install bun
+        run: npm rebuild bun
+      
+      - name: Publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          VERSION=$(npm pkg get version | tr -d '"')
+          echo "Detected version: $VERSION"
+
+          if [[ "$VERSION" == *"-"* ]]; then
+            PRERELEASE=${VERSION#*-}
+            TAG=${PRERELEASE%%.*}
+            echo "Prerelease detected; publishing under dist-tag: $TAG"
+            npm publish --tag "$TAG" --access public
+          else
+            echo "Official release detected; publishing under 'latest'"
+            npm publish --access public
+          fi
+      
+      - id: publish-event
+        uses: ./_speakeasy
+        if: always()
+        with:
+          github_access_token: ${{ needs.get-token.outputs.token }}
+          action: publish-event
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+          target_directory: ${{ needs.generate.outputs.typescript_directory }}
+          registry_name: "npm"
+        env:
+          GH_ACTION_RESULT: ${{ job.status }}
+          GH_ACTION_VERSION: 788702f013dcd7b0716076b1ce4e5f19be009521
+      
+      - id: log-result
+        uses: ./_speakeasy
+        if: always()
+        with:
+          speakeasy_version: latest
+          github_access_token: ${{ needs.get-token.outputs.token }}
+          action: log-result
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+        env:
+          GH_ACTION_RESULT: ${{ job.status }}
+          GH_ACTION_VERSION: 788702f013dcd7b0716076b1ce4e5f19be009521
+          GH_ACTION_STEP: ${{ github.job }}
+          TARGET_TYPE: "sdk"
