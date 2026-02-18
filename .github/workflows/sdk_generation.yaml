@@ -48,8 +48,8 @@ jobs:
       set_version: ${{ github.event.inputs.set_version }}
       speakeasy_version: latest
       target: kombo-typescript
-      github_access_token: ${{ needs.get-token.outputs.token }}  # Move to 'with' as an input
     secrets:
+      github_access_token: ${{ needs.get-token.outputs.token }}
       npm_token: ${{ secrets.NPM_TOKEN }}
       openapi_doc_auth_token: ${{ secrets.OPENAPI_DOC_AUTH_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
