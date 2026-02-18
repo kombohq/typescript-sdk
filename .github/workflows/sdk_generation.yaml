@@ -141,6 +141,7 @@ jobs:
         uses: ./_speakeasy
         if: always()
         with:
+          token: ${{ needs.get-token.outputs.token }}  
           github_access_token: ${{ needs.get-token.outputs.token }}
           action: publish-event
           speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
