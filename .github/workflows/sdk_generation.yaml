@@ -34,14 +34,17 @@ jobs:
             echo "Error: Token was not generated"
             exit 1
           else
-            echo "Token generated successfully (length: ${#GITHUB_TOKEN})"
+            echo "Token generated successfully"
           fi
-        env:
-          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
   
   generate:
     needs: get-token
     runs-on: ubuntu-latest
+    outputs:
+      typescript_regenerated: ${{ steps.run-workflow.outputs.typescript_regenerated }}
+      typescript_directory: ${{ steps.run-workflow.outputs.typescript_directory }}
+      commit_hash: ${{ steps.run-workflow.outputs.commit_hash }}
+      publish_type: ${{ steps.run-workflow.outputs.publish_type }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -85,7 +88,7 @@ jobs:
           GH_ACTION_STEP: ${{ github.job }}
   
   publish-npm:
-    if: ${{ always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && needs.generate.outputs.typescript_regenerated == 'true' && needs.generate.outputs.publish_typescript == 'true' }}
+    if: ${{ always() && !contains(needs.*.result, 'failure') && !contains(needs.*.result, 'cancelled') && needs.generate.outputs.typescript_regenerated == 'true' }}
     name: Publish Typescript SDK
     runs-on: ubuntu-latest
     needs: [get-token, generate]
