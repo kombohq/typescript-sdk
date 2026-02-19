@@ -27,6 +27,7 @@ let value: GetAtsInterviewsResponse = {
             street_2: null,
             zip_code: "12435",
           },
+          video_conferencing_url: "https://meet.example.com/interview-abc123",
           application_id: "H77fDF8uvEzGNPRubiz5DvQ7",
           stage_id: "H5daSm8e85Dmvmne3wLeCPhX",
           canceled: false,

@@ -29,9 +29,111 @@ Generate a unique link that allows your user to enter the embedded Kombo Connect
 }
 ```
 
-### Example Usage
+### Example Usage: Error Response
 
-<!-- UsageSnippet language="typescript" operationID="PostConnectCreateLink" method="post" path="/connect/create-link" -->
+<!-- UsageSnippet language="typescript" operationID="PostConnectCreateLink" method="post" path="/connect/create-link" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.connect.createConnectionLink({
+    end_user_email: "Abraham55@gmail.com",
+    end_user_organization_name: "<value>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { connectCreateConnectionLink } from "@kombo-api/sdk/funcs/connectCreateConnectionLink.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await connectCreateConnectionLink(kombo, {
+    end_user_email: "Abraham55@gmail.com",
+    end_user_organization_name: "<value>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("connectCreateConnectionLink failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostConnectCreateLink" method="post" path="/connect/create-link" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.connect.createConnectionLink({
+    end_user_email: "Abraham55@gmail.com",
+    end_user_organization_name: "<value>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { connectCreateConnectionLink } from "@kombo-api/sdk/funcs/connectCreateConnectionLink.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await connectCreateConnectionLink(kombo, {
+    end_user_email: "Abraham55@gmail.com",
+    end_user_organization_name: "<value>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("connectCreateConnectionLink failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostConnectCreateLink" method="post" path="/connect/create-link" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -121,7 +223,7 @@ into your system.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetConnectIntegrationByTokenToken" method="get" path="/connect/integration-by-token/{token}" -->
+<!-- UsageSnippet language="typescript" operationID="GetConnectIntegrationByTokenToken" method="get" path="/connect/integration-by-token/{token}" example="example1" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
