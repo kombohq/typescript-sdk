@@ -25,6 +25,7 @@ export const KomboGeneralErrorCode = {
   PlatformUnknownError: "PLATFORM.UNKNOWN_ERROR",
   PlatformIpNotWhitelisted: "PLATFORM.IP_NOT_WHITELISTED",
   PlatformAuthenticationInvalid: "PLATFORM.AUTHENTICATION_INVALID",
+  PlatformTaskTimedOut: "PLATFORM.TASK_TIMED_OUT",
 } as const;
 /**
  * Some errors include an error code that can be used to identify their cause. See the [Error Handling Docs](https://docs.kombo.dev/guides/errors) for more information. For your error handling logic please use the error `code` instead of other properties (e.g. message, http status code, ...).
