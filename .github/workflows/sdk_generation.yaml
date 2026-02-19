@@ -17,19 +17,8 @@ on:
     - cron: 0 0 * * *
 
 jobs:
-  # We're using the "Kombo SDK Generator" GitHub App because this way, the
-  # created PRs can trigger other workflows (specifically the test suite we
-  # always want to run).
-  #
-  # See GitHub docs on limitation:
-  # https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow-from-a-workflow
-  #
-  # See config of the app:
-  # https://github.com/organizations/kombohq/settings/apps/kombo-sdk-generator
-  get-token:
+  generate:
     runs-on: ubuntu-latest
-    outputs:
-      token: ${{ steps.app-token.outputs.token }}
     steps:
       - name: Generate token
         id: app-token
@@ -37,19 +26,46 @@ jobs:
         with:
           app-id: ${{ secrets.SDK_GENERATOR_GITHUB_APP_ID }}
           private-key: ${{ secrets.SDK_GENERATOR_GITHUB_APP_PRIVATE_KEY }}
-  
-  generate:
-    needs: get-token
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@v15
-    with:
-      enable_sdk_changelog: true
-      force: ${{ github.event.inputs.force }}
-      mode: pr
-      set_version: ${{ github.event.inputs.set_version }}
-      speakeasy_version: latest
-      target: kombo-typescript
-    secrets:
-      github_access_token: ${{ needs.get-token.outputs.token }}
-      npm_token: ${{ secrets.NPM_TOKEN }}
-      openapi_doc_auth_token: ${{ secrets.OPENAPI_DOC_AUTH_TOKEN }}
-      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+      
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app-token.outputs.token }}
+
+      # We're using the "Kombo SDK Generator" GitHub App because this way, the
+      # created PRs can trigger other workflows (specifically the test suite we
+      # always want to run).
+      #
+      # See GitHub docs on limitation:
+      # https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow-from-a-workflow
+      #
+      # See config of the app:
+      # https://github.com/organizations/kombohq/settings/apps/kombo-sdk-generator
+      - name: Run Generation Workflow
+        id: run-workflow
+        uses: speakeasy-api/sdk-generation-action@v15
+        with:
+          speakeasy_version: latest
+          github_access_token: ${{ steps.app-token.outputs.token }}
+          mode: pr
+          force: ${{ github.event.inputs.force }}
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+          openapi_doc_auth_token: ${{ secrets.OPENAPI_DOC_AUTH_TOKEN }}
+          target: kombo-typescript
+          enable_sdk_changelog: true
+          set_version: ${{ github.event.inputs.set_version }}
+      
+      - name: Log Generation Output
+        if: always()
+        uses: speakeasy-api/sdk-generation-action@v15
+        with:
+          speakeasy_version: latest
+          github_access_token: ${{ steps.app-token.outputs.token }}
+          action: log-result
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+        env:
+          GH_ACTION_RESULT: ${{ job.status }}
+          RESOLVED_SPEAKEASY_VERSION: ${{ steps.run-workflow.outputs.resolved_speakeasy_version }}
+          GH_ACTION_VERSION: v15
+          GH_ACTION_STEP: ${{ github.job }}
