@@ -15,8 +15,9 @@ let value: IntegrationStateChangedWebhookPayloadData = {
     origin_id: "<id>",
   },
   qa_status: "PASSED",
-  state: "ACTIVE",
-  updated_at: new Date("2026-01-22T08:02:56.637Z"),
+  setup_status: "INCOMPLETE",
+  state: "INACTIVE",
+  updated_at: new Date("2025-10-12T14:45:13.654Z"),
 };
 ```
 
@@ -29,5 +30,6 @@ let value: IntegrationStateChangedWebhookPayloadData = {
 | `integration_category`                                                                                                                   | [models.IntegrationStateChangedWebhookPayloadIntegrationCategory](../models/integrationstatechangedwebhookpayloadintegrationcategory.md) | :heavy_check_mark:                                                                                                                       | The category of the integration (HRIS, ATS, ASSESSMENT, or LMS).                                                                         |
 | `end_user`                                                                                                                               | [models.IntegrationStateChangedWebhookPayloadEndUser](../models/integrationstatechangedwebhookpayloadenduser.md)                         | :heavy_check_mark:                                                                                                                       | Information about the end user who created the integration.                                                                              |
 | `qa_status`                                                                                                                              | [models.QaStatus](../models/qastatus.md)                                                                                                 | :heavy_check_mark:                                                                                                                       | The quality assurance status of the integration.                                                                                         |
+| `setup_status`                                                                                                                           | [models.IntegrationStateChangedWebhookPayloadSetupStatus](../models/integrationstatechangedwebhookpayloadsetupstatus.md)                 | :heavy_check_mark:                                                                                                                       | The current status of an integration that has filtering, field mapping features or required setup steps.                                 |
 | `state`                                                                                                                                  | [models.State](../models/state.md)                                                                                                       | :heavy_check_mark:                                                                                                                       | The current state of the integration.                                                                                                    |
 | `updated_at`                                                                                                                             | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                            | :heavy_check_mark:                                                                                                                       | ISO 8601 timestamp when the integration state was last updated.                                                                          |

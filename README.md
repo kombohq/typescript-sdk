@@ -180,6 +180,7 @@ const kombo = new Kombo({
 * [sendPassthroughRequest](docs/sdks/general/README.md#sendpassthroughrequest) - Send passthrough request
 * [deleteIntegration](docs/sdks/general/README.md#deleteintegration) - Delete integration
 * [getIntegrationDetails](docs/sdks/general/README.md#getintegrationdetails) - Get integration details
+* [setIntegrationEnabled](docs/sdks/general/README.md#setintegrationenabled) - Set integration enabled
 * [createReconnectionLink](docs/sdks/general/README.md#createreconnectionlink) - Create reconnection link
 * [getIntegrationFields](docs/sdks/general/README.md#getintegrationfields) - Get integration fields
 * [updateIntegrationField](docs/sdks/general/README.md#updateintegrationfield) - Updates an integration fields passthrough setting
@@ -310,9 +311,9 @@ run();
 
 
 **Inherit from [`KomboError`](./src/models/errors/komboerror.ts)**:
-* [`KomboAtsError`](./src/models/errors/komboatserror.ts): The standard error response with the error codes for the ATS use case. Applicable to 27 of 57 methods.*
-* [`KomboHrisError`](./src/models/errors/kombohriserror.ts): The standard error response with the error codes for the HRIS use case. Applicable to 17 of 57 methods.*
-* [`KomboGeneralError`](./src/models/errors/kombogeneralerror.ts): The standard error response with just the platform error codes. Applicable to 13 of 57 methods.*
+* [`KomboAtsError`](./src/models/errors/komboatserror.ts): The standard error response with the error codes for the ATS use case. Applicable to 27 of 58 methods.*
+* [`KomboHrisError`](./src/models/errors/kombohriserror.ts): The standard error response with the error codes for the HRIS use case. Applicable to 17 of 58 methods.*
+* [`KomboGeneralError`](./src/models/errors/kombogeneralerror.ts): The standard error response with just the platform error codes. Applicable to 14 of 58 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -435,6 +436,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`generalGetIntegrationFields`](docs/sdks/general/README.md#getintegrationfields) - Get integration fields
 - [`generalGetTools`](docs/sdks/general/README.md#gettools) - Get tools
 - [`generalSendPassthroughRequest`](docs/sdks/general/README.md#sendpassthroughrequest) - Send passthrough request
+- [`generalSetIntegrationEnabled`](docs/sdks/general/README.md#setintegrationenabled) - Set integration enabled
 - [`generalTriggerSync`](docs/sdks/general/README.md#triggersync) - Trigger sync
 - [`generalUpdateCustomFieldMapping`](docs/sdks/general/README.md#updatecustomfieldmapping) - Put custom field mappings
 - [`generalUpdateIntegrationField`](docs/sdks/general/README.md#updateintegrationfield) - Updates an integration fields passthrough setting
@@ -472,19 +474,23 @@ The `HTTPClient` constructor takes an optional `fetcher` argument that can be
 used to integrate a third-party HTTP client or when writing tests to mock out
 the HTTP client and feed in fixtures.
 
-The following example shows how to use the `"beforeRequest"` hook to to add a
-custom header and a timeout to requests and how to use the `"requestError"` hook
-to log errors:
+The following example shows how to:
+- route requests through a proxy server using [undici](https://www.npmjs.com/package/undici)'s ProxyAgent
+- use the `"beforeRequest"` hook to add a custom header and a timeout to requests
+- use the `"requestError"` hook to log errors
 
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
+import { ProxyAgent } from "undici";
 import { HTTPClient } from "@kombo-api/sdk/lib/http";
 
+const dispatcher = new ProxyAgent("http://proxy.example.com:8080");
+
 const httpClient = new HTTPClient({
-  // fetcher takes a function that has the same signature as native `fetch`.
-  fetcher: (request) => {
-    return fetch(request);
-  }
+  // 'fetcher' takes a function that has the same signature as native 'fetch'.
+  fetcher: (input, init) =>
+    // 'dispatcher' is specific to undici and not part of the standard Fetch API.
+    fetch(input, { ...init, dispatcher } as RequestInit),
 });
 
 httpClient.addHook("beforeRequest", (request) => {

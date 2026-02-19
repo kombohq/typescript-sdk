@@ -173,6 +173,10 @@ export type GetAtsInterviewsPositiveResponseResult = {
    */
   location?: GetAtsInterviewsPositiveResponseLocation | null | undefined;
   /**
+   * The URL of the video conferencing platform used for the interview.
+   */
+  video_conferencing_url: string | null;
+  /**
    * The Kombo ID of the application this interview belongs to. The ID can be used to retrieve the application from the `get applications` endpoint.
    */
   application_id: string | null;
@@ -408,6 +412,7 @@ export const GetAtsInterviewsPositiveResponseResult$inboundSchema: z.ZodType<
   location: z.nullable(
     z.lazy(() => GetAtsInterviewsPositiveResponseLocation$inboundSchema),
   ).optional(),
+  video_conferencing_url: z.nullable(z.string()),
   application_id: z.nullable(z.string()),
   stage_id: z.nullable(z.string()),
   canceled: z.nullable(z.boolean()),
