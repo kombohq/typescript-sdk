@@ -18,8 +18,9 @@ let value: IntegrationStateChangedWebhookPayload = {
       origin_id: "<id>",
     },
     qa_status: "FAILED",
-    state: "ACTIVE",
-    updated_at: new Date("2026-10-15T12:49:34.797Z"),
+    setup_status: "INCOMPLETE",
+    state: "INACTIVE",
+    updated_at: new Date("2024-03-19T23:41:13.372Z"),
   },
 };
 ```

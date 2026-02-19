@@ -68,6 +68,21 @@ export const QaStatus = {
 export type QaStatus = ClosedEnum<typeof QaStatus>;
 
 /**
+ * The current status of an integration that has filtering, field mapping features or required setup steps.
+ */
+export const IntegrationStateChangedWebhookPayloadSetupStatus = {
+  Incomplete: "INCOMPLETE",
+  FinalSyncPending: "FINAL_SYNC_PENDING",
+  Completed: "COMPLETED",
+} as const;
+/**
+ * The current status of an integration that has filtering, field mapping features or required setup steps.
+ */
+export type IntegrationStateChangedWebhookPayloadSetupStatus = ClosedEnum<
+  typeof IntegrationStateChangedWebhookPayloadSetupStatus
+>;
+
+/**
  * The current state of the integration.
  */
 export const State = {
@@ -102,6 +117,10 @@ export type IntegrationStateChangedWebhookPayloadData = {
    * The quality assurance status of the integration.
    */
   qa_status: QaStatus;
+  /**
+   * The current status of an integration that has filtering, field mapping features or required setup steps.
+   */
+  setup_status: IntegrationStateChangedWebhookPayloadSetupStatus;
   /**
    * The current state of the integration.
    */
@@ -208,6 +227,15 @@ export const QaStatus$outboundSchema: z.ZodNativeEnum<typeof QaStatus> =
   QaStatus$inboundSchema;
 
 /** @internal */
+export const IntegrationStateChangedWebhookPayloadSetupStatus$inboundSchema:
+  z.ZodNativeEnum<typeof IntegrationStateChangedWebhookPayloadSetupStatus> = z
+    .nativeEnum(IntegrationStateChangedWebhookPayloadSetupStatus);
+/** @internal */
+export const IntegrationStateChangedWebhookPayloadSetupStatus$outboundSchema:
+  z.ZodNativeEnum<typeof IntegrationStateChangedWebhookPayloadSetupStatus> =
+    IntegrationStateChangedWebhookPayloadSetupStatus$inboundSchema;
+
+/** @internal */
 export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
   State,
 );
@@ -229,6 +257,7 @@ export const IntegrationStateChangedWebhookPayloadData$inboundSchema: z.ZodType<
     IntegrationStateChangedWebhookPayloadEndUser$inboundSchema
   ),
   qa_status: QaStatus$inboundSchema,
+  setup_status: IntegrationStateChangedWebhookPayloadSetupStatus$inboundSchema,
   state: State$inboundSchema,
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
 });
@@ -239,6 +268,7 @@ export type IntegrationStateChangedWebhookPayloadData$Outbound = {
   integration_category: string;
   end_user: IntegrationStateChangedWebhookPayloadEndUser$Outbound;
   qa_status: string;
+  setup_status: string;
   state: string;
   updated_at: string;
 };
@@ -258,6 +288,8 @@ export const IntegrationStateChangedWebhookPayloadData$outboundSchema:
       IntegrationStateChangedWebhookPayloadEndUser$outboundSchema
     ),
     qa_status: QaStatus$outboundSchema,
+    setup_status:
+      IntegrationStateChangedWebhookPayloadSetupStatus$outboundSchema,
     state: State$outboundSchema,
     updated_at: z.date().transform(v => v.toISOString()),
   });

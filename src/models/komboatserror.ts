@@ -23,6 +23,7 @@ export const KomboAtsErrorCode = {
   PlatformUnknownError: "PLATFORM.UNKNOWN_ERROR",
   PlatformIpNotWhitelisted: "PLATFORM.IP_NOT_WHITELISTED",
   PlatformAuthenticationInvalid: "PLATFORM.AUTHENTICATION_INVALID",
+  PlatformTaskTimedOut: "PLATFORM.TASK_TIMED_OUT",
   IntegrationPermissionMissing: "INTEGRATION.PERMISSION_MISSING",
   IntegrationAuthenticationInvalid: "INTEGRATION.AUTHENTICATION_INVALID",
   IntegrationQaFailed: "INTEGRATION.QA_FAILED",
