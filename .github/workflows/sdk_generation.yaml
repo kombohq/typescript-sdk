@@ -19,11 +19,6 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    outputs:
-      typescript_regenerated: ${{ steps.run-workflow.outputs.typescript_regenerated }}
-      typescript_directory: ${{ steps.run-workflow.outputs.typescript_directory }}
-      commit_hash: ${{ steps.run-workflow.outputs.commit_hash }}
-      publish_type: ${{ steps.run-workflow.outputs.publish_type }}
     steps:
       - name: Generate token
         id: app-token
