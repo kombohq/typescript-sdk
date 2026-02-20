@@ -3,22 +3,22 @@ id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
   docChecksum: 7dd85bc4a13e535dbda3b1ad8ba88d3e
   docVersion: 1.0.0
-  speakeasyVersion: 1.722.7
-  generationVersion: 2.832.9
-  releaseVersion: 0.4.1
-  configChecksum: 0db0e9d815ee397fec95dd20665a4dbe
+  speakeasyVersion: 1.723.0
+  generationVersion: 2.835.2
+  releaseVersion: 1.0.0
+  configChecksum: 58c8e35d118f486eab83893d9e2b9dc0
   repoURL: https://github.com/kombohq/typescript-sdk.git
   installationURL: https://github.com/kombohq/typescript-sdk
   published: true
 persistentEdits:
-  generation_id: 61425a3d-5d58-4c5b-96df-4c7dbc353c64
-  pristine_commit_hash: c12468e206ac4b93e29d6a1b13100e140ed7126f
-  pristine_tree_hash: 6777006031dfcaaaa7c515ba3ba0cc15e99ee5a4
+  generation_id: cc2c4783-aa51-45fd-8ccc-b37a49dbc71c
+  pristine_commit_hash: bdc80a25c49d77b4751ba881a9dee97e7a14b46c
+  pristine_tree_hash: 8a4294a2d73dc25be5ff8d90a74834ca912c648b
 features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.13
-    core: 3.26.29
+    core: 3.26.31
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     enumUnions: 0.1.0
@@ -33,7 +33,7 @@ features:
     hiddenGlobals: 0.1.0
     ignores: 2.81.1
     methodArguments: 0.1.2
-    nameOverrides: 2.81.2
+    nameOverrides: 2.81.4
     nullables: 0.1.1
     openEnums: 0.1.2
     pagination: 2.83.0
@@ -4002,12 +4002,12 @@ trackedFiles:
     pristine_git_object: 29289cf79efbc687c7daf5b66266980eb719cdc8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:e83c80a051b8953dfb55d120d9a7757e7411b3bd
-    pristine_git_object: 51331d47eb14236ac46d64bf05b89fc8b3d39a00
+    last_write_checksum: sha1:5df34f89d0058626ab68271d20d90979465b56fa
+    pristine_git_object: fba3b429c4fc7f95d991707118e3c6564efeabeb
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:1c189172460d823fa25f9e9577acd960ff975dc6
-    pristine_git_object: c86545191e7ec226871561df7ec15cebf1f3ed6e
+    last_write_checksum: sha1:7221428d95631c9387f528b410a83fdca88e884f
+    pristine_git_object: ab8e89f0397a15a42b8b0e79c07a50a1afac0420
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:b9f55b890c4f9f22b9bd199cce5fcc6fb3d15661
@@ -4270,8 +4270,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:0bc3d3ba43624545d007539e8926e55d423d8dcd
-    pristine_git_object: 6a2df66175f2bc8c83ad7f75bbe7b474f6fbe0d1
+    last_write_checksum: sha1:a8bb7e0047359591428a705faa500e7d755660b9
+    pristine_git_object: df146bcc26dadf82a1356098d5a3e5f0a33e1cb5
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -11566,7 +11566,6 @@ generatedTests:
   unlinkSharedEnvVariable: "2025-10-24T00:07:28Z"
   updateStaticIps: "2025-10-24T00:07:28Z"
   getProjectClientCerts: "2025-10-27T19:04:15Z"
-releaseNotes: "## Typescript SDK Changes:\n* `kombo.hris.createAbsence()`: \n  *  `request.remoteFields.a3innuvanomina` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore
