@@ -34,6 +34,29 @@ export type PostHrisAbsencesRequestBodyUnit = ClosedEnum<
 >;
 
 /**
+ * Required for illness absences. Benefit type: Delegated Payment, No Right to Benefit, or Direct payment.
+ */
+export const BenefitTypeId = {
+  DelegatedPayment: "Delegated Payment",
+  NoRightToBenefit: "No Right to Benefit",
+  DirectPayment: "Direct payment",
+} as const;
+/**
+ * Required for illness absences. Benefit type: Delegated Payment, No Right to Benefit, or Direct payment.
+ */
+export type BenefitTypeId = ClosedEnum<typeof BenefitTypeId>;
+
+/**
+ * Fields specific to A3 Innuva Nómina.
+ */
+export type A3innuvanomina = {
+  /**
+   * Required for illness absences. Benefit type: Delegated Payment, No Right to Benefit, or Direct payment.
+   */
+  benefit_type_id?: BenefitTypeId | undefined;
+};
+
+/**
  * Fields specific to ADP Workforce Now.
  */
 export type PostHrisAbsencesRequestBodyAdpworkforcenow = {
@@ -51,6 +74,10 @@ export type PostHrisAbsencesRequestBodyAdpworkforcenow = {
  * Additional fields that we will pass through to specific HRIS systems.
  */
 export type PostHrisAbsencesRequestBodyRemoteFields = {
+  /**
+   * Fields specific to A3 Innuva Nómina.
+   */
+  a3innuvanomina?: A3innuvanomina | undefined;
   /**
    * Fields specific to ADP Workforce Now.
    */
@@ -123,6 +150,29 @@ export const PostHrisAbsencesRequestBodyUnit$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(PostHrisAbsencesRequestBodyUnit);
 
 /** @internal */
+export const BenefitTypeId$outboundSchema: z.ZodNativeEnum<
+  typeof BenefitTypeId
+> = z.nativeEnum(BenefitTypeId);
+
+/** @internal */
+export type A3innuvanomina$Outbound = {
+  benefit_type_id?: string | undefined;
+};
+
+/** @internal */
+export const A3innuvanomina$outboundSchema: z.ZodType<
+  A3innuvanomina$Outbound,
+  z.ZodTypeDef,
+  A3innuvanomina
+> = z.object({
+  benefit_type_id: BenefitTypeId$outboundSchema.optional(),
+});
+
+export function a3innuvanominaToJSON(a3innuvanomina: A3innuvanomina): string {
+  return JSON.stringify(A3innuvanomina$outboundSchema.parse(a3innuvanomina));
+}
+
+/** @internal */
 export type PostHrisAbsencesRequestBodyAdpworkforcenow$Outbound = {
   employment_id?: string | undefined;
   paid_leave?: boolean | undefined;
@@ -152,6 +202,7 @@ export function postHrisAbsencesRequestBodyAdpworkforcenowToJSON(
 
 /** @internal */
 export type PostHrisAbsencesRequestBodyRemoteFields$Outbound = {
+  a3innuvanomina?: A3innuvanomina$Outbound | undefined;
   adpworkforcenow?:
     | PostHrisAbsencesRequestBodyAdpworkforcenow$Outbound
     | undefined;
@@ -163,6 +214,7 @@ export const PostHrisAbsencesRequestBodyRemoteFields$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostHrisAbsencesRequestBodyRemoteFields
 > = z.object({
+  a3innuvanomina: z.lazy(() => A3innuvanomina$outboundSchema).optional(),
   adpworkforcenow: z.lazy(() =>
     PostHrisAbsencesRequestBodyAdpworkforcenow$outboundSchema
   ).optional(),

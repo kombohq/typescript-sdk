@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 79d154c5bef131dd8efeb31dd13346e9
+  docChecksum: 7dd85bc4a13e535dbda3b1ad8ba88d3e
   docVersion: 1.0.0
   speakeasyVersion: 1.722.7
   generationVersion: 2.832.9
-  releaseVersion: 0.4.0
-  configChecksum: 03fce6922f04d670d55ce9bb73349763
+  releaseVersion: 0.4.1
+  configChecksum: 0db0e9d815ee397fec95dd20665a4dbe
   repoURL: https://github.com/kombohq/typescript-sdk.git
   installationURL: https://github.com/kombohq/typescript-sdk
   published: true
 persistentEdits:
-  generation_id: 92aa0ea5-439f-428e-bf50-98330bf3ff98
-  pristine_commit_hash: e16d1e3e9830ee7ae31b21f4f6b131b24ecb53c6
-  pristine_tree_hash: a6bf33c06ab054ea07041b77507c088781a23952
+  generation_id: 61425a3d-5d58-4c5b-96df-4c7dbc353c64
+  pristine_commit_hash: c12468e206ac4b93e29d6a1b13100e140ed7126f
+  pristine_tree_hash: 6777006031dfcaaaa7c515ba3ba0cc15e99ee5a4
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -68,6 +68,10 @@ trackedFiles:
     id: 0ce9707cb848
     last_write_checksum: sha1:bc4454e196fcd219f5a78da690375a884f5ed07b
     pristine_git_object: 08f95f4552349360b2c0b01802aa71ec3a55d2c2
+  docs/models/a3innuvanomina.md:
+    id: 13c1c70d8b70
+    last_write_checksum: sha1:47c835a6d459ff462ee258e23bc723ceb3c39d9d
+    pristine_git_object: abab1690f34b82c0e8827fb2201a35354e9fa4d3
   docs/models/assessmentorderreceivedwebhookpayload.md:
     id: d92f7141ad1f
     last_write_checksum: sha1:503c259cd915eb0a3ebf6959c7455fafca82a9cd
@@ -132,6 +136,10 @@ trackedFiles:
     id: 7d5535aca59c
     last_write_checksum: sha1:152f5b6a9971bd7be2dabbf02d61089ec2892215
     pristine_git_object: a8ed8a741fa4d29d9b7ad1f382c34897f8dd00dc
+  docs/models/benefittypeid.md:
+    id: 3a01dd44351b
+    last_write_checksum: sha1:ac8b3caae7503bc10f771ce26b0603f1b882979b
+    pristine_git_object: af6852ca8de75ad1098682af79cd9a60aba4f935
   docs/models/break.md:
     id: c9fea6bfcfe1
     last_write_checksum: sha1:f843ed677dbf7524876de17e1c640293af0ba2d9
@@ -3298,8 +3306,8 @@ trackedFiles:
     pristine_git_object: 5e7a2feb5831c63080aed49e7fba72fcc7788330
   docs/models/posthrisabsencesrequestbodyremotefields.md:
     id: 115f4f7fc0cc
-    last_write_checksum: sha1:e2264842a4151da985bd6d1b9b5a45953956f3f3
-    pristine_git_object: e8ca89a7ceda4f0e04523e67ef6f9f240f664d8a
+    last_write_checksum: sha1:5c3e7950a5a09d7a1fa946a75d22d90c4831ce0e
+    pristine_git_object: 12ac9e01be7b9fc08088f856697d5dcc2dcff712
   docs/models/posthrisabsencesrequestbodystatus.md:
     id: 37b1e61f8676
     last_write_checksum: sha1:f4ea91cef974fc5feecaa37b37c573b938288073
@@ -3994,12 +4002,12 @@ trackedFiles:
     pristine_git_object: 29289cf79efbc687c7daf5b66266980eb719cdc8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:d5726af3333bb5324eaec00f1457c311a12b280b
-    pristine_git_object: d4e72724f04af50e7f76bb55400b365c76a230c8
+    last_write_checksum: sha1:e83c80a051b8953dfb55d120d9a7757e7411b3bd
+    pristine_git_object: 51331d47eb14236ac46d64bf05b89fc8b3d39a00
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:a696990963bad9c15a17b9ff75dd82ec6d2043e7
-    pristine_git_object: 3f32bcfabe42e80d9e7b05d45939916582937ad7
+    last_write_checksum: sha1:1c189172460d823fa25f9e9577acd960ff975dc6
+    pristine_git_object: c86545191e7ec226871561df7ec15cebf1f3ed6e
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:b9f55b890c4f9f22b9bd199cce5fcc6fb3d15661
@@ -4262,8 +4270,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:d92899fbc251782b7e0ad2c2606c700d24ebaaaf
-    pristine_git_object: 70be8a04af4d4b59c545243fe4301f0187fdf96f
+    last_write_checksum: sha1:0bc3d3ba43624545d007539e8926e55d423d8dcd
+    pristine_git_object: 6a2df66175f2bc8c83ad7f75bbe7b474f6fbe0d1
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -4890,8 +4898,8 @@ trackedFiles:
     pristine_git_object: 612db95d8a102e913e5bfa512a5f693979dcbe19
   src/models/posthrisabsencesrequestbody.ts:
     id: 7d7f605cb268
-    last_write_checksum: sha1:f6f5f0d0aa48802583cd1754f2d34404fbd37427
-    pristine_git_object: 923a038ea1f476806b081be45b7a50647a5b13e2
+    last_write_checksum: sha1:405e17048948ef7f4805d298c7395b74ccaa76d4
+    pristine_git_object: 4edcc3942a4535cba2a1eee014833452d4e43db5
   src/models/posthrisemployeesemployeeiddocumentspositiveresponse.ts:
     id: c1dd0def746d
     last_write_checksum: sha1:79b4ba5e7decada21a0fc2e2176e0b82cd4b1024
@@ -11558,7 +11566,7 @@ generatedTests:
   unlinkSharedEnvVariable: "2025-10-24T00:07:28Z"
   updateStaticIps: "2025-10-24T00:07:28Z"
   getProjectClientCerts: "2025-10-27T19:04:15Z"
-releaseNotes: "## Typescript SDK Changes:\n* `kombo.general.checkApiKey()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.general.triggerSync()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.general.sendPassthroughRequest()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.general.deleteIntegration()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.general.getIntegrationDetails()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.general.createReconnectionLink()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.general.getIntegrationFields()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.general.updateIntegrationField()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.general.getCustomFields()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.general.updateCustomFieldMapping()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.general.getTools()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getEmployees()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getEmployeeForm()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.createEmployeeWithForm()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.addEmployeeDocument()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getEmployeeDocumentCategories()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getGroups()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getEmployments()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getLocations()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getAbsenceTypes()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getTimeOffBalances()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getAbsences()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.createAbsence()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.deleteAbsence()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getLegalEntities()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getTimesheets()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getPerformanceReviewCycles()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.hris.getPerformanceReviews()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.getApplications()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.moveApplicationToStage()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.addApplicationResultLink()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.addApplicationNote()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.getApplicationAttachments()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.addApplicationAttachment()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.rejectApplication()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.getCandidates()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.createCandidate()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.getCandidateAttachments()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.addCandidateAttachment()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.addCandidateResultLink()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.addCandidateTag()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.removeCandidateTag()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.getTags()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.getApplicationStages()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.getJobs()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.createApplication()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.getUsers()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.getOffers()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.getRejectionReasons()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.getInterviews()`: \n  *  `response.data.results[].videoConferencingUrl` **Added**\n  *  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.ats.importTrackedApplication()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.assessment.getPackages()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.assessment.setPackages()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.assessment.getOpenOrders()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.assessment.updateOrderResult()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.connect.createConnectionLink()`: \n  *  `request.integrationTool` **Changed**\n  *  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.connect.getIntegrationByToken()`:  `error.code.enum(platform.taskTimedOut)` **Added** (Breaking ⚠️)\n* `kombo.general.setIntegrationEnabled()`: **Added**\n"
+releaseNotes: "## Typescript SDK Changes:\n* `kombo.hris.createAbsence()`: \n  *  `request.remoteFields.a3innuvanomina` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore
