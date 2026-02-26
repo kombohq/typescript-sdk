@@ -249,7 +249,7 @@ async function $do(
       atsGetApplications(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

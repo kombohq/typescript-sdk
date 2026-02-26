@@ -233,7 +233,7 @@ async function $do(
       atsGetTags(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

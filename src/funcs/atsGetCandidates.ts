@@ -239,7 +239,7 @@ async function $do(
       atsGetCandidates(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

@@ -247,7 +247,7 @@ async function $do(
       atsGetApplicationStages(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

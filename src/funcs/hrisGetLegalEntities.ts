@@ -238,7 +238,7 @@ async function $do(
       hrisGetLegalEntities(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

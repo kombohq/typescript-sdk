@@ -236,7 +236,7 @@ async function $do(
       atsGetInterviews(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

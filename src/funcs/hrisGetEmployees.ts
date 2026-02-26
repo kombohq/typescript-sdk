@@ -244,7 +244,7 @@ async function $do(
       hrisGetEmployees(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

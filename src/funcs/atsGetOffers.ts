@@ -235,7 +235,7 @@ async function $do(
       atsGetOffers(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

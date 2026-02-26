@@ -236,7 +236,7 @@ async function $do(
       atsGetUsers(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

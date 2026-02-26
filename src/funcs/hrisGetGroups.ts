@@ -237,7 +237,7 @@ async function $do(
       hrisGetGroups(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,
