@@ -248,7 +248,7 @@ async function $do(
       atsGetJobs(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

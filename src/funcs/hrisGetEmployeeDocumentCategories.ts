@@ -238,7 +238,7 @@ async function $do(
       hrisGetEmployeeDocumentCategories(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

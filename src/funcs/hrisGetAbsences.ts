@@ -239,7 +239,7 @@ async function $do(
       hrisGetAbsences(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

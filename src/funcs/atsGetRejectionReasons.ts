@@ -239,7 +239,7 @@ async function $do(
       atsGetRejectionReasons(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

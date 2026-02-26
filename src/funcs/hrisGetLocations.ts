@@ -236,7 +236,7 @@ async function $do(
       hrisGetLocations(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

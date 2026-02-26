@@ -237,7 +237,7 @@ async function $do(
       hrisGetEmployments(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

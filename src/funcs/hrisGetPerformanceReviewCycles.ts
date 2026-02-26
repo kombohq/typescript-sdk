@@ -242,7 +242,7 @@ async function $do(
       hrisGetPerformanceReviewCycles(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

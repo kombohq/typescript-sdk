@@ -248,7 +248,7 @@ async function $do(
       hrisGetTimesheets(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

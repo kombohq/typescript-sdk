@@ -238,7 +238,7 @@ async function $do(
       hrisGetTimeOffBalances(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,

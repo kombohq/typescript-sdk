@@ -226,7 +226,7 @@ async function $do(
       assessmentGetOpenOrders(
         client,
         {
-          ...request,
+          ...request!,
           cursor: nextCursor,
         },
         options,
