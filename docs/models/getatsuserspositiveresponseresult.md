@@ -6,14 +6,33 @@
 import { GetAtsUsersPositiveResponseResult } from "@kombo-api/sdk/models";
 
 let value: GetAtsUsersPositiveResponseResult = {
-  id: "26vafvWSRmbhNcxJYqjCzuJg",
-  remote_id: "32",
-  first_name: "John",
-  last_name: "Doe",
-  email: "john.doe@kombo.dev",
+  id: "<id>",
+  remote_id: null,
+  first_name: "Jacky",
+  last_name: "Goldner",
   status: "ACTIVE",
-  changed_at: new Date("2022-08-07T14:01:29.196Z"),
-  remote_deleted_at: null,
+  changed_at: new Date("2026-01-01T19:08:47.379Z"),
+  remote_deleted_at: new Date("2024-03-14T21:49:26.861Z"),
+  system_roles: [
+    {
+      remote_id: "32",
+      remote_label: "Hiring Manager",
+      scope: "JOB",
+      unified_type: "HIRING_MANAGER",
+    },
+    {
+      remote_id: "32",
+      remote_label: "Hiring Manager",
+      scope: "JOB",
+      unified_type: "HIRING_MANAGER",
+    },
+    {
+      remote_id: "1",
+      remote_label: "Admin",
+      scope: "SYSTEM",
+      unified_type: "ADMIN",
+    },
+  ],
 };
 ```
 
@@ -29,3 +48,4 @@ let value: GetAtsUsersPositiveResponseResult = {
 | `status`                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | [models.GetAtsUsersPositiveResponseStatus](../models/getatsuserspositiveresponsestatus.md)                                                                                                                                                                                                                                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Whether the user is active or inactive. Consider this field when provisioning users from the ATS.                                                                                                                                                                                                                                                                                                                                                                        |
 | `changed_at`                                                                                                                                                                                                                                                                                                                                                                                                                                                             | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                                                                                                                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                       | The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.<br/><br/>[](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) |
 | `remote_deleted_at`                                                                                                                                                                                                                                                                                                                                                                                                                                                      | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                                                                                                                                                                                                                                                                                                                                            | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                       | The date and time the object was deleted in the remote system. Objects are automatically marked as deleted when Kombo can't retrieve them from the remote system anymore. Kombo will also anonymize entries 14 days after they disappear.<br/><br/>[](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)                                                                                                                 |
+| `system_roles`                                                                                                                                                                                                                                                                                                                                                                                                                                                           | [models.SystemRole](../models/systemrole.md)[]                                                                                                                                                                                                                                                                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                                                                                                                                                                                                                                                                                                       | System-wide roles assigned to this user in the ATS.<br/><br/>Note: Use `job_roles` on the `/v1/ats/jobs` endpoint for job-specific roles.                                                                                                                                                                                                                                                                                                                                |

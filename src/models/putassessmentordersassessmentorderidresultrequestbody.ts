@@ -100,6 +100,13 @@ export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters
     score_label?: string | undefined;
   };
 
+export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee = {
+  /**
+   * Value that we will pass through to Recruitee's `subtitle` field on the assessment report.
+   */
+  subtitle?: string | undefined;
+};
+
 /**
  * Additional fields that we will pass through to specific ATS systems.
  */
@@ -107,6 +114,9 @@ export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields =
   {
     smartrecruiters?:
       | PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters
+      | undefined;
+    recruitee?:
+      | PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee
       | undefined;
   };
 
@@ -319,10 +329,39 @@ export function putAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecrui
 }
 
 /** @internal */
+export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee$Outbound =
+  {
+    subtitle?: string | undefined;
+  };
+
+/** @internal */
+export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee$outboundSchema:
+  z.ZodType<
+    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee$Outbound,
+    z.ZodTypeDef,
+    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee
+  > = z.object({
+    subtitle: z.string().optional(),
+  });
+
+export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruiteeToJSON(
+  putAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee:
+    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee,
+): string {
+  return JSON.stringify(
+    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee$outboundSchema
+      .parse(putAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee),
+  );
+}
+
+/** @internal */
 export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$Outbound =
   {
     smartrecruiters?:
       | PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$Outbound
+      | undefined;
+    recruitee?:
+      | PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee$Outbound
       | undefined;
   };
 
@@ -335,6 +374,9 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$o
   > = z.object({
     smartrecruiters: z.lazy(() =>
       PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$outboundSchema
+    ).optional(),
+    recruitee: z.lazy(() =>
+      PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee$outboundSchema
     ).optional(),
   });
 

@@ -21,6 +21,14 @@ let value: GetAtsUsersResponse = {
           status: "ACTIVE",
           changed_at: new Date("2022-08-07T14:01:29.196Z"),
           remote_deleted_at: null,
+          system_roles: [
+            {
+              remote_id: "32",
+              remote_label: "Hiring Manager",
+              scope: "JOB",
+              unified_type: "HIRING_MANAGER",
+            },
+          ],
         },
       ],
     },

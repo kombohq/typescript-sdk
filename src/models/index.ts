@@ -22,6 +22,7 @@ export * from "./getatsinterviewspositiveresponse.js";
 export * from "./getatsjobspositiveresponse.js";
 export * from "./getatsofferspositiveresponse.js";
 export * from "./getatsrejectionreasonspositiveresponse.js";
+export * from "./getatsrolespositiveresponse.js";
 export * from "./getatstagspositiveresponse.js";
 export * from "./getatsuserspositiveresponse.js";
 export * from "./getcheckapikeypositiveresponse.js";

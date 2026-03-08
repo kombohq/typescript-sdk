@@ -16,6 +16,7 @@ export * from "./getatsinterviews.js";
 export * from "./getatsjobs.js";
 export * from "./getatsoffers.js";
 export * from "./getatsrejectionreasons.js";
+export * from "./getatsroles.js";
 export * from "./getatstags.js";
 export * from "./getatsusers.js";
 export * from "./getconnectintegrationbytokentoken.js";

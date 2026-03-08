@@ -163,6 +163,7 @@ const kombo = new Kombo({
 * [getJobs](docs/sdks/ats/README.md#getjobs) - Get jobs
 * [createApplication](docs/sdks/ats/README.md#createapplication) - Create application
 * [getUsers](docs/sdks/ats/README.md#getusers) - Get users
+* [getRoles](docs/sdks/ats/README.md#getroles) - Get roles
 * [getOffers](docs/sdks/ats/README.md#getoffers) - Get offers
 * [getRejectionReasons](docs/sdks/ats/README.md#getrejectionreasons) - Get rejection reasons
 * [getInterviews](docs/sdks/ats/README.md#getinterviews) - Get interviews
@@ -311,9 +312,9 @@ run();
 
 
 **Inherit from [`KomboError`](./src/models/errors/komboerror.ts)**:
-* [`KomboAtsError`](./src/models/errors/komboatserror.ts): The standard error response with the error codes for the ATS use case. Applicable to 27 of 58 methods.*
-* [`KomboHrisError`](./src/models/errors/kombohriserror.ts): The standard error response with the error codes for the HRIS use case. Applicable to 17 of 58 methods.*
-* [`KomboGeneralError`](./src/models/errors/kombogeneralerror.ts): The standard error response with just the platform error codes. Applicable to 14 of 58 methods.*
+* [`KomboAtsError`](./src/models/errors/komboatserror.ts): The standard error response with the error codes for the ATS use case. Applicable to 28 of 59 methods.*
+* [`KomboHrisError`](./src/models/errors/kombohriserror.ts): The standard error response with the error codes for the HRIS use case. Applicable to 17 of 59 methods.*
+* [`KomboGeneralError`](./src/models/errors/kombogeneralerror.ts): The standard error response with just the platform error codes. Applicable to 14 of 59 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -420,6 +421,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetJobs`](docs/sdks/ats/README.md#getjobs) - Get jobs
 - [`atsGetOffers`](docs/sdks/ats/README.md#getoffers) - Get offers
 - [`atsGetRejectionReasons`](docs/sdks/ats/README.md#getrejectionreasons) - Get rejection reasons
+- [`atsGetRoles`](docs/sdks/ats/README.md#getroles) - Get roles
 - [`atsGetTags`](docs/sdks/ats/README.md#gettags) - Get tags
 - [`atsGetUsers`](docs/sdks/ats/README.md#getusers) - Get users
 - [`atsImportTrackedApplication`](docs/sdks/ats/README.md#importtrackedapplication) - Import tracked application
