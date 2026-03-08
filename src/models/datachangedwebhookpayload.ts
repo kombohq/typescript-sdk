@@ -64,6 +64,7 @@ export const Name = {
   AtsInterviews: "ats_interviews",
   AtsOffers: "ats_offers",
   AtsRejectionReasons: "ats_rejection_reasons",
+  AtsRoles: "ats_roles",
   LmsUsers: "lms_users",
   LmsCourseProviders: "lms_course_providers",
   LmsSkills: "lms_skills",
@@ -74,7 +75,9 @@ export const Name = {
   AtsJoinCandidatesTags: "ats_join_candidates_tags",
   AtsJoinJobsApplicationStages: "ats_join_jobs_application_stages",
   AtsJoinJobsScreeningQuestions: "ats_join_jobs_screening_questions",
+  AtsJoinUserJobRoleAssignments: "ats_join_user_job_role_assignments",
   AtsJoinJobsUsers: "ats_join_jobs_users",
+  AtsJoinUsersRoles: "ats_join_users_roles",
   AtsJoinInterviewsUsers: "ats_join_interviews_users",
   LmsJoinRevisionsSkills: "lms_join_revisions_skills",
 } as const;
