@@ -119,6 +119,7 @@ export const IntegrationTool = {
   Breezyhr: "breezyhr",
   Flatchr: "flatchr",
   Dayforce: "dayforce",
+  Digitalrecruiters: "digitalrecruiters",
   Applicantstack: "applicantstack",
   Reachmee: "reachmee",
   Talentadore: "talentadore",

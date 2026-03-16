@@ -649,6 +649,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyDvinci = {
    * Fields that we will pass through to d.vinci's application object. This API is used: https://static.dvinci-easy.com/files/d.vinci%20application-apply-api.html#jobs__id__applyApi_post
    */
   application?: { [k: string]: any } | undefined;
+  /**
+   * Fields that we will pass through to d.vinci's candidate/application payload as top-level fields (e.g., dateOfBirth).
+   */
+  candidate?: { [k: string]: any } | undefined;
 };
 
 /**
@@ -715,6 +719,16 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRecruitee = {
   candidate?:
     | PostAtsJobsJobIdApplicationsRequestBodyRecruiteeCandidate
     | undefined;
+};
+
+/**
+ * Fields specific to Rexx.
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyRexx = {
+  /**
+   * Fields that we will pass through to Rexx's application form fields.
+   */
+  candidate?: { [k: string]: any } | undefined;
 };
 
 /**
@@ -858,6 +872,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
    * Fields specific to Recruitee.
    */
   recruitee?: PostAtsJobsJobIdApplicationsRequestBodyRecruitee | undefined;
+  /**
+   * Fields specific to Rexx.
+   */
+  rexx?: PostAtsJobsJobIdApplicationsRequestBodyRexx | undefined;
   /**
    * Fields specific to Abacus Umantis.
    */
@@ -2790,6 +2808,7 @@ export function postAtsJobsJobIdApplicationsRequestBodyGuidecomToJSON(
 /** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyDvinci$Outbound = {
   application?: { [k: string]: any } | undefined;
+  candidate?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -2800,6 +2819,7 @@ export const PostAtsJobsJobIdApplicationsRequestBodyDvinci$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyDvinci
   > = z.object({
     application: z.record(z.any()).optional(),
+    candidate: z.record(z.any()).optional(),
   });
 
 export function postAtsJobsJobIdApplicationsRequestBodyDvinciToJSON(
@@ -3040,6 +3060,32 @@ export function postAtsJobsJobIdApplicationsRequestBodyRecruiteeToJSON(
 }
 
 /** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyRexx$Outbound = {
+  candidate?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyRexx$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyRexx$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyRexx
+  > = z.object({
+    candidate: z.record(z.any()).optional(),
+  });
+
+export function postAtsJobsJobIdApplicationsRequestBodyRexxToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyRexx:
+    PostAtsJobsJobIdApplicationsRequestBodyRexx,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyRexx$outboundSchema.parse(
+      postAtsJobsJobIdApplicationsRequestBodyRexx,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyUmantis$Outbound = {
   person?: { [k: string]: any } | undefined;
 };
@@ -3247,6 +3293,7 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
   recruitee?:
     | PostAtsJobsJobIdApplicationsRequestBodyRecruitee$Outbound
     | undefined;
+  rexx?: PostAtsJobsJobIdApplicationsRequestBodyRexx$Outbound | undefined;
   umantis?: PostAtsJobsJobIdApplicationsRequestBodyUmantis$Outbound | undefined;
   piloga?: PostAtsJobsJobIdApplicationsRequestBodyPiloga$Outbound | undefined;
   pinpoint?:
@@ -3317,6 +3364,9 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$outboundSchema:
     ).optional(),
     recruitee: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyRecruitee$outboundSchema
+    ).optional(),
+    rexx: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyRexx$outboundSchema
     ).optional(),
     umantis: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyUmantis$outboundSchema
