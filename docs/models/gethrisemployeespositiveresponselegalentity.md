@@ -1,11 +1,11 @@
-# LegalEntity
+# GetHrisEmployeesPositiveResponseLegalEntity
 
 ## Example Usage
 
 ```typescript
-import { LegalEntity } from "@kombo-api/sdk/models";
+import { GetHrisEmployeesPositiveResponseLegalEntity } from "@kombo-api/sdk/models";
 
-let value: LegalEntity = {
+let value: GetHrisEmployeesPositiveResponseLegalEntity = {
   id: "4B9bKBpX5tnwjiG93TAqF7ci",
   remote_id: "49",
   name: "ACME Inc.",

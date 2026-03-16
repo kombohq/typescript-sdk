@@ -99,6 +99,14 @@ let value: GetAtsJobsPositiveResponseData = {
           hiring_team_roles: [
             "RECRUITER",
           ],
+          job_roles: [
+            {
+              remote_id: "32",
+              remote_label: "Hiring Manager",
+              scope: "JOB",
+              unified_type: "HIRING_MANAGER",
+            },
+          ],
         },
       ],
     },

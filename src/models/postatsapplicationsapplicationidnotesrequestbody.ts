@@ -74,6 +74,16 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn = {
 };
 
 /**
+ * Lever specific remote fields for the note.
+ */
+export type PostAtsApplicationsApplicationIdNotesRequestBodyLever = {
+  /**
+   * ID of the Lever user that will show up as having created the note. If not provided, defaults to the user associated with the OAuth token.
+   */
+  perform_as?: string | undefined;
+};
+
+/**
  * Workable specific remote fields for ATS actions.
  */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyWorkable = {
@@ -111,6 +121,10 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields = {
   bullhorn?:
     | PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn
     | undefined;
+  /**
+   * Lever specific remote fields for the note.
+   */
+  lever?: PostAtsApplicationsApplicationIdNotesRequestBodyLever | undefined;
   /**
    * Workable specific remote fields for ATS actions.
    */
@@ -281,6 +295,32 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyBullhornToJSON(
 }
 
 /** @internal */
+export type PostAtsApplicationsApplicationIdNotesRequestBodyLever$Outbound = {
+  perform_as?: string | undefined;
+};
+
+/** @internal */
+export const PostAtsApplicationsApplicationIdNotesRequestBodyLever$outboundSchema:
+  z.ZodType<
+    PostAtsApplicationsApplicationIdNotesRequestBodyLever$Outbound,
+    z.ZodTypeDef,
+    PostAtsApplicationsApplicationIdNotesRequestBodyLever
+  > = z.object({
+    perform_as: z.string().optional(),
+  });
+
+export function postAtsApplicationsApplicationIdNotesRequestBodyLeverToJSON(
+  postAtsApplicationsApplicationIdNotesRequestBodyLever:
+    PostAtsApplicationsApplicationIdNotesRequestBodyLever,
+): string {
+  return JSON.stringify(
+    PostAtsApplicationsApplicationIdNotesRequestBodyLever$outboundSchema.parse(
+      postAtsApplicationsApplicationIdNotesRequestBodyLever,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$Outbound =
   {
     on_behalf_of_user_remote_id?: string | undefined;
@@ -321,6 +361,9 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$Outboun
     bullhorn?:
       | PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$Outbound
       | undefined;
+    lever?:
+      | PostAtsApplicationsApplicationIdNotesRequestBodyLever$Outbound
+      | undefined;
     workable?:
       | PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$Outbound
       | undefined;
@@ -344,6 +387,9 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$outbou
     ).optional(),
     bullhorn: z.lazy(() =>
       PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$outboundSchema
+    ).optional(),
+    lever: z.lazy(() =>
+      PostAtsApplicationsApplicationIdNotesRequestBodyLever$outboundSchema
     ).optional(),
     workable: z.lazy(() =>
       PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$outboundSchema

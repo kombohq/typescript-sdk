@@ -1,21 +1,20 @@
-speakeasyVersion: 1.730.1
+speakeasyVersion: 1.755.0
 sources:
     kombo-prepared-spec:
         sourceNamespace: kombo-api
-        sourceRevisionDigest: sha256:591686f3af40670601f76d7f68736891fe6f4b7e266a7b5f2763c5325ffb9c1c
-        sourceBlobDigest: sha256:20bfd7153b22ad4d11e59e12c67abf8c83551f1d366d8f1664b8809bf7eef991
+        sourceRevisionDigest: sha256:93cea3a1714cc3fe220fbade721c4592dd98e63640390484da8dc0a8c820e419
+        sourceBlobDigest: sha256:e26131e165b397de7f5fbf97a9df4ff8b3a20d22f18210c2f6bf639feff988e0
         tags:
             - latest
-            - speakeasy-sdk-regen-1772064270
             - 1.0.0
 targets:
     kombo-typescript:
         source: kombo-prepared-spec
         sourceNamespace: kombo-api
-        sourceRevisionDigest: sha256:591686f3af40670601f76d7f68736891fe6f4b7e266a7b5f2763c5325ffb9c1c
-        sourceBlobDigest: sha256:20bfd7153b22ad4d11e59e12c67abf8c83551f1d366d8f1664b8809bf7eef991
+        sourceRevisionDigest: sha256:93cea3a1714cc3fe220fbade721c4592dd98e63640390484da8dc0a8c820e419
+        sourceBlobDigest: sha256:e26131e165b397de7f5fbf97a9df4ff8b3a20d22f18210c2f6bf639feff988e0
         codeSamplesNamespace: kombo-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:02acb3cdef94378e86008b8d90bd6d5dc916fbd2e93be411e4784c1175d4124a
+        codeSamplesRevisionDigest: sha256:f0f5dc561222755132b25cee0bc9c480c1f00453fe5702373c1c7d20277f9b93
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

@@ -40,8 +40,6 @@ import {
  *
  * Retrieve performance review cycles data from HRIS tools.
  *
- * <Warning>**Open Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
- *
  * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
  */
 export function hrisGetPerformanceReviewCycles(
