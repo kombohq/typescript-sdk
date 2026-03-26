@@ -600,6 +600,17 @@ export type PostAtsJobsJobIdApplicationsRequestBodyBullhorn = {
 };
 
 /**
+ * The consent decisions for the candidate. SmartRecruiters supports two consent models: 'Single' (use the `SINGLE` key) and 'Separated' (use `SMART_RECRUIT`, `SMART_CRM`, `SMART_MESSAGE_SMS`, and/or `SMART_MESSAGE_WHATSAPP` keys). When this field is provided, it takes precedence over the `gdpr_consent` field for the `consentDecisions` property. See: https://developers.smartrecruiters.com/docs/partners-post-an-application
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions = {
+  single?: boolean | undefined;
+  smart_recruit?: boolean | undefined;
+  smart_crm?: boolean | undefined;
+  smart_message_sms?: boolean | undefined;
+  smart_message_whatsapp?: boolean | undefined;
+};
+
+/**
  * Fields specific to SmartRecruiters.
  */
 export type PostAtsJobsJobIdApplicationsRequestBodySmartrecruiters = {
@@ -619,6 +630,12 @@ export type PostAtsJobsJobIdApplicationsRequestBodySmartrecruiters = {
    * Fields that we will pass through to the SmartRecruiters's `Candidate` object. This API is used: https://developers.smartrecruiters.com/reference/createcandidate-1
    */
   candidate?: { [k: string]: any } | undefined;
+  /**
+   * The consent decisions for the candidate. SmartRecruiters supports two consent models: 'Single' (use the `SINGLE` key) and 'Separated' (use `SMART_RECRUIT`, `SMART_CRM`, `SMART_MESSAGE_SMS`, and/or `SMART_MESSAGE_WHATSAPP` keys). When this field is provided, it takes precedence over the `gdpr_consent` field for the `consentDecisions` property. See: https://developers.smartrecruiters.com/docs/partners-post-an-application
+   */
+  consent_decisions?:
+    | PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions
+    | undefined;
 };
 
 /**
@@ -649,6 +666,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyDvinci = {
    * Fields that we will pass through to d.vinci's application object. This API is used: https://static.dvinci-easy.com/files/d.vinci%20application-apply-api.html#jobs__id__applyApi_post
    */
   application?: { [k: string]: any } | undefined;
+  /**
+   * Fields that we will pass through to d.vinci's candidate/application payload as top-level fields (e.g., dateOfBirth).
+   */
+  candidate?: { [k: string]: any } | undefined;
 };
 
 /**
@@ -715,6 +736,16 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRecruitee = {
   candidate?:
     | PostAtsJobsJobIdApplicationsRequestBodyRecruiteeCandidate
     | undefined;
+};
+
+/**
+ * Fields specific to Rexx.
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyRexx = {
+  /**
+   * Fields that we will pass through to Rexx's application form fields.
+   */
+  candidate?: { [k: string]: any } | undefined;
 };
 
 /**
@@ -858,6 +889,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
    * Fields specific to Recruitee.
    */
   recruitee?: PostAtsJobsJobIdApplicationsRequestBodyRecruitee | undefined;
+  /**
+   * Fields specific to Rexx.
+   */
+  rexx?: PostAtsJobsJobIdApplicationsRequestBodyRexx | undefined;
   /**
    * Fields specific to Abacus Umantis.
    */
@@ -2706,10 +2741,54 @@ export function postAtsJobsJobIdApplicationsRequestBodyBullhornToJSON(
 }
 
 /** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions$Outbound = {
+  SINGLE?: boolean | undefined;
+  SMART_RECRUIT?: boolean | undefined;
+  SMART_CRM?: boolean | undefined;
+  SMART_MESSAGE_SMS?: boolean | undefined;
+  SMART_MESSAGE_WHATSAPP?: boolean | undefined;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions
+  > = z.object({
+    single: z.boolean().optional(),
+    smart_recruit: z.boolean().optional(),
+    smart_crm: z.boolean().optional(),
+    smart_message_sms: z.boolean().optional(),
+    smart_message_whatsapp: z.boolean().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      single: "SINGLE",
+      smart_recruit: "SMART_RECRUIT",
+      smart_crm: "SMART_CRM",
+      smart_message_sms: "SMART_MESSAGE_SMS",
+      smart_message_whatsapp: "SMART_MESSAGE_WHATSAPP",
+    });
+  });
+
+export function postAtsJobsJobIdApplicationsRequestBodyConsentDecisionsToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyConsentDecisions:
+    PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions$outboundSchema
+      .parse(postAtsJobsJobIdApplicationsRequestBodyConsentDecisions),
+  );
+}
+
+/** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodySmartrecruiters$Outbound = {
   candidate_with_questions?: { [k: string]: any } | undefined;
   candidate_without_questions?: { [k: string]: any } | undefined;
   candidate?: { [k: string]: any } | undefined;
+  consent_decisions?:
+    | PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -2722,6 +2801,9 @@ export const PostAtsJobsJobIdApplicationsRequestBodySmartrecruiters$outboundSche
     candidate_with_questions: z.record(z.any()).optional(),
     candidate_without_questions: z.record(z.any()).optional(),
     candidate: z.record(z.any()).optional(),
+    consent_decisions: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions$outboundSchema
+    ).optional(),
   });
 
 export function postAtsJobsJobIdApplicationsRequestBodySmartrecruitersToJSON(
@@ -2790,6 +2872,7 @@ export function postAtsJobsJobIdApplicationsRequestBodyGuidecomToJSON(
 /** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyDvinci$Outbound = {
   application?: { [k: string]: any } | undefined;
+  candidate?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -2800,6 +2883,7 @@ export const PostAtsJobsJobIdApplicationsRequestBodyDvinci$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyDvinci
   > = z.object({
     application: z.record(z.any()).optional(),
+    candidate: z.record(z.any()).optional(),
   });
 
 export function postAtsJobsJobIdApplicationsRequestBodyDvinciToJSON(
@@ -3040,6 +3124,32 @@ export function postAtsJobsJobIdApplicationsRequestBodyRecruiteeToJSON(
 }
 
 /** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyRexx$Outbound = {
+  candidate?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyRexx$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyRexx$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyRexx
+  > = z.object({
+    candidate: z.record(z.any()).optional(),
+  });
+
+export function postAtsJobsJobIdApplicationsRequestBodyRexxToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyRexx:
+    PostAtsJobsJobIdApplicationsRequestBodyRexx,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyRexx$outboundSchema.parse(
+      postAtsJobsJobIdApplicationsRequestBodyRexx,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyUmantis$Outbound = {
   person?: { [k: string]: any } | undefined;
 };
@@ -3247,6 +3357,7 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
   recruitee?:
     | PostAtsJobsJobIdApplicationsRequestBodyRecruitee$Outbound
     | undefined;
+  rexx?: PostAtsJobsJobIdApplicationsRequestBodyRexx$Outbound | undefined;
   umantis?: PostAtsJobsJobIdApplicationsRequestBodyUmantis$Outbound | undefined;
   piloga?: PostAtsJobsJobIdApplicationsRequestBodyPiloga$Outbound | undefined;
   pinpoint?:
@@ -3317,6 +3428,9 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$outboundSchema:
     ).optional(),
     recruitee: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyRecruitee$outboundSchema
+    ).optional(),
+    rexx: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyRexx$outboundSchema
     ).optional(),
     umantis: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyUmantis$outboundSchema

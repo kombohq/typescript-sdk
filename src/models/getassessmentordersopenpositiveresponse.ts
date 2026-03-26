@@ -69,6 +69,9 @@ export type GetAssessmentOrdersOpenPositiveResponseLocation = {
 export const GetAssessmentOrdersOpenPositiveResponseHiringTeamRole = {
   Recruiter: "RECRUITER",
   HiringManager: "HIRING_MANAGER",
+  Coordinator: "COORDINATOR",
+  Sourcer: "SOURCER",
+  Interviewer: "INTERVIEWER",
 } as const;
 export type GetAssessmentOrdersOpenPositiveResponseHiringTeamRole = ClosedEnum<
   typeof GetAssessmentOrdersOpenPositiveResponseHiringTeamRole
@@ -81,7 +84,7 @@ export type GetAssessmentOrdersOpenPositiveResponseHiringTeam = {
   /**
    * The team member's identifier in the integrated system.
    */
-  remote_id: string;
+  remote_id: string | null;
   /**
    * The team member's email address.
    */
@@ -258,7 +261,7 @@ export const GetAssessmentOrdersOpenPositiveResponseHiringTeam$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    remote_id: z.string(),
+    remote_id: z.nullable(z.string()),
     email: z.nullable(z.string()),
     first_name: z.nullable(z.string()),
     last_name: z.nullable(z.string()),

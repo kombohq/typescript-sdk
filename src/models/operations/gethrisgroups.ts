@@ -33,6 +33,8 @@ export type GetHrisGroupsRequest = {
    * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
    *
    * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   *
+   * For this endpoint, only changes to the returned record itself are considered.
    */
   updated_after?: Date | undefined;
   /**

@@ -11,12 +11,10 @@ let value: AssessmentOrderReceivedWebhookPayloadJob = {
   hiring_team: [
     {
       remote_id: "<id>",
-      email: "Jaydon_Schimmel71@hotmail.com",
-      first_name: null,
-      last_name: "Buckridge",
-      hiring_team_roles: [
-        "RECRUITER",
-      ],
+      email: "Janice_Mosciski1@yahoo.com",
+      first_name: "Carroll",
+      last_name: "Boehm",
+      hiring_team_roles: [],
     },
   ],
 };

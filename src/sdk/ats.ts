@@ -19,6 +19,7 @@ import { atsGetInterviews } from "../funcs/atsGetInterviews.js";
 import { atsGetJobs } from "../funcs/atsGetJobs.js";
 import { atsGetOffers } from "../funcs/atsGetOffers.js";
 import { atsGetRejectionReasons } from "../funcs/atsGetRejectionReasons.js";
+import { atsGetRoles } from "../funcs/atsGetRoles.js";
 import { atsGetTags } from "../funcs/atsGetTags.js";
 import { atsGetUsers } from "../funcs/atsGetUsers.js";
 import { atsImportTrackedApplication } from "../funcs/atsImportTrackedApplication.js";
@@ -74,7 +75,8 @@ export class Ats extends ClientSDK {
    *
    * ```json
    * {
-   *   "stage_id": "3PJ8PZhZZa1eEdd2DtPNtVup"
+   *   "stage_id": "3PJ8PZhZZa1eEdd2DtPNtVup",
+   *   "remote_fields": {}
    * }
    * ```
    */
@@ -731,6 +733,27 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<PageIterator<operations.GetAtsUsersResponse, { cursor: string }>> {
     return unwrapResultIterator(atsGetUsers(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get roles
+   *
+   * @remarks
+   * Retrieve all roles.
+   *
+   * Visit our in-depth guide about [roles](/ats/features/roles) to learn more.
+   *
+   * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+   */
+  async getRoles(
+    request?: operations.GetAtsRolesRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<PageIterator<operations.GetAtsRolesResponse, { cursor: string }>> {
+    return unwrapResultIterator(atsGetRoles(
       this,
       request,
       options,

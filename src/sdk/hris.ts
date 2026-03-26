@@ -17,6 +17,7 @@ import { hrisGetLegalEntities } from "../funcs/hrisGetLegalEntities.js";
 import { hrisGetLocations } from "../funcs/hrisGetLocations.js";
 import { hrisGetPerformanceReviewCycles } from "../funcs/hrisGetPerformanceReviewCycles.js";
 import { hrisGetPerformanceReviews } from "../funcs/hrisGetPerformanceReviews.js";
+import { hrisGetStaffingEntities } from "../funcs/hrisGetStaffingEntities.js";
 import { hrisGetTimeOffBalances } from "../funcs/hrisGetTimeOffBalances.js";
 import { hrisGetTimesheets } from "../funcs/hrisGetTimesheets.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -491,8 +492,6 @@ export class Hris extends ClientSDK {
    *
    * Retrieve performance review cycles data from HRIS tools.
    *
-   * <Warning>**Open Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
-   *
    * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
    */
   async getPerformanceReviewCycles(
@@ -519,8 +518,6 @@ export class Hris extends ClientSDK {
    *
    * Retrieve performance review data from HRIS tools.
    *
-   * <Warning>**Open Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
-   *
    * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
    */
   async getPerformanceReviews(
@@ -533,6 +530,37 @@ export class Hris extends ClientSDK {
     >
   > {
     return unwrapResultIterator(hrisGetPerformanceReviews(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get staffing entities
+   *
+   * @remarks
+   * Retrieve all staffing entities.
+   *
+   * Retrieve all staffing entities (positions, requisitions, and jobs) from the HRIS system.
+   *
+   * Many enterprise HRIS platforms distinguish between **positions**, **requisitions**, and **jobs** — three related but different concepts used to manage headcount and hiring. Not every HRIS uses all three, and naming varies across systems, but here is a general overview:
+   *
+   * - **Position**: A slot in the organizational structure that represents a role to be filled (or already filled) by one or more employees. Positions typically carry metadata like department, location, cost center, and reporting line. Think of it as "a chair at a desk" — it exists whether someone is sitting in it or not.
+   * - **Requisition**: A formal request to fill a position. When a manager wants to hire for an open position, they usually create a requisition that goes through an approval workflow. Requisitions are time-bound and tied to a specific hiring need. In Kombo's data model, a requisition's `parent_id` points to the position it was opened for.
+   * - **Job**: Some systems use "job" as a more generic or lightweight alternative to a requisition. Jobs often represent an ongoing, unlimited hiring need (e.g., a company that is always hiring for "Software Engineer") rather than a one-off backfill. This is reflected in the `OPEN_UNLIMITED` status.
+   *
+   * You can use the `model_types` filter to retrieve only the type(s) relevant to your use case. Each record's `model_type` field tells you which of the three concepts it represents.
+   *
+   * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+   */
+  async getStaffingEntities(
+    request?: operations.GetHrisStaffingEntitiesRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.GetHrisStaffingEntitiesResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisGetStaffingEntities(
       this,
       request,
       options,

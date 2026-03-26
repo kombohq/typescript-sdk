@@ -11,5 +11,5 @@ let value: GetAtsJobsPositiveResponseHiringTeamRole = "RECRUITER";
 ## Values
 
 ```typescript
-"RECRUITER" | "HIRING_MANAGER"
+"RECRUITER" | "HIRING_MANAGER" | "COORDINATOR" | "SOURCER" | "INTERVIEWER"
 ```

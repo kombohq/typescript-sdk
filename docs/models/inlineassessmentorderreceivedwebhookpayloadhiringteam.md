@@ -9,10 +9,12 @@ import { InlineAssessmentOrderReceivedWebhookPayloadHiringTeam } from "@kombo-ap
 
 let value: InlineAssessmentOrderReceivedWebhookPayloadHiringTeam = {
   remote_id: "<id>",
-  email: "Raul28@gmail.com",
-  first_name: "Karlie",
-  last_name: "Beier",
-  hiring_team_roles: [],
+  email: "Dennis.Bauch96@hotmail.com",
+  first_name: "Glenna",
+  last_name: "Jast",
+  hiring_team_roles: [
+    "HIRING_MANAGER",
+  ],
 };
 ```
 

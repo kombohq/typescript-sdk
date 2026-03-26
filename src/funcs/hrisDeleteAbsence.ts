@@ -108,7 +108,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/hris/absences/{absence_id}")(pathParams);
 
   const headers = new Headers(compactMap({

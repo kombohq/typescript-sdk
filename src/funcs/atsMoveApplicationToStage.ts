@@ -40,7 +40,8 @@ import { Result } from "../types/fp.js";
  *
  * ```json
  * {
- *   "stage_id": "3PJ8PZhZZa1eEdd2DtPNtVup"
+ *   "stage_id": "3PJ8PZhZZa1eEdd2DtPNtVup",
+ *   "remote_fields": {}
  * }
  * ```
  */
@@ -109,7 +110,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/ats/applications/{application_id}/stage")(
     pathParams,
   );

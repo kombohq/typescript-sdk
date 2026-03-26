@@ -113,7 +113,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/ats/applications/{application_id}/notes")(
     pathParams,
   );

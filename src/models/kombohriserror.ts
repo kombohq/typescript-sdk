@@ -18,6 +18,7 @@ export type KomboHrisErrorStatus = ClosedEnum<typeof KomboHrisErrorStatus>;
  */
 export const KomboHrisErrorCode = {
   PlatformRateLimitExceeded: "PLATFORM.RATE_LIMIT_EXCEEDED",
+  PlatformConcurrencyLimitExceeded: "PLATFORM.CONCURRENCY_LIMIT_EXCEEDED",
   PlatformIntegrationNotFound: "PLATFORM.INTEGRATION_NOT_FOUND",
   PlatformInputInvalid: "PLATFORM.INPUT_INVALID",
   PlatformUnknownError: "PLATFORM.UNKNOWN_ERROR",

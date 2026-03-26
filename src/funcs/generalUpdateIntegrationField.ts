@@ -105,7 +105,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc(
     "/integrations/{integration_id}/integration-fields/{integration_field_id}",
   )(pathParams);

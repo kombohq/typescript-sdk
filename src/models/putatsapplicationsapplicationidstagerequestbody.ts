@@ -4,6 +4,33 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { ClosedEnum } from "../types/enums.js";
+
+/**
+ * The type of step reference to use. Use "Next_Step_Reference" for regular stage moves and "Disposition_Step_Reference" for conclusion/disposition stages (e.g., rejected, declined). Defaults to "Next_Step_Reference".
+ */
+export const StepType = {
+  NextStepReference: "Next_Step_Reference",
+  DispositionStepReference: "Disposition_Step_Reference",
+} as const;
+/**
+ * The type of step reference to use. Use "Next_Step_Reference" for regular stage moves and "Disposition_Step_Reference" for conclusion/disposition stages (e.g., rejected, declined). Defaults to "Next_Step_Reference".
+ */
+export type StepType = ClosedEnum<typeof StepType>;
+
+/**
+ * Fields specific to Workday.
+ */
+export type PutAtsApplicationsApplicationIdStageRequestBodyWorkday = {
+  /**
+   * The Workflow_Step_ID to pass directly to the Move_Candidate request. When provided, the automatic workflow step matching logic is skipped.
+   */
+  workflow_step_id?: string | undefined;
+  /**
+   * The type of step reference to use. Use "Next_Step_Reference" for regular stage moves and "Disposition_Step_Reference" for conclusion/disposition stages (e.g., rejected, declined). Defaults to "Next_Step_Reference".
+   */
+  step_type?: StepType | undefined;
+};
 
 /**
  * Headers we will pass with `POST` requests to Greenhouse.
@@ -42,6 +69,10 @@ export type PutAtsApplicationsApplicationIdStageRequestBodyWorkable = {
  */
 export type PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields = {
   /**
+   * Fields specific to Workday.
+   */
+  workday?: PutAtsApplicationsApplicationIdStageRequestBodyWorkday | undefined;
+  /**
    * Fields specific to Greenhouse.
    */
   greenhouse?:
@@ -67,6 +98,43 @@ export type PutAtsApplicationsApplicationIdStageRequestBody = {
     | PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields
     | undefined;
 };
+
+/** @internal */
+export const StepType$outboundSchema: z.ZodNativeEnum<typeof StepType> = z
+  .nativeEnum(StepType);
+
+/** @internal */
+export type PutAtsApplicationsApplicationIdStageRequestBodyWorkday$Outbound = {
+  Workflow_Step_ID?: string | undefined;
+  Step_Type?: string | undefined;
+};
+
+/** @internal */
+export const PutAtsApplicationsApplicationIdStageRequestBodyWorkday$outboundSchema:
+  z.ZodType<
+    PutAtsApplicationsApplicationIdStageRequestBodyWorkday$Outbound,
+    z.ZodTypeDef,
+    PutAtsApplicationsApplicationIdStageRequestBodyWorkday
+  > = z.object({
+    workflow_step_id: z.string().optional(),
+    step_type: StepType$outboundSchema.optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      workflow_step_id: "Workflow_Step_ID",
+      step_type: "Step_Type",
+    });
+  });
+
+export function putAtsApplicationsApplicationIdStageRequestBodyWorkdayToJSON(
+  putAtsApplicationsApplicationIdStageRequestBodyWorkday:
+    PutAtsApplicationsApplicationIdStageRequestBodyWorkday,
+): string {
+  return JSON.stringify(
+    PutAtsApplicationsApplicationIdStageRequestBodyWorkday$outboundSchema.parse(
+      putAtsApplicationsApplicationIdStageRequestBodyWorkday,
+    ),
+  );
+}
 
 /** @internal */
 export type PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$Outbound =
@@ -156,6 +224,9 @@ export function putAtsApplicationsApplicationIdStageRequestBodyWorkableToJSON(
 /** @internal */
 export type PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$Outbound =
   {
+    workday?:
+      | PutAtsApplicationsApplicationIdStageRequestBodyWorkday$Outbound
+      | undefined;
     greenhouse?:
       | PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$Outbound
       | undefined;
@@ -171,6 +242,9 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$outboun
     z.ZodTypeDef,
     PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields
   > = z.object({
+    workday: z.lazy(() =>
+      PutAtsApplicationsApplicationIdStageRequestBodyWorkday$outboundSchema
+    ).optional(),
     greenhouse: z.lazy(() =>
       PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$outboundSchema
     ).optional(),
