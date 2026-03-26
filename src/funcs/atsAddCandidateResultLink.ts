@@ -131,7 +131,6 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-
   const path = pathToFunc("/ats/candidates/{candidate_id}/result-links")(
     pathParams,
   );

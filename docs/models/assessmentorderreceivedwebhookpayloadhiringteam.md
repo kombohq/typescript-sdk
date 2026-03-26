@@ -9,10 +9,12 @@ import { AssessmentOrderReceivedWebhookPayloadHiringTeam } from "@kombo-api/sdk/
 
 let value: AssessmentOrderReceivedWebhookPayloadHiringTeam = {
   remote_id: "<id>",
-  email: "Kyle.Will@hotmail.com",
-  first_name: "Tillman",
-  last_name: "Kuvalis",
-  hiring_team_roles: [],
+  email: "Marielle43@yahoo.com",
+  first_name: "Ernest",
+  last_name: "Franey",
+  hiring_team_roles: [
+    "SOURCER",
+  ],
 };
 ```
 

@@ -20,6 +20,7 @@ export type KomboGeneralErrorStatus = ClosedEnum<
  */
 export const KomboGeneralErrorCode = {
   PlatformRateLimitExceeded: "PLATFORM.RATE_LIMIT_EXCEEDED",
+  PlatformConcurrencyLimitExceeded: "PLATFORM.CONCURRENCY_LIMIT_EXCEEDED",
   PlatformIntegrationNotFound: "PLATFORM.INTEGRATION_NOT_FOUND",
   PlatformInputInvalid: "PLATFORM.INPUT_INVALID",
   PlatformUnknownError: "PLATFORM.UNKNOWN_ERROR",

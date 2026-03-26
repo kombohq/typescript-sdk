@@ -21,6 +21,7 @@
 * [getTimesheets](#gettimesheets) - Get timesheets
 * [getPerformanceReviewCycles](#getperformancereviewcycles) - Get performance review cycles
 * [getPerformanceReviews](#getperformancereviews) - Get performance reviews
+* [getStaffingEntities](#getstaffingentities) - Get staffing entities
 
 ## getEmployees
 
@@ -1855,10 +1856,6 @@ Get performance review cycles
 
 Retrieve performance review cycles data from HRIS tools.
 
-<Warning>**Open Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
-
-
-
 Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
 
 ### Example Usage
@@ -1939,10 +1936,6 @@ Get performance reviews
 
 Retrieve performance review data from HRIS tools.
 
-<Warning>**Open Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
-
-
-
 Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
 
 ### Example Usage
@@ -2009,6 +2002,94 @@ run();
 ### Response
 
 **Promise\<[operations.GetHrisPerformanceReviewsResponse](../../models/operations/gethrisperformancereviewsresponse.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.KomboHrisError    | default                  | application/json         |
+| errors.KomboDefaultError | 4XX, 5XX                 | \*/\*                    |
+
+## getStaffingEntities
+
+Retrieve all staffing entities.
+
+Retrieve all staffing entities (positions, requisitions, and jobs) from the HRIS system.
+
+Many enterprise HRIS platforms distinguish between **positions**, **requisitions**, and **jobs** — three related but different concepts used to manage headcount and hiring. Not every HRIS uses all three, and naming varies across systems, but here is a general overview:
+
+- **Position**: A slot in the organizational structure that represents a role to be filled (or already filled) by one or more employees. Positions typically carry metadata like department, location, cost center, and reporting line. Think of it as "a chair at a desk" — it exists whether someone is sitting in it or not.
+- **Requisition**: A formal request to fill a position. When a manager wants to hire for an open position, they usually create a requisition that goes through an approval workflow. Requisitions are time-bound and tied to a specific hiring need. In Kombo's data model, a requisition's `parent_id` points to the position it was opened for.
+- **Job**: Some systems use "job" as a more generic or lightweight alternative to a requisition. Jobs often represent an ongoing, unlimited hiring need (e.g., a company that is always hiring for "Software Engineer") rather than a one-off backfill. This is reflected in the `OPEN_UNLIMITED` status.
+
+You can use the `model_types` filter to retrieve only the type(s) relevant to your use case. Each record's `model_type` field tells you which of the three concepts it represents.
+
+Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="GetHrisStaffingEntities" method="get" path="/hris/staffing-entities" example="example1" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.getStaffingEntities({});
+
+  for await (const page of result) {
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisGetStaffingEntities } from "@kombo-api/sdk/funcs/hrisGetStaffingEntities.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisGetStaffingEntities(kombo, {});
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
+    console.log(page);
+  }
+  } else {
+    console.log("hrisGetStaffingEntities failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetHrisStaffingEntitiesRequest](../../models/operations/gethrisstaffingentitiesrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.GetHrisStaffingEntitiesResponse](../../models/operations/gethrisstaffingentitiesresponse.md)\>**
 
 ### Errors
 

@@ -98,6 +98,9 @@ export type InlineAssessmentOrderReceivedWebhookPayloadLocation = {
 export const InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole = {
   Recruiter: "RECRUITER",
   HiringManager: "HIRING_MANAGER",
+  Coordinator: "COORDINATOR",
+  Sourcer: "SOURCER",
+  Interviewer: "INTERVIEWER",
 } as const;
 export type InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole =
   ClosedEnum<typeof InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole>;
@@ -109,7 +112,7 @@ export type InlineAssessmentOrderReceivedWebhookPayloadHiringTeam = {
   /**
    * The team member's identifier in the integrated system.
    */
-  remote_id: string;
+  remote_id: string | null;
   /**
    * The team member's email address.
    */
@@ -413,7 +416,7 @@ export const InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema
     z.ZodTypeDef,
     unknown
   > = z.object({
-    remote_id: z.string(),
+    remote_id: z.nullable(z.string()),
     email: z.nullable(z.string()),
     first_name: z.nullable(z.string()),
     last_name: z.nullable(z.string()),
@@ -423,7 +426,7 @@ export const InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema
   });
 /** @internal */
 export type InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$Outbound = {
-  remote_id: string;
+  remote_id: string | null;
   email: string | null;
   first_name: string | null;
   last_name: string | null;
@@ -437,7 +440,7 @@ export const InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$outboundSchem
     z.ZodTypeDef,
     InlineAssessmentOrderReceivedWebhookPayloadHiringTeam
   > = z.object({
-    remote_id: z.string(),
+    remote_id: z.nullable(z.string()),
     email: z.nullable(z.string()),
     first_name: z.nullable(z.string()),
     last_name: z.nullable(z.string()),

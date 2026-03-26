@@ -33,6 +33,12 @@ export type GetHrisPerformanceReviewsRequest = {
    * If you want to track entry deletion, also set the `include_deleted=true` query parameter, because otherwise, deleted entries will be hidden.
    *
    * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
+   *
+   * For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+   *
+   * - ✓ `review_cycle`
+   * - ✓ `reviewee`
+   * - ✓ `reviewer`
    */
   updated_after?: Date | undefined;
   /**
