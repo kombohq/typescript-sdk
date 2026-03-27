@@ -146,6 +146,14 @@ export type InlineAssessmentOrderReceivedWebhookPayloadJob = {
    */
   name?: string | null | undefined;
   /**
+   * The human readable job code. Some systems expose this as the Requisition Code/ID.
+   */
+  job_code?: string | null | undefined;
+  /**
+   * Description of the job. This field is usually returned as HTML.
+   */
+  description?: string | null | undefined;
+  /**
    * The job location information.
    */
   location?:
@@ -484,6 +492,8 @@ export const InlineAssessmentOrderReceivedWebhookPayloadJob$inboundSchema:
   > = z.object({
     remote_id: z.nullable(z.string()).optional(),
     name: z.nullable(z.string()).optional(),
+    job_code: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
     location: z.nullable(
       z.lazy(() =>
         InlineAssessmentOrderReceivedWebhookPayloadLocation$inboundSchema
@@ -499,6 +509,8 @@ export const InlineAssessmentOrderReceivedWebhookPayloadJob$inboundSchema:
 export type InlineAssessmentOrderReceivedWebhookPayloadJob$Outbound = {
   remote_id?: string | null | undefined;
   name?: string | null | undefined;
+  job_code?: string | null | undefined;
+  description?: string | null | undefined;
   location?:
     | InlineAssessmentOrderReceivedWebhookPayloadLocation$Outbound
     | null
@@ -517,6 +529,8 @@ export const InlineAssessmentOrderReceivedWebhookPayloadJob$outboundSchema:
   > = z.object({
     remote_id: z.nullable(z.string()).optional(),
     name: z.nullable(z.string()).optional(),
+    job_code: z.nullable(z.string()).optional(),
+    description: z.nullable(z.string()).optional(),
     location: z.nullable(
       z.lazy(() =>
         InlineAssessmentOrderReceivedWebhookPayloadLocation$outboundSchema

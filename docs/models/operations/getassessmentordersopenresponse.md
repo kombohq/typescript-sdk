@@ -26,7 +26,10 @@ let value: GetAssessmentOrdersOpenResponse = {
           },
           job: {
             remote_id: "67890",
-            name: "Engineering Manager",
+            name: "Bottle Opener",
+            job_code: "BO-2024-01",
+            description:
+              "<p>We are looking for a skilled and energetic individual to join our team as the chief bottle open officer. This unique role requires precision, attention to detail, and the ability to handle a high volume of beverage bottles in a fast-paced environment. The ideal candidate will ensure bottles are opened swiftly and safely while maintaining hygiene standards.</p>",
             location: {
               city: "Berlin",
               country: "DE",
