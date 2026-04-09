@@ -11,7 +11,7 @@ export * from "./deletehrisabsencesabsenceidpositiveresponse.js";
 export * from "./deletehrisabsencesabsenceidrequestbody.js";
 export * from "./deleteintegrationsintegrationidpositiveresponse.js";
 export * from "./deleteintegrationsintegrationidrequestbody.js";
-export * from "./getassessmentordersopenpositiveresponse.js";
+export * from "./getassessmentorderspositiveresponse.js";
 export * from "./getassessmentpackagespositiveresponse.js";
 export * from "./getatsapplicationsapplicationidattachmentspositiveresponse.js";
 export * from "./getatsapplicationspositiveresponse.js";

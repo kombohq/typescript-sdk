@@ -6,7 +6,7 @@
 
 * [getPackages](#getpackages) - Get packages
 * [setPackages](#setpackages) - Set packages
-* [getOpenOrders](#getopenorders) - Get open orders
+* [getAssessmentOrders](#getassessmentorders) - Get orders
 * [updateOrderResult](#updateorderresult) - Update order result
 
 ## getPackages
@@ -312,13 +312,13 @@ run();
 | errors.KomboAtsError     | default                  | application/json         |
 | errors.KomboDefaultError | 4XX, 5XX                 | \*/\*                    |
 
-## getOpenOrders
+## getAssessmentOrders
 
-Get all open assessment and background check orders of an integration.
+Get all assessment and background check orders of an integration.
 
 ### Example Usage
 
-<!-- UsageSnippet language="typescript" operationID="GetAssessmentOrdersOpen" method="get" path="/assessment/orders/open" -->
+<!-- UsageSnippet language="typescript" operationID="GetAssessmentOrders" method="get" path="/assessment/orders" -->
 ```typescript
 import { Kombo } from "@kombo-api/sdk";
 
@@ -328,7 +328,7 @@ const kombo = new Kombo({
 });
 
 async function run() {
-  const result = await kombo.assessment.getOpenOrders({});
+  const result = await kombo.assessment.getAssessmentOrders({});
 
   for await (const page of result) {
     console.log(page);
@@ -344,7 +344,7 @@ The standalone function version of this method:
 
 ```typescript
 import { KomboCore } from "@kombo-api/sdk/core.js";
-import { assessmentGetOpenOrders } from "@kombo-api/sdk/funcs/assessmentGetOpenOrders.js";
+import { assessmentGetAssessmentOrders } from "@kombo-api/sdk/funcs/assessmentGetAssessmentOrders.js";
 
 // Use `KomboCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -354,14 +354,14 @@ const kombo = new KomboCore({
 });
 
 async function run() {
-  const res = await assessmentGetOpenOrders(kombo, {});
+  const res = await assessmentGetAssessmentOrders(kombo, {});
   if (res.ok) {
     const { value: result } = res;
     for await (const page of result) {
     console.log(page);
   }
   } else {
-    console.log("assessmentGetOpenOrders failed:", res.error);
+    console.log("assessmentGetAssessmentOrders failed:", res.error);
   }
 }
 
@@ -372,14 +372,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.GetAssessmentOrdersOpenRequest](../../models/operations/getassessmentordersopenrequest.md)                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.GetAssessmentOrdersRequest](../../models/operations/getassessmentordersrequest.md)                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.GetAssessmentOrdersOpenResponse](../../models/operations/getassessmentordersopenresponse.md)\>**
+**Promise\<[operations.GetAssessmentOrdersResponse](../../models/operations/getassessmentordersresponse.md)\>**
 
 ### Errors
 

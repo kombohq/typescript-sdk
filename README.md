@@ -139,7 +139,7 @@ const kombo = new Kombo({
 
 * [getPackages](docs/sdks/assessment/README.md#getpackages) - Get packages
 * [setPackages](docs/sdks/assessment/README.md#setpackages) - Set packages
-* [getOpenOrders](docs/sdks/assessment/README.md#getopenorders) - Get open orders
+* [getAssessmentOrders](docs/sdks/assessment/README.md#getassessmentorders) - Get orders
 * [updateOrderResult](docs/sdks/assessment/README.md#updateorderresult) - Update order result
 
 ### [Ats](docs/sdks/ats/README.md)
@@ -401,7 +401,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [`assessmentGetOpenOrders`](docs/sdks/assessment/README.md#getopenorders) - Get open orders
+- [`assessmentGetAssessmentOrders`](docs/sdks/assessment/README.md#getassessmentorders) - Get orders
 - [`assessmentGetPackages`](docs/sdks/assessment/README.md#getpackages) - Get packages
 - [`assessmentSetPackages`](docs/sdks/assessment/README.md#setpackages) - Set packages
 - [`assessmentUpdateOrderResult`](docs/sdks/assessment/README.md#updateorderresult) - Update order result

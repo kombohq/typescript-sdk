@@ -14,19 +14,23 @@ let value: AssessmentOrderReceivedWebhookPayload = {
     status: "COMPLETED",
     integration_id: "<id>",
     candidate: {
-      email: "Ed_Maggio0@gmail.com",
+      remote_id: "<id>",
+      email: "Gregorio17@gmail.com",
+      first_name: "Rafael",
+      last_name: "Harber",
+      phone: "694-301-6071 x84172",
     },
-    application: {},
+    application: {
+      remote_id: "<id>",
+    },
     job: {
-      hiring_team: [
-        {
-          remote_id: "<id>",
-          email: "Janice_Mosciski1@yahoo.com",
-          first_name: "Carroll",
-          last_name: "Boehm",
-          hiring_team_roles: [],
-        },
-      ],
+      remote_id: "<id>",
+      name: "<value>",
+      job_code: "<value>",
+      description:
+        "skateboard duh mammoth phooey availability blah whirlwind pfft sizzle",
+      location: {},
+      hiring_team: [],
     },
   },
 };

@@ -1,13 +1,13 @@
-# AssessmentOrderReceivedWebhookPayloadLocation
+# GetAssessmentOrdersPositiveResponseLocation
 
 The job location information.
 
 ## Example Usage
 
 ```typescript
-import { AssessmentOrderReceivedWebhookPayloadLocation } from "@kombo-api/sdk/models";
+import { GetAssessmentOrdersPositiveResponseLocation } from "@kombo-api/sdk/models";
 
-let value: AssessmentOrderReceivedWebhookPayloadLocation = {};
+let value: GetAssessmentOrdersPositiveResponseLocation = {};
 ```
 
 ## Fields

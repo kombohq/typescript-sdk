@@ -44,7 +44,7 @@ export type AssessmentOrderReceivedWebhookPayloadCandidate = {
   /**
    * The candidate's identifier in the integrated system.
    */
-  remote_id?: string | null | undefined;
+  remote_id: string | null;
   /**
    * The candidate's email address.
    */
@@ -52,15 +52,15 @@ export type AssessmentOrderReceivedWebhookPayloadCandidate = {
   /**
    * The candidate's first name.
    */
-  first_name?: string | null | undefined;
+  first_name: string | null;
   /**
    * The candidate's last name.
    */
-  last_name?: string | null | undefined;
+  last_name: string | null;
   /**
    * The candidate's phone number.
    */
-  phone?: string | null | undefined;
+  phone: string | null;
 };
 
 /**
@@ -70,14 +70,21 @@ export type AssessmentOrderReceivedWebhookPayloadApplication = {
   /**
    * The application's identifier in the integrated system.
    */
-  remote_id?: string | null | undefined;
+  remote_id: string | null;
 };
 
 /**
  * The job location information.
  */
 export type AssessmentOrderReceivedWebhookPayloadLocation = {
+  /**
+   * If we can parse the address data, this field contains the first part of the street information.
+   */
+  street_1?: string | null | undefined;
+  street_2?: string | null | undefined;
   city?: string | null | undefined;
+  state?: string | null | undefined;
+  zip_code?: string | null | undefined;
   /**
    * Contains the ISO2 country code if possible. If not, it contains the original value.
    */
@@ -86,13 +93,6 @@ export type AssessmentOrderReceivedWebhookPayloadLocation = {
    * If we have address data, this is filled with the raw address string.
    */
   raw?: string | null | undefined;
-  state?: string | null | undefined;
-  /**
-   * If we can parse the address data, this field contains the first part of the street information.
-   */
-  street_1?: string | null | undefined;
-  street_2?: string | null | undefined;
-  zip_code?: string | null | undefined;
 };
 
 export const AssessmentOrderReceivedWebhookPayloadHiringTeamRole = {
@@ -139,23 +139,23 @@ export type AssessmentOrderReceivedWebhookPayloadJob = {
   /**
    * The job's identifier in the integrated system.
    */
-  remote_id?: string | null | undefined;
+  remote_id: string | null;
   /**
    * The job title.
    */
-  name?: string | null | undefined;
+  name: string | null;
   /**
    * The human readable job code. Some systems expose this as the Requisition Code/ID.
    */
-  job_code?: string | null | undefined;
+  job_code: string | null;
   /**
    * Description of the job. This field is usually returned as HTML.
    */
-  description?: string | null | undefined;
+  description: string | null;
   /**
    * The job location information.
    */
-  location?: AssessmentOrderReceivedWebhookPayloadLocation | null | undefined;
+  location: AssessmentOrderReceivedWebhookPayloadLocation | null;
   /**
    * The hiring team allows you to provision users into your system who can access the job and its applications.
    */
@@ -230,19 +230,19 @@ export const AssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    remote_id: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()),
     email: z.string(),
-    first_name: z.nullable(z.string()).optional(),
-    last_name: z.nullable(z.string()).optional(),
-    phone: z.nullable(z.string()).optional(),
+    first_name: z.nullable(z.string()),
+    last_name: z.nullable(z.string()),
+    phone: z.nullable(z.string()),
   });
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadCandidate$Outbound = {
-  remote_id?: string | null | undefined;
+  remote_id: string | null;
   email: string;
-  first_name?: string | null | undefined;
-  last_name?: string | null | undefined;
-  phone?: string | null | undefined;
+  first_name: string | null;
+  last_name: string | null;
+  phone: string | null;
 };
 
 /** @internal */
@@ -252,11 +252,11 @@ export const AssessmentOrderReceivedWebhookPayloadCandidate$outboundSchema:
     z.ZodTypeDef,
     AssessmentOrderReceivedWebhookPayloadCandidate
   > = z.object({
-    remote_id: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()),
     email: z.string(),
-    first_name: z.nullable(z.string()).optional(),
-    last_name: z.nullable(z.string()).optional(),
-    phone: z.nullable(z.string()).optional(),
+    first_name: z.nullable(z.string()),
+    last_name: z.nullable(z.string()),
+    phone: z.nullable(z.string()),
   });
 
 export function assessmentOrderReceivedWebhookPayloadCandidateToJSON(
@@ -292,11 +292,11 @@ export const AssessmentOrderReceivedWebhookPayloadApplication$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    remote_id: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()),
   });
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadApplication$Outbound = {
-  remote_id?: string | null | undefined;
+  remote_id: string | null;
 };
 
 /** @internal */
@@ -306,7 +306,7 @@ export const AssessmentOrderReceivedWebhookPayloadApplication$outboundSchema:
     z.ZodTypeDef,
     AssessmentOrderReceivedWebhookPayloadApplication
   > = z.object({
-    remote_id: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()),
   });
 
 export function assessmentOrderReceivedWebhookPayloadApplicationToJSON(
@@ -342,23 +342,23 @@ export const AssessmentOrderReceivedWebhookPayloadLocation$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    city: z.nullable(z.string()).optional(),
-    country: z.nullable(z.string()).optional(),
-    raw: z.nullable(z.string()).optional(),
-    state: z.nullable(z.string()).optional(),
     street_1: z.nullable(z.string()).optional(),
     street_2: z.nullable(z.string()).optional(),
+    city: z.nullable(z.string()).optional(),
+    state: z.nullable(z.string()).optional(),
     zip_code: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    raw: z.nullable(z.string()).optional(),
   });
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadLocation$Outbound = {
-  city?: string | null | undefined;
-  country?: string | null | undefined;
-  raw?: string | null | undefined;
-  state?: string | null | undefined;
   street_1?: string | null | undefined;
   street_2?: string | null | undefined;
+  city?: string | null | undefined;
+  state?: string | null | undefined;
   zip_code?: string | null | undefined;
+  country?: string | null | undefined;
+  raw?: string | null | undefined;
 };
 
 /** @internal */
@@ -368,13 +368,13 @@ export const AssessmentOrderReceivedWebhookPayloadLocation$outboundSchema:
     z.ZodTypeDef,
     AssessmentOrderReceivedWebhookPayloadLocation
   > = z.object({
-    city: z.nullable(z.string()).optional(),
-    country: z.nullable(z.string()).optional(),
-    raw: z.nullable(z.string()).optional(),
-    state: z.nullable(z.string()).optional(),
     street_1: z.nullable(z.string()).optional(),
     street_2: z.nullable(z.string()).optional(),
+    city: z.nullable(z.string()).optional(),
+    state: z.nullable(z.string()).optional(),
     zip_code: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    raw: z.nullable(z.string()).optional(),
   });
 
 export function assessmentOrderReceivedWebhookPayloadLocationToJSON(
@@ -484,27 +484,24 @@ export const AssessmentOrderReceivedWebhookPayloadJob$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  remote_id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  job_code: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()),
+  name: z.nullable(z.string()),
+  job_code: z.nullable(z.string()),
+  description: z.nullable(z.string()),
   location: z.nullable(
     z.lazy(() => AssessmentOrderReceivedWebhookPayloadLocation$inboundSchema),
-  ).optional(),
+  ),
   hiring_team: z.array(
     z.lazy(() => AssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema),
   ),
 });
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadJob$Outbound = {
-  remote_id?: string | null | undefined;
-  name?: string | null | undefined;
-  job_code?: string | null | undefined;
-  description?: string | null | undefined;
-  location?:
-    | AssessmentOrderReceivedWebhookPayloadLocation$Outbound
-    | null
-    | undefined;
+  remote_id: string | null;
+  name: string | null;
+  job_code: string | null;
+  description: string | null;
+  location: AssessmentOrderReceivedWebhookPayloadLocation$Outbound | null;
   hiring_team: Array<AssessmentOrderReceivedWebhookPayloadHiringTeam$Outbound>;
 };
 
@@ -514,13 +511,13 @@ export const AssessmentOrderReceivedWebhookPayloadJob$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AssessmentOrderReceivedWebhookPayloadJob
 > = z.object({
-  remote_id: z.nullable(z.string()).optional(),
-  name: z.nullable(z.string()).optional(),
-  job_code: z.nullable(z.string()).optional(),
-  description: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()),
+  name: z.nullable(z.string()),
+  job_code: z.nullable(z.string()),
+  description: z.nullable(z.string()),
   location: z.nullable(
     z.lazy(() => AssessmentOrderReceivedWebhookPayloadLocation$outboundSchema),
-  ).optional(),
+  ),
   hiring_team: z.array(
     z.lazy(() =>
       AssessmentOrderReceivedWebhookPayloadHiringTeam$outboundSchema

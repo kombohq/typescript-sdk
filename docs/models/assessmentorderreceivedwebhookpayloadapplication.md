@@ -7,11 +7,13 @@ Information about the job application.
 ```typescript
 import { AssessmentOrderReceivedWebhookPayloadApplication } from "@kombo-api/sdk/models";
 
-let value: AssessmentOrderReceivedWebhookPayloadApplication = {};
+let value: AssessmentOrderReceivedWebhookPayloadApplication = {
+  remote_id: "<id>",
+};
 ```
 
 ## Fields
 
 | Field                                                  | Type                                                   | Required                                               | Description                                            |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `remote_id`                                            | *string*                                               | :heavy_minus_sign:                                     | The application's identifier in the integrated system. |
+| `remote_id`                                            | *string*                                               | :heavy_check_mark:                                     | The application's identifier in the integrated system. |

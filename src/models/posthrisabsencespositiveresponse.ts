@@ -92,6 +92,14 @@ export type PostHrisAbsencesPositiveResponseData = {
    */
   type_id: string | null;
   /**
+   * The date and time the object was created in the remote system.
+   */
+  remote_created_at: Date | null;
+  /**
+   * A timestamp retrieved from the remote system, describing when the resource was last updated.
+   */
+  remote_updated_at: Date | null;
+  /**
    * The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.
    */
   changed_at: Date;
@@ -148,6 +156,12 @@ export const PostHrisAbsencesPositiveResponseData$inboundSchema: z.ZodType<
     .optional(),
   employee_note: z.nullable(z.string()),
   type_id: z.nullable(z.string()),
+  remote_created_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ),
+  remote_updated_at: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ),
   changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   remote_deleted_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),

@@ -34,13 +34,16 @@ export type GetAtsCandidatesRequest = {
    *
    * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    *
-   * For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+   * For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
    *
-   * - ✓ `applications`
-   *   - ✗ `current_stage`
-   *   - ✗ `job`
-   * - ✓ `tags`
-   *   - ✗ `tag`
+   * | Path | Relationship | Target Record |
+   * | --- | --- | --- |
+   * | `applications` | ✓ Yes | ✓ Yes |
+   * | `applications` → `current_stage` | ✗ No | ✗ No |
+   * | `applications` → `job` | ✗ No | ✗ No |
+   * | `tags` | ✓ Yes | ✗ No |
+   *
+   * _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
    */
   updated_after?: Date | undefined;
   /**
