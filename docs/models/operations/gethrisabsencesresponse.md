@@ -27,6 +27,8 @@ let value: GetHrisAbsencesResponse = {
           status: "APPROVED",
           employee_note: "Visiting my family.",
           type_id: "xzZoKssDaMZAd62kxayzzQvD",
+          remote_created_at: new Date("2022-08-07T14:01:29.196Z"),
+          remote_updated_at: new Date("2022-08-07T14:01:29.196Z"),
           changed_at: new Date("2022-08-07T14:01:29.196Z"),
           remote_deleted_at: new Date("2022-08-07T14:01:29.196Z"),
           type: {

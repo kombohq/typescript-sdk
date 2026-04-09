@@ -34,11 +34,15 @@ export type GetHrisPerformanceReviewsRequest = {
    *
    * For more details, see [Understanding changed_at vs updated_after Behavior](https://docs.kombo.dev/ats/getting-started/fetching-data#understanding-changed_at-vs-updated_after-behavior).
    *
-   * For this endpoint, `updated_after` considers changes to the record itself as well as changes to the following relations:
+   * For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
    *
-   * - ✓ `review_cycle`
-   * - ✓ `reviewee`
-   * - ✓ `reviewer`
+   * | Path | Relationship | Target Record |
+   * | --- | --- | --- |
+   * | `review_cycle` | n/a | ✓ Yes |
+   * | `reviewee` | n/a | ✓ Yes |
+   * | `reviewer` | n/a | ✓ Yes |
+   *
+   * _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
    */
   updated_after?: Date | undefined;
   /**

@@ -206,7 +206,7 @@ describeSdkSuite("Error Handling", () => {
 
       ctx.mockEndpoint({
         method: "GET",
-        path: "/v1/assessment/orders/open",
+        path: "/v1/assessment/orders",
         response: {
           statusCode: 400,
           body: {
@@ -222,7 +222,7 @@ describeSdkSuite("Error Handling", () => {
       });
 
       try {
-        for await (const _page of await ctx.kombo.assessment.getOpenOrders(
+        for await (const _page of await ctx.kombo.assessment.getAssessmentOrders(
           {}
         )) {
           break;

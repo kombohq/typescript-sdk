@@ -196,6 +196,7 @@ export const IntegrationTool = {
   Absenceio: "absenceio",
   A3innuvanomina: "a3innuvanomina",
   Scim: "scim",
+  Datevlauds: "datevlauds",
   Datevhr: "datevhr",
   Datev: "datev",
   Datevlug: "datevlug",
@@ -209,6 +210,7 @@ export const IntegrationTool = {
   Talentlms: "talentlms",
   Udemy: "udemy",
   Linkedinlearning: "linkedinlearning",
+  Moodle: "moodle",
 } as const;
 /**
  * Pre-define a tool this integration link can be used for.

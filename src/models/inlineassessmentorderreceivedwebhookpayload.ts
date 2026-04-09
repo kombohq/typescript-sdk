@@ -44,7 +44,7 @@ export type InlineAssessmentOrderReceivedWebhookPayloadCandidate = {
   /**
    * The candidate's identifier in the integrated system.
    */
-  remote_id?: string | null | undefined;
+  remote_id: string | null;
   /**
    * The candidate's email address.
    */
@@ -52,15 +52,15 @@ export type InlineAssessmentOrderReceivedWebhookPayloadCandidate = {
   /**
    * The candidate's first name.
    */
-  first_name?: string | null | undefined;
+  first_name: string | null;
   /**
    * The candidate's last name.
    */
-  last_name?: string | null | undefined;
+  last_name: string | null;
   /**
    * The candidate's phone number.
    */
-  phone?: string | null | undefined;
+  phone: string | null;
 };
 
 /**
@@ -70,14 +70,21 @@ export type InlineAssessmentOrderReceivedWebhookPayloadApplication = {
   /**
    * The application's identifier in the integrated system.
    */
-  remote_id?: string | null | undefined;
+  remote_id: string | null;
 };
 
 /**
  * The job location information.
  */
 export type InlineAssessmentOrderReceivedWebhookPayloadLocation = {
+  /**
+   * If we can parse the address data, this field contains the first part of the street information.
+   */
+  street_1?: string | null | undefined;
+  street_2?: string | null | undefined;
   city?: string | null | undefined;
+  state?: string | null | undefined;
+  zip_code?: string | null | undefined;
   /**
    * Contains the ISO2 country code if possible. If not, it contains the original value.
    */
@@ -86,13 +93,6 @@ export type InlineAssessmentOrderReceivedWebhookPayloadLocation = {
    * If we have address data, this is filled with the raw address string.
    */
   raw?: string | null | undefined;
-  state?: string | null | undefined;
-  /**
-   * If we can parse the address data, this field contains the first part of the street information.
-   */
-  street_1?: string | null | undefined;
-  street_2?: string | null | undefined;
-  zip_code?: string | null | undefined;
 };
 
 export const InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole = {
@@ -140,26 +140,23 @@ export type InlineAssessmentOrderReceivedWebhookPayloadJob = {
   /**
    * The job's identifier in the integrated system.
    */
-  remote_id?: string | null | undefined;
+  remote_id: string | null;
   /**
    * The job title.
    */
-  name?: string | null | undefined;
+  name: string | null;
   /**
    * The human readable job code. Some systems expose this as the Requisition Code/ID.
    */
-  job_code?: string | null | undefined;
+  job_code: string | null;
   /**
    * Description of the job. This field is usually returned as HTML.
    */
-  description?: string | null | undefined;
+  description: string | null;
   /**
    * The job location information.
    */
-  location?:
-    | InlineAssessmentOrderReceivedWebhookPayloadLocation
-    | null
-    | undefined;
+  location: InlineAssessmentOrderReceivedWebhookPayloadLocation | null;
   /**
    * The hiring team allows you to provision users into your system who can access the job and its applications.
    */
@@ -234,19 +231,19 @@ export const InlineAssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    remote_id: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()),
     email: z.string(),
-    first_name: z.nullable(z.string()).optional(),
-    last_name: z.nullable(z.string()).optional(),
-    phone: z.nullable(z.string()).optional(),
+    first_name: z.nullable(z.string()),
+    last_name: z.nullable(z.string()),
+    phone: z.nullable(z.string()),
   });
 /** @internal */
 export type InlineAssessmentOrderReceivedWebhookPayloadCandidate$Outbound = {
-  remote_id?: string | null | undefined;
+  remote_id: string | null;
   email: string;
-  first_name?: string | null | undefined;
-  last_name?: string | null | undefined;
-  phone?: string | null | undefined;
+  first_name: string | null;
+  last_name: string | null;
+  phone: string | null;
 };
 
 /** @internal */
@@ -256,11 +253,11 @@ export const InlineAssessmentOrderReceivedWebhookPayloadCandidate$outboundSchema
     z.ZodTypeDef,
     InlineAssessmentOrderReceivedWebhookPayloadCandidate
   > = z.object({
-    remote_id: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()),
     email: z.string(),
-    first_name: z.nullable(z.string()).optional(),
-    last_name: z.nullable(z.string()).optional(),
-    phone: z.nullable(z.string()).optional(),
+    first_name: z.nullable(z.string()),
+    last_name: z.nullable(z.string()),
+    phone: z.nullable(z.string()),
   });
 
 export function inlineAssessmentOrderReceivedWebhookPayloadCandidateToJSON(
@@ -296,11 +293,11 @@ export const InlineAssessmentOrderReceivedWebhookPayloadApplication$inboundSchem
     z.ZodTypeDef,
     unknown
   > = z.object({
-    remote_id: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()),
   });
 /** @internal */
 export type InlineAssessmentOrderReceivedWebhookPayloadApplication$Outbound = {
-  remote_id?: string | null | undefined;
+  remote_id: string | null;
 };
 
 /** @internal */
@@ -310,7 +307,7 @@ export const InlineAssessmentOrderReceivedWebhookPayloadApplication$outboundSche
     z.ZodTypeDef,
     InlineAssessmentOrderReceivedWebhookPayloadApplication
   > = z.object({
-    remote_id: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()),
   });
 
 export function inlineAssessmentOrderReceivedWebhookPayloadApplicationToJSON(
@@ -345,23 +342,23 @@ export const InlineAssessmentOrderReceivedWebhookPayloadLocation$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    city: z.nullable(z.string()).optional(),
-    country: z.nullable(z.string()).optional(),
-    raw: z.nullable(z.string()).optional(),
-    state: z.nullable(z.string()).optional(),
     street_1: z.nullable(z.string()).optional(),
     street_2: z.nullable(z.string()).optional(),
+    city: z.nullable(z.string()).optional(),
+    state: z.nullable(z.string()).optional(),
     zip_code: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    raw: z.nullable(z.string()).optional(),
   });
 /** @internal */
 export type InlineAssessmentOrderReceivedWebhookPayloadLocation$Outbound = {
-  city?: string | null | undefined;
-  country?: string | null | undefined;
-  raw?: string | null | undefined;
-  state?: string | null | undefined;
   street_1?: string | null | undefined;
   street_2?: string | null | undefined;
+  city?: string | null | undefined;
+  state?: string | null | undefined;
   zip_code?: string | null | undefined;
+  country?: string | null | undefined;
+  raw?: string | null | undefined;
 };
 
 /** @internal */
@@ -371,13 +368,13 @@ export const InlineAssessmentOrderReceivedWebhookPayloadLocation$outboundSchema:
     z.ZodTypeDef,
     InlineAssessmentOrderReceivedWebhookPayloadLocation
   > = z.object({
-    city: z.nullable(z.string()).optional(),
-    country: z.nullable(z.string()).optional(),
-    raw: z.nullable(z.string()).optional(),
-    state: z.nullable(z.string()).optional(),
     street_1: z.nullable(z.string()).optional(),
     street_2: z.nullable(z.string()).optional(),
+    city: z.nullable(z.string()).optional(),
+    state: z.nullable(z.string()).optional(),
     zip_code: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    raw: z.nullable(z.string()).optional(),
   });
 
 export function inlineAssessmentOrderReceivedWebhookPayloadLocationToJSON(
@@ -490,15 +487,15 @@ export const InlineAssessmentOrderReceivedWebhookPayloadJob$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    remote_id: z.nullable(z.string()).optional(),
-    name: z.nullable(z.string()).optional(),
-    job_code: z.nullable(z.string()).optional(),
-    description: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()),
+    name: z.nullable(z.string()),
+    job_code: z.nullable(z.string()),
+    description: z.nullable(z.string()),
     location: z.nullable(
       z.lazy(() =>
         InlineAssessmentOrderReceivedWebhookPayloadLocation$inboundSchema
       ),
-    ).optional(),
+    ),
     hiring_team: z.array(
       z.lazy(() =>
         InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema
@@ -507,14 +504,11 @@ export const InlineAssessmentOrderReceivedWebhookPayloadJob$inboundSchema:
   });
 /** @internal */
 export type InlineAssessmentOrderReceivedWebhookPayloadJob$Outbound = {
-  remote_id?: string | null | undefined;
-  name?: string | null | undefined;
-  job_code?: string | null | undefined;
-  description?: string | null | undefined;
-  location?:
-    | InlineAssessmentOrderReceivedWebhookPayloadLocation$Outbound
-    | null
-    | undefined;
+  remote_id: string | null;
+  name: string | null;
+  job_code: string | null;
+  description: string | null;
+  location: InlineAssessmentOrderReceivedWebhookPayloadLocation$Outbound | null;
   hiring_team: Array<
     InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$Outbound
   >;
@@ -527,15 +521,15 @@ export const InlineAssessmentOrderReceivedWebhookPayloadJob$outboundSchema:
     z.ZodTypeDef,
     InlineAssessmentOrderReceivedWebhookPayloadJob
   > = z.object({
-    remote_id: z.nullable(z.string()).optional(),
-    name: z.nullable(z.string()).optional(),
-    job_code: z.nullable(z.string()).optional(),
-    description: z.nullable(z.string()).optional(),
+    remote_id: z.nullable(z.string()),
+    name: z.nullable(z.string()),
+    job_code: z.nullable(z.string()),
+    description: z.nullable(z.string()),
     location: z.nullable(
       z.lazy(() =>
         InlineAssessmentOrderReceivedWebhookPayloadLocation$outboundSchema
       ),
-    ).optional(),
+    ),
     hiring_team: z.array(
       z.lazy(() =>
         InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$outboundSchema

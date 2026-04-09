@@ -4,7 +4,7 @@
 
 import { KomboCore } from "../core.js";
 import { dlv } from "../lib/dlv.js";
-import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple, queryJoin } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -33,19 +33,19 @@ import {
 } from "../types/operations.js";
 
 /**
- * Get open orders
+ * Get orders
  *
  * @remarks
- * Get all open assessment and background check orders of an integration.
+ * Get all assessment and background check orders of an integration.
  */
-export function assessmentGetOpenOrders(
+export function assessmentGetAssessmentOrders(
   client: KomboCore,
-  request?: operations.GetAssessmentOrdersOpenRequest | undefined,
+  request?: operations.GetAssessmentOrdersRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   PageIterator<
     Result<
-      operations.GetAssessmentOrdersOpenResponse,
+      operations.GetAssessmentOrdersResponse,
       | errors.KomboAtsError
       | KomboError
       | ResponseValidationError
@@ -68,13 +68,13 @@ export function assessmentGetOpenOrders(
 
 async function $do(
   client: KomboCore,
-  request?: operations.GetAssessmentOrdersOpenRequest | undefined,
+  request?: operations.GetAssessmentOrdersRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
     PageIterator<
       Result<
-        operations.GetAssessmentOrdersOpenResponse,
+        operations.GetAssessmentOrdersResponse,
         | errors.KomboAtsError
         | KomboError
         | ResponseValidationError
@@ -93,7 +93,7 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.GetAssessmentOrdersOpenRequest$outboundSchema.optional().parse(
+      operations.GetAssessmentOrdersRequest$outboundSchema.optional().parse(
         value,
       ),
     "Input validation failed",
@@ -104,12 +104,19 @@ async function $do(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/assessment/orders/open")();
+  const path = pathToFunc("/assessment/orders")();
 
-  const query = encodeFormQuery({
-    "cursor": payload?.cursor,
-    "page_size": payload?.page_size,
-  });
+  const query = queryJoin(
+    encodeFormQuery({
+      "ids": payload?.ids,
+      "statuses": payload?.statuses,
+    }, { explode: false }),
+    encodeFormQuery({
+      "created_after": payload?.created_after,
+      "cursor": payload?.cursor,
+      "page_size": payload?.page_size,
+    }),
+  );
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -127,7 +134,7 @@ async function $do(
   const context = {
     options: client._options,
     base_url: options?.server_url ?? client._baseURL ?? "",
-    operation_id: "GetAssessmentOrdersOpen",
+    operation_id: "GetAssessmentOrders",
     o_auth2_scopes: null,
 
     resolved_security: requestSecurity,
@@ -171,7 +178,7 @@ async function $do(
   };
 
   const [result, raw] = await M.match<
-    operations.GetAssessmentOrdersOpenResponse,
+    operations.GetAssessmentOrdersResponse,
     | errors.KomboAtsError
     | KomboError
     | ResponseValidationError
@@ -182,7 +189,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, operations.GetAssessmentOrdersOpenResponse$inboundSchema, {
+    M.json(200, operations.GetAssessmentOrdersResponse$inboundSchema, {
       key: "Result",
     }),
     M.jsonErr("default", errors.KomboAtsError$inboundSchema),
@@ -200,7 +207,7 @@ async function $do(
   ): {
     next: Paginator<
       Result<
-        operations.GetAssessmentOrdersOpenResponse,
+        operations.GetAssessmentOrdersResponse,
         | errors.KomboAtsError
         | KomboError
         | ResponseValidationError
@@ -223,7 +230,7 @@ async function $do(
     }
 
     const nextVal = () =>
-      assessmentGetOpenOrders(
+      assessmentGetAssessmentOrders(
         client,
         {
           ...request!,

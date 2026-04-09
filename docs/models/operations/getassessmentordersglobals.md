@@ -1,11 +1,11 @@
-# GetAssessmentOrdersOpenGlobals
+# GetAssessmentOrdersGlobals
 
 ## Example Usage
 
 ```typescript
-import { GetAssessmentOrdersOpenGlobals } from "@kombo-api/sdk/models/operations";
+import { GetAssessmentOrdersGlobals } from "@kombo-api/sdk/models/operations";
 
-let value: GetAssessmentOrdersOpenGlobals = {
+let value: GetAssessmentOrdersGlobals = {
   integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
 };
 ```
