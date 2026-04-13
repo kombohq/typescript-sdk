@@ -12,5 +12,5 @@ let value: InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole =
 ## Values
 
 ```typescript
-"RECRUITER" | "HIRING_MANAGER" | "COORDINATOR" | "SOURCER" | "INTERVIEWER"
+"RECRUITER" | "HIRING_MANAGER"
 ```

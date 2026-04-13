@@ -5,12 +5,11 @@
 ```typescript
 import { AssessmentOrderReceivedWebhookPayloadHiringTeamRole } from "@kombo-api/sdk/models";
 
-let value: AssessmentOrderReceivedWebhookPayloadHiringTeamRole =
-  "HIRING_MANAGER";
+let value: AssessmentOrderReceivedWebhookPayloadHiringTeamRole = "RECRUITER";
 ```
 
 ## Values
 
 ```typescript
-"RECRUITER" | "HIRING_MANAGER" | "COORDINATOR" | "SOURCER" | "INTERVIEWER"
+"RECRUITER" | "HIRING_MANAGER"
 ```

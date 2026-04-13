@@ -98,9 +98,6 @@ export type InlineAssessmentOrderReceivedWebhookPayloadLocation = {
 export const InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole = {
   Recruiter: "RECRUITER",
   HiringManager: "HIRING_MANAGER",
-  Coordinator: "COORDINATOR",
-  Sourcer: "SOURCER",
-  Interviewer: "INTERVIEWER",
 } as const;
 export type InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole =
   ClosedEnum<typeof InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole>;
@@ -126,7 +123,7 @@ export type InlineAssessmentOrderReceivedWebhookPayloadHiringTeam = {
    */
   last_name: string | null;
   /**
-   * Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema.
+   * Array of the roles of the user for this specific job.
    */
   hiring_team_roles: Array<
     InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole

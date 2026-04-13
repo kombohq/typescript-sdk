@@ -11,5 +11,5 @@ let value: GetAssessmentOrdersPositiveResponseHiringTeamRole = "RECRUITER";
 ## Values
 
 ```typescript
-"RECRUITER" | "HIRING_MANAGER" | "COORDINATOR" | "SOURCER" | "INTERVIEWER"
+"RECRUITER" | "HIRING_MANAGER"
 ```

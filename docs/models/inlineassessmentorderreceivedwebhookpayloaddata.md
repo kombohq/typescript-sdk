@@ -33,7 +33,7 @@ let value: InlineAssessmentOrderReceivedWebhookPayloadData = {
         first_name: "Callie",
         last_name: "Johns",
         hiring_team_roles: [
-          "SOURCER",
+          "HIRING_MANAGER",
         ],
       },
     ],

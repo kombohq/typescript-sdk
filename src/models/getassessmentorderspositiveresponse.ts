@@ -85,9 +85,6 @@ export type GetAssessmentOrdersPositiveResponseLocation = {
 export const GetAssessmentOrdersPositiveResponseHiringTeamRole = {
   Recruiter: "RECRUITER",
   HiringManager: "HIRING_MANAGER",
-  Coordinator: "COORDINATOR",
-  Sourcer: "SOURCER",
-  Interviewer: "INTERVIEWER",
 } as const;
 export type GetAssessmentOrdersPositiveResponseHiringTeamRole = ClosedEnum<
   typeof GetAssessmentOrdersPositiveResponseHiringTeamRole
@@ -114,7 +111,7 @@ export type GetAssessmentOrdersPositiveResponseHiringTeam = {
    */
   last_name: string | null;
   /**
-   * Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema.
+   * Array of the roles of the user for this specific job.
    */
   hiring_team_roles: Array<GetAssessmentOrdersPositiveResponseHiringTeamRole>;
 };
