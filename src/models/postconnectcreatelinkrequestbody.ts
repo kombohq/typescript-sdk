@@ -112,6 +112,7 @@ export const IntegrationTool = {
   Laura: "laura",
   Covetorest: "covetorest",
   Coveto: "coveto",
+  Mercury: "mercury",
   Crelate: "crelate",
   Manatal: "manatal",
   Avionte: "avionte",
