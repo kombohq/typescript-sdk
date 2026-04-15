@@ -162,7 +162,7 @@ async function $do(
     headers: headers,
     body: body,
     userAgent: client._options.user_agent,
-    timeout_ms: options?.timeout_ms || client._options.timeout_ms || -1,
+    timeout_ms: options?.timeout_ms || client._options.timeout_ms || 300000,
   }, options);
   if (!requestRes.ok) {
     return [requestRes, { status: "invalid" }];
