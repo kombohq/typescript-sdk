@@ -30,11 +30,15 @@ export type GetAssessmentOrdersRequest = {
    */
   ids?: Array<string> | undefined;
   /**
-   * Filter by a comma-separated list of statuses such as `OPEN,COMPLETED`.
+   * Filter by a comma-separated list of `OPEN`, `COMPLETED`, `CANCELLED`, `REJECTED`.
+   *
+   * @remarks
+   *
+   * Leave this blank to get results matching all values.
    */
   statuses?: Array<string> | undefined;
   /**
-   * Filter orders by their creation date. Only orders created on or after this date will be returned.
+   * Filter orders by their creation date-timestamp in the format: `YYYY-MM-DDTHH:mm:ss.sssZ`. Only orders created on or after this date-timestamp will be returned.
    */
   created_after?: Date | undefined;
 };
