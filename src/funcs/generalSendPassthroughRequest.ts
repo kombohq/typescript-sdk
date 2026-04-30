@@ -4,6 +4,7 @@
 
 import { KomboCore } from "../core.js";
 import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
@@ -104,7 +105,7 @@ import { Result } from "../types/fp.js";
  * |Greenhouse|`greenhouse/harvest`|Greenhouse [Harvest API v1](https://developers.greenhouse.io/harvest.html). We automatically authenticate all requests using the API key and use `https://harvest.greenhouse.io/v1` as the base URL.|
  * |GuideCom|`guidecom/api`|GuideCom's API. We automatically authenticate all requests and use the configured API base URL.|
  * |Gusto|`gusto/v1`|[Gusto API](https://docs.gusto.com/app-integrations/docs/introduction). We automatically authenticate all requests with OAuth and use `\{api_base_url\}/v1` as the base URL (`https://api.gusto.com/v1` in production, `https://api.gusto-demo.com/v1` in development).|
- * |Hailey HR|`haileyhr/api`|Hailey HR's [API](https://api.haileyhr.app/docs/index.html). We automatically authenticate all requests using the provided credentials and use `https://api.haileyhr.app` as the base URL.|
+ * |Hailey HR|`haileyhr/api`|Hailey HR's [API](https://api.haileyhr.app/docs/index.html). We automatically authenticate all requests using the provided credentials and use `https://api.haileyhr.app` as the base URL. Connections created against the `DEMO` remote environment are routed to `https://api.demo.haileyhr.app` instead.|
  * |Hansalog|`hansalog/vision`|Hansalog's [Vision API](https://hansalog-vision.document360.io/docs/). We automatically authenticate all requests and use `https://\{subdomain\}.hansalog-cloud.de/vision` as the base URL.|
  * |Haufe Umantis|`umantis/v1`|[Umantis API v1](https://recruitingapp-91005709.umantis.com/api/v1/swagger-ui). We automatically authenticate all requests and use `https://\{subdomain\}.umantis.com/api/v1` as the base URL.|
  * |HeavenHR|`heavenhr/v2`|[HeavenHR API](https://api.heavenhr.com/). We automatically authenticate all requests using the provided credentials and use `https://api.heavenhr.com/api/v2` as the base URL.|
@@ -129,6 +130,7 @@ import { Result } from "../types/fp.js";
  * |Jobylon|`jobylon/push`|The [Jobylon Push API](https://developer.jobylon.com/push-api-and-webhooks/). We automatically authenticate all requests and use `https://\{subdomain\}.jobylon.com/p1` as the base URL.|
  * |JOIN|`join/v2`|Join's [V2 API](https://docs.join.com/reference/getting-started). We automatically authenticate all requests and use `https://api.join.com/v2` as the base URL.|
  * |Kenjo|`kenjo/api`|Kenjo's [API](https://kenjo.readme.io/reference/generate-the-api-key). We automatically authenticate all requests using the API key and use `https://api.kenjo.io/` as the base URL.|
+ * |Kula|`kula/v1`|Kula's [REST API](https://developers.kula.ai/docs/getting-started/overview). We automatically authenticate all requests with the provided credentials and use `https://api.kula.ai/v1` as the base URL.|
  * |Lattice Talent|`latticetalent/talent`|Lattice's [Talent API](https://developers.lattice.com/reference/introduction). We automatically authenticate all requests using API key credentials with `https://api.latticehq.com` as the base URL.|
  * |Lattice|`lattice/passthrough`|Lattice's [API](https://developers.lattice.com/v2/docs/base-url-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
  * |Lattice|`lattice/talent`|Lattice's [Talent API](https://developers.lattice.com/docs/introduction-1). We automatically authenticate all requests using OAuth credentials with `https://api.latticehq.com` as the base URL.|
@@ -208,6 +210,7 @@ import { Result } from "../types/fp.js";
  * |TriNet PEO|`trinetpeo/v1`|We use `https://api.trinet.com` as the base URL. Find the official docs [here](https://developers.trinet.com).|
  * |Ubeeo|`ubeeo/api`|Ubeeo ATS API. We automatically authenticate all requests using OAuth client credentials and use `https://api.ats-platform.com` as the base URL (sandbox: `https://api.acc.ats-platform.com`).|
  * |Udemy Business|`udemy/learning`|Udemy Business REST API. We automatically handle authentication and use `https://\{account_name\}.udemy.com/api-2.0/organizations/\{account_id\}/` as the base URL.|
+ * |UKG Pro WFM|`ukgprowfm/api`|UKG Pro WFM's [API](https://developer.ukg.com/wfm/reference/welcome-to-the-ukg-pro-workforce-management-api). We automatically authenticate all requests and use `https://\{hostname\}` as the base URL.|
  * |UKG Pro|`ukgpro/default`|[UKG Pro's HRIS API](https://developer.ukg.com/hcm/reference/get_personnel-v1-person-details). We automatically authenticate all requests and use  `https://\{hostname\}` as the base URL.|
  * |UKG Pro|`ukgpro/recruting`|[UKG Pro's Recruiting API](https://developer.ukg.com/hcm/reference/retrieveapplications). We automatically authenticate all requests and use  `https://\{hostname\}/talent/recruiting/v2/\{tenantalias\}/api` as the base URL.|
  * |UKG Ready|`ukgready/api`|UKG Ready [API](https://secure.saashr.com/ta/docs/rest/public/). We automatically authenticate all requests using the provided credentials and use `https://\{api_domain\}` as the base URL.|
@@ -342,7 +345,8 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["default"],
+    isErrorStatusCode: (statusCode: number) =>
+      !matchStatusCode({ status: statusCode } as Response, ["200"]),
     retryConfig: context.retry_config,
     retryCodes: context.retry_codes,
   });
