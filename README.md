@@ -183,6 +183,7 @@ const kombo = new Kombo({
 * [getIntegrationDetails](docs/sdks/general/README.md#getintegrationdetails) - Get integration details
 * [setIntegrationEnabled](docs/sdks/general/README.md#setintegrationenabled) - Set integration enabled
 * [createReconnectionLink](docs/sdks/general/README.md#createreconnectionlink) - Create reconnection link
+* [createSetupLink](docs/sdks/general/README.md#createsetuplink) - Create Setup Flow link
 * [getIntegrationFields](docs/sdks/general/README.md#getintegrationfields) - Get integration fields
 * [updateIntegrationField](docs/sdks/general/README.md#updateintegrationfield) - Updates an integration fields passthrough setting
 * [getCustomFields](docs/sdks/general/README.md#getcustomfields) - Get custom fields with current mappings
@@ -313,9 +314,9 @@ run();
 
 
 **Inherit from [`KomboError`](./src/models/errors/komboerror.ts)**:
-* [`KomboAtsError`](./src/models/errors/komboatserror.ts): The standard error response with the error codes for the ATS use case. Applicable to 28 of 60 methods.*
-* [`KomboHrisError`](./src/models/errors/kombohriserror.ts): The standard error response with the error codes for the HRIS use case. Applicable to 18 of 60 methods.*
-* [`KomboGeneralError`](./src/models/errors/kombogeneralerror.ts): The standard error response with just the platform error codes. Applicable to 14 of 60 methods.*
+* [`KomboAtsError`](./src/models/errors/komboatserror.ts): The standard error response with the error codes for the ATS use case. Applicable to 28 of 61 methods.*
+* [`KomboHrisError`](./src/models/errors/kombohriserror.ts): The standard error response with the error codes for the HRIS use case. Applicable to 18 of 61 methods.*
+* [`KomboGeneralError`](./src/models/errors/kombogeneralerror.ts): The standard error response with just the platform error codes. Applicable to 15 of 61 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -433,6 +434,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`connectGetIntegrationByToken`](docs/sdks/connect/README.md#getintegrationbytoken) - Get integration by token
 - [`generalCheckApiKey`](docs/sdks/general/README.md#checkapikey) - Check API key
 - [`generalCreateReconnectionLink`](docs/sdks/general/README.md#createreconnectionlink) - Create reconnection link
+- [`generalCreateSetupLink`](docs/sdks/general/README.md#createsetuplink) - Create Setup Flow link
 - [`generalDeleteIntegration`](docs/sdks/general/README.md#deleteintegration) - Delete integration
 - [`generalGetCustomFields`](docs/sdks/general/README.md#getcustomfields) - Get custom fields with current mappings
 - [`generalGetIntegrationDetails`](docs/sdks/general/README.md#getintegrationdetails) - Get integration details

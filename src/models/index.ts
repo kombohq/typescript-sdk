@@ -87,6 +87,8 @@ export * from "./posthrisemployeesformpositiveresponse.js";
 export * from "./posthrisemployeesformrequestbody.js";
 export * from "./postintegrationsintegrationidrelinkpositiveresponse.js";
 export * from "./postintegrationsintegrationidrelinkrequestbody.js";
+export * from "./postintegrationsintegrationidsetuplinkpositiveresponse.js";
+export * from "./postintegrationsintegrationidsetuplinkrequestbody.js";
 export * from "./postpassthroughtoolapipositiveresponse.js";
 export * from "./postpassthroughtoolapirequestbody.js";
 export * from "./putassessmentordersassessmentorderidresultpositiveresponse.js";
