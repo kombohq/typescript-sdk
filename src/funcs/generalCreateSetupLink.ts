@@ -28,31 +28,21 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Delete absence
+ * Create Setup Flow link
  *
  * @remarks
- * Delete this absence.
+ * Create a link that lets your customer run the [Setup Flow](/hris/features/setup-flow/introduction) for an integration. Use this to send customers back into setup steps like field mapping or employee filtering without having to go through the initial connection flow again. Pass the returned URL to `showKomboConnect` from the Kombo Connect SDK, the same way you do with a connection link.
  *
- * <Note>
- *   This endpoint requires the permission **Manage absences** to be enabled in [your scope config](/scopes).
- * </Note>
- *
- * ### Example Request Body
- *
- * ```json
- * {
- *   "absence_id": "wXJMxwDvPAjrJ4CyqdV9"
- * }
- * ```
+ * The integration must have at least one Setup Flow step enabled (e.g. field mapping or employee filtering); otherwise this endpoint returns a `PLATFORM.INPUT_INVALID` error. Steps can be enabled from the Integration Settings tab in the dashboard or via the [Create Connection Link endpoint](./post-connect-create-link).
  */
-export function hrisDeleteAbsence(
+export function generalCreateSetupLink(
   client: KomboCore,
-  request: operations.DeleteHrisAbsencesAbsenceIdRequest,
+  request: operations.PostIntegrationsIntegrationIdSetupLinkRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
-    models.DeleteHrisAbsencesAbsenceIdPositiveResponse,
-    | errors.KomboHrisError
+    models.PostIntegrationsIntegrationIdSetupLinkPositiveResponse,
+    | errors.KomboGeneralError
     | KomboError
     | ResponseValidationError
     | ConnectionError
@@ -72,13 +62,13 @@ export function hrisDeleteAbsence(
 
 async function $do(
   client: KomboCore,
-  request: operations.DeleteHrisAbsencesAbsenceIdRequest,
+  request: operations.PostIntegrationsIntegrationIdSetupLinkRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
-      models.DeleteHrisAbsencesAbsenceIdPositiveResponse,
-      | errors.KomboHrisError
+      models.PostIntegrationsIntegrationIdSetupLinkPositiveResponse,
+      | errors.KomboGeneralError
       | KomboError
       | ResponseValidationError
       | ConnectionError
@@ -94,7 +84,8 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.DeleteHrisAbsencesAbsenceIdRequest$outboundSchema.parse(value),
+      operations.PostIntegrationsIntegrationIdSetupLinkRequest$outboundSchema
+        .parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -104,21 +95,18 @@ async function $do(
   const body = encodeJSON("body", payload.body, { explode: true });
 
   const pathParams = {
-    absence_id: encodeSimple("absence_id", payload.absence_id, {
+    integration_id: encodeSimple("integration_id", payload.integration_id, {
       explode: false,
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/hris/absences/{absence_id}")(pathParams);
+  const path = pathToFunc("/integrations/{integration_id}/setup-link")(
+    pathParams,
+  );
 
   const headers = new Headers(compactMap({
     "Content-Type": "application/json",
     Accept: "application/json",
-    "X-Integration-Id": encodeSimple(
-      "X-Integration-Id",
-      client._options.integration_id,
-      { explode: false, charEncoding: "none" },
-    ),
   }));
 
   const secConfig = await extractSecurity(client._options.api_key);
@@ -128,7 +116,7 @@ async function $do(
   const context = {
     options: client._options,
     base_url: options?.server_url ?? client._baseURL ?? "",
-    operation_id: "DeleteHrisAbsencesAbsenceId",
+    operation_id: "PostIntegrationsIntegrationIdSetupLink",
     o_auth2_scopes: null,
 
     resolved_security: requestSecurity,
@@ -142,13 +130,13 @@ async function $do(
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
-    method: "DELETE",
+    method: "POST",
     baseURL: options?.server_url,
     path: path,
     headers: headers,
     body: body,
     userAgent: client._options.user_agent,
-    timeout_ms: options?.timeout_ms || client._options.timeout_ms || -1,
+    timeout_ms: options?.timeout_ms || client._options.timeout_ms || 300000,
   }, options);
   if (!requestRes.ok) {
     return [requestRes, { status: "invalid" }];
@@ -172,8 +160,8 @@ async function $do(
   };
 
   const [result] = await M.match<
-    models.DeleteHrisAbsencesAbsenceIdPositiveResponse,
-    | errors.KomboHrisError
+    models.PostIntegrationsIntegrationIdSetupLinkPositiveResponse,
+    | errors.KomboGeneralError
     | KomboError
     | ResponseValidationError
     | ConnectionError
@@ -185,9 +173,10 @@ async function $do(
   >(
     M.json(
       200,
-      models.DeleteHrisAbsencesAbsenceIdPositiveResponse$inboundSchema,
+      models
+        .PostIntegrationsIntegrationIdSetupLinkPositiveResponse$inboundSchema,
     ),
-    M.jsonErr("default", errors.KomboHrisError$inboundSchema),
+    M.jsonErr("default", errors.KomboGeneralError$inboundSchema),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

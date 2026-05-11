@@ -54,6 +54,7 @@ export * from "./posthrisabsences.js";
 export * from "./posthrisemployeesemployeeiddocuments.js";
 export * from "./posthrisemployeesform.js";
 export * from "./postintegrationsintegrationidrelink.js";
+export * from "./postintegrationsintegrationidsetuplink.js";
 export * from "./postpassthroughtoolapi.js";
 export * from "./putassessmentordersassessmentorderidresult.js";
 export * from "./putassessmentpackages.js";

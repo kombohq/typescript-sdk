@@ -36,13 +36,13 @@ export type GetHrisPerformanceReviewsRequest = {
    *
    * For this endpoint, `updated_after` matches when the returned record changed, or when related data changed as described below.
    *
-   * | Path | Relationship | Target Record |
+   * | Path | Added/Removed | Linked Record |
    * | --- | --- | --- |
    * | `review_cycle` | n/a | ✓ Yes |
    * | `reviewee` | n/a | ✓ Yes |
    * | `reviewer` | n/a | ✓ Yes |
    *
-   * _**Relationship**: Whether adding or removing entries from this list triggers an update (n/a for single references that are not lists). **Target Record**: Whether changes to the linked record itself trigger an update._
+   * _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
    */
   updated_after?: Date | undefined;
   /**
