@@ -30,13 +30,15 @@ export type GetAtsJobsPositiveResponseStatus = OpenEnum<
   typeof GetAtsJobsPositiveResponseStatus
 >;
 
-export const Visibility = {
+export const GetAtsJobsPositiveResponseVisibility = {
   Public: "PUBLIC",
   Internal: "INTERNAL",
   Unlisted: "UNLISTED",
   Confidential: "CONFIDENTIAL",
 } as const;
-export type Visibility = OpenEnum<typeof Visibility>;
+export type GetAtsJobsPositiveResponseVisibility = OpenEnum<
+  typeof GetAtsJobsPositiveResponseVisibility
+>;
 
 export const RemoteWorkStatus = {
   Remote: "REMOTE",
@@ -492,7 +494,7 @@ export type GetAtsJobsPositiveResponseResult = {
    *
    *  In rare cases where we can’t find a clear mapping, the original string is passed through.
    */
-  visibility?: Visibility | null | undefined;
+  visibility?: GetAtsJobsPositiveResponseVisibility | null | undefined;
   /**
    * The category of the job (often the job industry). The original string is passed through, for example "Information Technology", "Quality Assurance", "Marketing".
    */
@@ -619,11 +621,11 @@ export const GetAtsJobsPositiveResponseStatus$inboundSchema: z.ZodType<
 > = openEnums.inboundSchema(GetAtsJobsPositiveResponseStatus);
 
 /** @internal */
-export const Visibility$inboundSchema: z.ZodType<
-  Visibility,
+export const GetAtsJobsPositiveResponseVisibility$inboundSchema: z.ZodType<
+  GetAtsJobsPositiveResponseVisibility,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(Visibility);
+> = openEnums.inboundSchema(GetAtsJobsPositiveResponseVisibility);
 
 /** @internal */
 export const RemoteWorkStatus$inboundSchema: z.ZodType<
@@ -1119,7 +1121,8 @@ export const GetAtsJobsPositiveResponseResult$inboundSchema: z.ZodType<
     GetAtsJobsPositiveResponseEmploymentType$inboundSchema,
   ).optional(),
   status: z.nullable(GetAtsJobsPositiveResponseStatus$inboundSchema).optional(),
-  visibility: z.nullable(Visibility$inboundSchema).optional(),
+  visibility: z.nullable(GetAtsJobsPositiveResponseVisibility$inboundSchema)
+    .optional(),
   category: z.nullable(z.string()),
   department: z.nullable(z.string()),
   post_url: z.nullable(z.string()),

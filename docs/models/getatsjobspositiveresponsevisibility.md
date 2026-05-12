@@ -1,11 +1,11 @@
-# Visibility
+# GetAtsJobsPositiveResponseVisibility
 
 ## Example Usage
 
 ```typescript
-import { Visibility } from "@kombo-api/sdk/models";
+import { GetAtsJobsPositiveResponseVisibility } from "@kombo-api/sdk/models";
 
-let value: Visibility = "PUBLIC";
+let value: GetAtsJobsPositiveResponseVisibility = "CONFIDENTIAL";
 
 // Open enum: unrecognized values are captured as Unrecognized<string>
 ```

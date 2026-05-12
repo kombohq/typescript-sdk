@@ -50,6 +50,32 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse = {
 };
 
 /**
+ * Visibility of the created note.
+ */
+export const PostAtsApplicationsApplicationIdNotesRequestBodyVisibility = {
+  AdminOnly: "admin_only",
+  Private: "private",
+  Public: "public",
+} as const;
+/**
+ * Visibility of the created note.
+ */
+export type PostAtsApplicationsApplicationIdNotesRequestBodyVisibility =
+  ClosedEnum<typeof PostAtsApplicationsApplicationIdNotesRequestBodyVisibility>;
+
+/**
+ * Greenhouse V3 specific remote fields for the note.
+ */
+export type PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3 = {
+  /**
+   * Visibility of the created note.
+   */
+  visibility?:
+    | PostAtsApplicationsApplicationIdNotesRequestBodyVisibility
+    | undefined;
+};
+
+/**
  * Recruitee specific remote fields for the note.
  */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee = {
@@ -108,6 +134,12 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields = {
    */
   greenhouse?:
     | PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse
+    | undefined;
+  /**
+   * Greenhouse V3 specific remote fields for the note.
+   */
+  greenhousev3?:
+    | PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3
     | undefined;
   /**
    * Recruitee specific remote fields for the note.
@@ -241,6 +273,40 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyGreenhouseToJSON
 }
 
 /** @internal */
+export const PostAtsApplicationsApplicationIdNotesRequestBodyVisibility$outboundSchema:
+  z.ZodNativeEnum<
+    typeof PostAtsApplicationsApplicationIdNotesRequestBodyVisibility
+  > = z.nativeEnum(PostAtsApplicationsApplicationIdNotesRequestBodyVisibility);
+
+/** @internal */
+export type PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3$Outbound =
+  {
+    visibility?: string | undefined;
+  };
+
+/** @internal */
+export const PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3$outboundSchema:
+  z.ZodType<
+    PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3$Outbound,
+    z.ZodTypeDef,
+    PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3
+  > = z.object({
+    visibility:
+      PostAtsApplicationsApplicationIdNotesRequestBodyVisibility$outboundSchema
+        .optional(),
+  });
+
+export function postAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3ToJSON(
+  postAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3:
+    PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3,
+): string {
+  return JSON.stringify(
+    PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3$outboundSchema
+      .parse(postAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3),
+  );
+}
+
+/** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$Outbound =
   {
     visibility?: any | undefined;
@@ -355,6 +421,9 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$Outboun
     greenhouse?:
       | PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$Outbound
       | undefined;
+    greenhousev3?:
+      | PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3$Outbound
+      | undefined;
     recruitee?:
       | PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$Outbound
       | undefined;
@@ -381,6 +450,9 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$outbou
     ).optional(),
     greenhouse: z.lazy(() =>
       PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$outboundSchema
+    ).optional(),
+    greenhousev3: z.lazy(() =>
+      PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3$outboundSchema
     ).optional(),
     recruitee: z.lazy(() =>
       PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$outboundSchema
