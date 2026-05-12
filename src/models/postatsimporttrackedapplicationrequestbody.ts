@@ -63,6 +63,18 @@ export type PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID =
 export type PostAtsImportTrackedApplicationRequestBodyGreenhouseUnion =
   PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID;
 
+export type PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID =
+  {
+    /**
+     * Uses the V3 `/v3/applications/{id}` endpoint to retrieve the application.
+     */
+    id_type: "application_id";
+    application_id: string;
+  };
+
+export type PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union =
+  PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID;
+
 export type PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID = {
   /**
    * Uses the `/v1/application/{id}` endpoint to retrieve the application.
@@ -100,6 +112,9 @@ export type PostAtsImportTrackedApplicationRequestBody = {
     | undefined;
   greenhouse?:
     | PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID
+    | undefined;
+  greenhousev3?:
+    | PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID
     | undefined;
   onlyfy?:
     | PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID
@@ -366,6 +381,60 @@ export function postAtsImportTrackedApplicationRequestBodyGreenhouseUnionToJSON(
 }
 
 /** @internal */
+export type PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$Outbound =
+  {
+    id_type: "application_id";
+    application_id: string;
+  };
+
+/** @internal */
+export const PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$outboundSchema:
+  z.ZodType<
+    PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$Outbound,
+    z.ZodTypeDef,
+    PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID
+  > = z.object({
+    id_type: z.literal("application_id"),
+    application_id: z.string(),
+  });
+
+export function postAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationIDToJSON(
+  postAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID:
+    PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID,
+): string {
+  return JSON.stringify(
+    PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$outboundSchema
+      .parse(
+        postAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID,
+      ),
+  );
+}
+
+/** @internal */
+export type PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union$Outbound =
+  PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$Outbound;
+
+/** @internal */
+export const PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union$outboundSchema:
+  z.ZodType<
+    PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union$Outbound,
+    z.ZodTypeDef,
+    PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union
+  > = z.lazy(() =>
+    PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$outboundSchema
+  );
+
+export function postAtsImportTrackedApplicationRequestBodyGreenhousev3UnionToJSON(
+  postAtsImportTrackedApplicationRequestBodyGreenhousev3Union:
+    PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union,
+): string {
+  return JSON.stringify(
+    PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union$outboundSchema
+      .parse(postAtsImportTrackedApplicationRequestBodyGreenhousev3Union),
+  );
+}
+
+/** @internal */
 export type PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID$Outbound =
   {
     id_type: "application_id";
@@ -489,6 +558,9 @@ export type PostAtsImportTrackedApplicationRequestBody$Outbound = {
   greenhouse?:
     | PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID$Outbound
     | undefined;
+  greenhousev3?:
+    | PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$Outbound
+    | undefined;
   onlyfy?:
     | PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID$Outbound
     | undefined;
@@ -521,6 +593,9 @@ export const PostAtsImportTrackedApplicationRequestBody$outboundSchema:
     ).optional(),
     greenhouse: z.lazy(() =>
       PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID$outboundSchema
+    ).optional(),
+    greenhousev3: z.lazy(() =>
+      PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$outboundSchema
     ).optional(),
     onlyfy: z.lazy(() =>
       PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID$outboundSchema

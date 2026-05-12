@@ -67,6 +67,18 @@ export type PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplication
 export type PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion =
   PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID;
 
+export type PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID =
+  {
+    /**
+     * Uses the V3 `/v3/applications/{id}` endpoint to retrieve the application.
+     */
+    id_type: "application_id";
+    application_id: string;
+  };
+
+export type PostAtsImportTrackedApplicationPositiveResponseGreenhousev3Union =
+  PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID;
+
 export type PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID =
   {
     /**
@@ -105,6 +117,9 @@ export type ImportedId = {
     | undefined;
   greenhouse?:
     | PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID
+    | undefined;
+  greenhousev3?:
+    | PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID
     | undefined;
   onlyfy?:
     | PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID
@@ -374,6 +389,57 @@ export function postAtsImportTrackedApplicationPositiveResponseGreenhouseUnionFr
 }
 
 /** @internal */
+export const PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID$inboundSchema:
+  z.ZodType<
+    PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    id_type: z.literal("application_id"),
+    application_id: z.string(),
+  });
+
+export function postAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationIDFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID' from JSON`,
+  );
+}
+
+/** @internal */
+export const PostAtsImportTrackedApplicationPositiveResponseGreenhousev3Union$inboundSchema:
+  z.ZodType<
+    PostAtsImportTrackedApplicationPositiveResponseGreenhousev3Union,
+    z.ZodTypeDef,
+    unknown
+  > = z.lazy(() =>
+    PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID$inboundSchema
+  );
+
+export function postAtsImportTrackedApplicationPositiveResponseGreenhousev3UnionFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PostAtsImportTrackedApplicationPositiveResponseGreenhousev3Union,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PostAtsImportTrackedApplicationPositiveResponseGreenhousev3Union$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'PostAtsImportTrackedApplicationPositiveResponseGreenhousev3Union' from JSON`,
+  );
+}
+
+/** @internal */
 export const PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$inboundSchema:
   z.ZodType<
     PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID,
@@ -498,6 +564,9 @@ export const ImportedId$inboundSchema: z.ZodType<
   ).optional(),
   greenhouse: z.lazy(() =>
     PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$inboundSchema
+  ).optional(),
+  greenhousev3: z.lazy(() =>
+    PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID$inboundSchema
   ).optional(),
   onlyfy: z.lazy(() =>
     PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$inboundSchema

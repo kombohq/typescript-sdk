@@ -28,6 +28,16 @@ export type PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse = {
 };
 
 /**
+ * Fields specific to Greenhouse V3.
+ */
+export type PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3 = {
+  /**
+   * Additional data fields passed through to the `rejection_email` field of Greenhouse V3's reject-application endpoint.
+   */
+  rejection_email?: { [k: string]: any } | undefined;
+};
+
+/**
  * Fields specific to Teamtailor.
  */
 export type PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor = {
@@ -56,6 +66,12 @@ export type PostAtsApplicationsApplicationIdRejectRequestBodyRemoteFields = {
    */
   greenhouse?:
     | PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse
+    | undefined;
+  /**
+   * Fields specific to Greenhouse V3.
+   */
+  greenhousev3?:
+    | PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3
     | undefined;
   /**
    * Fields specific to Teamtailor.
@@ -149,6 +165,32 @@ export function postAtsApplicationsApplicationIdRejectRequestBodyGreenhouseToJSO
 }
 
 /** @internal */
+export type PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3$Outbound =
+  {
+    rejection_email?: { [k: string]: any } | undefined;
+  };
+
+/** @internal */
+export const PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3$outboundSchema:
+  z.ZodType<
+    PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3$Outbound,
+    z.ZodTypeDef,
+    PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3
+  > = z.object({
+    rejection_email: z.record(z.any()).optional(),
+  });
+
+export function postAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3ToJSON(
+  postAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3:
+    PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3,
+): string {
+  return JSON.stringify(
+    PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3$outboundSchema
+      .parse(postAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3),
+  );
+}
+
+/** @internal */
 export type PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$Outbound =
   {
     user_id?: string | undefined;
@@ -206,6 +248,9 @@ export type PostAtsApplicationsApplicationIdRejectRequestBodyRemoteFields$Outbou
     greenhouse?:
       | PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse$Outbound
       | undefined;
+    greenhousev3?:
+      | PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3$Outbound
+      | undefined;
     teamtailor?:
       | PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$Outbound
       | undefined;
@@ -223,6 +268,9 @@ export const PostAtsApplicationsApplicationIdRejectRequestBodyRemoteFields$outbo
   > = z.object({
     greenhouse: z.lazy(() =>
       PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse$outboundSchema
+    ).optional(),
+    greenhousev3: z.lazy(() =>
+      PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3$outboundSchema
     ).optional(),
     teamtailor: z.lazy(() =>
       PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$outboundSchema

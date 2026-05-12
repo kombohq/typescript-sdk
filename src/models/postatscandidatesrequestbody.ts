@@ -446,6 +446,20 @@ export type PostAtsCandidatesRequestBodyGreenhouse = {
 };
 
 /**
+ * Fields specific to Greenhouse V3 (OAuth-based connector).
+ */
+export type PostAtsCandidatesRequestBodyGreenhousev3 = {
+  /**
+   * Additional fields passed through to Greenhouse V3's `POST /v3/candidates` request body.
+   */
+  candidate?: { [k: string]: any } | undefined;
+  /**
+   * Additional fields passed through to Greenhouse V3's `POST /v3/applications` request body.
+   */
+  application?: { [k: string]: any } | undefined;
+};
+
+/**
  * Fields specific to Lever.
  */
 export type PostAtsCandidatesRequestBodyLever = {
@@ -907,6 +921,10 @@ export type PostAtsCandidatesRequestBodyRemoteFields = {
    * Fields specific to Greenhouse.
    */
   greenhouse?: PostAtsCandidatesRequestBodyGreenhouse | undefined;
+  /**
+   * Fields specific to Greenhouse V3 (OAuth-based connector).
+   */
+  greenhousev3?: PostAtsCandidatesRequestBodyGreenhousev3 | undefined;
   /**
    * Fields specific to Lever.
    */
@@ -1710,6 +1728,33 @@ export function postAtsCandidatesRequestBodyGreenhouseToJSON(
   return JSON.stringify(
     PostAtsCandidatesRequestBodyGreenhouse$outboundSchema.parse(
       postAtsCandidatesRequestBodyGreenhouse,
+    ),
+  );
+}
+
+/** @internal */
+export type PostAtsCandidatesRequestBodyGreenhousev3$Outbound = {
+  candidate?: { [k: string]: any } | undefined;
+  application?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyGreenhousev3$outboundSchema: z.ZodType<
+  PostAtsCandidatesRequestBodyGreenhousev3$Outbound,
+  z.ZodTypeDef,
+  PostAtsCandidatesRequestBodyGreenhousev3
+> = z.object({
+  candidate: z.record(z.any()).optional(),
+  application: z.record(z.any()).optional(),
+});
+
+export function postAtsCandidatesRequestBodyGreenhousev3ToJSON(
+  postAtsCandidatesRequestBodyGreenhousev3:
+    PostAtsCandidatesRequestBodyGreenhousev3,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyGreenhousev3$outboundSchema.parse(
+      postAtsCandidatesRequestBodyGreenhousev3,
     ),
   );
 }
@@ -3312,6 +3357,7 @@ export type PostAtsCandidatesRequestBodyRemoteFields$Outbound = {
   talentsoft?: PostAtsCandidatesRequestBodyTalentsoft$Outbound | undefined;
   teamtailor?: PostAtsCandidatesRequestBodyTeamtailor$Outbound | undefined;
   greenhouse?: PostAtsCandidatesRequestBodyGreenhouse$Outbound | undefined;
+  greenhousev3?: PostAtsCandidatesRequestBodyGreenhousev3$Outbound | undefined;
   lever?: PostAtsCandidatesRequestBodyLever$Outbound | undefined;
   workable?: PostAtsCandidatesRequestBodyWorkable$Outbound | undefined;
   workday?: PostAtsCandidatesRequestBodyWorkday$Outbound | undefined;
@@ -3353,6 +3399,9 @@ export const PostAtsCandidatesRequestBodyRemoteFields$outboundSchema: z.ZodType<
   ).optional(),
   greenhouse: z.lazy(() =>
     PostAtsCandidatesRequestBodyGreenhouse$outboundSchema
+  ).optional(),
+  greenhousev3: z.lazy(() =>
+    PostAtsCandidatesRequestBodyGreenhousev3$outboundSchema
   ).optional(),
   lever: z.lazy(() => PostAtsCandidatesRequestBodyLever$outboundSchema)
     .optional(),

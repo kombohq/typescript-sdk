@@ -342,6 +342,20 @@ export type PostAtsJobsJobIdApplicationsRequestBodyGreenhouse = {
 };
 
 /**
+ * Fields specific to Greenhouse V3 (OAuth-based connector).
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3 = {
+  /**
+   * Additional fields passed through to Greenhouse V3's `POST /v3/candidates` request body.
+   */
+  candidate?: { [k: string]: any } | undefined;
+  /**
+   * Additional fields passed through to Greenhouse V3's `POST /v3/applications` request body.
+   */
+  application?: { [k: string]: any } | undefined;
+};
+
+/**
  * Fields specific to Lever.
  */
 export type PostAtsJobsJobIdApplicationsRequestBodyLever = {
@@ -835,6 +849,12 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
    * Fields specific to Greenhouse.
    */
   greenhouse?: PostAtsJobsJobIdApplicationsRequestBodyGreenhouse | undefined;
+  /**
+   * Fields specific to Greenhouse V3 (OAuth-based connector).
+   */
+  greenhousev3?:
+    | PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3
+    | undefined;
   /**
    * Fields specific to Lever.
    */
@@ -1646,6 +1666,34 @@ export function postAtsJobsJobIdApplicationsRequestBodyGreenhouseToJSON(
   return JSON.stringify(
     PostAtsJobsJobIdApplicationsRequestBodyGreenhouse$outboundSchema.parse(
       postAtsJobsJobIdApplicationsRequestBodyGreenhouse,
+    ),
+  );
+}
+
+/** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3$Outbound = {
+  candidate?: { [k: string]: any } | undefined;
+  application?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3
+  > = z.object({
+    candidate: z.record(z.any()).optional(),
+    application: z.record(z.any()).optional(),
+  });
+
+export function postAtsJobsJobIdApplicationsRequestBodyGreenhousev3ToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyGreenhousev3:
+    PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3$outboundSchema.parse(
+      postAtsJobsJobIdApplicationsRequestBodyGreenhousev3,
     ),
   );
 }
@@ -3330,6 +3378,9 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
   greenhouse?:
     | PostAtsJobsJobIdApplicationsRequestBodyGreenhouse$Outbound
     | undefined;
+  greenhousev3?:
+    | PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3$Outbound
+    | undefined;
   lever?: PostAtsJobsJobIdApplicationsRequestBodyLever$Outbound | undefined;
   workable?:
     | PostAtsJobsJobIdApplicationsRequestBodyWorkable$Outbound
@@ -3389,6 +3440,9 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$outboundSchema:
     ).optional(),
     greenhouse: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyGreenhouse$outboundSchema
+    ).optional(),
+    greenhousev3: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3$outboundSchema
     ).optional(),
     lever: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyLever$outboundSchema
