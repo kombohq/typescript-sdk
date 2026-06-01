@@ -39,6 +39,7 @@ export const KomboHrisErrorCode = {
   RemoteRateLimitExceeded: "REMOTE.RATE_LIMIT_EXCEEDED",
   RemoteInputInvalid: "REMOTE.INPUT_INVALID",
   RemoteUnknownHttpError: "REMOTE.UNKNOWN_HTTP_ERROR",
+  HrisStaffingEntityClosed: "HRIS.STAFFING_ENTITY_CLOSED",
   HrisEmployeeAlreadyExists: "HRIS.EMPLOYEE_ALREADY_EXISTS",
 } as const;
 /**

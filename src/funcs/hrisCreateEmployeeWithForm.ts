@@ -40,6 +40,7 @@ import { Result } from "../types/fp.js";
  *
  * ```json
  * {
+ *   "staffing_entity_id": "26vafvWSRmbhNcxJYqjCzuJg",
  *   "properties": {
  *     "firstName": "John",
  *     "startDate": "2025-01-01",
