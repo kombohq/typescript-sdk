@@ -888,6 +888,10 @@ export type PostAtsCandidatesRequestBodyCovetorestCandidate = {
    * The mandant field for the candidate in Coveto.
    */
   mandant?: number | undefined;
+  /**
+   * The numeric status ID to assign to the candidate on creation in Coveto. Refer to your Coveto `/bewerber-status` endpoint for available IDs.
+   */
+  status?: number | undefined;
 };
 
 /**
@@ -3296,6 +3300,7 @@ export function postAtsCandidatesRequestBodyPinpointToJSON(
 /** @internal */
 export type PostAtsCandidatesRequestBodyCovetorestCandidate$Outbound = {
   mandant?: number | undefined;
+  status?: number | undefined;
 };
 
 /** @internal */
@@ -3306,6 +3311,7 @@ export const PostAtsCandidatesRequestBodyCovetorestCandidate$outboundSchema:
     PostAtsCandidatesRequestBodyCovetorestCandidate
   > = z.object({
     mandant: z.number().optional(),
+    status: z.number().int().optional(),
   });
 
 export function postAtsCandidatesRequestBodyCovetorestCandidateToJSON(

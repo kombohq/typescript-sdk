@@ -108,6 +108,7 @@ run();
 Get the form for creating an employee. This form can be rendered dynamically on your frontend to allow your customers to create employees in their HRIS.
 
 Follow our [create employee guide here](/hris/features/create-employee) to learn how this form is generated and how you can use it.
+The usage and impact of the staffing_entity_id parameter is described in the our [Create Employee Form with Staffing Entities guide](/hris/implementation-guide/staffing-entities-in-create-employee).
 
 ### Example Form
 ```json
@@ -264,6 +265,7 @@ Create an employee, based on the form schema.
 
 ```json
 {
+  "staffing_entity_id": "26vafvWSRmbhNcxJYqjCzuJg",
   "properties": {
     "firstName": "John",
     "startDate": "2025-01-01",
@@ -402,6 +404,7 @@ const kombo = new Kombo({
 
 async function run() {
   const result = await kombo.hris.createEmployeeWithForm({
+    staffing_entity_id: "26vafvWSRmbhNcxJYqjCzuJg",
     properties: {
       "firstName": "John",
       "startDate": "2025-01-01T00:00:00Z",
@@ -439,6 +442,7 @@ const kombo = new KomboCore({
 
 async function run() {
   const res = await hrisCreateEmployeeWithForm(kombo, {
+    staffing_entity_id: "26vafvWSRmbhNcxJYqjCzuJg",
     properties: {
       "firstName": "John",
       "startDate": "2025-01-01T00:00:00Z",

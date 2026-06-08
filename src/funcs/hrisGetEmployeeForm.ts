@@ -3,10 +3,11 @@
  */
 
 import { KomboCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -33,6 +34,7 @@ import { Result } from "../types/fp.js";
  * Get the form for creating an employee. This form can be rendered dynamically on your frontend to allow your customers to create employees in their HRIS.
  *
  * Follow our [create employee guide here](/hris/features/create-employee) to learn how this form is generated and how you can use it.
+ * The usage and impact of the staffing_entity_id parameter is described in the our [Create Employee Form with Staffing Entities guide](/hris/implementation-guide/staffing-entities-in-create-employee).
  *
  * ### Example Form
  * ```json
@@ -111,7 +113,7 @@ import { Result } from "../types/fp.js";
  */
 export function hrisGetEmployeeForm(
   client: KomboCore,
-  _request?: operations.GetHrisEmployeesFormRequest | undefined,
+  request?: operations.GetHrisEmployeesFormRequest | undefined,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -129,14 +131,14 @@ export function hrisGetEmployeeForm(
 > {
   return new APIPromise($do(
     client,
-    _request,
+    request,
     options,
   ));
 }
 
 async function $do(
   client: KomboCore,
-  _request?: operations.GetHrisEmployeesFormRequest | undefined,
+  request?: operations.GetHrisEmployeesFormRequest | undefined,
   options?: RequestOptions,
 ): Promise<
   [
@@ -155,7 +157,25 @@ async function $do(
     APICall,
   ]
 > {
+  const parsed = safeParse(
+    request,
+    (value) =>
+      operations.GetHrisEmployeesFormRequest$outboundSchema.optional().parse(
+        value,
+      ),
+    "Input validation failed",
+  );
+  if (!parsed.ok) {
+    return [parsed, { status: "invalid" }];
+  }
+  const payload = parsed.value;
+  const body = null;
+
   const path = pathToFunc("/hris/employees/form")();
+
+  const query = encodeFormQuery({
+    "staffing_entity_id": payload?.staffing_entity_id,
+  });
 
   const headers = new Headers(compactMap({
     Accept: "application/json",
@@ -191,6 +211,8 @@ async function $do(
     baseURL: options?.server_url,
     path: path,
     headers: headers,
+    query: query,
+    body: body,
     userAgent: client._options.user_agent,
     timeout_ms: options?.timeout_ms || client._options.timeout_ms || -1,
   }, options);

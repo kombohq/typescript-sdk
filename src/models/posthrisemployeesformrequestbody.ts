@@ -10,11 +10,13 @@ import {
 } from "./schema4.js";
 
 export type PostHrisEmployeesFormRequestBody = {
+  staffing_entity_id?: string | undefined;
   properties: { [k: string]: Schema4 };
 };
 
 /** @internal */
 export type PostHrisEmployeesFormRequestBody$Outbound = {
+  staffing_entity_id?: string | undefined;
   properties: { [k: string]: Schema4$Outbound };
 };
 
@@ -24,6 +26,7 @@ export const PostHrisEmployeesFormRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostHrisEmployeesFormRequestBody
 > = z.object({
+  staffing_entity_id: z.string().optional(),
   properties: z.record(Schema4$outboundSchema),
 });
 
