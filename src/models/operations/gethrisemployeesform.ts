@@ -11,17 +11,26 @@ export type GetHrisEmployeesFormGlobals = {
   integration_id?: string | undefined;
 };
 
-export type GetHrisEmployeesFormRequest = {};
+export type GetHrisEmployeesFormRequest = {
+  /**
+   * GET /hris/employees/form Parameter
+   */
+  staffing_entity_id?: string | undefined;
+};
 
 /** @internal */
-export type GetHrisEmployeesFormRequest$Outbound = {};
+export type GetHrisEmployeesFormRequest$Outbound = {
+  staffing_entity_id?: string | undefined;
+};
 
 /** @internal */
 export const GetHrisEmployeesFormRequest$outboundSchema: z.ZodType<
   GetHrisEmployeesFormRequest$Outbound,
   z.ZodTypeDef,
   GetHrisEmployeesFormRequest
-> = z.object({});
+> = z.object({
+  staffing_entity_id: z.string().optional(),
+});
 
 export function getHrisEmployeesFormRequestToJSON(
   getHrisEmployeesFormRequest: GetHrisEmployeesFormRequest,

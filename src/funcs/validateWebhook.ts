@@ -30,6 +30,7 @@ export async function validateWebhook(_client: KomboCore, {
   >
 > {
   const request = normalizeRequest(rawRequest);
+  const jsonString = await request.text();
   const knownSchemas = [
     webhooks.webhookDataChangedWebhookPayloadRequestFromJSON,
     webhooks.webhookConnectionFlowFailedWebhookPayloadRequestFromJSON,
@@ -40,8 +41,6 @@ export async function validateWebhook(_client: KomboCore, {
     webhooks.webhookIntegrationStateChangedWebhookPayloadRequestFromJSON,
     webhooks.webhookSyncFinishedWebhookPayloadRequestFromJSON,
   ];
-
-  const jsonString = await request.text();
 
   for (const schema of knownSchemas) {
     const ret = schema(jsonString);

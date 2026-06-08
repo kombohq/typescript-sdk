@@ -108,6 +108,53 @@ export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee = {
 };
 
 /**
+ * A reference to the tenant supplied status for this Assessment Test Result. For example, if the test outcome was satisfactory or not.
+ */
+export type AssessmentTestStatusReference = {
+  assessment_status_id: string;
+};
+
+/**
+ * Information on a set of Assessment Test Results used in concert with the Candidate Assessment.
+ */
+export type AssessCandidateTestResultData = {
+  /**
+   * A reference to the tenant supplied status for this Assessment Test Result. For example, if the test outcome was satisfactory or not.
+   */
+  assessment_test_status_reference?: AssessmentTestStatusReference | undefined;
+};
+
+/**
+ * The data used to create or modify a Candidate Assessment.
+ */
+export type CandidateAssessmentData = {
+  /**
+   * Information on a set of Assessment Test Results used in concert with the Candidate Assessment.
+   */
+  assess_candidate_test_result_data?: AssessCandidateTestResultData | undefined;
+};
+
+/**
+ * References to the Candidate Assessment to be created or modified along with the data to be used in the creation or modification.
+ */
+export type AssessCandidateData = {
+  /**
+   * The data used to create or modify a Candidate Assessment.
+   */
+  candidate_assessment_data?: CandidateAssessmentData | undefined;
+};
+
+/**
+ * Fields specific to Workday's `Assess_Candidate` [operation](https://community.workday.com/sites/default/files/file-hosting/productionapi/Recruiting/v46.0/Assess_Candidate.html).
+ */
+export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday = {
+  /**
+   * References to the Candidate Assessment to be created or modified along with the data to be used in the creation or modification.
+   */
+  assess_candidate_data?: AssessCandidateData | undefined;
+};
+
+/**
  * Additional fields that we will pass through to specific ATS systems.
  */
 export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields =
@@ -117,6 +164,12 @@ export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields =
       | undefined;
     recruitee?:
       | PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee
+      | undefined;
+    /**
+     * Fields specific to Workday's `Assess_Candidate` [operation](https://community.workday.com/sites/default/files/file-hosting/productionapi/Recruiting/v46.0/Assess_Candidate.html).
+     */
+    workday?:
+      | PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday
       | undefined;
   };
 
@@ -355,6 +408,155 @@ export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruiteeTo
 }
 
 /** @internal */
+export type AssessmentTestStatusReference$Outbound = {
+  Assessment_Status_ID: string;
+};
+
+/** @internal */
+export const AssessmentTestStatusReference$outboundSchema: z.ZodType<
+  AssessmentTestStatusReference$Outbound,
+  z.ZodTypeDef,
+  AssessmentTestStatusReference
+> = z.object({
+  assessment_status_id: z.string(),
+}).transform((v) => {
+  return remap$(v, {
+    assessment_status_id: "Assessment_Status_ID",
+  });
+});
+
+export function assessmentTestStatusReferenceToJSON(
+  assessmentTestStatusReference: AssessmentTestStatusReference,
+): string {
+  return JSON.stringify(
+    AssessmentTestStatusReference$outboundSchema.parse(
+      assessmentTestStatusReference,
+    ),
+  );
+}
+
+/** @internal */
+export type AssessCandidateTestResultData$Outbound = {
+  Assessment_Test_Status_Reference?:
+    | AssessmentTestStatusReference$Outbound
+    | undefined;
+};
+
+/** @internal */
+export const AssessCandidateTestResultData$outboundSchema: z.ZodType<
+  AssessCandidateTestResultData$Outbound,
+  z.ZodTypeDef,
+  AssessCandidateTestResultData
+> = z.object({
+  assessment_test_status_reference: z.lazy(() =>
+    AssessmentTestStatusReference$outboundSchema
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    assessment_test_status_reference: "Assessment_Test_Status_Reference",
+  });
+});
+
+export function assessCandidateTestResultDataToJSON(
+  assessCandidateTestResultData: AssessCandidateTestResultData,
+): string {
+  return JSON.stringify(
+    AssessCandidateTestResultData$outboundSchema.parse(
+      assessCandidateTestResultData,
+    ),
+  );
+}
+
+/** @internal */
+export type CandidateAssessmentData$Outbound = {
+  Assess_Candidate_Test_Result_Data?:
+    | AssessCandidateTestResultData$Outbound
+    | undefined;
+};
+
+/** @internal */
+export const CandidateAssessmentData$outboundSchema: z.ZodType<
+  CandidateAssessmentData$Outbound,
+  z.ZodTypeDef,
+  CandidateAssessmentData
+> = z.object({
+  assess_candidate_test_result_data: z.lazy(() =>
+    AssessCandidateTestResultData$outboundSchema
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    assess_candidate_test_result_data: "Assess_Candidate_Test_Result_Data",
+  });
+});
+
+export function candidateAssessmentDataToJSON(
+  candidateAssessmentData: CandidateAssessmentData,
+): string {
+  return JSON.stringify(
+    CandidateAssessmentData$outboundSchema.parse(candidateAssessmentData),
+  );
+}
+
+/** @internal */
+export type AssessCandidateData$Outbound = {
+  Candidate_Assessment_Data?: CandidateAssessmentData$Outbound | undefined;
+};
+
+/** @internal */
+export const AssessCandidateData$outboundSchema: z.ZodType<
+  AssessCandidateData$Outbound,
+  z.ZodTypeDef,
+  AssessCandidateData
+> = z.object({
+  candidate_assessment_data: z.lazy(() =>
+    CandidateAssessmentData$outboundSchema
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    candidate_assessment_data: "Candidate_Assessment_Data",
+  });
+});
+
+export function assessCandidateDataToJSON(
+  assessCandidateData: AssessCandidateData,
+): string {
+  return JSON.stringify(
+    AssessCandidateData$outboundSchema.parse(assessCandidateData),
+  );
+}
+
+/** @internal */
+export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday$Outbound =
+  {
+    Assess_Candidate_Data?: AssessCandidateData$Outbound | undefined;
+  };
+
+/** @internal */
+export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday$outboundSchema:
+  z.ZodType<
+    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday$Outbound,
+    z.ZodTypeDef,
+    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday
+  > = z.object({
+    assess_candidate_data: z.lazy(() => AssessCandidateData$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      assess_candidate_data: "Assess_Candidate_Data",
+    });
+  });
+
+export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkdayToJSON(
+  putAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday:
+    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday,
+): string {
+  return JSON.stringify(
+    PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday$outboundSchema
+      .parse(putAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday),
+  );
+}
+
+/** @internal */
 export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$Outbound =
   {
     smartrecruiters?:
@@ -362,6 +564,9 @@ export type PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$Ou
       | undefined;
     recruitee?:
       | PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee$Outbound
+      | undefined;
+    workday?:
+      | PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday$Outbound
       | undefined;
   };
 
@@ -377,6 +582,9 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$o
     ).optional(),
     recruitee: z.lazy(() =>
       PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee$outboundSchema
+    ).optional(),
+    workday: z.lazy(() =>
+      PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday$outboundSchema
     ).optional(),
   });
 

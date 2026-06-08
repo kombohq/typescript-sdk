@@ -14,4 +14,5 @@ let value: PostHrisEmployeesFormRequestBody = {
 
 | Field                            | Type                             | Required                         | Description                      |
 | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `staffing_entity_id`             | *string*                         | :heavy_minus_sign:               | N/A                              |
 | `properties`                     | Record<string, *models.Schema4*> | :heavy_check_mark:               | N/A                              |
