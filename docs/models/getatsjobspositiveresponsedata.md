@@ -98,13 +98,14 @@ let value: GetAtsJobsPositiveResponseData = {
           email: "john.doe@kombo.dev",
           hiring_team_roles: [
             "RECRUITER",
+            "HIRING_MANAGER",
           ],
           job_roles: [
             {
-              remote_id: "32",
+              remote_id: "1",
               remote_label: "Hiring Manager",
-              scope: "JOB",
               unified_type: "HIRING_MANAGER",
+              scope: "JOB",
             },
           ],
         },

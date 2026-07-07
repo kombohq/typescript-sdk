@@ -15,22 +15,10 @@ let value: GetAtsUsersPositiveResponseResult = {
   remote_deleted_at: new Date("2024-03-14T21:49:26.861Z"),
   system_roles: [
     {
-      remote_id: "32",
-      remote_label: "Hiring Manager",
-      scope: "JOB",
-      unified_type: "HIRING_MANAGER",
-    },
-    {
-      remote_id: "32",
-      remote_label: "Hiring Manager",
-      scope: "JOB",
-      unified_type: "HIRING_MANAGER",
-    },
-    {
       remote_id: "1",
       remote_label: "Admin",
-      scope: "SYSTEM",
       unified_type: "ADMIN",
+      scope: "SYSTEM",
     },
   ],
 };

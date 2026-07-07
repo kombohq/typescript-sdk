@@ -23,20 +23,6 @@ export type GetAtsUsersPositiveResponseStatus = ClosedEnum<
 >;
 
 /**
- * Whether the role applies globally or is scoped to a specific job.
- */
-export const GetAtsUsersPositiveResponseScope = {
-  System: "SYSTEM",
-  Job: "JOB",
-} as const;
-/**
- * Whether the role applies globally or is scoped to a specific job.
- */
-export type GetAtsUsersPositiveResponseScope = ClosedEnum<
-  typeof GetAtsUsersPositiveResponseScope
->;
-
-/**
  * Unified role type if Kombo can map it.
  */
 export const GetAtsUsersPositiveResponseUnifiedType = {
@@ -54,6 +40,19 @@ export type GetAtsUsersPositiveResponseUnifiedType = ClosedEnum<
   typeof GetAtsUsersPositiveResponseUnifiedType
 >;
 
+/**
+ * Roles that apply at the system level.
+ */
+export const GetAtsUsersPositiveResponseScope = {
+  System: "SYSTEM",
+} as const;
+/**
+ * Roles that apply at the system level.
+ */
+export type GetAtsUsersPositiveResponseScope = ClosedEnum<
+  typeof GetAtsUsersPositiveResponseScope
+>;
+
 export type SystemRole = {
   /**
    * The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key.
@@ -64,13 +63,13 @@ export type SystemRole = {
    */
   remote_label: string | null;
   /**
-   * Whether the role applies globally or is scoped to a specific job.
-   */
-  scope: GetAtsUsersPositiveResponseScope | null;
-  /**
    * Unified role type if Kombo can map it.
    */
   unified_type: GetAtsUsersPositiveResponseUnifiedType | null;
+  /**
+   * Roles that apply at the system level.
+   */
+  scope: GetAtsUsersPositiveResponseScope;
 };
 
 export type GetAtsUsersPositiveResponseResult = {
@@ -137,15 +136,15 @@ export const GetAtsUsersPositiveResponseStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetAtsUsersPositiveResponseStatus);
 
 /** @internal */
-export const GetAtsUsersPositiveResponseScope$inboundSchema: z.ZodNativeEnum<
-  typeof GetAtsUsersPositiveResponseScope
-> = z.nativeEnum(GetAtsUsersPositiveResponseScope);
-
-/** @internal */
 export const GetAtsUsersPositiveResponseUnifiedType$inboundSchema:
   z.ZodNativeEnum<typeof GetAtsUsersPositiveResponseUnifiedType> = z.nativeEnum(
     GetAtsUsersPositiveResponseUnifiedType,
   );
+
+/** @internal */
+export const GetAtsUsersPositiveResponseScope$inboundSchema: z.ZodNativeEnum<
+  typeof GetAtsUsersPositiveResponseScope
+> = z.nativeEnum(GetAtsUsersPositiveResponseScope);
 
 /** @internal */
 export const SystemRole$inboundSchema: z.ZodType<
@@ -155,10 +154,10 @@ export const SystemRole$inboundSchema: z.ZodType<
 > = z.object({
   remote_id: z.nullable(z.string()),
   remote_label: z.nullable(z.string()),
-  scope: z.nullable(GetAtsUsersPositiveResponseScope$inboundSchema),
   unified_type: z.nullable(
     GetAtsUsersPositiveResponseUnifiedType$inboundSchema,
   ),
+  scope: GetAtsUsersPositiveResponseScope$inboundSchema,
 });
 
 export function systemRoleFromJSON(
