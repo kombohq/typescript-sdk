@@ -31,7 +31,7 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 1.2.0
+  version: 1.3.0
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}
@@ -53,6 +53,7 @@ typescript:
   additionalScripts:
     test: vitest run
   alwaysIncludeInboundAndOutbound: false
+  apiPromiseHelpers: false
   author: Kombo Technologies GmbH <support@kombo.dev> (https://www.kombo.dev)
   baseErrorName: KomboError
   clientServerStatusCodesAsErrors: true
@@ -62,6 +63,7 @@ typescript:
   enableMCPServer: false
   enableReactQuery: false
   enumFormat: union
+  eventStreamClassName: EventStream
   exportZodModelNamespace: false
   fixEnumNameSanitization: false
   flatAdditionalProperties: false
@@ -94,6 +96,7 @@ typescript:
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
   privateIdentifierPrefix: '#'
+  requestExtras: false
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

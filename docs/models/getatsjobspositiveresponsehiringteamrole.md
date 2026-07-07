@@ -5,11 +5,11 @@
 ```typescript
 import { GetAtsJobsPositiveResponseHiringTeamRole } from "@kombo-api/sdk/models";
 
-let value: GetAtsJobsPositiveResponseHiringTeamRole = "RECRUITER";
+let value: GetAtsJobsPositiveResponseHiringTeamRole = "HIRING_MANAGER";
 ```
 
 ## Values
 
 ```typescript
-"RECRUITER" | "HIRING_MANAGER" | "COORDINATOR" | "SOURCER" | "INTERVIEWER"
+"HIRING_MANAGER" | "RECRUITER" | "COORDINATOR" | "SOURCER" | "INTERVIEWER"
 ```

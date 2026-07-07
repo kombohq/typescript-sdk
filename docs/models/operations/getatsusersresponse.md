@@ -23,10 +23,10 @@ let value: GetAtsUsersResponse = {
           remote_deleted_at: null,
           system_roles: [
             {
-              remote_id: "32",
-              remote_label: "Hiring Manager",
-              scope: "JOB",
-              unified_type: "HIRING_MANAGER",
+              remote_id: "1",
+              remote_label: "Admin",
+              unified_type: "ADMIN",
+              scope: "SYSTEM",
             },
           ],
         },

@@ -15,9 +15,9 @@ let value: GetAtsRolesResponse = {
         {
           id: "26vafvWSRmbhNcxJYqjCzuJg",
           remote_id: "32",
-          remote_label: "Hiring Manager",
+          remote_label: "Recruiter",
           scope: "JOB",
-          unified_type: "HIRING_MANAGER",
+          unified_type: "RECRUITER",
           changed_at: new Date("2022-08-07T14:01:29.196Z"),
           remote_deleted_at: null,
         },

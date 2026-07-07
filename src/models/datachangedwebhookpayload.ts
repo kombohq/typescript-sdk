@@ -54,6 +54,11 @@ export const Name = {
   HrisPerformanceReviews: "hris_performance_reviews",
   HrisPerformanceReviewCycles: "hris_performance_review_cycles",
   HrisStaffingEntities: "hris_staffing_entities",
+  HrisSkillProficiencyScales: "hris_skill_proficiency_scales",
+  HrisSkills: "hris_skills",
+  HrisSkillRatingProviders: "hris_skill_rating_providers",
+  HrisEmployeeSkillProficiencyRatings:
+    "hris_employee_skill_proficiency_ratings",
   AtsUsers: "ats_users",
   AtsJobs: "ats_jobs",
   AtsJobPostings: "ats_job_postings",

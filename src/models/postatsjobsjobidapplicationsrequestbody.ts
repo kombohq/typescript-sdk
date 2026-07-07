@@ -805,6 +805,20 @@ export type PostAtsJobsJobIdApplicationsRequestBodyPinpoint = {
 };
 
 /**
+ * Whether the candidate is created as active (`Ja`) or inactive (`Nein`) in Coveto. If omitted, Coveto applies its default (active).
+ */
+export const PostAtsJobsJobIdApplicationsRequestBodyAktiv = {
+  Ja: "Ja",
+  Nein: "Nein",
+} as const;
+/**
+ * Whether the candidate is created as active (`Ja`) or inactive (`Nein`) in Coveto. If omitted, Coveto applies its default (active).
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyAktiv = ClosedEnum<
+  typeof PostAtsJobsJobIdApplicationsRequestBodyAktiv
+>;
+
+/**
  * Additional candidate fields that will be passed to the Coveto candidate creation.
  */
 export type PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate = {
@@ -816,6 +830,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate = {
    * The numeric status ID to assign to the candidate on creation in Coveto. Refer to your Coveto `/bewerber-status` endpoint for available IDs.
    */
   status?: number | undefined;
+  /**
+   * Whether the candidate is created as active (`Ja`) or inactive (`Nein`) in Coveto. If omitted, Coveto applies its default (active).
+   */
+  aktiv?: PostAtsJobsJobIdApplicationsRequestBodyAktiv | undefined;
 };
 
 /**
@@ -3310,10 +3328,16 @@ export function postAtsJobsJobIdApplicationsRequestBodyPinpointToJSON(
 }
 
 /** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyAktiv$outboundSchema:
+  z.ZodNativeEnum<typeof PostAtsJobsJobIdApplicationsRequestBodyAktiv> = z
+    .nativeEnum(PostAtsJobsJobIdApplicationsRequestBodyAktiv);
+
+/** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$Outbound =
   {
     mandant?: number | undefined;
     status?: number | undefined;
+    aktiv?: string | undefined;
   };
 
 /** @internal */
@@ -3325,6 +3349,8 @@ export const PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$outbound
   > = z.object({
     mandant: z.number().optional(),
     status: z.number().int().optional(),
+    aktiv: PostAtsJobsJobIdApplicationsRequestBodyAktiv$outboundSchema
+      .optional(),
   });
 
 export function postAtsJobsJobIdApplicationsRequestBodyCovetorestCandidateToJSON(
