@@ -1,6 +1,6 @@
 # GetAtsJobsPositiveResponseScope
 
-Whether the role applies globally or is scoped to a specific job.
+Roles that apply at the job level.
 
 ## Example Usage
 
@@ -13,5 +13,5 @@ let value: GetAtsJobsPositiveResponseScope = "JOB";
 ## Values
 
 ```typescript
-"SYSTEM" | "JOB"
+"JOB"
 ```

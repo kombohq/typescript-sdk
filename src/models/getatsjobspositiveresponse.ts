@@ -335,28 +335,14 @@ export type JobPosting = {
 };
 
 export const GetAtsJobsPositiveResponseHiringTeamRole = {
-  Recruiter: "RECRUITER",
   HiringManager: "HIRING_MANAGER",
+  Recruiter: "RECRUITER",
   Coordinator: "COORDINATOR",
   Sourcer: "SOURCER",
   Interviewer: "INTERVIEWER",
 } as const;
 export type GetAtsJobsPositiveResponseHiringTeamRole = ClosedEnum<
   typeof GetAtsJobsPositiveResponseHiringTeamRole
->;
-
-/**
- * Whether the role applies globally or is scoped to a specific job.
- */
-export const GetAtsJobsPositiveResponseScope = {
-  System: "SYSTEM",
-  Job: "JOB",
-} as const;
-/**
- * Whether the role applies globally or is scoped to a specific job.
- */
-export type GetAtsJobsPositiveResponseScope = ClosedEnum<
-  typeof GetAtsJobsPositiveResponseScope
 >;
 
 /**
@@ -377,6 +363,19 @@ export type GetAtsJobsPositiveResponseUnifiedType = ClosedEnum<
   typeof GetAtsJobsPositiveResponseUnifiedType
 >;
 
+/**
+ * Roles that apply at the job level.
+ */
+export const GetAtsJobsPositiveResponseScope = {
+  Job: "JOB",
+} as const;
+/**
+ * Roles that apply at the job level.
+ */
+export type GetAtsJobsPositiveResponseScope = ClosedEnum<
+  typeof GetAtsJobsPositiveResponseScope
+>;
+
 export type JobRole = {
   /**
    * The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key.
@@ -387,13 +386,13 @@ export type JobRole = {
    */
   remote_label: string | null;
   /**
-   * Whether the role applies globally or is scoped to a specific job.
-   */
-  scope: GetAtsJobsPositiveResponseScope | null;
-  /**
    * Unified role type if Kombo can map it.
    */
   unified_type: GetAtsJobsPositiveResponseUnifiedType | null;
+  /**
+   * Roles that apply at the job level.
+   */
+  scope: GetAtsJobsPositiveResponseScope;
 };
 
 export type GetAtsJobsPositiveResponseHiringTeam = {
@@ -418,7 +417,7 @@ export type GetAtsJobsPositiveResponseHiringTeam = {
    */
   email?: string | null | undefined;
   /**
-   * **(⚠️ Deprecated - Use `job_roles` to access the full list of job roles.)** Array of the roles of the user for this specific job. Currently only `RECRUITER` and `HIRING_MANAGER` are mapped into our unified schema.
+   * **(⚠️ Deprecated - Use `job_roles` to access the full list of job roles (including custom labels and unmapped roles).)** Array of the roles of the user for this specific job. Example: ["RECRUITER", "HIRING_MANAGER"].
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
@@ -1045,25 +1044,25 @@ export const GetAtsJobsPositiveResponseHiringTeamRole$inboundSchema:
     .nativeEnum(GetAtsJobsPositiveResponseHiringTeamRole);
 
 /** @internal */
-export const GetAtsJobsPositiveResponseScope$inboundSchema: z.ZodNativeEnum<
-  typeof GetAtsJobsPositiveResponseScope
-> = z.nativeEnum(GetAtsJobsPositiveResponseScope);
-
-/** @internal */
 export const GetAtsJobsPositiveResponseUnifiedType$inboundSchema:
   z.ZodNativeEnum<typeof GetAtsJobsPositiveResponseUnifiedType> = z.nativeEnum(
     GetAtsJobsPositiveResponseUnifiedType,
   );
 
 /** @internal */
+export const GetAtsJobsPositiveResponseScope$inboundSchema: z.ZodNativeEnum<
+  typeof GetAtsJobsPositiveResponseScope
+> = z.nativeEnum(GetAtsJobsPositiveResponseScope);
+
+/** @internal */
 export const JobRole$inboundSchema: z.ZodType<JobRole, z.ZodTypeDef, unknown> =
   z.object({
     remote_id: z.nullable(z.string()),
     remote_label: z.nullable(z.string()),
-    scope: z.nullable(GetAtsJobsPositiveResponseScope$inboundSchema),
     unified_type: z.nullable(
       GetAtsJobsPositiveResponseUnifiedType$inboundSchema,
     ),
+    scope: GetAtsJobsPositiveResponseScope$inboundSchema,
   });
 
 export function jobRoleFromJSON(

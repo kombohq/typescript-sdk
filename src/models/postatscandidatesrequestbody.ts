@@ -881,6 +881,20 @@ export type PostAtsCandidatesRequestBodyPinpoint = {
 };
 
 /**
+ * Whether the candidate is created as active (`Ja`) or inactive (`Nein`) in Coveto. If omitted, Coveto applies its default (active).
+ */
+export const PostAtsCandidatesRequestBodyAktiv = {
+  Ja: "Ja",
+  Nein: "Nein",
+} as const;
+/**
+ * Whether the candidate is created as active (`Ja`) or inactive (`Nein`) in Coveto. If omitted, Coveto applies its default (active).
+ */
+export type PostAtsCandidatesRequestBodyAktiv = ClosedEnum<
+  typeof PostAtsCandidatesRequestBodyAktiv
+>;
+
+/**
  * Additional candidate fields that will be passed to the Coveto candidate creation.
  */
 export type PostAtsCandidatesRequestBodyCovetorestCandidate = {
@@ -892,6 +906,10 @@ export type PostAtsCandidatesRequestBodyCovetorestCandidate = {
    * The numeric status ID to assign to the candidate on creation in Coveto. Refer to your Coveto `/bewerber-status` endpoint for available IDs.
    */
   status?: number | undefined;
+  /**
+   * Whether the candidate is created as active (`Ja`) or inactive (`Nein`) in Coveto. If omitted, Coveto applies its default (active).
+   */
+  aktiv?: PostAtsCandidatesRequestBodyAktiv | undefined;
 };
 
 /**
@@ -3298,9 +3316,15 @@ export function postAtsCandidatesRequestBodyPinpointToJSON(
 }
 
 /** @internal */
+export const PostAtsCandidatesRequestBodyAktiv$outboundSchema: z.ZodNativeEnum<
+  typeof PostAtsCandidatesRequestBodyAktiv
+> = z.nativeEnum(PostAtsCandidatesRequestBodyAktiv);
+
+/** @internal */
 export type PostAtsCandidatesRequestBodyCovetorestCandidate$Outbound = {
   mandant?: number | undefined;
   status?: number | undefined;
+  aktiv?: string | undefined;
 };
 
 /** @internal */
@@ -3312,6 +3336,7 @@ export const PostAtsCandidatesRequestBodyCovetorestCandidate$outboundSchema:
   > = z.object({
     mandant: z.number().optional(),
     status: z.number().int().optional(),
+    aktiv: PostAtsCandidatesRequestBodyAktiv$outboundSchema.optional(),
   });
 
 export function postAtsCandidatesRequestBodyCovetorestCandidateToJSON(

@@ -1,17 +1,17 @@
 # GetAtsUsersPositiveResponseScope
 
-Whether the role applies globally or is scoped to a specific job.
+Roles that apply at the system level.
 
 ## Example Usage
 
 ```typescript
 import { GetAtsUsersPositiveResponseScope } from "@kombo-api/sdk/models";
 
-let value: GetAtsUsersPositiveResponseScope = "JOB";
+let value: GetAtsUsersPositiveResponseScope = "SYSTEM";
 ```
 
 ## Values
 
 ```typescript
-"SYSTEM" | "JOB"
+"SYSTEM"
 ```
