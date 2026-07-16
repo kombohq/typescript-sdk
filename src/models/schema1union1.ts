@@ -7,8 +7,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
-import { Schema1, Schema1$inboundSchema } from "./schema1.js";
-import { Schema2Union1, Schema2Union1$inboundSchema } from "./schema2union1.js";
+import { Schema2, Schema2$inboundSchema } from "./schema2.js";
 
 export const Schema1UnifiedKey8 = {
   FirstName: "first_name",
@@ -72,18 +71,7 @@ export const Schema1UnifiedKey7 = {
 } as const;
 export type Schema1UnifiedKey7 = ClosedEnum<typeof Schema1UnifiedKey7>;
 
-export type Schema1Array1 = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: Schema1UnifiedKey7 | null | undefined;
-  type: "array";
-  item_type: Schema2Union1;
-  min_items?: number | null | undefined;
-  max_items?: number | null | undefined;
-};
-
-export const Schema1UnifiedKey6 = {
+export const Schema1UnifiedKey1 = {
   FirstName: "first_name",
   LastName: "last_name",
   DateOfBirth: "date_of_birth",
@@ -105,169 +93,17 @@ export const Schema1UnifiedKey6 = {
   PrivateEmail: "private_email",
   YearlySalary: "yearly_salary",
 } as const;
-export type Schema1UnifiedKey6 = ClosedEnum<typeof Schema1UnifiedKey6>;
+export type Schema1UnifiedKey1 = ClosedEnum<typeof Schema1UnifiedKey1>;
 
-export type Schema1Object = {
+export type Schema1Text = {
   label: string;
   required: boolean;
   description?: string | null | undefined;
-  unified_key?: Schema1UnifiedKey6 | null | undefined;
-  type: "object";
-  properties: Schema1;
-};
-
-export const Schema1UnifiedKey5 = {
-  FirstName: "first_name",
-  LastName: "last_name",
-  DateOfBirth: "date_of_birth",
-  Gender: "gender",
-  HomeAddressCity: "home_address.city",
-  HomeAddressCountry: "home_address.country",
-  HomeAddressState: "home_address.state",
-  HomeAddressStreet1: "home_address.street_1",
-  HomeAddressStreet2: "home_address.street_2",
-  HomeAddressZipCode: "home_address.zip_code",
-  JobTitle: "job_title",
-  LegalEntityId: "legal_entity_id",
-  LocationId: "location_id",
-  MobilePhoneNumber: "mobile_phone_number",
-  HomePhoneNumber: "home_phone_number",
-  Nationality: "nationality",
-  StartDate: "start_date",
-  WorkEmail: "work_email",
-  PrivateEmail: "private_email",
-  YearlySalary: "yearly_salary",
-} as const;
-export type Schema1UnifiedKey5 = ClosedEnum<typeof Schema1UnifiedKey5>;
-
-export type Schema1Checkbox = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: Schema1UnifiedKey5 | null | undefined;
-  type: "checkbox";
-};
-
-export type Schema1OptionsReferenced2 = {
-  type: "referenced";
-  link: string;
-};
-
-export type Schema1RemoteId2 = string | number;
-
-export type Schema1Entry2 = {
-  id: string;
-  label: string;
-  unified_value?: string | undefined;
-  remote_id: string | number;
-};
-
-export type Schema1OptionsInline2 = {
-  type: "inline";
-  entries: Array<Schema1Entry2>;
-};
-
-export type Schema1OptionsUnion2 =
-  | Schema1OptionsInline2
-  | Schema1OptionsReferenced2;
-
-export type Schema1MultiSelect = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: string | null | undefined;
-  type: "multi_select";
-  min_items?: number | null | undefined;
-  max_items?: number | null | undefined;
-  options: Schema1OptionsInline2 | Schema1OptionsReferenced2;
-};
-
-export const Schema1UnifiedKey4 = {
-  FirstName: "first_name",
-  LastName: "last_name",
-  DateOfBirth: "date_of_birth",
-  Gender: "gender",
-  HomeAddressCity: "home_address.city",
-  HomeAddressCountry: "home_address.country",
-  HomeAddressState: "home_address.state",
-  HomeAddressStreet1: "home_address.street_1",
-  HomeAddressStreet2: "home_address.street_2",
-  HomeAddressZipCode: "home_address.zip_code",
-  JobTitle: "job_title",
-  LegalEntityId: "legal_entity_id",
-  LocationId: "location_id",
-  MobilePhoneNumber: "mobile_phone_number",
-  HomePhoneNumber: "home_phone_number",
-  Nationality: "nationality",
-  StartDate: "start_date",
-  WorkEmail: "work_email",
-  PrivateEmail: "private_email",
-  YearlySalary: "yearly_salary",
-} as const;
-export type Schema1UnifiedKey4 = ClosedEnum<typeof Schema1UnifiedKey4>;
-
-export type Schema1OptionsReferenced1 = {
-  type: "referenced";
-  link: string;
-};
-
-export type Schema1RemoteId1 = string | number;
-
-export type Schema1Entry1 = {
-  id: string;
-  label: string;
-  unified_value?: string | undefined;
-  remote_id: string | number;
-};
-
-export type Schema1OptionsInline1 = {
-  type: "inline";
-  entries: Array<Schema1Entry1>;
-};
-
-export type Schema1OptionsUnion1 =
-  | Schema1OptionsInline1
-  | Schema1OptionsReferenced1;
-
-export type Schema1SingleSelect = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: Schema1UnifiedKey4 | null | undefined;
-  type: "single_select";
-  options: Schema1OptionsInline1 | Schema1OptionsReferenced1;
-};
-
-export const Schema1UnifiedKey3 = {
-  FirstName: "first_name",
-  LastName: "last_name",
-  DateOfBirth: "date_of_birth",
-  Gender: "gender",
-  HomeAddressCity: "home_address.city",
-  HomeAddressCountry: "home_address.country",
-  HomeAddressState: "home_address.state",
-  HomeAddressStreet1: "home_address.street_1",
-  HomeAddressStreet2: "home_address.street_2",
-  HomeAddressZipCode: "home_address.zip_code",
-  JobTitle: "job_title",
-  LegalEntityId: "legal_entity_id",
-  LocationId: "location_id",
-  MobilePhoneNumber: "mobile_phone_number",
-  HomePhoneNumber: "home_phone_number",
-  Nationality: "nationality",
-  StartDate: "start_date",
-  WorkEmail: "work_email",
-  PrivateEmail: "private_email",
-  YearlySalary: "yearly_salary",
-} as const;
-export type Schema1UnifiedKey3 = ClosedEnum<typeof Schema1UnifiedKey3>;
-
-export type Schema1Date = {
-  label: string;
-  required: boolean;
-  description?: string | null | undefined;
-  unified_key?: Schema1UnifiedKey3 | null | undefined;
-  type: "date";
+  unified_key?: Schema1UnifiedKey1 | null | undefined;
+  type: "text";
+  min_length?: number | null | undefined;
+  max_length?: number | null | undefined;
+  reg_exp?: string | null | undefined;
 };
 
 export const Schema1UnifiedKey2 = {
@@ -304,7 +140,7 @@ export type Schema1Number = {
   max?: number | null | undefined;
 };
 
-export const Schema1UnifiedKey1 = {
+export const Schema1UnifiedKey3 = {
   FirstName: "first_name",
   LastName: "last_name",
   DateOfBirth: "date_of_birth",
@@ -326,17 +162,180 @@ export const Schema1UnifiedKey1 = {
   PrivateEmail: "private_email",
   YearlySalary: "yearly_salary",
 } as const;
-export type Schema1UnifiedKey1 = ClosedEnum<typeof Schema1UnifiedKey1>;
+export type Schema1UnifiedKey3 = ClosedEnum<typeof Schema1UnifiedKey3>;
 
-export type Schema1Text = {
+export type Schema1Date = {
   label: string;
   required: boolean;
   description?: string | null | undefined;
-  unified_key?: Schema1UnifiedKey1 | null | undefined;
-  type: "text";
-  min_length?: number | null | undefined;
-  max_length?: number | null | undefined;
-  reg_exp?: string | null | undefined;
+  unified_key?: Schema1UnifiedKey3 | null | undefined;
+  type: "date";
+};
+
+export const Schema1UnifiedKey4 = {
+  FirstName: "first_name",
+  LastName: "last_name",
+  DateOfBirth: "date_of_birth",
+  Gender: "gender",
+  HomeAddressCity: "home_address.city",
+  HomeAddressCountry: "home_address.country",
+  HomeAddressState: "home_address.state",
+  HomeAddressStreet1: "home_address.street_1",
+  HomeAddressStreet2: "home_address.street_2",
+  HomeAddressZipCode: "home_address.zip_code",
+  JobTitle: "job_title",
+  LegalEntityId: "legal_entity_id",
+  LocationId: "location_id",
+  MobilePhoneNumber: "mobile_phone_number",
+  HomePhoneNumber: "home_phone_number",
+  Nationality: "nationality",
+  StartDate: "start_date",
+  WorkEmail: "work_email",
+  PrivateEmail: "private_email",
+  YearlySalary: "yearly_salary",
+} as const;
+export type Schema1UnifiedKey4 = ClosedEnum<typeof Schema1UnifiedKey4>;
+
+export type Schema1RemoteId1 = string | number;
+
+export type Schema1Entry1 = {
+  id: string;
+  label: string;
+  unified_value?: string | undefined;
+  remote_id: string | number;
+};
+
+export type Schema1OptionsInline1 = {
+  type: "inline";
+  entries: Array<Schema1Entry1>;
+};
+
+export type Schema1OptionsReferenced1 = {
+  type: "referenced";
+  link: string;
+};
+
+export type Schema1OptionsUnion1 =
+  | Schema1OptionsInline1
+  | Schema1OptionsReferenced1;
+
+export type Schema1SingleSelect = {
+  label: string;
+  required: boolean;
+  description?: string | null | undefined;
+  unified_key?: Schema1UnifiedKey4 | null | undefined;
+  type: "single_select";
+  options: Schema1OptionsInline1 | Schema1OptionsReferenced1;
+};
+
+export type Schema1RemoteId2 = string | number;
+
+export type Schema1Entry2 = {
+  id: string;
+  label: string;
+  unified_value?: string | undefined;
+  remote_id: string | number;
+};
+
+export type Schema1OptionsInline2 = {
+  type: "inline";
+  entries: Array<Schema1Entry2>;
+};
+
+export type Schema1OptionsReferenced2 = {
+  type: "referenced";
+  link: string;
+};
+
+export type Schema1OptionsUnion2 =
+  | Schema1OptionsInline2
+  | Schema1OptionsReferenced2;
+
+export type Schema1MultiSelect = {
+  label: string;
+  required: boolean;
+  description?: string | null | undefined;
+  unified_key?: string | null | undefined;
+  type: "multi_select";
+  min_items?: number | null | undefined;
+  max_items?: number | null | undefined;
+  options: Schema1OptionsInline2 | Schema1OptionsReferenced2;
+};
+
+export const Schema1UnifiedKey5 = {
+  FirstName: "first_name",
+  LastName: "last_name",
+  DateOfBirth: "date_of_birth",
+  Gender: "gender",
+  HomeAddressCity: "home_address.city",
+  HomeAddressCountry: "home_address.country",
+  HomeAddressState: "home_address.state",
+  HomeAddressStreet1: "home_address.street_1",
+  HomeAddressStreet2: "home_address.street_2",
+  HomeAddressZipCode: "home_address.zip_code",
+  JobTitle: "job_title",
+  LegalEntityId: "legal_entity_id",
+  LocationId: "location_id",
+  MobilePhoneNumber: "mobile_phone_number",
+  HomePhoneNumber: "home_phone_number",
+  Nationality: "nationality",
+  StartDate: "start_date",
+  WorkEmail: "work_email",
+  PrivateEmail: "private_email",
+  YearlySalary: "yearly_salary",
+} as const;
+export type Schema1UnifiedKey5 = ClosedEnum<typeof Schema1UnifiedKey5>;
+
+export type Schema1Checkbox = {
+  label: string;
+  required: boolean;
+  description?: string | null | undefined;
+  unified_key?: Schema1UnifiedKey5 | null | undefined;
+  type: "checkbox";
+};
+
+export const Schema1UnifiedKey6 = {
+  FirstName: "first_name",
+  LastName: "last_name",
+  DateOfBirth: "date_of_birth",
+  Gender: "gender",
+  HomeAddressCity: "home_address.city",
+  HomeAddressCountry: "home_address.country",
+  HomeAddressState: "home_address.state",
+  HomeAddressStreet1: "home_address.street_1",
+  HomeAddressStreet2: "home_address.street_2",
+  HomeAddressZipCode: "home_address.zip_code",
+  JobTitle: "job_title",
+  LegalEntityId: "legal_entity_id",
+  LocationId: "location_id",
+  MobilePhoneNumber: "mobile_phone_number",
+  HomePhoneNumber: "home_phone_number",
+  Nationality: "nationality",
+  StartDate: "start_date",
+  WorkEmail: "work_email",
+  PrivateEmail: "private_email",
+  YearlySalary: "yearly_salary",
+} as const;
+export type Schema1UnifiedKey6 = ClosedEnum<typeof Schema1UnifiedKey6>;
+
+export type Schema1Object1 = {
+  label: string;
+  required: boolean;
+  description?: string | null | undefined;
+  unified_key?: Schema1UnifiedKey6 | null | undefined;
+  type: "object";
+  properties: {
+    [k: string]:
+      | Schema1Text
+      | Schema1Number
+      | Schema1Date
+      | Schema1SingleSelect
+      | Schema1MultiSelect
+      | Schema1Checkbox
+      | Schema1Object1
+      | Schema1Array1
+      | Schema1File;
+  };
 };
 
 export type Schema1Union1 =
@@ -346,9 +345,20 @@ export type Schema1Union1 =
   | Schema1SingleSelect
   | Schema1MultiSelect
   | Schema1Checkbox
-  | Schema1Object
+  | Schema1Object1
   | Schema1Array1
   | Schema1File;
+
+export type Schema1Array1 = {
+  label: string;
+  required: boolean;
+  description?: string | null | undefined;
+  unified_key?: Schema1UnifiedKey7 | null | undefined;
+  type: "array";
+  item_type: Schema2;
+  min_items?: number | null | undefined;
+  max_items?: number | null | undefined;
+};
 
 /** @internal */
 export const Schema1UnifiedKey8$inboundSchema: z.ZodNativeEnum<
@@ -405,91 +415,161 @@ export const Schema1UnifiedKey7$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(Schema1UnifiedKey7);
 
 /** @internal */
-export const Schema1Array1$inboundSchema: z.ZodType<
-  Schema1Array1,
+export const Schema1UnifiedKey1$inboundSchema: z.ZodNativeEnum<
+  typeof Schema1UnifiedKey1
+> = z.nativeEnum(Schema1UnifiedKey1);
+
+/** @internal */
+export const Schema1Text$inboundSchema: z.ZodType<
+  Schema1Text,
   z.ZodTypeDef,
   unknown
 > = z.object({
   label: z.string(),
   required: z.boolean(),
   description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey7$inboundSchema).optional(),
-  type: z.literal("array"),
-  item_type: Schema2Union1$inboundSchema,
-  min_items: z.nullable(z.number()).optional(),
-  max_items: z.nullable(z.number()).optional(),
+  unified_key: z.nullable(Schema1UnifiedKey1$inboundSchema).optional(),
+  type: z.literal("text"),
+  min_length: z.nullable(z.number()).optional(),
+  max_length: z.nullable(z.number()).optional(),
+  reg_exp: z.nullable(z.string()).optional(),
 });
 
-export function schema1Array1FromJSON(
+export function schema1TextFromJSON(
   jsonString: string,
-): SafeParseResult<Schema1Array1, SDKValidationError> {
+): SafeParseResult<Schema1Text, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Schema1Array1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1Array1' from JSON`,
+    (x) => Schema1Text$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1Text' from JSON`,
   );
 }
 
 /** @internal */
-export const Schema1UnifiedKey6$inboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey6
-> = z.nativeEnum(Schema1UnifiedKey6);
+export const Schema1UnifiedKey2$inboundSchema: z.ZodNativeEnum<
+  typeof Schema1UnifiedKey2
+> = z.nativeEnum(Schema1UnifiedKey2);
 
 /** @internal */
-export const Schema1Object$inboundSchema: z.ZodType<
-  Schema1Object,
+export const Schema1Number$inboundSchema: z.ZodType<
+  Schema1Number,
   z.ZodTypeDef,
   unknown
 > = z.object({
   label: z.string(),
   required: z.boolean(),
   description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey6$inboundSchema).optional(),
-  type: z.literal("object"),
-  properties: Schema1$inboundSchema,
+  unified_key: z.nullable(Schema1UnifiedKey2$inboundSchema).optional(),
+  type: z.literal("number"),
+  min: z.nullable(z.number()).optional(),
+  max: z.nullable(z.number()).optional(),
 });
 
-export function schema1ObjectFromJSON(
+export function schema1NumberFromJSON(
   jsonString: string,
-): SafeParseResult<Schema1Object, SDKValidationError> {
+): SafeParseResult<Schema1Number, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Schema1Object$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1Object' from JSON`,
+    (x) => Schema1Number$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1Number' from JSON`,
   );
 }
 
 /** @internal */
-export const Schema1UnifiedKey5$inboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey5
-> = z.nativeEnum(Schema1UnifiedKey5);
+export const Schema1UnifiedKey3$inboundSchema: z.ZodNativeEnum<
+  typeof Schema1UnifiedKey3
+> = z.nativeEnum(Schema1UnifiedKey3);
 
 /** @internal */
-export const Schema1Checkbox$inboundSchema: z.ZodType<
-  Schema1Checkbox,
+export const Schema1Date$inboundSchema: z.ZodType<
+  Schema1Date,
   z.ZodTypeDef,
   unknown
 > = z.object({
   label: z.string(),
   required: z.boolean(),
   description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey5$inboundSchema).optional(),
-  type: z.literal("checkbox"),
+  unified_key: z.nullable(Schema1UnifiedKey3$inboundSchema).optional(),
+  type: z.literal("date"),
 });
 
-export function schema1CheckboxFromJSON(
+export function schema1DateFromJSON(
   jsonString: string,
-): SafeParseResult<Schema1Checkbox, SDKValidationError> {
+): SafeParseResult<Schema1Date, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Schema1Checkbox$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1Checkbox' from JSON`,
+    (x) => Schema1Date$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1Date' from JSON`,
   );
 }
 
 /** @internal */
-export const Schema1OptionsReferenced2$inboundSchema: z.ZodType<
-  Schema1OptionsReferenced2,
+export const Schema1UnifiedKey4$inboundSchema: z.ZodNativeEnum<
+  typeof Schema1UnifiedKey4
+> = z.nativeEnum(Schema1UnifiedKey4);
+
+/** @internal */
+export const Schema1RemoteId1$inboundSchema: z.ZodType<
+  Schema1RemoteId1,
+  z.ZodTypeDef,
+  unknown
+> = z.union([z.string(), z.number()]);
+
+export function schema1RemoteId1FromJSON(
+  jsonString: string,
+): SafeParseResult<Schema1RemoteId1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Schema1RemoteId1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1RemoteId1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Schema1Entry1$inboundSchema: z.ZodType<
+  Schema1Entry1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  label: z.string(),
+  unified_value: z.string().optional(),
+  remote_id: z.union([z.string(), z.number()]),
+});
+
+export function schema1Entry1FromJSON(
+  jsonString: string,
+): SafeParseResult<Schema1Entry1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Schema1Entry1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1Entry1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Schema1OptionsInline1$inboundSchema: z.ZodType<
+  Schema1OptionsInline1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: z.literal("inline"),
+  entries: z.array(z.lazy(() => Schema1Entry1$inboundSchema)),
+});
+
+export function schema1OptionsInline1FromJSON(
+  jsonString: string,
+): SafeParseResult<Schema1OptionsInline1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Schema1OptionsInline1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1OptionsInline1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Schema1OptionsReferenced1$inboundSchema: z.ZodType<
+  Schema1OptionsReferenced1,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -497,13 +577,60 @@ export const Schema1OptionsReferenced2$inboundSchema: z.ZodType<
   link: z.string(),
 });
 
-export function schema1OptionsReferenced2FromJSON(
+export function schema1OptionsReferenced1FromJSON(
   jsonString: string,
-): SafeParseResult<Schema1OptionsReferenced2, SDKValidationError> {
+): SafeParseResult<Schema1OptionsReferenced1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Schema1OptionsReferenced2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1OptionsReferenced2' from JSON`,
+    (x) => Schema1OptionsReferenced1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1OptionsReferenced1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Schema1OptionsUnion1$inboundSchema: z.ZodType<
+  Schema1OptionsUnion1,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => Schema1OptionsInline1$inboundSchema),
+  z.lazy(() => Schema1OptionsReferenced1$inboundSchema),
+]);
+
+export function schema1OptionsUnion1FromJSON(
+  jsonString: string,
+): SafeParseResult<Schema1OptionsUnion1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Schema1OptionsUnion1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1OptionsUnion1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Schema1SingleSelect$inboundSchema: z.ZodType<
+  Schema1SingleSelect,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: z.string(),
+  required: z.boolean(),
+  description: z.nullable(z.string()).optional(),
+  unified_key: z.nullable(Schema1UnifiedKey4$inboundSchema).optional(),
+  type: z.literal("single_select"),
+  options: z.union([
+    z.lazy(() => Schema1OptionsInline1$inboundSchema),
+    z.lazy(() => Schema1OptionsReferenced1$inboundSchema),
+  ]),
+});
+
+export function schema1SingleSelectFromJSON(
+  jsonString: string,
+): SafeParseResult<Schema1SingleSelect, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Schema1SingleSelect$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1SingleSelect' from JSON`,
   );
 }
 
@@ -567,6 +694,26 @@ export function schema1OptionsInline2FromJSON(
 }
 
 /** @internal */
+export const Schema1OptionsReferenced2$inboundSchema: z.ZodType<
+  Schema1OptionsReferenced2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: z.literal("referenced"),
+  link: z.string(),
+});
+
+export function schema1OptionsReferenced2FromJSON(
+  jsonString: string,
+): SafeParseResult<Schema1OptionsReferenced2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Schema1OptionsReferenced2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1OptionsReferenced2' from JSON`,
+  );
+}
+
+/** @internal */
 export const Schema1OptionsUnion2$inboundSchema: z.ZodType<
   Schema1OptionsUnion2,
   z.ZodTypeDef,
@@ -616,222 +763,71 @@ export function schema1MultiSelectFromJSON(
 }
 
 /** @internal */
-export const Schema1UnifiedKey4$inboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey4
-> = z.nativeEnum(Schema1UnifiedKey4);
+export const Schema1UnifiedKey5$inboundSchema: z.ZodNativeEnum<
+  typeof Schema1UnifiedKey5
+> = z.nativeEnum(Schema1UnifiedKey5);
 
 /** @internal */
-export const Schema1OptionsReferenced1$inboundSchema: z.ZodType<
-  Schema1OptionsReferenced1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: z.literal("referenced"),
-  link: z.string(),
-});
-
-export function schema1OptionsReferenced1FromJSON(
-  jsonString: string,
-): SafeParseResult<Schema1OptionsReferenced1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Schema1OptionsReferenced1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1OptionsReferenced1' from JSON`,
-  );
-}
-
-/** @internal */
-export const Schema1RemoteId1$inboundSchema: z.ZodType<
-  Schema1RemoteId1,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.string(), z.number()]);
-
-export function schema1RemoteId1FromJSON(
-  jsonString: string,
-): SafeParseResult<Schema1RemoteId1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Schema1RemoteId1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1RemoteId1' from JSON`,
-  );
-}
-
-/** @internal */
-export const Schema1Entry1$inboundSchema: z.ZodType<
-  Schema1Entry1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  id: z.string(),
-  label: z.string(),
-  unified_value: z.string().optional(),
-  remote_id: z.union([z.string(), z.number()]),
-});
-
-export function schema1Entry1FromJSON(
-  jsonString: string,
-): SafeParseResult<Schema1Entry1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Schema1Entry1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1Entry1' from JSON`,
-  );
-}
-
-/** @internal */
-export const Schema1OptionsInline1$inboundSchema: z.ZodType<
-  Schema1OptionsInline1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: z.literal("inline"),
-  entries: z.array(z.lazy(() => Schema1Entry1$inboundSchema)),
-});
-
-export function schema1OptionsInline1FromJSON(
-  jsonString: string,
-): SafeParseResult<Schema1OptionsInline1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Schema1OptionsInline1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1OptionsInline1' from JSON`,
-  );
-}
-
-/** @internal */
-export const Schema1OptionsUnion1$inboundSchema: z.ZodType<
-  Schema1OptionsUnion1,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => Schema1OptionsInline1$inboundSchema),
-  z.lazy(() => Schema1OptionsReferenced1$inboundSchema),
-]);
-
-export function schema1OptionsUnion1FromJSON(
-  jsonString: string,
-): SafeParseResult<Schema1OptionsUnion1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Schema1OptionsUnion1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1OptionsUnion1' from JSON`,
-  );
-}
-
-/** @internal */
-export const Schema1SingleSelect$inboundSchema: z.ZodType<
-  Schema1SingleSelect,
+export const Schema1Checkbox$inboundSchema: z.ZodType<
+  Schema1Checkbox,
   z.ZodTypeDef,
   unknown
 > = z.object({
   label: z.string(),
   required: z.boolean(),
   description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey4$inboundSchema).optional(),
-  type: z.literal("single_select"),
-  options: z.union([
-    z.lazy(() => Schema1OptionsInline1$inboundSchema),
-    z.lazy(() => Schema1OptionsReferenced1$inboundSchema),
-  ]),
+  unified_key: z.nullable(Schema1UnifiedKey5$inboundSchema).optional(),
+  type: z.literal("checkbox"),
 });
 
-export function schema1SingleSelectFromJSON(
+export function schema1CheckboxFromJSON(
   jsonString: string,
-): SafeParseResult<Schema1SingleSelect, SDKValidationError> {
+): SafeParseResult<Schema1Checkbox, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Schema1SingleSelect$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1SingleSelect' from JSON`,
+    (x) => Schema1Checkbox$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1Checkbox' from JSON`,
   );
 }
 
 /** @internal */
-export const Schema1UnifiedKey3$inboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey3
-> = z.nativeEnum(Schema1UnifiedKey3);
+export const Schema1UnifiedKey6$inboundSchema: z.ZodNativeEnum<
+  typeof Schema1UnifiedKey6
+> = z.nativeEnum(Schema1UnifiedKey6);
 
 /** @internal */
-export const Schema1Date$inboundSchema: z.ZodType<
-  Schema1Date,
+export const Schema1Object1$inboundSchema: z.ZodType<
+  Schema1Object1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   label: z.string(),
   required: z.boolean(),
   description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey3$inboundSchema).optional(),
-  type: z.literal("date"),
+  unified_key: z.nullable(Schema1UnifiedKey6$inboundSchema).optional(),
+  type: z.literal("object"),
+  properties: z.record(
+    z.union([
+      z.lazy(() => Schema1Text$inboundSchema),
+      z.lazy(() => Schema1Number$inboundSchema),
+      z.lazy(() => Schema1Date$inboundSchema),
+      z.lazy(() => Schema1SingleSelect$inboundSchema),
+      z.lazy(() => Schema1MultiSelect$inboundSchema),
+      z.lazy(() => Schema1Checkbox$inboundSchema),
+      z.lazy(() => Schema1Object1$inboundSchema),
+      z.lazy(() => Schema1Array1$inboundSchema),
+      z.lazy(() => Schema1File$inboundSchema),
+    ]),
+  ),
 });
 
-export function schema1DateFromJSON(
+export function schema1Object1FromJSON(
   jsonString: string,
-): SafeParseResult<Schema1Date, SDKValidationError> {
+): SafeParseResult<Schema1Object1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Schema1Date$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1Date' from JSON`,
-  );
-}
-
-/** @internal */
-export const Schema1UnifiedKey2$inboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey2
-> = z.nativeEnum(Schema1UnifiedKey2);
-
-/** @internal */
-export const Schema1Number$inboundSchema: z.ZodType<
-  Schema1Number,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey2$inboundSchema).optional(),
-  type: z.literal("number"),
-  min: z.nullable(z.number()).optional(),
-  max: z.nullable(z.number()).optional(),
-});
-
-export function schema1NumberFromJSON(
-  jsonString: string,
-): SafeParseResult<Schema1Number, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Schema1Number$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1Number' from JSON`,
-  );
-}
-
-/** @internal */
-export const Schema1UnifiedKey1$inboundSchema: z.ZodNativeEnum<
-  typeof Schema1UnifiedKey1
-> = z.nativeEnum(Schema1UnifiedKey1);
-
-/** @internal */
-export const Schema1Text$inboundSchema: z.ZodType<
-  Schema1Text,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey1$inboundSchema).optional(),
-  type: z.literal("text"),
-  min_length: z.nullable(z.number()).optional(),
-  max_length: z.nullable(z.number()).optional(),
-  reg_exp: z.nullable(z.string()).optional(),
-});
-
-export function schema1TextFromJSON(
-  jsonString: string,
-): SafeParseResult<Schema1Text, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Schema1Text$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema1Text' from JSON`,
+    (x) => Schema1Object1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1Object1' from JSON`,
   );
 }
 
@@ -847,7 +843,7 @@ export const Schema1Union1$inboundSchema: z.ZodType<
   z.lazy(() => Schema1SingleSelect$inboundSchema),
   z.lazy(() => Schema1MultiSelect$inboundSchema),
   z.lazy(() => Schema1Checkbox$inboundSchema),
-  z.lazy(() => Schema1Object$inboundSchema),
+  z.lazy(() => Schema1Object1$inboundSchema),
   z.lazy(() => Schema1Array1$inboundSchema),
   z.lazy(() => Schema1File$inboundSchema),
 ]);
@@ -859,5 +855,31 @@ export function schema1Union1FromJSON(
     jsonString,
     (x) => Schema1Union1$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Schema1Union1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Schema1Array1$inboundSchema: z.ZodType<
+  Schema1Array1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: z.string(),
+  required: z.boolean(),
+  description: z.nullable(z.string()).optional(),
+  unified_key: z.nullable(Schema1UnifiedKey7$inboundSchema).optional(),
+  type: z.literal("array"),
+  item_type: z.lazy(() => Schema2$inboundSchema),
+  min_items: z.nullable(z.number()).optional(),
+  max_items: z.nullable(z.number()).optional(),
+});
+
+export function schema1Array1FromJSON(
+  jsonString: string,
+): SafeParseResult<Schema1Array1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Schema1Array1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema1Array1' from JSON`,
   );
 }

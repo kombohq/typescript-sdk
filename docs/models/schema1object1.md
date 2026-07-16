@@ -1,13 +1,13 @@
-# Schema1Object
+# Schema1Object1
 
 ## Example Usage
 
 ```typescript
-import { Schema1Object } from "@kombo-api/sdk/models";
+import { Schema1Object1 } from "@kombo-api/sdk/models";
 
-let value: Schema1Object = {
+let value: Schema1Object1 = {
   label: "<value>",
-  required: false,
+  required: true,
   type: "object",
   properties: {},
 };
@@ -22,4 +22,4 @@ let value: Schema1Object = {
 | `description`                                                | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
 | `unified_key`                                                | [models.Schema1UnifiedKey6](../models/schema1unifiedkey6.md) | :heavy_minus_sign:                                           | N/A                                                          |
 | `type`                                                       | *"object"*                                                   | :heavy_check_mark:                                           | N/A                                                          |
-| `properties`                                                 | [models.Schema1](../models/schema1.md)                       | :heavy_check_mark:                                           | N/A                                                          |
+| `properties`                                                 | Record<string, *models.Schema1Union1*>                       | :heavy_check_mark:                                           | N/A                                                          |

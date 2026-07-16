@@ -24,7 +24,7 @@ export type PostForceSyncPositiveResponseType = ClosedEnum<
 
 export type PostForceSyncPositiveResponseData = {
   /**
-   * We only allow 1 concurrent sync to be running or queued.
+   * We only allow 1 concurrent sync of the same type to be running or queued.
    */
   already_queued: boolean;
   /**

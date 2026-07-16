@@ -43,6 +43,11 @@ let value: GetAtsApplicationsPositiveResponseResult = {
     id: "<id>",
     remote_id: "<id>",
     name: "<value>",
+    custom_fields: {
+      "key": "<value>",
+      "key1": "<value>",
+      "key2": "<value>",
+    },
     index: 2,
   },
   job: {

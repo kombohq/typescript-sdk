@@ -1,4 +1,4 @@
-# Schema2Union2
+# Schema2
 
 
 ## Supported Types
@@ -71,33 +71,34 @@ const value: models.Schema2Checkbox = {
 };
 ```
 
-### `models.Schema2Object2`
+### `models.Schema2Object1`
 
 ```typescript
-const value: models.Schema2Object2 = {
+const value: models.Schema2Object1 = {
   label: "<value>",
-  required: true,
+  required: false,
   type: "object",
-  properties: {},
+  properties: {
+    "key": {
+      label: "<value>",
+      required: false,
+      type: "checkbox",
+    },
+  },
 };
 ```
 
-### `models.Schema2Array2`
+### `models.Schema2Array1`
 
 ```typescript
-const value: models.Schema2Array2 = {
+const value: models.Schema2Array1 = {
   label: "<value>",
-  required: false,
+  required: true,
   type: "array",
   item_type: {
     label: "<value>",
-    required: true,
-    type: "array",
-    item_type: {
-      label: "<value>",
-      required: true,
-      type: "text",
-    },
+    required: false,
+    type: "checkbox",
   },
 };
 ```

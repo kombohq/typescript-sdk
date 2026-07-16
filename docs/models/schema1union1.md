@@ -77,12 +77,12 @@ const value: models.Schema1Checkbox = {
 };
 ```
 
-### `models.Schema1Object`
+### `models.Schema1Object1`
 
 ```typescript
-const value: models.Schema1Object = {
+const value: models.Schema1Object1 = {
   label: "<value>",
-  required: false,
+  required: true,
   type: "object",
   properties: {},
 };

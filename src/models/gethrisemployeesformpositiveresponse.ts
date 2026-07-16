@@ -8,7 +8,7 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 import { Schema1Union1, Schema1Union1$inboundSchema } from "./schema1union1.js";
-import { Schema2Union2, Schema2Union2$inboundSchema } from "./schema2union2.js";
+import { Schema2, Schema2$inboundSchema } from "./schema2.js";
 
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey8 = {
   FirstName: "first_name",
@@ -88,7 +88,7 @@ export type PropertiesArray = {
     | null
     | undefined;
   type: "array";
-  item_type: Schema2Union2;
+  item_type: Schema2;
   min_items?: number | null | undefined;
   max_items?: number | null | undefined;
 };
@@ -500,7 +500,7 @@ export const PropertiesArray$inboundSchema: z.ZodType<
     GetHrisEmployeesFormPositiveResponseUnifiedKey7$inboundSchema,
   ).optional(),
   type: z.literal("array"),
-  item_type: Schema2Union2$inboundSchema,
+  item_type: Schema2$inboundSchema,
   min_items: z.nullable(z.number()).optional(),
   max_items: z.nullable(z.number()).optional(),
 });
