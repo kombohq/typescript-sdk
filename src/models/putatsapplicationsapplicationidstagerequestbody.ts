@@ -33,6 +33,16 @@ export type PutAtsApplicationsApplicationIdStageRequestBodyWorkday = {
 };
 
 /**
+ * Fields specific to SAP SuccessFactors.
+ */
+export type PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors = {
+  /**
+   * Fields that we will pass through to SuccessFactor's `JobApplication` object when moving the application to a new stage. Useful for instance-specific fields that SAP requires on certain status transitions (e.g. `custEventReason`).
+   */
+  job_application?: { [k: string]: any } | undefined;
+};
+
+/**
  * Headers we will pass with `POST` requests to Greenhouse.
  */
 export type PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders = {
@@ -72,6 +82,12 @@ export type PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields = {
    * Fields specific to Workday.
    */
   workday?: PutAtsApplicationsApplicationIdStageRequestBodyWorkday | undefined;
+  /**
+   * Fields specific to SAP SuccessFactors.
+   */
+  successfactors?:
+    | PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors
+    | undefined;
   /**
    * Fields specific to Greenhouse.
    */
@@ -133,6 +149,36 @@ export function putAtsApplicationsApplicationIdStageRequestBodyWorkdayToJSON(
     PutAtsApplicationsApplicationIdStageRequestBodyWorkday$outboundSchema.parse(
       putAtsApplicationsApplicationIdStageRequestBodyWorkday,
     ),
+  );
+}
+
+/** @internal */
+export type PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$Outbound =
+  {
+    JobApplication?: { [k: string]: any } | undefined;
+  };
+
+/** @internal */
+export const PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$outboundSchema:
+  z.ZodType<
+    PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$Outbound,
+    z.ZodTypeDef,
+    PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors
+  > = z.object({
+    job_application: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      job_application: "JobApplication",
+    });
+  });
+
+export function putAtsApplicationsApplicationIdStageRequestBodySuccessfactorsToJSON(
+  putAtsApplicationsApplicationIdStageRequestBodySuccessfactors:
+    PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors,
+): string {
+  return JSON.stringify(
+    PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$outboundSchema
+      .parse(putAtsApplicationsApplicationIdStageRequestBodySuccessfactors),
   );
 }
 
@@ -227,6 +273,9 @@ export type PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$Outbound
     workday?:
       | PutAtsApplicationsApplicationIdStageRequestBodyWorkday$Outbound
       | undefined;
+    successfactors?:
+      | PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$Outbound
+      | undefined;
     greenhouse?:
       | PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$Outbound
       | undefined;
@@ -244,6 +293,9 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$outboun
   > = z.object({
     workday: z.lazy(() =>
       PutAtsApplicationsApplicationIdStageRequestBodyWorkday$outboundSchema
+    ).optional(),
+    successfactors: z.lazy(() =>
+      PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$outboundSchema
     ).optional(),
     greenhouse: z.lazy(() =>
       PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$outboundSchema

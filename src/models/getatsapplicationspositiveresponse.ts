@@ -245,6 +245,10 @@ export type GetAtsApplicationsPositiveResponseCurrentStage = {
    * The application stage name. For example, "Initial Screening".
    */
   name: string | null;
+  /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
   index: number | null;
 };
 
@@ -1275,6 +1279,7 @@ export const GetAtsApplicationsPositiveResponseCurrentStage$inboundSchema:
     id: z.string(),
     remote_id: z.nullable(z.string()),
     name: z.nullable(z.string()),
+    custom_fields: z.nullable(z.record(z.any())),
     index: z.nullable(z.number().int()),
   });
 

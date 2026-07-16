@@ -16,6 +16,7 @@ let value: GetAtsApplicationStagesResponse = {
           id: "5J7L4b48wBfffYwek9Az9pkM",
           remote_id: "32",
           name: "Initial Screening",
+          custom_fields: {},
           changed_at: new Date("2022-08-07T14:01:29.196Z"),
           remote_deleted_at: null,
         },

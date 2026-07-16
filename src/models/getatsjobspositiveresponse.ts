@@ -94,6 +94,10 @@ export type Stage = {
    */
   name: string | null;
   /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
+  /**
    * Numeric index following the order of the stages if they are ordered in the underlying tool.
    */
   index?: number | null | undefined;
@@ -672,6 +676,7 @@ export const Stage$inboundSchema: z.ZodType<Stage, z.ZodTypeDef, unknown> = z
     id: z.string(),
     remote_id: z.nullable(z.string()),
     name: z.nullable(z.string()),
+    custom_fields: z.nullable(z.record(z.any())),
     index: z.nullable(z.number().int()).optional(),
   });
 

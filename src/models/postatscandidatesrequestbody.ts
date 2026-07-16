@@ -623,6 +623,7 @@ export type PostAtsCandidatesRequestBodyCountryCityReference = {
 export type PostAtsCandidatesRequestBodyLocationData = {
   address_line_1?: string | undefined;
   address_line_2?: string | undefined;
+  postal_code?: string | undefined;
   region_subdivision_1?: string | undefined;
   country_region_reference?:
     | PostAtsCandidatesRequestBodyCountryRegionReference
@@ -2573,6 +2574,7 @@ export function postAtsCandidatesRequestBodyCountryCityReferenceToJSON(
 export type PostAtsCandidatesRequestBodyLocationData$Outbound = {
   Address_Line_1?: string | undefined;
   Address_Line_2?: string | undefined;
+  Postal_Code?: string | undefined;
   Region_Subdivision_1?: string | undefined;
   Country_Region_Reference?:
     | PostAtsCandidatesRequestBodyCountryRegionReference$Outbound
@@ -2590,6 +2592,7 @@ export const PostAtsCandidatesRequestBodyLocationData$outboundSchema: z.ZodType<
 > = z.object({
   address_line_1: z.string().optional(),
   address_line_2: z.string().optional(),
+  postal_code: z.string().optional(),
   region_subdivision_1: z.string().optional(),
   country_region_reference: z.lazy(() =>
     PostAtsCandidatesRequestBodyCountryRegionReference$outboundSchema
@@ -2601,6 +2604,7 @@ export const PostAtsCandidatesRequestBodyLocationData$outboundSchema: z.ZodType<
   return remap$(v, {
     address_line_1: "Address_Line_1",
     address_line_2: "Address_Line_2",
+    postal_code: "Postal_Code",
     region_subdivision_1: "Region_Subdivision_1",
     country_region_reference: "Country_Region_Reference",
     country_city_reference: "Country_City_Reference",

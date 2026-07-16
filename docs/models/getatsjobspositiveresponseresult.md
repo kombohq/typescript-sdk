@@ -39,6 +39,7 @@ let value: GetAtsJobsPositiveResponseResult = {
       id: "5J7L4b48wBfffYwek9Az9pkM",
       remote_id: "32",
       name: "Initial Screening",
+      custom_fields: {},
       index: 0,
     },
   ],

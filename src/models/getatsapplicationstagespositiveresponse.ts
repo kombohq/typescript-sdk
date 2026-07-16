@@ -21,6 +21,10 @@ export type GetAtsApplicationStagesPositiveResponseResult = {
    */
   name: string | null;
   /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
+  /**
    * The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.
    */
   changed_at: Date;
@@ -53,6 +57,7 @@ export const GetAtsApplicationStagesPositiveResponseResult$inboundSchema:
     id: z.string(),
     remote_id: z.nullable(z.string()),
     name: z.nullable(z.string()),
+    custom_fields: z.nullable(z.record(z.any())),
     changed_at: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)
     ),

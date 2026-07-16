@@ -7,7 +7,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
-import { Schema1, Schema1$inboundSchema } from "./schema1.js";
+import { Schema1Union1, Schema1Union1$inboundSchema } from "./schema1union1.js";
 
 export const Schema2UnifiedKey8 = {
   FirstName: "first_name",
@@ -324,10 +324,10 @@ export type Schema2Object1 = {
   description?: string | null | undefined;
   unified_key?: Schema2UnifiedKey6 | null | undefined;
   type: "object";
-  properties: Schema1;
+  properties: { [k: string]: Schema1Union1 };
 };
 
-export type Schema2Union1 =
+export type Schema2 =
   | Schema2Text
   | Schema2Number
   | Schema2Date
@@ -804,7 +804,7 @@ export const Schema2Object1$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   unified_key: z.nullable(Schema2UnifiedKey6$inboundSchema).optional(),
   type: z.literal("object"),
-  properties: Schema1$inboundSchema,
+  properties: z.record(z.lazy(() => Schema1Union1$inboundSchema)),
 });
 
 export function schema2Object1FromJSON(
@@ -818,29 +818,26 @@ export function schema2Object1FromJSON(
 }
 
 /** @internal */
-export const Schema2Union1$inboundSchema: z.ZodType<
-  Schema2Union1,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => Schema2Text$inboundSchema),
-  z.lazy(() => Schema2Number$inboundSchema),
-  z.lazy(() => Schema2Date$inboundSchema),
-  z.lazy(() => Schema2SingleSelect$inboundSchema),
-  z.lazy(() => Schema2MultiSelect$inboundSchema),
-  z.lazy(() => Schema2Checkbox$inboundSchema),
-  z.lazy(() => Schema2Object1$inboundSchema),
-  z.lazy(() => Schema2Array1$inboundSchema),
-  z.lazy(() => Schema2File$inboundSchema),
-]);
+export const Schema2$inboundSchema: z.ZodType<Schema2, z.ZodTypeDef, unknown> =
+  z.union([
+    z.lazy(() => Schema2Text$inboundSchema),
+    z.lazy(() => Schema2Number$inboundSchema),
+    z.lazy(() => Schema2Date$inboundSchema),
+    z.lazy(() => Schema2SingleSelect$inboundSchema),
+    z.lazy(() => Schema2MultiSelect$inboundSchema),
+    z.lazy(() => Schema2Checkbox$inboundSchema),
+    z.lazy(() => Schema2Object1$inboundSchema),
+    z.lazy(() => Schema2Array1$inboundSchema),
+    z.lazy(() => Schema2File$inboundSchema),
+  ]);
 
-export function schema2Union1FromJSON(
+export function schema2FromJSON(
   jsonString: string,
-): SafeParseResult<Schema2Union1, SDKValidationError> {
+): SafeParseResult<Schema2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Schema2Union1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Schema2Union1' from JSON`,
+    (x) => Schema2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schema2' from JSON`,
   );
 }
 

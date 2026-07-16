@@ -101,11 +101,8 @@ export * from "./putintegrationsintegrationidcustomfieldscustomfieldidpositivere
 export * from "./putintegrationsintegrationidcustomfieldscustomfieldidrequestbody.js";
 export * from "./putintegrationsintegrationidenabledpositiveresponse.js";
 export * from "./putintegrationsintegrationidenabledrequestbody.js";
-export * from "./schema1.js";
 export * from "./schema1union1.js";
-export * from "./schema1union2.js";
-export * from "./schema2union1.js";
-export * from "./schema2union2.js";
+export * from "./schema2.js";
 export * from "./schema4.js";
 export * from "./security.js";
 export * from "./syncfinishedwebhookpayload.js";
