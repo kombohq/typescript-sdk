@@ -1,4 +1,4 @@
-# GetAtsApplicationsPositiveResponseStatus
+# OfferStatus
 
 The offer’s current status. The usual flow of statuses is as follows:
 `DRAFT` -> `APPROVED` -> `SENT` -> `ACCEPTED` or `DECLINED`.
@@ -16,9 +16,9 @@ Please note that not all systems will expose all statuses. For example, most sys
 ## Example Usage
 
 ```typescript
-import { GetAtsApplicationsPositiveResponseStatus } from "@kombo-api/sdk/models";
+import { OfferStatus } from "@kombo-api/sdk/models";
 
-let value: GetAtsApplicationsPositiveResponseStatus = "DRAFT";
+let value: OfferStatus = "DECLINED";
 ```
 
 ## Values
