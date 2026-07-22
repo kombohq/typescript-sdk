@@ -99,6 +99,7 @@ export const IntegrationTool = {
   Homerun: "homerun",
   Mysolution: "mysolution",
   Carerix: "carerix",
+  Carerixgraphql: "carerixgraphql",
   Hroffice: "hroffice",
   Talentclue: "talentclue",
   Inrecruiting: "inrecruiting",

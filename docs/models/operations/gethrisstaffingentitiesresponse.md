@@ -56,6 +56,28 @@ let value: GetHrisStaffingEntitiesResponse = {
               type: "TEAM",
             },
           ],
+          skills: [
+            {
+              skill_id: "28KMdr68N8kG9EzLwjsN9aoz",
+              skill: {
+                id: "28KMdr68N8kG9EzLwjsN9aoz",
+                remote_id: "238476582",
+                name: "TypeScript Programming",
+                proficiency_scale: {
+                  id: "5xKMdr68N8kG9EzLwjsN9scl",
+                  remote_id: "scale-12345",
+                  type: "NUMERIC",
+                  min: 1,
+                  max: 5,
+                  step: 1,
+                },
+              },
+              expected_proficiency: {
+                type: "NUMERIC",
+                value: 4,
+              },
+            },
+          ],
         },
       ],
     },

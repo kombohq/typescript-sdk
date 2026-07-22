@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 09f7920ae889bbb03d2b6daacc64dddb
+  docChecksum: 4af549db567b0f96190f02576e52c4c0
   docVersion: 1.0.0
-  speakeasyVersion: 1.790.2
-  generationVersion: 2.918.3
-  releaseVersion: 1.3.2
-  configChecksum: 6b163b3f694c15ec0ceee6e329d66f33
+  speakeasyVersion: 1.790.3
+  generationVersion: 2.918.4
+  releaseVersion: 1.3.3
+  configChecksum: a36e0fa5ef07d81faf415f12f1428933
   repoURL: https://github.com/kombohq/typescript-sdk.git
   installationURL: https://github.com/kombohq/typescript-sdk
   published: true
 persistentEdits:
-  generation_id: b172ba9f-9d39-42fc-851f-3ccdd454b41d
-  pristine_commit_hash: 3632fa36f39e59f1381d50154328455ca8a6f1e7
-  pristine_tree_hash: a04f54746f940d004a140c7002b56e1ed9b6f126
+  generation_id: 7ad4de84-044b-4239-9c36-294d0258a875
+  pristine_commit_hash: f0b806a43ee5f4b84c511e4979466832c4cb88a9
+  pristine_tree_hash: 09c2a22b662005e4a3fb26e254556ec60b11ecc5
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -193,6 +193,10 @@ trackedFiles:
     id: 04765acea92a
     last_write_checksum: sha1:6386a92f968ebcc7dc6866b1d0a710406053ff57
     pristine_git_object: 9e3102d25b8db6a8d8e4db657d4a2cd301c4b3d4
+  docs/models/currentstagestatus.md:
+    id: db32d31ed79f
+    last_write_checksum: sha1:9672b9a7f726ef460df27162a3f2092819c368ee
+    pristine_git_object: 042b34c28df45f5a3739e403cf301e268b94a68b
   docs/models/datachangedwebhookpayload.md:
     id: 12270e0e3cec
     last_write_checksum: sha1:7a7ac63c2d7e2b62b6eea6861754a6fb185eba5e
@@ -341,6 +345,18 @@ trackedFiles:
     id: f5707e79b488
     last_write_checksum: sha1:2e07f195924f0869c79fa18993b2f36219ca1c2b
     pristine_git_object: f4b9b2db65740645de09fad297faf09dcf4ee6f9
+  docs/models/expectedproficiency.md:
+    id: 0461c426461f
+    last_write_checksum: sha1:2727c72fe70cdaea377d64d98b4d56864b46728f
+    pristine_git_object: 418d76efbbc7708bb6b1328dc65e9004722b145c
+  docs/models/expectedproficiencynumeric.md:
+    id: c5abd71a9506
+    last_write_checksum: sha1:897beb6be513d53c5211018b741541e50f6fe526
+    pristine_git_object: 742ad17799eefd746a1f12924525339af4f3f864
+  docs/models/expectedproficiencysingleselect.md:
+    id: 7e1131f70a14
+    last_write_checksum: sha1:01cbe0aa7332f4476aaae2c2c62d031ee58700a7
+    pristine_git_object: 216b9ae8b89ada380b0a0874e73503eb3d684958
   docs/models/feature.md:
     id: 8819f9f65e99
     last_write_checksum: sha1:3b374762e9adcc87ae0d72d585dc3147503979ad
@@ -471,8 +487,8 @@ trackedFiles:
     pristine_git_object: b55b6d37fc6c9c98ce79b587802573cfcfdcf2ff
   docs/models/getatsapplicationspositiveresponse.md:
     id: 756553aceed1
-    last_write_checksum: sha1:c058405107abb4322413a66962a2100c4aa53095
-    pristine_git_object: 513e11fe2510a858e39faebccb543dfee17b984d
+    last_write_checksum: sha1:015f2403ff16d8b7246062a4f5314bf8402d8ae1
+    pristine_git_object: ae10741c095ace53ee80e4c0a2a8a6cd6d69a16a
   docs/models/getatsapplicationspositiveresponseanswer1.md:
     id: ccd9d900a0c4
     last_write_checksum: sha1:08c8c7ecd900161748c423034b2e8623937f83dc
@@ -507,12 +523,12 @@ trackedFiles:
     pristine_git_object: 8b2026c7e8696bb07c3e9d47ad29d9c0f53f13ed
   docs/models/getatsapplicationspositiveresponsecurrentstage.md:
     id: aa63f3243411
-    last_write_checksum: sha1:b03f1b34cdeaec9acbf01184d793cd6da11e95f1
-    pristine_git_object: d7de07a6a119f2a9ed657f52b31e2a3c6c7c3a75
+    last_write_checksum: sha1:0cd92b3b502055583333be2d1daab91e04082286
+    pristine_git_object: c6a018e1090e5de4ec5544c44bfda5b3098c489d
   docs/models/getatsapplicationspositiveresponsedata.md:
     id: c44c0ab3f683
-    last_write_checksum: sha1:57a090d5310537ff07b058b9901a0d9c05d434c1
-    pristine_git_object: 3ad682ecda9bcf1131563aa199318ab2311fbb50
+    last_write_checksum: sha1:7085b56c875ed0e6a776fa7bb20f5fbe6ce3ea95
+    pristine_git_object: f1dd3e1bee5dae868b359d1a108f2e38b82e460d
   docs/models/getatsapplicationspositiveresponseemailaddress.md:
     id: bc4837b198ca
     last_write_checksum: sha1:aa7382db01aab9a70fc76958817122d79e59f704
@@ -563,8 +579,8 @@ trackedFiles:
     pristine_git_object: b5abbf4249ecb1d9560dfe2ae4e1f91bb0cbdb2e
   docs/models/getatsapplicationspositiveresponseresult.md:
     id: ffec529910a3
-    last_write_checksum: sha1:daf07e5ea525255d3fa943a33fd84495372ab929
-    pristine_git_object: 4d4da4069359dea51da33f087684e3919069d497
+    last_write_checksum: sha1:00530df20b849c3599facb5929303384ed53fbd5
+    pristine_git_object: bd6a9379c7bd4038da5fd503776a279599364ff9
   docs/models/getatsapplicationspositiveresponsescreeningquestionanswer1.md:
     id: 09635c1e737a
     last_write_checksum: sha1:5c1d8f15c648160d5171680c9d781b8722af0810
@@ -601,26 +617,26 @@ trackedFiles:
     id: 9ed090d668db
     last_write_checksum: sha1:d4e35f88a2ea516772fc35a60e95fb6e79f77bb2
     pristine_git_object: 0d1369bed7b55dca254d586cd480a2ffbdf52792
-  docs/models/getatsapplicationspositiveresponsestatus.md:
-    id: 38e6060fb8ec
-    last_write_checksum: sha1:71835a8e15390f85dfe5eb34a15b52a73803a033
-    pristine_git_object: a5b8ca040d30dcbd9a9e4c12106512357bc41c74
   docs/models/getatsapplicationspositiveresponsetag.md:
     id: bfeb19fb397d
     last_write_checksum: sha1:b9536e38d34bf62f75bb0ae674d7373d79efccf8
     pristine_git_object: d7b71243d4046869c102272e3da9b3fc3d68fa82
   docs/models/getatsapplicationstagespositiveresponse.md:
     id: ed687cada744
-    last_write_checksum: sha1:670dd285dcc441eb41b3ffe936103ba19be59193
-    pristine_git_object: 270fd11cd4ba9e60835301cf3d3186e45d2210e1
+    last_write_checksum: sha1:537f72d042adaa60015825c68c23eb1c77c59e21
+    pristine_git_object: 220d5ffd83beca43d396a626a23cc320c1c5859c
   docs/models/getatsapplicationstagespositiveresponsedata.md:
     id: 0d6db615d0aa
-    last_write_checksum: sha1:0d4031458f476f41a14ae857663f111c7256fd21
-    pristine_git_object: b54b6ef788401a2da20e26b526dbe2bd334475a0
+    last_write_checksum: sha1:db12a63f7bddcf4775925e160b28b379c82a42da
+    pristine_git_object: 5ac8a708e61457a6d0c019d3c1f035800395b4fa
   docs/models/getatsapplicationstagespositiveresponseresult.md:
     id: 4ebb073d1b5a
-    last_write_checksum: sha1:fbe979ce4eacde67831e4a2f90bb1aeb8064a770
-    pristine_git_object: 232ccde62edc9a26ea00c8b0d0b5c727861de7d2
+    last_write_checksum: sha1:4162570956458abea592d4cbbf8cc4f67b05a581
+    pristine_git_object: b592add1a78ffc0e0e25d7013873611ddf51750b
+  docs/models/getatsapplicationstagespositiveresponsestatus.md:
+    id: 42331414d50b
+    last_write_checksum: sha1:9ce71cf6cc99e4fceeb44c543e29a10b975ed509
+    pristine_git_object: a8ba154e5b51b6b2a982d192c6a9a48a0812f79c
   docs/models/getatscandidatescandidateidattachmentspositiveresponse.md:
     id: 2caea268747f
     last_write_checksum: sha1:fb204a3f1d62cee20060b1bdde7418774f30b527
@@ -727,16 +743,16 @@ trackedFiles:
     pristine_git_object: 5d64a19fba801d7ea0d998a290efdd7e7b0cc40d
   docs/models/getatsjobspositiveresponse.md:
     id: 69bb82ec5ddf
-    last_write_checksum: sha1:e6a93bea7fb1480eefa6b16fd8b4019e90002a32
-    pristine_git_object: 9376e0b6f2f9f4cdce4b8fe1986808734dfd8cc6
+    last_write_checksum: sha1:a0630628fbcf1cb4ce69c79ef98a257cfa5983f6
+    pristine_git_object: f79effbfdb7ef694fde08c6057e2b3fa0bf5661b
   docs/models/getatsjobspositiveresponsecategory.md:
     id: 558afa9c3a63
     last_write_checksum: sha1:d871d4655cb606f74b9702c50eb008e65bc2928d
     pristine_git_object: 3154b9679ff78ad184cb92140cfd4dd79861f1d7
   docs/models/getatsjobspositiveresponsedata.md:
     id: bc7fb00b8059
-    last_write_checksum: sha1:9ec91a11be8b7935f0ac9acbb32df181e7bead80
-    pristine_git_object: 393088713d32fe340fab1254b306f542b0b31246
+    last_write_checksum: sha1:40be610297f77652c07f3a785e7c359d132e3317
+    pristine_git_object: 47997e9f09d5187d5bda6288f7667e79992d2b50
   docs/models/getatsjobspositiveresponseemploymenttype.md:
     id: 2eb156d9e877
     last_write_checksum: sha1:b4cb0059becc2d2c20c6c1adaba668ab2a42e733
@@ -755,8 +771,8 @@ trackedFiles:
     pristine_git_object: badc7ccdb76b0f48ef12d8b4e8894c99429ee1e1
   docs/models/getatsjobspositiveresponseresult.md:
     id: bc3ee2032568
-    last_write_checksum: sha1:5d6bec35400fe3c4d8e7399efe87b75d0fed1ad7
-    pristine_git_object: 42bf68ab9c14b02e1024b5ef33ac600f15d0cab5
+    last_write_checksum: sha1:acaffee1b2027c4466391e8e3ed7dab015cb51bc
+    pristine_git_object: d1781638f689f523b494c84bb64df471c4e92821
   docs/models/getatsjobspositiveresponsescope.md:
     id: 4ccfff568e71
     last_write_checksum: sha1:b87111d5cf0ee244e437e196db3f7ede184fcb60
@@ -1187,12 +1203,12 @@ trackedFiles:
     pristine_git_object: 21380d9f5284921e31613ac355960da89c1fd772
   docs/models/gethrisstaffingentitiespositiveresponse.md:
     id: e40d15a6ee9d
-    last_write_checksum: sha1:1e56a77c99fa328e04d9cf87ee45c526e8071fe0
-    pristine_git_object: 46733eb8347fefa3005b4bc57f70f9d9600700e2
+    last_write_checksum: sha1:6b0379870e58e5e284bd78693e8e4750c3ff1501
+    pristine_git_object: a83a3b63e6f4aef5781a855338e6908342003dcd
   docs/models/gethrisstaffingentitiespositiveresponsedata.md:
     id: c539ebde1804
-    last_write_checksum: sha1:ec43c370e3caeeda4c7a936ca2dbb3619f06bd0d
-    pristine_git_object: e5da41c4b398bb537ab947e33f48f8b9d651871d
+    last_write_checksum: sha1:6e74680b9624e37a84d32bd3b279144b7a21c6d5
+    pristine_git_object: c0295030a8e5f211dd889f4a74645d6af1b55fdc
   docs/models/gethrisstaffingentitiespositiveresponseemploymenttype.md:
     id: b9eb5bf7ace3
     last_write_checksum: sha1:b76378a243e95683ecfecc5b2234e556ebdd1511
@@ -1211,8 +1227,8 @@ trackedFiles:
     pristine_git_object: f62f4518e52fb72c17425d89c0b45055b9813589
   docs/models/gethrisstaffingentitiespositiveresponseresult.md:
     id: e23e966ae9c2
-    last_write_checksum: sha1:a01cb689383e9532b902169982d1d90ccb851fbc
-    pristine_git_object: 078e82093167e0815379b1d9045345392a2905a9
+    last_write_checksum: sha1:e49c58f03f7f848d99d822db2e8204b2035ac871
+    pristine_git_object: 38cbc480bba1647ab3089377a9bba9ca84b950ea
   docs/models/gethrisstaffingentitiespositiveresponsestatus.md:
     id: 3bad8e4942e0
     last_write_checksum: sha1:19368887bd7780e11867bad8e35b1ec75d5dce34
@@ -1527,8 +1543,8 @@ trackedFiles:
     pristine_git_object: 52c2c7060bc09a1b2b6da8f573bf55933eab9b3a
   docs/models/integrationtool.md:
     id: 59f82e2d180c
-    last_write_checksum: sha1:72bf68865e78e9ef8f963afbd4828a7422ba264e
-    pristine_git_object: accfb195ae372e47d9330ae81723e23cf706bebb
+    last_write_checksum: sha1:a1046cd9c82744f5d7ab59ab2ea1b38a032d0a08
+    pristine_git_object: 7d686ad006ec427097f8fb90c5fb15bb1000de7f
   docs/models/interview.md:
     id: 1d78740fed83
     last_write_checksum: sha1:89b87b13bcd1a90af6c11998c24cadd6b4444219
@@ -1615,12 +1631,16 @@ trackedFiles:
     pristine_git_object: 3e5aeb1f5a296908dc52f5cefe18685b181751f1
   docs/models/name.md:
     id: 6ee802922293
-    last_write_checksum: sha1:e9bca04db20a83cefc51596417f6d5f0b288d90a
-    pristine_git_object: 1b98cf7fc09d9509ae3bcc3870f3343ee9bc9a8c
+    last_write_checksum: sha1:df8c483e3bd5d4f8ed95e2b8555300961784c31b
+    pristine_git_object: 8c672bfc03c7b3c5214fe9d23c03e104a2917f48
   docs/models/offer.md:
     id: e20e1bb1fed4
-    last_write_checksum: sha1:842a890ebd1408eb825a308fc8d8d0bdcae3c9b9
-    pristine_git_object: 798ffb07a6fdb45d11337a24373b69b16e09afa5
+    last_write_checksum: sha1:3d0a260d05a894512c91954f0c8fc641644263dd
+    pristine_git_object: ac062b5b144742aaf330c959dde7f56c010defdb
+  docs/models/offerstatus.md:
+    id: 5674373d7fe2
+    last_write_checksum: sha1:719d74cfb5f5778860b6fa904caae3dc229f448a
+    pristine_git_object: af49f5735d93529cf74df966ec4bd1fde7312415
   docs/models/operations/deleteatscandidatescandidateidtagsglobals.md:
     id: 2bf597931ab0
     last_write_checksum: sha1:bad8be4e78abd0b979427053a6110cd4a374b13f
@@ -1679,8 +1699,8 @@ trackedFiles:
     pristine_git_object: 419beec9e7a7296ad603a832717fe468abe8eabe
   docs/models/operations/getatsapplicationsresponse.md:
     id: 9ec04a7afe66
-    last_write_checksum: sha1:53386b2e9c25da53fc1a2a402f297b07d5db32ff
-    pristine_git_object: d61dc5eca268305a4951c7bef2a1323407a604a9
+    last_write_checksum: sha1:445d0cea4b62c18dce8abfd7f6579a11878b143e
+    pristine_git_object: 05e5016d2bce9b8f47b85b57a98482c05086a052
   docs/models/operations/getatsapplicationstagesglobals.md:
     id: 0fefb6638b76
     last_write_checksum: sha1:6ea2148052f3aa55d794fc7a6c0b07e9cd9906b6
@@ -1691,8 +1711,8 @@ trackedFiles:
     pristine_git_object: 170f45a0213c2711b2b79d3d2914de049cd351e5
   docs/models/operations/getatsapplicationstagesresponse.md:
     id: 12cba39574e0
-    last_write_checksum: sha1:3a8a199c0ae500c207bd6f3927d698c0eee2de50
-    pristine_git_object: 9558a5fcce5eca4fa1d9f7c1ee3d20f309aed39e
+    last_write_checksum: sha1:a5e8ac06f0498e5bd3deb4e2619d621dc262d158
+    pristine_git_object: 1ffab36112fa0b75ba8ee0e0a4ebf4de965167b1
   docs/models/operations/getatscandidatescandidateidattachmentsglobals.md:
     id: d7969aa3d3ed
     last_write_checksum: sha1:914dd84852e47eb9164ee6805522d0e62e2dac49
@@ -1735,8 +1755,8 @@ trackedFiles:
     pristine_git_object: d934bd65056b0822f0db877f52f7cd3d0518064f
   docs/models/operations/getatsjobsresponse.md:
     id: 6f621740851c
-    last_write_checksum: sha1:3c1389eafe8c1cc7a47df104bdbbaec9e4dc6535
-    pristine_git_object: fc97dd0d90fa4a6898bcecfe14b27bd4e8a67dc2
+    last_write_checksum: sha1:2b469c9d7071a7814edd9d8f966243e66a83f40a
+    pristine_git_object: aa159b0c7b43fe6d97e83f267ea831013b788647
   docs/models/operations/getatsoffersglobals.md:
     id: 2fa69e2622bf
     last_write_checksum: sha1:2c1a87ad3a790fc465eec19bd496a5daeca7d19d
@@ -1935,12 +1955,12 @@ trackedFiles:
     pristine_git_object: f2cce43754ea4374ee84857a60ac7e6ae509aa21
   docs/models/operations/gethrisstaffingentitiesrequest.md:
     id: b93001447b5d
-    last_write_checksum: sha1:b720c72aaf80cd5121b676c07d78c9bb0f0d26ae
-    pristine_git_object: 54cc5969b659206ce2dc042519e37d0ed24739ad
+    last_write_checksum: sha1:509ecf5ed9e2de686e717e7732391fb71798e95c
+    pristine_git_object: d00642ac4c730bd3226b08fe9f5e5319d15bf182
   docs/models/operations/gethrisstaffingentitiesresponse.md:
     id: 711a576fceb3
-    last_write_checksum: sha1:2d169e48aa68e144376bc93f9e588b67b11f0e48
-    pristine_git_object: 6552342fe8bdce0b72bda592cd7b1526e5291c6b
+    last_write_checksum: sha1:8c207f8a10ed839ccd7855abe7994a0308dc7aac
+    pristine_git_object: 42c3c0c80d6e3b7cd73248dbdadbbbf2a73e2a00
   docs/models/operations/gethristimeoffbalancesglobals.md:
     id: 8361560da228
     last_write_checksum: sha1:b9130876e968e438c316dd4362683309420c2953
@@ -2137,6 +2157,10 @@ trackedFiles:
     id: 4c9e1b965d62
     last_write_checksum: sha1:a421374dcea414879e0e231b6a837df74d37bc08
     pristine_git_object: d275af5e426c04e2577562038d52c5fab41109ed
+  docs/models/orderedoption.md:
+    id: 957ee74ef883
+    last_write_checksum: sha1:74d2b2f3a5739ba1a96276180c72e6c3bcb3dcea
+    pristine_git_object: 141db0028ae3aaa9497fdf41f4f81a3c1ef4288b
   docs/models/patchintegrationsintegrationidintegrationfieldsintegrationfieldidpositiveresponse.md:
     id: 52bfec13e773
     last_write_checksum: sha1:a7981ae7817d69bbdcb67cfd6d2673d1429897d8
@@ -3613,6 +3637,18 @@ trackedFiles:
     id: 63a9b6c3a6a0
     last_write_checksum: sha1:999b57c47cb7ad21eefd3392a1268eabb32ed215
     pristine_git_object: f45374e3ac20e1279684ecb60ea6d7a1df03dc44
+  docs/models/proficiencyscale.md:
+    id: 2d14eb0704d5
+    last_write_checksum: sha1:759d0a7cee0bd7971b72c31cdde0d3932a700b72
+    pristine_git_object: f7392997986db157284c55b6609f95262448dfe0
+  docs/models/proficiencyscalenumeric.md:
+    id: e4cab4f6311a
+    last_write_checksum: sha1:9c5696d2b456d145b737dd495d22a969d1a875ce
+    pristine_git_object: ed3c985ac230f154c48c11fcc1549d3822b1eb19
+  docs/models/proficiencyscalesingleselect.md:
+    id: ecacf1580f4f
+    last_write_checksum: sha1:6f41a7f837bbec3e307bd745073cb0fe8f79fd93
+    pristine_git_object: 82f4ef6ac38ee65811a494ba9e8d810dedfd6a16
   docs/models/properties.md:
     id: 78b1b1d1b631
     last_write_checksum: sha1:1e87067caac6d705f980a21d32de24c245abf245
@@ -4069,10 +4105,22 @@ trackedFiles:
     id: 452e4d4eb67a
     last_write_checksum: sha1:69957c6418796671b69f90806e3cc41515219bc2
     pristine_git_object: 2b701a84c635814d3b0ec39bd61e56c88e9829a6
+  docs/models/skill.md:
+    id: 894e491446cb
+    last_write_checksum: sha1:faae3eaeac65fd33c1a4770119bd5d2383a641c0
+    pristine_git_object: 4613b8d56b308f895178d688bdf24d8fc4596741
+  docs/models/skillskill.md:
+    id: 5d20ff044fd7
+    last_write_checksum: sha1:c0240c2ce00a9d629eeaf029fa78e866f13441c3
+    pristine_git_object: 5fd3057827e8458f016f0d0837770fc02f89c9ff
   docs/models/stage.md:
     id: 3c1109e8f1c1
-    last_write_checksum: sha1:12eadf775b17eb60de56e6015ad1e9e231bdd936
-    pristine_git_object: e95b9b79ff08f373661e203d116ee7a85d1ae02d
+    last_write_checksum: sha1:0f6c988f9ed4827f2a1a4caa06863a83912729a0
+    pristine_git_object: 8176d292c07a0551f1eed7609f16527c9873858f
+  docs/models/stagestatus.md:
+    id: 56e975af60ec
+    last_write_checksum: sha1:5c0fbf6e4551e092066abd1fce54d5efecb6f4e0
+    pristine_git_object: 47f001f956440f7e3f8ce35ca0628b3b7eb351a1
   docs/models/state.md:
     id: e560b4e72643
     last_write_checksum: sha1:11ed96a64cc40ff1946481ea77d6cdedca0378f0
@@ -4191,8 +4239,8 @@ trackedFiles:
     pristine_git_object: eb7679884ceed291d47e5ca0ea5691f1a9221845
   docs/sdks/general/README.md:
     id: ce0ada6fa2e1
-    last_write_checksum: sha1:ed0036638da19fba8c3cc09e7f1d7fb5637decf5
-    pristine_git_object: 403476e3776d212fd325a2d38f3e96bcdea42f38
+    last_write_checksum: sha1:76fbd3c89d60c68132a42a59279d5366638babab
+    pristine_git_object: 32ae09d08caf9d4e7e62276856037e9ec5732596
   docs/sdks/hris/README.md:
     id: 0baa868a038c
     last_write_checksum: sha1:7267a5737a31dc42ac8022977f0ecb4b593731d5
@@ -4219,12 +4267,12 @@ trackedFiles:
     pristine_git_object: 29289cf79efbc687c7daf5b66266980eb719cdc8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:78332a00cfe9bca3ecde9e79ed9270ccc3bd9234
-    pristine_git_object: 2c1f09ede4daa69b1d77836ee478f56e1af86f1b
+    last_write_checksum: sha1:0f56f0a17f3aa8a4244fabcf7778b8d9a032abac
+    pristine_git_object: 9d7e322ed9b3522264d3f707b0774e264f831f5d
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:18b684a8cdcb7bc6951629e077be04ba094946de
-    pristine_git_object: 45927ae172b5faef58c58774a664855f20ac0226
+    last_write_checksum: sha1:c4359f920ccf98deb59bc0301e4718df5c3c1b9d
+    pristine_git_object: 9480b8cb3adf410a53edd1e825c22c5ee065fe30
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:b9f55b890c4f9f22b9bd199cce5fcc6fb3d15661
@@ -4383,8 +4431,8 @@ trackedFiles:
     pristine_git_object: 479b3f83e06fd9bb3f40c5bcb18d83e7b81c2a0d
   src/funcs/generalSendPassthroughRequest.ts:
     id: 1e5308bfaf76
-    last_write_checksum: sha1:7cc7cfab63ed2d30cbe0024d0d788e1fa5c2960d
-    pristine_git_object: 394cf494f322dd771684f174b9ee01a127b4b940
+    last_write_checksum: sha1:e4ee242e32f78a2331fdfcb79387f6b1741c22e7
+    pristine_git_object: f22d1b6c3e3f6c5abdd12dbade4b5f9fd33267fc
   src/funcs/generalSetIntegrationEnabled.ts:
     id: 29542a1eb689
     last_write_checksum: sha1:fc629b4fac6dc7f8777554d8d2ecd94fb928c8c8
@@ -4499,8 +4547,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:ed4f7d3f6171fbd1704b3677672e5c4e1dd7edec
-    pristine_git_object: 0a7f07a97b553982074b1f315a8e54a1dc30e635
+    last_write_checksum: sha1:c3996809e4724f389f594c3522957ae24c0d7766
+    pristine_git_object: d4dedbf5c7ee14b6eec18e82eda629c4a87671fd
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -4555,8 +4603,8 @@ trackedFiles:
     pristine_git_object: fcc8edcc5ee88cfe68e08cac9e3fe7886be4643b
   src/models/datachangedwebhookpayload.ts:
     id: 70900d955369
-    last_write_checksum: sha1:3f630058c54bec44826a36e932ad544be43c648d
-    pristine_git_object: 4da0c0f4bc09a693dda22627b23e1d6478cb7a23
+    last_write_checksum: sha1:0983cb03b2ed979c7960a6507c4630290b2f0670
+    pristine_git_object: 6081f5153f706d48b46a1b6adbfcb8c12b719dd4
   src/models/deleteatscandidatescandidateidtagspositiveresponse.ts:
     id: da74d6a46c04
     last_write_checksum: sha1:c44cd341ff013de45a89fb5da7258b17f81c9413
@@ -4631,12 +4679,12 @@ trackedFiles:
     pristine_git_object: 714fa13f43a9fad6d8bd69d3fbd946c1dbb89b7f
   src/models/getatsapplicationspositiveresponse.ts:
     id: 3fca38f29540
-    last_write_checksum: sha1:a90f8993834308ffae5b29ae1b1529da1a3a7ec9
-    pristine_git_object: 1aea46c157f03488435acf08bc2d5b134b8ee449
+    last_write_checksum: sha1:0fafb41bb2f5215f1a1a7f1dcd740198be3640d1
+    pristine_git_object: 58fec44c1b7852b25cbe2aa42cbaf050482093fc
   src/models/getatsapplicationstagespositiveresponse.ts:
     id: f40aeaa4f1d5
-    last_write_checksum: sha1:fe47a79cadddd7c2d256d0ac31b22935f8e161ed
-    pristine_git_object: 168133baed9acc561b7f48f8bb03ccd19d7bd549
+    last_write_checksum: sha1:31fcad06193aad94453baebcb77023f845467c70
+    pristine_git_object: 2bff3adcf83ac44e6ea59061fba47094fb905810
   src/models/getatscandidatescandidateidattachmentspositiveresponse.ts:
     id: e903bcd6bc3c
     last_write_checksum: sha1:05192a069e229e99a6147d8769a353a7f567930c
@@ -4651,8 +4699,8 @@ trackedFiles:
     pristine_git_object: 21294e8c6a038bbaf38050d01ca30083f619b2c8
   src/models/getatsjobspositiveresponse.ts:
     id: 6531669d5745
-    last_write_checksum: sha1:3f0db70172221d65d4c5963912e30832483e5862
-    pristine_git_object: e9ddcfb16dd678f45783b5fc9614587743ab6e4d
+    last_write_checksum: sha1:ba18d76e313b0bdf2bb8f0703fb15f5d91da8ae5
+    pristine_git_object: 79afa4c8b528edabd1481741978d7f0ec1ddbab7
   src/models/getatsofferspositiveresponse.ts:
     id: 00f9c93fd2ad
     last_write_checksum: sha1:46c32d8f9826fc6bd77ca0f8dd3310a5ec122fe8
@@ -4727,8 +4775,8 @@ trackedFiles:
     pristine_git_object: 210eabc42a6f2b669cafb3bb4c046209d5a4b3e4
   src/models/gethrisstaffingentitiespositiveresponse.ts:
     id: 4cbe1a414a70
-    last_write_checksum: sha1:cd427eb23dd585392300ee052151411f25641ccb
-    pristine_git_object: 1163dda573cc7992894add908795be14e11dd252
+    last_write_checksum: sha1:65d5f5ad45a04eae6defb9dda64d876aa701c1a1
+    pristine_git_object: 56a5f09cbf70d7f346b11d71ebe9829668b9d8fa
   src/models/gethristimeoffbalancespositiveresponse.ts:
     id: a13fffd6d92b
     last_write_checksum: sha1:0b9b5e0b01f8fd3cb7c470c08d6273056bc89fea
@@ -4907,8 +4955,8 @@ trackedFiles:
     pristine_git_object: 9fabf31f244240a2bb5817c2432889d775b38d5c
   src/models/operations/gethrisstaffingentities.ts:
     id: d318f79e9d4b
-    last_write_checksum: sha1:e1e461df2f8a29a631fd228b175166785c92e6f2
-    pristine_git_object: d445ef8fc7ca53db51fe7cb9495d107524ba899c
+    last_write_checksum: sha1:a694da7f9abf604b1e5126dac1c650bb0cef277d
+    pristine_git_object: 105b923de410a55637e4b2de25b81c45801a300f
   src/models/operations/gethristimeoffbalances.ts:
     id: 8bf1fb6974f8
     last_write_checksum: sha1:e161373eeb41aa2188d1b35e254b93b22e3b7b8f
@@ -5123,8 +5171,8 @@ trackedFiles:
     pristine_git_object: 0cfa81b8668c4e4fd1c1c43f0aed67d4d3ce787e
   src/models/postconnectcreatelinkrequestbody.ts:
     id: 05df0b9f6921
-    last_write_checksum: sha1:ce357499d7b5901ea19083e555457581c1ff5435
-    pristine_git_object: 226b8f24a829788eee8b03be2c258cc35762d237
+    last_write_checksum: sha1:16b03ad889a3a22f96e35fae89703fd5c1f94d95
+    pristine_git_object: a64684a85d139b3cb1d4335121c72b4fbdb09462
   src/models/postforcesyncpositiveresponse.ts:
     id: 3f8f970a7f87
     last_write_checksum: sha1:8f395559daf6838e9245647fac3d3f806fbde36c
@@ -5291,8 +5339,8 @@ trackedFiles:
     pristine_git_object: 30ddcd1e5e8fd53a3cc600c52dd3a6003ca48015
   src/sdk/general.ts:
     id: 48cc986e19c8
-    last_write_checksum: sha1:461334ef5abe9fd784ee3b36ef5c710856c0d98c
-    pristine_git_object: e8910248d5f7cd8e876c02d73a0a0d9c6fc5dd4e
+    last_write_checksum: sha1:ad054ef77d5388a8aac2161a76b354c9893c88b8
+    pristine_git_object: 095610d534f1a467aba4e31236165f698b7e9f2d
   src/sdk/hris.ts:
     id: b7831a6209ac
     last_write_checksum: sha1:4b87619610a0a9e64bb092431de777bc9691386e
@@ -10329,7 +10377,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "H77fDF8uvEzGNPRubiz5DvQ7", "remote_id": "32", "outcome": "HIRED", "rejection_reason_name": null, "rejected_at": null, "current_stage_id": "5J7L4b48wBfffYwek9Az9pkM", "job_id": "H5daSm8e85Dmvmne3wLeCPhX", "candidate_id": "26vafvWSRmbhNcxJYqjCzuJg", "screening_question_answers": [{"answer": {"choice": "TypeScript"}, "question": {"remote_id": "48b4d36a-1d4b-4c50-ada7-9519078e65b4", "title": "Which is your primary programming language", "type": "SINGLE_SELECT"}}], "custom_fields": {}, "remote_url": "https://app.greenhouse.io/applications/32", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "candidate": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "first_name": "John", "last_name": "Doe", "email_addresses": [{"email_address": "john.doe@example.com", "type": "PRIVATE"}], "phone_numbers": [{"phone_number": "+1-541-754-3010", "type": "HOME"}], "social_media": [{"link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", "type": "YOUTUBE", "username": null}], "source": "Employee Referral", "remote_url": "https://app.greenhouse.io/people/32", "tags": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "name": "High Potential"}]}, "current_stage": {"id": "5J7L4b48wBfffYwek9Az9pkM", "remote_id": "32", "name": "Initial Screening", "custom_fields": {}, "index": 2}, "job": {"id": "H5daSm8e85Dmvmne3wLeCPhX", "remote_id": "32", "name": "Backend Engineer"}, "interviews": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "title": "Interview with John Doe", "starting_at": "2023-06-26T14:30:00Z", "ending_at": "2023-06-26T15:30:00Z", "location": {"city": "Berlin", "country": "DE", "raw": "Berlin, Germany", "state": "Berlin", "street_1": "Lohmühlenstraße 65", "street_2": null, "zip_code": "12435"}, "canceled": false}], "offers": [{"id": "76bab8LKuFtqpZ89mofCPMHX", "remote_id": "6", "status": "ACCEPTED"}]}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "H77fDF8uvEzGNPRubiz5DvQ7", "remote_id": "32", "outcome": "HIRED", "rejection_reason_name": null, "rejected_at": null, "current_stage_id": "5J7L4b48wBfffYwek9Az9pkM", "job_id": "H5daSm8e85Dmvmne3wLeCPhX", "candidate_id": "26vafvWSRmbhNcxJYqjCzuJg", "screening_question_answers": [{"answer": {"choice": "TypeScript"}, "question": {"remote_id": "48b4d36a-1d4b-4c50-ada7-9519078e65b4", "title": "Which is your primary programming language", "type": "SINGLE_SELECT"}}], "custom_fields": {}, "remote_url": "https://app.greenhouse.io/applications/32", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "candidate": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "first_name": "John", "last_name": "Doe", "email_addresses": [{"email_address": "john.doe@example.com", "type": "PRIVATE"}], "phone_numbers": [{"phone_number": "+1-541-754-3010", "type": "HOME"}], "social_media": [{"link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", "type": "YOUTUBE", "username": null}], "source": "Employee Referral", "remote_url": "https://app.greenhouse.io/people/32", "tags": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "name": "High Potential"}]}, "current_stage": {"id": "5J7L4b48wBfffYwek9Az9pkM", "remote_id": "32", "name": "Initial Screening", "status": "ACTIVE", "custom_fields": {}, "index": 2}, "job": {"id": "H5daSm8e85Dmvmne3wLeCPhX", "remote_id": "32", "name": "Backend Engineer"}, "interviews": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "title": "Interview with John Doe", "starting_at": "2023-06-26T14:30:00Z", "ending_at": "2023-06-26T15:30:00Z", "location": {"city": "Berlin", "country": "DE", "raw": "Berlin, Germany", "state": "Berlin", "street_1": "Lohmühlenstraße 65", "street_2": null, "zip_code": "12435"}, "canceled": false}], "offers": [{"id": "76bab8LKuFtqpZ89mofCPMHX", "remote_id": "6", "status": "ACCEPTED"}]}]}}
         default:
           application/json: {"status": "error", "error": {"code": "ATS.JOB_CLOSED", "title": "<value>", "message": "<value>", "log_url": "https://wasteful-deduction.com"}}
     example1:
@@ -10342,7 +10390,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "H77fDF8uvEzGNPRubiz5DvQ7", "remote_id": "32", "outcome": "HIRED", "rejection_reason_name": null, "rejected_at": null, "current_stage_id": "5J7L4b48wBfffYwek9Az9pkM", "job_id": "H5daSm8e85Dmvmne3wLeCPhX", "candidate_id": "26vafvWSRmbhNcxJYqjCzuJg", "screening_question_answers": [{"answer": {"choice": "TypeScript"}, "question": {"remote_id": "48b4d36a-1d4b-4c50-ada7-9519078e65b4", "title": "Which is your primary programming language", "type": "SINGLE_SELECT"}}], "custom_fields": {}, "remote_url": "https://app.greenhouse.io/applications/32", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "candidate": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "first_name": "John", "last_name": "Doe", "email_addresses": [{"email_address": "john.doe@example.com", "type": "PRIVATE"}], "phone_numbers": [{"phone_number": "+1-541-754-3010", "type": "HOME"}], "social_media": [{"link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", "type": "YOUTUBE", "username": null}], "source": "Employee Referral", "remote_url": "https://app.greenhouse.io/people/32", "tags": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "name": "High Potential"}]}, "current_stage": {"id": "5J7L4b48wBfffYwek9Az9pkM", "remote_id": "32", "name": "Initial Screening", "custom_fields": {}, "index": 2}, "job": {"id": "H5daSm8e85Dmvmne3wLeCPhX", "remote_id": "32", "name": "Backend Engineer"}, "interviews": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "title": "Interview with John Doe", "starting_at": "2023-06-26T14:30:00Z", "ending_at": "2023-06-26T15:30:00Z", "location": {"city": "Berlin", "country": "DE", "raw": "Berlin, Germany", "state": "Berlin", "street_1": "Lohmühlenstraße 65", "street_2": null, "zip_code": "12435"}, "canceled": false}], "offers": [{"id": "76bab8LKuFtqpZ89mofCPMHX", "remote_id": "6", "status": "ACCEPTED"}]}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "H77fDF8uvEzGNPRubiz5DvQ7", "remote_id": "32", "outcome": "HIRED", "rejection_reason_name": null, "rejected_at": null, "current_stage_id": "5J7L4b48wBfffYwek9Az9pkM", "job_id": "H5daSm8e85Dmvmne3wLeCPhX", "candidate_id": "26vafvWSRmbhNcxJYqjCzuJg", "screening_question_answers": [{"answer": {"choice": "TypeScript"}, "question": {"remote_id": "48b4d36a-1d4b-4c50-ada7-9519078e65b4", "title": "Which is your primary programming language", "type": "SINGLE_SELECT"}}], "custom_fields": {}, "remote_url": "https://app.greenhouse.io/applications/32", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "candidate": {"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "first_name": "John", "last_name": "Doe", "email_addresses": [{"email_address": "john.doe@example.com", "type": "PRIVATE"}], "phone_numbers": [{"phone_number": "+1-541-754-3010", "type": "HOME"}], "social_media": [{"link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", "type": "YOUTUBE", "username": null}], "source": "Employee Referral", "remote_url": "https://app.greenhouse.io/people/32", "tags": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "name": "High Potential"}]}, "current_stage": {"id": "5J7L4b48wBfffYwek9Az9pkM", "remote_id": "32", "name": "Initial Screening", "status": "ACTIVE", "custom_fields": {}, "index": 2}, "job": {"id": "H5daSm8e85Dmvmne3wLeCPhX", "remote_id": "32", "name": "Backend Engineer"}, "interviews": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "title": "Interview with John Doe", "starting_at": "2023-06-26T14:30:00Z", "ending_at": "2023-06-26T15:30:00Z", "location": {"city": "Berlin", "country": "DE", "raw": "Berlin, Germany", "state": "Berlin", "street_1": "Lohmühlenstraße 65", "street_2": null, "zip_code": "12435"}, "canceled": false}], "offers": [{"id": "76bab8LKuFtqpZ89mofCPMHX", "remote_id": "6", "status": "ACCEPTED"}]}]}}
     Error Response:
       parameters:
         query:
@@ -11018,7 +11066,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "5J7L4b48wBfffYwek9Az9pkM", "remote_id": "32", "name": "Initial Screening", "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "5J7L4b48wBfffYwek9Az9pkM", "remote_id": "32", "name": "Initial Screening", "status": "ACTIVE", "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}]}}
         default:
           application/json: {"status": "error", "error": {"code": "ATS.JOB_CLOSED", "title": "<value>", "message": "<value>", "log_url": "https://expert-meander.com"}}
     example1:
@@ -11031,7 +11079,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "5J7L4b48wBfffYwek9Az9pkM", "remote_id": "32", "name": "Initial Screening", "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "5J7L4b48wBfffYwek9Az9pkM", "remote_id": "32", "name": "Initial Screening", "status": "ACTIVE", "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}]}}
     Error Response:
       parameters:
         query:
@@ -11065,7 +11113,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "H5daSm8e85Dmvmne3wLeCPhX", "remote_id": "32", "name": "Backend Engineer", "job_code": "BE-2021-01", "description": "<p>Kombo is hiring engineers! If you are reading this and you are located in Berlin, Germany, feel free to contact us about this position.</p>", "confidential": false, "weekly_hours": 37, "employment_type": "FULL_TIME", "status": "OPEN", "visibility": "PUBLIC", "category": "Technical Job", "department": "Engineering", "post_url": "https://jobs.example.com/post/159829112", "experience_level": "Mid-Senior", "remote_work_status": "HYBRID", "salary_amount": 4200, "salary_amount_from": null, "salary_amount_to": null, "salary_currency": "EUR", "salary_period": "MONTH", "location": {"city": "Berlin", "country": "DE", "raw": "Berlin, Germany", "state": "Berlin", "street_1": "Lohmühlenstraße 65", "street_2": null, "zip_code": "12435"}, "custom_fields": {}, "remote_url": "https://app.greenhouse.io/jobs/32", "opened_at": "2022-08-07T14:01:29.196Z", "closed_at": null, "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "contact_id": "6gT2yLMBEipd3zpezATv3Rhu", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "stages": [{"id": "5J7L4b48wBfffYwek9Az9pkM", "remote_id": "32", "name": "Initial Screening", "custom_fields": {}, "index": 0}], "screening_questions": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "48b4d36a-1d4b-4c50-ada7-9519078e65b4", "title": "Which is your primary programming language?", "description": "Please enter the language you are most comfortable with.", "format": {"display_type": "SINGLE_LINE", "max_length": null, "type": "TEXT"}, "category": null, "index": 0, "required": true, "precondition_question_id": "4ZVteCSSgDw3BdwGzcQqGEPk", "precondition_options": ["7qd5qjPwDHarsMLFMGzXYG1K"]}], "job_postings": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "48b4d36a-1d4b-4c50-ada7-9519078e65b4", "title": "Frontend Engineer", "description_html": "<p>We are looking for a Frontend Engineer.</p>", "status": "ACTIVE", "visibility": "PUBLIC", "url": "https://jobs.example.com/post/159829112"}], "hiring_team": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "first_name": "John", "last_name": "Doe", "email": "john.doe@kombo.dev", "hiring_team_roles": ["RECRUITER", "HIRING_MANAGER"], "job_roles": [{"remote_id": "1", "remote_label": "Hiring Manager", "unified_type": "HIRING_MANAGER", "scope": "JOB"}]}]}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "H5daSm8e85Dmvmne3wLeCPhX", "remote_id": "32", "name": "Backend Engineer", "job_code": "BE-2021-01", "description": "<p>Kombo is hiring engineers! If you are reading this and you are located in Berlin, Germany, feel free to contact us about this position.</p>", "confidential": false, "weekly_hours": 37, "employment_type": "FULL_TIME", "status": "OPEN", "visibility": "PUBLIC", "category": "Technical Job", "department": "Engineering", "post_url": "https://jobs.example.com/post/159829112", "experience_level": "Mid-Senior", "remote_work_status": "HYBRID", "salary_amount": 4200, "salary_amount_from": null, "salary_amount_to": null, "salary_currency": "EUR", "salary_period": "MONTH", "location": {"city": "Berlin", "country": "DE", "raw": "Berlin, Germany", "state": "Berlin", "street_1": "Lohmühlenstraße 65", "street_2": null, "zip_code": "12435"}, "custom_fields": {}, "remote_url": "https://app.greenhouse.io/jobs/32", "opened_at": "2022-08-07T14:01:29.196Z", "closed_at": null, "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "contact_id": "6gT2yLMBEipd3zpezATv3Rhu", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "stages": [{"id": "5J7L4b48wBfffYwek9Az9pkM", "remote_id": "32", "name": "Initial Screening", "status": "ACTIVE", "custom_fields": {}, "index": 0}], "screening_questions": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "48b4d36a-1d4b-4c50-ada7-9519078e65b4", "title": "Which is your primary programming language?", "description": "Please enter the language you are most comfortable with.", "format": {"display_type": "SINGLE_LINE", "max_length": null, "type": "TEXT"}, "category": null, "index": 0, "required": true, "precondition_question_id": "4ZVteCSSgDw3BdwGzcQqGEPk", "precondition_options": ["7qd5qjPwDHarsMLFMGzXYG1K"]}], "job_postings": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "48b4d36a-1d4b-4c50-ada7-9519078e65b4", "title": "Frontend Engineer", "description_html": "<p>We are looking for a Frontend Engineer.</p>", "status": "ACTIVE", "visibility": "PUBLIC", "url": "https://jobs.example.com/post/159829112"}], "hiring_team": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "first_name": "John", "last_name": "Doe", "email": "john.doe@kombo.dev", "hiring_team_roles": ["RECRUITER", "HIRING_MANAGER"], "job_roles": [{"remote_id": "1", "remote_label": "Hiring Manager", "unified_type": "HIRING_MANAGER", "scope": "JOB"}]}]}]}}
         default:
           application/json: {"status": "error", "error": {"code": "ATS.JOB_CLOSED", "title": "<value>", "message": "<value>", "log_url": "https://suburban-request.net"}}
     example1:
@@ -11078,7 +11126,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "H5daSm8e85Dmvmne3wLeCPhX", "remote_id": "32", "name": "Backend Engineer", "job_code": "BE-2021-01", "description": "<p>Kombo is hiring engineers! If you are reading this and you are located in Berlin, Germany, feel free to contact us about this position.</p>", "confidential": false, "weekly_hours": 37, "employment_type": "FULL_TIME", "status": "OPEN", "visibility": "PUBLIC", "category": "Technical Job", "department": "Engineering", "post_url": "https://jobs.example.com/post/159829112", "experience_level": "Mid-Senior", "remote_work_status": "HYBRID", "salary_amount": 4200, "salary_amount_from": null, "salary_amount_to": null, "salary_currency": "EUR", "salary_period": "MONTH", "location": {"city": "Berlin", "country": "DE", "raw": "Berlin, Germany", "state": "Berlin", "street_1": "Lohmühlenstraße 65", "street_2": null, "zip_code": "12435"}, "custom_fields": {}, "remote_url": "https://app.greenhouse.io/jobs/32", "opened_at": "2022-08-07T14:01:29.196Z", "closed_at": null, "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "contact_id": "6gT2yLMBEipd3zpezATv3Rhu", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "stages": [{"id": "5J7L4b48wBfffYwek9Az9pkM", "remote_id": "32", "name": "Initial Screening", "custom_fields": {}, "index": 0}], "screening_questions": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "48b4d36a-1d4b-4c50-ada7-9519078e65b4", "title": "Which is your primary programming language?", "description": "Please enter the language you are most comfortable with.", "format": {"display_type": "SINGLE_LINE", "max_length": null, "type": "TEXT"}, "category": null, "index": 0, "required": true, "precondition_question_id": "4ZVteCSSgDw3BdwGzcQqGEPk", "precondition_options": ["7qd5qjPwDHarsMLFMGzXYG1K"]}], "job_postings": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "48b4d36a-1d4b-4c50-ada7-9519078e65b4", "title": "Frontend Engineer", "description_html": "<p>We are looking for a Frontend Engineer.</p>", "status": "ACTIVE", "visibility": "PUBLIC", "url": "https://jobs.example.com/post/159829112"}], "hiring_team": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "first_name": "John", "last_name": "Doe", "email": "john.doe@kombo.dev", "hiring_team_roles": ["RECRUITER", "HIRING_MANAGER"], "job_roles": [{"remote_id": "1", "remote_label": "Hiring Manager", "unified_type": "HIRING_MANAGER", "scope": "JOB"}]}]}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "H5daSm8e85Dmvmne3wLeCPhX", "remote_id": "32", "name": "Backend Engineer", "job_code": "BE-2021-01", "description": "<p>Kombo is hiring engineers! If you are reading this and you are located in Berlin, Germany, feel free to contact us about this position.</p>", "confidential": false, "weekly_hours": 37, "employment_type": "FULL_TIME", "status": "OPEN", "visibility": "PUBLIC", "category": "Technical Job", "department": "Engineering", "post_url": "https://jobs.example.com/post/159829112", "experience_level": "Mid-Senior", "remote_work_status": "HYBRID", "salary_amount": 4200, "salary_amount_from": null, "salary_amount_to": null, "salary_currency": "EUR", "salary_period": "MONTH", "location": {"city": "Berlin", "country": "DE", "raw": "Berlin, Germany", "state": "Berlin", "street_1": "Lohmühlenstraße 65", "street_2": null, "zip_code": "12435"}, "custom_fields": {}, "remote_url": "https://app.greenhouse.io/jobs/32", "opened_at": "2022-08-07T14:01:29.196Z", "closed_at": null, "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "contact_id": "6gT2yLMBEipd3zpezATv3Rhu", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "stages": [{"id": "5J7L4b48wBfffYwek9Az9pkM", "remote_id": "32", "name": "Initial Screening", "status": "ACTIVE", "custom_fields": {}, "index": 0}], "screening_questions": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "48b4d36a-1d4b-4c50-ada7-9519078e65b4", "title": "Which is your primary programming language?", "description": "Please enter the language you are most comfortable with.", "format": {"display_type": "SINGLE_LINE", "max_length": null, "type": "TEXT"}, "category": null, "index": 0, "required": true, "precondition_question_id": "4ZVteCSSgDw3BdwGzcQqGEPk", "precondition_options": ["7qd5qjPwDHarsMLFMGzXYG1K"]}], "job_postings": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "48b4d36a-1d4b-4c50-ada7-9519078e65b4", "title": "Frontend Engineer", "description_html": "<p>We are looking for a Frontend Engineer.</p>", "status": "ACTIVE", "visibility": "PUBLIC", "url": "https://jobs.example.com/post/159829112"}], "hiring_team": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "first_name": "John", "last_name": "Doe", "email": "john.doe@kombo.dev", "hiring_team_roles": ["RECRUITER", "HIRING_MANAGER"], "job_roles": [{"remote_id": "1", "remote_label": "Hiring Manager", "unified_type": "HIRING_MANAGER", "scope": "JOB"}]}]}]}}
     Error Response:
       parameters:
         query:
@@ -11608,7 +11656,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "name": "Software Engineer", "model_type": "POSITION", "description": "Description of the position", "status": "OPEN_UNLIMITED", "employment_types": [{"remote_label": "Vollzeit", "unified_type": "FULL_TIME"}], "number_of_openings": null, "parent_id": "KGaJ5XaVPob8mYVfD49W4DGB", "remote_url": "https://example.com/position/32", "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "custom_fields": {}, "locations": [{"id": "22st2Ji8XpncEYEak8mvQgQF", "remote_id": "1348", "name": "Kombo HQ", "type": "OFFICE"}], "legal_entities": [{"id": "4B9bKBpX5tnwjiG93TAqF7ci", "remote_id": "49", "name": "ACME Inc."}], "groups": [{"id": "4B9bKBpX5tnwjiG93TAqF7ci", "remote_id": "49", "name": "Customer Success", "type": "TEAM"}]}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "name": "Software Engineer", "model_type": "POSITION", "description": "Description of the position", "status": "OPEN_UNLIMITED", "employment_types": [{"remote_label": "Vollzeit", "unified_type": "FULL_TIME"}], "number_of_openings": null, "parent_id": "KGaJ5XaVPob8mYVfD49W4DGB", "remote_url": "https://example.com/position/32", "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "custom_fields": {}, "locations": [{"id": "22st2Ji8XpncEYEak8mvQgQF", "remote_id": "1348", "name": "Kombo HQ", "type": "OFFICE"}], "legal_entities": [{"id": "4B9bKBpX5tnwjiG93TAqF7ci", "remote_id": "49", "name": "ACME Inc."}], "groups": [{"id": "4B9bKBpX5tnwjiG93TAqF7ci", "remote_id": "49", "name": "Customer Success", "type": "TEAM"}], "skills": [{"skill_id": "28KMdr68N8kG9EzLwjsN9aoz", "skill": {"id": "28KMdr68N8kG9EzLwjsN9aoz", "remote_id": "238476582", "name": "TypeScript Programming", "proficiency_scale": {"id": "5xKMdr68N8kG9EzLwjsN9scl", "remote_id": "scale-12345", "type": "NUMERIC", "min": 1, "max": 5, "step": 1}}, "expected_proficiency": {"type": "NUMERIC", "value": 4}}]}]}}
         default:
           application/json: {"status": "error", "error": {"code": "HRIS.EMPLOYEE_ALREADY_EXISTS", "title": "<value>", "message": "<value>", "log_url": "https://short-tabletop.biz"}}
     example1:
@@ -11621,7 +11669,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "name": "Software Engineer", "model_type": "POSITION", "description": "Description of the position", "status": "OPEN_UNLIMITED", "employment_types": [{"remote_label": "Vollzeit", "unified_type": "FULL_TIME"}], "number_of_openings": null, "parent_id": "KGaJ5XaVPob8mYVfD49W4DGB", "remote_url": "https://example.com/position/32", "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "custom_fields": {}, "locations": [{"id": "22st2Ji8XpncEYEak8mvQgQF", "remote_id": "1348", "name": "Kombo HQ", "type": "OFFICE"}], "legal_entities": [{"id": "4B9bKBpX5tnwjiG93TAqF7ci", "remote_id": "49", "name": "ACME Inc."}], "groups": [{"id": "4B9bKBpX5tnwjiG93TAqF7ci", "remote_id": "49", "name": "Customer Success", "type": "TEAM"}]}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "26vafvWSRmbhNcxJYqjCzuJg", "remote_id": "32", "name": "Software Engineer", "model_type": "POSITION", "description": "Description of the position", "status": "OPEN_UNLIMITED", "employment_types": [{"remote_label": "Vollzeit", "unified_type": "FULL_TIME"}], "number_of_openings": null, "parent_id": "KGaJ5XaVPob8mYVfD49W4DGB", "remote_url": "https://example.com/position/32", "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "custom_fields": {}, "locations": [{"id": "22st2Ji8XpncEYEak8mvQgQF", "remote_id": "1348", "name": "Kombo HQ", "type": "OFFICE"}], "legal_entities": [{"id": "4B9bKBpX5tnwjiG93TAqF7ci", "remote_id": "49", "name": "ACME Inc."}], "groups": [{"id": "4B9bKBpX5tnwjiG93TAqF7ci", "remote_id": "49", "name": "Customer Success", "type": "TEAM"}], "skills": [{"skill_id": "28KMdr68N8kG9EzLwjsN9aoz", "skill": {"id": "28KMdr68N8kG9EzLwjsN9aoz", "remote_id": "238476582", "name": "TypeScript Programming", "proficiency_scale": {"id": "5xKMdr68N8kG9EzLwjsN9scl", "remote_id": "scale-12345", "type": "NUMERIC", "min": 1, "max": 5, "step": 1}}, "expected_proficiency": {"type": "NUMERIC", "value": 4}}]}]}}
     Error Response:
       parameters:
         query:
@@ -11968,6 +12016,7 @@ generatedTests:
   unlinkSharedEnvVariable: "2025-10-24T00:07:28Z"
   updateStaticIps: "2025-10-24T00:07:28Z"
   getProjectClientCerts: "2025-10-27T19:04:15Z"
+releaseNotes: "## Typescript SDK Changes:\n* `kombo.hris.getStaffingEntities()`:  `response.data.results[].skills` **Added**\n* `kombo.ats.getApplications()`:  `response.data.results[].currentStage.status` **Added**\n* `kombo.ats.getApplicationStages()`:  `response.data.results[].status` **Added**\n* `kombo.ats.getJobs()`:  `response.data.results[].stages[].status` **Added**\n* `kombo.connect.createConnectionLink()`: \n  *  `request.integrationTool.enum(carerixgraphql)` **Added**\n"
 generatedFiles:
   - .gitattributes
   - .npmignore

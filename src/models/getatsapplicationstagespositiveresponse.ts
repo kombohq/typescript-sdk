@@ -4,8 +4,23 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
+
+/**
+ * Whether the application stage is active in the ATS. Inactive stages (also e.g., archived or hidden) may still be referenced by existing applications but are typically not part of the current hiring workflow.
+ */
+export const GetAtsApplicationStagesPositiveResponseStatus = {
+  Active: "ACTIVE",
+  Inactive: "INACTIVE",
+} as const;
+/**
+ * Whether the application stage is active in the ATS. Inactive stages (also e.g., archived or hidden) may still be referenced by existing applications but are typically not part of the current hiring workflow.
+ */
+export type GetAtsApplicationStagesPositiveResponseStatus = ClosedEnum<
+  typeof GetAtsApplicationStagesPositiveResponseStatus
+>;
 
 export type GetAtsApplicationStagesPositiveResponseResult = {
   /**
@@ -20,6 +35,10 @@ export type GetAtsApplicationStagesPositiveResponseResult = {
    * The application stage name. For example, "Initial Screening".
    */
   name: string | null;
+  /**
+   * Whether the application stage is active in the ATS. Inactive stages (also e.g., archived or hidden) may still be referenced by existing applications but are typically not part of the current hiring workflow.
+   */
+  status: GetAtsApplicationStagesPositiveResponseStatus | null;
   /**
    * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
    */
@@ -48,6 +67,11 @@ export type GetAtsApplicationStagesPositiveResponse = {
 };
 
 /** @internal */
+export const GetAtsApplicationStagesPositiveResponseStatus$inboundSchema:
+  z.ZodNativeEnum<typeof GetAtsApplicationStagesPositiveResponseStatus> = z
+    .nativeEnum(GetAtsApplicationStagesPositiveResponseStatus);
+
+/** @internal */
 export const GetAtsApplicationStagesPositiveResponseResult$inboundSchema:
   z.ZodType<
     GetAtsApplicationStagesPositiveResponseResult,
@@ -57,6 +81,9 @@ export const GetAtsApplicationStagesPositiveResponseResult$inboundSchema:
     id: z.string(),
     remote_id: z.nullable(z.string()),
     name: z.nullable(z.string()),
+    status: z.nullable(
+      GetAtsApplicationStagesPositiveResponseStatus$inboundSchema,
+    ),
     custom_fields: z.nullable(z.record(z.any())),
     changed_at: z.string().datetime({ offset: true }).transform(v =>
       new Date(v)

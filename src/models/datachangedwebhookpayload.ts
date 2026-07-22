@@ -82,6 +82,7 @@ export const Name = {
   HrisJoinStaffingEntitiesLegalEntities:
     "hris_join_staffing_entities_legal_entities",
   HrisJoinStaffingEntitiesGroups: "hris_join_staffing_entities_groups",
+  HrisJoinStaffingEntitiesSkills: "hris_join_staffing_entities_skills",
   AtsJoinCandidatesTags: "ats_join_candidates_tags",
   AtsJoinJobsApplicationStages: "ats_join_jobs_application_stages",
   AtsJoinJobsScreeningQuestions: "ats_join_jobs_screening_questions",

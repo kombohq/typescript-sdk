@@ -77,6 +77,7 @@ let value: GetAtsApplicationsResponse = {
             id: "5J7L4b48wBfffYwek9Az9pkM",
             remote_id: "32",
             name: "Initial Screening",
+            status: "ACTIVE",
             custom_fields: {},
             index: 2,
           },
