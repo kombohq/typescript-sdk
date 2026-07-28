@@ -471,6 +471,10 @@ export class Hris extends ClientSDK {
    *
    * For a detailed explanation of the data model, validation rules, time zones, payable hours, approvals, and break patterns, see the [Time & Attendance guide](/hris/features/time-and-attendance).
    *
+   * <Note>
+   * By default, only the last 2 months of timesheets are kept up to date during sync (configurable via the "Historical timesheet months to sync" setting). Kombo only deletion-tracks timesheets inside that window — timesheets that age out are kept and are not marked as deleted just because they were not re-fetched. Within the window, timesheets that disappear from the remote HRIS are marked with `remote_deleted_at` as usual. See the [Time & Attendance guide](/hris/features/time-and-attendance) for details.
+   * </Note>
+   *
    * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
    */
   async getTimesheets(
