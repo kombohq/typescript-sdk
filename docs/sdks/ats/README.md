@@ -27,6 +27,7 @@
 * [getOffers](#getoffers) - Get offers
 * [getRejectionReasons](#getrejectionreasons) - Get rejection reasons
 * [getInterviews](#getinterviews) - Get interviews
+* [getAtsNotes](#getatsnotes) - Get notes
 * [importTrackedApplication](#importtrackedapplication) - Import tracked application
 
 ## getApplications
@@ -3875,6 +3876,84 @@ run();
 ### Response
 
 **Promise\<[operations.GetAtsInterviewsResponse](../../models/operations/getatsinterviewsresponse.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.KomboAtsError     | default                  | application/json         |
+| errors.KomboDefaultError | 4XX, 5XX                 | \*/\*                    |
+
+## getAtsNotes
+
+Retrieve all notes.
+
+Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="GetAtsNotes" method="get" path="/ats/notes" example="example1" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.ats.getAtsNotes({});
+
+  for await (const page of result) {
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { atsGetAtsNotes } from "@kombo-api/sdk/funcs/atsGetAtsNotes.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await atsGetAtsNotes(kombo, {});
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
+    console.log(page);
+  }
+  } else {
+    console.log("atsGetAtsNotes failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetAtsNotesRequest](../../models/operations/getatsnotesrequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.GetAtsNotesResponse](../../models/operations/getatsnotesresponse.md)\>**
 
 ### Errors
 

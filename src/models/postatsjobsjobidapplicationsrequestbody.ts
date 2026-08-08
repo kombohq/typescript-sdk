@@ -612,6 +612,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyBullhorn = {
    * Fields that we will pass through to Bullhorn's `JobSubmission` object.
    */
   job_submission?: { [k: string]: any } | undefined;
+  /**
+   * The remote ID of the Bullhorn `Candidate` the application should be filed on. When set, we skip Bullhorn's duplicate detection and use exactly this candidate, which lets you pick the right record when several candidates share an email address or phone number. The request fails if the candidate does not exist (or was deleted) in Bullhorn.
+   */
+  existing_candidate_remote_id?: string | undefined;
 };
 
 /**
@@ -781,6 +785,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate = {
    * The street address of the candidate.
    */
   street?: string | undefined;
+  /**
+   * The birth date of the candidate, written into the "Geburtsdatum" field of the application form. Format: `YYYY-MM-DD`
+   */
+  geburtsdatum?: Date | undefined;
 };
 
 /**
@@ -2790,6 +2798,7 @@ export function postAtsJobsJobIdApplicationsRequestBodyZohorecruitToJSON(
 export type PostAtsJobsJobIdApplicationsRequestBodyBullhorn$Outbound = {
   candidate?: { [k: string]: any } | undefined;
   job_submission?: { [k: string]: any } | undefined;
+  existing_candidate_remote_id?: string | undefined;
 };
 
 /** @internal */
@@ -2801,6 +2810,7 @@ export const PostAtsJobsJobIdApplicationsRequestBodyBullhorn$outboundSchema:
   > = z.object({
     candidate: z.record(z.any()).optional(),
     job_submission: z.record(z.any()).optional(),
+    existing_candidate_remote_id: z.string().optional(),
   });
 
 export function postAtsJobsJobIdApplicationsRequestBodyBullhornToJSON(
@@ -3252,6 +3262,7 @@ export function postAtsJobsJobIdApplicationsRequestBodyUmantisToJSON(
 /** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$Outbound = {
   street?: string | undefined;
+  geburtsdatum?: string | undefined;
 };
 
 /** @internal */
@@ -3262,6 +3273,7 @@ export const PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$outboundSche
     PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate
   > = z.object({
     street: z.string().optional(),
+    geburtsdatum: z.date().transform(v => v.toISOString()).optional(),
   });
 
 export function postAtsJobsJobIdApplicationsRequestBodyPilogaCandidateToJSON(

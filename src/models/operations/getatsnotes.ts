@@ -9,14 +9,14 @@ import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
-export type GetAtsApplicationsGlobals = {
+export type GetAtsNotesGlobals = {
   /**
    * ID of the integration you want to interact with.
    */
   integration_id?: string | undefined;
 };
 
-export type GetAtsApplicationsRequest = {
+export type GetAtsNotesRequest = {
   /**
    * An optional cursor string used for pagination. This can be retrieved from the `next` property of the previous page response.
    */
@@ -38,12 +38,9 @@ export type GetAtsApplicationsRequest = {
    *
    * | Path | Added/Removed | Linked Record |
    * | --- | --- | --- |
-   * | `candidate` | n/a | ✓ Yes |
-   * | `candidate` → `tags` | ✗ No | ✗ No |
-   * | `current_stage` | ✗ No | ✗ No |
-   * | `job` | ✗ No | ✗ No |
-   * | `interviews` | ✓ Yes | ✓ Yes |
-   * | `offers` | ✓ Yes | ✓ Yes |
+   * | `author` | ✗ No | ✗ No |
+   * | `application` | ✗ No | ✗ No |
+   * | `candidate` | ✗ No | ✗ No |
    *
    * _**Added/Removed**: Whether adding or removing entries from this list triggers an update (n/a for single records). **Linked Record**: Whether changes to the linked record itself trigger an update._
    */
@@ -65,40 +62,21 @@ export type GetAtsApplicationsRequest = {
    */
   remote_ids?: Array<string> | undefined;
   /**
-   * Filter by a comma-separated list of `PENDING`, `HIRED`, `DECLINED`
-   *
-   * @remarks
-   * * `PENDING`: The application is still being processed.
-   * * `HIRED`: The candidate was hired.
-   * * `DECLINED`: The candidate was declined.
-   *
-   * Leave this blank to get results matching all values.
+   * Filter by a comma-separated list of candidate IDs. Prefer filtering by `candidate_ids` when you want to download the full context available for a candidate, across all their applications.
    */
-  outcomes?: Array<string> | undefined;
+  candidate_ids?: Array<string> | undefined;
   /**
-   * Filter by a comma-separated list of job IDs. We will only return applications that are related to _any_ of the jobs.
+   * Filter by a comma-separated list of application IDs. Use filtering by `application_ids` only if you want the context available for specific applications. Results do not include notes that only link to the candidate, but not the application.
    */
-  job_ids?: Array<string> | undefined;
-  /**
-   * Filter by a comma-separated list of job remote IDs. We will only return applications that are related to _any_ of the jobs.
-   */
-  job_remote_ids?: Array<string> | undefined;
-  /**
-   * Filter by a comma-separated list of application stage IDs. We will only return applications that are currently in _any_ of the stages.
-   */
-  current_stage_ids?: Array<string> | undefined;
-  /**
-   * Filter applications by the day they were created in the remote system. This allows you to get applications that were created on or after a certain day.
-   */
-  remote_created_after?: Date | undefined;
+  application_ids?: Array<string> | undefined;
 };
 
-export type GetAtsApplicationsResponse = {
-  result: models.GetAtsApplicationsPositiveResponse;
+export type GetAtsNotesResponse = {
+  result: models.GetAtsNotesPositiveResponse;
 };
 
 /** @internal */
-export type GetAtsApplicationsRequest$Outbound = {
+export type GetAtsNotesRequest$Outbound = {
   cursor?: string | undefined;
   page_size: number;
   updated_after?: string | undefined;
@@ -106,18 +84,15 @@ export type GetAtsApplicationsRequest$Outbound = {
   ignore_unsupported_filters: boolean;
   ids?: Array<string> | undefined;
   remote_ids?: Array<string> | undefined;
-  outcomes?: Array<string> | undefined;
-  job_ids?: Array<string> | undefined;
-  job_remote_ids?: Array<string> | undefined;
-  current_stage_ids?: Array<string> | undefined;
-  remote_created_after?: string | undefined;
+  candidate_ids?: Array<string> | undefined;
+  application_ids?: Array<string> | undefined;
 };
 
 /** @internal */
-export const GetAtsApplicationsRequest$outboundSchema: z.ZodType<
-  GetAtsApplicationsRequest$Outbound,
+export const GetAtsNotesRequest$outboundSchema: z.ZodType<
+  GetAtsNotesRequest$Outbound,
   z.ZodTypeDef,
-  GetAtsApplicationsRequest
+  GetAtsNotesRequest
 > = z.object({
   cursor: z.string().optional(),
   page_size: z.number().int().default(100),
@@ -126,40 +101,37 @@ export const GetAtsApplicationsRequest$outboundSchema: z.ZodType<
   ignore_unsupported_filters: z.boolean().default(false),
   ids: z.array(z.string()).optional(),
   remote_ids: z.array(z.string()).optional(),
-  outcomes: z.array(z.string()).optional(),
-  job_ids: z.array(z.string()).optional(),
-  job_remote_ids: z.array(z.string()).optional(),
-  current_stage_ids: z.array(z.string()).optional(),
-  remote_created_after: z.date().transform(v => v.toISOString()).optional(),
+  candidate_ids: z.array(z.string()).optional(),
+  application_ids: z.array(z.string()).optional(),
 });
 
-export function getAtsApplicationsRequestToJSON(
-  getAtsApplicationsRequest: GetAtsApplicationsRequest,
+export function getAtsNotesRequestToJSON(
+  getAtsNotesRequest: GetAtsNotesRequest,
 ): string {
   return JSON.stringify(
-    GetAtsApplicationsRequest$outboundSchema.parse(getAtsApplicationsRequest),
+    GetAtsNotesRequest$outboundSchema.parse(getAtsNotesRequest),
   );
 }
 
 /** @internal */
-export const GetAtsApplicationsResponse$inboundSchema: z.ZodType<
-  GetAtsApplicationsResponse,
+export const GetAtsNotesResponse$inboundSchema: z.ZodType<
+  GetAtsNotesResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  Result: models.GetAtsApplicationsPositiveResponse$inboundSchema,
+  Result: models.GetAtsNotesPositiveResponse$inboundSchema,
 }).transform((v) => {
   return remap$(v, {
     "Result": "result",
   });
 });
 
-export function getAtsApplicationsResponseFromJSON(
+export function getAtsNotesResponseFromJSON(
   jsonString: string,
-): SafeParseResult<GetAtsApplicationsResponse, SDKValidationError> {
+): SafeParseResult<GetAtsNotesResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetAtsApplicationsResponse$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetAtsApplicationsResponse' from JSON`,
+    (x) => GetAtsNotesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAtsNotesResponse' from JSON`,
   );
 }

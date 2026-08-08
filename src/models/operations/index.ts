@@ -14,6 +14,7 @@ export * from "./getatscandidates.js";
 export * from "./getatscandidatescandidateidattachments.js";
 export * from "./getatsinterviews.js";
 export * from "./getatsjobs.js";
+export * from "./getatsnotes.js";
 export * from "./getatsoffers.js";
 export * from "./getatsrejectionreasons.js";
 export * from "./getatsroles.js";
