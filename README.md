@@ -167,6 +167,7 @@ const kombo = new Kombo({
 * [getOffers](docs/sdks/ats/README.md#getoffers) - Get offers
 * [getRejectionReasons](docs/sdks/ats/README.md#getrejectionreasons) - Get rejection reasons
 * [getInterviews](docs/sdks/ats/README.md#getinterviews) - Get interviews
+* [getAtsNotes](docs/sdks/ats/README.md#getatsnotes) - Get notes
 * [importTrackedApplication](docs/sdks/ats/README.md#importtrackedapplication) - Import tracked application
 
 ### [Connect](docs/sdks/connect/README.md)
@@ -314,9 +315,9 @@ run();
 
 
 **Inherit from [`KomboError`](./src/models/errors/komboerror.ts)**:
-* [`KomboAtsError`](./src/models/errors/komboatserror.ts): The standard error response with the error codes for the ATS use case. Applicable to 28 of 61 methods.*
-* [`KomboHrisError`](./src/models/errors/kombohriserror.ts): The standard error response with the error codes for the HRIS use case. Applicable to 18 of 61 methods.*
-* [`KomboGeneralError`](./src/models/errors/kombogeneralerror.ts): The standard error response with just the platform error codes. Applicable to 15 of 61 methods.*
+* [`KomboAtsError`](./src/models/errors/komboatserror.ts): The standard error response with the error codes for the ATS use case. Applicable to 29 of 62 methods.*
+* [`KomboHrisError`](./src/models/errors/kombohriserror.ts): The standard error response with the error codes for the HRIS use case. Applicable to 18 of 62 methods.*
+* [`KomboGeneralError`](./src/models/errors/kombogeneralerror.ts): The standard error response with just the platform error codes. Applicable to 15 of 62 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -417,6 +418,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetApplicationAttachments`](docs/sdks/ats/README.md#getapplicationattachments) - Get application attachments
 - [`atsGetApplications`](docs/sdks/ats/README.md#getapplications) - Get applications
 - [`atsGetApplicationStages`](docs/sdks/ats/README.md#getapplicationstages) - Get application stages
+- [`atsGetAtsNotes`](docs/sdks/ats/README.md#getatsnotes) - Get notes
 - [`atsGetCandidateAttachments`](docs/sdks/ats/README.md#getcandidateattachments) - Get candidate attachments
 - [`atsGetCandidates`](docs/sdks/ats/README.md#getcandidates) - Get candidates
 - [`atsGetInterviews`](docs/sdks/ats/README.md#getinterviews) - Get interviews
