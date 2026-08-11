@@ -71,6 +71,7 @@ export const Name = {
   AtsOffers: "ats_offers",
   AtsRejectionReasons: "ats_rejection_reasons",
   AtsRoles: "ats_roles",
+  AtsNotes: "ats_notes",
   LmsUsers: "lms_users",
   LmsCourseProviders: "lms_course_providers",
   LmsSkills: "lms_skills",
