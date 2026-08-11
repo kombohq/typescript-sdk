@@ -20,6 +20,7 @@ export * from "./getatscandidatescandidateidattachmentspositiveresponse.js";
 export * from "./getatscandidatespositiveresponse.js";
 export * from "./getatsinterviewspositiveresponse.js";
 export * from "./getatsjobspositiveresponse.js";
+export * from "./getatsnotespositiveresponse.js";
 export * from "./getatsofferspositiveresponse.js";
 export * from "./getatsrejectionreasonspositiveresponse.js";
 export * from "./getatsrolespositiveresponse.js";
