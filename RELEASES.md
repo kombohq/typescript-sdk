@@ -299,3 +299,13 @@ Based on:
 - [typescript v1.3.5] .
 ### Releases
 - [NPM v1.3.5] https://www.npmjs.com/package/@kombo-api/sdk/v/1.3.5 - .
+
+## 2026-08-12 00:10:50
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.793.1 (2.928.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.3.6] .
+### Releases
+- [NPM v1.3.6] https://www.npmjs.com/package/@kombo-api/sdk/v/1.3.6 - .

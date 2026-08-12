@@ -19,6 +19,7 @@ let value: GetHrisAbsenceTypesResponse = {
           unit: "DAYS",
           half_days_supported: true,
           exact_times_supported: false,
+          custom_fields: {},
           changed_at: new Date("2022-08-07T14:01:29.196Z"),
           remote_deleted_at: null,
         },
