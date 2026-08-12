@@ -74,6 +74,10 @@ export type GetHrisAbsencesPositiveResponseType = {
    */
   exact_times_supported: boolean | null;
   /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
+  /**
    * The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.
    */
   changed_at: Date;
@@ -201,6 +205,7 @@ export const GetHrisAbsencesPositiveResponseType$inboundSchema: z.ZodType<
   unit: z.nullable(GetHrisAbsencesPositiveResponseTypeUnit$inboundSchema),
   half_days_supported: z.nullable(z.boolean()),
   exact_times_supported: z.nullable(z.boolean()),
+  custom_fields: z.nullable(z.record(z.any())),
   changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   remote_deleted_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),

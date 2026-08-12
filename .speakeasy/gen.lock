@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 79567c4a-05f9-4d65-864d-dfe107aa4e9d
 management:
-  docChecksum: 045d3f9432784414152310e79ba300d4
+  docChecksum: 7b0fe2a845840e75c706ff36df4c1e12
   docVersion: 1.0.0
-  speakeasyVersion: 1.793.0
+  speakeasyVersion: 1.793.1
   generationVersion: 2.928.0
-  releaseVersion: 1.3.5
-  configChecksum: 1906ffb9f6e9d55ac024b8a8fad22a3f
+  releaseVersion: 1.3.6
+  configChecksum: 79a1fba8095c959c2d21cb7f48f590e4
   repoURL: https://github.com/kombohq/typescript-sdk.git
   installationURL: https://github.com/kombohq/typescript-sdk
   published: true
 persistentEdits:
-  generation_id: 0198d55a-4966-47ce-810a-ad66d4222392
-  pristine_commit_hash: 81ac4163a564b3da015a5fc6d7a18242679c646f
-  pristine_tree_hash: 077c603b767168bea7d48a82736e05fa044457e2
+  generation_id: fb99b58d-e46c-4643-9286-c0f68de48a43
+  pristine_commit_hash: 3eb4d75dd975b8e57fb3b142e6c024cda058a98d
+  pristine_tree_hash: 558f194f79b0aeab59c6348aafcf80dd4c4cf070
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -927,24 +927,24 @@ trackedFiles:
     pristine_git_object: 316522c44331d8b7bdae51ef484a9e7b2034552d
   docs/models/gethrisabsencespositiveresponse.md:
     id: 8a1301739c85
-    last_write_checksum: sha1:90d6e7a8c53bca0d1e3c69d488949f9dbeed7adf
-    pristine_git_object: 805aa11c66208e63dac0817d5a39a7715fdea0c7
+    last_write_checksum: sha1:9a9360b2a343cfcd3c782cb2e86ab9fc8c34e5ec
+    pristine_git_object: c377c1c24bb4553d0b21b997c24051faab0e22c6
   docs/models/gethrisabsencespositiveresponsedata.md:
     id: d2c7fc402f5e
-    last_write_checksum: sha1:e0b8570145d440c10a3121362fa038fb7cfa309d
-    pristine_git_object: a39a9b62e6fce84a12c3f27e9cb92afab4ba33b6
+    last_write_checksum: sha1:a5145f429f806c84ac10bf7107a2158b8b091fa6
+    pristine_git_object: 55cb8c4084807281b1fc645af86a13c0664b2bb1
   docs/models/gethrisabsencespositiveresponseresult.md:
     id: 6fce3e4ce2eb
-    last_write_checksum: sha1:a613d5b1442f73da24614621cabd114d86f801fd
-    pristine_git_object: 56e2ea38324780b2b93ee92457e6ae343b1f7222
+    last_write_checksum: sha1:ce12ca44a4752ec6f590510480cddab5c253e57a
+    pristine_git_object: 0a6253b3915b9377316c5a2ea5b737307dfcbce9
   docs/models/gethrisabsencespositiveresponsestatus.md:
     id: 2b70b55c830f
     last_write_checksum: sha1:30007a54c6e72b518323db37709ecd21a0662866
     pristine_git_object: c168e43e258229b41ad1edf609b05fce1f54828b
   docs/models/gethrisabsencespositiveresponsetype.md:
     id: eb4601d76033
-    last_write_checksum: sha1:4fbad17100683685b846ba967bf4116a15532c43
-    pristine_git_object: c3b084682bac6574242b6ab9983cf677ea7a2d0a
+    last_write_checksum: sha1:22a0d19af69ee7d36b9012e41d01dac3d64eef47
+    pristine_git_object: 358349bf9702cdbcdfc285748b2e7c546b8aa465
   docs/models/gethrisabsencespositiveresponsetypeunit.md:
     id: ea16d833c775
     last_write_checksum: sha1:97cc27667d506c7390d8578a60d9fed632fc9d7b
@@ -955,16 +955,16 @@ trackedFiles:
     pristine_git_object: b6737e938314ded328fe9b455f787bc55bdae329
   docs/models/gethrisabsencetypespositiveresponse.md:
     id: 89f8f4cacd3f
-    last_write_checksum: sha1:ef8ada6cb8f5a7642b6e00dc76a879e303592a18
-    pristine_git_object: 9a3c19bfaa89ea87db2ca5a05e4394f6ac35cc33
+    last_write_checksum: sha1:edbc0d0c9da32425dca4393961356597035c6928
+    pristine_git_object: f9a134a4ad48a95cc9db8e5fb55e40e2bfccc76b
   docs/models/gethrisabsencetypespositiveresponsedata.md:
     id: 441f4fb25d11
-    last_write_checksum: sha1:19d3049f15fbd699d64f33db811e330ae4a04735
-    pristine_git_object: 085418eef57fe8a1546c8d352d4c6959de8cb040
+    last_write_checksum: sha1:0a42783592e98ae002e9199eba0f883188a1e3dc
+    pristine_git_object: 306989109765759de624202a82c32c9ca3844bfc
   docs/models/gethrisabsencetypespositiveresponseresult.md:
     id: b88e82fef4ac
-    last_write_checksum: sha1:d70213126370ff51ef3016eaf02450f02089cbf6
-    pristine_git_object: 7a0c67508aeada5520065ce9a5cd52b7246667cb
+    last_write_checksum: sha1:df7fc31a9d5d5dba93aca9229ae411615370f8f7
+    pristine_git_object: 6d6750fdb67cac9a42fc87ffd7c87700b045ff74
   docs/models/gethrisabsencetypespositiveresponseunit.md:
     id: 06e512a921c3
     last_write_checksum: sha1:9cb487d0dc29f9351945cbc5d54513810926857b
@@ -1259,24 +1259,24 @@ trackedFiles:
     pristine_git_object: ac57bc09758ca7464ceb8a1fd15407f6a98d701a
   docs/models/gethristimeoffbalancespositiveresponse.md:
     id: 88360b8c9bb0
-    last_write_checksum: sha1:e58ff9f87ce87f87b7c65359dde8c9924c91057f
-    pristine_git_object: 7a827ad61d3388b0310278ec03882b593c17dc0e
+    last_write_checksum: sha1:017ed29782dc4c99027ead4bac003bbadbb7f3d1
+    pristine_git_object: 949892ffc82859b1c1a5e4a048d2add04f20624d
   docs/models/gethristimeoffbalancespositiveresponsebalanceunit.md:
     id: 9461f944c47f
     last_write_checksum: sha1:bcd5b3c2105e769a21195e6f34d6e487c5b86081
     pristine_git_object: 68584cedc6ff338d3550640d252dff5d95bf2dd9
   docs/models/gethristimeoffbalancespositiveresponsedata.md:
     id: 15bc1859dc39
-    last_write_checksum: sha1:b445fca6eb2fd17aa60d53cb09f7d74ac7f2e5a1
-    pristine_git_object: e103d600d2b60bca3c88046b36ddcffcd0a691e4
+    last_write_checksum: sha1:62d0139fb4e2299916be73ac385663c79d32c1eb
+    pristine_git_object: 92651528f0a5566ed4169bee60686689c2a3f5e9
   docs/models/gethristimeoffbalancespositiveresponseresult.md:
     id: 77368d16d31c
-    last_write_checksum: sha1:2270ef9b00eca5884df0534dffed939690d4626c
-    pristine_git_object: c534ab399edea759d28f4087ff62cbd94b635306
+    last_write_checksum: sha1:a6aecadd61d05c7857b08a16a0cb15826073c7eb
+    pristine_git_object: af3c85c23e4ceddd13033ddf8475971e43700fa0
   docs/models/gethristimeoffbalancespositiveresponsetype.md:
     id: 36df5b3056d2
-    last_write_checksum: sha1:17b0a7237ea7e197815e2d9f5f9ce73b4eef4e88
-    pristine_git_object: e835bf2514d002955366742e38239d65ffbe9748
+    last_write_checksum: sha1:42c09af411d558f35d823b7fd61948f02fd4ff6e
+    pristine_git_object: 02dbc973e1da868b2f7a232c095c6086b53fc909
   docs/models/gethristimeoffbalancespositiveresponseunit.md:
     id: 542103f4e38b
     last_write_checksum: sha1:d61467d244acc4a6707c00f2a5f60c488d430458
@@ -1859,8 +1859,8 @@ trackedFiles:
     pristine_git_object: 7bd16ce22b11fdd649fbf49f5326f558129856a8
   docs/models/operations/gethrisabsencesresponse.md:
     id: 5bea132ace7a
-    last_write_checksum: sha1:39208eca2b1bd491204088df581a79ca8e64d065
-    pristine_git_object: 3b6c12d34bd565c8b710d33cffbc0b0b7c68e379
+    last_write_checksum: sha1:ac4d433e08cafb178df2fdeb352a3cef241e488c
+    pristine_git_object: 7709efe5ff5910038925ed0df435356628ac2883
   docs/models/operations/gethrisabsencetypesglobals.md:
     id: b192017aa267
     last_write_checksum: sha1:8a0da8d51a3f0b442937a9e45078bfa4aec29d8a
@@ -1871,8 +1871,8 @@ trackedFiles:
     pristine_git_object: 1b4b35406db689e36bc52dd84a17115131e05a7b
   docs/models/operations/gethrisabsencetypesresponse.md:
     id: 844c48aace1b
-    last_write_checksum: sha1:70781210b6473828bf40919d8b1f3ac7457976bf
-    pristine_git_object: 9615bae809eb244664b6cd551a8069981cc22e81
+    last_write_checksum: sha1:3b60d019b09d8f88ffbdb3a516a80086dfb63ce0
+    pristine_git_object: fd92a9c6b933d51a2e57ae54d13589a9548dd92f
   docs/models/operations/gethrisemployeedocumentcategoriesglobals.md:
     id: 891a807535be
     last_write_checksum: sha1:5e04cc7d0a5412c79c772e14c25e31137a51f1bb
@@ -1999,8 +1999,8 @@ trackedFiles:
     pristine_git_object: 362e101902bb417294ba4d2eee2d1abca4f2a75e
   docs/models/operations/gethristimeoffbalancesresponse.md:
     id: 9a5d4af658d5
-    last_write_checksum: sha1:0d6330c99a01fae84f5e84eda55002340c844741
-    pristine_git_object: 4d24d60f30308f843919fc7a44b85ac70c33fa3c
+    last_write_checksum: sha1:d78572a9a098d93dcc85d2b88d02367ff0f7fb12
+    pristine_git_object: 0c4743fcce4fb5b62d491a73412cf578d82d2040
   docs/models/operations/gethristimesheetsglobals.md:
     id: c2cb195be584
     last_write_checksum: sha1:005d776cd3509f84f6e9258a1770c2f316dba00e
@@ -4295,12 +4295,12 @@ trackedFiles:
     pristine_git_object: 29289cf79efbc687c7daf5b66266980eb719cdc8
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:82ae0a9fcb78236aded66a26582200740fb96002
-    pristine_git_object: f7e76f692109487c0ebc4abb00d5909cd215686a
+    last_write_checksum: sha1:3b2a03f0c6147535417df3a7022e34a0e1404861
+    pristine_git_object: e86dc6521fce23372658f6d3e72a980308ddd8a8
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:979896fbef6654bf4f03ebc82baf8c9eb1ae43b5
-    pristine_git_object: 754e68ac15236f9623db821ae64b88b4b4d7c98a
+    last_write_checksum: sha1:64d34bfbbc9799e4a5c3fa1f171cf906dc7e7fe5
+    pristine_git_object: fcd8ad4ce51cc03a3f7fb7b8e227f7e843ecaa94
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:b9f55b890c4f9f22b9bd199cce5fcc6fb3d15661
@@ -4579,8 +4579,8 @@ trackedFiles:
     pristine_git_object: 0aebd8b0a4867e35cb3348fc52921c3c0b4725b7
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:a7d918732e98b4e7d113c25d9097e602d35bae8d
-    pristine_git_object: 235e9d145a9fa296f758c02456a9692d0ed81c5c
+    last_write_checksum: sha1:893d2c05c181b157d9ec53a45875ecfa025e7147
+    pristine_git_object: e1872c34bed424d478adba831e3d2ff5beba5180
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:50d9b187dcfc3cca8d3bbd9fe074f865d715d2b0
@@ -4767,12 +4767,12 @@ trackedFiles:
     pristine_git_object: ce07d810c6cd3765fed19fcf44d3a8bdc9442a04
   src/models/gethrisabsencespositiveresponse.ts:
     id: 77fe4e45ccae
-    last_write_checksum: sha1:d35e58ca742335eb1584c36242cd1bc96936494b
-    pristine_git_object: a7ae7974c5a1a36dc01764e569dc1c991a0c8ed0
+    last_write_checksum: sha1:bbcdab948882beac5f682eafeb5a5205e7d26794
+    pristine_git_object: 1f0b93131623eece11226c53a6ecd738ad8b63b5
   src/models/gethrisabsencetypespositiveresponse.ts:
     id: aeb0e54fc84c
-    last_write_checksum: sha1:84f44fcd03703d29c8c68f59cb25acec2f7d7e2b
-    pristine_git_object: 085b42cf459bbc0f635d7831115c933de161acf9
+    last_write_checksum: sha1:28e1e737b2ff3ae169678f3c1290171aae7897d4
+    pristine_git_object: 0f0ada5b9be2e1f34f3b99416fb6820c4cd93c94
   src/models/gethrisemployeedocumentcategoriespositiveresponse.ts:
     id: 63501e8d505d
     last_write_checksum: sha1:332074096ca8668ba10768cac6cac0dd5574b591
@@ -4815,8 +4815,8 @@ trackedFiles:
     pristine_git_object: 56a5f09cbf70d7f346b11d71ebe9829668b9d8fa
   src/models/gethristimeoffbalancespositiveresponse.ts:
     id: a13fffd6d92b
-    last_write_checksum: sha1:0b9b5e0b01f8fd3cb7c470c08d6273056bc89fea
-    pristine_git_object: 45409f1f8f9da7cebf4d9cdb642bb06717302218
+    last_write_checksum: sha1:324da928a105e5fc1b9edb4ade6fac6dbddefde3
+    pristine_git_object: 42fe5bedf3187101c88d1d5153a0a2de7c395e46
   src/models/gethristimesheetspositiveresponse.ts:
     id: 974e0ee5ed1d
     last_write_checksum: sha1:1f9d1519a17b76099d40174fc916e514efb3dde3
@@ -10002,7 +10002,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}]}}
         default:
           application/json: {"status": "error", "error": {"code": "HRIS.EMPLOYEE_ALREADY_EXISTS", "title": "<value>", "message": "<value>", "log_url": "https://deserted-mountain.org/"}}
     example1:
@@ -10015,7 +10015,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}]}}
     Error Response:
       parameters:
         query:
@@ -10049,7 +10049,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "FuyRuk5NqP3qTcThED3ymTuE", "remote_id": "124123", "employee_id": "2Up4ZCvq1bFVzmzXG6EWzV3j", "type_id": "BQJaBxRCiqN46G27VTegvkEr", "balance": 14, "balance_unit": "DAYS", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "used": 3, "used_unit": "DAYS", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "FuyRuk5NqP3qTcThED3ymTuE", "remote_id": "124123", "employee_id": "2Up4ZCvq1bFVzmzXG6EWzV3j", "type_id": "BQJaBxRCiqN46G27VTegvkEr", "balance": 14, "balance_unit": "DAYS", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "used": 3, "used_unit": "DAYS", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
         default:
           application/json: {"status": "error", "error": {"code": "HRIS.EMPLOYEE_ALREADY_EXISTS", "title": "<value>", "message": "<value>", "log_url": "https://dazzling-coal.biz/"}}
     example1:
@@ -10062,7 +10062,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "FuyRuk5NqP3qTcThED3ymTuE", "remote_id": "124123", "employee_id": "2Up4ZCvq1bFVzmzXG6EWzV3j", "type_id": "BQJaBxRCiqN46G27VTegvkEr", "balance": 14, "balance_unit": "DAYS", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "used": 3, "used_unit": "DAYS", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "FuyRuk5NqP3qTcThED3ymTuE", "remote_id": "124123", "employee_id": "2Up4ZCvq1bFVzmzXG6EWzV3j", "type_id": "BQJaBxRCiqN46G27VTegvkEr", "balance": 14, "balance_unit": "DAYS", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null, "used": 3, "used_unit": "DAYS", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
     Error Response:
       parameters:
         query:
@@ -10096,7 +10096,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "22st2Ji8XpncEYEak8mvQgQF", "remote_id": "1348", "employee_id": "JDdUy9kiH5APaGizFrgNmQjM", "start_date": "2022-08-04T00:00:00Z", "end_date": "2022-08-05T00:00:00Z", "start_half_day": true, "end_half_day": false, "start_time": "13:15:00", "end_time": "17:00:00", "amount": 2, "unit": "DAYS", "status": "APPROVED", "employee_note": "Visiting my family.", "type_id": "xzZoKssDaMZAd62kxayzzQvD", "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": "2022-08-07T14:01:29.196Z", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "22st2Ji8XpncEYEak8mvQgQF", "remote_id": "1348", "employee_id": "JDdUy9kiH5APaGizFrgNmQjM", "start_date": "2022-08-04T00:00:00Z", "end_date": "2022-08-05T00:00:00Z", "start_half_day": true, "end_half_day": false, "start_time": "13:15:00", "end_time": "17:00:00", "amount": 2, "unit": "DAYS", "status": "APPROVED", "employee_note": "Visiting my family.", "type_id": "xzZoKssDaMZAd62kxayzzQvD", "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": "2022-08-07T14:01:29.196Z", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
         default:
           application/json: {"status": "error", "error": {"code": "HRIS.EMPLOYEE_ALREADY_EXISTS", "title": "<value>", "message": "<value>", "log_url": "https://soft-rosemary.net"}}
     example1:
@@ -10109,7 +10109,7 @@ examples:
           X-Integration-Id: "workday:HWUTwvyx2wLoSUHphiWVrp28"
       responses:
         "200":
-          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "22st2Ji8XpncEYEak8mvQgQF", "remote_id": "1348", "employee_id": "JDdUy9kiH5APaGizFrgNmQjM", "start_date": "2022-08-04T00:00:00Z", "end_date": "2022-08-05T00:00:00Z", "start_half_day": true, "end_half_day": false, "start_time": "13:15:00", "end_time": "17:00:00", "amount": 2, "unit": "DAYS", "status": "APPROVED", "employee_note": "Visiting my family.", "type_id": "xzZoKssDaMZAd62kxayzzQvD", "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": "2022-08-07T14:01:29.196Z", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
+          application/json: {"status": "success", "data": {"next": "eyJwYWdlIjoxMiwibm90ZSI6InRoaXMgaXMganVzdCBhbiBleGFtcGxlIGFuZCBub3QgcmVwcmVzZW50YXRpdmUgZm9yIGEgcmVhbCBjdXJzb3IhIn0=", "results": [{"id": "22st2Ji8XpncEYEak8mvQgQF", "remote_id": "1348", "employee_id": "JDdUy9kiH5APaGizFrgNmQjM", "start_date": "2022-08-04T00:00:00Z", "end_date": "2022-08-05T00:00:00Z", "start_half_day": true, "end_half_day": false, "start_time": "13:15:00", "end_time": "17:00:00", "amount": 2, "unit": "DAYS", "status": "APPROVED", "employee_note": "Visiting my family.", "type_id": "xzZoKssDaMZAd62kxayzzQvD", "remote_created_at": "2022-08-07T14:01:29.196Z", "remote_updated_at": "2022-08-07T14:01:29.196Z", "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": "2022-08-07T14:01:29.196Z", "type": {"id": "xzZoKssDaMZAd62kxayzzQvD", "remote_id": "91", "name": "Vacation", "unit": "DAYS", "half_days_supported": true, "exact_times_supported": false, "custom_fields": {}, "changed_at": "2022-08-07T14:01:29.196Z", "remote_deleted_at": null}}]}}
     Error Response:
       parameters:
         query:
@@ -12103,7 +12103,11 @@ generatedTests:
   unlinkSharedEnvVariable: "2025-10-24T00:07:28Z"
   updateStaticIps: "2025-10-24T00:07:28Z"
   getProjectClientCerts: "2025-10-27T19:04:15Z"
-releaseNotes: "## Typescript SDK Changes:\n* `kombo.ats.getAtsNotes()`: **Added**\n* `kombo.ats.createCandidate()`: \n  *  `request.remoteFields` **Changed**\n* `kombo.ats.createApplication()`: \n  *  `request.body.remoteFields` **Changed**\n"
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `kombo.hris.getAbsenceTypes()`:  `response.data.results[].customFields` **Added**
+  * `kombo.hris.getTimeOffBalances()`:  `response.data.results[].type.customFields` **Added**
+  * `kombo.hris.getAbsences()`:  `response.data.results[].type.customFields` **Added**
 generatedFiles:
   - .gitattributes
   - .npmignore
