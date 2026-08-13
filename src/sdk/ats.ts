@@ -13,11 +13,11 @@ import { atsCreateCandidate } from "../funcs/atsCreateCandidate.js";
 import { atsGetApplicationAttachments } from "../funcs/atsGetApplicationAttachments.js";
 import { atsGetApplications } from "../funcs/atsGetApplications.js";
 import { atsGetApplicationStages } from "../funcs/atsGetApplicationStages.js";
-import { atsGetAtsNotes } from "../funcs/atsGetAtsNotes.js";
 import { atsGetCandidateAttachments } from "../funcs/atsGetCandidateAttachments.js";
 import { atsGetCandidates } from "../funcs/atsGetCandidates.js";
 import { atsGetInterviews } from "../funcs/atsGetInterviews.js";
 import { atsGetJobs } from "../funcs/atsGetJobs.js";
+import { atsGetNotes } from "../funcs/atsGetNotes.js";
 import { atsGetOffers } from "../funcs/atsGetOffers.js";
 import { atsGetRejectionReasons } from "../funcs/atsGetRejectionReasons.js";
 import { atsGetRoles } from "../funcs/atsGetRoles.js";
@@ -834,11 +834,11 @@ export class Ats extends ClientSDK {
    *
    * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
    */
-  async getAtsNotes(
+  async getNotes(
     request?: operations.GetAtsNotesRequest | undefined,
     options?: RequestOptions,
   ): Promise<PageIterator<operations.GetAtsNotesResponse, { cursor: string }>> {
-    return unwrapResultIterator(atsGetAtsNotes(
+    return unwrapResultIterator(atsGetNotes(
       this,
       request,
       options,

@@ -167,7 +167,7 @@ const kombo = new Kombo({
 * [getOffers](docs/sdks/ats/README.md#getoffers) - Get offers
 * [getRejectionReasons](docs/sdks/ats/README.md#getrejectionreasons) - Get rejection reasons
 * [getInterviews](docs/sdks/ats/README.md#getinterviews) - Get interviews
-* [getAtsNotes](docs/sdks/ats/README.md#getatsnotes) - Get notes
+* [getNotes](docs/sdks/ats/README.md#getnotes) - Get notes
 * [importTrackedApplication](docs/sdks/ats/README.md#importtrackedapplication) - Import tracked application
 
 ### [Connect](docs/sdks/connect/README.md)
@@ -418,11 +418,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetApplicationAttachments`](docs/sdks/ats/README.md#getapplicationattachments) - Get application attachments
 - [`atsGetApplications`](docs/sdks/ats/README.md#getapplications) - Get applications
 - [`atsGetApplicationStages`](docs/sdks/ats/README.md#getapplicationstages) - Get application stages
-- [`atsGetAtsNotes`](docs/sdks/ats/README.md#getatsnotes) - Get notes
 - [`atsGetCandidateAttachments`](docs/sdks/ats/README.md#getcandidateattachments) - Get candidate attachments
 - [`atsGetCandidates`](docs/sdks/ats/README.md#getcandidates) - Get candidates
 - [`atsGetInterviews`](docs/sdks/ats/README.md#getinterviews) - Get interviews
 - [`atsGetJobs`](docs/sdks/ats/README.md#getjobs) - Get jobs
+- [`atsGetNotes`](docs/sdks/ats/README.md#getnotes) - Get notes
 - [`atsGetOffers`](docs/sdks/ats/README.md#getoffers) - Get offers
 - [`atsGetRejectionReasons`](docs/sdks/ats/README.md#getrejectionreasons) - Get rejection reasons
 - [`atsGetRoles`](docs/sdks/ats/README.md#getroles) - Get roles

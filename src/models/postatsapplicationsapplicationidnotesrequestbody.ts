@@ -110,6 +110,16 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyLever = {
 };
 
 /**
+ * Talent360 specific remote fields for the note.
+ */
+export type PostAtsApplicationsApplicationIdNotesRequestBodyTalent360 = {
+  /**
+   * Talent360 user ID the note is attributed to. Required because every Talent360 communication must be attributed to a user.
+   */
+  user_id: string;
+};
+
+/**
  * Workable specific remote fields for ATS actions.
  */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyWorkable = {
@@ -157,6 +167,12 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields = {
    * Lever specific remote fields for the note.
    */
   lever?: PostAtsApplicationsApplicationIdNotesRequestBodyLever | undefined;
+  /**
+   * Talent360 specific remote fields for the note.
+   */
+  talent360?:
+    | PostAtsApplicationsApplicationIdNotesRequestBodyTalent360
+    | undefined;
   /**
    * Workable specific remote fields for ATS actions.
    */
@@ -387,6 +403,32 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyLeverToJSON(
 }
 
 /** @internal */
+export type PostAtsApplicationsApplicationIdNotesRequestBodyTalent360$Outbound =
+  {
+    user_id: string;
+  };
+
+/** @internal */
+export const PostAtsApplicationsApplicationIdNotesRequestBodyTalent360$outboundSchema:
+  z.ZodType<
+    PostAtsApplicationsApplicationIdNotesRequestBodyTalent360$Outbound,
+    z.ZodTypeDef,
+    PostAtsApplicationsApplicationIdNotesRequestBodyTalent360
+  > = z.object({
+    user_id: z.string(),
+  });
+
+export function postAtsApplicationsApplicationIdNotesRequestBodyTalent360ToJSON(
+  postAtsApplicationsApplicationIdNotesRequestBodyTalent360:
+    PostAtsApplicationsApplicationIdNotesRequestBodyTalent360,
+): string {
+  return JSON.stringify(
+    PostAtsApplicationsApplicationIdNotesRequestBodyTalent360$outboundSchema
+      .parse(postAtsApplicationsApplicationIdNotesRequestBodyTalent360),
+  );
+}
+
+/** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$Outbound =
   {
     on_behalf_of_user_remote_id?: string | undefined;
@@ -433,6 +475,9 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$Outboun
     lever?:
       | PostAtsApplicationsApplicationIdNotesRequestBodyLever$Outbound
       | undefined;
+    talent360?:
+      | PostAtsApplicationsApplicationIdNotesRequestBodyTalent360$Outbound
+      | undefined;
     workable?:
       | PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$Outbound
       | undefined;
@@ -462,6 +507,9 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$outbou
     ).optional(),
     lever: z.lazy(() =>
       PostAtsApplicationsApplicationIdNotesRequestBodyLever$outboundSchema
+    ).optional(),
+    talent360: z.lazy(() =>
+      PostAtsApplicationsApplicationIdNotesRequestBodyTalent360$outboundSchema
     ).optional(),
     workable: z.lazy(() =>
       PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$outboundSchema

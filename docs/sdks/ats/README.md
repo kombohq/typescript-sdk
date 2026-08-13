@@ -27,7 +27,7 @@
 * [getOffers](#getoffers) - Get offers
 * [getRejectionReasons](#getrejectionreasons) - Get rejection reasons
 * [getInterviews](#getinterviews) - Get interviews
-* [getAtsNotes](#getatsnotes) - Get notes
+* [getNotes](#getnotes) - Get notes
 * [importTrackedApplication](#importtrackedapplication) - Import tracked application
 
 ## getApplications
@@ -3884,7 +3884,7 @@ run();
 | errors.KomboAtsError     | default                  | application/json         |
 | errors.KomboDefaultError | 4XX, 5XX                 | \*/\*                    |
 
-## getAtsNotes
+## getNotes
 
 Retrieve all notes.
 
@@ -3902,7 +3902,7 @@ const kombo = new Kombo({
 });
 
 async function run() {
-  const result = await kombo.ats.getAtsNotes({});
+  const result = await kombo.ats.getNotes({});
 
   for await (const page of result) {
     console.log(page);
@@ -3918,7 +3918,7 @@ The standalone function version of this method:
 
 ```typescript
 import { KomboCore } from "@kombo-api/sdk/core.js";
-import { atsGetAtsNotes } from "@kombo-api/sdk/funcs/atsGetAtsNotes.js";
+import { atsGetNotes } from "@kombo-api/sdk/funcs/atsGetNotes.js";
 
 // Use `KomboCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -3928,14 +3928,14 @@ const kombo = new KomboCore({
 });
 
 async function run() {
-  const res = await atsGetAtsNotes(kombo, {});
+  const res = await atsGetNotes(kombo, {});
   if (res.ok) {
     const { value: result } = res;
     for await (const page of result) {
     console.log(page);
   }
   } else {
-    console.log("atsGetAtsNotes failed:", res.error);
+    console.log("atsGetNotes failed:", res.error);
   }
 }
 
