@@ -141,6 +141,7 @@ export const IntegrationTool = {
   Trackerrms: "trackerrms",
   Databites: "databites",
   Pageup: "pageup",
+  Talent360: "talent360",
   Workdaycustomreport: "workdaycustomreport",
   Workdaycustomreportsftp: "workdaycustomreportsftp",
   Ukgprowfm: "ukgprowfm",

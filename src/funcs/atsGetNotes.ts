@@ -40,7 +40,7 @@ import {
  *
  * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
  */
-export function atsGetAtsNotes(
+export function atsGetNotes(
   client: KomboCore,
   request?: operations.GetAtsNotesRequest | undefined,
   options?: RequestOptions,
@@ -236,7 +236,7 @@ async function $do(
     }
 
     const nextVal = () =>
-      atsGetAtsNotes(
+      atsGetNotes(
         client,
         {
           ...request!,

@@ -79,6 +79,16 @@ export type PostAtsCandidatesCandidateIdResultLinksRequestBodyOracle = {
 };
 
 /**
+ * Talent360 specific remote fields for the result link.
+ */
+export type PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360 = {
+  /**
+   * Talent360 user ID the result-link note is attributed to. Required because every Talent360 communication must be attributed to a user.
+   */
+  user_id: string;
+};
+
+/**
  * Headers we will pass with `POST` requests to Greenhouse.
  */
 export type PostAtsCandidatesCandidateIdResultLinksRequestBodyPostHeaders = {
@@ -122,6 +132,12 @@ export type PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields = {
    * Fields specific to Oracle.
    */
   oracle?: PostAtsCandidatesCandidateIdResultLinksRequestBodyOracle | undefined;
+  /**
+   * Talent360 specific remote fields for the result link.
+   */
+  talent360?:
+    | PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360
+    | undefined;
   /**
    * Fields specific to Greenhouse.
    */
@@ -289,6 +305,32 @@ export function postAtsCandidatesCandidateIdResultLinksRequestBodyOracleToJSON(
 }
 
 /** @internal */
+export type PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360$Outbound =
+  {
+    user_id: string;
+  };
+
+/** @internal */
+export const PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360$outboundSchema:
+  z.ZodType<
+    PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360$Outbound,
+    z.ZodTypeDef,
+    PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360
+  > = z.object({
+    user_id: z.string(),
+  });
+
+export function postAtsCandidatesCandidateIdResultLinksRequestBodyTalent360ToJSON(
+  postAtsCandidatesCandidateIdResultLinksRequestBodyTalent360:
+    PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360$outboundSchema
+      .parse(postAtsCandidatesCandidateIdResultLinksRequestBodyTalent360),
+  );
+}
+
+/** @internal */
 export type PostAtsCandidatesCandidateIdResultLinksRequestBodyPostHeaders$Outbound =
   {
     "On-Behalf-Of"?: string | null | undefined;
@@ -383,6 +425,9 @@ export type PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields$Outbo
     oracle?:
       | PostAtsCandidatesCandidateIdResultLinksRequestBodyOracle$Outbound
       | undefined;
+    talent360?:
+      | PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360$Outbound
+      | undefined;
     greenhouse?:
       | PostAtsCandidatesCandidateIdResultLinksRequestBodyGreenhouse$Outbound
       | undefined;
@@ -403,6 +448,9 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields$outb
     ).optional(),
     oracle: z.lazy(() =>
       PostAtsCandidatesCandidateIdResultLinksRequestBodyOracle$outboundSchema
+    ).optional(),
+    talent360: z.lazy(() =>
+      PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360$outboundSchema
     ).optional(),
     greenhouse: z.lazy(() =>
       PostAtsCandidatesCandidateIdResultLinksRequestBodyGreenhouse$outboundSchema

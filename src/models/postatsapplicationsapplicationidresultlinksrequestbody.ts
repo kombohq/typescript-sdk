@@ -79,6 +79,16 @@ export type PostAtsApplicationsApplicationIdResultLinksRequestBodyOracle = {
 };
 
 /**
+ * Talent360 specific remote fields for the result link.
+ */
+export type PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360 = {
+  /**
+   * Talent360 user ID the result-link note is attributed to. Required because every Talent360 communication must be attributed to a user.
+   */
+  user_id: string;
+};
+
+/**
  * Headers we will pass with `POST` requests to Greenhouse.
  */
 export type PostAtsApplicationsApplicationIdResultLinksRequestBodyPostHeaders =
@@ -127,6 +137,12 @@ export type PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields =
      */
     oracle?:
       | PostAtsApplicationsApplicationIdResultLinksRequestBodyOracle
+      | undefined;
+    /**
+     * Talent360 specific remote fields for the result link.
+     */
+    talent360?:
+      | PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360
       | undefined;
     /**
      * Fields specific to Greenhouse.
@@ -296,6 +312,32 @@ export function postAtsApplicationsApplicationIdResultLinksRequestBodyOracleToJS
 }
 
 /** @internal */
+export type PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360$Outbound =
+  {
+    user_id: string;
+  };
+
+/** @internal */
+export const PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360$outboundSchema:
+  z.ZodType<
+    PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360$Outbound,
+    z.ZodTypeDef,
+    PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360
+  > = z.object({
+    user_id: z.string(),
+  });
+
+export function postAtsApplicationsApplicationIdResultLinksRequestBodyTalent360ToJSON(
+  postAtsApplicationsApplicationIdResultLinksRequestBodyTalent360:
+    PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360,
+): string {
+  return JSON.stringify(
+    PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360$outboundSchema
+      .parse(postAtsApplicationsApplicationIdResultLinksRequestBodyTalent360),
+  );
+}
+
+/** @internal */
 export type PostAtsApplicationsApplicationIdResultLinksRequestBodyPostHeaders$Outbound =
   {
     "On-Behalf-Of"?: string | null | undefined;
@@ -390,6 +432,9 @@ export type PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields$O
     oracle?:
       | PostAtsApplicationsApplicationIdResultLinksRequestBodyOracle$Outbound
       | undefined;
+    talent360?:
+      | PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360$Outbound
+      | undefined;
     greenhouse?:
       | PostAtsApplicationsApplicationIdResultLinksRequestBodyGreenhouse$Outbound
       | undefined;
@@ -410,6 +455,9 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields$
     ).optional(),
     oracle: z.lazy(() =>
       PostAtsApplicationsApplicationIdResultLinksRequestBodyOracle$outboundSchema
+    ).optional(),
+    talent360: z.lazy(() =>
+      PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360$outboundSchema
     ).optional(),
     greenhouse: z.lazy(() =>
       PostAtsApplicationsApplicationIdResultLinksRequestBodyGreenhouse$outboundSchema
