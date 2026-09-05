@@ -55,6 +55,7 @@ export class Kombo extends ClientSDK {
     | webhooks.WebhookAssessmentOrderReceivedWebhookPayloadRequest
     | webhooks.WebhookInlineAssessmentOrderReceivedWebhookPayloadRequest
     | webhooks.WebhookIntegrationStateChangedWebhookPayloadRequest
+    | webhooks.WebhookIssueStatusChangedWebhookPayloadRequest
     | webhooks.WebhookSyncFinishedWebhookPayloadRequest
   > {
     return unwrapAsync(validateWebhook(

@@ -25,6 +25,7 @@ export async function validateWebhook(_client: KomboCore, {
     | webhooks.WebhookAssessmentOrderReceivedWebhookPayloadRequest
     | webhooks.WebhookInlineAssessmentOrderReceivedWebhookPayloadRequest
     | webhooks.WebhookIntegrationStateChangedWebhookPayloadRequest
+    | webhooks.WebhookIssueStatusChangedWebhookPayloadRequest
     | webhooks.WebhookSyncFinishedWebhookPayloadRequest,
     SDKValidationError
   >
@@ -39,6 +40,7 @@ export async function validateWebhook(_client: KomboCore, {
     webhooks.webhookAssessmentOrderReceivedWebhookPayloadRequestFromJSON,
     webhooks.webhookInlineAssessmentOrderReceivedWebhookPayloadRequestFromJSON,
     webhooks.webhookIntegrationStateChangedWebhookPayloadRequestFromJSON,
+    webhooks.webhookIssueStatusChangedWebhookPayloadRequestFromJSON,
     webhooks.webhookSyncFinishedWebhookPayloadRequestFromJSON,
   ];
 
