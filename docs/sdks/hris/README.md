@@ -22,6 +22,8 @@
 * [getPerformanceReviewCycles](#getperformancereviewcycles) - Get performance review cycles
 * [getPerformanceReviews](#getperformancereviews) - Get performance reviews
 * [getStaffingEntities](#getstaffingentities) - Get staffing entities
+* [getHrisPayRuns](#gethrispayruns) - Pay Runs
+* [getHrisPayslips](#gethrispayslips) - Payslips
 
 ## getEmployees
 
@@ -2098,6 +2100,166 @@ run();
 ### Response
 
 **Promise\<[operations.GetHrisStaffingEntitiesResponse](../../models/operations/gethrisstaffingentitiesresponse.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.KomboHrisError    | default                  | application/json         |
+| errors.KomboDefaultError | 4XX, 5XX                 | \*/\*                    |
+
+## getHrisPayRuns
+
+Retrieve all pay runs for all legal entities, across all time.
+
+A pay run represents one payroll cycle for a legal entity, covering a single pay period and grouping the payslips paid out through it. Use this endpoint to reconcile payroll periods and read the totals paid out across each run. Filter by `legal_entity_ids` to scope the results to specific legal entities.
+
+Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="GetHrisPayRuns" method="get" path="/hris/pay-runs" example="example1" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.getHrisPayRuns({});
+
+  for await (const page of result) {
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisGetHrisPayRuns } from "@kombo-api/sdk/funcs/hrisGetHrisPayRuns.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisGetHrisPayRuns(kombo, {});
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
+    console.log(page);
+  }
+  } else {
+    console.log("hrisGetHrisPayRuns failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetHrisPayRunsRequest](../../models/operations/gethrispayrunsrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.GetHrisPayRunsResponse](../../models/operations/gethrispayrunsresponse.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.KomboHrisError    | default                  | application/json         |
+| errors.KomboDefaultError | 4XX, 5XX                 | \*/\*                    |
+
+## getHrisPayslips
+
+Retrieve all payslips for all employees, across all time.
+
+A payslip is the individual pay statement an employee receives for one pay run, detailing what they were paid. Each payslip embeds the `employee` it belongs to and the `pay_run` it was paid out through, its `totals`, and the `line_items` that make it up (earnings, deductions, and contributions). Filter by `employee_ids`, `payrun_ids`, or `legal_entity_ids` to narrow the results.
+
+Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="GetHrisPayslips" method="get" path="/hris/payslips" example="example1" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.getHrisPayslips({});
+
+  for await (const page of result) {
+    console.log(page);
+  }
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisGetHrisPayslips } from "@kombo-api/sdk/funcs/hrisGetHrisPayslips.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisGetHrisPayslips(kombo, {});
+  if (res.ok) {
+    const { value: result } = res;
+    for await (const page of result) {
+    console.log(page);
+  }
+  } else {
+    console.log("hrisGetHrisPayslips failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetHrisPayslipsRequest](../../models/operations/gethrispayslipsrequest.md)                                                                                         | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.GetHrisPayslipsResponse](../../models/operations/gethrispayslipsresponse.md)\>**
 
 ### Errors
 

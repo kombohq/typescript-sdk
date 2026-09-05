@@ -168,6 +168,7 @@ const kombo = new Kombo({
 * [getRejectionReasons](docs/sdks/ats/README.md#getrejectionreasons) - Get rejection reasons
 * [getInterviews](docs/sdks/ats/README.md#getinterviews) - Get interviews
 * [getNotes](docs/sdks/ats/README.md#getnotes) - Get notes
+* [getAtsScorecards](docs/sdks/ats/README.md#getatsscorecards) - Get scorecards
 * [importTrackedApplication](docs/sdks/ats/README.md#importtrackedapplication) - Import tracked application
 
 ### [Connect](docs/sdks/connect/README.md)
@@ -211,6 +212,8 @@ const kombo = new Kombo({
 * [getPerformanceReviewCycles](docs/sdks/hris/README.md#getperformancereviewcycles) - Get performance review cycles
 * [getPerformanceReviews](docs/sdks/hris/README.md#getperformancereviews) - Get performance reviews
 * [getStaffingEntities](docs/sdks/hris/README.md#getstaffingentities) - Get staffing entities
+* [getHrisPayRuns](docs/sdks/hris/README.md#gethrispayruns) - Pay Runs
+* [getHrisPayslips](docs/sdks/hris/README.md#gethrispayslips) - Payslips
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -315,9 +318,9 @@ run();
 
 
 **Inherit from [`KomboError`](./src/models/errors/komboerror.ts)**:
-* [`KomboAtsError`](./src/models/errors/komboatserror.ts): The standard error response with the error codes for the ATS use case. Applicable to 29 of 62 methods.*
-* [`KomboHrisError`](./src/models/errors/kombohriserror.ts): The standard error response with the error codes for the HRIS use case. Applicable to 18 of 62 methods.*
-* [`KomboGeneralError`](./src/models/errors/kombogeneralerror.ts): The standard error response with just the platform error codes. Applicable to 15 of 62 methods.*
+* [`KomboAtsError`](./src/models/errors/komboatserror.ts): The standard error response with the error codes for the ATS use case. Applicable to 30 of 65 methods.*
+* [`KomboHrisError`](./src/models/errors/kombohriserror.ts): The standard error response with the error codes for the HRIS use case. Applicable to 20 of 65 methods.*
+* [`KomboGeneralError`](./src/models/errors/kombogeneralerror.ts): The standard error response with just the platform error codes. Applicable to 15 of 65 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -418,6 +421,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetApplicationAttachments`](docs/sdks/ats/README.md#getapplicationattachments) - Get application attachments
 - [`atsGetApplications`](docs/sdks/ats/README.md#getapplications) - Get applications
 - [`atsGetApplicationStages`](docs/sdks/ats/README.md#getapplicationstages) - Get application stages
+- [`atsGetAtsScorecards`](docs/sdks/ats/README.md#getatsscorecards) - Get scorecards
 - [`atsGetCandidateAttachments`](docs/sdks/ats/README.md#getcandidateattachments) - Get candidate attachments
 - [`atsGetCandidates`](docs/sdks/ats/README.md#getcandidates) - Get candidates
 - [`atsGetInterviews`](docs/sdks/ats/README.md#getinterviews) - Get interviews
@@ -458,6 +462,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetEmployees`](docs/sdks/hris/README.md#getemployees) - Get employees
 - [`hrisGetEmployments`](docs/sdks/hris/README.md#getemployments) - Get employments
 - [`hrisGetGroups`](docs/sdks/hris/README.md#getgroups) - Get groups
+- [`hrisGetHrisPayRuns`](docs/sdks/hris/README.md#gethrispayruns) - Pay Runs
+- [`hrisGetHrisPayslips`](docs/sdks/hris/README.md#gethrispayslips) - Payslips
 - [`hrisGetLegalEntities`](docs/sdks/hris/README.md#getlegalentities) - Get legal entities
 - [`hrisGetLocations`](docs/sdks/hris/README.md#getlocations) - Get work locations
 - [`hrisGetPerformanceReviewCycles`](docs/sdks/hris/README.md#getperformancereviewcycles) - Get performance review cycles

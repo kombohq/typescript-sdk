@@ -1,0 +1,21 @@
+# GetHrisPayslipsPositiveResponseNetPay
+
+The total net pay for the payslip, after taxes have been applied to the gross pay.
+
+## Example Usage
+
+```typescript
+import { GetHrisPayslipsPositiveResponseNetPay } from "@kombo-api/sdk/models";
+
+let value: GetHrisPayslipsPositiveResponseNetPay = {
+  currency: "Norwegian Krone",
+  value: 8194.1,
+};
+```
+
+## Fields
+
+| Field                                                                                                       | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `currency`                                                                                                  | *string*                                                                                                    | :heavy_check_mark:                                                                                          | The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in. |
+| `value`                                                                                                     | *number*                                                                                                    | :heavy_check_mark:                                                                                          | The monetary value.                                                                                         |

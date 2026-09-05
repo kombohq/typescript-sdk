@@ -13,6 +13,7 @@ import { atsCreateCandidate } from "../funcs/atsCreateCandidate.js";
 import { atsGetApplicationAttachments } from "../funcs/atsGetApplicationAttachments.js";
 import { atsGetApplications } from "../funcs/atsGetApplications.js";
 import { atsGetApplicationStages } from "../funcs/atsGetApplicationStages.js";
+import { atsGetAtsScorecards } from "../funcs/atsGetAtsScorecards.js";
 import { atsGetCandidateAttachments } from "../funcs/atsGetCandidateAttachments.js";
 import { atsGetCandidates } from "../funcs/atsGetCandidates.js";
 import { atsGetInterviews } from "../funcs/atsGetInterviews.js";
@@ -839,6 +840,27 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<PageIterator<operations.GetAtsNotesResponse, { cursor: string }>> {
     return unwrapResultIterator(atsGetNotes(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get scorecards
+   *
+   * @remarks
+   * Retrieve all scorecards.
+   *
+   * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+   */
+  async getAtsScorecards(
+    request?: operations.GetAtsScorecardsRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.GetAtsScorecardsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsGetAtsScorecards(
       this,
       request,
       options,

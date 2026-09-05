@@ -59,6 +59,10 @@ export const Name = {
   HrisSkillRatingProviders: "hris_skill_rating_providers",
   HrisEmployeeSkillProficiencyRatings:
     "hris_employee_skill_proficiency_ratings",
+  HrisPayRuns: "hris_pay_runs",
+  HrisPayslips: "hris_payslips",
+  HrisSalaryTypes: "hris_salary_types",
+  HrisPayslipLineItems: "hris_payslip_line_items",
   AtsUsers: "ats_users",
   AtsJobs: "ats_jobs",
   AtsJobPostings: "ats_job_postings",
@@ -72,6 +76,7 @@ export const Name = {
   AtsRejectionReasons: "ats_rejection_reasons",
   AtsRoles: "ats_roles",
   AtsNotes: "ats_notes",
+  AtsScorecards: "ats_scorecards",
   LmsUsers: "lms_users",
   LmsCourseProviders: "lms_course_providers",
   LmsSkills: "lms_skills",

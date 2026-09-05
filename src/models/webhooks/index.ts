@@ -9,4 +9,5 @@ export * from "./webhookinlineassessmentorderreceivedwebhookpayload.js";
 export * from "./webhookintegrationcreatedwebhookpayload.js";
 export * from "./webhookintegrationdeletedwebhookpayload.js";
 export * from "./webhookintegrationstatechangedwebhookpayload.js";
+export * from "./webhookissuestatuschangedwebhookpayload.js";
 export * from "./webhooksyncfinishedwebhookpayload.js";
