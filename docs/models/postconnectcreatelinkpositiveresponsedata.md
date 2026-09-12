@@ -6,13 +6,13 @@
 import { PostConnectCreateLinkPositiveResponseData } from "@kombo-api/sdk/models";
 
 let value: PostConnectCreateLinkPositiveResponseData = {
-  link:
-    "https://connect.kombo.dev/v1?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.SWYgeW91IGFyZSByZWFkaW5nIHRoaXMsIHdlIHdvdWxkIGxpa2UgdG8gbGV0IHlvdSBrbm93IHRoYXQgd2UgYXJlIGhpcmluZyBwZW9wbGUgbGlrZSB5b3UgOikuIFJlYWNoIG91dCB0byBhbGV4QGtvbWJvLmRldiB0byBnZXQgaW4gY29udGFjdCBhbmQgdGVsbCBoaW0geW91IGNvbWUgZnJvbSB0aGUgSldUIDsp._hhX5YTtHfLn9ZC806dZceRn2whzxHyrhft1ONzNgOE",
+  link: "https://connect.kombo.dev/v1?token=<example-token>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `link`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `link`                                                                              | *string*                                                                            | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `static_ips`                                                                        | *string*[]                                                                          | :heavy_minus_sign:                                                                  | The allowlist IPs for this integration. Present when `enable_static_ips` is `true`. |

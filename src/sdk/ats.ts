@@ -13,6 +13,8 @@ import { atsCreateCandidate } from "../funcs/atsCreateCandidate.js";
 import { atsGetApplicationAttachments } from "../funcs/atsGetApplicationAttachments.js";
 import { atsGetApplications } from "../funcs/atsGetApplications.js";
 import { atsGetApplicationStages } from "../funcs/atsGetApplicationStages.js";
+import { atsGetAtsAttachments } from "../funcs/atsGetAtsAttachments.js";
+import { atsGetAtsScorecards } from "../funcs/atsGetAtsScorecards.js";
 import { atsGetCandidateAttachments } from "../funcs/atsGetCandidateAttachments.js";
 import { atsGetCandidates } from "../funcs/atsGetCandidates.js";
 import { atsGetInterviews } from "../funcs/atsGetInterviews.js";
@@ -839,6 +841,52 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<PageIterator<operations.GetAtsNotesResponse, { cursor: string }>> {
     return unwrapResultIterator(atsGetNotes(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get scorecards
+   *
+   * @remarks
+   * Retrieve all scorecards.
+   *
+   * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+   */
+  async getAtsScorecards(
+    request?: operations.GetAtsScorecardsRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.GetAtsScorecardsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsGetAtsScorecards(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get attachments
+   *
+   * @remarks
+   * Retrieve all attachments.
+   *
+   * These attachments are already synced, so this endpoint never calls the ATS and the files sit in the destination you configured.
+   *
+   * The on-demand alternatives call the ATS and return a `data_url` we host: [get candidate attachments](/ats/v1/get-candidates-candidate-id-attachments) for every file of one candidate, [get application attachments](/ats/v1/get-applications-application-id-attachments) for the files of one application.
+   *
+   * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+   */
+  async getAtsAttachments(
+    request?: operations.GetAtsAttachmentsRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.GetAtsAttachmentsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(atsGetAtsAttachments(
       this,
       request,
       options,
