@@ -1,11 +1,11 @@
-# Option2
+# GetAtsJobsPositiveResponseOption2
 
 ## Example Usage
 
 ```typescript
-import { Option2 } from "@kombo-api/sdk/models";
+import { GetAtsJobsPositiveResponseOption2 } from "@kombo-api/sdk/models";
 
-let value: Option2 = {
+let value: GetAtsJobsPositiveResponseOption2 = {
   id: "<id>",
   name: "<value>",
 };

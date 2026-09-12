@@ -1,11 +1,11 @@
-# Author
+# GetAtsScorecardsPositiveResponseAuthor
 
 ## Example Usage
 
 ```typescript
-import { Author } from "@kombo-api/sdk/models";
+import { GetAtsScorecardsPositiveResponseAuthor } from "@kombo-api/sdk/models";
 
-let value: Author = {
+let value: GetAtsScorecardsPositiveResponseAuthor = {
   id: "26vafvWSRmbhNcxJYqjCzuJg",
   remote_id: "32",
   first_name: "John",

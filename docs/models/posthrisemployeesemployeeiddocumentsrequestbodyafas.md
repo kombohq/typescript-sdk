@@ -1,13 +1,13 @@
-# Afas
+# PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas
 
 Fields specific to AFAS.
 
 ## Example Usage
 
 ```typescript
-import { Afas } from "@kombo-api/sdk/models";
+import { PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas } from "@kombo-api/sdk/models";
 
-let value: Afas = {};
+let value: PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas = {};
 ```
 
 ## Fields

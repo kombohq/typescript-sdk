@@ -13,6 +13,8 @@ import { hrisGetEmployeeForm } from "../funcs/hrisGetEmployeeForm.js";
 import { hrisGetEmployees } from "../funcs/hrisGetEmployees.js";
 import { hrisGetEmployments } from "../funcs/hrisGetEmployments.js";
 import { hrisGetGroups } from "../funcs/hrisGetGroups.js";
+import { hrisGetHrisPayRuns } from "../funcs/hrisGetHrisPayRuns.js";
+import { hrisGetHrisPayslips } from "../funcs/hrisGetHrisPayslips.js";
 import { hrisGetLegalEntities } from "../funcs/hrisGetLegalEntities.js";
 import { hrisGetLocations } from "../funcs/hrisGetLocations.js";
 import { hrisGetPerformanceReviewCycles } from "../funcs/hrisGetPerformanceReviewCycles.js";
@@ -567,6 +569,52 @@ export class Hris extends ClientSDK {
     PageIterator<operations.GetHrisStaffingEntitiesResponse, { cursor: string }>
   > {
     return unwrapResultIterator(hrisGetStaffingEntities(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Pay Runs
+   *
+   * @remarks
+   * Retrieve all pay runs for all legal entities, across all time.
+   *
+   * A pay run represents one payroll cycle for a legal entity, covering a single pay period and grouping the payslips paid out through it. Use this endpoint to reconcile payroll periods and read the totals paid out across each run. Filter by `legal_entity_ids` to scope the results to specific legal entities.
+   *
+   * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+   */
+  async getHrisPayRuns(
+    request?: operations.GetHrisPayRunsRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.GetHrisPayRunsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisGetHrisPayRuns(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Payslips
+   *
+   * @remarks
+   * Retrieve all payslips for all employees, across all time.
+   *
+   * A payslip is the individual pay statement an employee receives for one pay run, detailing what they were paid. Each payslip embeds the `employee` it belongs to and the `pay_run` it was paid out through, its `totals`, and the `line_items` that make it up (earnings, deductions, and contributions). Filter by `employee_ids`, `payrun_ids`, or `legal_entity_ids` to narrow the results.
+   *
+   * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
+   */
+  async getHrisPayslips(
+    request?: operations.GetHrisPayslipsRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<
+    PageIterator<operations.GetHrisPayslipsResponse, { cursor: string }>
+  > {
+    return unwrapResultIterator(hrisGetHrisPayslips(
       this,
       request,
       options,

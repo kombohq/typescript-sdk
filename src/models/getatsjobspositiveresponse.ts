@@ -137,7 +137,7 @@ export type FormatInformation = {
   type: "INFORMATION";
 };
 
-export type Option2 = {
+export type GetAtsJobsPositiveResponseOption2 = {
   /**
    * The Kombo ID of this question option. Use this ID to specify the answer to this question.
    */
@@ -153,7 +153,7 @@ export type Option2 = {
 };
 
 export type FormatMultiSelect = {
-  options: Array<Option2>;
+  options: Array<GetAtsJobsPositiveResponseOption2>;
   type: "MULTI_SELECT";
 };
 
@@ -171,7 +171,7 @@ export const DisplayType3 = {
 } as const;
 export type DisplayType3 = ClosedEnum<typeof DisplayType3>;
 
-export type Option1 = {
+export type GetAtsJobsPositiveResponseOption1 = {
   /**
    * The Kombo ID of this question option. Use this ID to specify the answer to this question.
    */
@@ -188,7 +188,7 @@ export type Option1 = {
 
 export type FormatSingleSelect = {
   display_type?: DisplayType3 | null | undefined;
-  options: Array<Option1>;
+  options: Array<GetAtsJobsPositiveResponseOption1>;
   type: "SINGLE_SELECT";
 };
 
@@ -751,20 +751,23 @@ export function formatInformationFromJSON(
 }
 
 /** @internal */
-export const Option2$inboundSchema: z.ZodType<Option2, z.ZodTypeDef, unknown> =
-  z.object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()).optional(),
-    name: z.string(),
-  });
+export const GetAtsJobsPositiveResponseOption2$inboundSchema: z.ZodType<
+  GetAtsJobsPositiveResponseOption2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  remote_id: z.nullable(z.string()).optional(),
+  name: z.string(),
+});
 
-export function option2FromJSON(
+export function getAtsJobsPositiveResponseOption2FromJSON(
   jsonString: string,
-): SafeParseResult<Option2, SDKValidationError> {
+): SafeParseResult<GetAtsJobsPositiveResponseOption2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Option2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Option2' from JSON`,
+    (x) => GetAtsJobsPositiveResponseOption2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAtsJobsPositiveResponseOption2' from JSON`,
   );
 }
 
@@ -774,7 +777,9 @@ export const FormatMultiSelect$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  options: z.array(z.lazy(() => Option2$inboundSchema)),
+  options: z.array(
+    z.lazy(() => GetAtsJobsPositiveResponseOption2$inboundSchema),
+  ),
   type: z.literal("MULTI_SELECT"),
 });
 
@@ -831,20 +836,23 @@ export const DisplayType3$inboundSchema: z.ZodNativeEnum<typeof DisplayType3> =
   z.nativeEnum(DisplayType3);
 
 /** @internal */
-export const Option1$inboundSchema: z.ZodType<Option1, z.ZodTypeDef, unknown> =
-  z.object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()).optional(),
-    name: z.string(),
-  });
+export const GetAtsJobsPositiveResponseOption1$inboundSchema: z.ZodType<
+  GetAtsJobsPositiveResponseOption1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.string(),
+  remote_id: z.nullable(z.string()).optional(),
+  name: z.string(),
+});
 
-export function option1FromJSON(
+export function getAtsJobsPositiveResponseOption1FromJSON(
   jsonString: string,
-): SafeParseResult<Option1, SDKValidationError> {
+): SafeParseResult<GetAtsJobsPositiveResponseOption1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Option1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Option1' from JSON`,
+    (x) => GetAtsJobsPositiveResponseOption1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAtsJobsPositiveResponseOption1' from JSON`,
   );
 }
 
@@ -855,7 +863,9 @@ export const FormatSingleSelect$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   display_type: z.nullable(DisplayType3$inboundSchema).optional(),
-  options: z.array(z.lazy(() => Option1$inboundSchema)),
+  options: z.array(
+    z.lazy(() => GetAtsJobsPositiveResponseOption1$inboundSchema),
+  ),
   type: z.literal("SINGLE_SELECT"),
 });
 
