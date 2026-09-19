@@ -858,6 +858,16 @@ export type PostAtsJobsJobIdApplicationsRequestBodyCovetorest = {
 };
 
 /**
+ * Fields specific to AFAS.
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyAfas = {
+  /**
+   * Additional fields passed through to AFAS `HrCreateApplicant.Element.Fields`.
+   */
+  fields?: { [k: string]: any } | undefined;
+};
+
+/**
  * Additional fields that we will pass through to specific ATS systems.
  */
 export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
@@ -960,6 +970,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
    * Fields specific to Coveto REST.
    */
   covetorest?: PostAtsJobsJobIdApplicationsRequestBodyCovetorest | undefined;
+  /**
+   * Fields specific to AFAS.
+   */
+  afas?: PostAtsJobsJobIdApplicationsRequestBodyAfas | undefined;
 };
 
 /**
@@ -3410,6 +3424,36 @@ export function postAtsJobsJobIdApplicationsRequestBodyCovetorestToJSON(
 }
 
 /** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyAfas$Outbound = {
+  Fields?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyAfas$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyAfas$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyAfas
+  > = z.object({
+    fields: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      fields: "Fields",
+    });
+  });
+
+export function postAtsJobsJobIdApplicationsRequestBodyAfasToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyAfas:
+    PostAtsJobsJobIdApplicationsRequestBodyAfas,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyAfas$outboundSchema.parse(
+      postAtsJobsJobIdApplicationsRequestBodyAfas,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
   successfactors?:
     | PostAtsJobsJobIdApplicationsRequestBodySuccessfactors$Outbound
@@ -3465,6 +3509,7 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
   covetorest?:
     | PostAtsJobsJobIdApplicationsRequestBodyCovetorest$Outbound
     | undefined;
+  afas?: PostAtsJobsJobIdApplicationsRequestBodyAfas$Outbound | undefined;
 };
 
 /** @internal */
@@ -3545,6 +3590,9 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$outboundSchema:
     ).optional(),
     covetorest: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyCovetorest$outboundSchema
+    ).optional(),
+    afas: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyAfas$outboundSchema
     ).optional(),
   });
 

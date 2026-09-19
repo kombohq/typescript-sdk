@@ -13,7 +13,7 @@ let value: FormatMultiSelect = {
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `options`                                | [models.Option2](../models/option2.md)[] | :heavy_check_mark:                       | N/A                                      |
-| `type`                                   | *"MULTI_SELECT"*                         | :heavy_check_mark:                       | N/A                                      |
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `options`                                                                                    | [models.GetAtsJobsPositiveResponseOption2](../models/getatsjobspositiveresponseoption2.md)[] | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `type`                                                                                       | *"MULTI_SELECT"*                                                                             | :heavy_check_mark:                                                                           | N/A                                                                                          |

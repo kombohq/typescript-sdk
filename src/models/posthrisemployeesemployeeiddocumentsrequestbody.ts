@@ -43,7 +43,7 @@ export type Document = {
 /**
  * Fields specific to AFAS.
  */
-export type Afas = {
+export type PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas = {
   /**
    * Additional fields that we will pass through to the AFAS `KnSubject` `Fields` object. These are merged on top of the default fields (`StId`, `Ds`, and `FvF1`).
    */
@@ -57,7 +57,7 @@ export type PostHrisEmployeesEmployeeIdDocumentsRequestBodyRemoteFields = {
   /**
    * Fields specific to AFAS.
    */
-  afas?: Afas | undefined;
+  afas?: PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas | undefined;
 };
 
 export type PostHrisEmployeesEmployeeIdDocumentsRequestBody = {
@@ -96,13 +96,17 @@ export function documentToJSON(document: Document): string {
 }
 
 /** @internal */
-export type Afas$Outbound = {
+export type PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas$Outbound = {
   Fields?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
-export const Afas$outboundSchema: z.ZodType<Afas$Outbound, z.ZodTypeDef, Afas> =
-  z.object({
+export const PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas$outboundSchema:
+  z.ZodType<
+    PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas$Outbound,
+    z.ZodTypeDef,
+    PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas
+  > = z.object({
     fields: z.record(z.any()).optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -110,14 +114,23 @@ export const Afas$outboundSchema: z.ZodType<Afas$Outbound, z.ZodTypeDef, Afas> =
     });
   });
 
-export function afasToJSON(afas: Afas): string {
-  return JSON.stringify(Afas$outboundSchema.parse(afas));
+export function postHrisEmployeesEmployeeIdDocumentsRequestBodyAfasToJSON(
+  postHrisEmployeesEmployeeIdDocumentsRequestBodyAfas:
+    PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas,
+): string {
+  return JSON.stringify(
+    PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas$outboundSchema.parse(
+      postHrisEmployeesEmployeeIdDocumentsRequestBodyAfas,
+    ),
+  );
 }
 
 /** @internal */
 export type PostHrisEmployeesEmployeeIdDocumentsRequestBodyRemoteFields$Outbound =
   {
-    afas?: Afas$Outbound | undefined;
+    afas?:
+      | PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas$Outbound
+      | undefined;
   };
 
 /** @internal */
@@ -127,7 +140,9 @@ export const PostHrisEmployeesEmployeeIdDocumentsRequestBodyRemoteFields$outboun
     z.ZodTypeDef,
     PostHrisEmployeesEmployeeIdDocumentsRequestBodyRemoteFields
   > = z.object({
-    afas: z.lazy(() => Afas$outboundSchema).optional(),
+    afas: z.lazy(() =>
+      PostHrisEmployeesEmployeeIdDocumentsRequestBodyAfas$outboundSchema
+    ).optional(),
   });
 
 export function postHrisEmployeesEmployeeIdDocumentsRequestBodyRemoteFieldsToJSON(

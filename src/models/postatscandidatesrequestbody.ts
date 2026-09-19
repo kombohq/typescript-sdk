@@ -932,6 +932,16 @@ export type PostAtsCandidatesRequestBodyCovetorest = {
 };
 
 /**
+ * Fields specific to AFAS.
+ */
+export type PostAtsCandidatesRequestBodyAfas = {
+  /**
+   * Additional fields passed through to AFAS `HrCreateApplicant.Element.Fields`.
+   */
+  fields?: { [k: string]: any } | undefined;
+};
+
+/**
  * Additional fields that we will pass through to specific ATS systems.
  */
 export type PostAtsCandidatesRequestBodyRemoteFields = {
@@ -1028,6 +1038,10 @@ export type PostAtsCandidatesRequestBodyRemoteFields = {
    * Fields specific to Coveto REST.
    */
   covetorest?: PostAtsCandidatesRequestBodyCovetorest | undefined;
+  /**
+   * Fields specific to AFAS.
+   */
+  afas?: PostAtsCandidatesRequestBodyAfas | undefined;
 };
 
 export type PostAtsCandidatesRequestBody = {
@@ -3396,6 +3410,34 @@ export function postAtsCandidatesRequestBodyCovetorestToJSON(
 }
 
 /** @internal */
+export type PostAtsCandidatesRequestBodyAfas$Outbound = {
+  Fields?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyAfas$outboundSchema: z.ZodType<
+  PostAtsCandidatesRequestBodyAfas$Outbound,
+  z.ZodTypeDef,
+  PostAtsCandidatesRequestBodyAfas
+> = z.object({
+  fields: z.record(z.any()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    fields: "Fields",
+  });
+});
+
+export function postAtsCandidatesRequestBodyAfasToJSON(
+  postAtsCandidatesRequestBodyAfas: PostAtsCandidatesRequestBodyAfas,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyAfas$outboundSchema.parse(
+      postAtsCandidatesRequestBodyAfas,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsCandidatesRequestBodyRemoteFields$Outbound = {
   successfactors?:
     | PostAtsCandidatesRequestBodySuccessfactors$Outbound
@@ -3425,6 +3467,7 @@ export type PostAtsCandidatesRequestBodyRemoteFields$Outbound = {
   piloga?: PostAtsCandidatesRequestBodyPiloga$Outbound | undefined;
   pinpoint?: PostAtsCandidatesRequestBodyPinpoint$Outbound | undefined;
   covetorest?: PostAtsCandidatesRequestBodyCovetorest$Outbound | undefined;
+  afas?: PostAtsCandidatesRequestBodyAfas$Outbound | undefined;
 };
 
 /** @internal */
@@ -3490,6 +3533,8 @@ export const PostAtsCandidatesRequestBodyRemoteFields$outboundSchema: z.ZodType<
   covetorest: z.lazy(() =>
     PostAtsCandidatesRequestBodyCovetorest$outboundSchema
   ).optional(),
+  afas: z.lazy(() => PostAtsCandidatesRequestBodyAfas$outboundSchema)
+    .optional(),
 });
 
 export function postAtsCandidatesRequestBodyRemoteFieldsToJSON(
