@@ -1,0 +1,17 @@
+# PostAtsCandidatesRequestBodyRecruitcrm
+
+Fields specific to Recruit CRM.
+
+## Example Usage
+
+```typescript
+import { PostAtsCandidatesRequestBodyRecruitcrm } from "@kombo-api/sdk/models";
+
+let value: PostAtsCandidatesRequestBodyRecruitcrm = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                                                 | Type                                                                                                                                                                                                                                  | Required                                                                                                                                                                                                                              | Description                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `custom_fields`                                                                                                                                                                                                                       | [models.PostAtsCandidatesRequestBodyCustomField](../models/postatscandidatesrequestbodycustomfield.md)[]                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                    | Candidate custom fields passed through to Recruit CRM's `custom_fields` array. A child field also needs its parent field in this array. See https://docs.recruitcrm.io/docs/rcrm-api-reference/ba451e2a3bd63-creates-a-new-candidate. |

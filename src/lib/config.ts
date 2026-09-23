@@ -16,11 +16,16 @@ export const ServerEu = "eu";
  */
 export const ServerUs = "us";
 /**
+ * Kombo CA Region
+ */
+export const ServerCa = "ca";
+/**
  * Contains the list of servers available to the SDK
  */
 export const ServerList = {
   [ServerEu]: "https://api.kombo.dev/v1",
   [ServerUs]: "https://api.us.kombo.dev/v1",
+  [ServerCa]: "https://api.ca.kombo.dev/v1",
 } as const;
 
 export type SDKOptions = {
@@ -69,7 +74,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "1.0.0",
-  sdkVersion: "1.3.7",
-  genVersion: "2.928.0",
-  userAgent: "speakeasy-sdk/typescript 1.3.7 2.928.0 1.0.0 @kombo-api/sdk",
+  sdkVersion: "1.3.8",
+  genVersion: "2.938.0",
+  userAgent: "speakeasy-sdk/typescript 1.3.8 2.938.0 1.0.0 @kombo-api/sdk",
 } as const;
