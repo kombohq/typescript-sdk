@@ -46,7 +46,8 @@ import { Result } from "../types/fp.js";
  *   "integration_tool": "personio",
  *   "end_user_origin_id": "123",
  *   "language": "en",
- *   "link_type": "EMBEDDED"
+ *   "link_type": "EMBEDDED",
+ *   "enable_static_ips": true
  * }
  * ```
  */

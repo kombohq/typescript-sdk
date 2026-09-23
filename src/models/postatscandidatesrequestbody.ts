@@ -818,6 +818,10 @@ export type PostAtsCandidatesRequestBodyWorkflow = {
  * Fields specific to Avature.
  */
 export type PostAtsCandidatesRequestBodyAvature = {
+  /**
+   * Fields that we will pass through to Avature's create person form (`POST /people`). Available fields depend on your Avature instance's People write configuration.
+   */
+  candidate?: { [k: string]: any } | undefined;
   workflow?: PostAtsCandidatesRequestBodyWorkflow | undefined;
 };
 
@@ -932,6 +936,49 @@ export type PostAtsCandidatesRequestBodyCovetorest = {
 };
 
 /**
+ * Fields specific to AFAS.
+ */
+export type PostAtsCandidatesRequestBodyAfas = {
+  /**
+   * Additional fields passed through to AFAS `HrCreateApplicant.Element.Fields`.
+   */
+  fields?: { [k: string]: any } | undefined;
+};
+
+export type PostAtsCandidatesRequestBodyCustomField = {
+  /**
+   * ID of the Recruit CRM candidate custom field (`GET /v1/custom-fields/candidates`).
+   */
+  field_id: number;
+  /**
+   * Value to write. Dropdown and multiselect values must match a configured option. File fields take a direct download URL.
+   */
+  value: string;
+  /**
+   * Entity the custom field belongs to, usually `candidate`.
+   */
+  entity_type?: string | undefined;
+  /**
+   * Custom field name.
+   */
+  field_name?: string | undefined;
+  /**
+   * Custom field type, for example `text`.
+   */
+  field_type?: string | undefined;
+};
+
+/**
+ * Fields specific to Recruit CRM.
+ */
+export type PostAtsCandidatesRequestBodyRecruitcrm = {
+  /**
+   * Candidate custom fields passed through to Recruit CRM's `custom_fields` array. A child field also needs its parent field in this array. See https://docs.recruitcrm.io/docs/rcrm-api-reference/ba451e2a3bd63-creates-a-new-candidate.
+   */
+  custom_fields?: Array<PostAtsCandidatesRequestBodyCustomField> | undefined;
+};
+
+/**
  * Additional fields that we will pass through to specific ATS systems.
  */
 export type PostAtsCandidatesRequestBodyRemoteFields = {
@@ -1028,6 +1075,14 @@ export type PostAtsCandidatesRequestBodyRemoteFields = {
    * Fields specific to Coveto REST.
    */
   covetorest?: PostAtsCandidatesRequestBodyCovetorest | undefined;
+  /**
+   * Fields specific to AFAS.
+   */
+  afas?: PostAtsCandidatesRequestBodyAfas | undefined;
+  /**
+   * Fields specific to Recruit CRM.
+   */
+  recruitcrm?: PostAtsCandidatesRequestBodyRecruitcrm | undefined;
 };
 
 export type PostAtsCandidatesRequestBody = {
@@ -3128,6 +3183,7 @@ export function postAtsCandidatesRequestBodyWorkflowToJSON(
 
 /** @internal */
 export type PostAtsCandidatesRequestBodyAvature$Outbound = {
+  candidate?: { [k: string]: any } | undefined;
   workflow?: PostAtsCandidatesRequestBodyWorkflow$Outbound | undefined;
 };
 
@@ -3137,6 +3193,7 @@ export const PostAtsCandidatesRequestBodyAvature$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyAvature
 > = z.object({
+  candidate: z.record(z.any()).optional(),
   workflow: z.lazy(() => PostAtsCandidatesRequestBodyWorkflow$outboundSchema)
     .optional(),
 });
@@ -3396,6 +3453,96 @@ export function postAtsCandidatesRequestBodyCovetorestToJSON(
 }
 
 /** @internal */
+export type PostAtsCandidatesRequestBodyAfas$Outbound = {
+  Fields?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyAfas$outboundSchema: z.ZodType<
+  PostAtsCandidatesRequestBodyAfas$Outbound,
+  z.ZodTypeDef,
+  PostAtsCandidatesRequestBodyAfas
+> = z.object({
+  fields: z.record(z.any()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    fields: "Fields",
+  });
+});
+
+export function postAtsCandidatesRequestBodyAfasToJSON(
+  postAtsCandidatesRequestBodyAfas: PostAtsCandidatesRequestBodyAfas,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyAfas$outboundSchema.parse(
+      postAtsCandidatesRequestBodyAfas,
+    ),
+  );
+}
+
+/** @internal */
+export type PostAtsCandidatesRequestBodyCustomField$Outbound = {
+  field_id: number;
+  value: string;
+  entity_type?: string | undefined;
+  field_name?: string | undefined;
+  field_type?: string | undefined;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyCustomField$outboundSchema: z.ZodType<
+  PostAtsCandidatesRequestBodyCustomField$Outbound,
+  z.ZodTypeDef,
+  PostAtsCandidatesRequestBodyCustomField
+> = z.object({
+  field_id: z.number().int(),
+  value: z.string(),
+  entity_type: z.string().optional(),
+  field_name: z.string().optional(),
+  field_type: z.string().optional(),
+});
+
+export function postAtsCandidatesRequestBodyCustomFieldToJSON(
+  postAtsCandidatesRequestBodyCustomField:
+    PostAtsCandidatesRequestBodyCustomField,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyCustomField$outboundSchema.parse(
+      postAtsCandidatesRequestBodyCustomField,
+    ),
+  );
+}
+
+/** @internal */
+export type PostAtsCandidatesRequestBodyRecruitcrm$Outbound = {
+  custom_fields?:
+    | Array<PostAtsCandidatesRequestBodyCustomField$Outbound>
+    | undefined;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyRecruitcrm$outboundSchema: z.ZodType<
+  PostAtsCandidatesRequestBodyRecruitcrm$Outbound,
+  z.ZodTypeDef,
+  PostAtsCandidatesRequestBodyRecruitcrm
+> = z.object({
+  custom_fields: z.array(
+    z.lazy(() => PostAtsCandidatesRequestBodyCustomField$outboundSchema),
+  ).optional(),
+});
+
+export function postAtsCandidatesRequestBodyRecruitcrmToJSON(
+  postAtsCandidatesRequestBodyRecruitcrm:
+    PostAtsCandidatesRequestBodyRecruitcrm,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyRecruitcrm$outboundSchema.parse(
+      postAtsCandidatesRequestBodyRecruitcrm,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsCandidatesRequestBodyRemoteFields$Outbound = {
   successfactors?:
     | PostAtsCandidatesRequestBodySuccessfactors$Outbound
@@ -3425,6 +3572,8 @@ export type PostAtsCandidatesRequestBodyRemoteFields$Outbound = {
   piloga?: PostAtsCandidatesRequestBodyPiloga$Outbound | undefined;
   pinpoint?: PostAtsCandidatesRequestBodyPinpoint$Outbound | undefined;
   covetorest?: PostAtsCandidatesRequestBodyCovetorest$Outbound | undefined;
+  afas?: PostAtsCandidatesRequestBodyAfas$Outbound | undefined;
+  recruitcrm?: PostAtsCandidatesRequestBodyRecruitcrm$Outbound | undefined;
 };
 
 /** @internal */
@@ -3489,6 +3638,11 @@ export const PostAtsCandidatesRequestBodyRemoteFields$outboundSchema: z.ZodType<
     .optional(),
   covetorest: z.lazy(() =>
     PostAtsCandidatesRequestBodyCovetorest$outboundSchema
+  ).optional(),
+  afas: z.lazy(() => PostAtsCandidatesRequestBodyAfas$outboundSchema)
+    .optional(),
+  recruitcrm: z.lazy(() =>
+    PostAtsCandidatesRequestBodyRecruitcrm$outboundSchema
   ).optional(),
 });
 

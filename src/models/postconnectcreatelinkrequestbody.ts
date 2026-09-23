@@ -35,6 +35,7 @@ export const IntegrationTool = {
   Cornerstonetalentlink: "cornerstonetalentlink",
   Recruitee: "recruitee",
   Recruiterflow: "recruiterflow",
+  Atlas: "atlas",
   Greenhouse: "greenhouse",
   Greenhousev3: "greenhousev3",
   Greenhousejobboard: "greenhousejobboard",
@@ -142,6 +143,7 @@ export const IntegrationTool = {
   Databites: "databites",
   Pageup: "pageup",
   Talent360: "talent360",
+  Emplypeople: "emplypeople",
   Workdaycustomreport: "workdaycustomreport",
   Workdaycustomreportsftp: "workdaycustomreportsftp",
   Ukgprowfm: "ukgprowfm",
@@ -199,6 +201,7 @@ export const IntegrationTool = {
   Boondmanager: "boondmanager",
   Haileyhr: "haileyhr",
   Silae: "silae",
+  Skello: "skello",
   Oysterhr: "oysterhr",
   Kiwihr: "kiwihr",
   Square: "square",
@@ -219,6 +222,7 @@ export const IntegrationTool = {
   Youforce: "youforce",
   Nibelis: "nibelis",
   Peoplexd: "peoplexd",
+  Zellis: "zellis",
   Sftp: "sftp",
   Sftpfetch: "sftpfetch",
   ThreeHundredAndSixtylearning: "360learning",
@@ -317,6 +321,10 @@ export type PostConnectCreateLinkRequestBody = {
    */
   enable_field_mapping?: boolean | undefined;
   /**
+   * Enable [Static IPs](https://docs.kombo.dev/hris/guides/static-ips) for this integration so all API calls originate from a fixed, allowlistable set of IPs.
+   */
+  enable_static_ips?: boolean | undefined;
+  /**
    * The type of link you want to create. `EMBEDDED` is for the [embedded flow](../guides/connect/embedded-flow) using the Kombo Connect SDK (these links are valid for 1 hour) and `MAGIC_LINK` is for [magic links](../guides/connect/magic-links) which you send out manually to customers (there are valid for 1 year).
    *
    * @remarks
@@ -358,6 +366,7 @@ export type PostConnectCreateLinkRequestBody$Outbound = {
   scope_config_id?: string | null | undefined;
   enable_filtering: boolean;
   enable_field_mapping: boolean;
+  enable_static_ips: boolean;
   link_type: string;
 };
 
@@ -382,6 +391,7 @@ export const PostConnectCreateLinkRequestBody$outboundSchema: z.ZodType<
   scope_config_id: z.nullable(z.string()).optional(),
   enable_filtering: z.boolean().default(false),
   enable_field_mapping: z.boolean().default(false),
+  enable_static_ips: z.boolean().default(false),
   link_type: PostConnectCreateLinkRequestBodyLinkType$outboundSchema.default(
     "EMBEDDED",
   ),

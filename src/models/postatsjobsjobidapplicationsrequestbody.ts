@@ -738,6 +738,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyWorkflow = {
  * Fields specific to Avature.
  */
 export type PostAtsJobsJobIdApplicationsRequestBodyAvature = {
+  /**
+   * Fields that we will pass through to Avature's create person form (`POST /people`). Available fields depend on your Avature instance's People write configuration.
+   */
+  candidate?: { [k: string]: any } | undefined;
   workflow?: PostAtsJobsJobIdApplicationsRequestBodyWorkflow | undefined;
 };
 
@@ -858,6 +862,51 @@ export type PostAtsJobsJobIdApplicationsRequestBodyCovetorest = {
 };
 
 /**
+ * Fields specific to AFAS.
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyAfas = {
+  /**
+   * Additional fields passed through to AFAS `HrCreateApplicant.Element.Fields`.
+   */
+  fields?: { [k: string]: any } | undefined;
+};
+
+export type PostAtsJobsJobIdApplicationsRequestBodyCustomField = {
+  /**
+   * ID of the Recruit CRM candidate custom field (`GET /v1/custom-fields/candidates`).
+   */
+  field_id: number;
+  /**
+   * Value to write. Dropdown and multiselect values must match a configured option. File fields take a direct download URL.
+   */
+  value: string;
+  /**
+   * Entity the custom field belongs to, usually `candidate`.
+   */
+  entity_type?: string | undefined;
+  /**
+   * Custom field name.
+   */
+  field_name?: string | undefined;
+  /**
+   * Custom field type, for example `text`.
+   */
+  field_type?: string | undefined;
+};
+
+/**
+ * Fields specific to Recruit CRM.
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm = {
+  /**
+   * Candidate custom fields passed through to Recruit CRM's `custom_fields` array. A child field also needs its parent field in this array. See https://docs.recruitcrm.io/docs/rcrm-api-reference/ba451e2a3bd63-creates-a-new-candidate.
+   */
+  custom_fields?:
+    | Array<PostAtsJobsJobIdApplicationsRequestBodyCustomField>
+    | undefined;
+};
+
+/**
  * Additional fields that we will pass through to specific ATS systems.
  */
 export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
@@ -960,6 +1009,14 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
    * Fields specific to Coveto REST.
    */
   covetorest?: PostAtsJobsJobIdApplicationsRequestBodyCovetorest | undefined;
+  /**
+   * Fields specific to AFAS.
+   */
+  afas?: PostAtsJobsJobIdApplicationsRequestBodyAfas | undefined;
+  /**
+   * Fields specific to Recruit CRM.
+   */
+  recruitcrm?: PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm | undefined;
 };
 
 /**
@@ -3123,6 +3180,7 @@ export function postAtsJobsJobIdApplicationsRequestBodyWorkflowToJSON(
 
 /** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyAvature$Outbound = {
+  candidate?: { [k: string]: any } | undefined;
   workflow?:
     | PostAtsJobsJobIdApplicationsRequestBodyWorkflow$Outbound
     | undefined;
@@ -3135,6 +3193,7 @@ export const PostAtsJobsJobIdApplicationsRequestBodyAvature$outboundSchema:
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyAvature
   > = z.object({
+    candidate: z.record(z.any()).optional(),
     workflow: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyWorkflow$outboundSchema
     ).optional(),
@@ -3410,6 +3469,102 @@ export function postAtsJobsJobIdApplicationsRequestBodyCovetorestToJSON(
 }
 
 /** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyAfas$Outbound = {
+  Fields?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyAfas$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyAfas$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyAfas
+  > = z.object({
+    fields: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      fields: "Fields",
+    });
+  });
+
+export function postAtsJobsJobIdApplicationsRequestBodyAfasToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyAfas:
+    PostAtsJobsJobIdApplicationsRequestBodyAfas,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyAfas$outboundSchema.parse(
+      postAtsJobsJobIdApplicationsRequestBodyAfas,
+    ),
+  );
+}
+
+/** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyCustomField$Outbound = {
+  field_id: number;
+  value: string;
+  entity_type?: string | undefined;
+  field_name?: string | undefined;
+  field_type?: string | undefined;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyCustomField$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyCustomField$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyCustomField
+  > = z.object({
+    field_id: z.number().int(),
+    value: z.string(),
+    entity_type: z.string().optional(),
+    field_name: z.string().optional(),
+    field_type: z.string().optional(),
+  });
+
+export function postAtsJobsJobIdApplicationsRequestBodyCustomFieldToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyCustomField:
+    PostAtsJobsJobIdApplicationsRequestBodyCustomField,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyCustomField$outboundSchema.parse(
+      postAtsJobsJobIdApplicationsRequestBodyCustomField,
+    ),
+  );
+}
+
+/** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm$Outbound = {
+  custom_fields?:
+    | Array<PostAtsJobsJobIdApplicationsRequestBodyCustomField$Outbound>
+    | undefined;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm
+  > = z.object({
+    custom_fields: z.array(
+      z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyCustomField$outboundSchema
+      ),
+    ).optional(),
+  });
+
+export function postAtsJobsJobIdApplicationsRequestBodyRecruitcrmToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyRecruitcrm:
+    PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm$outboundSchema.parse(
+      postAtsJobsJobIdApplicationsRequestBodyRecruitcrm,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
   successfactors?:
     | PostAtsJobsJobIdApplicationsRequestBodySuccessfactors$Outbound
@@ -3464,6 +3619,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
     | undefined;
   covetorest?:
     | PostAtsJobsJobIdApplicationsRequestBodyCovetorest$Outbound
+    | undefined;
+  afas?: PostAtsJobsJobIdApplicationsRequestBodyAfas$Outbound | undefined;
+  recruitcrm?:
+    | PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm$Outbound
     | undefined;
 };
 
@@ -3545,6 +3704,12 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$outboundSchema:
     ).optional(),
     covetorest: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyCovetorest$outboundSchema
+    ).optional(),
+    afas: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyAfas$outboundSchema
+    ).optional(),
+    recruitcrm: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm$outboundSchema
     ).optional(),
   });
 

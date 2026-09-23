@@ -9,6 +9,10 @@ import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 export type PostConnectCreateLinkPositiveResponseData = {
   link: string;
+  /**
+   * The allowlist IPs for this integration. Present when `enable_static_ips` is `true`.
+   */
+  static_ips?: Array<string> | undefined;
 };
 
 export type PostConnectCreateLinkPositiveResponse = {
@@ -23,6 +27,7 @@ export const PostConnectCreateLinkPositiveResponseData$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   link: z.string(),
+  static_ips: z.array(z.string()).optional(),
 });
 
 export function postConnectCreateLinkPositiveResponseDataFromJSON(
