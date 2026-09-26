@@ -871,6 +871,28 @@ export type PostAtsJobsJobIdApplicationsRequestBodyAfas = {
   fields?: { [k: string]: any } | undefined;
 };
 
+/**
+ * Consent fields passed through to Fountain when creating an applicant. See https://developer.fountain.com/reference/post_v2-applicants.
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyFountain = {
+  /**
+   * Whether the applicant consented to transactional SMS about their current application. Fountain requires this on create from November 17, 2026.
+   */
+  consent_sms_transactional?: boolean | undefined;
+  /**
+   * Whether the applicant consented to marketing SMS about future job opportunities. Fountain requires this on create from November 17, 2026. This is separate from transactional SMS consent.
+   */
+  consent_sms_marketing?: boolean | undefined;
+  /**
+   * Whether the applicant consented to transactional calls about their current application. Fountain requires this on create from November 17, 2026.
+   */
+  consent_calls_transactional?: boolean | undefined;
+  /**
+   * Whether the applicant consented to marketing calls about future job opportunities. Fountain requires this on create from November 17, 2026. This is separate from transactional call consent.
+   */
+  consent_calls_marketing?: boolean | undefined;
+};
+
 export type PostAtsJobsJobIdApplicationsRequestBodyCustomField = {
   /**
    * ID of the Recruit CRM candidate custom field (`GET /v1/custom-fields/candidates`).
@@ -1013,6 +1035,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields = {
    * Fields specific to AFAS.
    */
   afas?: PostAtsJobsJobIdApplicationsRequestBodyAfas | undefined;
+  /**
+   * Consent fields passed through to Fountain when creating an applicant. See https://developer.fountain.com/reference/post_v2-applicants.
+   */
+  fountain?: PostAtsJobsJobIdApplicationsRequestBodyFountain | undefined;
   /**
    * Fields specific to Recruit CRM.
    */
@@ -3499,6 +3525,38 @@ export function postAtsJobsJobIdApplicationsRequestBodyAfasToJSON(
 }
 
 /** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyFountain$Outbound = {
+  consent_sms_transactional?: boolean | undefined;
+  consent_sms_marketing?: boolean | undefined;
+  consent_calls_transactional?: boolean | undefined;
+  consent_calls_marketing?: boolean | undefined;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyFountain$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyFountain$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyFountain
+  > = z.object({
+    consent_sms_transactional: z.boolean().optional(),
+    consent_sms_marketing: z.boolean().optional(),
+    consent_calls_transactional: z.boolean().optional(),
+    consent_calls_marketing: z.boolean().optional(),
+  });
+
+export function postAtsJobsJobIdApplicationsRequestBodyFountainToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyFountain:
+    PostAtsJobsJobIdApplicationsRequestBodyFountain,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyFountain$outboundSchema.parse(
+      postAtsJobsJobIdApplicationsRequestBodyFountain,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyCustomField$Outbound = {
   field_id: number;
   value: string;
@@ -3621,6 +3679,9 @@ export type PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound = {
     | PostAtsJobsJobIdApplicationsRequestBodyCovetorest$Outbound
     | undefined;
   afas?: PostAtsJobsJobIdApplicationsRequestBodyAfas$Outbound | undefined;
+  fountain?:
+    | PostAtsJobsJobIdApplicationsRequestBodyFountain$Outbound
+    | undefined;
   recruitcrm?:
     | PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm$Outbound
     | undefined;
@@ -3707,6 +3768,9 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$outboundSchema:
     ).optional(),
     afas: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyAfas$outboundSchema
+    ).optional(),
+    fountain: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyFountain$outboundSchema
     ).optional(),
     recruitcrm: z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm$outboundSchema
