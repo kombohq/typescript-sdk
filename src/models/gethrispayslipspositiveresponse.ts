@@ -50,6 +50,48 @@ export type GetHrisPayslipsPositiveResponsePaidAmount = {
   value: number;
 };
 
+/**
+ * The year-to-date gross pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount.
+ */
+export type GrossPayYtd = {
+  /**
+   * The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in.
+   */
+  currency: string;
+  /**
+   * The monetary value.
+   */
+  value: number;
+};
+
+/**
+ * The year-to-date net pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount.
+ */
+export type NetPayYtd = {
+  /**
+   * The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in.
+   */
+  currency: string;
+  /**
+   * The monetary value.
+   */
+  value: number;
+};
+
+/**
+ * The year-to-date paid amount as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount.
+ */
+export type PaidAmountYtd = {
+  /**
+   * The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in.
+   */
+  currency: string;
+  /**
+   * The monetary value.
+   */
+  value: number;
+};
+
 export type GetHrisPayslipsPositiveResponseTotals = {
   /**
    * The total gross pay for the payslip, before taxes and after gross deductions.
@@ -63,6 +105,18 @@ export type GetHrisPayslipsPositiveResponseTotals = {
    * The amount of the payslip that was actually paid out to the employee. This value accounts for net earnings and deductions.
    */
   paid_amount?: GetHrisPayslipsPositiveResponsePaidAmount | null | undefined;
+  /**
+   * The year-to-date gross pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount.
+   */
+  gross_pay_ytd?: GrossPayYtd | null | undefined;
+  /**
+   * The year-to-date net pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount.
+   */
+  net_pay_ytd?: NetPayYtd | null | undefined;
+  /**
+   * The year-to-date paid amount as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount.
+   */
+  paid_amount_ytd?: PaidAmountYtd | null | undefined;
 };
 
 /**
@@ -126,9 +180,37 @@ export type PayRun = {
 };
 
 /**
+ * The pay code (salary type) this line item belongs to in the remote system.
+ */
+export type PayCode = {
+  /**
+   * The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key.
+   */
+  remote_id: string;
+  /**
+   * The name of the salary type as it appears in the remote system.
+   */
+  remote_label: string | null;
+};
+
+/**
  * The amount of the line item.
  */
 export type Amount = {
+  /**
+   * The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in.
+   */
+  currency: string;
+  /**
+   * The monetary value.
+   */
+  value: number;
+};
+
+/**
+ * The year-to-date amount of the line item as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount.
+ */
+export type AmountYtd = {
   /**
    * The [ISO 4217 currency code](https://www.iso.org/iso-4217-currency-codes.html) the value is denominated in.
    */
@@ -153,9 +235,21 @@ export type LineItem = {
    */
   name: string | null;
   /**
+   * The pay code (salary type) this line item belongs to in the remote system.
+   */
+  pay_code: PayCode;
+  /**
    * The amount of the line item.
    */
   amount?: Amount | null | undefined;
+  /**
+   * The year-to-date amount of the line item as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount.
+   */
+  amount_ytd?: AmountYtd | null | undefined;
+  /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
 };
 
 export type GetHrisPayslipsPositiveResponseResult = {
@@ -167,6 +261,10 @@ export type GetHrisPayslipsPositiveResponseResult = {
    * The raw ID of the object in the remote system. We don't recommend using this as a primary key on your side as it might sometimes be compromised of multiple identifiers if a system doesn't provide a clear primary key.
    */
   remote_id: string;
+  /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
   /**
    * The timestamp when this specific record was last modified. This field only updates when properties directly on this record change, NOT when related or nested models change. For filtering that considers nested data changes, use the `updated_after` parameter which will return records when either the record itself OR its related models have been updated.
    */
@@ -277,6 +375,66 @@ export function getHrisPayslipsPositiveResponsePaidAmountFromJSON(
 }
 
 /** @internal */
+export const GrossPayYtd$inboundSchema: z.ZodType<
+  GrossPayYtd,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.string(),
+  value: z.number(),
+});
+
+export function grossPayYtdFromJSON(
+  jsonString: string,
+): SafeParseResult<GrossPayYtd, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GrossPayYtd$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GrossPayYtd' from JSON`,
+  );
+}
+
+/** @internal */
+export const NetPayYtd$inboundSchema: z.ZodType<
+  NetPayYtd,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.string(),
+  value: z.number(),
+});
+
+export function netPayYtdFromJSON(
+  jsonString: string,
+): SafeParseResult<NetPayYtd, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NetPayYtd$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NetPayYtd' from JSON`,
+  );
+}
+
+/** @internal */
+export const PaidAmountYtd$inboundSchema: z.ZodType<
+  PaidAmountYtd,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.string(),
+  value: z.number(),
+});
+
+export function paidAmountYtdFromJSON(
+  jsonString: string,
+): SafeParseResult<PaidAmountYtd, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PaidAmountYtd$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PaidAmountYtd' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetHrisPayslipsPositiveResponseTotals$inboundSchema: z.ZodType<
   GetHrisPayslipsPositiveResponseTotals,
   z.ZodTypeDef,
@@ -291,6 +449,10 @@ export const GetHrisPayslipsPositiveResponseTotals$inboundSchema: z.ZodType<
   paid_amount: z.nullable(
     z.lazy(() => GetHrisPayslipsPositiveResponsePaidAmount$inboundSchema),
   ).optional(),
+  gross_pay_ytd: z.nullable(z.lazy(() => GrossPayYtd$inboundSchema)).optional(),
+  net_pay_ytd: z.nullable(z.lazy(() => NetPayYtd$inboundSchema)).optional(),
+  paid_amount_ytd: z.nullable(z.lazy(() => PaidAmountYtd$inboundSchema))
+    .optional(),
 });
 
 export function getHrisPayslipsPositiveResponseTotalsFromJSON(
@@ -352,6 +514,23 @@ export function payRunFromJSON(
 }
 
 /** @internal */
+export const PayCode$inboundSchema: z.ZodType<PayCode, z.ZodTypeDef, unknown> =
+  z.object({
+    remote_id: z.string(),
+    remote_label: z.nullable(z.string()),
+  });
+
+export function payCodeFromJSON(
+  jsonString: string,
+): SafeParseResult<PayCode, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayCode$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayCode' from JSON`,
+  );
+}
+
+/** @internal */
 export const Amount$inboundSchema: z.ZodType<Amount, z.ZodTypeDef, unknown> = z
   .object({
     currency: z.string(),
@@ -369,6 +548,26 @@ export function amountFromJSON(
 }
 
 /** @internal */
+export const AmountYtd$inboundSchema: z.ZodType<
+  AmountYtd,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currency: z.string(),
+  value: z.number(),
+});
+
+export function amountYtdFromJSON(
+  jsonString: string,
+): SafeParseResult<AmountYtd, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AmountYtd$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AmountYtd' from JSON`,
+  );
+}
+
+/** @internal */
 export const LineItem$inboundSchema: z.ZodType<
   LineItem,
   z.ZodTypeDef,
@@ -377,7 +576,10 @@ export const LineItem$inboundSchema: z.ZodType<
   id: z.string(),
   remote_id: z.string(),
   name: z.nullable(z.string()),
+  pay_code: z.lazy(() => PayCode$inboundSchema),
   amount: z.nullable(z.lazy(() => Amount$inboundSchema)).optional(),
+  amount_ytd: z.nullable(z.lazy(() => AmountYtd$inboundSchema)).optional(),
+  custom_fields: z.nullable(z.record(z.any())),
 });
 
 export function lineItemFromJSON(
@@ -398,6 +600,7 @@ export const GetHrisPayslipsPositiveResponseResult$inboundSchema: z.ZodType<
 > = z.object({
   id: z.string(),
   remote_id: z.string(),
+  custom_fields: z.nullable(z.record(z.any())),
   changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
   remote_deleted_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),

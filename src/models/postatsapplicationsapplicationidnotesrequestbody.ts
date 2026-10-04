@@ -183,6 +183,10 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields = {
 
 export type PostAtsApplicationsApplicationIdNotesRequestBody = {
   /**
+   * Title of the note, often called "subject" in the ATS. Only some ATSs support note titles, and the others ignore this field.
+   */
+  title?: string | undefined;
+  /**
    * UTF-8 content of the note.
    */
   content: string;
@@ -528,6 +532,7 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyRemoteFieldsToJS
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBody$Outbound = {
+  title?: string | undefined;
   content: string;
   content_type: string;
   remote_fields?:
@@ -542,6 +547,7 @@ export const PostAtsApplicationsApplicationIdNotesRequestBody$outboundSchema:
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequestBody
   > = z.object({
+    title: z.string().optional(),
     content: z.string(),
     content_type: ContentType$outboundSchema,
     remote_fields: z.lazy(() =>
