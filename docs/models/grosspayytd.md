@@ -1,15 +1,15 @@
-# GetHrisPayslipsPositiveResponsePaidAmount
+# GrossPayYtd
 
-The amount of the payslip that was actually paid out to the employee. This value accounts for net earnings and deductions.
+The year-to-date gross pay as returned by the remote system. Kombo never calculates this value. `null` when the remote API does not provide a year-to-date amount.
 
 ## Example Usage
 
 ```typescript
-import { GetHrisPayslipsPositiveResponsePaidAmount } from "@kombo-api/sdk/models";
+import { GrossPayYtd } from "@kombo-api/sdk/models";
 
-let value: GetHrisPayslipsPositiveResponsePaidAmount = {
-  currency: "Belize Dollar",
-  value: 9851.45,
+let value: GrossPayYtd = {
+  currency: "Uzbekistan Sum",
+  value: 7614.24,
 };
 ```
 
