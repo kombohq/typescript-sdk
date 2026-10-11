@@ -17,7 +17,7 @@ export type GetHrisPayRunsPositiveResponseGrossPay = {
    */
   currency: string;
   /**
-   * The monetary value.
+   * The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero).
    */
   value: number;
 };
@@ -31,7 +31,7 @@ export type GetHrisPayRunsPositiveResponseNetPay = {
    */
   currency: string;
   /**
-   * The monetary value.
+   * The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero).
    */
   value: number;
 };
@@ -45,7 +45,7 @@ export type GetHrisPayRunsPositiveResponsePaidAmount = {
    */
   currency: string;
   /**
-   * The monetary value.
+   * The monetary value. See the integration’s limitations for whether this value is rounded. Rounded values use mathematical rounding (half away from zero).
    */
   value: number;
 };
