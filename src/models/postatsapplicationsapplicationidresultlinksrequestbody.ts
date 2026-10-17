@@ -89,6 +89,16 @@ export type PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360 = {
 };
 
 /**
+ * Fields specific to Traffit.
+ */
+export type PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit = {
+  /**
+   * Fields that we will write to the Traffit candidate before adding the result note. Custom fields are keyed by their SID with a `_` prefix, for example `{ "_Assessment_Score": "5" }`. The field must be available via integration in Traffit.
+   */
+  candidate?: { [k: string]: any } | undefined;
+};
+
+/**
  * Headers we will pass with `POST` requests to Greenhouse.
  */
 export type PostAtsApplicationsApplicationIdResultLinksRequestBodyPostHeaders =
@@ -143,6 +153,12 @@ export type PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields =
      */
     talent360?:
       | PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360
+      | undefined;
+    /**
+     * Fields specific to Traffit.
+     */
+    traffit?:
+      | PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit
       | undefined;
     /**
      * Fields specific to Greenhouse.
@@ -338,6 +354,32 @@ export function postAtsApplicationsApplicationIdResultLinksRequestBodyTalent360T
 }
 
 /** @internal */
+export type PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit$Outbound =
+  {
+    candidate?: { [k: string]: any } | undefined;
+  };
+
+/** @internal */
+export const PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit$outboundSchema:
+  z.ZodType<
+    PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit$Outbound,
+    z.ZodTypeDef,
+    PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit
+  > = z.object({
+    candidate: z.record(z.any()).optional(),
+  });
+
+export function postAtsApplicationsApplicationIdResultLinksRequestBodyTraffitToJSON(
+  postAtsApplicationsApplicationIdResultLinksRequestBodyTraffit:
+    PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit,
+): string {
+  return JSON.stringify(
+    PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit$outboundSchema
+      .parse(postAtsApplicationsApplicationIdResultLinksRequestBodyTraffit),
+  );
+}
+
+/** @internal */
 export type PostAtsApplicationsApplicationIdResultLinksRequestBodyPostHeaders$Outbound =
   {
     "On-Behalf-Of"?: string | null | undefined;
@@ -435,6 +477,9 @@ export type PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields$O
     talent360?:
       | PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360$Outbound
       | undefined;
+    traffit?:
+      | PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit$Outbound
+      | undefined;
     greenhouse?:
       | PostAtsApplicationsApplicationIdResultLinksRequestBodyGreenhouse$Outbound
       | undefined;
@@ -458,6 +503,9 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields$
     ).optional(),
     talent360: z.lazy(() =>
       PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360$outboundSchema
+    ).optional(),
+    traffit: z.lazy(() =>
+      PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit$outboundSchema
     ).optional(),
     greenhouse: z.lazy(() =>
       PostAtsApplicationsApplicationIdResultLinksRequestBodyGreenhouse$outboundSchema
