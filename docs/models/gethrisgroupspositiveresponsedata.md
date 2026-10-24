@@ -17,6 +17,7 @@ let value: GetHrisGroupsPositiveResponseData = {
       remote_deleted_at: null,
       type: "TEAM",
       parent_id: "KGaJ5XaVPob8mYVfD49W4DGB",
+      custom_fields: {},
     },
   ],
 };
