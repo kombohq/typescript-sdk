@@ -89,6 +89,16 @@ export type PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360 = {
 };
 
 /**
+ * Fields specific to Traffit.
+ */
+export type PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit = {
+  /**
+   * Fields that we will write to the Traffit candidate before adding the result note. Custom fields are keyed by their SID with a `_` prefix, for example `{ "_Assessment_Score": "5" }`. The field must be available via integration in Traffit.
+   */
+  candidate?: { [k: string]: any } | undefined;
+};
+
+/**
  * Headers we will pass with `POST` requests to Greenhouse.
  */
 export type PostAtsCandidatesCandidateIdResultLinksRequestBodyPostHeaders = {
@@ -137,6 +147,12 @@ export type PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields = {
    */
   talent360?:
     | PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360
+    | undefined;
+  /**
+   * Fields specific to Traffit.
+   */
+  traffit?:
+    | PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit
     | undefined;
   /**
    * Fields specific to Greenhouse.
@@ -331,6 +347,32 @@ export function postAtsCandidatesCandidateIdResultLinksRequestBodyTalent360ToJSO
 }
 
 /** @internal */
+export type PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit$Outbound =
+  {
+    candidate?: { [k: string]: any } | undefined;
+  };
+
+/** @internal */
+export const PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit$outboundSchema:
+  z.ZodType<
+    PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit$Outbound,
+    z.ZodTypeDef,
+    PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit
+  > = z.object({
+    candidate: z.record(z.any()).optional(),
+  });
+
+export function postAtsCandidatesCandidateIdResultLinksRequestBodyTraffitToJSON(
+  postAtsCandidatesCandidateIdResultLinksRequestBodyTraffit:
+    PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit$outboundSchema
+      .parse(postAtsCandidatesCandidateIdResultLinksRequestBodyTraffit),
+  );
+}
+
+/** @internal */
 export type PostAtsCandidatesCandidateIdResultLinksRequestBodyPostHeaders$Outbound =
   {
     "On-Behalf-Of"?: string | null | undefined;
@@ -428,6 +470,9 @@ export type PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields$Outbo
     talent360?:
       | PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360$Outbound
       | undefined;
+    traffit?:
+      | PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit$Outbound
+      | undefined;
     greenhouse?:
       | PostAtsCandidatesCandidateIdResultLinksRequestBodyGreenhouse$Outbound
       | undefined;
@@ -451,6 +496,9 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields$outb
     ).optional(),
     talent360: z.lazy(() =>
       PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360$outboundSchema
+    ).optional(),
+    traffit: z.lazy(() =>
+      PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit$outboundSchema
     ).optional(),
     greenhouse: z.lazy(() =>
       PostAtsCandidatesCandidateIdResultLinksRequestBodyGreenhouse$outboundSchema
