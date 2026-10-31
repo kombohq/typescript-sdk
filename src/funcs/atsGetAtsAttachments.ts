@@ -38,9 +38,9 @@ import {
  * @remarks
  * Retrieve all attachments.
  *
- * These attachments are already synced, so this endpoint never calls the ATS and the files sit in the destination you configured.
+ * Returns the attachments Kombo synced into your file destination.
  *
- * The on-demand alternatives call the ATS and return a `data_url` we host: [get candidate attachments](/ats/v1/get-candidates-candidate-id-attachments) for every file of one candidate, [get application attachments](/ats/v1/get-applications-application-id-attachments) for the files of one application.
+ * [Attachments](/ats/features/attachments) compares synced attachments with reading files on demand.
  *
  * Top level filters use AND, while individual filters use OR if they accept multiple arguments. That means filters will be resolved like this: `(id IN ids) AND (remote_id IN remote_ids)`
  */
