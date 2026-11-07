@@ -408,6 +408,10 @@ export type PostAtsCandidatesRequestBodyTalentsoft = {
    * Fields that we will pass through to TalentSoft's `application` object.
    */
   application?: { [k: string]: any } | undefined;
+  /**
+   * Fields that we will pass through to TalentSoft's top-level `customFields` object when creating applications without an account. For account-based application creation, pass custom fields in `applicant.customFields` instead.
+   */
+  custom_fields?: { [k: string]: any } | undefined;
 };
 
 export type PostAtsCandidatesRequestBodyTeamtailorApplication = {
@@ -945,6 +949,28 @@ export type PostAtsCandidatesRequestBodyAfas = {
   fields?: { [k: string]: any } | undefined;
 };
 
+/**
+ * Consent fields passed through to Fountain when creating an applicant. See https://developer.fountain.com/reference/post_v2-applicants.
+ */
+export type PostAtsCandidatesRequestBodyFountain = {
+  /**
+   * Whether the applicant consented to transactional SMS about their current application. Fountain requires this on create from November 17, 2026.
+   */
+  consent_sms_transactional?: boolean | undefined;
+  /**
+   * Whether the applicant consented to marketing SMS about future job opportunities. Fountain requires this on create from November 17, 2026. This is separate from transactional SMS consent.
+   */
+  consent_sms_marketing?: boolean | undefined;
+  /**
+   * Whether the applicant consented to transactional calls about their current application. Fountain requires this on create from November 17, 2026.
+   */
+  consent_calls_transactional?: boolean | undefined;
+  /**
+   * Whether the applicant consented to marketing calls about future job opportunities. Fountain requires this on create from November 17, 2026. This is separate from transactional call consent.
+   */
+  consent_calls_marketing?: boolean | undefined;
+};
+
 export type PostAtsCandidatesRequestBodyCustomField = {
   /**
    * ID of the Recruit CRM candidate custom field (`GET /v1/custom-fields/candidates`).
@@ -976,6 +1002,16 @@ export type PostAtsCandidatesRequestBodyRecruitcrm = {
    * Candidate custom fields passed through to Recruit CRM's `custom_fields` array. A child field also needs its parent field in this array. See https://docs.recruitcrm.io/docs/rcrm-api-reference/ba451e2a3bd63-creates-a-new-candidate.
    */
   custom_fields?: Array<PostAtsCandidatesRequestBodyCustomField> | undefined;
+};
+
+/**
+ * Fields specific to iCIMS.
+ */
+export type PostAtsCandidatesRequestBodyIcims = {
+  /**
+   * Fields that we will pass through to the iCIMS applicant workflow when it is created. For example `sourcechannel` or custom `fieldNNNN` IDs.
+   */
+  application?: { [k: string]: any } | undefined;
 };
 
 /**
@@ -1080,9 +1116,17 @@ export type PostAtsCandidatesRequestBodyRemoteFields = {
    */
   afas?: PostAtsCandidatesRequestBodyAfas | undefined;
   /**
+   * Consent fields passed through to Fountain when creating an applicant. See https://developer.fountain.com/reference/post_v2-applicants.
+   */
+  fountain?: PostAtsCandidatesRequestBodyFountain | undefined;
+  /**
    * Fields specific to Recruit CRM.
    */
   recruitcrm?: PostAtsCandidatesRequestBodyRecruitcrm | undefined;
+  /**
+   * Fields specific to iCIMS.
+   */
+  icims?: PostAtsCandidatesRequestBodyIcims | undefined;
 };
 
 export type PostAtsCandidatesRequestBody = {
@@ -1682,6 +1726,7 @@ export function postAtsCandidatesRequestBodyPersonioToJSON(
 export type PostAtsCandidatesRequestBodyTalentsoft$Outbound = {
   applicant?: { [k: string]: any } | undefined;
   application?: { [k: string]: any } | undefined;
+  customFields?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
@@ -1692,6 +1737,11 @@ export const PostAtsCandidatesRequestBodyTalentsoft$outboundSchema: z.ZodType<
 > = z.object({
   applicant: z.record(z.any()).optional(),
   application: z.record(z.any()).optional(),
+  custom_fields: z.record(z.any()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    custom_fields: "customFields",
+  });
 });
 
 export function postAtsCandidatesRequestBodyTalentsoftToJSON(
@@ -3481,6 +3531,36 @@ export function postAtsCandidatesRequestBodyAfasToJSON(
 }
 
 /** @internal */
+export type PostAtsCandidatesRequestBodyFountain$Outbound = {
+  consent_sms_transactional?: boolean | undefined;
+  consent_sms_marketing?: boolean | undefined;
+  consent_calls_transactional?: boolean | undefined;
+  consent_calls_marketing?: boolean | undefined;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyFountain$outboundSchema: z.ZodType<
+  PostAtsCandidatesRequestBodyFountain$Outbound,
+  z.ZodTypeDef,
+  PostAtsCandidatesRequestBodyFountain
+> = z.object({
+  consent_sms_transactional: z.boolean().optional(),
+  consent_sms_marketing: z.boolean().optional(),
+  consent_calls_transactional: z.boolean().optional(),
+  consent_calls_marketing: z.boolean().optional(),
+});
+
+export function postAtsCandidatesRequestBodyFountainToJSON(
+  postAtsCandidatesRequestBodyFountain: PostAtsCandidatesRequestBodyFountain,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyFountain$outboundSchema.parse(
+      postAtsCandidatesRequestBodyFountain,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsCandidatesRequestBodyCustomField$Outbound = {
   field_id: number;
   value: string;
@@ -3543,6 +3623,30 @@ export function postAtsCandidatesRequestBodyRecruitcrmToJSON(
 }
 
 /** @internal */
+export type PostAtsCandidatesRequestBodyIcims$Outbound = {
+  application?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyIcims$outboundSchema: z.ZodType<
+  PostAtsCandidatesRequestBodyIcims$Outbound,
+  z.ZodTypeDef,
+  PostAtsCandidatesRequestBodyIcims
+> = z.object({
+  application: z.record(z.any()).optional(),
+});
+
+export function postAtsCandidatesRequestBodyIcimsToJSON(
+  postAtsCandidatesRequestBodyIcims: PostAtsCandidatesRequestBodyIcims,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyIcims$outboundSchema.parse(
+      postAtsCandidatesRequestBodyIcims,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsCandidatesRequestBodyRemoteFields$Outbound = {
   successfactors?:
     | PostAtsCandidatesRequestBodySuccessfactors$Outbound
@@ -3573,7 +3677,9 @@ export type PostAtsCandidatesRequestBodyRemoteFields$Outbound = {
   pinpoint?: PostAtsCandidatesRequestBodyPinpoint$Outbound | undefined;
   covetorest?: PostAtsCandidatesRequestBodyCovetorest$Outbound | undefined;
   afas?: PostAtsCandidatesRequestBodyAfas$Outbound | undefined;
+  fountain?: PostAtsCandidatesRequestBodyFountain$Outbound | undefined;
   recruitcrm?: PostAtsCandidatesRequestBodyRecruitcrm$Outbound | undefined;
+  icims?: PostAtsCandidatesRequestBodyIcims$Outbound | undefined;
 };
 
 /** @internal */
@@ -3641,9 +3747,13 @@ export const PostAtsCandidatesRequestBodyRemoteFields$outboundSchema: z.ZodType<
   ).optional(),
   afas: z.lazy(() => PostAtsCandidatesRequestBodyAfas$outboundSchema)
     .optional(),
+  fountain: z.lazy(() => PostAtsCandidatesRequestBodyFountain$outboundSchema)
+    .optional(),
   recruitcrm: z.lazy(() =>
     PostAtsCandidatesRequestBodyRecruitcrm$outboundSchema
   ).optional(),
+  icims: z.lazy(() => PostAtsCandidatesRequestBodyIcims$outboundSchema)
+    .optional(),
 });
 
 export function postAtsCandidatesRequestBodyRemoteFieldsToJSON(

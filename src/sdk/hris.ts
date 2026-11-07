@@ -469,8 +469,6 @@ export class Hris extends ClientSDK {
    *
    * Retrieve attendance data and timesheets from HRIS tools.
    *
-   * <Warning>**Open Beta Feature:** This endpoint is currently in beta. Please reach out to our support team if you need assistance with implementation.</Warning>
-   *
    * For a detailed explanation of the data model, validation rules, time zones, payable hours, approvals, and break patterns, see the [Time & Attendance guide](/hris/features/time-and-attendance).
    *
    * <Note>

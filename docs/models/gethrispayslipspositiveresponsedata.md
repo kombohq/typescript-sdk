@@ -13,6 +13,7 @@ let value: GetHrisPayslipsPositiveResponseData = {
     {
       id: "E4q8YceHEtPWeGwBAEcd9xPs",
       remote_id: "300000331094861",
+      custom_fields: {},
       changed_at: new Date("2026-01-10T12:32:01Z"),
       remote_deleted_at: null,
       totals: {
@@ -27,6 +28,18 @@ let value: GetHrisPayslipsPositiveResponseData = {
         paid_amount: {
           currency: "USD",
           value: 1730.35,
+        },
+        gross_pay_ytd: {
+          currency: "USD",
+          value: 4415.5,
+        },
+        net_pay_ytd: {
+          currency: "USD",
+          value: 3460.7,
+        },
+        paid_amount_ytd: {
+          currency: "USD",
+          value: 3460.7,
         },
       },
       employee: {
@@ -50,55 +63,109 @@ let value: GetHrisPayslipsPositiveResponseData = {
           id: "8TMenmF8QVyP1EqagstHhsPG",
           remote_id: "300000331094861:REGULAR_SALARY",
           name: "Regular Salary",
+          pay_code: {
+            remote_id: "200",
+            remote_label: "Regular Salary",
+          },
           amount: {
             currency: "USD",
             value: 2207.75,
           },
+          amount_ytd: {
+            currency: "USD",
+            value: 4415.5,
+          },
+          custom_fields: {},
         },
         {
           id: "CELfyfzuHs6Dz1MDPdoSCY3U",
           remote_id: "300000331094861:FIT_WITHHELD",
           name: "FIT Withheld",
+          pay_code: {
+            remote_id: "FIT",
+            remote_label: "FIT Withheld",
+          },
           amount: {
             currency: "USD",
             value: 235.94,
           },
+          amount_ytd: {
+            currency: "USD",
+            value: 471.88,
+          },
+          custom_fields: {},
         },
         {
           id: "H1gPqyuZTK3y75NRxe4QZ3u7",
           remote_id: "300000331094861:SOCIAL_SECURITY_EMPLOYEE_WITHHELD",
           name: "Social Security Employee Withheld",
+          pay_code: {
+            remote_id: "SOCSEC",
+            remote_label: "Social Security Employee Withheld",
+          },
           amount: {
             currency: "USD",
             value: 136.88,
           },
+          amount_ytd: {
+            currency: "USD",
+            value: 273.76,
+          },
+          custom_fields: {},
         },
         {
           id: "HEnJXik92Qqph5SX4NtK6NRM",
           remote_id: "300000331094861:MEDICARE_EMPLOYEE_WITHHELD",
           name: "Medicare Employee Withheld",
+          pay_code: {
+            remote_id: "MEDICARE",
+            remote_label: "Medicare Employee Withheld",
+          },
           amount: {
             currency: "USD",
             value: 32.01,
           },
+          amount_ytd: {
+            currency: "USD",
+            value: 64.02,
+          },
+          custom_fields: {},
         },
         {
           id: "Ho16emGY5zVYeEc2nN9CWeKv",
           remote_id: "300000331094861:SIT_WITHHELD_CA",
           name: "SIT Withheld (CA)",
+          pay_code: {
+            remote_id: "SIT_CA",
+            remote_label: "SIT Withheld (CA)",
+          },
           amount: {
             currency: "USD",
             value: 71.47,
           },
+          amount_ytd: {
+            currency: "USD",
+            value: 142.94,
+          },
+          custom_fields: {},
         },
         {
           id: "9D24qXFEp1pSQ2Y3jaRFSTBQ",
           remote_id: "300000331094861:VPDI_EMPLOYEE_WITHHELD_CA",
           name: "VPDI Employee Withheld (CA)",
+          pay_code: {
+            remote_id: "VPDI_CA",
+            remote_label: "VPDI Employee Withheld (CA)",
+          },
           amount: {
             currency: "USD",
             value: 1.1,
           },
+          amount_ytd: {
+            currency: "USD",
+            value: 2.2,
+          },
+          custom_fields: {},
         },
       ],
     },
