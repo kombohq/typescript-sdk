@@ -96,6 +96,7 @@ export const DomesticBankRoutingType = {
   CaRoutingNumber: "CA_ROUTING_NUMBER",
   AuBsbCode: "AU_BSB_CODE",
   FrRib: "FR_RIB",
+  SgBankBranchCode: "SG_BANK_BRANCH_CODE",
 } as const;
 /**
  * Enum of the routing type, prefixed with the iso-3166-1-alpha-2 banks origin country. If there is uncertainty about the type, it will be set to null.
@@ -106,7 +107,7 @@ export type DomesticBankRoutingType = ClosedEnum<
 
 export type DomesticBankRouting = {
   /**
-   * Bank routing number (e.g. DE Bankleitzahl, GB Sort Code, US ABA routing number, AU BSB code). This field is not formatted and therefore might contain delimiters (eg. 01-23-45).
+   * Bank routing number (e.g. DE Bankleitzahl, GB Sort Code, US ABA routing number, AU BSB code, SG bank and branch code). This field is not formatted and therefore might contain delimiters (eg. 01-23-45).
    */
   number: string;
   /**
@@ -513,6 +514,10 @@ export type WorkLocation = {
    * The date and time the object was deleted in the remote system. Objects are automatically marked as deleted when Kombo can't retrieve them from the remote system anymore. Kombo will also anonymize entries 14 days after they disappear.
    */
   remote_deleted_at: Date | null;
+  /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
 };
 
 export type GetHrisEmployeesPositiveResponseResult = {
@@ -1064,6 +1069,7 @@ export const WorkLocation$inboundSchema: z.ZodType<
   remote_deleted_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ),
+  custom_fields: z.nullable(z.record(z.any())),
 });
 
 export function workLocationFromJSON(
