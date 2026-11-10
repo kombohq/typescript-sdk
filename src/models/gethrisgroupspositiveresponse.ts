@@ -52,6 +52,10 @@ export type GetHrisGroupsPositiveResponseResult = {
    * The Kombo ID of the group’s parent group in the organizational structure. The ID can be used to retrieve the group from the `get groups` endpoint.
    */
   parent_id: string | null;
+  /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
 };
 
 export type GetHrisGroupsPositiveResponseData = {
@@ -87,6 +91,7 @@ export const GetHrisGroupsPositiveResponseResult$inboundSchema: z.ZodType<
   ),
   type: z.nullable(GetHrisGroupsPositiveResponseType$inboundSchema),
   parent_id: z.nullable(z.string()),
+  custom_fields: z.nullable(z.record(z.any())),
 });
 
 export function getHrisGroupsPositiveResponseResultFromJSON(

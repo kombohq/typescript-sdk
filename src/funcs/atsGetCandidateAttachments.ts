@@ -33,6 +33,8 @@ import { Result } from "../types/fp.js";
  * @remarks
  * Get attachments from a candidate, including all attachments of all of their applications.
  *
+ * This endpoint calls the ATS on every request. To get the files of all candidates without a request per candidate, use [synced attachments](/ats/features/attachments).
+ *
  * <Note>
  *   This endpoint requires the permission **Read document attachments** to be enabled in [your scope config](/scopes).
  * </Note>

@@ -24,6 +24,7 @@ let value: GetHrisLegalEntitiesPositiveResponseData = {
       },
       changed_at: new Date("2022-08-07T14:01:29.196Z"),
       remote_deleted_at: null,
+      custom_fields: {},
     },
   ],
 };

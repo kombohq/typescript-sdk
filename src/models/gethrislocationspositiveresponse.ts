@@ -58,6 +58,10 @@ export type GetHrisLocationsPositiveResponseResult = {
    * The date and time the object was deleted in the remote system. Objects are automatically marked as deleted when Kombo can't retrieve them from the remote system anymore. Kombo will also anonymize entries 14 days after they disappear.
    */
   remote_deleted_at: Date | null;
+  /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
 };
 
 export type GetHrisLocationsPositiveResponseData = {
@@ -121,6 +125,7 @@ export const GetHrisLocationsPositiveResponseResult$inboundSchema: z.ZodType<
   remote_deleted_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ),
+  custom_fields: z.nullable(z.record(z.any())),
 });
 
 export function getHrisLocationsPositiveResponseResultFromJSON(
