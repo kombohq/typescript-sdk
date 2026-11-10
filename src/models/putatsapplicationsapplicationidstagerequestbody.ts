@@ -43,6 +43,16 @@ export type PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors = {
 };
 
 /**
+ * Fields specific to Lever.
+ */
+export type PutAtsApplicationsApplicationIdStageRequestBodyLever = {
+  /**
+   * ID of the Lever user that will show up as having moved the application. If not provided, Lever records the stage change without a user.
+   */
+  perform_as?: string | undefined;
+};
+
+/**
  * Headers we will pass with `POST` requests to Greenhouse.
  */
 export type PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders = {
@@ -88,6 +98,10 @@ export type PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields = {
   successfactors?:
     | PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors
     | undefined;
+  /**
+   * Fields specific to Lever.
+   */
+  lever?: PutAtsApplicationsApplicationIdStageRequestBodyLever | undefined;
   /**
    * Fields specific to Greenhouse.
    */
@@ -179,6 +193,32 @@ export function putAtsApplicationsApplicationIdStageRequestBodySuccessfactorsToJ
   return JSON.stringify(
     PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$outboundSchema
       .parse(putAtsApplicationsApplicationIdStageRequestBodySuccessfactors),
+  );
+}
+
+/** @internal */
+export type PutAtsApplicationsApplicationIdStageRequestBodyLever$Outbound = {
+  perform_as?: string | undefined;
+};
+
+/** @internal */
+export const PutAtsApplicationsApplicationIdStageRequestBodyLever$outboundSchema:
+  z.ZodType<
+    PutAtsApplicationsApplicationIdStageRequestBodyLever$Outbound,
+    z.ZodTypeDef,
+    PutAtsApplicationsApplicationIdStageRequestBodyLever
+  > = z.object({
+    perform_as: z.string().optional(),
+  });
+
+export function putAtsApplicationsApplicationIdStageRequestBodyLeverToJSON(
+  putAtsApplicationsApplicationIdStageRequestBodyLever:
+    PutAtsApplicationsApplicationIdStageRequestBodyLever,
+): string {
+  return JSON.stringify(
+    PutAtsApplicationsApplicationIdStageRequestBodyLever$outboundSchema.parse(
+      putAtsApplicationsApplicationIdStageRequestBodyLever,
+    ),
   );
 }
 
@@ -276,6 +316,9 @@ export type PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$Outbound
     successfactors?:
       | PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$Outbound
       | undefined;
+    lever?:
+      | PutAtsApplicationsApplicationIdStageRequestBodyLever$Outbound
+      | undefined;
     greenhouse?:
       | PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$Outbound
       | undefined;
@@ -296,6 +339,9 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$outboun
     ).optional(),
     successfactors: z.lazy(() =>
       PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$outboundSchema
+    ).optional(),
+    lever: z.lazy(() =>
+      PutAtsApplicationsApplicationIdStageRequestBodyLever$outboundSchema
     ).optional(),
     greenhouse: z.lazy(() =>
       PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$outboundSchema
