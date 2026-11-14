@@ -227,6 +227,7 @@ export const IntegrationTool = {
   Peoplexd: "peoplexd",
   Zellis: "zellis",
   Veda: "veda",
+  Sona: "sona",
   Sftp: "sftp",
   Sftpfetch: "sftpfetch",
   ThreeHundredAndSixtylearning: "360learning",

@@ -510,8 +510,22 @@ export type PostAtsCandidatesRequestBodyLanguageReference = {
   wid: string;
 };
 
+/**
+ * Gender reference written to Person Biographic and Demographic Information Data.
+ */
+export type PostAtsCandidatesRequestBodyGenderReference = {
+  /**
+   * Tenant Gender_Code for the gender, such as Feminin. Not the Kombo gender enum and not the display label.
+   */
+  gender_code: string;
+};
+
 export type PostAtsCandidatesRequestBodyGlobalPersonalInformationData = {
   date_of_birth?: string | undefined;
+  /**
+   * Gender reference written to Person Biographic and Demographic Information Data.
+   */
+  gender_reference?: PostAtsCandidatesRequestBodyGenderReference | undefined;
 };
 
 export type PostAtsCandidatesRequestBodyJobAppliedToData = {
@@ -704,6 +718,10 @@ export type PostAtsCandidatesRequestBodyBullhorn = {
    * The remote ID of the Bullhorn `Candidate` the application should be filed on. When set, we skip Bullhorn's duplicate detection and use exactly this candidate, which lets you pick the right record when several candidates share an email address or phone number. The request fails if the candidate does not exist (or was deleted) in Bullhorn.
    */
   existing_candidate_remote_id?: string | undefined;
+  /**
+   * The remote IDs of Bullhorn `Specialty` records to add to the candidate. You can list the available specialties with `GET options/Specialty` through our passthrough API. Only applied when we create a new candidate, not when we file the application on an existing one. Bullhorn silently ignores IDs that do not exist, so make sure they are valid. If Bullhorn returns an error, the application is still created and the response includes a warning.
+   */
+  candidate_specialty_remote_ids?: Array<string> | undefined;
 };
 
 /**
@@ -2055,9 +2073,42 @@ export function postAtsCandidatesRequestBodyLanguageReferenceToJSON(
 }
 
 /** @internal */
+export type PostAtsCandidatesRequestBodyGenderReference$Outbound = {
+  Gender_Code: string;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyGenderReference$outboundSchema:
+  z.ZodType<
+    PostAtsCandidatesRequestBodyGenderReference$Outbound,
+    z.ZodTypeDef,
+    PostAtsCandidatesRequestBodyGenderReference
+  > = z.object({
+    gender_code: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      gender_code: "Gender_Code",
+    });
+  });
+
+export function postAtsCandidatesRequestBodyGenderReferenceToJSON(
+  postAtsCandidatesRequestBodyGenderReference:
+    PostAtsCandidatesRequestBodyGenderReference,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyGenderReference$outboundSchema.parse(
+      postAtsCandidatesRequestBodyGenderReference,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsCandidatesRequestBodyGlobalPersonalInformationData$Outbound =
   {
     Date_of_Birth?: string | undefined;
+    Gender_Reference?:
+      | PostAtsCandidatesRequestBodyGenderReference$Outbound
+      | undefined;
   };
 
 /** @internal */
@@ -2068,9 +2119,13 @@ export const PostAtsCandidatesRequestBodyGlobalPersonalInformationData$outboundS
     PostAtsCandidatesRequestBodyGlobalPersonalInformationData
   > = z.object({
     date_of_birth: z.string().optional(),
+    gender_reference: z.lazy(() =>
+      PostAtsCandidatesRequestBodyGenderReference$outboundSchema
+    ).optional(),
   }).transform((v) => {
     return remap$(v, {
       date_of_birth: "Date_of_Birth",
+      gender_reference: "Gender_Reference",
     });
   });
 
@@ -2938,6 +2993,7 @@ export type PostAtsCandidatesRequestBodyBullhorn$Outbound = {
   candidate?: { [k: string]: any } | undefined;
   job_submission?: { [k: string]: any } | undefined;
   existing_candidate_remote_id?: string | undefined;
+  candidate_specialty_remote_ids?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -2949,6 +3005,7 @@ export const PostAtsCandidatesRequestBodyBullhorn$outboundSchema: z.ZodType<
   candidate: z.record(z.any()).optional(),
   job_submission: z.record(z.any()).optional(),
   existing_candidate_remote_id: z.string().optional(),
+  candidate_specialty_remote_ids: z.array(z.string()).optional(),
 });
 
 export function postAtsCandidatesRequestBodyBullhornToJSON(
