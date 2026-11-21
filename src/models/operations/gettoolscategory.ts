@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 
 export type GetToolsCategoryRequest = {
@@ -22,9 +23,11 @@ export const GetToolsCategoryRequest$outboundSchema: z.ZodType<
   GetToolsCategoryRequest$Outbound,
   z.ZodTypeDef,
   GetToolsCategoryRequest
-> = z.object({
-  category: models.GetToolsCategoryParameterCategory$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    category: models.GetToolsCategoryParameterCategory$outboundSchema,
+  })
+);
 
 export function getToolsCategoryRequestToJSON(
   getToolsCategoryRequest: GetToolsCategoryRequest,

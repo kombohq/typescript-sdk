@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -133,32 +133,39 @@ export type GetAtsUsersPositiveResponse = {
 /** @internal */
 export const GetAtsUsersPositiveResponseStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetAtsUsersPositiveResponseStatus
-> = z.nativeEnum(GetAtsUsersPositiveResponseStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetAtsUsersPositiveResponseStatus)
+);
 
 /** @internal */
 export const GetAtsUsersPositiveResponseUnifiedType$inboundSchema:
-  z.ZodNativeEnum<typeof GetAtsUsersPositiveResponseUnifiedType> = z.nativeEnum(
-    GetAtsUsersPositiveResponseUnifiedType,
-  );
+  z.ZodNativeEnum<typeof GetAtsUsersPositiveResponseUnifiedType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetAtsUsersPositiveResponseUnifiedType)
+    );
 
 /** @internal */
 export const GetAtsUsersPositiveResponseScope$inboundSchema: z.ZodNativeEnum<
   typeof GetAtsUsersPositiveResponseScope
-> = z.nativeEnum(GetAtsUsersPositiveResponseScope);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetAtsUsersPositiveResponseScope)
+);
 
 /** @internal */
 export const SystemRole$inboundSchema: z.ZodType<
   SystemRole,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  remote_label: z.nullable(z.string()),
-  unified_type: z.nullable(
-    GetAtsUsersPositiveResponseUnifiedType$inboundSchema,
-  ),
-  scope: GetAtsUsersPositiveResponseScope$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    remote_label: z.nullable(z.string()),
+    unified_type: z.nullable(
+      GetAtsUsersPositiveResponseUnifiedType$inboundSchema,
+    ),
+    scope: GetAtsUsersPositiveResponseScope$inboundSchema,
+  })
+);
 
 export function systemRoleFromJSON(
   jsonString: string,
@@ -175,19 +182,23 @@ export const GetAtsUsersPositiveResponseResult$inboundSchema: z.ZodType<
   GetAtsUsersPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  email: z.nullable(z.string()).optional(),
-  status: z.nullable(GetAtsUsersPositiveResponseStatus$inboundSchema),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  system_roles: z.array(z.lazy(() => SystemRole$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    first_name: z.nullable(z.string()),
+    last_name: z.nullable(z.string()),
+    email: z.nullable(z.string()).optional(),
+    status: z.nullable(GetAtsUsersPositiveResponseStatus$inboundSchema),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    system_roles: z.array(z.lazy(() => SystemRole$inboundSchema)),
+  })
+);
 
 export function getAtsUsersPositiveResponseResultFromJSON(
   jsonString: string,
@@ -204,12 +215,14 @@ export const GetAtsUsersPositiveResponseData$inboundSchema: z.ZodType<
   GetAtsUsersPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetAtsUsersPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetAtsUsersPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getAtsUsersPositiveResponseDataFromJSON(
   jsonString: string,
@@ -226,10 +239,12 @@ export const GetAtsUsersPositiveResponse$inboundSchema: z.ZodType<
   GetAtsUsersPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAtsUsersPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetAtsUsersPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getAtsUsersPositiveResponseFromJSON(
   jsonString: string,

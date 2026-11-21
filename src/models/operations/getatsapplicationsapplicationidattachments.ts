@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetAtsApplicationsApplicationIdAttachmentsGlobals = {
   /**
@@ -29,9 +30,11 @@ export const GetAtsApplicationsApplicationIdAttachmentsRequest$outboundSchema:
     GetAtsApplicationsApplicationIdAttachmentsRequest$Outbound,
     z.ZodTypeDef,
     GetAtsApplicationsApplicationIdAttachmentsRequest
-  > = z.object({
-    application_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      application_id: z.string(),
+    })
+  );
 
 export function getAtsApplicationsApplicationIdAttachmentsRequestToJSON(
   getAtsApplicationsApplicationIdAttachmentsRequest:

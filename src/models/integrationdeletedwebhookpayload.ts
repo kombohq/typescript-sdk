@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -92,9 +92,10 @@ export type IntegrationDeletedWebhookPayload = {
 
 /** @internal */
 export const IntegrationDeletedWebhookPayloadType$inboundSchema:
-  z.ZodNativeEnum<typeof IntegrationDeletedWebhookPayloadType> = z.nativeEnum(
-    IntegrationDeletedWebhookPayloadType,
-  );
+  z.ZodNativeEnum<typeof IntegrationDeletedWebhookPayloadType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(IntegrationDeletedWebhookPayloadType)
+    );
 /** @internal */
 export const IntegrationDeletedWebhookPayloadType$outboundSchema:
   z.ZodNativeEnum<typeof IntegrationDeletedWebhookPayloadType> =
@@ -102,8 +103,10 @@ export const IntegrationDeletedWebhookPayloadType$outboundSchema:
 
 /** @internal */
 export const IntegrationDeletedWebhookPayloadCategory$inboundSchema:
-  z.ZodNativeEnum<typeof IntegrationDeletedWebhookPayloadCategory> = z
-    .nativeEnum(IntegrationDeletedWebhookPayloadCategory);
+  z.ZodNativeEnum<typeof IntegrationDeletedWebhookPayloadCategory> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(IntegrationDeletedWebhookPayloadCategory)
+    );
 /** @internal */
 export const IntegrationDeletedWebhookPayloadCategory$outboundSchema:
   z.ZodNativeEnum<typeof IntegrationDeletedWebhookPayloadCategory> =
@@ -114,11 +117,13 @@ export const IntegrationDeletedWebhookPayloadEndUser$inboundSchema: z.ZodType<
   IntegrationDeletedWebhookPayloadEndUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  organization_name: z.string(),
-  creator_email: z.nullable(z.string()),
-  origin_id: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organization_name: z.string(),
+    creator_email: z.nullable(z.string()),
+    origin_id: z.nullable(z.string()),
+  })
+);
 /** @internal */
 export type IntegrationDeletedWebhookPayloadEndUser$Outbound = {
   organization_name: string;
@@ -131,11 +136,13 @@ export const IntegrationDeletedWebhookPayloadEndUser$outboundSchema: z.ZodType<
   IntegrationDeletedWebhookPayloadEndUser$Outbound,
   z.ZodTypeDef,
   IntegrationDeletedWebhookPayloadEndUser
-> = z.object({
-  organization_name: z.string(),
-  creator_email: z.nullable(z.string()),
-  origin_id: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organization_name: z.string(),
+    creator_email: z.nullable(z.string()),
+    origin_id: z.nullable(z.string()),
+  })
+);
 
 export function integrationDeletedWebhookPayloadEndUserToJSON(
   integrationDeletedWebhookPayloadEndUser:
@@ -168,13 +175,19 @@ export const IntegrationDeletedWebhookPayloadData$inboundSchema: z.ZodType<
   IntegrationDeletedWebhookPayloadData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  tool: z.string(),
-  category: IntegrationDeletedWebhookPayloadCategory$inboundSchema,
-  end_user: z.lazy(() => IntegrationDeletedWebhookPayloadEndUser$inboundSchema),
-  deleted_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    tool: z.string(),
+    category: IntegrationDeletedWebhookPayloadCategory$inboundSchema,
+    end_user: z.lazy(() =>
+      IntegrationDeletedWebhookPayloadEndUser$inboundSchema
+    ),
+    deleted_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+  })
+);
 /** @internal */
 export type IntegrationDeletedWebhookPayloadData$Outbound = {
   id: string;
@@ -189,15 +202,17 @@ export const IntegrationDeletedWebhookPayloadData$outboundSchema: z.ZodType<
   IntegrationDeletedWebhookPayloadData$Outbound,
   z.ZodTypeDef,
   IntegrationDeletedWebhookPayloadData
-> = z.object({
-  id: z.string(),
-  tool: z.string(),
-  category: IntegrationDeletedWebhookPayloadCategory$outboundSchema,
-  end_user: z.lazy(() =>
-    IntegrationDeletedWebhookPayloadEndUser$outboundSchema
-  ),
-  deleted_at: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    tool: z.string(),
+    category: IntegrationDeletedWebhookPayloadCategory$outboundSchema,
+    end_user: z.lazy(() =>
+      IntegrationDeletedWebhookPayloadEndUser$outboundSchema
+    ),
+    deleted_at: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function integrationDeletedWebhookPayloadDataToJSON(
   integrationDeletedWebhookPayloadData: IntegrationDeletedWebhookPayloadData,
@@ -224,11 +239,13 @@ export const IntegrationDeletedWebhookPayload$inboundSchema: z.ZodType<
   IntegrationDeletedWebhookPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  type: IntegrationDeletedWebhookPayloadType$inboundSchema,
-  data: z.lazy(() => IntegrationDeletedWebhookPayloadData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: IntegrationDeletedWebhookPayloadType$inboundSchema,
+    data: z.lazy(() => IntegrationDeletedWebhookPayloadData$inboundSchema),
+  })
+);
 /** @internal */
 export type IntegrationDeletedWebhookPayload$Outbound = {
   id: string;
@@ -241,11 +258,13 @@ export const IntegrationDeletedWebhookPayload$outboundSchema: z.ZodType<
   IntegrationDeletedWebhookPayload$Outbound,
   z.ZodTypeDef,
   IntegrationDeletedWebhookPayload
-> = z.object({
-  id: z.string(),
-  type: IntegrationDeletedWebhookPayloadType$outboundSchema,
-  data: z.lazy(() => IntegrationDeletedWebhookPayloadData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: IntegrationDeletedWebhookPayloadType$outboundSchema,
+    data: z.lazy(() => IntegrationDeletedWebhookPayloadData$outboundSchema),
+  })
+);
 
 export function integrationDeletedWebhookPayloadToJSON(
   integrationDeletedWebhookPayload: IntegrationDeletedWebhookPayload,

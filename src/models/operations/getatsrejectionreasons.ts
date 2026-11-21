@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
@@ -75,15 +75,17 @@ export const GetAtsRejectionReasonsRequest$outboundSchema: z.ZodType<
   GetAtsRejectionReasonsRequest$Outbound,
   z.ZodTypeDef,
   GetAtsRejectionReasonsRequest
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.date().transform(v => v.toISOString()).optional(),
-  include_deleted: z.boolean().default(false),
-  ignore_unsupported_filters: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cursor: z.string().optional(),
+    page_size: z.number().int().default(100),
+    updated_after: z.date().transform(v => v.toISOString()).optional(),
+    include_deleted: z.boolean().default(false),
+    ignore_unsupported_filters: z.boolean().default(false),
+    ids: z.array(z.string()).optional(),
+    remote_ids: z.array(z.string()).optional(),
+  })
+);
 
 export function getAtsRejectionReasonsRequestToJSON(
   getAtsRejectionReasonsRequest: GetAtsRejectionReasonsRequest,
@@ -100,13 +102,15 @@ export const GetAtsRejectionReasonsResponse$inboundSchema: z.ZodType<
   GetAtsRejectionReasonsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Result: models.GetAtsRejectionReasonsPositiveResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Result: models.GetAtsRejectionReasonsPositiveResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Result": "result",
+    });
+  })
+);
 
 export function getAtsRejectionReasonsResponseFromJSON(
   jsonString: string,

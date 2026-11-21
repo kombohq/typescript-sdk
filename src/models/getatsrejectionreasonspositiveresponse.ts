@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -49,17 +49,19 @@ export const GetAtsRejectionReasonsPositiveResponseResult$inboundSchema:
     GetAtsRejectionReasonsPositiveResponseResult,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    remote_id: z.string(),
-    name: z.nullable(z.string()),
-    changed_at: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    remote_deleted_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      remote_id: z.string(),
+      name: z.nullable(z.string()),
+      changed_at: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      remote_deleted_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+    })
+  );
 
 export function getAtsRejectionReasonsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -80,14 +82,14 @@ export function getAtsRejectionReasonsPositiveResponseResultFromJSON(
 /** @internal */
 export const GetAtsRejectionReasonsPositiveResponseData$inboundSchema:
   z.ZodType<GetAtsRejectionReasonsPositiveResponseData, z.ZodTypeDef, unknown> =
-    z.object({
-      next: z.nullable(z.string()),
-      results: z.array(
-        z.lazy(() =>
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        next: z.nullable(z.string()),
+        results: z.array(z.lazy(() =>
           GetAtsRejectionReasonsPositiveResponseResult$inboundSchema
-        ),
-      ),
-    });
+        )),
+      })
+    );
 
 export function getAtsRejectionReasonsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -110,10 +112,14 @@ export const GetAtsRejectionReasonsPositiveResponse$inboundSchema: z.ZodType<
   GetAtsRejectionReasonsPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAtsRejectionReasonsPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() =>
+      GetAtsRejectionReasonsPositiveResponseData$inboundSchema
+    ),
+  })
+);
 
 export function getAtsRejectionReasonsPositiveResponseFromJSON(
   jsonString: string,

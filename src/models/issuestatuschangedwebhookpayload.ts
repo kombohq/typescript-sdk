@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -160,46 +160,50 @@ export type IssueStatusChangedWebhookPayload = {
 
 /** @internal */
 export const IssueStatusChangedWebhookPayloadType$inboundSchema:
-  z.ZodNativeEnum<typeof IssueStatusChangedWebhookPayloadType> = z.nativeEnum(
-    IssueStatusChangedWebhookPayloadType,
-  );
+  z.ZodNativeEnum<typeof IssueStatusChangedWebhookPayloadType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(IssueStatusChangedWebhookPayloadType)
+    );
 /** @internal */
 export const IssueStatusChangedWebhookPayloadType$outboundSchema:
   z.ZodNativeEnum<typeof IssueStatusChangedWebhookPayloadType> =
     IssueStatusChangedWebhookPayloadType$inboundSchema;
 
 /** @internal */
-export const Change$inboundSchema: z.ZodNativeEnum<typeof Change> = z
-  .nativeEnum(Change);
+export const Change$inboundSchema: z.ZodNativeEnum<typeof Change> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Change));
 /** @internal */
 export const Change$outboundSchema: z.ZodNativeEnum<typeof Change> =
   Change$inboundSchema;
 
 /** @internal */
 export const IssueStatusChangedWebhookPayloadStatus$inboundSchema:
-  z.ZodNativeEnum<typeof IssueStatusChangedWebhookPayloadStatus> = z.nativeEnum(
-    IssueStatusChangedWebhookPayloadStatus,
-  );
+  z.ZodNativeEnum<typeof IssueStatusChangedWebhookPayloadStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(IssueStatusChangedWebhookPayloadStatus)
+    );
 /** @internal */
 export const IssueStatusChangedWebhookPayloadStatus$outboundSchema:
   z.ZodNativeEnum<typeof IssueStatusChangedWebhookPayloadStatus> =
     IssueStatusChangedWebhookPayloadStatus$inboundSchema;
 
 /** @internal */
-export const Issue$inboundSchema: z.ZodType<Issue, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    type: z.string(),
-    title: z.string(),
-    status: IssueStatusChangedWebhookPayloadStatus$inboundSchema,
-    markdown_message: z.string(),
-    first_observed_at: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    resolved_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-  });
+export const Issue$inboundSchema: z.ZodType<Issue, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      type: z.string(),
+      title: z.string(),
+      status: IssueStatusChangedWebhookPayloadStatus$inboundSchema,
+      markdown_message: z.string(),
+      first_observed_at: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      resolved_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+    })
+  );
 /** @internal */
 export type Issue$Outbound = {
   id: string;
@@ -216,15 +220,17 @@ export const Issue$outboundSchema: z.ZodType<
   Issue$Outbound,
   z.ZodTypeDef,
   Issue
-> = z.object({
-  id: z.string(),
-  type: z.string(),
-  title: z.string(),
-  status: IssueStatusChangedWebhookPayloadStatus$outboundSchema,
-  markdown_message: z.string(),
-  first_observed_at: z.date().transform(v => v.toISOString()),
-  resolved_at: z.nullable(z.date().transform(v => v.toISOString())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: z.string(),
+    title: z.string(),
+    status: IssueStatusChangedWebhookPayloadStatus$outboundSchema,
+    markdown_message: z.string(),
+    first_observed_at: z.date().transform(v => v.toISOString()),
+    resolved_at: z.nullable(z.date().transform(v => v.toISOString())),
+  })
+);
 
 export function issueToJSON(issue: Issue): string {
   return JSON.stringify(Issue$outboundSchema.parse(issue));
@@ -241,8 +247,10 @@ export function issueFromJSON(
 
 /** @internal */
 export const IssueStatusChangedWebhookPayloadCategory$inboundSchema:
-  z.ZodNativeEnum<typeof IssueStatusChangedWebhookPayloadCategory> = z
-    .nativeEnum(IssueStatusChangedWebhookPayloadCategory);
+  z.ZodNativeEnum<typeof IssueStatusChangedWebhookPayloadCategory> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(IssueStatusChangedWebhookPayloadCategory)
+    );
 /** @internal */
 export const IssueStatusChangedWebhookPayloadCategory$outboundSchema:
   z.ZodNativeEnum<typeof IssueStatusChangedWebhookPayloadCategory> =
@@ -253,11 +261,13 @@ export const IssueStatusChangedWebhookPayloadEndUser$inboundSchema: z.ZodType<
   IssueStatusChangedWebhookPayloadEndUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  organization_name: z.string(),
-  creator_email: z.nullable(z.string()),
-  origin_id: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organization_name: z.string(),
+    creator_email: z.nullable(z.string()),
+    origin_id: z.nullable(z.string()),
+  })
+);
 /** @internal */
 export type IssueStatusChangedWebhookPayloadEndUser$Outbound = {
   organization_name: string;
@@ -270,11 +280,13 @@ export const IssueStatusChangedWebhookPayloadEndUser$outboundSchema: z.ZodType<
   IssueStatusChangedWebhookPayloadEndUser$Outbound,
   z.ZodTypeDef,
   IssueStatusChangedWebhookPayloadEndUser
-> = z.object({
-  organization_name: z.string(),
-  creator_email: z.nullable(z.string()),
-  origin_id: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organization_name: z.string(),
+    creator_email: z.nullable(z.string()),
+    origin_id: z.nullable(z.string()),
+  })
+);
 
 export function issueStatusChangedWebhookPayloadEndUserToJSON(
   issueStatusChangedWebhookPayloadEndUser:
@@ -307,12 +319,16 @@ export const Integration$inboundSchema: z.ZodType<
   Integration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  tool: z.string(),
-  category: IssueStatusChangedWebhookPayloadCategory$inboundSchema,
-  end_user: z.lazy(() => IssueStatusChangedWebhookPayloadEndUser$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    tool: z.string(),
+    category: IssueStatusChangedWebhookPayloadCategory$inboundSchema,
+    end_user: z.lazy(() =>
+      IssueStatusChangedWebhookPayloadEndUser$inboundSchema
+    ),
+  })
+);
 /** @internal */
 export type Integration$Outbound = {
   id: string;
@@ -326,14 +342,16 @@ export const Integration$outboundSchema: z.ZodType<
   Integration$Outbound,
   z.ZodTypeDef,
   Integration
-> = z.object({
-  id: z.string(),
-  tool: z.string(),
-  category: IssueStatusChangedWebhookPayloadCategory$outboundSchema,
-  end_user: z.lazy(() =>
-    IssueStatusChangedWebhookPayloadEndUser$outboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    tool: z.string(),
+    category: IssueStatusChangedWebhookPayloadCategory$outboundSchema,
+    end_user: z.lazy(() =>
+      IssueStatusChangedWebhookPayloadEndUser$outboundSchema
+    ),
+  })
+);
 
 export function integrationToJSON(integration: Integration): string {
   return JSON.stringify(Integration$outboundSchema.parse(integration));
@@ -353,11 +371,13 @@ export const IssueStatusChangedWebhookPayloadData$inboundSchema: z.ZodType<
   IssueStatusChangedWebhookPayloadData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  change: Change$inboundSchema,
-  issue: z.lazy(() => Issue$inboundSchema),
-  integration: z.nullable(z.lazy(() => Integration$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    change: Change$inboundSchema,
+    issue: z.lazy(() => Issue$inboundSchema),
+    integration: z.nullable(z.lazy(() => Integration$inboundSchema)),
+  })
+);
 /** @internal */
 export type IssueStatusChangedWebhookPayloadData$Outbound = {
   change: string;
@@ -370,11 +390,13 @@ export const IssueStatusChangedWebhookPayloadData$outboundSchema: z.ZodType<
   IssueStatusChangedWebhookPayloadData$Outbound,
   z.ZodTypeDef,
   IssueStatusChangedWebhookPayloadData
-> = z.object({
-  change: Change$outboundSchema,
-  issue: z.lazy(() => Issue$outboundSchema),
-  integration: z.nullable(z.lazy(() => Integration$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    change: Change$outboundSchema,
+    issue: z.lazy(() => Issue$outboundSchema),
+    integration: z.nullable(z.lazy(() => Integration$outboundSchema)),
+  })
+);
 
 export function issueStatusChangedWebhookPayloadDataToJSON(
   issueStatusChangedWebhookPayloadData: IssueStatusChangedWebhookPayloadData,
@@ -401,11 +423,13 @@ export const IssueStatusChangedWebhookPayload$inboundSchema: z.ZodType<
   IssueStatusChangedWebhookPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  type: IssueStatusChangedWebhookPayloadType$inboundSchema,
-  data: z.lazy(() => IssueStatusChangedWebhookPayloadData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: IssueStatusChangedWebhookPayloadType$inboundSchema,
+    data: z.lazy(() => IssueStatusChangedWebhookPayloadData$inboundSchema),
+  })
+);
 /** @internal */
 export type IssueStatusChangedWebhookPayload$Outbound = {
   id: string;
@@ -418,11 +442,13 @@ export const IssueStatusChangedWebhookPayload$outboundSchema: z.ZodType<
   IssueStatusChangedWebhookPayload$Outbound,
   z.ZodTypeDef,
   IssueStatusChangedWebhookPayload
-> = z.object({
-  id: z.string(),
-  type: IssueStatusChangedWebhookPayloadType$outboundSchema,
-  data: z.lazy(() => IssueStatusChangedWebhookPayloadData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: IssueStatusChangedWebhookPayloadType$outboundSchema,
+    data: z.lazy(() => IssueStatusChangedWebhookPayloadData$outboundSchema),
+  })
+);
 
 export function issueStatusChangedWebhookPayloadToJSON(
   issueStatusChangedWebhookPayload: IssueStatusChangedWebhookPayload,

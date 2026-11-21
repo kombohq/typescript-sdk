@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -227,6 +228,8 @@ export const IntegrationTool = {
   Peoplexd: "peoplexd",
   Zellis: "zellis",
   Veda: "veda",
+  Sona: "sona",
+  Daywize: "daywize",
   Sftp: "sftp",
   Sftpfetch: "sftpfetch",
   ThreeHundredAndSixtylearning: "360learning",
@@ -341,22 +344,28 @@ export type PostConnectCreateLinkRequestBody = {
 /** @internal */
 export const PostConnectCreateLinkRequestBodyIntegrationCategory$outboundSchema:
   z.ZodNativeEnum<typeof PostConnectCreateLinkRequestBodyIntegrationCategory> =
-    z.nativeEnum(PostConnectCreateLinkRequestBodyIntegrationCategory);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PostConnectCreateLinkRequestBodyIntegrationCategory)
+    );
 
 /** @internal */
 export const IntegrationTool$outboundSchema: z.ZodNativeEnum<
   typeof IntegrationTool
-> = z.nativeEnum(IntegrationTool);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(IntegrationTool));
 
 /** @internal */
 export const PostConnectCreateLinkRequestBodyLanguage$outboundSchema:
-  z.ZodNativeEnum<typeof PostConnectCreateLinkRequestBodyLanguage> = z
-    .nativeEnum(PostConnectCreateLinkRequestBodyLanguage);
+  z.ZodNativeEnum<typeof PostConnectCreateLinkRequestBodyLanguage> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PostConnectCreateLinkRequestBodyLanguage)
+    );
 
 /** @internal */
 export const PostConnectCreateLinkRequestBodyLinkType$outboundSchema:
-  z.ZodNativeEnum<typeof PostConnectCreateLinkRequestBodyLinkType> = z
-    .nativeEnum(PostConnectCreateLinkRequestBodyLinkType);
+  z.ZodNativeEnum<typeof PostConnectCreateLinkRequestBodyLinkType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PostConnectCreateLinkRequestBodyLinkType)
+    );
 
 /** @internal */
 export type PostConnectCreateLinkRequestBody$Outbound = {
@@ -379,27 +388,28 @@ export const PostConnectCreateLinkRequestBody$outboundSchema: z.ZodType<
   PostConnectCreateLinkRequestBody$Outbound,
   z.ZodTypeDef,
   PostConnectCreateLinkRequestBody
-> = z.object({
-  end_user_email: z.string(),
-  end_user_organization_name: z.string(),
-  end_user_origin_id: z.nullable(z.string()).optional(),
-  remote_environment: z.nullable(z.string()).optional(),
-  integration_category:
-    PostConnectCreateLinkRequestBodyIntegrationCategory$outboundSchema.default(
-      "HRIS",
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    end_user_email: z.string(),
+    end_user_organization_name: z.string(),
+    end_user_origin_id: z.nullable(z.string()).optional(),
+    remote_environment: z.nullable(z.string()).optional(),
+    integration_category:
+      PostConnectCreateLinkRequestBodyIntegrationCategory$outboundSchema
+        .default("HRIS"),
+    integration_tool: z.nullable(IntegrationTool$outboundSchema).optional(),
+    language: z.nullable(
+      PostConnectCreateLinkRequestBodyLanguage$outboundSchema.default("en"),
     ),
-  integration_tool: z.nullable(IntegrationTool$outboundSchema).optional(),
-  language: z.nullable(
-    PostConnectCreateLinkRequestBodyLanguage$outboundSchema.default("en"),
-  ),
-  scope_config_id: z.nullable(z.string()).optional(),
-  enable_filtering: z.boolean().default(false),
-  enable_field_mapping: z.boolean().default(false),
-  enable_static_ips: z.boolean().default(false),
-  link_type: PostConnectCreateLinkRequestBodyLinkType$outboundSchema.default(
-    "EMBEDDED",
-  ),
-});
+    scope_config_id: z.nullable(z.string()).optional(),
+    enable_filtering: z.boolean().default(false),
+    enable_field_mapping: z.boolean().default(false),
+    enable_static_ips: z.boolean().default(false),
+    link_type: PostConnectCreateLinkRequestBodyLinkType$outboundSchema.default(
+      "EMBEDDED",
+    ),
+  })
+);
 
 export function postConnectCreateLinkRequestBodyToJSON(
   postConnectCreateLinkRequestBody: PostConnectCreateLinkRequestBody,

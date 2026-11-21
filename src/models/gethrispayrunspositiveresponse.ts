@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { RFCDate } from "../types/rfcdate.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -115,10 +115,12 @@ export const GetHrisPayRunsPositiveResponseGrossPay$inboundSchema: z.ZodType<
   GetHrisPayRunsPositiveResponseGrossPay,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: z.string(),
-  value: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    value: z.number(),
+  })
+);
 
 export function getHrisPayRunsPositiveResponseGrossPayFromJSON(
   jsonString: string,
@@ -136,10 +138,12 @@ export const GetHrisPayRunsPositiveResponseNetPay$inboundSchema: z.ZodType<
   GetHrisPayRunsPositiveResponseNetPay,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: z.string(),
-  value: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    value: z.number(),
+  })
+);
 
 export function getHrisPayRunsPositiveResponseNetPayFromJSON(
   jsonString: string,
@@ -157,10 +161,12 @@ export const GetHrisPayRunsPositiveResponsePaidAmount$inboundSchema: z.ZodType<
   GetHrisPayRunsPositiveResponsePaidAmount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currency: z.string(),
-  value: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: z.string(),
+    value: z.number(),
+  })
+);
 
 export function getHrisPayRunsPositiveResponsePaidAmountFromJSON(
   jsonString: string,
@@ -183,17 +189,19 @@ export const GetHrisPayRunsPositiveResponseTotals$inboundSchema: z.ZodType<
   GetHrisPayRunsPositiveResponseTotals,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  gross_pay: z.nullable(
-    z.lazy(() => GetHrisPayRunsPositiveResponseGrossPay$inboundSchema),
-  ).optional(),
-  net_pay: z.nullable(
-    z.lazy(() => GetHrisPayRunsPositiveResponseNetPay$inboundSchema),
-  ).optional(),
-  paid_amount: z.nullable(
-    z.lazy(() => GetHrisPayRunsPositiveResponsePaidAmount$inboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    gross_pay: z.nullable(
+      z.lazy(() => GetHrisPayRunsPositiveResponseGrossPay$inboundSchema),
+    ).optional(),
+    net_pay: z.nullable(
+      z.lazy(() => GetHrisPayRunsPositiveResponseNetPay$inboundSchema),
+    ).optional(),
+    paid_amount: z.nullable(
+      z.lazy(() => GetHrisPayRunsPositiveResponsePaidAmount$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function getHrisPayRunsPositiveResponseTotalsFromJSON(
   jsonString: string,
@@ -211,18 +219,22 @@ export const GetHrisPayRunsPositiveResponseResult$inboundSchema: z.ZodType<
   GetHrisPayRunsPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  start_date: z.nullable(z.string().transform(v => new RFCDate(v))),
-  end_date: z.nullable(z.string().transform(v => new RFCDate(v))),
-  legal_entity_id: z.nullable(z.string()),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  totals: z.lazy(() => GetHrisPayRunsPositiveResponseTotals$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    start_date: z.nullable(z.string().transform(v => new RFCDate(v))),
+    end_date: z.nullable(z.string().transform(v => new RFCDate(v))),
+    legal_entity_id: z.nullable(z.string()),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    totals: z.lazy(() => GetHrisPayRunsPositiveResponseTotals$inboundSchema),
+  })
+);
 
 export function getHrisPayRunsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -240,12 +252,14 @@ export const GetHrisPayRunsPositiveResponseData$inboundSchema: z.ZodType<
   GetHrisPayRunsPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisPayRunsPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetHrisPayRunsPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getHrisPayRunsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -263,10 +277,12 @@ export const GetHrisPayRunsPositiveResponse$inboundSchema: z.ZodType<
   GetHrisPayRunsPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisPayRunsPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetHrisPayRunsPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getHrisPayRunsPositiveResponseFromJSON(
   jsonString: string,

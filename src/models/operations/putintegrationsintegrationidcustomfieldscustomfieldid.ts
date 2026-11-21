@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 
 export type PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest = {
@@ -35,13 +36,15 @@ export const PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$outbou
     PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest$Outbound,
     z.ZodTypeDef,
     PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest
-  > = z.object({
-    integration_id: z.string(),
-    custom_field_id: z.string(),
-    body:
-      models
-        .PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$outboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integration_id: z.string(),
+      custom_field_id: z.string(),
+      body:
+        models
+          .PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$outboundSchema,
+    })
+  );
 
 export function putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestToJSON(
   putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequest:

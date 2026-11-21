@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetConnectIntegrationByTokenTokenRequest = {
   /**
@@ -21,9 +22,11 @@ export const GetConnectIntegrationByTokenTokenRequest$outboundSchema: z.ZodType<
   GetConnectIntegrationByTokenTokenRequest$Outbound,
   z.ZodTypeDef,
   GetConnectIntegrationByTokenTokenRequest
-> = z.object({
-  token: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string(),
+  })
+);
 
 export function getConnectIntegrationByTokenTokenRequestToJSON(
   getConnectIntegrationByTokenTokenRequest:

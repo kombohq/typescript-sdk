@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export const GetToolsCategoryParameterCategory = {
@@ -18,4 +19,6 @@ export type GetToolsCategoryParameterCategory = ClosedEnum<
 /** @internal */
 export const GetToolsCategoryParameterCategory$outboundSchema: z.ZodNativeEnum<
   typeof GetToolsCategoryParameterCategory
-> = z.nativeEnum(GetToolsCategoryParameterCategory);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetToolsCategoryParameterCategory)
+);

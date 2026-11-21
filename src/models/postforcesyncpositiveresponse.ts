@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -45,18 +45,22 @@ export type PostForceSyncPositiveResponse = {
 /** @internal */
 export const PostForceSyncPositiveResponseType$inboundSchema: z.ZodNativeEnum<
   typeof PostForceSyncPositiveResponseType
-> = z.nativeEnum(PostForceSyncPositiveResponseType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PostForceSyncPositiveResponseType)
+);
 
 /** @internal */
 export const PostForceSyncPositiveResponseData$inboundSchema: z.ZodType<
   PostForceSyncPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  already_queued: z.boolean(),
-  sync_id: z.string(),
-  type: PostForceSyncPositiveResponseType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    already_queued: z.boolean(),
+    sync_id: z.string(),
+    type: PostForceSyncPositiveResponseType$inboundSchema,
+  })
+);
 
 export function postForceSyncPositiveResponseDataFromJSON(
   jsonString: string,
@@ -73,10 +77,12 @@ export const PostForceSyncPositiveResponse$inboundSchema: z.ZodType<
   PostForceSyncPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => PostForceSyncPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => PostForceSyncPositiveResponseData$inboundSchema),
+  })
+);
 
 export function postForceSyncPositiveResponseFromJSON(
   jsonString: string,

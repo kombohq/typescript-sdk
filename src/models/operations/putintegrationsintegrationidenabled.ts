@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 
 export type PutIntegrationsIntegrationIdEnabledRequest = {
@@ -28,10 +29,13 @@ export const PutIntegrationsIntegrationIdEnabledRequest$outboundSchema:
     PutIntegrationsIntegrationIdEnabledRequest$Outbound,
     z.ZodTypeDef,
     PutIntegrationsIntegrationIdEnabledRequest
-  > = z.object({
-    integration_id: z.string(),
-    body: models.PutIntegrationsIntegrationIdEnabledRequestBody$outboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integration_id: z.string(),
+      body:
+        models.PutIntegrationsIntegrationIdEnabledRequestBody$outboundSchema,
+    })
+  );
 
 export function putIntegrationsIntegrationIdEnabledRequestToJSON(
   putIntegrationsIntegrationIdEnabledRequest:

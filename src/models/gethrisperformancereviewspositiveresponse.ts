@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -211,19 +211,23 @@ export type GetHrisPerformanceReviewsPositiveResponse = {
 
 /** @internal */
 export const GetHrisPerformanceReviewsPositiveResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisPerformanceReviewsPositiveResponseType> = z
-    .nativeEnum(GetHrisPerformanceReviewsPositiveResponseType);
+  z.ZodNativeEnum<typeof GetHrisPerformanceReviewsPositiveResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisPerformanceReviewsPositiveResponseType)
+    );
 
 /** @internal */
 export const SummaryRatingSingleSelect$inboundSchema: z.ZodType<
   SummaryRatingSingleSelect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("SINGLE_SELECT"),
-  ordered_options: z.nullable(z.array(z.string())),
-  value: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("SINGLE_SELECT"),
+    ordered_options: z.nullable(z.array(z.string())),
+    value: z.nullable(z.string()),
+  })
+);
 
 export function summaryRatingSingleSelectFromJSON(
   jsonString: string,
@@ -240,12 +244,14 @@ export const SummaryRatingNumeric$inboundSchema: z.ZodType<
   SummaryRatingNumeric,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("NUMERIC"),
-  min: z.nullable(z.number()),
-  max: z.nullable(z.number()),
-  value: z.nullable(z.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("NUMERIC"),
+    min: z.nullable(z.number()),
+    max: z.nullable(z.number()),
+    value: z.nullable(z.number()),
+  })
+);
 
 export function summaryRatingNumericFromJSON(
   jsonString: string,
@@ -262,10 +268,12 @@ export const SummaryRating$inboundSchema: z.ZodType<
   SummaryRating,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => SummaryRatingNumeric$inboundSchema),
-  z.lazy(() => SummaryRatingSingleSelect$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => SummaryRatingNumeric$inboundSchema),
+    z.lazy(() => SummaryRatingSingleSelect$inboundSchema),
+  ])
+);
 
 export function summaryRatingFromJSON(
   jsonString: string,
@@ -282,17 +290,19 @@ export const Reviewee$inboundSchema: z.ZodType<
   Reviewee,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  display_full_name: z.nullable(z.string()),
-  work_email: z.nullable(z.string()).optional(),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    first_name: z.nullable(z.string()),
+    last_name: z.nullable(z.string()),
+    display_full_name: z.nullable(z.string()),
+    work_email: z.nullable(z.string()).optional(),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+  })
+);
 
 export function revieweeFromJSON(
   jsonString: string,
@@ -309,17 +319,19 @@ export const Reviewer$inboundSchema: z.ZodType<
   Reviewer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  display_full_name: z.nullable(z.string()),
-  work_email: z.nullable(z.string()).optional(),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    first_name: z.nullable(z.string()),
+    last_name: z.nullable(z.string()),
+    display_full_name: z.nullable(z.string()),
+    work_email: z.nullable(z.string()).optional(),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+  })
+);
 
 export function reviewerFromJSON(
   jsonString: string,
@@ -336,18 +348,22 @@ export const ReviewCycle$inboundSchema: z.ZodType<
   ReviewCycle,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  name: z.nullable(z.string()),
-  review_period_start_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    name: z.nullable(z.string()),
+    review_period_start_date: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+  })
+);
 
 export function reviewCycleFromJSON(
   jsonString: string,
@@ -365,29 +381,31 @@ export const GetHrisPerformanceReviewsPositiveResponseResult$inboundSchema:
     GetHrisPerformanceReviewsPositiveResponseResult,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    remote_id: z.string(),
-    type: z.nullable(
-      GetHrisPerformanceReviewsPositiveResponseType$inboundSchema,
-    ),
-    summary_comment: z.nullable(z.string()),
-    summary_rating: z.nullable(
-      z.union([
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      remote_id: z.string(),
+      type: z.nullable(
+        GetHrisPerformanceReviewsPositiveResponseType$inboundSchema,
+      ),
+      summary_comment: z.nullable(z.string()),
+      summary_rating: z.nullable(z.union([
         z.lazy(() => SummaryRatingNumeric$inboundSchema),
         z.lazy(() => SummaryRatingSingleSelect$inboundSchema),
-      ]),
-    ).optional(),
-    changed_at: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    remote_deleted_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    reviewee: z.lazy(() => Reviewee$inboundSchema),
-    reviewer: z.nullable(z.lazy(() => Reviewer$inboundSchema)),
-    review_cycle: z.nullable(z.lazy(() => ReviewCycle$inboundSchema)),
-  });
+      ])).optional(),
+      changed_at: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      remote_deleted_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v =>
+          new Date(v)
+        ),
+      ),
+      reviewee: z.lazy(() => Reviewee$inboundSchema),
+      reviewer: z.nullable(z.lazy(() => Reviewer$inboundSchema)),
+      review_cycle: z.nullable(z.lazy(() => ReviewCycle$inboundSchema)),
+    })
+  );
 
 export function getHrisPerformanceReviewsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -411,14 +429,14 @@ export const GetHrisPerformanceReviewsPositiveResponseData$inboundSchema:
     GetHrisPerformanceReviewsPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    next: z.nullable(z.string()),
-    results: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      next: z.nullable(z.string()),
+      results: z.array(z.lazy(() =>
         GetHrisPerformanceReviewsPositiveResponseResult$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function getHrisPerformanceReviewsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -441,12 +459,14 @@ export const GetHrisPerformanceReviewsPositiveResponse$inboundSchema: z.ZodType<
   GetHrisPerformanceReviewsPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() =>
-    GetHrisPerformanceReviewsPositiveResponseData$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() =>
+      GetHrisPerformanceReviewsPositiveResponseData$inboundSchema
+    ),
+  })
+);
 
 export function getHrisPerformanceReviewsPositiveResponseFromJSON(
   jsonString: string,

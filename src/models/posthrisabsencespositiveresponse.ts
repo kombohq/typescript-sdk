@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import * as openEnums from "../types/enums.js";
 import { ClosedEnum, OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -107,6 +107,10 @@ export type PostHrisAbsencesPositiveResponseData = {
    * The date and time the object was deleted in the remote system. Objects are automatically marked as deleted when Kombo can't retrieve them from the remote system anymore. Kombo will also anonymize entries 14 days after they disappear.
    */
   remote_deleted_at: Date | null;
+  /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
 };
 
 export type PostHrisAbsencesPositiveResponseWarning = {
@@ -124,49 +128,57 @@ export type PostHrisAbsencesPositiveResponse = {
 
 /** @internal */
 export const PostHrisAbsencesPositiveResponseUnit$inboundSchema:
-  z.ZodNativeEnum<typeof PostHrisAbsencesPositiveResponseUnit> = z.nativeEnum(
-    PostHrisAbsencesPositiveResponseUnit,
-  );
+  z.ZodNativeEnum<typeof PostHrisAbsencesPositiveResponseUnit> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PostHrisAbsencesPositiveResponseUnit)
+    );
 
 /** @internal */
 export const PostHrisAbsencesPositiveResponseStatus$inboundSchema: z.ZodType<
   PostHrisAbsencesPositiveResponseStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(PostHrisAbsencesPositiveResponseStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(PostHrisAbsencesPositiveResponseStatus)
+);
 
 /** @internal */
 export const PostHrisAbsencesPositiveResponseData$inboundSchema: z.ZodType<
   PostHrisAbsencesPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  employee_id: z.string(),
-  start_date: z.nullable(z.any()).optional(),
-  end_date: z.nullable(z.any()).optional(),
-  start_half_day: z.nullable(z.boolean()),
-  end_half_day: z.nullable(z.boolean()),
-  start_time: z.nullable(z.any()).optional(),
-  end_time: z.nullable(z.any()).optional(),
-  amount: z.nullable(z.number()),
-  unit: z.nullable(PostHrisAbsencesPositiveResponseUnit$inboundSchema),
-  status: z.nullable(PostHrisAbsencesPositiveResponseStatus$inboundSchema)
-    .optional(),
-  employee_note: z.nullable(z.string()),
-  type_id: z.nullable(z.string()),
-  remote_created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  remote_updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    employee_id: z.string(),
+    start_date: z.nullable(z.any()).optional(),
+    end_date: z.nullable(z.any()).optional(),
+    start_half_day: z.nullable(z.boolean()),
+    end_half_day: z.nullable(z.boolean()),
+    start_time: z.nullable(z.any()).optional(),
+    end_time: z.nullable(z.any()).optional(),
+    amount: z.nullable(z.number()),
+    unit: z.nullable(PostHrisAbsencesPositiveResponseUnit$inboundSchema),
+    status: z.nullable(PostHrisAbsencesPositiveResponseStatus$inboundSchema)
+      .optional(),
+    employee_note: z.nullable(z.string()),
+    type_id: z.nullable(z.string()),
+    remote_created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    remote_updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    custom_fields: z.nullable(z.record(z.any())),
+  })
+);
 
 export function postHrisAbsencesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -184,9 +196,11 @@ export const PostHrisAbsencesPositiveResponseWarning$inboundSchema: z.ZodType<
   PostHrisAbsencesPositiveResponseWarning,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  message: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    message: z.string(),
+  })
+);
 
 export function postHrisAbsencesPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -209,13 +223,15 @@ export const PostHrisAbsencesPositiveResponse$inboundSchema: z.ZodType<
   PostHrisAbsencesPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => PostHrisAbsencesPositiveResponseData$inboundSchema),
-  warnings: z.array(
-    z.lazy(() => PostHrisAbsencesPositiveResponseWarning$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => PostHrisAbsencesPositiveResponseData$inboundSchema),
+    warnings: z.array(
+      z.lazy(() => PostHrisAbsencesPositiveResponseWarning$inboundSchema),
+    ),
+  })
+);
 
 export function postHrisAbsencesPositiveResponseFromJSON(
   jsonString: string,

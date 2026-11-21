@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import * as openEnums from "../types/enums.js";
 import { ClosedEnum, OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -160,6 +160,10 @@ export type GetHrisAbsencesPositiveResponseResult = {
    * The date and time the object was deleted in the remote system. Objects are automatically marked as deleted when Kombo can't retrieve them from the remote system anymore. Kombo will also anonymize entries 14 days after they disappear.
    */
   remote_deleted_at: Date | null;
+  /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
   type: GetHrisAbsencesPositiveResponseType | null;
 };
 
@@ -179,38 +183,48 @@ export type GetHrisAbsencesPositiveResponse = {
 /** @internal */
 export const GetHrisAbsencesPositiveResponseUnit$inboundSchema: z.ZodNativeEnum<
   typeof GetHrisAbsencesPositiveResponseUnit
-> = z.nativeEnum(GetHrisAbsencesPositiveResponseUnit);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetHrisAbsencesPositiveResponseUnit)
+);
 
 /** @internal */
 export const GetHrisAbsencesPositiveResponseStatus$inboundSchema: z.ZodType<
   GetHrisAbsencesPositiveResponseStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(GetHrisAbsencesPositiveResponseStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(GetHrisAbsencesPositiveResponseStatus)
+);
 
 /** @internal */
 export const GetHrisAbsencesPositiveResponseTypeUnit$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisAbsencesPositiveResponseTypeUnit> = z
-    .nativeEnum(GetHrisAbsencesPositiveResponseTypeUnit);
+  z.ZodNativeEnum<typeof GetHrisAbsencesPositiveResponseTypeUnit> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisAbsencesPositiveResponseTypeUnit)
+    );
 
 /** @internal */
 export const GetHrisAbsencesPositiveResponseType$inboundSchema: z.ZodType<
   GetHrisAbsencesPositiveResponseType,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  name: z.nullable(z.string()),
-  unit: z.nullable(GetHrisAbsencesPositiveResponseTypeUnit$inboundSchema),
-  half_days_supported: z.nullable(z.boolean()),
-  exact_times_supported: z.nullable(z.boolean()),
-  custom_fields: z.nullable(z.record(z.any())),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    name: z.nullable(z.string()),
+    unit: z.nullable(GetHrisAbsencesPositiveResponseTypeUnit$inboundSchema),
+    half_days_supported: z.nullable(z.boolean()),
+    exact_times_supported: z.nullable(z.boolean()),
+    custom_fields: z.nullable(z.record(z.any())),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+  })
+);
 
 export function getHrisAbsencesPositiveResponseTypeFromJSON(
   jsonString: string,
@@ -228,36 +242,41 @@ export const GetHrisAbsencesPositiveResponseResult$inboundSchema: z.ZodType<
   GetHrisAbsencesPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  employee_id: z.string(),
-  start_date: z.nullable(z.any()).optional(),
-  end_date: z.nullable(z.any()).optional(),
-  start_half_day: z.nullable(z.boolean()),
-  end_half_day: z.nullable(z.boolean()),
-  start_time: z.nullable(z.any()).optional(),
-  end_time: z.nullable(z.any()).optional(),
-  amount: z.nullable(z.number()),
-  unit: z.nullable(GetHrisAbsencesPositiveResponseUnit$inboundSchema),
-  status: z.nullable(GetHrisAbsencesPositiveResponseStatus$inboundSchema)
-    .optional(),
-  employee_note: z.nullable(z.string()),
-  type_id: z.nullable(z.string()),
-  remote_created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  remote_updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  type: z.nullable(
-    z.lazy(() => GetHrisAbsencesPositiveResponseType$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    employee_id: z.string(),
+    start_date: z.nullable(z.any()).optional(),
+    end_date: z.nullable(z.any()).optional(),
+    start_half_day: z.nullable(z.boolean()),
+    end_half_day: z.nullable(z.boolean()),
+    start_time: z.nullable(z.any()).optional(),
+    end_time: z.nullable(z.any()).optional(),
+    amount: z.nullable(z.number()),
+    unit: z.nullable(GetHrisAbsencesPositiveResponseUnit$inboundSchema),
+    status: z.nullable(GetHrisAbsencesPositiveResponseStatus$inboundSchema)
+      .optional(),
+    employee_note: z.nullable(z.string()),
+    type_id: z.nullable(z.string()),
+    remote_created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    remote_updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    custom_fields: z.nullable(z.record(z.any())),
+    type: z.nullable(
+      z.lazy(() => GetHrisAbsencesPositiveResponseType$inboundSchema),
+    ),
+  })
+);
 
 export function getHrisAbsencesPositiveResponseResultFromJSON(
   jsonString: string,
@@ -275,12 +294,14 @@ export const GetHrisAbsencesPositiveResponseData$inboundSchema: z.ZodType<
   GetHrisAbsencesPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisAbsencesPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetHrisAbsencesPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getHrisAbsencesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -298,10 +319,12 @@ export const GetHrisAbsencesPositiveResponse$inboundSchema: z.ZodType<
   GetHrisAbsencesPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisAbsencesPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetHrisAbsencesPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getHrisAbsencesPositiveResponseFromJSON(
   jsonString: string,

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export type PostAtsCandidatesCandidateIdResultLinksRequestBodyAttribute = {
@@ -208,10 +209,12 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBodyAttribute$outboun
     PostAtsCandidatesCandidateIdResultLinksRequestBodyAttribute$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdResultLinksRequestBodyAttribute
-  > = z.object({
-    key: z.string(),
-    value: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      key: z.string(),
+      value: z.string(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdResultLinksRequestBodyAttributeToJSON(
   postAtsCandidatesCandidateIdResultLinksRequestBodyAttribute:
@@ -238,14 +241,14 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBodyDetails$outboundS
     PostAtsCandidatesCandidateIdResultLinksRequestBodyDetails$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdResultLinksRequestBodyDetails
-  > = z.object({
-    custom_field_name_prefix: z.string(),
-    attributes: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      custom_field_name_prefix: z.string(),
+      attributes: z.array(z.lazy(() =>
         PostAtsCandidatesCandidateIdResultLinksRequestBodyAttribute$outboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdResultLinksRequestBodyDetailsToJSON(
   postAtsCandidatesCandidateIdResultLinksRequestBodyDetails:
@@ -268,9 +271,11 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBodyIcims$outboundSch
     PostAtsCandidatesCandidateIdResultLinksRequestBodyIcims$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdResultLinksRequestBodyIcims
-  > = z.object({
-    assessment_package_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      assessment_package_id: z.string().optional(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdResultLinksRequestBodyIcimsToJSON(
   postAtsCandidatesCandidateIdResultLinksRequestBodyIcims:
@@ -286,8 +291,10 @@ export function postAtsCandidatesCandidateIdResultLinksRequestBodyIcimsToJSON(
 export const PostAtsCandidatesCandidateIdResultLinksRequestBodyOverrideDocumentCategory$outboundSchema:
   z.ZodNativeEnum<
     typeof PostAtsCandidatesCandidateIdResultLinksRequestBodyOverrideDocumentCategory
-  > = z.nativeEnum(
-    PostAtsCandidatesCandidateIdResultLinksRequestBodyOverrideDocumentCategory,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      PostAtsCandidatesCandidateIdResultLinksRequestBodyOverrideDocumentCategory,
+    )
   );
 
 /** @internal */
@@ -303,12 +310,14 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBodyOracle$outboundSc
     PostAtsCandidatesCandidateIdResultLinksRequestBodyOracle$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdResultLinksRequestBodyOracle
-  > = z.object({
-    override_document_category:
-      PostAtsCandidatesCandidateIdResultLinksRequestBodyOverrideDocumentCategory$outboundSchema
-        .optional(),
-    multi_post_to_all_current_applications: z.boolean().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      override_document_category:
+        PostAtsCandidatesCandidateIdResultLinksRequestBodyOverrideDocumentCategory$outboundSchema
+          .optional(),
+      multi_post_to_all_current_applications: z.boolean().optional(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdResultLinksRequestBodyOracleToJSON(
   postAtsCandidatesCandidateIdResultLinksRequestBodyOracle:
@@ -332,9 +341,11 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360$outboun
     PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360
-  > = z.object({
-    user_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      user_id: z.string(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdResultLinksRequestBodyTalent360ToJSON(
   postAtsCandidatesCandidateIdResultLinksRequestBodyTalent360:
@@ -358,9 +369,11 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit$outboundS
     PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdResultLinksRequestBodyTraffitToJSON(
   postAtsCandidatesCandidateIdResultLinksRequestBodyTraffit:
@@ -384,13 +397,15 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBodyPostHeaders$outbo
     PostAtsCandidatesCandidateIdResultLinksRequestBodyPostHeaders$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdResultLinksRequestBodyPostHeaders
-  > = z.object({
-    on_behalf_of: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      on_behalf_of: "On-Behalf-Of",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of: z.nullable(z.string()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        on_behalf_of: "On-Behalf-Of",
+      });
+    })
+  );
 
 export function postAtsCandidatesCandidateIdResultLinksRequestBodyPostHeadersToJSON(
   postAtsCandidatesCandidateIdResultLinksRequestBodyPostHeaders:
@@ -416,11 +431,13 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBodyGreenhouse$outbou
     PostAtsCandidatesCandidateIdResultLinksRequestBodyGreenhouse$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdResultLinksRequestBodyGreenhouse
-  > = z.object({
-    post_headers: z.lazy(() =>
-      PostAtsCandidatesCandidateIdResultLinksRequestBodyPostHeaders$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      post_headers: z.lazy(() =>
+        PostAtsCandidatesCandidateIdResultLinksRequestBodyPostHeaders$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdResultLinksRequestBodyGreenhouseToJSON(
   postAtsCandidatesCandidateIdResultLinksRequestBodyGreenhouse:
@@ -444,9 +461,11 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBodyWorkable$outbound
     PostAtsCandidatesCandidateIdResultLinksRequestBodyWorkable$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdResultLinksRequestBodyWorkable
-  > = z.object({
-    on_behalf_of_user_remote_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of_user_remote_id: z.string().optional(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdResultLinksRequestBodyWorkableToJSON(
   postAtsCandidatesCandidateIdResultLinksRequestBodyWorkable:
@@ -487,26 +506,28 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields$outb
     PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields
-  > = z.object({
-    icims: z.lazy(() =>
-      PostAtsCandidatesCandidateIdResultLinksRequestBodyIcims$outboundSchema
-    ).optional(),
-    oracle: z.lazy(() =>
-      PostAtsCandidatesCandidateIdResultLinksRequestBodyOracle$outboundSchema
-    ).optional(),
-    talent360: z.lazy(() =>
-      PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360$outboundSchema
-    ).optional(),
-    traffit: z.lazy(() =>
-      PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit$outboundSchema
-    ).optional(),
-    greenhouse: z.lazy(() =>
-      PostAtsCandidatesCandidateIdResultLinksRequestBodyGreenhouse$outboundSchema
-    ).optional(),
-    workable: z.lazy(() =>
-      PostAtsCandidatesCandidateIdResultLinksRequestBodyWorkable$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      icims: z.lazy(() =>
+        PostAtsCandidatesCandidateIdResultLinksRequestBodyIcims$outboundSchema
+      ).optional(),
+      oracle: z.lazy(() =>
+        PostAtsCandidatesCandidateIdResultLinksRequestBodyOracle$outboundSchema
+      ).optional(),
+      talent360: z.lazy(() =>
+        PostAtsCandidatesCandidateIdResultLinksRequestBodyTalent360$outboundSchema
+      ).optional(),
+      traffit: z.lazy(() =>
+        PostAtsCandidatesCandidateIdResultLinksRequestBodyTraffit$outboundSchema
+      ).optional(),
+      greenhouse: z.lazy(() =>
+        PostAtsCandidatesCandidateIdResultLinksRequestBodyGreenhouse$outboundSchema
+      ).optional(),
+      workable: z.lazy(() =>
+        PostAtsCandidatesCandidateIdResultLinksRequestBodyWorkable$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFieldsToJSON(
   postAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields:
@@ -536,16 +557,18 @@ export const PostAtsCandidatesCandidateIdResultLinksRequestBody$outboundSchema:
     PostAtsCandidatesCandidateIdResultLinksRequestBody$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdResultLinksRequestBody
-  > = z.object({
-    label: z.string(),
-    url: z.string(),
-    details: z.lazy(() =>
-      PostAtsCandidatesCandidateIdResultLinksRequestBodyDetails$outboundSchema
-    ).optional(),
-    remote_fields: z.lazy(() =>
-      PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      label: z.string(),
+      url: z.string(),
+      details: z.lazy(() =>
+        PostAtsCandidatesCandidateIdResultLinksRequestBodyDetails$outboundSchema
+      ).optional(),
+      remote_fields: z.lazy(() =>
+        PostAtsCandidatesCandidateIdResultLinksRequestBodyRemoteFields$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdResultLinksRequestBodyToJSON(
   postAtsCandidatesCandidateIdResultLinksRequestBody:

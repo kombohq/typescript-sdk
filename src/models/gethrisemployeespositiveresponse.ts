@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import * as openEnums from "../types/enums.js";
 import { ClosedEnum, OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -700,28 +700,32 @@ export const GetHrisEmployeesPositiveResponseGender$inboundSchema: z.ZodType<
   GetHrisEmployeesPositiveResponseGender,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(GetHrisEmployeesPositiveResponseGender);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(GetHrisEmployeesPositiveResponseGender)
+);
 
 /** @internal */
 export const Ethnicity$inboundSchema: z.ZodType<
   Ethnicity,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(Ethnicity);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(Ethnicity));
 
 /** @internal */
 export const MaritalStatus$inboundSchema: z.ZodType<
   MaritalStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(MaritalStatus);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(MaritalStatus));
 
 /** @internal */
 export const EmploymentStatus$inboundSchema: z.ZodType<
   EmploymentStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(EmploymentStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(EmploymentStatus)
+);
 
 /** @internal */
 export const GetHrisEmployeesPositiveResponseEmploymentType$inboundSchema:
@@ -729,22 +733,26 @@ export const GetHrisEmployeesPositiveResponseEmploymentType$inboundSchema:
     GetHrisEmployeesPositiveResponseEmploymentType,
     z.ZodTypeDef,
     unknown
-  > = openEnums.inboundSchema(GetHrisEmployeesPositiveResponseEmploymentType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    openEnums.inboundSchema(GetHrisEmployeesPositiveResponseEmploymentType)
+  );
 
 /** @internal */
 export const HomeAddress$inboundSchema: z.ZodType<
   HomeAddress,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  city: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.string()).optional(),
-  state: z.nullable(z.string()).optional(),
-  street_1: z.nullable(z.string()).optional(),
-  street_2: z.nullable(z.string()).optional(),
-  zip_code: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    city: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    raw: z.nullable(z.string()).optional(),
+    state: z.nullable(z.string()).optional(),
+    street_1: z.nullable(z.string()).optional(),
+    street_2: z.nullable(z.string()).optional(),
+    zip_code: z.nullable(z.string()).optional(),
+  })
+);
 
 export function homeAddressFromJSON(
   jsonString: string,
@@ -759,17 +767,19 @@ export function homeAddressFromJSON(
 /** @internal */
 export const DomesticBankRoutingType$inboundSchema: z.ZodNativeEnum<
   typeof DomesticBankRoutingType
-> = z.nativeEnum(DomesticBankRoutingType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DomesticBankRoutingType));
 
 /** @internal */
 export const DomesticBankRouting$inboundSchema: z.ZodType<
   DomesticBankRouting,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  number: z.string(),
-  type: z.nullable(DomesticBankRoutingType$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    number: z.string(),
+    type: z.nullable(DomesticBankRoutingType$inboundSchema),
+  })
+);
 
 export function domesticBankRoutingFromJSON(
   jsonString: string,
@@ -786,16 +796,18 @@ export const BankAccount$inboundSchema: z.ZodType<
   BankAccount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  iban: z.nullable(z.string()).optional(),
-  bic: z.nullable(z.string()).optional(),
-  account_number: z.nullable(z.string()).optional(),
-  holder_name: z.nullable(z.string()).optional(),
-  bank_name: z.nullable(z.string()).optional(),
-  domestic_bank_routing: z.nullable(
-    z.lazy(() => DomesticBankRouting$inboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    iban: z.nullable(z.string()).optional(),
+    bic: z.nullable(z.string()).optional(),
+    account_number: z.nullable(z.string()).optional(),
+    holder_name: z.nullable(z.string()).optional(),
+    bank_name: z.nullable(z.string()).optional(),
+    domestic_bank_routing: z.nullable(
+      z.lazy(() => DomesticBankRouting$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function bankAccountFromJSON(
   jsonString: string,
@@ -812,7 +824,9 @@ export const GetHrisEmployeesPositiveResponsePayPeriod$inboundSchema: z.ZodType<
   GetHrisEmployeesPositiveResponsePayPeriod,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(GetHrisEmployeesPositiveResponsePayPeriod);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(GetHrisEmployeesPositiveResponsePayPeriod)
+);
 
 /** @internal */
 export const GetHrisEmployeesPositiveResponsePayFrequency$inboundSchema:
@@ -820,44 +834,52 @@ export const GetHrisEmployeesPositiveResponsePayFrequency$inboundSchema:
     GetHrisEmployeesPositiveResponsePayFrequency,
     z.ZodTypeDef,
     unknown
-  > = openEnums.inboundSchema(GetHrisEmployeesPositiveResponsePayFrequency);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    openEnums.inboundSchema(GetHrisEmployeesPositiveResponsePayFrequency)
+  );
 
 /** @internal */
 export const EmploymentEmploymentType$inboundSchema: z.ZodType<
   EmploymentEmploymentType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(EmploymentEmploymentType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(EmploymentEmploymentType)
+);
 
 /** @internal */
 export const Employment$inboundSchema: z.ZodType<
   Employment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  employee_id: z.string(),
-  job_title: z.nullable(z.string()),
-  pay_rate: z.nullable(z.number()),
-  pay_period: z.nullable(
-    GetHrisEmployeesPositiveResponsePayPeriod$inboundSchema,
-  ).optional(),
-  pay_frequency: z.nullable(
-    GetHrisEmployeesPositiveResponsePayFrequency$inboundSchema,
-  ).optional(),
-  employment_type: z.nullable(EmploymentEmploymentType$inboundSchema)
-    .optional(),
-  pay_currency: z.nullable(z.string()),
-  effective_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  custom_fields: z.nullable(z.record(z.any())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    employee_id: z.string(),
+    job_title: z.nullable(z.string()),
+    pay_rate: z.nullable(z.number()),
+    pay_period: z.nullable(
+      GetHrisEmployeesPositiveResponsePayPeriod$inboundSchema,
+    ).optional(),
+    pay_frequency: z.nullable(
+      GetHrisEmployeesPositiveResponsePayFrequency$inboundSchema,
+    ).optional(),
+    employment_type: z.nullable(EmploymentEmploymentType$inboundSchema)
+      .optional(),
+    pay_currency: z.nullable(z.string()),
+    effective_date: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    custom_fields: z.nullable(z.record(z.any())),
+  })
+);
 
 export function employmentFromJSON(
   jsonString: string,
@@ -871,35 +893,45 @@ export function employmentFromJSON(
 
 /** @internal */
 export const GetHrisEmployeesPositiveResponseBalanceUnit$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesPositiveResponseBalanceUnit> = z
-    .nativeEnum(GetHrisEmployeesPositiveResponseBalanceUnit);
+  z.ZodNativeEnum<typeof GetHrisEmployeesPositiveResponseBalanceUnit> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisEmployeesPositiveResponseBalanceUnit)
+    );
 
 /** @internal */
 export const GetHrisEmployeesPositiveResponseUsedUnit$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesPositiveResponseUsedUnit> = z
-    .nativeEnum(GetHrisEmployeesPositiveResponseUsedUnit);
+  z.ZodNativeEnum<typeof GetHrisEmployeesPositiveResponseUsedUnit> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisEmployeesPositiveResponseUsedUnit)
+    );
 
 /** @internal */
 export const TimeOffBalance$inboundSchema: z.ZodType<
   TimeOffBalance,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  employee_id: z.string(),
-  type_id: z.string(),
-  balance: z.nullable(z.number()),
-  balance_unit: z.nullable(
-    GetHrisEmployeesPositiveResponseBalanceUnit$inboundSchema,
-  ),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  used: z.nullable(z.number()),
-  used_unit: z.nullable(GetHrisEmployeesPositiveResponseUsedUnit$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    employee_id: z.string(),
+    type_id: z.string(),
+    balance: z.nullable(z.number()),
+    balance_unit: z.nullable(
+      GetHrisEmployeesPositiveResponseBalanceUnit$inboundSchema,
+    ),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    used: z.nullable(z.number()),
+    used_unit: z.nullable(
+      GetHrisEmployeesPositiveResponseUsedUnit$inboundSchema,
+    ),
+  })
+);
 
 export function timeOffBalanceFromJSON(
   jsonString: string,
@@ -916,24 +948,28 @@ export const ManagerEmploymentStatus$inboundSchema: z.ZodType<
   ManagerEmploymentStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(ManagerEmploymentStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(ManagerEmploymentStatus)
+);
 
 /** @internal */
 export const Manager$inboundSchema: z.ZodType<Manager, z.ZodTypeDef, unknown> =
-  z.object({
-    first_name: z.nullable(z.string()),
-    last_name: z.nullable(z.string()),
-    display_full_name: z.nullable(z.string()),
-    id: z.string(),
-    employee_number: z.nullable(z.string()),
-    work_email: z.nullable(z.string()).optional(),
-    remote_id: z.string(),
-    employment_status: z.nullable(ManagerEmploymentStatus$inboundSchema)
-      .optional(),
-    termination_date: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      first_name: z.nullable(z.string()),
+      last_name: z.nullable(z.string()),
+      display_full_name: z.nullable(z.string()),
+      id: z.string(),
+      employee_number: z.nullable(z.string()),
+      work_email: z.nullable(z.string()).optional(),
+      remote_id: z.string(),
+      employment_status: z.nullable(ManagerEmploymentStatus$inboundSchema)
+        .optional(),
+      termination_date: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+    })
+  );
 
 export function managerFromJSON(
   jsonString: string,
@@ -947,20 +983,24 @@ export function managerFromJSON(
 
 /** @internal */
 export const GetHrisEmployeesPositiveResponseGroupType$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesPositiveResponseGroupType> = z
-    .nativeEnum(GetHrisEmployeesPositiveResponseGroupType);
+  z.ZodNativeEnum<typeof GetHrisEmployeesPositiveResponseGroupType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisEmployeesPositiveResponseGroupType)
+    );
 
 /** @internal */
 export const GetHrisEmployeesPositiveResponseGroup$inboundSchema: z.ZodType<
   GetHrisEmployeesPositiveResponseGroup,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  name: z.nullable(z.string()),
-  type: z.nullable(GetHrisEmployeesPositiveResponseGroupType$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    name: z.nullable(z.string()),
+    type: z.nullable(GetHrisEmployeesPositiveResponseGroupType$inboundSchema),
+  })
+);
 
 export function getHrisEmployeesPositiveResponseGroupFromJSON(
   jsonString: string,
@@ -978,15 +1018,17 @@ export const LegalEntityAddress$inboundSchema: z.ZodType<
   LegalEntityAddress,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  city: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.string()).optional(),
-  state: z.nullable(z.string()).optional(),
-  street_1: z.nullable(z.string()).optional(),
-  street_2: z.nullable(z.string()).optional(),
-  zip_code: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    city: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    raw: z.nullable(z.string()).optional(),
+    state: z.nullable(z.string()).optional(),
+    street_1: z.nullable(z.string()).optional(),
+    street_2: z.nullable(z.string()).optional(),
+    zip_code: z.nullable(z.string()).optional(),
+  })
+);
 
 export function legalEntityAddressFromJSON(
   jsonString: string,
@@ -1004,13 +1046,15 @@ export const GetHrisEmployeesPositiveResponseLegalEntity$inboundSchema:
     GetHrisEmployeesPositiveResponseLegalEntity,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()),
-    name: z.nullable(z.string()),
-    address: z.nullable(z.lazy(() => LegalEntityAddress$inboundSchema))
-      .optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      remote_id: z.nullable(z.string()),
+      name: z.nullable(z.string()),
+      address: z.nullable(z.lazy(() => LegalEntityAddress$inboundSchema))
+        .optional(),
+    })
+  );
 
 export function getHrisEmployeesPositiveResponseLegalEntityFromJSON(
   jsonString: string,
@@ -1033,15 +1077,17 @@ export const WorkLocationAddress$inboundSchema: z.ZodType<
   WorkLocationAddress,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  city: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.string()).optional(),
-  state: z.nullable(z.string()).optional(),
-  street_1: z.nullable(z.string()).optional(),
-  street_2: z.nullable(z.string()).optional(),
-  zip_code: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    city: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    raw: z.nullable(z.string()).optional(),
+    state: z.nullable(z.string()).optional(),
+    street_1: z.nullable(z.string()).optional(),
+    street_2: z.nullable(z.string()).optional(),
+    zip_code: z.nullable(z.string()).optional(),
+  })
+);
 
 export function workLocationAddressFromJSON(
   jsonString: string,
@@ -1058,19 +1104,23 @@ export const WorkLocation$inboundSchema: z.ZodType<
   WorkLocation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  name: z.nullable(z.string()),
-  address: z.nullable(z.lazy(() => WorkLocationAddress$inboundSchema))
-    .optional(),
-  type: z.nullable(z.string()),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  custom_fields: z.nullable(z.record(z.any())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    name: z.nullable(z.string()),
+    address: z.nullable(z.lazy(() => WorkLocationAddress$inboundSchema))
+      .optional(),
+    type: z.nullable(z.string()),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    custom_fields: z.nullable(z.record(z.any())),
+  })
+);
 
 export function workLocationFromJSON(
   jsonString: string,
@@ -1087,64 +1137,69 @@ export const GetHrisEmployeesPositiveResponseResult$inboundSchema: z.ZodType<
   GetHrisEmployeesPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  employee_number: z.nullable(z.string()),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  nationality: z.nullable(z.string()),
-  display_full_name: z.nullable(z.string()),
-  job_title: z.nullable(z.string()),
-  work_email: z.nullable(z.string()).optional(),
-  personal_email: z.nullable(z.string()).optional(),
-  mobile_phone_number: z.nullable(z.string()),
-  ssn: z.nullable(z.string()),
-  tax_id: z.nullable(z.string()),
-  gender: z.nullable(GetHrisEmployeesPositiveResponseGender$inboundSchema)
-    .optional(),
-  ethnicity: z.nullable(Ethnicity$inboundSchema).optional(),
-  marital_status: z.nullable(MaritalStatus$inboundSchema).optional(),
-  employment_status: z.nullable(EmploymentStatus$inboundSchema).optional(),
-  employment_type: z.nullable(
-    GetHrisEmployeesPositiveResponseEmploymentType$inboundSchema,
-  ).optional(),
-  weekly_hours: z.nullable(z.number()),
-  avatar: z.nullable(z.string()),
-  work_location_id: z.nullable(z.string()),
-  legal_entity_id: z.nullable(z.string()),
-  manager_id: z.nullable(z.string()),
-  home_address: z.nullable(z.lazy(() => HomeAddress$inboundSchema)).optional(),
-  bank_accounts: z.nullable(z.array(z.lazy(() => BankAccount$inboundSchema)))
-    .optional(),
-  date_of_birth: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  start_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  termination_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  remote_created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  custom_fields: z.nullable(z.record(z.any())),
-  employments: z.array(z.lazy(() => Employment$inboundSchema)),
-  time_off_balances: z.array(z.lazy(() => TimeOffBalance$inboundSchema)),
-  manager: z.nullable(z.lazy(() => Manager$inboundSchema)),
-  groups: z.array(
-    z.lazy(() => GetHrisEmployeesPositiveResponseGroup$inboundSchema),
-  ),
-  legal_entity: z.nullable(
-    z.lazy(() => GetHrisEmployeesPositiveResponseLegalEntity$inboundSchema),
-  ),
-  work_location: z.nullable(z.lazy(() => WorkLocation$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    employee_number: z.nullable(z.string()),
+    first_name: z.nullable(z.string()),
+    last_name: z.nullable(z.string()),
+    nationality: z.nullable(z.string()),
+    display_full_name: z.nullable(z.string()),
+    job_title: z.nullable(z.string()),
+    work_email: z.nullable(z.string()).optional(),
+    personal_email: z.nullable(z.string()).optional(),
+    mobile_phone_number: z.nullable(z.string()),
+    ssn: z.nullable(z.string()),
+    tax_id: z.nullable(z.string()),
+    gender: z.nullable(GetHrisEmployeesPositiveResponseGender$inboundSchema)
+      .optional(),
+    ethnicity: z.nullable(Ethnicity$inboundSchema).optional(),
+    marital_status: z.nullable(MaritalStatus$inboundSchema).optional(),
+    employment_status: z.nullable(EmploymentStatus$inboundSchema).optional(),
+    employment_type: z.nullable(
+      GetHrisEmployeesPositiveResponseEmploymentType$inboundSchema,
+    ).optional(),
+    weekly_hours: z.nullable(z.number()),
+    avatar: z.nullable(z.string()),
+    work_location_id: z.nullable(z.string()),
+    legal_entity_id: z.nullable(z.string()),
+    manager_id: z.nullable(z.string()),
+    home_address: z.nullable(z.lazy(() => HomeAddress$inboundSchema))
+      .optional(),
+    bank_accounts: z.nullable(z.array(z.lazy(() => BankAccount$inboundSchema)))
+      .optional(),
+    date_of_birth: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    start_date: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    termination_date: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    remote_created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    custom_fields: z.nullable(z.record(z.any())),
+    employments: z.array(z.lazy(() => Employment$inboundSchema)),
+    time_off_balances: z.array(z.lazy(() => TimeOffBalance$inboundSchema)),
+    manager: z.nullable(z.lazy(() => Manager$inboundSchema)),
+    groups: z.array(
+      z.lazy(() => GetHrisEmployeesPositiveResponseGroup$inboundSchema),
+    ),
+    legal_entity: z.nullable(
+      z.lazy(() => GetHrisEmployeesPositiveResponseLegalEntity$inboundSchema),
+    ),
+    work_location: z.nullable(z.lazy(() => WorkLocation$inboundSchema)),
+  })
+);
 
 export function getHrisEmployeesPositiveResponseResultFromJSON(
   jsonString: string,
@@ -1162,12 +1217,14 @@ export const GetHrisEmployeesPositiveResponseData$inboundSchema: z.ZodType<
   GetHrisEmployeesPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisEmployeesPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetHrisEmployeesPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getHrisEmployeesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -1185,10 +1242,12 @@ export const GetHrisEmployeesPositiveResponse$inboundSchema: z.ZodType<
   GetHrisEmployeesPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisEmployeesPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetHrisEmployeesPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getHrisEmployeesPositiveResponseFromJSON(
   jsonString: string,

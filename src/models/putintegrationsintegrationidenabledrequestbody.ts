@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type PutIntegrationsIntegrationIdEnabledRequestBody = {
   /**
@@ -22,9 +23,11 @@ export const PutIntegrationsIntegrationIdEnabledRequestBody$outboundSchema:
     PutIntegrationsIntegrationIdEnabledRequestBody$Outbound,
     z.ZodTypeDef,
     PutIntegrationsIntegrationIdEnabledRequestBody
-  > = z.object({
-    value: z.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      value: z.boolean(),
+    })
+  );
 
 export function putIntegrationsIntegrationIdEnabledRequestBodyToJSON(
   putIntegrationsIntegrationIdEnabledRequestBody:

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -28,7 +28,7 @@ export const PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$inboundSch
     PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({});
+  > = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function postHrisEmployeesEmployeeIdDocumentsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -51,9 +51,11 @@ export const PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$inbound
     PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function postHrisEmployeesEmployeeIdDocumentsPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -76,17 +78,17 @@ export const PostHrisEmployeesEmployeeIdDocumentsPositiveResponse$inboundSchema:
     PostHrisEmployeesEmployeeIdDocumentsPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$inboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        PostHrisEmployeesEmployeeIdDocumentsPositiveResponseData$inboundSchema
       ),
-    ),
-  });
+      warnings: z.array(z.lazy(() =>
+        PostHrisEmployeesEmployeeIdDocumentsPositiveResponseWarning$inboundSchema
+      )),
+    })
+  );
 
 export function postHrisEmployeesEmployeeIdDocumentsPositiveResponseFromJSON(
   jsonString: string,

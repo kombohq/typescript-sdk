@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -424,8 +424,10 @@ export type GetHrisEmployeesFormPositiveResponse = {
 
 /** @internal */
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey8$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey8> = z
-    .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey8);
+  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey8> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey8)
+    );
 
 /** @internal */
 export const GetHrisEmployeesFormPositiveResponseFileRestrictions$inboundSchema:
@@ -433,10 +435,12 @@ export const GetHrisEmployeesFormPositiveResponseFileRestrictions$inboundSchema:
     GetHrisEmployeesFormPositiveResponseFileRestrictions,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    accepted_mime_types: z.array(z.string()),
-    max_file_size: z.nullable(z.number()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      accepted_mime_types: z.array(z.string()),
+      max_file_size: z.nullable(z.number()).optional(),
+    })
+  );
 
 export function getHrisEmployeesFormPositiveResponseFileRestrictionsFromJSON(
   jsonString: string,
@@ -459,18 +463,20 @@ export const PropertiesFile$inboundSchema: z.ZodType<
   PropertiesFile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey8$inboundSchema,
-  ).optional(),
-  type: z.literal("file"),
-  file_restrictions: z.lazy(() =>
-    GetHrisEmployeesFormPositiveResponseFileRestrictions$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(
+      GetHrisEmployeesFormPositiveResponseUnifiedKey8$inboundSchema,
+    ).optional(),
+    type: z.literal("file"),
+    file_restrictions: z.lazy(() =>
+      GetHrisEmployeesFormPositiveResponseFileRestrictions$inboundSchema
+    ),
+  })
+);
 
 export function propertiesFileFromJSON(
   jsonString: string,
@@ -484,26 +490,30 @@ export function propertiesFileFromJSON(
 
 /** @internal */
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey7$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey7> = z
-    .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey7);
+  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey7> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey7)
+    );
 
 /** @internal */
 export const PropertiesArray$inboundSchema: z.ZodType<
   PropertiesArray,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey7$inboundSchema,
-  ).optional(),
-  type: z.literal("array"),
-  item_type: Schema2$inboundSchema,
-  min_items: z.nullable(z.number()).optional(),
-  max_items: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(
+      GetHrisEmployeesFormPositiveResponseUnifiedKey7$inboundSchema,
+    ).optional(),
+    type: z.literal("array"),
+    item_type: Schema2$inboundSchema,
+    min_items: z.nullable(z.number()).optional(),
+    max_items: z.nullable(z.number()).optional(),
+  })
+);
 
 export function propertiesArrayFromJSON(
   jsonString: string,
@@ -517,24 +527,28 @@ export function propertiesArrayFromJSON(
 
 /** @internal */
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey6$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey6> = z
-    .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey6);
+  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey6> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey6)
+    );
 
 /** @internal */
 export const PropertiesObject$inboundSchema: z.ZodType<
   PropertiesObject,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey6$inboundSchema,
-  ).optional(),
-  type: z.literal("object"),
-  properties: z.record(Schema1Union1$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(
+      GetHrisEmployeesFormPositiveResponseUnifiedKey6$inboundSchema,
+    ).optional(),
+    type: z.literal("object"),
+    properties: z.record(Schema1Union1$inboundSchema),
+  })
+);
 
 export function propertiesObjectFromJSON(
   jsonString: string,
@@ -548,23 +562,27 @@ export function propertiesObjectFromJSON(
 
 /** @internal */
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey5$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey5> = z
-    .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey5);
+  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey5> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey5)
+    );
 
 /** @internal */
 export const PropertiesCheckbox$inboundSchema: z.ZodType<
   PropertiesCheckbox,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey5$inboundSchema,
-  ).optional(),
-  type: z.literal("checkbox"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(
+      GetHrisEmployeesFormPositiveResponseUnifiedKey5$inboundSchema,
+    ).optional(),
+    type: z.literal("checkbox"),
+  })
+);
 
 export function propertiesCheckboxFromJSON(
   jsonString: string,
@@ -582,10 +600,12 @@ export const GetHrisEmployeesFormPositiveResponseOptionsReferenced2$inboundSchem
     GetHrisEmployeesFormPositiveResponseOptionsReferenced2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    type: z.literal("referenced"),
-    link: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type: z.literal("referenced"),
+      link: z.string(),
+    })
+  );
 
 export function getHrisEmployeesFormPositiveResponseOptionsReferenced2FromJSON(
   jsonString: string,
@@ -608,7 +628,7 @@ export const GetHrisEmployeesFormPositiveResponseRemoteId2$inboundSchema:
     GetHrisEmployeesFormPositiveResponseRemoteId2,
     z.ZodTypeDef,
     unknown
-  > = z.union([z.string(), z.number()]);
+  > = /* @__PURE__ */ lazySchema$(() => z.union([z.string(), z.number()]));
 
 export function getHrisEmployeesFormPositiveResponseRemoteId2FromJSON(
   jsonString: string,
@@ -629,12 +649,14 @@ export function getHrisEmployeesFormPositiveResponseRemoteId2FromJSON(
 /** @internal */
 export const GetHrisEmployeesFormPositiveResponseEntry2$inboundSchema:
   z.ZodType<GetHrisEmployeesFormPositiveResponseEntry2, z.ZodTypeDef, unknown> =
-    z.object({
-      id: z.string(),
-      label: z.string(),
-      unified_value: z.string().optional(),
-      remote_id: z.union([z.string(), z.number()]),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        id: z.string(),
+        label: z.string(),
+        unified_value: z.string().optional(),
+        remote_id: z.union([z.string(), z.number()]),
+      })
+    );
 
 export function getHrisEmployeesFormPositiveResponseEntry2FromJSON(
   jsonString: string,
@@ -658,12 +680,14 @@ export const GetHrisEmployeesFormPositiveResponseOptionsInline2$inboundSchema:
     GetHrisEmployeesFormPositiveResponseOptionsInline2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    type: z.literal("inline"),
-    entries: z.array(
-      z.lazy(() => GetHrisEmployeesFormPositiveResponseEntry2$inboundSchema),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type: z.literal("inline"),
+      entries: z.array(
+        z.lazy(() => GetHrisEmployeesFormPositiveResponseEntry2$inboundSchema),
+      ),
+    })
+  );
 
 export function getHrisEmployeesFormPositiveResponseOptionsInline2FromJSON(
   jsonString: string,
@@ -687,14 +711,16 @@ export const GetHrisEmployeesFormPositiveResponseOptionsUnion2$inboundSchema:
     GetHrisEmployeesFormPositiveResponseOptionsUnion2,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsInline2$inboundSchema
-    ),
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsReferenced2$inboundSchema
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() =>
+        GetHrisEmployeesFormPositiveResponseOptionsInline2$inboundSchema
+      ),
+      z.lazy(() =>
+        GetHrisEmployeesFormPositiveResponseOptionsReferenced2$inboundSchema
+      ),
+    ])
+  );
 
 export function getHrisEmployeesFormPositiveResponseOptionsUnion2FromJSON(
   jsonString: string,
@@ -717,23 +743,25 @@ export const PropertiesMultiSelect$inboundSchema: z.ZodType<
   PropertiesMultiSelect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(z.string()).optional(),
-  type: z.literal("multi_select"),
-  min_items: z.nullable(z.number()).optional(),
-  max_items: z.nullable(z.number()).optional(),
-  options: z.union([
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsInline2$inboundSchema
-    ),
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsReferenced2$inboundSchema
-    ),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(z.string()).optional(),
+    type: z.literal("multi_select"),
+    min_items: z.nullable(z.number()).optional(),
+    max_items: z.nullable(z.number()).optional(),
+    options: z.union([
+      z.lazy(() =>
+        GetHrisEmployeesFormPositiveResponseOptionsInline2$inboundSchema
+      ),
+      z.lazy(() =>
+        GetHrisEmployeesFormPositiveResponseOptionsReferenced2$inboundSchema
+      ),
+    ]),
+  })
+);
 
 export function propertiesMultiSelectFromJSON(
   jsonString: string,
@@ -747,8 +775,10 @@ export function propertiesMultiSelectFromJSON(
 
 /** @internal */
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey4$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey4> = z
-    .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey4);
+  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey4> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey4)
+    );
 
 /** @internal */
 export const GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchema:
@@ -756,10 +786,12 @@ export const GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchem
     GetHrisEmployeesFormPositiveResponseOptionsReferenced1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    type: z.literal("referenced"),
-    link: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type: z.literal("referenced"),
+      link: z.string(),
+    })
+  );
 
 export function getHrisEmployeesFormPositiveResponseOptionsReferenced1FromJSON(
   jsonString: string,
@@ -782,7 +814,7 @@ export const GetHrisEmployeesFormPositiveResponseRemoteId1$inboundSchema:
     GetHrisEmployeesFormPositiveResponseRemoteId1,
     z.ZodTypeDef,
     unknown
-  > = z.union([z.string(), z.number()]);
+  > = /* @__PURE__ */ lazySchema$(() => z.union([z.string(), z.number()]));
 
 export function getHrisEmployeesFormPositiveResponseRemoteId1FromJSON(
   jsonString: string,
@@ -803,12 +835,14 @@ export function getHrisEmployeesFormPositiveResponseRemoteId1FromJSON(
 /** @internal */
 export const GetHrisEmployeesFormPositiveResponseEntry1$inboundSchema:
   z.ZodType<GetHrisEmployeesFormPositiveResponseEntry1, z.ZodTypeDef, unknown> =
-    z.object({
-      id: z.string(),
-      label: z.string(),
-      unified_value: z.string().optional(),
-      remote_id: z.union([z.string(), z.number()]),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        id: z.string(),
+        label: z.string(),
+        unified_value: z.string().optional(),
+        remote_id: z.union([z.string(), z.number()]),
+      })
+    );
 
 export function getHrisEmployeesFormPositiveResponseEntry1FromJSON(
   jsonString: string,
@@ -832,12 +866,14 @@ export const GetHrisEmployeesFormPositiveResponseOptionsInline1$inboundSchema:
     GetHrisEmployeesFormPositiveResponseOptionsInline1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    type: z.literal("inline"),
-    entries: z.array(
-      z.lazy(() => GetHrisEmployeesFormPositiveResponseEntry1$inboundSchema),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type: z.literal("inline"),
+      entries: z.array(
+        z.lazy(() => GetHrisEmployeesFormPositiveResponseEntry1$inboundSchema),
+      ),
+    })
+  );
 
 export function getHrisEmployeesFormPositiveResponseOptionsInline1FromJSON(
   jsonString: string,
@@ -861,14 +897,16 @@ export const GetHrisEmployeesFormPositiveResponseOptionsUnion1$inboundSchema:
     GetHrisEmployeesFormPositiveResponseOptionsUnion1,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsInline1$inboundSchema
-    ),
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchema
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() =>
+        GetHrisEmployeesFormPositiveResponseOptionsInline1$inboundSchema
+      ),
+      z.lazy(() =>
+        GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchema
+      ),
+    ])
+  );
 
 export function getHrisEmployeesFormPositiveResponseOptionsUnion1FromJSON(
   jsonString: string,
@@ -891,23 +929,25 @@ export const PropertiesSingleSelect$inboundSchema: z.ZodType<
   PropertiesSingleSelect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey4$inboundSchema,
-  ).optional(),
-  type: z.literal("single_select"),
-  options: z.union([
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsInline1$inboundSchema
-    ),
-    z.lazy(() =>
-      GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchema
-    ),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(
+      GetHrisEmployeesFormPositiveResponseUnifiedKey4$inboundSchema,
+    ).optional(),
+    type: z.literal("single_select"),
+    options: z.union([
+      z.lazy(() =>
+        GetHrisEmployeesFormPositiveResponseOptionsInline1$inboundSchema
+      ),
+      z.lazy(() =>
+        GetHrisEmployeesFormPositiveResponseOptionsReferenced1$inboundSchema
+      ),
+    ]),
+  })
+);
 
 export function propertiesSingleSelectFromJSON(
   jsonString: string,
@@ -921,23 +961,27 @@ export function propertiesSingleSelectFromJSON(
 
 /** @internal */
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey3$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey3> = z
-    .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey3);
+  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey3> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey3)
+    );
 
 /** @internal */
 export const PropertiesDate$inboundSchema: z.ZodType<
   PropertiesDate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey3$inboundSchema,
-  ).optional(),
-  type: z.literal("date"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(
+      GetHrisEmployeesFormPositiveResponseUnifiedKey3$inboundSchema,
+    ).optional(),
+    type: z.literal("date"),
+  })
+);
 
 export function propertiesDateFromJSON(
   jsonString: string,
@@ -951,25 +995,29 @@ export function propertiesDateFromJSON(
 
 /** @internal */
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey2$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey2> = z
-    .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey2);
+  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey2> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey2)
+    );
 
 /** @internal */
 export const PropertiesNumber$inboundSchema: z.ZodType<
   PropertiesNumber,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey2$inboundSchema,
-  ).optional(),
-  type: z.literal("number"),
-  min: z.nullable(z.number()).optional(),
-  max: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(
+      GetHrisEmployeesFormPositiveResponseUnifiedKey2$inboundSchema,
+    ).optional(),
+    type: z.literal("number"),
+    min: z.nullable(z.number()).optional(),
+    max: z.nullable(z.number()).optional(),
+  })
+);
 
 export function propertiesNumberFromJSON(
   jsonString: string,
@@ -983,26 +1031,30 @@ export function propertiesNumberFromJSON(
 
 /** @internal */
 export const GetHrisEmployeesFormPositiveResponseUnifiedKey1$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey1> = z
-    .nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey1);
+  z.ZodNativeEnum<typeof GetHrisEmployeesFormPositiveResponseUnifiedKey1> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisEmployeesFormPositiveResponseUnifiedKey1)
+    );
 
 /** @internal */
 export const PropertiesText$inboundSchema: z.ZodType<
   PropertiesText,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(
-    GetHrisEmployeesFormPositiveResponseUnifiedKey1$inboundSchema,
-  ).optional(),
-  type: z.literal("text"),
-  min_length: z.nullable(z.number()).optional(),
-  max_length: z.nullable(z.number()).optional(),
-  reg_exp: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(
+      GetHrisEmployeesFormPositiveResponseUnifiedKey1$inboundSchema,
+    ).optional(),
+    type: z.literal("text"),
+    min_length: z.nullable(z.number()).optional(),
+    max_length: z.nullable(z.number()).optional(),
+    reg_exp: z.nullable(z.string()).optional(),
+  })
+);
 
 export function propertiesTextFromJSON(
   jsonString: string,
@@ -1019,17 +1071,19 @@ export const Properties$inboundSchema: z.ZodType<
   Properties,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => PropertiesText$inboundSchema),
-  z.lazy(() => PropertiesNumber$inboundSchema),
-  z.lazy(() => PropertiesDate$inboundSchema),
-  z.lazy(() => PropertiesSingleSelect$inboundSchema),
-  z.lazy(() => PropertiesMultiSelect$inboundSchema),
-  z.lazy(() => PropertiesCheckbox$inboundSchema),
-  z.lazy(() => PropertiesObject$inboundSchema),
-  z.lazy(() => PropertiesArray$inboundSchema),
-  z.lazy(() => PropertiesFile$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => PropertiesText$inboundSchema),
+    z.lazy(() => PropertiesNumber$inboundSchema),
+    z.lazy(() => PropertiesDate$inboundSchema),
+    z.lazy(() => PropertiesSingleSelect$inboundSchema),
+    z.lazy(() => PropertiesMultiSelect$inboundSchema),
+    z.lazy(() => PropertiesCheckbox$inboundSchema),
+    z.lazy(() => PropertiesObject$inboundSchema),
+    z.lazy(() => PropertiesArray$inboundSchema),
+    z.lazy(() => PropertiesFile$inboundSchema),
+  ])
+);
 
 export function propertiesFromJSON(
   jsonString: string,
@@ -1046,9 +1100,9 @@ export const GetHrisEmployeesFormPositiveResponseData$inboundSchema: z.ZodType<
   GetHrisEmployeesFormPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  properties: z.record(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    properties: z.record(z.union([
       z.lazy(() => PropertiesText$inboundSchema),
       z.lazy(() => PropertiesNumber$inboundSchema),
       z.lazy(() => PropertiesDate$inboundSchema),
@@ -1058,9 +1112,9 @@ export const GetHrisEmployeesFormPositiveResponseData$inboundSchema: z.ZodType<
       z.lazy(() => PropertiesObject$inboundSchema),
       z.lazy(() => PropertiesArray$inboundSchema),
       z.lazy(() => PropertiesFile$inboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function getHrisEmployeesFormPositiveResponseDataFromJSON(
   jsonString: string,
@@ -1084,9 +1138,11 @@ export const GetHrisEmployeesFormPositiveResponseWarning$inboundSchema:
     GetHrisEmployeesFormPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function getHrisEmployeesFormPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -1109,13 +1165,15 @@ export const GetHrisEmployeesFormPositiveResponse$inboundSchema: z.ZodType<
   GetHrisEmployeesFormPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisEmployeesFormPositiveResponseData$inboundSchema),
-  warnings: z.array(
-    z.lazy(() => GetHrisEmployeesFormPositiveResponseWarning$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetHrisEmployeesFormPositiveResponseData$inboundSchema),
+    warnings: z.array(
+      z.lazy(() => GetHrisEmployeesFormPositiveResponseWarning$inboundSchema),
+    ),
+  })
+);
 
 export function getHrisEmployeesFormPositiveResponseFromJSON(
   jsonString: string,

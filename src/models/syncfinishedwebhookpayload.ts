@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -113,7 +113,9 @@ export type SyncFinishedWebhookPayload = {
 /** @internal */
 export const SyncFinishedWebhookPayloadType$inboundSchema: z.ZodNativeEnum<
   typeof SyncFinishedWebhookPayloadType
-> = z.nativeEnum(SyncFinishedWebhookPayloadType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(SyncFinishedWebhookPayloadType)
+);
 /** @internal */
 export const SyncFinishedWebhookPayloadType$outboundSchema: z.ZodNativeEnum<
   typeof SyncFinishedWebhookPayloadType
@@ -121,8 +123,10 @@ export const SyncFinishedWebhookPayloadType$outboundSchema: z.ZodNativeEnum<
 
 /** @internal */
 export const SyncFinishedWebhookPayloadIntegrationCategory$inboundSchema:
-  z.ZodNativeEnum<typeof SyncFinishedWebhookPayloadIntegrationCategory> = z
-    .nativeEnum(SyncFinishedWebhookPayloadIntegrationCategory);
+  z.ZodNativeEnum<typeof SyncFinishedWebhookPayloadIntegrationCategory> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(SyncFinishedWebhookPayloadIntegrationCategory)
+    );
 /** @internal */
 export const SyncFinishedWebhookPayloadIntegrationCategory$outboundSchema:
   z.ZodNativeEnum<typeof SyncFinishedWebhookPayloadIntegrationCategory> =
@@ -133,11 +137,13 @@ export const SyncFinishedWebhookPayloadEndUser$inboundSchema: z.ZodType<
   SyncFinishedWebhookPayloadEndUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  organization_name: z.string(),
-  creator_email: z.nullable(z.string()),
-  origin_id: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organization_name: z.string(),
+    creator_email: z.nullable(z.string()),
+    origin_id: z.nullable(z.string()),
+  })
+);
 /** @internal */
 export type SyncFinishedWebhookPayloadEndUser$Outbound = {
   organization_name: string;
@@ -150,11 +156,13 @@ export const SyncFinishedWebhookPayloadEndUser$outboundSchema: z.ZodType<
   SyncFinishedWebhookPayloadEndUser$Outbound,
   z.ZodTypeDef,
   SyncFinishedWebhookPayloadEndUser
-> = z.object({
-  organization_name: z.string(),
-  creator_email: z.nullable(z.string()),
-  origin_id: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organization_name: z.string(),
+    creator_email: z.nullable(z.string()),
+    origin_id: z.nullable(z.string()),
+  })
+);
 
 export function syncFinishedWebhookPayloadEndUserToJSON(
   syncFinishedWebhookPayloadEndUser: SyncFinishedWebhookPayloadEndUser,
@@ -180,23 +188,25 @@ export const SyncFinishedWebhookPayloadData$inboundSchema: z.ZodType<
   SyncFinishedWebhookPayloadData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sync_id: z.string(),
-  sync_state: z.string(),
-  sync_started_at: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  sync_ended_at: z.string().datetime({ offset: true }).transform(v =>
-    new Date(v)
-  ),
-  sync_duration_seconds: z.number().int(),
-  integration_id: z.string(),
-  integration_tool: z.string(),
-  integration_category:
-    SyncFinishedWebhookPayloadIntegrationCategory$inboundSchema,
-  end_user: z.lazy(() => SyncFinishedWebhookPayloadEndUser$inboundSchema),
-  log_url: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sync_id: z.string(),
+    sync_state: z.string(),
+    sync_started_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    sync_ended_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    sync_duration_seconds: z.number().int(),
+    integration_id: z.string(),
+    integration_tool: z.string(),
+    integration_category:
+      SyncFinishedWebhookPayloadIntegrationCategory$inboundSchema,
+    end_user: z.lazy(() => SyncFinishedWebhookPayloadEndUser$inboundSchema),
+    log_url: z.string(),
+  })
+);
 /** @internal */
 export type SyncFinishedWebhookPayloadData$Outbound = {
   sync_id: string;
@@ -216,19 +226,21 @@ export const SyncFinishedWebhookPayloadData$outboundSchema: z.ZodType<
   SyncFinishedWebhookPayloadData$Outbound,
   z.ZodTypeDef,
   SyncFinishedWebhookPayloadData
-> = z.object({
-  sync_id: z.string(),
-  sync_state: z.string(),
-  sync_started_at: z.date().transform(v => v.toISOString()),
-  sync_ended_at: z.date().transform(v => v.toISOString()),
-  sync_duration_seconds: z.number().int(),
-  integration_id: z.string(),
-  integration_tool: z.string(),
-  integration_category:
-    SyncFinishedWebhookPayloadIntegrationCategory$outboundSchema,
-  end_user: z.lazy(() => SyncFinishedWebhookPayloadEndUser$outboundSchema),
-  log_url: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sync_id: z.string(),
+    sync_state: z.string(),
+    sync_started_at: z.date().transform(v => v.toISOString()),
+    sync_ended_at: z.date().transform(v => v.toISOString()),
+    sync_duration_seconds: z.number().int(),
+    integration_id: z.string(),
+    integration_tool: z.string(),
+    integration_category:
+      SyncFinishedWebhookPayloadIntegrationCategory$outboundSchema,
+    end_user: z.lazy(() => SyncFinishedWebhookPayloadEndUser$outboundSchema),
+    log_url: z.string(),
+  })
+);
 
 export function syncFinishedWebhookPayloadDataToJSON(
   syncFinishedWebhookPayloadData: SyncFinishedWebhookPayloadData,
@@ -254,11 +266,13 @@ export const SyncFinishedWebhookPayload$inboundSchema: z.ZodType<
   SyncFinishedWebhookPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  type: SyncFinishedWebhookPayloadType$inboundSchema,
-  data: z.lazy(() => SyncFinishedWebhookPayloadData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: SyncFinishedWebhookPayloadType$inboundSchema,
+    data: z.lazy(() => SyncFinishedWebhookPayloadData$inboundSchema),
+  })
+);
 /** @internal */
 export type SyncFinishedWebhookPayload$Outbound = {
   id: string;
@@ -271,11 +285,13 @@ export const SyncFinishedWebhookPayload$outboundSchema: z.ZodType<
   SyncFinishedWebhookPayload$Outbound,
   z.ZodTypeDef,
   SyncFinishedWebhookPayload
-> = z.object({
-  id: z.string(),
-  type: SyncFinishedWebhookPayloadType$outboundSchema,
-  data: z.lazy(() => SyncFinishedWebhookPayloadData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: SyncFinishedWebhookPayloadType$outboundSchema,
+    data: z.lazy(() => SyncFinishedWebhookPayloadData$outboundSchema),
+  })
+);
 
 export function syncFinishedWebhookPayloadToJSON(
   syncFinishedWebhookPayload: SyncFinishedWebhookPayload,

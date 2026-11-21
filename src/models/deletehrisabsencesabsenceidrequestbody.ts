@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 /**
  * Fields specific to ADP Workforce Now.
@@ -46,9 +47,11 @@ export const DeleteHrisAbsencesAbsenceIdRequestBodyAdpworkforcenow$outboundSchem
     DeleteHrisAbsencesAbsenceIdRequestBodyAdpworkforcenow$Outbound,
     z.ZodTypeDef,
     DeleteHrisAbsencesAbsenceIdRequestBodyAdpworkforcenow
-  > = z.object({
-    employment_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      employment_id: z.string().optional(),
+    })
+  );
 
 export function deleteHrisAbsencesAbsenceIdRequestBodyAdpworkforcenowToJSON(
   deleteHrisAbsencesAbsenceIdRequestBodyAdpworkforcenow:
@@ -74,11 +77,13 @@ export const DeleteHrisAbsencesAbsenceIdRequestBodyRemoteFields$outboundSchema:
     DeleteHrisAbsencesAbsenceIdRequestBodyRemoteFields$Outbound,
     z.ZodTypeDef,
     DeleteHrisAbsencesAbsenceIdRequestBodyRemoteFields
-  > = z.object({
-    adpworkforcenow: z.lazy(() =>
-      DeleteHrisAbsencesAbsenceIdRequestBodyAdpworkforcenow$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      adpworkforcenow: z.lazy(() =>
+        DeleteHrisAbsencesAbsenceIdRequestBodyAdpworkforcenow$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function deleteHrisAbsencesAbsenceIdRequestBodyRemoteFieldsToJSON(
   deleteHrisAbsencesAbsenceIdRequestBodyRemoteFields:
@@ -103,11 +108,13 @@ export const DeleteHrisAbsencesAbsenceIdRequestBody$outboundSchema: z.ZodType<
   DeleteHrisAbsencesAbsenceIdRequestBody$Outbound,
   z.ZodTypeDef,
   DeleteHrisAbsencesAbsenceIdRequestBody
-> = z.object({
-  remote_fields: z.lazy(() =>
-    DeleteHrisAbsencesAbsenceIdRequestBodyRemoteFields$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_fields: z.lazy(() =>
+      DeleteHrisAbsencesAbsenceIdRequestBodyRemoteFields$outboundSchema
+    ).optional(),
+  })
+);
 
 export function deleteHrisAbsencesAbsenceIdRequestBodyToJSON(
   deleteHrisAbsencesAbsenceIdRequestBody:

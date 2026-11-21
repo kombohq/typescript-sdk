@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 
 export type PutAssessmentOrdersAssessmentOrderIdResultGlobals = {
@@ -35,12 +36,14 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequest$outboundSchema:
     PutAssessmentOrdersAssessmentOrderIdResultRequest$Outbound,
     z.ZodTypeDef,
     PutAssessmentOrdersAssessmentOrderIdResultRequest
-  > = z.object({
-    assessment_order_id: z.string(),
-    body:
-      models
-        .PutAssessmentOrdersAssessmentOrderIdResultRequestBody$outboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      assessment_order_id: z.string(),
+      body:
+        models
+          .PutAssessmentOrdersAssessmentOrderIdResultRequestBody$outboundSchema,
+    })
+  );
 
 export function putAssessmentOrdersAssessmentOrderIdResultRequestToJSON(
   putAssessmentOrdersAssessmentOrderIdResultRequest:

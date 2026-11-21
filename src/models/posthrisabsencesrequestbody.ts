@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -142,17 +143,21 @@ export type PostHrisAbsencesRequestBody = {
 /** @internal */
 export const PostHrisAbsencesRequestBodyStatus$outboundSchema: z.ZodNativeEnum<
   typeof PostHrisAbsencesRequestBodyStatus
-> = z.nativeEnum(PostHrisAbsencesRequestBodyStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PostHrisAbsencesRequestBodyStatus)
+);
 
 /** @internal */
 export const PostHrisAbsencesRequestBodyUnit$outboundSchema: z.ZodNativeEnum<
   typeof PostHrisAbsencesRequestBodyUnit
-> = z.nativeEnum(PostHrisAbsencesRequestBodyUnit);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PostHrisAbsencesRequestBodyUnit)
+);
 
 /** @internal */
 export const BenefitTypeId$outboundSchema: z.ZodNativeEnum<
   typeof BenefitTypeId
-> = z.nativeEnum(BenefitTypeId);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BenefitTypeId));
 
 /** @internal */
 export type A3innuvanomina$Outbound = {
@@ -164,9 +169,11 @@ export const A3innuvanomina$outboundSchema: z.ZodType<
   A3innuvanomina$Outbound,
   z.ZodTypeDef,
   A3innuvanomina
-> = z.object({
-  benefit_type_id: BenefitTypeId$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    benefit_type_id: BenefitTypeId$outboundSchema.optional(),
+  })
+);
 
 export function a3innuvanominaToJSON(a3innuvanomina: A3innuvanomina): string {
   return JSON.stringify(A3innuvanomina$outboundSchema.parse(a3innuvanomina));
@@ -184,10 +191,12 @@ export const PostHrisAbsencesRequestBodyAdpworkforcenow$outboundSchema:
     PostHrisAbsencesRequestBodyAdpworkforcenow$Outbound,
     z.ZodTypeDef,
     PostHrisAbsencesRequestBodyAdpworkforcenow
-  > = z.object({
-    employment_id: z.string().optional(),
-    paid_leave: z.boolean().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      employment_id: z.string().optional(),
+      paid_leave: z.boolean().optional(),
+    })
+  );
 
 export function postHrisAbsencesRequestBodyAdpworkforcenowToJSON(
   postHrisAbsencesRequestBodyAdpworkforcenow:
@@ -213,12 +222,14 @@ export const PostHrisAbsencesRequestBodyRemoteFields$outboundSchema: z.ZodType<
   PostHrisAbsencesRequestBodyRemoteFields$Outbound,
   z.ZodTypeDef,
   PostHrisAbsencesRequestBodyRemoteFields
-> = z.object({
-  a3innuvanomina: z.lazy(() => A3innuvanomina$outboundSchema).optional(),
-  adpworkforcenow: z.lazy(() =>
-    PostHrisAbsencesRequestBodyAdpworkforcenow$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    a3innuvanomina: z.lazy(() => A3innuvanomina$outboundSchema).optional(),
+    adpworkforcenow: z.lazy(() =>
+      PostHrisAbsencesRequestBodyAdpworkforcenow$outboundSchema
+    ).optional(),
+  })
+);
 
 export function postHrisAbsencesRequestBodyRemoteFieldsToJSON(
   postHrisAbsencesRequestBodyRemoteFields:
@@ -253,23 +264,27 @@ export const PostHrisAbsencesRequestBody$outboundSchema: z.ZodType<
   PostHrisAbsencesRequestBody$Outbound,
   z.ZodTypeDef,
   PostHrisAbsencesRequestBody
-> = z.object({
-  employee_id: z.string(),
-  absence_type_id: z.string(),
-  status: PostHrisAbsencesRequestBodyStatus$outboundSchema.default("REQUESTED"),
-  start_date: z.date().transform(v => v.toISOString()),
-  end_date: z.date().transform(v => v.toISOString()),
-  start_half_day: z.boolean().default(false),
-  end_half_day: z.boolean().default(false),
-  amount: z.number().optional(),
-  unit: PostHrisAbsencesRequestBodyUnit$outboundSchema.optional(),
-  employee_note: z.nullable(z.string()),
-  start_time: z.string().optional(),
-  end_time: z.string().optional(),
-  remote_fields: z.lazy(() =>
-    PostHrisAbsencesRequestBodyRemoteFields$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    employee_id: z.string(),
+    absence_type_id: z.string(),
+    status: PostHrisAbsencesRequestBodyStatus$outboundSchema.default(
+      "REQUESTED",
+    ),
+    start_date: z.date().transform(v => v.toISOString()),
+    end_date: z.date().transform(v => v.toISOString()),
+    start_half_day: z.boolean().default(false),
+    end_half_day: z.boolean().default(false),
+    amount: z.number().optional(),
+    unit: PostHrisAbsencesRequestBodyUnit$outboundSchema.optional(),
+    employee_note: z.nullable(z.string()),
+    start_time: z.string().optional(),
+    end_time: z.string().optional(),
+    remote_fields: z.lazy(() =>
+      PostHrisAbsencesRequestBodyRemoteFields$outboundSchema
+    ).optional(),
+  })
+);
 
 export function postHrisAbsencesRequestBodyToJSON(
   postHrisAbsencesRequestBody: PostHrisAbsencesRequestBody,

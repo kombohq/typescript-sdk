@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export const PutAssessmentPackagesRequestBodyType = {
@@ -38,9 +39,10 @@ export type PutAssessmentPackagesRequestBody = {
 
 /** @internal */
 export const PutAssessmentPackagesRequestBodyType$outboundSchema:
-  z.ZodNativeEnum<typeof PutAssessmentPackagesRequestBodyType> = z.nativeEnum(
-    PutAssessmentPackagesRequestBodyType,
-  );
+  z.ZodNativeEnum<typeof PutAssessmentPackagesRequestBodyType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PutAssessmentPackagesRequestBodyType)
+    );
 
 /** @internal */
 export type PutAssessmentPackagesRequestBodyPackage$Outbound = {
@@ -55,12 +57,14 @@ export const PutAssessmentPackagesRequestBodyPackage$outboundSchema: z.ZodType<
   PutAssessmentPackagesRequestBodyPackage$Outbound,
   z.ZodTypeDef,
   PutAssessmentPackagesRequestBodyPackage
-> = z.object({
-  id: z.string(),
-  type: PutAssessmentPackagesRequestBodyType$outboundSchema,
-  name: z.string(),
-  description: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: PutAssessmentPackagesRequestBodyType$outboundSchema,
+    name: z.string(),
+    description: z.string(),
+  })
+);
 
 export function putAssessmentPackagesRequestBodyPackageToJSON(
   putAssessmentPackagesRequestBodyPackage:
@@ -83,11 +87,13 @@ export const PutAssessmentPackagesRequestBody$outboundSchema: z.ZodType<
   PutAssessmentPackagesRequestBody$Outbound,
   z.ZodTypeDef,
   PutAssessmentPackagesRequestBody
-> = z.object({
-  packages: z.array(
-    z.lazy(() => PutAssessmentPackagesRequestBodyPackage$outboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    packages: z.array(
+      z.lazy(() => PutAssessmentPackagesRequestBodyPackage$outboundSchema),
+    ),
+  })
+);
 
 export function putAssessmentPackagesRequestBodyToJSON(
   putAssessmentPackagesRequestBody: PutAssessmentPackagesRequestBody,

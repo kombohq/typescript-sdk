@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -30,7 +30,7 @@ export const PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$inbound
     PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({});
+  > = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function postAtsCandidatesCandidateIdAttachmentsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -53,9 +53,11 @@ export const PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$inbo
     PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdAttachmentsPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -78,17 +80,17 @@ export const PostAtsCandidatesCandidateIdAttachmentsPositiveResponse$inboundSche
     PostAtsCandidatesCandidateIdAttachmentsPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$inboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        PostAtsCandidatesCandidateIdAttachmentsPositiveResponseData$inboundSchema
       ),
-    ),
-  });
+      warnings: z.array(z.lazy(() =>
+        PostAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$inboundSchema
+      )),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdAttachmentsPositiveResponseFromJSON(
   jsonString: string,

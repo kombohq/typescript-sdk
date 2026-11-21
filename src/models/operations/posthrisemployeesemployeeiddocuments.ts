@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 
 export type PostHrisEmployeesEmployeeIdDocumentsGlobals = {
@@ -35,10 +36,13 @@ export const PostHrisEmployeesEmployeeIdDocumentsRequest$outboundSchema:
     PostHrisEmployeesEmployeeIdDocumentsRequest$Outbound,
     z.ZodTypeDef,
     PostHrisEmployeesEmployeeIdDocumentsRequest
-  > = z.object({
-    employee_id: z.string(),
-    body: models.PostHrisEmployeesEmployeeIdDocumentsRequestBody$outboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      employee_id: z.string(),
+      body:
+        models.PostHrisEmployeesEmployeeIdDocumentsRequestBody$outboundSchema,
+    })
+  );
 
 export function postHrisEmployeesEmployeeIdDocumentsRequestToJSON(
   postHrisEmployeesEmployeeIdDocumentsRequest:

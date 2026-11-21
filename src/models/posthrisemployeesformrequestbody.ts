@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import {
   Schema4,
   Schema4$Outbound,
@@ -25,10 +26,12 @@ export const PostHrisEmployeesFormRequestBody$outboundSchema: z.ZodType<
   PostHrisEmployeesFormRequestBody$Outbound,
   z.ZodTypeDef,
   PostHrisEmployeesFormRequestBody
-> = z.object({
-  staffing_entity_id: z.string().optional(),
-  properties: z.record(Schema4$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    staffing_entity_id: z.string().optional(),
+    properties: z.record(Schema4$outboundSchema),
+  })
+);
 
 export function postHrisEmployeesFormRequestBodyToJSON(
   postHrisEmployeesFormRequestBody: PostHrisEmployeesFormRequestBody,
