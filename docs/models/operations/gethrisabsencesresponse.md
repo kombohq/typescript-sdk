@@ -31,6 +31,7 @@ let value: GetHrisAbsencesResponse = {
           remote_updated_at: new Date("2022-08-07T14:01:29.196Z"),
           changed_at: new Date("2022-08-07T14:01:29.196Z"),
           remote_deleted_at: new Date("2022-08-07T14:01:29.196Z"),
+          custom_fields: {},
           type: {
             id: "xzZoKssDaMZAd62kxayzzQvD",
             remote_id: "91",

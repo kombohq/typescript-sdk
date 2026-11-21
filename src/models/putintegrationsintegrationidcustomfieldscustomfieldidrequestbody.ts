@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody = {
   /**
@@ -23,9 +24,11 @@ export const PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$ou
     PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody$Outbound,
     z.ZodTypeDef,
     PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody
-  > = z.object({
-    integration_field_id: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integration_field_id: z.nullable(z.string()),
+    })
+  );
 
 export function putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBodyToJSON(
   putIntegrationsIntegrationIdCustomFieldsCustomFieldIdRequestBody:

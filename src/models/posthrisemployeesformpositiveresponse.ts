@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -47,9 +47,11 @@ export type PostHrisEmployeesFormPositiveResponse = {
 
 /** @internal */
 export const Prehire$inboundSchema: z.ZodType<Prehire, z.ZodTypeDef, unknown> =
-  z.object({
-    remote_id: z.nullable(z.string()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+    })
+  );
 
 export function prehireFromJSON(
   jsonString: string,
@@ -66,11 +68,13 @@ export const PostHrisEmployeesFormPositiveResponseData$inboundSchema: z.ZodType<
   PostHrisEmployeesFormPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.nullable(z.string()),
-  remote_id: z.nullable(z.string()),
-  prehire: z.lazy(() => Prehire$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.nullable(z.string()),
+    remote_id: z.nullable(z.string()),
+    prehire: z.lazy(() => Prehire$inboundSchema),
+  })
+);
 
 export function postHrisEmployeesFormPositiveResponseDataFromJSON(
   jsonString: string,
@@ -94,9 +98,11 @@ export const PostHrisEmployeesFormPositiveResponseWarning$inboundSchema:
     PostHrisEmployeesFormPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function postHrisEmployeesFormPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -119,13 +125,15 @@ export const PostHrisEmployeesFormPositiveResponse$inboundSchema: z.ZodType<
   PostHrisEmployeesFormPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => PostHrisEmployeesFormPositiveResponseData$inboundSchema),
-  warnings: z.array(
-    z.lazy(() => PostHrisEmployeesFormPositiveResponseWarning$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => PostHrisEmployeesFormPositiveResponseData$inboundSchema),
+    warnings: z.array(
+      z.lazy(() => PostHrisEmployeesFormPositiveResponseWarning$inboundSchema),
+    ),
+  })
+);
 
 export function postHrisEmployeesFormPositiveResponseFromJSON(
   jsonString: string,

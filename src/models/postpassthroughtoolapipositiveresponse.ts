@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -43,7 +43,7 @@ export type PostPassthroughToolApiPositiveResponse = {
 
 /** @internal */
 export const Headers$inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> =
-  z.union([z.string(), z.array(z.string())]);
+  /* @__PURE__ */ lazySchema$(() => z.union([z.string(), z.array(z.string())]));
 
 export function headersFromJSON(
   jsonString: string,
@@ -58,12 +58,14 @@ export function headersFromJSON(
 /** @internal */
 export const PostPassthroughToolApiPositiveResponseData$inboundSchema:
   z.ZodType<PostPassthroughToolApiPositiveResponseData, z.ZodTypeDef, unknown> =
-    z.object({
-      url: z.string(),
-      status: z.number().int(),
-      headers: z.record(z.union([z.string(), z.array(z.string())])),
-      data: z.any().optional(),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        url: z.string(),
+        status: z.number().int(),
+        headers: z.record(z.union([z.string(), z.array(z.string())])),
+        data: z.any().optional(),
+      })
+    );
 
 export function postPassthroughToolApiPositiveResponseDataFromJSON(
   jsonString: string,
@@ -87,9 +89,11 @@ export const PostPassthroughToolApiPositiveResponseWarning$inboundSchema:
     PostPassthroughToolApiPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function postPassthroughToolApiPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -112,13 +116,17 @@ export const PostPassthroughToolApiPositiveResponse$inboundSchema: z.ZodType<
   PostPassthroughToolApiPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => PostPassthroughToolApiPositiveResponseData$inboundSchema),
-  warnings: z.array(
-    z.lazy(() => PostPassthroughToolApiPositiveResponseWarning$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() =>
+      PostPassthroughToolApiPositiveResponseData$inboundSchema
+    ),
+    warnings: z.array(
+      z.lazy(() => PostPassthroughToolApiPositiveResponseWarning$inboundSchema),
+    ),
+  })
+);
 
 export function postPassthroughToolApiPositiveResponseFromJSON(
   jsonString: string,

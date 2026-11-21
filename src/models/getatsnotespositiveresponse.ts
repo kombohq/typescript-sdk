@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -100,13 +100,15 @@ export const GetAtsNotesPositiveResponseAuthor$inboundSchema: z.ZodType<
   GetAtsNotesPositiveResponseAuthor,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  email: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    first_name: z.nullable(z.string()),
+    last_name: z.nullable(z.string()),
+    email: z.nullable(z.string()).optional(),
+  })
+);
 
 export function getAtsNotesPositiveResponseAuthorFromJSON(
   jsonString: string,
@@ -123,29 +125,33 @@ export const GetAtsNotesPositiveResponseResult$inboundSchema: z.ZodType<
   GetAtsNotesPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  candidate_id: z.string(),
-  application_id: z.nullable(z.string()),
-  author_id: z.nullable(z.string()),
-  title: z.nullable(z.string()),
-  content_html: z.nullable(z.string()),
-  is_private: z.nullable(z.boolean()),
-  remote_created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  remote_updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  author: z.nullable(
-    z.lazy(() => GetAtsNotesPositiveResponseAuthor$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    candidate_id: z.string(),
+    application_id: z.nullable(z.string()),
+    author_id: z.nullable(z.string()),
+    title: z.nullable(z.string()),
+    content_html: z.nullable(z.string()),
+    is_private: z.nullable(z.boolean()),
+    remote_created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    remote_updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    author: z.nullable(
+      z.lazy(() => GetAtsNotesPositiveResponseAuthor$inboundSchema),
+    ),
+  })
+);
 
 export function getAtsNotesPositiveResponseResultFromJSON(
   jsonString: string,
@@ -162,12 +168,14 @@ export const GetAtsNotesPositiveResponseData$inboundSchema: z.ZodType<
   GetAtsNotesPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetAtsNotesPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetAtsNotesPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getAtsNotesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -184,10 +192,12 @@ export const GetAtsNotesPositiveResponse$inboundSchema: z.ZodType<
   GetAtsNotesPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAtsNotesPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetAtsNotesPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getAtsNotesPositiveResponseFromJSON(
   jsonString: string,

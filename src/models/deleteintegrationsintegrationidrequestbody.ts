@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteIntegrationsIntegrationIdRequestBody = {};
 
@@ -15,7 +16,7 @@ export const DeleteIntegrationsIntegrationIdRequestBody$outboundSchema:
     DeleteIntegrationsIntegrationIdRequestBody$Outbound,
     z.ZodTypeDef,
     DeleteIntegrationsIntegrationIdRequestBody
-  > = z.object({});
+  > = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function deleteIntegrationsIntegrationIdRequestBodyToJSON(
   deleteIntegrationsIntegrationIdRequestBody:

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 
 export type PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest =
@@ -37,13 +38,15 @@ export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRe
     PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest$Outbound,
     z.ZodTypeDef,
     PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest
-  > = z.object({
-    integration_id: z.string(),
-    integration_field_id: z.string(),
-    body:
-      models
-        .PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$outboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integration_id: z.string(),
+      integration_field_id: z.string(),
+      body:
+        models
+          .PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$outboundSchema,
+    })
+  );
 
 export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestToJSON(
   patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequest:

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -204,8 +204,10 @@ export type AssessmentOrderReceivedWebhookPayload = {
 
 /** @internal */
 export const AssessmentOrderReceivedWebhookPayloadType$inboundSchema:
-  z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadType> = z
-    .nativeEnum(AssessmentOrderReceivedWebhookPayloadType);
+  z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(AssessmentOrderReceivedWebhookPayloadType)
+    );
 /** @internal */
 export const AssessmentOrderReceivedWebhookPayloadType$outboundSchema:
   z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadType> =
@@ -213,8 +215,10 @@ export const AssessmentOrderReceivedWebhookPayloadType$outboundSchema:
 
 /** @internal */
 export const AssessmentOrderReceivedWebhookPayloadStatus$inboundSchema:
-  z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadStatus> = z
-    .nativeEnum(AssessmentOrderReceivedWebhookPayloadStatus);
+  z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(AssessmentOrderReceivedWebhookPayloadStatus)
+    );
 /** @internal */
 export const AssessmentOrderReceivedWebhookPayloadStatus$outboundSchema:
   z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadStatus> =
@@ -226,13 +230,15 @@ export const AssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema:
     AssessmentOrderReceivedWebhookPayloadCandidate,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-    email: z.string(),
-    first_name: z.nullable(z.string()),
-    last_name: z.nullable(z.string()),
-    phone: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      email: z.string(),
+      first_name: z.nullable(z.string()),
+      last_name: z.nullable(z.string()),
+      phone: z.nullable(z.string()),
+    })
+  );
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadCandidate$Outbound = {
   remote_id: string | null;
@@ -248,13 +254,15 @@ export const AssessmentOrderReceivedWebhookPayloadCandidate$outboundSchema:
     AssessmentOrderReceivedWebhookPayloadCandidate$Outbound,
     z.ZodTypeDef,
     AssessmentOrderReceivedWebhookPayloadCandidate
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-    email: z.string(),
-    first_name: z.nullable(z.string()),
-    last_name: z.nullable(z.string()),
-    phone: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      email: z.string(),
+      first_name: z.nullable(z.string()),
+      last_name: z.nullable(z.string()),
+      phone: z.nullable(z.string()),
+    })
+  );
 
 export function assessmentOrderReceivedWebhookPayloadCandidateToJSON(
   assessmentOrderReceivedWebhookPayloadCandidate:
@@ -288,9 +296,11 @@ export const AssessmentOrderReceivedWebhookPayloadApplication$inboundSchema:
     AssessmentOrderReceivedWebhookPayloadApplication,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+    })
+  );
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadApplication$Outbound = {
   remote_id: string | null;
@@ -302,9 +312,11 @@ export const AssessmentOrderReceivedWebhookPayloadApplication$outboundSchema:
     AssessmentOrderReceivedWebhookPayloadApplication$Outbound,
     z.ZodTypeDef,
     AssessmentOrderReceivedWebhookPayloadApplication
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+    })
+  );
 
 export function assessmentOrderReceivedWebhookPayloadApplicationToJSON(
   assessmentOrderReceivedWebhookPayloadApplication:
@@ -338,15 +350,17 @@ export const AssessmentOrderReceivedWebhookPayloadLocation$inboundSchema:
     AssessmentOrderReceivedWebhookPayloadLocation,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    street_1: z.nullable(z.string()).optional(),
-    street_2: z.nullable(z.string()).optional(),
-    city: z.nullable(z.string()).optional(),
-    state: z.nullable(z.string()).optional(),
-    zip_code: z.nullable(z.string()).optional(),
-    country: z.nullable(z.string()).optional(),
-    raw: z.nullable(z.string()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      street_1: z.nullable(z.string()).optional(),
+      street_2: z.nullable(z.string()).optional(),
+      city: z.nullable(z.string()).optional(),
+      state: z.nullable(z.string()).optional(),
+      zip_code: z.nullable(z.string()).optional(),
+      country: z.nullable(z.string()).optional(),
+      raw: z.nullable(z.string()).optional(),
+    })
+  );
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadLocation$Outbound = {
   street_1?: string | null | undefined;
@@ -364,15 +378,17 @@ export const AssessmentOrderReceivedWebhookPayloadLocation$outboundSchema:
     AssessmentOrderReceivedWebhookPayloadLocation$Outbound,
     z.ZodTypeDef,
     AssessmentOrderReceivedWebhookPayloadLocation
-  > = z.object({
-    street_1: z.nullable(z.string()).optional(),
-    street_2: z.nullable(z.string()).optional(),
-    city: z.nullable(z.string()).optional(),
-    state: z.nullable(z.string()).optional(),
-    zip_code: z.nullable(z.string()).optional(),
-    country: z.nullable(z.string()).optional(),
-    raw: z.nullable(z.string()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      street_1: z.nullable(z.string()).optional(),
+      street_2: z.nullable(z.string()).optional(),
+      city: z.nullable(z.string()).optional(),
+      state: z.nullable(z.string()).optional(),
+      zip_code: z.nullable(z.string()).optional(),
+      country: z.nullable(z.string()).optional(),
+      raw: z.nullable(z.string()).optional(),
+    })
+  );
 
 export function assessmentOrderReceivedWebhookPayloadLocationToJSON(
   assessmentOrderReceivedWebhookPayloadLocation:
@@ -403,7 +419,9 @@ export function assessmentOrderReceivedWebhookPayloadLocationFromJSON(
 /** @internal */
 export const AssessmentOrderReceivedWebhookPayloadHiringTeamRole$inboundSchema:
   z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadHiringTeamRole> =
-    z.nativeEnum(AssessmentOrderReceivedWebhookPayloadHiringTeamRole);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(AssessmentOrderReceivedWebhookPayloadHiringTeamRole)
+    );
 /** @internal */
 export const AssessmentOrderReceivedWebhookPayloadHiringTeamRole$outboundSchema:
   z.ZodNativeEnum<typeof AssessmentOrderReceivedWebhookPayloadHiringTeamRole> =
@@ -415,15 +433,17 @@ export const AssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema:
     AssessmentOrderReceivedWebhookPayloadHiringTeam,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-    email: z.nullable(z.string()),
-    first_name: z.nullable(z.string()),
-    last_name: z.nullable(z.string()),
-    hiring_team_roles: z.array(
-      AssessmentOrderReceivedWebhookPayloadHiringTeamRole$inboundSchema,
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      email: z.nullable(z.string()),
+      first_name: z.nullable(z.string()),
+      last_name: z.nullable(z.string()),
+      hiring_team_roles: z.array(
+        AssessmentOrderReceivedWebhookPayloadHiringTeamRole$inboundSchema,
+      ),
+    })
+  );
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadHiringTeam$Outbound = {
   remote_id: string | null;
@@ -439,15 +459,17 @@ export const AssessmentOrderReceivedWebhookPayloadHiringTeam$outboundSchema:
     AssessmentOrderReceivedWebhookPayloadHiringTeam$Outbound,
     z.ZodTypeDef,
     AssessmentOrderReceivedWebhookPayloadHiringTeam
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-    email: z.nullable(z.string()),
-    first_name: z.nullable(z.string()),
-    last_name: z.nullable(z.string()),
-    hiring_team_roles: z.array(
-      AssessmentOrderReceivedWebhookPayloadHiringTeamRole$outboundSchema,
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      email: z.nullable(z.string()),
+      first_name: z.nullable(z.string()),
+      last_name: z.nullable(z.string()),
+      hiring_team_roles: z.array(
+        AssessmentOrderReceivedWebhookPayloadHiringTeamRole$outboundSchema,
+      ),
+    })
+  );
 
 export function assessmentOrderReceivedWebhookPayloadHiringTeamToJSON(
   assessmentOrderReceivedWebhookPayloadHiringTeam:
@@ -480,18 +502,22 @@ export const AssessmentOrderReceivedWebhookPayloadJob$inboundSchema: z.ZodType<
   AssessmentOrderReceivedWebhookPayloadJob,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  name: z.nullable(z.string()),
-  job_code: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  location: z.nullable(
-    z.lazy(() => AssessmentOrderReceivedWebhookPayloadLocation$inboundSchema),
-  ),
-  hiring_team: z.array(
-    z.lazy(() => AssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    name: z.nullable(z.string()),
+    job_code: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    location: z.nullable(
+      z.lazy(() => AssessmentOrderReceivedWebhookPayloadLocation$inboundSchema),
+    ),
+    hiring_team: z.array(
+      z.lazy(() =>
+        AssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema
+      ),
+    ),
+  })
+);
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadJob$Outbound = {
   remote_id: string | null;
@@ -507,20 +533,24 @@ export const AssessmentOrderReceivedWebhookPayloadJob$outboundSchema: z.ZodType<
   AssessmentOrderReceivedWebhookPayloadJob$Outbound,
   z.ZodTypeDef,
   AssessmentOrderReceivedWebhookPayloadJob
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  name: z.nullable(z.string()),
-  job_code: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  location: z.nullable(
-    z.lazy(() => AssessmentOrderReceivedWebhookPayloadLocation$outboundSchema),
-  ),
-  hiring_team: z.array(
-    z.lazy(() =>
-      AssessmentOrderReceivedWebhookPayloadHiringTeam$outboundSchema
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    name: z.nullable(z.string()),
+    job_code: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    location: z.nullable(
+      z.lazy(() =>
+        AssessmentOrderReceivedWebhookPayloadLocation$outboundSchema
+      ),
     ),
-  ),
-});
+    hiring_team: z.array(
+      z.lazy(() =>
+        AssessmentOrderReceivedWebhookPayloadHiringTeam$outboundSchema
+      ),
+    ),
+  })
+);
 
 export function assessmentOrderReceivedWebhookPayloadJobToJSON(
   assessmentOrderReceivedWebhookPayloadJob:
@@ -553,19 +583,21 @@ export const AssessmentOrderReceivedWebhookPayloadData$inboundSchema: z.ZodType<
   AssessmentOrderReceivedWebhookPayloadData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  package_id: z.string(),
-  status: AssessmentOrderReceivedWebhookPayloadStatus$inboundSchema,
-  integration_id: z.string(),
-  candidate: z.lazy(() =>
-    AssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema
-  ),
-  application: z.lazy(() =>
-    AssessmentOrderReceivedWebhookPayloadApplication$inboundSchema
-  ),
-  job: z.lazy(() => AssessmentOrderReceivedWebhookPayloadJob$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    package_id: z.string(),
+    status: AssessmentOrderReceivedWebhookPayloadStatus$inboundSchema,
+    integration_id: z.string(),
+    candidate: z.lazy(() =>
+      AssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema
+    ),
+    application: z.lazy(() =>
+      AssessmentOrderReceivedWebhookPayloadApplication$inboundSchema
+    ),
+    job: z.lazy(() => AssessmentOrderReceivedWebhookPayloadJob$inboundSchema),
+  })
+);
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayloadData$Outbound = {
   id: string;
@@ -583,19 +615,23 @@ export const AssessmentOrderReceivedWebhookPayloadData$outboundSchema:
     AssessmentOrderReceivedWebhookPayloadData$Outbound,
     z.ZodTypeDef,
     AssessmentOrderReceivedWebhookPayloadData
-  > = z.object({
-    id: z.string(),
-    package_id: z.string(),
-    status: AssessmentOrderReceivedWebhookPayloadStatus$outboundSchema,
-    integration_id: z.string(),
-    candidate: z.lazy(() =>
-      AssessmentOrderReceivedWebhookPayloadCandidate$outboundSchema
-    ),
-    application: z.lazy(() =>
-      AssessmentOrderReceivedWebhookPayloadApplication$outboundSchema
-    ),
-    job: z.lazy(() => AssessmentOrderReceivedWebhookPayloadJob$outboundSchema),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      package_id: z.string(),
+      status: AssessmentOrderReceivedWebhookPayloadStatus$outboundSchema,
+      integration_id: z.string(),
+      candidate: z.lazy(() =>
+        AssessmentOrderReceivedWebhookPayloadCandidate$outboundSchema
+      ),
+      application: z.lazy(() =>
+        AssessmentOrderReceivedWebhookPayloadApplication$outboundSchema
+      ),
+      job: z.lazy(() =>
+        AssessmentOrderReceivedWebhookPayloadJob$outboundSchema
+      ),
+    })
+  );
 
 export function assessmentOrderReceivedWebhookPayloadDataToJSON(
   assessmentOrderReceivedWebhookPayloadData:
@@ -628,11 +664,13 @@ export const AssessmentOrderReceivedWebhookPayload$inboundSchema: z.ZodType<
   AssessmentOrderReceivedWebhookPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  type: AssessmentOrderReceivedWebhookPayloadType$inboundSchema,
-  data: z.lazy(() => AssessmentOrderReceivedWebhookPayloadData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: AssessmentOrderReceivedWebhookPayloadType$inboundSchema,
+    data: z.lazy(() => AssessmentOrderReceivedWebhookPayloadData$inboundSchema),
+  })
+);
 /** @internal */
 export type AssessmentOrderReceivedWebhookPayload$Outbound = {
   id: string;
@@ -645,11 +683,15 @@ export const AssessmentOrderReceivedWebhookPayload$outboundSchema: z.ZodType<
   AssessmentOrderReceivedWebhookPayload$Outbound,
   z.ZodTypeDef,
   AssessmentOrderReceivedWebhookPayload
-> = z.object({
-  id: z.string(),
-  type: AssessmentOrderReceivedWebhookPayloadType$outboundSchema,
-  data: z.lazy(() => AssessmentOrderReceivedWebhookPayloadData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: AssessmentOrderReceivedWebhookPayloadType$outboundSchema,
+    data: z.lazy(() =>
+      AssessmentOrderReceivedWebhookPayloadData$outboundSchema
+    ),
+  })
+);
 
 export function assessmentOrderReceivedWebhookPayloadToJSON(
   assessmentOrderReceivedWebhookPayload: AssessmentOrderReceivedWebhookPayload,

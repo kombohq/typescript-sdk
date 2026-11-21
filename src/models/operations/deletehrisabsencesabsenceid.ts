@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 
 export type DeleteHrisAbsencesAbsenceIdGlobals = {
@@ -34,10 +35,12 @@ export const DeleteHrisAbsencesAbsenceIdRequest$outboundSchema: z.ZodType<
   DeleteHrisAbsencesAbsenceIdRequest$Outbound,
   z.ZodTypeDef,
   DeleteHrisAbsencesAbsenceIdRequest
-> = z.object({
-  absence_id: z.string(),
-  body: models.DeleteHrisAbsencesAbsenceIdRequestBody$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    absence_id: z.string(),
+    body: models.DeleteHrisAbsencesAbsenceIdRequestBody$outboundSchema,
+  })
+);
 
 export function deleteHrisAbsencesAbsenceIdRequestToJSON(
   deleteHrisAbsencesAbsenceIdRequest: DeleteHrisAbsencesAbsenceIdRequest,

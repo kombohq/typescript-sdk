@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -72,24 +72,26 @@ export type KomboHrisErrorError = {
 /** @internal */
 export const KomboHrisErrorStatus$inboundSchema: z.ZodNativeEnum<
   typeof KomboHrisErrorStatus
-> = z.nativeEnum(KomboHrisErrorStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(KomboHrisErrorStatus));
 
 /** @internal */
 export const KomboHrisErrorCode$inboundSchema: z.ZodNativeEnum<
   typeof KomboHrisErrorCode
-> = z.nativeEnum(KomboHrisErrorCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(KomboHrisErrorCode));
 
 /** @internal */
 export const KomboHrisErrorError$inboundSchema: z.ZodType<
   KomboHrisErrorError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: z.nullable(KomboHrisErrorCode$inboundSchema),
-  title: z.nullable(z.string()),
-  message: z.string(),
-  log_url: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.nullable(KomboHrisErrorCode$inboundSchema),
+    title: z.nullable(z.string()),
+    message: z.string(),
+    log_url: z.nullable(z.string()),
+  })
+);
 
 export function komboHrisErrorErrorFromJSON(
   jsonString: string,

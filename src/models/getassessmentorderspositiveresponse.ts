@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -185,8 +185,10 @@ export type GetAssessmentOrdersPositiveResponse = {
 
 /** @internal */
 export const GetAssessmentOrdersPositiveResponseStatus$inboundSchema:
-  z.ZodNativeEnum<typeof GetAssessmentOrdersPositiveResponseStatus> = z
-    .nativeEnum(GetAssessmentOrdersPositiveResponseStatus);
+  z.ZodNativeEnum<typeof GetAssessmentOrdersPositiveResponseStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetAssessmentOrdersPositiveResponseStatus)
+    );
 
 /** @internal */
 export const GetAssessmentOrdersPositiveResponseCandidate$inboundSchema:
@@ -194,13 +196,15 @@ export const GetAssessmentOrdersPositiveResponseCandidate$inboundSchema:
     GetAssessmentOrdersPositiveResponseCandidate,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-    email: z.string(),
-    first_name: z.nullable(z.string()),
-    last_name: z.nullable(z.string()),
-    phone: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      email: z.string(),
+      first_name: z.nullable(z.string()),
+      last_name: z.nullable(z.string()),
+      phone: z.nullable(z.string()),
+    })
+  );
 
 export function getAssessmentOrdersPositiveResponseCandidateFromJSON(
   jsonString: string,
@@ -224,9 +228,11 @@ export const GetAssessmentOrdersPositiveResponseApplication$inboundSchema:
     GetAssessmentOrdersPositiveResponseApplication,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+    })
+  );
 
 export function getAssessmentOrdersPositiveResponseApplicationFromJSON(
   jsonString: string,
@@ -250,15 +256,17 @@ export const GetAssessmentOrdersPositiveResponseLocation$inboundSchema:
     GetAssessmentOrdersPositiveResponseLocation,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    street_1: z.nullable(z.string()).optional(),
-    street_2: z.nullable(z.string()).optional(),
-    city: z.nullable(z.string()).optional(),
-    state: z.nullable(z.string()).optional(),
-    zip_code: z.nullable(z.string()).optional(),
-    country: z.nullable(z.string()).optional(),
-    raw: z.nullable(z.string()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      street_1: z.nullable(z.string()).optional(),
+      street_2: z.nullable(z.string()).optional(),
+      city: z.nullable(z.string()).optional(),
+      state: z.nullable(z.string()).optional(),
+      zip_code: z.nullable(z.string()).optional(),
+      country: z.nullable(z.string()).optional(),
+      raw: z.nullable(z.string()).optional(),
+    })
+  );
 
 export function getAssessmentOrdersPositiveResponseLocationFromJSON(
   jsonString: string,
@@ -278,8 +286,10 @@ export function getAssessmentOrdersPositiveResponseLocationFromJSON(
 
 /** @internal */
 export const GetAssessmentOrdersPositiveResponseHiringTeamRole$inboundSchema:
-  z.ZodNativeEnum<typeof GetAssessmentOrdersPositiveResponseHiringTeamRole> = z
-    .nativeEnum(GetAssessmentOrdersPositiveResponseHiringTeamRole);
+  z.ZodNativeEnum<typeof GetAssessmentOrdersPositiveResponseHiringTeamRole> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetAssessmentOrdersPositiveResponseHiringTeamRole)
+    );
 
 /** @internal */
 export const GetAssessmentOrdersPositiveResponseHiringTeam$inboundSchema:
@@ -287,15 +297,17 @@ export const GetAssessmentOrdersPositiveResponseHiringTeam$inboundSchema:
     GetAssessmentOrdersPositiveResponseHiringTeam,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-    email: z.nullable(z.string()),
-    first_name: z.nullable(z.string()),
-    last_name: z.nullable(z.string()),
-    hiring_team_roles: z.array(
-      GetAssessmentOrdersPositiveResponseHiringTeamRole$inboundSchema,
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      email: z.nullable(z.string()),
+      first_name: z.nullable(z.string()),
+      last_name: z.nullable(z.string()),
+      hiring_team_roles: z.array(
+        GetAssessmentOrdersPositiveResponseHiringTeamRole$inboundSchema,
+      ),
+    })
+  );
 
 export function getAssessmentOrdersPositiveResponseHiringTeamFromJSON(
   jsonString: string,
@@ -318,18 +330,20 @@ export const GetAssessmentOrdersPositiveResponseJob$inboundSchema: z.ZodType<
   GetAssessmentOrdersPositiveResponseJob,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  name: z.nullable(z.string()),
-  job_code: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  location: z.nullable(
-    z.lazy(() => GetAssessmentOrdersPositiveResponseLocation$inboundSchema),
-  ),
-  hiring_team: z.array(
-    z.lazy(() => GetAssessmentOrdersPositiveResponseHiringTeam$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    name: z.nullable(z.string()),
+    job_code: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    location: z.nullable(
+      z.lazy(() => GetAssessmentOrdersPositiveResponseLocation$inboundSchema),
+    ),
+    hiring_team: z.array(
+      z.lazy(() => GetAssessmentOrdersPositiveResponseHiringTeam$inboundSchema),
+    ),
+  })
+);
 
 export function getAssessmentOrdersPositiveResponseJobFromJSON(
   jsonString: string,
@@ -347,18 +361,20 @@ export const GetAssessmentOrdersPositiveResponseResult$inboundSchema: z.ZodType<
   GetAssessmentOrdersPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  package_id: z.string(),
-  status: GetAssessmentOrdersPositiveResponseStatus$inboundSchema,
-  candidate: z.lazy(() =>
-    GetAssessmentOrdersPositiveResponseCandidate$inboundSchema
-  ),
-  application: z.lazy(() =>
-    GetAssessmentOrdersPositiveResponseApplication$inboundSchema
-  ),
-  job: z.lazy(() => GetAssessmentOrdersPositiveResponseJob$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    package_id: z.string(),
+    status: GetAssessmentOrdersPositiveResponseStatus$inboundSchema,
+    candidate: z.lazy(() =>
+      GetAssessmentOrdersPositiveResponseCandidate$inboundSchema
+    ),
+    application: z.lazy(() =>
+      GetAssessmentOrdersPositiveResponseApplication$inboundSchema
+    ),
+    job: z.lazy(() => GetAssessmentOrdersPositiveResponseJob$inboundSchema),
+  })
+);
 
 export function getAssessmentOrdersPositiveResponseResultFromJSON(
   jsonString: string,
@@ -381,12 +397,14 @@ export const GetAssessmentOrdersPositiveResponseData$inboundSchema: z.ZodType<
   GetAssessmentOrdersPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetAssessmentOrdersPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetAssessmentOrdersPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getAssessmentOrdersPositiveResponseDataFromJSON(
   jsonString: string,
@@ -409,10 +427,12 @@ export const GetAssessmentOrdersPositiveResponse$inboundSchema: z.ZodType<
   GetAssessmentOrdersPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAssessmentOrdersPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetAssessmentOrdersPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getAssessmentOrdersPositiveResponseFromJSON(
   jsonString: string,

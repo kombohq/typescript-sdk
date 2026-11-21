@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 /**
  * Headers we will pass with `POST` requests to Greenhouse.
@@ -116,13 +117,15 @@ export const PostAtsApplicationsApplicationIdRejectRequestBodyPostHeaders$outbou
     PostAtsApplicationsApplicationIdRejectRequestBodyPostHeaders$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdRejectRequestBodyPostHeaders
-  > = z.object({
-    on_behalf_of: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      on_behalf_of: "On-Behalf-Of",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of: z.nullable(z.string()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        on_behalf_of: "On-Behalf-Of",
+      });
+    })
+  );
 
 export function postAtsApplicationsApplicationIdRejectRequestBodyPostHeadersToJSON(
   postAtsApplicationsApplicationIdRejectRequestBodyPostHeaders:
@@ -148,11 +151,13 @@ export const PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse$outboun
     PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse
-  > = z.object({
-    post_headers: z.lazy(() =>
-      PostAtsApplicationsApplicationIdRejectRequestBodyPostHeaders$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      post_headers: z.lazy(() =>
+        PostAtsApplicationsApplicationIdRejectRequestBodyPostHeaders$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdRejectRequestBodyGreenhouseToJSON(
   postAtsApplicationsApplicationIdRejectRequestBodyGreenhouse:
@@ -176,9 +181,11 @@ export const PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3$outbo
     PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3
-  > = z.object({
-    rejection_email: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      rejection_email: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3ToJSON(
   postAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3:
@@ -202,9 +209,11 @@ export const PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$outboun
     PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor
-  > = z.object({
-    user_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      user_id: z.string().optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdRejectRequestBodyTeamtailorToJSON(
   postAtsApplicationsApplicationIdRejectRequestBodyTeamtailor:
@@ -228,9 +237,11 @@ export const PostAtsApplicationsApplicationIdRejectRequestBodyWorkable$outboundS
     PostAtsApplicationsApplicationIdRejectRequestBodyWorkable$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdRejectRequestBodyWorkable
-  > = z.object({
-    on_behalf_of_user_remote_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of_user_remote_id: z.string().optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdRejectRequestBodyWorkableToJSON(
   postAtsApplicationsApplicationIdRejectRequestBodyWorkable:
@@ -265,20 +276,22 @@ export const PostAtsApplicationsApplicationIdRejectRequestBodyRemoteFields$outbo
     PostAtsApplicationsApplicationIdRejectRequestBodyRemoteFields$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdRejectRequestBodyRemoteFields
-  > = z.object({
-    greenhouse: z.lazy(() =>
-      PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse$outboundSchema
-    ).optional(),
-    greenhousev3: z.lazy(() =>
-      PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3$outboundSchema
-    ).optional(),
-    teamtailor: z.lazy(() =>
-      PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$outboundSchema
-    ).optional(),
-    workable: z.lazy(() =>
-      PostAtsApplicationsApplicationIdRejectRequestBodyWorkable$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      greenhouse: z.lazy(() =>
+        PostAtsApplicationsApplicationIdRejectRequestBodyGreenhouse$outboundSchema
+      ).optional(),
+      greenhousev3: z.lazy(() =>
+        PostAtsApplicationsApplicationIdRejectRequestBodyGreenhousev3$outboundSchema
+      ).optional(),
+      teamtailor: z.lazy(() =>
+        PostAtsApplicationsApplicationIdRejectRequestBodyTeamtailor$outboundSchema
+      ).optional(),
+      workable: z.lazy(() =>
+        PostAtsApplicationsApplicationIdRejectRequestBodyWorkable$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdRejectRequestBodyRemoteFieldsToJSON(
   postAtsApplicationsApplicationIdRejectRequestBodyRemoteFields:
@@ -305,13 +318,15 @@ export const PostAtsApplicationsApplicationIdRejectRequestBody$outboundSchema:
     PostAtsApplicationsApplicationIdRejectRequestBody$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdRejectRequestBody
-  > = z.object({
-    rejection_reason_id: z.string(),
-    note: z.string().optional(),
-    remote_fields: z.lazy(() =>
-      PostAtsApplicationsApplicationIdRejectRequestBodyRemoteFields$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      rejection_reason_id: z.string(),
+      note: z.string().optional(),
+      remote_fields: z.lazy(() =>
+        PostAtsApplicationsApplicationIdRejectRequestBodyRemoteFields$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdRejectRequestBodyToJSON(
   postAtsApplicationsApplicationIdRejectRequestBody:

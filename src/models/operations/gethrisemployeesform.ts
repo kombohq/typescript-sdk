@@ -3,6 +3,11 @@
  */
 
 import * as z from "zod/v3";
+import {
+  matchesPattern as matchesPattern$,
+  withinMaxLength as withinMaxLength$,
+} from "../../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetHrisEmployeesFormGlobals = {
   /**
@@ -28,9 +33,15 @@ export const GetHrisEmployeesFormRequest$outboundSchema: z.ZodType<
   GetHrisEmployeesFormRequest$Outbound,
   z.ZodTypeDef,
   GetHrisEmployeesFormRequest
-> = z.object({
-  staffing_entity_id: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    staffing_entity_id: z.string().refine(withinMaxLength$(24), {
+      message: "Value must be at most 24 characters long",
+    }).refine(matchesPattern$("^[1-9A-HJ-NP-Za-km-z]+$", 24), {
+      message: "Value must match pattern ^[1-9A-HJ-NP-Za-km-z]+$",
+    }).optional(),
+  })
+);
 
 export function getHrisEmployeesFormRequestToJSON(
   getHrisEmployeesFormRequest: GetHrisEmployeesFormRequest,

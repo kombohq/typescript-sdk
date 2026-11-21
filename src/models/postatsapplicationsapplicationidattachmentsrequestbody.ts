@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -162,7 +163,9 @@ export type PostAtsApplicationsApplicationIdAttachmentsRequestBody = {
 export const PostAtsApplicationsApplicationIdAttachmentsRequestBodyType$outboundSchema:
   z.ZodNativeEnum<
     typeof PostAtsApplicationsApplicationIdAttachmentsRequestBodyType
-  > = z.nativeEnum(PostAtsApplicationsApplicationIdAttachmentsRequestBodyType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(PostAtsApplicationsApplicationIdAttachmentsRequestBodyType)
+  );
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdAttachmentsRequestBodyAttachment$Outbound =
@@ -180,14 +183,16 @@ export const PostAtsApplicationsApplicationIdAttachmentsRequestBodyAttachment$ou
     PostAtsApplicationsApplicationIdAttachmentsRequestBodyAttachment$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdAttachmentsRequestBodyAttachment
-  > = z.object({
-    name: z.string(),
-    content_type: z.string().optional(),
-    data_url: z.string().optional(),
-    data: z.string().optional(),
-    type:
-      PostAtsApplicationsApplicationIdAttachmentsRequestBodyType$outboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string(),
+      content_type: z.string().optional(),
+      data_url: z.string().optional(),
+      data: z.string().optional(),
+      type:
+        PostAtsApplicationsApplicationIdAttachmentsRequestBodyType$outboundSchema,
+    })
+  );
 
 export function postAtsApplicationsApplicationIdAttachmentsRequestBodyAttachmentToJSON(
   postAtsApplicationsApplicationIdAttachmentsRequestBodyAttachment:
@@ -203,8 +208,10 @@ export function postAtsApplicationsApplicationIdAttachmentsRequestBodyAttachment
 export const PostAtsApplicationsApplicationIdAttachmentsRequestBodyOverrideDocumentCategory$outboundSchema:
   z.ZodNativeEnum<
     typeof PostAtsApplicationsApplicationIdAttachmentsRequestBodyOverrideDocumentCategory
-  > = z.nativeEnum(
-    PostAtsApplicationsApplicationIdAttachmentsRequestBodyOverrideDocumentCategory,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      PostAtsApplicationsApplicationIdAttachmentsRequestBodyOverrideDocumentCategory,
+    )
   );
 
 /** @internal */
@@ -220,12 +227,14 @@ export const PostAtsApplicationsApplicationIdAttachmentsRequestBodyOracle$outbou
     PostAtsApplicationsApplicationIdAttachmentsRequestBodyOracle$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdAttachmentsRequestBodyOracle
-  > = z.object({
-    override_document_category:
-      PostAtsApplicationsApplicationIdAttachmentsRequestBodyOverrideDocumentCategory$outboundSchema
-        .optional(),
-    multi_post_to_all_current_applications: z.boolean().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      override_document_category:
+        PostAtsApplicationsApplicationIdAttachmentsRequestBodyOverrideDocumentCategory$outboundSchema
+          .optional(),
+      multi_post_to_all_current_applications: z.boolean().optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdAttachmentsRequestBodyOracleToJSON(
   postAtsApplicationsApplicationIdAttachmentsRequestBodyOracle:
@@ -249,13 +258,15 @@ export const PostAtsApplicationsApplicationIdAttachmentsRequestBodyPostHeaders$o
     PostAtsApplicationsApplicationIdAttachmentsRequestBodyPostHeaders$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdAttachmentsRequestBodyPostHeaders
-  > = z.object({
-    on_behalf_of: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      on_behalf_of: "On-Behalf-Of",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of: z.nullable(z.string()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        on_behalf_of: "On-Behalf-Of",
+      });
+    })
+  );
 
 export function postAtsApplicationsApplicationIdAttachmentsRequestBodyPostHeadersToJSON(
   postAtsApplicationsApplicationIdAttachmentsRequestBodyPostHeaders:
@@ -281,11 +292,13 @@ export const PostAtsApplicationsApplicationIdAttachmentsRequestBodyGreenhouse$ou
     PostAtsApplicationsApplicationIdAttachmentsRequestBodyGreenhouse$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdAttachmentsRequestBodyGreenhouse
-  > = z.object({
-    post_headers: z.lazy(() =>
-      PostAtsApplicationsApplicationIdAttachmentsRequestBodyPostHeaders$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      post_headers: z.lazy(() =>
+        PostAtsApplicationsApplicationIdAttachmentsRequestBodyPostHeaders$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdAttachmentsRequestBodyGreenhouseToJSON(
   postAtsApplicationsApplicationIdAttachmentsRequestBodyGreenhouse:
@@ -309,9 +322,11 @@ export const PostAtsApplicationsApplicationIdAttachmentsRequestBodyWorkable$outb
     PostAtsApplicationsApplicationIdAttachmentsRequestBodyWorkable$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdAttachmentsRequestBodyWorkable
-  > = z.object({
-    on_behalf_of_user_remote_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of_user_remote_id: z.string().optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdAttachmentsRequestBodyWorkableToJSON(
   postAtsApplicationsApplicationIdAttachmentsRequestBodyWorkable:
@@ -343,17 +358,19 @@ export const PostAtsApplicationsApplicationIdAttachmentsRequestBodyRemoteFields$
     PostAtsApplicationsApplicationIdAttachmentsRequestBodyRemoteFields$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdAttachmentsRequestBodyRemoteFields
-  > = z.object({
-    oracle: z.lazy(() =>
-      PostAtsApplicationsApplicationIdAttachmentsRequestBodyOracle$outboundSchema
-    ).optional(),
-    greenhouse: z.lazy(() =>
-      PostAtsApplicationsApplicationIdAttachmentsRequestBodyGreenhouse$outboundSchema
-    ).optional(),
-    workable: z.lazy(() =>
-      PostAtsApplicationsApplicationIdAttachmentsRequestBodyWorkable$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      oracle: z.lazy(() =>
+        PostAtsApplicationsApplicationIdAttachmentsRequestBodyOracle$outboundSchema
+      ).optional(),
+      greenhouse: z.lazy(() =>
+        PostAtsApplicationsApplicationIdAttachmentsRequestBodyGreenhouse$outboundSchema
+      ).optional(),
+      workable: z.lazy(() =>
+        PostAtsApplicationsApplicationIdAttachmentsRequestBodyWorkable$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdAttachmentsRequestBodyRemoteFieldsToJSON(
   postAtsApplicationsApplicationIdAttachmentsRequestBodyRemoteFields:
@@ -382,14 +399,16 @@ export const PostAtsApplicationsApplicationIdAttachmentsRequestBody$outboundSche
     PostAtsApplicationsApplicationIdAttachmentsRequestBody$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdAttachmentsRequestBody
-  > = z.object({
-    attachment: z.lazy(() =>
-      PostAtsApplicationsApplicationIdAttachmentsRequestBodyAttachment$outboundSchema
-    ),
-    remote_fields: z.lazy(() =>
-      PostAtsApplicationsApplicationIdAttachmentsRequestBodyRemoteFields$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      attachment: z.lazy(() =>
+        PostAtsApplicationsApplicationIdAttachmentsRequestBodyAttachment$outboundSchema
+      ),
+      remote_fields: z.lazy(() =>
+        PostAtsApplicationsApplicationIdAttachmentsRequestBodyRemoteFields$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdAttachmentsRequestBodyToJSON(
   postAtsApplicationsApplicationIdAttachmentsRequestBody:

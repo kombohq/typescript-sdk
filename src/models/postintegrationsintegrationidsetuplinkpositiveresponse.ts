@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -25,9 +25,11 @@ export const PostIntegrationsIntegrationIdSetupLinkPositiveResponseData$inboundS
     PostIntegrationsIntegrationIdSetupLinkPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    link: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      link: z.string(),
+    })
+  );
 
 export function postIntegrationsIntegrationIdSetupLinkPositiveResponseDataFromJSON(
   jsonString: string,
@@ -50,12 +52,14 @@ export const PostIntegrationsIntegrationIdSetupLinkPositiveResponse$inboundSchem
     PostIntegrationsIntegrationIdSetupLinkPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PostIntegrationsIntegrationIdSetupLinkPositiveResponseData$inboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        PostIntegrationsIntegrationIdSetupLinkPositiveResponseData$inboundSchema
+      ),
+    })
+  );
 
 export function postIntegrationsIntegrationIdSetupLinkPositiveResponseFromJSON(
   jsonString: string,

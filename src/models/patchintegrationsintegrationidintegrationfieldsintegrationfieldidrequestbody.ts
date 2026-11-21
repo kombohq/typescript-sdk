@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody =
   {
@@ -21,9 +22,11 @@ export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRe
     PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody$Outbound,
     z.ZodTypeDef,
     PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody
-  > = z.object({
-    enable_passthrough: z.nullable(z.boolean()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      enable_passthrough: z.nullable(z.boolean()),
+    })
+  );
 
 export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBodyToJSON(
   patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdRequestBody:

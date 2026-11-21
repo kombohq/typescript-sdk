@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -219,7 +220,9 @@ export type PutAssessmentOrdersAssessmentOrderIdResultRequestBody = {
 export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus$outboundSchema:
   z.ZodNativeEnum<
     typeof PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus
-  > = z.nativeEnum(PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus)
+  );
 
 /** @internal */
 export type Score$Outbound = {
@@ -232,10 +235,12 @@ export const Score$outboundSchema: z.ZodType<
   Score$Outbound,
   z.ZodTypeDef,
   Score
-> = z.object({
-  value: z.number(),
-  max: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.number(),
+    max: z.number(),
+  })
+);
 
 export function scoreToJSON(score: Score): string {
   return JSON.stringify(Score$outboundSchema.parse(score));
@@ -244,7 +249,7 @@ export function scoreToJSON(score: Score): string {
 /** @internal */
 export const AttributeStatus$outboundSchema: z.ZodNativeEnum<
   typeof AttributeStatus
-> = z.nativeEnum(AttributeStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(AttributeStatus));
 
 /** @internal */
 export type AttributeSubResult$Outbound = {
@@ -260,13 +265,15 @@ export const AttributeSubResult$outboundSchema: z.ZodType<
   AttributeSubResult$Outbound,
   z.ZodTypeDef,
   AttributeSubResult
-> = z.object({
-  type: z.literal("SUB_RESULT"),
-  id: z.string(),
-  label: z.string(),
-  score: z.lazy(() => Score$outboundSchema),
-  status: AttributeStatus$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("SUB_RESULT"),
+    id: z.string(),
+    label: z.string(),
+    score: z.lazy(() => Score$outboundSchema),
+    status: AttributeStatus$outboundSchema,
+  })
+);
 
 export function attributeSubResultToJSON(
   attributeSubResult: AttributeSubResult,
@@ -288,11 +295,13 @@ export const AttributeText$outboundSchema: z.ZodType<
   AttributeText$Outbound,
   z.ZodTypeDef,
   AttributeText
-> = z.object({
-  type: z.literal("TEXT"),
-  label: z.string(),
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("TEXT"),
+    label: z.string(),
+    value: z.string(),
+  })
+);
 
 export function attributeTextToJSON(attributeText: AttributeText): string {
   return JSON.stringify(AttributeText$outboundSchema.parse(attributeText));
@@ -308,10 +317,12 @@ export const Attribute$outboundSchema: z.ZodType<
   Attribute$Outbound,
   z.ZodTypeDef,
   Attribute
-> = z.union([
-  z.lazy(() => AttributeText$outboundSchema),
-  z.lazy(() => AttributeSubResult$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => AttributeText$outboundSchema),
+    z.lazy(() => AttributeSubResult$outboundSchema),
+  ])
+);
 
 export function attributeToJSON(attribute: Attribute): string {
   return JSON.stringify(Attribute$outboundSchema.parse(attribute));
@@ -332,12 +343,14 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$out
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$Outbound,
     z.ZodTypeDef,
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment
-  > = z.object({
-    name: z.string(),
-    content_type: z.string().optional(),
-    data_url: z.string().optional(),
-    data: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string(),
+      content_type: z.string().optional(),
+      data_url: z.string().optional(),
+      data: z.string().optional(),
+    })
+  );
 
 export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachmentToJSON(
   putAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment:
@@ -361,13 +374,15 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiter
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$Outbound,
     z.ZodTypeDef,
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters
-  > = z.object({
-    score_label: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      score_label: "scoreLabel",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      score_label: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        score_label: "scoreLabel",
+      });
+    })
+  );
 
 export function putAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruitersToJSON(
   putAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters:
@@ -393,9 +408,11 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee$outb
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee$Outbound,
     z.ZodTypeDef,
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee
-  > = z.object({
-    subtitle: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      subtitle: z.string().optional(),
+    })
+  );
 
 export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruiteeToJSON(
   putAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee:
@@ -417,13 +434,15 @@ export const AssessmentTestStatusReference$outboundSchema: z.ZodType<
   AssessmentTestStatusReference$Outbound,
   z.ZodTypeDef,
   AssessmentTestStatusReference
-> = z.object({
-  assessment_status_id: z.string(),
-}).transform((v) => {
-  return remap$(v, {
-    assessment_status_id: "Assessment_Status_ID",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    assessment_status_id: z.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      assessment_status_id: "Assessment_Status_ID",
+    });
+  })
+);
 
 export function assessmentTestStatusReferenceToJSON(
   assessmentTestStatusReference: AssessmentTestStatusReference,
@@ -447,15 +466,17 @@ export const AssessCandidateTestResultData$outboundSchema: z.ZodType<
   AssessCandidateTestResultData$Outbound,
   z.ZodTypeDef,
   AssessCandidateTestResultData
-> = z.object({
-  assessment_test_status_reference: z.lazy(() =>
-    AssessmentTestStatusReference$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    assessment_test_status_reference: "Assessment_Test_Status_Reference",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    assessment_test_status_reference: z.lazy(() =>
+      AssessmentTestStatusReference$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      assessment_test_status_reference: "Assessment_Test_Status_Reference",
+    });
+  })
+);
 
 export function assessCandidateTestResultDataToJSON(
   assessCandidateTestResultData: AssessCandidateTestResultData,
@@ -479,15 +500,17 @@ export const CandidateAssessmentData$outboundSchema: z.ZodType<
   CandidateAssessmentData$Outbound,
   z.ZodTypeDef,
   CandidateAssessmentData
-> = z.object({
-  assess_candidate_test_result_data: z.lazy(() =>
-    AssessCandidateTestResultData$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    assess_candidate_test_result_data: "Assess_Candidate_Test_Result_Data",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    assess_candidate_test_result_data: z.lazy(() =>
+      AssessCandidateTestResultData$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      assess_candidate_test_result_data: "Assess_Candidate_Test_Result_Data",
+    });
+  })
+);
 
 export function candidateAssessmentDataToJSON(
   candidateAssessmentData: CandidateAssessmentData,
@@ -507,15 +530,17 @@ export const AssessCandidateData$outboundSchema: z.ZodType<
   AssessCandidateData$Outbound,
   z.ZodTypeDef,
   AssessCandidateData
-> = z.object({
-  candidate_assessment_data: z.lazy(() =>
-    CandidateAssessmentData$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    candidate_assessment_data: "Candidate_Assessment_Data",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate_assessment_data: z.lazy(() =>
+      CandidateAssessmentData$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      candidate_assessment_data: "Candidate_Assessment_Data",
+    });
+  })
+);
 
 export function assessCandidateDataToJSON(
   assessCandidateData: AssessCandidateData,
@@ -537,14 +562,16 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday$outbou
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday$Outbound,
     z.ZodTypeDef,
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday
-  > = z.object({
-    assess_candidate_data: z.lazy(() => AssessCandidateData$outboundSchema)
-      .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      assess_candidate_data: "Assess_Candidate_Data",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      assess_candidate_data: z.lazy(() => AssessCandidateData$outboundSchema)
+        .optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        assess_candidate_data: "Assess_Candidate_Data",
+      });
+    })
+  );
 
 export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkdayToJSON(
   putAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday:
@@ -576,17 +603,19 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$o
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$Outbound,
     z.ZodTypeDef,
     PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields
-  > = z.object({
-    smartrecruiters: z.lazy(() =>
-      PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$outboundSchema
-    ).optional(),
-    recruitee: z.lazy(() =>
-      PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee$outboundSchema
-    ).optional(),
-    workday: z.lazy(() =>
-      PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      smartrecruiters: z.lazy(() =>
+        PutAssessmentOrdersAssessmentOrderIdResultRequestBodySmartrecruiters$outboundSchema
+      ).optional(),
+      recruitee: z.lazy(() =>
+        PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRecruitee$outboundSchema
+      ).optional(),
+      workday: z.lazy(() =>
+        PutAssessmentOrdersAssessmentOrderIdResultRequestBodyWorkday$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFieldsToJSON(
   putAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields:
@@ -624,28 +653,26 @@ export const PutAssessmentOrdersAssessmentOrderIdResultRequestBody$outboundSchem
     PutAssessmentOrdersAssessmentOrderIdResultRequestBody$Outbound,
     z.ZodTypeDef,
     PutAssessmentOrdersAssessmentOrderIdResultRequestBody
-  > = z.object({
-    status:
-      PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus$outboundSchema,
-    result_url: z.string(),
-    completed_at: z.date().transform(v => v.toISOString()).optional(),
-    score: z.number().optional(),
-    max_score: z.number().optional(),
-    attributes: z.array(
-      z.union([
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status:
+        PutAssessmentOrdersAssessmentOrderIdResultRequestBodyStatus$outboundSchema,
+      result_url: z.string(),
+      completed_at: z.date().transform(v => v.toISOString()).optional(),
+      score: z.number().optional(),
+      max_score: z.number().optional(),
+      attributes: z.array(z.union([
         z.lazy(() => AttributeText$outboundSchema),
         z.lazy(() => AttributeSubResult$outboundSchema),
-      ]),
-    ).optional(),
-    attachments: z.array(
-      z.lazy(() =>
+      ])).optional(),
+      attachments: z.array(z.lazy(() =>
         PutAssessmentOrdersAssessmentOrderIdResultRequestBodyAttachment$outboundSchema
-      ),
-    ).optional(),
-    remote_fields: z.lazy(() =>
-      PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$outboundSchema
-    ).optional(),
-  });
+      )).optional(),
+      remote_fields: z.lazy(() =>
+        PutAssessmentOrdersAssessmentOrderIdResultRequestBodyRemoteFields$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function putAssessmentOrdersAssessmentOrderIdResultRequestBodyToJSON(
   putAssessmentOrdersAssessmentOrderIdResultRequestBody:

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
@@ -23,14 +23,16 @@ export const WebhookIntegrationCreatedWebhookPayloadRequest$inboundSchema:
     WebhookIntegrationCreatedWebhookPayloadRequest,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    "X-Kombo-Signature": z.string(),
-    body: models.IntegrationCreatedWebhookPayload$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "X-Kombo-Signature": "x_kombo_signature",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      "X-Kombo-Signature": z.string(),
+      body: models.IntegrationCreatedWebhookPayload$inboundSchema,
+    }).transform((v) => {
+      return remap$(v, {
+        "X-Kombo-Signature": "x_kombo_signature",
+      });
+    })
+  );
 /** @internal */
 export type WebhookIntegrationCreatedWebhookPayloadRequest$Outbound = {
   "X-Kombo-Signature": string;
@@ -43,14 +45,16 @@ export const WebhookIntegrationCreatedWebhookPayloadRequest$outboundSchema:
     WebhookIntegrationCreatedWebhookPayloadRequest$Outbound,
     z.ZodTypeDef,
     WebhookIntegrationCreatedWebhookPayloadRequest
-  > = z.object({
-    x_kombo_signature: z.string(),
-    body: models.IntegrationCreatedWebhookPayload$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      x_kombo_signature: "X-Kombo-Signature",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      x_kombo_signature: z.string(),
+      body: models.IntegrationCreatedWebhookPayload$outboundSchema,
+    }).transform((v) => {
+      return remap$(v, {
+        x_kombo_signature: "X-Kombo-Signature",
+      });
+    })
+  );
 
 export function webhookIntegrationCreatedWebhookPayloadRequestToJSON(
   webhookIntegrationCreatedWebhookPayloadRequest:

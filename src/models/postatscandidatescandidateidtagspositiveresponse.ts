@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -28,7 +28,7 @@ export const PostAtsCandidatesCandidateIdTagsPositiveResponseData$inboundSchema:
     PostAtsCandidatesCandidateIdTagsPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({});
+  > = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function postAtsCandidatesCandidateIdTagsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -52,9 +52,11 @@ export const PostAtsCandidatesCandidateIdTagsPositiveResponseWarning$inboundSche
     PostAtsCandidatesCandidateIdTagsPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdTagsPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -77,17 +79,17 @@ export const PostAtsCandidatesCandidateIdTagsPositiveResponse$inboundSchema:
     PostAtsCandidatesCandidateIdTagsPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PostAtsCandidatesCandidateIdTagsPositiveResponseData$inboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        PostAtsCandidatesCandidateIdTagsPositiveResponseWarning$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        PostAtsCandidatesCandidateIdTagsPositiveResponseData$inboundSchema
       ),
-    ),
-  });
+      warnings: z.array(z.lazy(() =>
+        PostAtsCandidatesCandidateIdTagsPositiveResponseWarning$inboundSchema
+      )),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdTagsPositiveResponseFromJSON(
   jsonString: string,

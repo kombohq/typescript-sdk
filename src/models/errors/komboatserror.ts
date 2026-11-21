@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 import { KomboError } from "./komboerror.js";
 
@@ -50,17 +51,19 @@ export const KomboAtsError$inboundSchema: z.ZodType<
   KomboAtsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: models.KomboAtsErrorStatus$inboundSchema,
-  error: z.lazy(() => models.KomboAtsErrorError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new KomboAtsError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: models.KomboAtsErrorStatus$inboundSchema,
+    error: z.lazy(() => models.KomboAtsErrorError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new KomboAtsError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

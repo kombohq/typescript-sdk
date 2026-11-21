@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -32,7 +32,7 @@ export const PostAtsApplicationsApplicationIdAttachmentsPositiveResponseData$inb
     PostAtsApplicationsApplicationIdAttachmentsPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({});
+  > = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function postAtsApplicationsApplicationIdAttachmentsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -55,9 +55,11 @@ export const PostAtsApplicationsApplicationIdAttachmentsPositiveResponseWarning$
     PostAtsApplicationsApplicationIdAttachmentsPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdAttachmentsPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -80,17 +82,17 @@ export const PostAtsApplicationsApplicationIdAttachmentsPositiveResponse$inbound
     PostAtsApplicationsApplicationIdAttachmentsPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PostAtsApplicationsApplicationIdAttachmentsPositiveResponseData$inboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        PostAtsApplicationsApplicationIdAttachmentsPositiveResponseWarning$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        PostAtsApplicationsApplicationIdAttachmentsPositiveResponseData$inboundSchema
       ),
-    ),
-  });
+      warnings: z.array(z.lazy(() =>
+        PostAtsApplicationsApplicationIdAttachmentsPositiveResponseWarning$inboundSchema
+      )),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdAttachmentsPositiveResponseFromJSON(
   jsonString: string,

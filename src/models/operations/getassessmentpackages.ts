@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetAssessmentPackagesGlobals = {
   /**
@@ -21,7 +22,7 @@ export const GetAssessmentPackagesRequest$outboundSchema: z.ZodType<
   GetAssessmentPackagesRequest$Outbound,
   z.ZodTypeDef,
   GetAssessmentPackagesRequest
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getAssessmentPackagesRequestToJSON(
   getAssessmentPackagesRequest: GetAssessmentPackagesRequest,

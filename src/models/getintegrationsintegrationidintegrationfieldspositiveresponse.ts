@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -76,8 +76,10 @@ export type GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse = {
 export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType
-  > = z.nativeEnum(
-    GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType,
+    )
   );
 
 /** @internal */
@@ -86,16 +88,18 @@ export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult
     GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    key: z.string(),
-    model: z.string(),
-    type:
-      GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType$inboundSchema,
-    label: z.nullable(z.string()),
-    is_passthrough_enabled: z.boolean(),
-    is_writable: z.literal(false),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      key: z.string(),
+      model: z.string(),
+      type:
+        GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseType$inboundSchema,
+      label: z.nullable(z.string()),
+      is_passthrough_enabled: z.boolean(),
+      is_writable: z.literal(false),
+    })
+  );
 
 export function getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -118,14 +122,14 @@ export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$i
     GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    results: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      results: z.array(z.lazy(() =>
         GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseResult$inboundSchema
-      ),
-    ),
-    next: z.nullable(z.string()),
-  });
+      )),
+      next: z.nullable(z.string()),
+    })
+  );
 
 export function getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -148,12 +152,14 @@ export const GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse$inbou
     GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$inboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        GetIntegrationsIntegrationIdIntegrationFieldsPositiveResponseData$inboundSchema
+      ),
+    })
+  );
 
 export function getIntegrationsIntegrationIdIntegrationFieldsPositiveResponseFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -27,7 +27,7 @@ export const PutAssessmentPackagesPositiveResponseData$inboundSchema: z.ZodType<
   PutAssessmentPackagesPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function putAssessmentPackagesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -51,9 +51,11 @@ export const PutAssessmentPackagesPositiveResponseWarning$inboundSchema:
     PutAssessmentPackagesPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function putAssessmentPackagesPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -76,13 +78,15 @@ export const PutAssessmentPackagesPositiveResponse$inboundSchema: z.ZodType<
   PutAssessmentPackagesPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => PutAssessmentPackagesPositiveResponseData$inboundSchema),
-  warnings: z.array(
-    z.lazy(() => PutAssessmentPackagesPositiveResponseWarning$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => PutAssessmentPackagesPositiveResponseData$inboundSchema),
+    warnings: z.array(
+      z.lazy(() => PutAssessmentPackagesPositiveResponseWarning$inboundSchema),
+    ),
+  })
+);
 
 export function putAssessmentPackagesPositiveResponseFromJSON(
   jsonString: string,

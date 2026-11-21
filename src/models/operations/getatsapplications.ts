@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
@@ -118,20 +118,22 @@ export const GetAtsApplicationsRequest$outboundSchema: z.ZodType<
   GetAtsApplicationsRequest$Outbound,
   z.ZodTypeDef,
   GetAtsApplicationsRequest
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.date().transform(v => v.toISOString()).optional(),
-  include_deleted: z.boolean().default(false),
-  ignore_unsupported_filters: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-  outcomes: z.array(z.string()).optional(),
-  job_ids: z.array(z.string()).optional(),
-  job_remote_ids: z.array(z.string()).optional(),
-  current_stage_ids: z.array(z.string()).optional(),
-  remote_created_after: z.date().transform(v => v.toISOString()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cursor: z.string().optional(),
+    page_size: z.number().int().default(100),
+    updated_after: z.date().transform(v => v.toISOString()).optional(),
+    include_deleted: z.boolean().default(false),
+    ignore_unsupported_filters: z.boolean().default(false),
+    ids: z.array(z.string()).optional(),
+    remote_ids: z.array(z.string()).optional(),
+    outcomes: z.array(z.string()).optional(),
+    job_ids: z.array(z.string()).optional(),
+    job_remote_ids: z.array(z.string()).optional(),
+    current_stage_ids: z.array(z.string()).optional(),
+    remote_created_after: z.date().transform(v => v.toISOString()).optional(),
+  })
+);
 
 export function getAtsApplicationsRequestToJSON(
   getAtsApplicationsRequest: GetAtsApplicationsRequest,
@@ -146,13 +148,15 @@ export const GetAtsApplicationsResponse$inboundSchema: z.ZodType<
   GetAtsApplicationsResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Result: models.GetAtsApplicationsPositiveResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Result: models.GetAtsApplicationsPositiveResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Result": "result",
+    });
+  })
+);
 
 export function getAtsApplicationsResponseFromJSON(
   jsonString: string,

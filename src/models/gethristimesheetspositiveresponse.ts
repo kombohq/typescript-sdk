@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -99,14 +99,18 @@ export type GetHrisTimesheetsPositiveResponse = {
 };
 
 /** @internal */
-export const Break$inboundSchema: z.ZodType<Break, z.ZodTypeDef, unknown> = z
-  .object({
-    ended_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    paid: z.boolean(),
-    started_at: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-  });
+export const Break$inboundSchema: z.ZodType<Break, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      ended_at: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      paid: z.boolean(),
+      started_at: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+    })
+  );
 
 export function breakFromJSON(
   jsonString: string,
@@ -123,31 +127,35 @@ export const GetHrisTimesheetsPositiveResponseResult$inboundSchema: z.ZodType<
   GetHrisTimesheetsPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  employee_id: z.string(),
-  started_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  ended_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  timezone: z.nullable(z.string()),
-  payable_hours: z.nullable(z.number()),
-  unpaid_break_minutes: z.nullable(z.number()),
-  breaks: z.nullable(z.array(z.lazy(() => Break$inboundSchema))).optional(),
-  approval_status: z.nullable(z.string()),
-  approved_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  comment: z.nullable(z.string()),
-  custom_fields: z.nullable(z.record(z.any())),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    employee_id: z.string(),
+    started_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    ended_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    timezone: z.nullable(z.string()),
+    payable_hours: z.nullable(z.number()),
+    unpaid_break_minutes: z.nullable(z.number()),
+    breaks: z.nullable(z.array(z.lazy(() => Break$inboundSchema))).optional(),
+    approval_status: z.nullable(z.string()),
+    approved_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    comment: z.nullable(z.string()),
+    custom_fields: z.nullable(z.record(z.any())),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+  })
+);
 
 export function getHrisTimesheetsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -170,12 +178,14 @@ export const GetHrisTimesheetsPositiveResponseData$inboundSchema: z.ZodType<
   GetHrisTimesheetsPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisTimesheetsPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetHrisTimesheetsPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getHrisTimesheetsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -193,10 +203,12 @@ export const GetHrisTimesheetsPositiveResponse$inboundSchema: z.ZodType<
   GetHrisTimesheetsPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisTimesheetsPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetHrisTimesheetsPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getHrisTimesheetsPositiveResponseFromJSON(
   jsonString: string,

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteAtsCandidatesCandidateIdTagsRequestBodyTag = {
   /**
@@ -81,9 +82,11 @@ export const DeleteAtsCandidatesCandidateIdTagsRequestBodyTag$outboundSchema:
     DeleteAtsCandidatesCandidateIdTagsRequestBodyTag$Outbound,
     z.ZodTypeDef,
     DeleteAtsCandidatesCandidateIdTagsRequestBodyTag
-  > = z.object({
-    name: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string(),
+    })
+  );
 
 export function deleteAtsCandidatesCandidateIdTagsRequestBodyTagToJSON(
   deleteAtsCandidatesCandidateIdTagsRequestBodyTag:
@@ -108,13 +111,15 @@ export const DeleteAtsCandidatesCandidateIdTagsRequestBodyPostHeaders$outboundSc
     DeleteAtsCandidatesCandidateIdTagsRequestBodyPostHeaders$Outbound,
     z.ZodTypeDef,
     DeleteAtsCandidatesCandidateIdTagsRequestBodyPostHeaders
-  > = z.object({
-    on_behalf_of: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      on_behalf_of: "On-Behalf-Of",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of: z.nullable(z.string()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        on_behalf_of: "On-Behalf-Of",
+      });
+    })
+  );
 
 export function deleteAtsCandidatesCandidateIdTagsRequestBodyPostHeadersToJSON(
   deleteAtsCandidatesCandidateIdTagsRequestBodyPostHeaders:
@@ -139,11 +144,13 @@ export const DeleteAtsCandidatesCandidateIdTagsRequestBodyGreenhouse$outboundSch
     DeleteAtsCandidatesCandidateIdTagsRequestBodyGreenhouse$Outbound,
     z.ZodTypeDef,
     DeleteAtsCandidatesCandidateIdTagsRequestBodyGreenhouse
-  > = z.object({
-    post_headers: z.lazy(() =>
-      DeleteAtsCandidatesCandidateIdTagsRequestBodyPostHeaders$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      post_headers: z.lazy(() =>
+        DeleteAtsCandidatesCandidateIdTagsRequestBodyPostHeaders$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function deleteAtsCandidatesCandidateIdTagsRequestBodyGreenhouseToJSON(
   deleteAtsCandidatesCandidateIdTagsRequestBodyGreenhouse:
@@ -166,9 +173,11 @@ export const DeleteAtsCandidatesCandidateIdTagsRequestBodyWorkable$outboundSchem
     DeleteAtsCandidatesCandidateIdTagsRequestBodyWorkable$Outbound,
     z.ZodTypeDef,
     DeleteAtsCandidatesCandidateIdTagsRequestBodyWorkable
-  > = z.object({
-    on_behalf_of_user_remote_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of_user_remote_id: z.string().optional(),
+    })
+  );
 
 export function deleteAtsCandidatesCandidateIdTagsRequestBodyWorkableToJSON(
   deleteAtsCandidatesCandidateIdTagsRequestBodyWorkable:
@@ -198,14 +207,16 @@ export const DeleteAtsCandidatesCandidateIdTagsRequestBodyRemoteFields$outboundS
     DeleteAtsCandidatesCandidateIdTagsRequestBodyRemoteFields$Outbound,
     z.ZodTypeDef,
     DeleteAtsCandidatesCandidateIdTagsRequestBodyRemoteFields
-  > = z.object({
-    greenhouse: z.lazy(() =>
-      DeleteAtsCandidatesCandidateIdTagsRequestBodyGreenhouse$outboundSchema
-    ).optional(),
-    workable: z.lazy(() =>
-      DeleteAtsCandidatesCandidateIdTagsRequestBodyWorkable$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      greenhouse: z.lazy(() =>
+        DeleteAtsCandidatesCandidateIdTagsRequestBodyGreenhouse$outboundSchema
+      ).optional(),
+      workable: z.lazy(() =>
+        DeleteAtsCandidatesCandidateIdTagsRequestBodyWorkable$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function deleteAtsCandidatesCandidateIdTagsRequestBodyRemoteFieldsToJSON(
   deleteAtsCandidatesCandidateIdTagsRequestBodyRemoteFields:
@@ -231,14 +242,16 @@ export const DeleteAtsCandidatesCandidateIdTagsRequestBody$outboundSchema:
     DeleteAtsCandidatesCandidateIdTagsRequestBody$Outbound,
     z.ZodTypeDef,
     DeleteAtsCandidatesCandidateIdTagsRequestBody
-  > = z.object({
-    tag: z.lazy(() =>
-      DeleteAtsCandidatesCandidateIdTagsRequestBodyTag$outboundSchema
-    ),
-    remote_fields: z.lazy(() =>
-      DeleteAtsCandidatesCandidateIdTagsRequestBodyRemoteFields$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      tag: z.lazy(() =>
+        DeleteAtsCandidatesCandidateIdTagsRequestBodyTag$outboundSchema
+      ),
+      remote_fields: z.lazy(() =>
+        DeleteAtsCandidatesCandidateIdTagsRequestBodyRemoteFields$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function deleteAtsCandidatesCandidateIdTagsRequestBodyToJSON(
   deleteAtsCandidatesCandidateIdTagsRequestBody:

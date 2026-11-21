@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -79,15 +79,17 @@ export const GetHrisLegalEntitiesPositiveResponseAddress$inboundSchema:
     GetHrisLegalEntitiesPositiveResponseAddress,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    city: z.nullable(z.string()).optional(),
-    country: z.nullable(z.string()).optional(),
-    raw: z.nullable(z.string()).optional(),
-    state: z.nullable(z.string()).optional(),
-    street_1: z.nullable(z.string()).optional(),
-    street_2: z.nullable(z.string()).optional(),
-    zip_code: z.nullable(z.string()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      city: z.nullable(z.string()).optional(),
+      country: z.nullable(z.string()).optional(),
+      raw: z.nullable(z.string()).optional(),
+      state: z.nullable(z.string()).optional(),
+      street_1: z.nullable(z.string()).optional(),
+      street_2: z.nullable(z.string()).optional(),
+      zip_code: z.nullable(z.string()).optional(),
+    })
+  );
 
 export function getHrisLegalEntitiesPositiveResponseAddressFromJSON(
   jsonString: string,
@@ -108,21 +110,25 @@ export function getHrisLegalEntitiesPositiveResponseAddressFromJSON(
 /** @internal */
 export const GetHrisLegalEntitiesPositiveResponseResult$inboundSchema:
   z.ZodType<GetHrisLegalEntitiesPositiveResponseResult, z.ZodTypeDef, unknown> =
-    z.object({
-      id: z.string(),
-      remote_id: z.nullable(z.string()),
-      name: z.nullable(z.string()),
-      address: z.nullable(
-        z.lazy(() => GetHrisLegalEntitiesPositiveResponseAddress$inboundSchema),
-      ).optional(),
-      changed_at: z.string().datetime({ offset: true }).transform(v =>
-        new Date(v)
-      ),
-      remote_deleted_at: z.nullable(
-        z.string().datetime({ offset: true }).transform(v => new Date(v)),
-      ),
-      custom_fields: z.nullable(z.record(z.any())),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        id: z.string(),
+        remote_id: z.nullable(z.string()),
+        name: z.nullable(z.string()),
+        address: z.nullable(
+          z.lazy(() =>
+            GetHrisLegalEntitiesPositiveResponseAddress$inboundSchema
+          ),
+        ).optional(),
+        changed_at: z.string().datetime({ offset: true }).transform(v =>
+          new Date(v)
+        ),
+        remote_deleted_at: z.nullable(
+          z.string().datetime({ offset: true }).transform(v => new Date(v)),
+        ),
+        custom_fields: z.nullable(z.record(z.any())),
+      })
+    );
 
 export function getHrisLegalEntitiesPositiveResponseResultFromJSON(
   jsonString: string,
@@ -145,12 +151,14 @@ export const GetHrisLegalEntitiesPositiveResponseData$inboundSchema: z.ZodType<
   GetHrisLegalEntitiesPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisLegalEntitiesPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetHrisLegalEntitiesPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getHrisLegalEntitiesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -173,10 +181,12 @@ export const GetHrisLegalEntitiesPositiveResponse$inboundSchema: z.ZodType<
   GetHrisLegalEntitiesPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisLegalEntitiesPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetHrisLegalEntitiesPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getHrisLegalEntitiesPositiveResponseFromJSON(
   jsonString: string,

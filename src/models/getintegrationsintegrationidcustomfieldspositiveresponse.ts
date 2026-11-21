@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -94,8 +94,8 @@ export type GetIntegrationsIntegrationIdCustomFieldsPositiveResponse = {
 export const GetIntegrationsIntegrationIdCustomFieldsPositiveResponseType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetIntegrationsIntegrationIdCustomFieldsPositiveResponseType
-  > = z.nativeEnum(
-    GetIntegrationsIntegrationIdCustomFieldsPositiveResponseType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetIntegrationsIntegrationIdCustomFieldsPositiveResponseType)
   );
 
 /** @internal */
@@ -104,13 +104,15 @@ export const GetIntegrationsIntegrationIdCustomFieldsPositiveResponseIntegration
     GetIntegrationsIntegrationIdCustomFieldsPositiveResponseIntegrationField,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    key: z.string(),
-    type:
-      GetIntegrationsIntegrationIdCustomFieldsPositiveResponseType$inboundSchema,
-    label: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      key: z.string(),
+      type:
+        GetIntegrationsIntegrationIdCustomFieldsPositiveResponseType$inboundSchema,
+      label: z.nullable(z.string()),
+    })
+  );
 
 export function getIntegrationsIntegrationIdCustomFieldsPositiveResponseIntegrationFieldFromJSON(
   jsonString: string,
@@ -133,18 +135,18 @@ export const GetIntegrationsIntegrationIdCustomFieldsPositiveResponseResult$inbo
     GetIntegrationsIntegrationIdCustomFieldsPositiveResponseResult,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    key: z.string(),
-    integration_field: z.nullable(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      key: z.string(),
+      integration_field: z.nullable(z.lazy(() =>
         GetIntegrationsIntegrationIdCustomFieldsPositiveResponseIntegrationField$inboundSchema
-      ),
-    ),
-    model: z.string(),
-    label: z.nullable(z.string()),
-    description: z.nullable(z.string()),
-  });
+      )),
+      model: z.string(),
+      label: z.nullable(z.string()),
+      description: z.nullable(z.string()),
+    })
+  );
 
 export function getIntegrationsIntegrationIdCustomFieldsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -167,14 +169,14 @@ export const GetIntegrationsIntegrationIdCustomFieldsPositiveResponseData$inboun
     GetIntegrationsIntegrationIdCustomFieldsPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    results: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      results: z.array(z.lazy(() =>
         GetIntegrationsIntegrationIdCustomFieldsPositiveResponseResult$inboundSchema
-      ),
-    ),
-    next: z.nullable(z.string()),
-  });
+      )),
+      next: z.nullable(z.string()),
+    })
+  );
 
 export function getIntegrationsIntegrationIdCustomFieldsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -197,12 +199,14 @@ export const GetIntegrationsIntegrationIdCustomFieldsPositiveResponse$inboundSch
     GetIntegrationsIntegrationIdCustomFieldsPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      GetIntegrationsIntegrationIdCustomFieldsPositiveResponseData$inboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        GetIntegrationsIntegrationIdCustomFieldsPositiveResponseData$inboundSchema
+      ),
+    })
+  );
 
 export function getIntegrationsIntegrationIdCustomFieldsPositiveResponseFromJSON(
   jsonString: string,

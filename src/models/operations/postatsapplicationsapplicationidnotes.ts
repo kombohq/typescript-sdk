@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 
 export type PostAtsApplicationsApplicationIdNotesGlobals = {
@@ -35,11 +36,13 @@ export const PostAtsApplicationsApplicationIdNotesRequest$outboundSchema:
     PostAtsApplicationsApplicationIdNotesRequest$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequest
-  > = z.object({
-    application_id: z.string(),
-    body:
-      models.PostAtsApplicationsApplicationIdNotesRequestBody$outboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      application_id: z.string(),
+      body:
+        models.PostAtsApplicationsApplicationIdNotesRequestBody$outboundSchema,
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesRequestToJSON(
   postAtsApplicationsApplicationIdNotesRequest:

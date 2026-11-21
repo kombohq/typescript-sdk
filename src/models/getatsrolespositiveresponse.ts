@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -87,32 +87,39 @@ export type GetAtsRolesPositiveResponse = {
 /** @internal */
 export const GetAtsRolesPositiveResponseScope$inboundSchema: z.ZodNativeEnum<
   typeof GetAtsRolesPositiveResponseScope
-> = z.nativeEnum(GetAtsRolesPositiveResponseScope);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetAtsRolesPositiveResponseScope)
+);
 
 /** @internal */
 export const GetAtsRolesPositiveResponseUnifiedType$inboundSchema:
-  z.ZodNativeEnum<typeof GetAtsRolesPositiveResponseUnifiedType> = z.nativeEnum(
-    GetAtsRolesPositiveResponseUnifiedType,
-  );
+  z.ZodNativeEnum<typeof GetAtsRolesPositiveResponseUnifiedType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetAtsRolesPositiveResponseUnifiedType)
+    );
 
 /** @internal */
 export const GetAtsRolesPositiveResponseResult$inboundSchema: z.ZodType<
   GetAtsRolesPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  remote_label: z.nullable(z.string()),
-  scope: z.nullable(GetAtsRolesPositiveResponseScope$inboundSchema),
-  unified_type: z.nullable(
-    GetAtsRolesPositiveResponseUnifiedType$inboundSchema,
-  ),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    remote_label: z.nullable(z.string()),
+    scope: z.nullable(GetAtsRolesPositiveResponseScope$inboundSchema),
+    unified_type: z.nullable(
+      GetAtsRolesPositiveResponseUnifiedType$inboundSchema,
+    ),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+  })
+);
 
 export function getAtsRolesPositiveResponseResultFromJSON(
   jsonString: string,
@@ -129,12 +136,14 @@ export const GetAtsRolesPositiveResponseData$inboundSchema: z.ZodType<
   GetAtsRolesPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetAtsRolesPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetAtsRolesPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getAtsRolesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -151,10 +160,12 @@ export const GetAtsRolesPositiveResponse$inboundSchema: z.ZodType<
   GetAtsRolesPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAtsRolesPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetAtsRolesPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getAtsRolesPositiveResponseFromJSON(
   jsonString: string,
