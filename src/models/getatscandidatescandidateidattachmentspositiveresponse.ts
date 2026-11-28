@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -67,7 +67,9 @@ export type GetAtsCandidatesCandidateIdAttachmentsPositiveResponse = {
 export const GetAtsCandidatesCandidateIdAttachmentsPositiveResponseType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetAtsCandidatesCandidateIdAttachmentsPositiveResponseType
-  > = z.nativeEnum(GetAtsCandidatesCandidateIdAttachmentsPositiveResponseType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetAtsCandidatesCandidateIdAttachmentsPositiveResponseType)
+  );
 
 /** @internal */
 export const GetAtsCandidatesCandidateIdAttachmentsPositiveResponseResult$inboundSchema:
@@ -75,23 +77,25 @@ export const GetAtsCandidatesCandidateIdAttachmentsPositiveResponseResult$inboun
     GetAtsCandidatesCandidateIdAttachmentsPositiveResponseResult,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    application_id: z.nullable(z.string()),
-    candidate_id: z.string(),
-    type:
-      GetAtsCandidatesCandidateIdAttachmentsPositiveResponseType$inboundSchema,
-    remote_id: z.string(),
-    data_url: z.string(),
-    file_name: z.string(),
-    content_type: z.string(),
-    remote_created_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    remote_updated_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      application_id: z.nullable(z.string()),
+      candidate_id: z.string(),
+      type:
+        GetAtsCandidatesCandidateIdAttachmentsPositiveResponseType$inboundSchema,
+      remote_id: z.string(),
+      data_url: z.string(),
+      file_name: z.string(),
+      content_type: z.string(),
+      remote_created_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      remote_updated_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+    })
+  );
 
 export function getAtsCandidatesCandidateIdAttachmentsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -114,13 +118,13 @@ export const GetAtsCandidatesCandidateIdAttachmentsPositiveResponseData$inboundS
     GetAtsCandidatesCandidateIdAttachmentsPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    results: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      results: z.array(z.lazy(() =>
         GetAtsCandidatesCandidateIdAttachmentsPositiveResponseResult$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function getAtsCandidatesCandidateIdAttachmentsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -143,9 +147,11 @@ export const GetAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$inbou
     GetAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function getAtsCandidatesCandidateIdAttachmentsPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -168,17 +174,17 @@ export const GetAtsCandidatesCandidateIdAttachmentsPositiveResponse$inboundSchem
     GetAtsCandidatesCandidateIdAttachmentsPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      GetAtsCandidatesCandidateIdAttachmentsPositiveResponseData$inboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        GetAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        GetAtsCandidatesCandidateIdAttachmentsPositiveResponseData$inboundSchema
       ),
-    ),
-  });
+      warnings: z.array(z.lazy(() =>
+        GetAtsCandidatesCandidateIdAttachmentsPositiveResponseWarning$inboundSchema
+      )),
+    })
+  );
 
 export function getAtsCandidatesCandidateIdAttachmentsPositiveResponseFromJSON(
   jsonString: string,

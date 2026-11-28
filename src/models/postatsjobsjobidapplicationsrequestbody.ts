@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export const PostAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddressType =
@@ -406,9 +407,25 @@ export type PostAtsJobsJobIdApplicationsRequestBodyLanguageReference = {
   wid: string;
 };
 
+/**
+ * Gender reference written to Person Biographic and Demographic Information Data.
+ */
+export type PostAtsJobsJobIdApplicationsRequestBodyGenderReference = {
+  /**
+   * Tenant Gender_Code for the gender, such as Feminin. Not the Kombo gender enum and not the display label.
+   */
+  gender_code: string;
+};
+
 export type PostAtsJobsJobIdApplicationsRequestBodyGlobalPersonalInformationData =
   {
     date_of_birth?: string | undefined;
+    /**
+     * Gender reference written to Person Biographic and Demographic Information Data.
+     */
+    gender_reference?:
+      | PostAtsJobsJobIdApplicationsRequestBodyGenderReference
+      | undefined;
   };
 
 export type PostAtsJobsJobIdApplicationsRequestBodyJobAppliedToData = {
@@ -620,6 +637,10 @@ export type PostAtsJobsJobIdApplicationsRequestBodyBullhorn = {
    * The remote ID of the Bullhorn `Candidate` the application should be filed on. When set, we skip Bullhorn's duplicate detection and use exactly this candidate, which lets you pick the right record when several candidates share an email address or phone number. The request fails if the candidate does not exist (or was deleted) in Bullhorn.
    */
   existing_candidate_remote_id?: string | undefined;
+  /**
+   * The remote IDs of Bullhorn `Specialty` records to add to the candidate. You can list the available specialties with `GET options/Specialty` through our passthrough API. Only applied when we create a new candidate, not when we file the application on an existing one. Bullhorn silently ignores IDs that do not exist, so make sure they are valid. If Bullhorn returns an error, the application is still created and the response includes a warning.
+   */
+  candidate_specialty_remote_ids?: Array<string> | undefined;
 };
 
 /**
@@ -1233,8 +1254,10 @@ export type PostAtsJobsJobIdApplicationsRequestBody = {
 export const PostAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddressType$outboundSchema:
   z.ZodNativeEnum<
     typeof PostAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddressType
-  > = z.nativeEnum(
-    PostAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddressType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      PostAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddressType,
+    )
   );
 
 /** @internal */
@@ -1250,11 +1273,13 @@ export const PostAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddress$outbo
     PostAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddress$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddress
-  > = z.object({
-    type:
-      PostAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddressType$outboundSchema,
-    email_address: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type:
+        PostAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddressType$outboundSchema,
+      email_address: z.string(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddressToJSON(
   postAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddress:
@@ -1270,8 +1295,10 @@ export function postAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddressToJ
 export const PostAtsJobsJobIdApplicationsRequestBodyAdditionalPhoneNumberType$outboundSchema:
   z.ZodNativeEnum<
     typeof PostAtsJobsJobIdApplicationsRequestBodyAdditionalPhoneNumberType
-  > = z.nativeEnum(
-    PostAtsJobsJobIdApplicationsRequestBodyAdditionalPhoneNumberType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      PostAtsJobsJobIdApplicationsRequestBodyAdditionalPhoneNumberType,
+    )
   );
 
 /** @internal */
@@ -1287,11 +1314,13 @@ export const PostAtsJobsJobIdApplicationsRequestBodyAdditionalPhoneNumber$outbou
     PostAtsJobsJobIdApplicationsRequestBodyAdditionalPhoneNumber$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyAdditionalPhoneNumber
-  > = z.object({
-    type:
-      PostAtsJobsJobIdApplicationsRequestBodyAdditionalPhoneNumberType$outboundSchema,
-    phone_number: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type:
+        PostAtsJobsJobIdApplicationsRequestBodyAdditionalPhoneNumberType$outboundSchema,
+      phone_number: z.string(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyAdditionalPhoneNumberToJSON(
   postAtsJobsJobIdApplicationsRequestBodyAdditionalPhoneNumber:
@@ -1318,13 +1347,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyLocation$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyLocation$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyLocation
-  > = z.object({
-    city: z.string().optional(),
-    country: z.string(),
-    state: z.string().optional(),
-    street_1: z.string().optional(),
-    zip_code: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      city: z.string().optional(),
+      country: z.string(),
+      state: z.string().optional(),
+      street_1: z.string().optional(),
+      zip_code: z.string().optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyLocationToJSON(
   postAtsJobsJobIdApplicationsRequestBodyLocation:
@@ -1339,13 +1370,17 @@ export function postAtsJobsJobIdApplicationsRequestBodyLocationToJSON(
 
 /** @internal */
 export const PostAtsJobsJobIdApplicationsRequestBodyGender$outboundSchema:
-  z.ZodNativeEnum<typeof PostAtsJobsJobIdApplicationsRequestBodyGender> = z
-    .nativeEnum(PostAtsJobsJobIdApplicationsRequestBodyGender);
+  z.ZodNativeEnum<typeof PostAtsJobsJobIdApplicationsRequestBodyGender> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PostAtsJobsJobIdApplicationsRequestBodyGender)
+    );
 
 /** @internal */
 export const PostAtsJobsJobIdApplicationsRequestBodyPeriod$outboundSchema:
-  z.ZodNativeEnum<typeof PostAtsJobsJobIdApplicationsRequestBodyPeriod> = z
-    .nativeEnum(PostAtsJobsJobIdApplicationsRequestBodyPeriod);
+  z.ZodNativeEnum<typeof PostAtsJobsJobIdApplicationsRequestBodyPeriod> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PostAtsJobsJobIdApplicationsRequestBodyPeriod)
+    );
 
 /** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodySalaryExpectations$Outbound =
@@ -1360,10 +1395,12 @@ export const PostAtsJobsJobIdApplicationsRequestBodySalaryExpectations$outboundS
     PostAtsJobsJobIdApplicationsRequestBodySalaryExpectations$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodySalaryExpectations
-  > = z.object({
-    period: PostAtsJobsJobIdApplicationsRequestBodyPeriod$outboundSchema,
-    amount: z.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      period: PostAtsJobsJobIdApplicationsRequestBodyPeriod$outboundSchema,
+      amount: z.number(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodySalaryExpectationsToJSON(
   postAtsJobsJobIdApplicationsRequestBodySalaryExpectations:
@@ -1386,9 +1423,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodySocialLink$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodySocialLink$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodySocialLink
-  > = z.object({
-    url: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      url: z.string(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodySocialLinkToJSON(
   postAtsJobsJobIdApplicationsRequestBodySocialLink:
@@ -1438,38 +1477,36 @@ export const PostAtsJobsJobIdApplicationsRequestBodyCandidate$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyCandidate$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyCandidate
-  > = z.object({
-    first_name: z.string(),
-    last_name: z.string(),
-    email_address: z.string(),
-    additional_email_addresses: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      first_name: z.string(),
+      last_name: z.string(),
+      email_address: z.string(),
+      additional_email_addresses: z.array(z.lazy(() =>
         PostAtsJobsJobIdApplicationsRequestBodyAdditionalEmailAddress$outboundSchema
-      ),
-    ).optional(),
-    company: z.string().optional(),
-    title: z.string().optional(),
-    phone_number: z.string().optional(),
-    additional_phone_numbers: z.array(
-      z.lazy(() =>
+      )).optional(),
+      company: z.string().optional(),
+      title: z.string().optional(),
+      phone_number: z.string().optional(),
+      additional_phone_numbers: z.array(z.lazy(() =>
         PostAtsJobsJobIdApplicationsRequestBodyAdditionalPhoneNumber$outboundSchema
-      ),
-    ).optional(),
-    location: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyLocation$outboundSchema
-    ).optional(),
-    gender: PostAtsJobsJobIdApplicationsRequestBodyGender$outboundSchema
-      .optional(),
-    availability_date: z.date().transform(v => v.toISOString()).optional(),
-    salary_expectations: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodySalaryExpectations$outboundSchema
-    ).optional(),
-    social_links: z.array(
-      z.lazy(() =>
+      )).optional(),
+      location: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyLocation$outboundSchema
+      ).optional(),
+      gender: PostAtsJobsJobIdApplicationsRequestBodyGender$outboundSchema
+        .optional(),
+      availability_date: z.date().transform(v =>
+        v.toISOString()
+      ).optional(),
+      salary_expectations: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodySalaryExpectations$outboundSchema
+      ).optional(),
+      social_links: z.array(z.lazy(() =>
         PostAtsJobsJobIdApplicationsRequestBodySocialLink$outboundSchema
-      ),
-    ).optional(),
-  });
+      )).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyCandidateToJSON(
   postAtsJobsJobIdApplicationsRequestBodyCandidate:
@@ -1486,7 +1523,9 @@ export function postAtsJobsJobIdApplicationsRequestBodyCandidateToJSON(
 export const PostAtsJobsJobIdApplicationsRequestBodyAttachmentType$outboundSchema:
   z.ZodNativeEnum<
     typeof PostAtsJobsJobIdApplicationsRequestBodyAttachmentType
-  > = z.nativeEnum(PostAtsJobsJobIdApplicationsRequestBodyAttachmentType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(PostAtsJobsJobIdApplicationsRequestBodyAttachmentType)
+  );
 
 /** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyAttachment$Outbound = {
@@ -1503,13 +1542,16 @@ export const PostAtsJobsJobIdApplicationsRequestBodyAttachment$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyAttachment$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyAttachment
-  > = z.object({
-    name: z.string(),
-    content_type: z.string().optional(),
-    data_url: z.string().optional(),
-    data: z.string().optional(),
-    type: PostAtsJobsJobIdApplicationsRequestBodyAttachmentType$outboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string(),
+      content_type: z.string().optional(),
+      data_url: z.string().optional(),
+      data: z.string().optional(),
+      type:
+        PostAtsJobsJobIdApplicationsRequestBodyAttachmentType$outboundSchema,
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyAttachmentToJSON(
   postAtsJobsJobIdApplicationsRequestBodyAttachment:
@@ -1535,11 +1577,13 @@ export const PostAtsJobsJobIdApplicationsRequestBodySource$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodySource$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodySource
-  > = z.object({
-    name: z.string().optional(),
-    unified_key: z.string().optional(),
-    id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string().optional(),
+      unified_key: z.string().optional(),
+      id: z.string().optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodySourceToJSON(
   postAtsJobsJobIdApplicationsRequestBodySource:
@@ -1563,9 +1607,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodySourcedBy$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodySourcedBy$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodySourcedBy
-  > = z.object({
-    user_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      user_id: z.string(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodySourcedByToJSON(
   postAtsJobsJobIdApplicationsRequestBodySourcedBy:
@@ -1590,10 +1636,12 @@ export const PostAtsJobsJobIdApplicationsRequestBodyGdprConsent$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyGdprConsent$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyGdprConsent
-  > = z.object({
-    expires_at: z.date().transform(v => v.toISOString()).optional(),
-    given: z.boolean().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      expires_at: z.date().transform(v => v.toISOString()).optional(),
+      given: z.boolean().optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyGdprConsentToJSON(
   postAtsJobsJobIdApplicationsRequestBodyGdprConsent:
@@ -1620,18 +1668,20 @@ export const PostAtsJobsJobIdApplicationsRequestBodySuccessfactors$outboundSchem
     PostAtsJobsJobIdApplicationsRequestBodySuccessfactors$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodySuccessfactors
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-    job_application: z.record(z.any()).optional(),
-    copy_job_application_attachments: z.boolean().optional(),
-    update_existing_candidate: z.nullable(z.boolean()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      candidate: "Candidate",
-      job_application: "JobApplication",
-      copy_job_application_attachments: "copyJobApplicationAttachments",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+      job_application: z.record(z.any()).optional(),
+      copy_job_application_attachments: z.boolean().optional(),
+      update_existing_candidate: z.nullable(z.boolean()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        candidate: "Candidate",
+        job_application: "JobApplication",
+        copy_job_application_attachments: "copyJobApplicationAttachments",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodySuccessfactorsToJSON(
   postAtsJobsJobIdApplicationsRequestBodySuccessfactors:
@@ -1655,9 +1705,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyPersonio$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyPersonio$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyPersonio
-  > = z.object({
-    application: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      application: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyPersonioToJSON(
   postAtsJobsJobIdApplicationsRequestBodyPersonio:
@@ -1683,15 +1735,17 @@ export const PostAtsJobsJobIdApplicationsRequestBodyTalentsoft$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyTalentsoft$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyTalentsoft
-  > = z.object({
-    applicant: z.record(z.any()).optional(),
-    application: z.record(z.any()).optional(),
-    custom_fields: z.record(z.any()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      custom_fields: "customFields",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      applicant: z.record(z.any()).optional(),
+      application: z.record(z.any()).optional(),
+      custom_fields: z.record(z.any()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        custom_fields: "customFields",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyTalentsoftToJSON(
   postAtsJobsJobIdApplicationsRequestBodyTalentsoft:
@@ -1716,9 +1770,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyTeamtailorApplication$outbou
     PostAtsJobsJobIdApplicationsRequestBodyTeamtailorApplication$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyTeamtailorApplication
-  > = z.object({
-    attributes: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      attributes: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyTeamtailorApplicationToJSON(
   postAtsJobsJobIdApplicationsRequestBodyTeamtailorApplication:
@@ -1744,12 +1800,14 @@ export const PostAtsJobsJobIdApplicationsRequestBodyTeamtailor$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyTeamtailor$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyTeamtailor
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-    application: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyTeamtailorApplication$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+      application: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyTeamtailorApplication$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyTeamtailorToJSON(
   postAtsJobsJobIdApplicationsRequestBodyTeamtailor:
@@ -1773,13 +1831,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyPostHeaders$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyPostHeaders$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyPostHeaders
-  > = z.object({
-    on_behalf_of: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      on_behalf_of: "On-Behalf-Of",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of: z.nullable(z.string()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        on_behalf_of: "On-Behalf-Of",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyPostHeadersToJSON(
   postAtsJobsJobIdApplicationsRequestBodyPostHeaders:
@@ -1805,11 +1865,13 @@ export const PostAtsJobsJobIdApplicationsRequestBodyGreenhouse$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyGreenhouse$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyGreenhouse
-  > = z.object({
-    post_headers: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyPostHeaders$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      post_headers: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyPostHeaders$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyGreenhouseToJSON(
   postAtsJobsJobIdApplicationsRequestBodyGreenhouse:
@@ -1834,10 +1896,12 @@ export const PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-    application: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+      application: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyGreenhousev3ToJSON(
   postAtsJobsJobIdApplicationsRequestBodyGreenhousev3:
@@ -1861,9 +1925,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyLever$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyLever$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyLever
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyLeverToJSON(
   postAtsJobsJobIdApplicationsRequestBodyLever:
@@ -1887,9 +1953,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyWorkable$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyWorkable$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyWorkable
-  > = z.object({
-    on_behalf_of_user_remote_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of_user_remote_id: z.string().optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyWorkableToJSON(
   postAtsJobsJobIdApplicationsRequestBodyWorkable:
@@ -1914,13 +1982,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodySocialSuffixReference$outbou
     PostAtsJobsJobIdApplicationsRequestBodySocialSuffixReference$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodySocialSuffixReference
-  > = z.object({
-    predefined_name_component_id: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      predefined_name_component_id: "Predefined_Name_Component_ID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      predefined_name_component_id: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        predefined_name_component_id: "Predefined_Name_Component_ID",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodySocialSuffixReferenceToJSON(
   postAtsJobsJobIdApplicationsRequestBodySocialSuffixReference:
@@ -1946,17 +2016,19 @@ export const PostAtsJobsJobIdApplicationsRequestBodyNameDetailData$outboundSchem
     PostAtsJobsJobIdApplicationsRequestBodyNameDetailData$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyNameDetailData
-  > = z.object({
-    middle_name: z.string().optional(),
-    social_suffix_reference: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodySocialSuffixReference$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      middle_name: "Middle_Name",
-      social_suffix_reference: "Social_Suffix_Reference",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      middle_name: z.string().optional(),
+      social_suffix_reference: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodySocialSuffixReference$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        middle_name: "Middle_Name",
+        social_suffix_reference: "Social_Suffix_Reference",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyNameDetailDataToJSON(
   postAtsJobsJobIdApplicationsRequestBodyNameDetailData:
@@ -1981,13 +2053,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyLanguageReference$outboundSc
     PostAtsJobsJobIdApplicationsRequestBodyLanguageReference$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyLanguageReference
-  > = z.object({
-    wid: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyLanguageReferenceToJSON(
   postAtsJobsJobIdApplicationsRequestBodyLanguageReference:
@@ -2000,9 +2074,44 @@ export function postAtsJobsJobIdApplicationsRequestBodyLanguageReferenceToJSON(
 }
 
 /** @internal */
+export type PostAtsJobsJobIdApplicationsRequestBodyGenderReference$Outbound = {
+  Gender_Code: string;
+};
+
+/** @internal */
+export const PostAtsJobsJobIdApplicationsRequestBodyGenderReference$outboundSchema:
+  z.ZodType<
+    PostAtsJobsJobIdApplicationsRequestBodyGenderReference$Outbound,
+    z.ZodTypeDef,
+    PostAtsJobsJobIdApplicationsRequestBodyGenderReference
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      gender_code: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        gender_code: "Gender_Code",
+      });
+    })
+  );
+
+export function postAtsJobsJobIdApplicationsRequestBodyGenderReferenceToJSON(
+  postAtsJobsJobIdApplicationsRequestBodyGenderReference:
+    PostAtsJobsJobIdApplicationsRequestBodyGenderReference,
+): string {
+  return JSON.stringify(
+    PostAtsJobsJobIdApplicationsRequestBodyGenderReference$outboundSchema.parse(
+      postAtsJobsJobIdApplicationsRequestBodyGenderReference,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyGlobalPersonalInformationData$Outbound =
   {
     Date_of_Birth?: string | undefined;
+    Gender_Reference?:
+      | PostAtsJobsJobIdApplicationsRequestBodyGenderReference$Outbound
+      | undefined;
   };
 
 /** @internal */
@@ -2011,13 +2120,19 @@ export const PostAtsJobsJobIdApplicationsRequestBodyGlobalPersonalInformationDat
     PostAtsJobsJobIdApplicationsRequestBodyGlobalPersonalInformationData$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyGlobalPersonalInformationData
-  > = z.object({
-    date_of_birth: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      date_of_birth: "Date_of_Birth",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      date_of_birth: z.string().optional(),
+      gender_reference: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyGenderReference$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        date_of_birth: "Date_of_Birth",
+        gender_reference: "Gender_Reference",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyGlobalPersonalInformationDataToJSON(
   postAtsJobsJobIdApplicationsRequestBodyGlobalPersonalInformationData:
@@ -2044,15 +2159,17 @@ export const PostAtsJobsJobIdApplicationsRequestBodyJobAppliedToData$outboundSch
     PostAtsJobsJobIdApplicationsRequestBodyJobAppliedToData$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyJobAppliedToData
-  > = z.object({
-    global_personal_information_data: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyGlobalPersonalInformationData$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      global_personal_information_data: "Global_Personal_Information_Data",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      global_personal_information_data: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyGlobalPersonalInformationData$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        global_personal_information_data: "Global_Personal_Information_Data",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyJobAppliedToDataToJSON(
   postAtsJobsJobIdApplicationsRequestBodyJobAppliedToData:
@@ -2076,13 +2193,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyFieldOfStudyReference$outbou
     PostAtsJobsJobIdApplicationsRequestBodyFieldOfStudyReference$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyFieldOfStudyReference
-  > = z.object({
-    wid: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyFieldOfStudyReferenceToJSON(
   postAtsJobsJobIdApplicationsRequestBodyFieldOfStudyReference:
@@ -2105,13 +2224,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyDegreeReference$outboundSche
     PostAtsJobsJobIdApplicationsRequestBodyDegreeReference$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyDegreeReference
-  > = z.object({
-    wid: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyDegreeReferenceToJSON(
   postAtsJobsJobIdApplicationsRequestBodyDegreeReference:
@@ -2144,27 +2265,29 @@ export const PostAtsJobsJobIdApplicationsRequestBodyEducationDatum$outboundSchem
     PostAtsJobsJobIdApplicationsRequestBodyEducationDatum$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyEducationDatum
-  > = z.object({
-    school_name: z.string().optional(),
-    first_year_attended: z.number().optional(),
-    last_year_attended: z.number().optional(),
-    field_of_study_reference: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyFieldOfStudyReference$outboundSchema
-    ).optional(),
-    degree_reference: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyDegreeReference$outboundSchema
-    ).optional(),
-    grade_average: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      school_name: "School_Name",
-      first_year_attended: "First_Year_Attended",
-      last_year_attended: "Last_Year_Attended",
-      field_of_study_reference: "Field_of_Study_Reference",
-      degree_reference: "Degree_Reference",
-      grade_average: "Grade_Average",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      school_name: z.string().optional(),
+      first_year_attended: z.number().optional(),
+      last_year_attended: z.number().optional(),
+      field_of_study_reference: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyFieldOfStudyReference$outboundSchema
+      ).optional(),
+      degree_reference: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyDegreeReference$outboundSchema
+      ).optional(),
+      grade_average: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        school_name: "School_Name",
+        first_year_attended: "First_Year_Attended",
+        last_year_attended: "Last_Year_Attended",
+        field_of_study_reference: "Field_of_Study_Reference",
+        degree_reference: "Degree_Reference",
+        grade_average: "Grade_Average",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyEducationDatumToJSON(
   postAtsJobsJobIdApplicationsRequestBodyEducationDatum:
@@ -2188,13 +2311,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodySkillDatum$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodySkillDatum$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodySkillDatum
-  > = z.object({
-    skill_name: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      skill_name: "Skill_Name",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      skill_name: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        skill_name: "Skill_Name",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodySkillDatumToJSON(
   postAtsJobsJobIdApplicationsRequestBodySkillDatum:
@@ -2219,13 +2344,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyLanguageDatumLanguageReferen
     PostAtsJobsJobIdApplicationsRequestBodyLanguageDatumLanguageReference$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyLanguageDatumLanguageReference
-  > = z.object({
-    wid: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyLanguageDatumLanguageReferenceToJSON(
   postAtsJobsJobIdApplicationsRequestBodyLanguageDatumLanguageReference:
@@ -2251,13 +2378,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyLanguageProficiencyReference
     PostAtsJobsJobIdApplicationsRequestBodyLanguageProficiencyReference$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyLanguageProficiencyReference
-  > = z.object({
-    wid: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyLanguageProficiencyReferenceToJSON(
   postAtsJobsJobIdApplicationsRequestBodyLanguageProficiencyReference:
@@ -2283,13 +2412,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyLanguageAbilityTypeReference
     PostAtsJobsJobIdApplicationsRequestBodyLanguageAbilityTypeReference$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyLanguageAbilityTypeReference
-  > = z.object({
-    wid: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyLanguageAbilityTypeReferenceToJSON(
   postAtsJobsJobIdApplicationsRequestBodyLanguageAbilityTypeReference:
@@ -2320,19 +2451,21 @@ export const PostAtsJobsJobIdApplicationsRequestBodyLanguageAbilityData$outbound
     PostAtsJobsJobIdApplicationsRequestBodyLanguageAbilityData$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyLanguageAbilityData
-  > = z.object({
-    language_proficiency_reference: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyLanguageProficiencyReference$outboundSchema
-    ).optional(),
-    language_ability_type_reference: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyLanguageAbilityTypeReference$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      language_proficiency_reference: "Language_Proficiency_Reference",
-      language_ability_type_reference: "Language_Ability_Type_Reference",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      language_proficiency_reference: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyLanguageProficiencyReference$outboundSchema
+      ).optional(),
+      language_ability_type_reference: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyLanguageAbilityTypeReference$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        language_proficiency_reference: "Language_Proficiency_Reference",
+        language_ability_type_reference: "Language_Ability_Type_Reference",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyLanguageAbilityDataToJSON(
   postAtsJobsJobIdApplicationsRequestBodyLanguageAbilityData:
@@ -2357,15 +2490,17 @@ export const PostAtsJobsJobIdApplicationsRequestBodyLanguageAbility$outboundSche
     PostAtsJobsJobIdApplicationsRequestBodyLanguageAbility$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyLanguageAbility
-  > = z.object({
-    language_ability_data: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyLanguageAbilityData$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      language_ability_data: "Language_Ability_Data",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      language_ability_data: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyLanguageAbilityData$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        language_ability_data: "Language_Ability_Data",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyLanguageAbilityToJSON(
   postAtsJobsJobIdApplicationsRequestBodyLanguageAbility:
@@ -2392,19 +2527,19 @@ export const PostAtsJobsJobIdApplicationsRequestBodyLanguage$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyLanguage$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyLanguage
-  > = z.object({
-    native: z.boolean().optional(),
-    language_ability: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      native: z.boolean().optional(),
+      language_ability: z.array(z.lazy(() =>
         PostAtsJobsJobIdApplicationsRequestBodyLanguageAbility$outboundSchema
-      ),
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      native: "Native",
-      language_ability: "Language_Ability",
-    });
-  });
+      )),
+    }).transform((v) => {
+      return remap$(v, {
+        native: "Native",
+        language_ability: "Language_Ability",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyLanguageToJSON(
   postAtsJobsJobIdApplicationsRequestBodyLanguage:
@@ -2433,19 +2568,21 @@ export const PostAtsJobsJobIdApplicationsRequestBodyLanguageDatum$outboundSchema
     PostAtsJobsJobIdApplicationsRequestBodyLanguageDatum$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyLanguageDatum
-  > = z.object({
-    language_reference: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyLanguageDatumLanguageReference$outboundSchema
-    ).optional(),
-    language: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyLanguage$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      language_reference: "Language_Reference",
-      language: "Language",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      language_reference: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyLanguageDatumLanguageReference$outboundSchema
+      ).optional(),
+      language: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyLanguage$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        language_reference: "Language_Reference",
+        language: "Language",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyLanguageDatumToJSON(
   postAtsJobsJobIdApplicationsRequestBodyLanguageDatum:
@@ -2475,25 +2612,27 @@ export const PostAtsJobsJobIdApplicationsRequestBodyExperienceDatum$outboundSche
     PostAtsJobsJobIdApplicationsRequestBodyExperienceDatum$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyExperienceDatum
-  > = z.object({
-    company_name: z.string(),
-    title: z.string(),
-    location: z.string().optional(),
-    start_date: z.date().transform(v => v.toISOString()),
-    end_date: z.date().transform(v => v.toISOString()).optional(),
-    currently_work_here: z.boolean().optional(),
-    description: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      company_name: "Company_Name",
-      title: "Title",
-      location: "Location",
-      start_date: "Start_Date",
-      end_date: "End_Date",
-      currently_work_here: "Currently_Work_Here",
-      description: "Description",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      company_name: z.string(),
+      title: z.string(),
+      location: z.string().optional(),
+      start_date: z.date().transform(v => v.toISOString()),
+      end_date: z.date().transform(v => v.toISOString()).optional(),
+      currently_work_here: z.boolean().optional(),
+      description: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        company_name: "Company_Name",
+        title: "Title",
+        location: "Location",
+        start_date: "Start_Date",
+        end_date: "End_Date",
+        currently_work_here: "Currently_Work_Here",
+        description: "Description",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyExperienceDatumToJSON(
   postAtsJobsJobIdApplicationsRequestBodyExperienceDatum:
@@ -2528,35 +2667,29 @@ export const PostAtsJobsJobIdApplicationsRequestBodyResumeData$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyResumeData$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyResumeData
-  > = z.object({
-    education_data: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      education_data: z.array(z.lazy(() =>
         PostAtsJobsJobIdApplicationsRequestBodyEducationDatum$outboundSchema
-      ),
-    ).optional(),
-    skill_data: z.array(
-      z.lazy(() =>
+      )).optional(),
+      skill_data: z.array(z.lazy(() =>
         PostAtsJobsJobIdApplicationsRequestBodySkillDatum$outboundSchema
-      ),
-    ).optional(),
-    language_data: z.array(
-      z.lazy(() =>
+      )).optional(),
+      language_data: z.array(z.lazy(() =>
         PostAtsJobsJobIdApplicationsRequestBodyLanguageDatum$outboundSchema
-      ),
-    ).optional(),
-    experience_data: z.array(
-      z.lazy(() =>
+      )).optional(),
+      experience_data: z.array(z.lazy(() =>
         PostAtsJobsJobIdApplicationsRequestBodyExperienceDatum$outboundSchema
-      ),
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      education_data: "Education_Data",
-      skill_data: "Skill_Data",
-      language_data: "Language_Data",
-      experience_data: "Experience_Data",
-    });
-  });
+      )).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        education_data: "Education_Data",
+        skill_data: "Skill_Data",
+        language_data: "Language_Data",
+        experience_data: "Experience_Data",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyResumeDataToJSON(
   postAtsJobsJobIdApplicationsRequestBodyResumeData:
@@ -2586,19 +2719,21 @@ export const PostAtsJobsJobIdApplicationsRequestBodyJobApplicationData$outboundS
     PostAtsJobsJobIdApplicationsRequestBodyJobApplicationData$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyJobApplicationData
-  > = z.object({
-    job_applied_to_data: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyJobAppliedToData$outboundSchema
-    ).optional(),
-    resume_data: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyResumeData$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      job_applied_to_data: "Job_Applied_To_Data",
-      resume_data: "Resume_Data",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      job_applied_to_data: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyJobAppliedToData$outboundSchema
+      ).optional(),
+      resume_data: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyResumeData$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        job_applied_to_data: "Job_Applied_To_Data",
+        resume_data: "Resume_Data",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyJobApplicationDataToJSON(
   postAtsJobsJobIdApplicationsRequestBodyJobApplicationData:
@@ -2622,13 +2757,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyCountryRegionReference$outbo
     PostAtsJobsJobIdApplicationsRequestBodyCountryRegionReference$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyCountryRegionReference
-  > = z.object({
-    country_region_id: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      country_region_id: "Country_Region_ID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      country_region_id: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        country_region_id: "Country_Region_ID",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyCountryRegionReferenceToJSON(
   postAtsJobsJobIdApplicationsRequestBodyCountryRegionReference:
@@ -2652,13 +2789,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyCountryCityReference$outboun
     PostAtsJobsJobIdApplicationsRequestBodyCountryCityReference$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyCountryCityReference
-  > = z.object({
-    wid: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyCountryCityReferenceToJSON(
   postAtsJobsJobIdApplicationsRequestBodyCountryCityReference:
@@ -2690,27 +2829,29 @@ export const PostAtsJobsJobIdApplicationsRequestBodyLocationData$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyLocationData$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyLocationData
-  > = z.object({
-    address_line_1: z.string().optional(),
-    address_line_2: z.string().optional(),
-    postal_code: z.string().optional(),
-    region_subdivision_1: z.string().optional(),
-    country_region_reference: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyCountryRegionReference$outboundSchema
-    ).optional(),
-    country_city_reference: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyCountryCityReference$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      address_line_1: "Address_Line_1",
-      address_line_2: "Address_Line_2",
-      postal_code: "Postal_Code",
-      region_subdivision_1: "Region_Subdivision_1",
-      country_region_reference: "Country_Region_Reference",
-      country_city_reference: "Country_City_Reference",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      address_line_1: z.string().optional(),
+      address_line_2: z.string().optional(),
+      postal_code: z.string().optional(),
+      region_subdivision_1: z.string().optional(),
+      country_region_reference: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyCountryRegionReference$outboundSchema
+      ).optional(),
+      country_city_reference: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyCountryCityReference$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        address_line_1: "Address_Line_1",
+        address_line_2: "Address_Line_2",
+        postal_code: "Postal_Code",
+        region_subdivision_1: "Region_Subdivision_1",
+        country_region_reference: "Country_Region_Reference",
+        country_city_reference: "Country_City_Reference",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyLocationDataToJSON(
   postAtsJobsJobIdApplicationsRequestBodyLocationData:
@@ -2736,15 +2877,17 @@ export const PostAtsJobsJobIdApplicationsRequestBodyContactData$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyContactData$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyContactData
-  > = z.object({
-    location_data: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyLocationData$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      location_data: "Location_Data",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      location_data: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyLocationData$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        location_data: "Location_Data",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyContactDataToJSON(
   postAtsJobsJobIdApplicationsRequestBodyContactData:
@@ -2769,15 +2912,17 @@ export const PostAtsJobsJobIdApplicationsRequestBodyWorkerReference$outboundSche
     PostAtsJobsJobIdApplicationsRequestBodyWorkerReference$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyWorkerReference
-  > = z.object({
-    wid: z.string().optional(),
-    employee_id: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-      employee_id: "Employee_ID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string().optional(),
+      employee_id: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+        employee_id: "Employee_ID",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyWorkerReferenceToJSON(
   postAtsJobsJobIdApplicationsRequestBodyWorkerReference:
@@ -2815,31 +2960,33 @@ export const PostAtsJobsJobIdApplicationsRequestBodyCandidateData$outboundSchema
     PostAtsJobsJobIdApplicationsRequestBodyCandidateData$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyCandidateData
-  > = z.object({
-    name_detail_data: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyNameDetailData$outboundSchema
-    ).optional(),
-    language_reference: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyLanguageReference$outboundSchema
-    ).optional(),
-    job_application_data: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyJobApplicationData$outboundSchema
-    ).optional(),
-    contact_data: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyContactData$outboundSchema
-    ).optional(),
-    worker_reference: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyWorkerReference$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      name_detail_data: "Name_Detail_Data",
-      language_reference: "Language_Reference",
-      job_application_data: "Job_Application_Data",
-      contact_data: "Contact_Data",
-      worker_reference: "Worker_Reference",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name_detail_data: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyNameDetailData$outboundSchema
+      ).optional(),
+      language_reference: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyLanguageReference$outboundSchema
+      ).optional(),
+      job_application_data: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyJobApplicationData$outboundSchema
+      ).optional(),
+      contact_data: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyContactData$outboundSchema
+      ).optional(),
+      worker_reference: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyWorkerReference$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        name_detail_data: "Name_Detail_Data",
+        language_reference: "Language_Reference",
+        job_application_data: "Job_Application_Data",
+        contact_data: "Contact_Data",
+        worker_reference: "Worker_Reference",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyCandidateDataToJSON(
   postAtsJobsJobIdApplicationsRequestBodyCandidateData:
@@ -2866,17 +3013,19 @@ export const PostAtsJobsJobIdApplicationsRequestBodyWorkday$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyWorkday$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyWorkday
-  > = z.object({
-    candidate_data: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyCandidateData$outboundSchema
-    ).optional(),
-    override_source_reference_wid: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      candidate_data: "Candidate_Data",
-      override_source_reference_wid: "Override_Source_Reference_WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate_data: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyCandidateData$outboundSchema
+      ).optional(),
+      override_source_reference_wid: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        candidate_data: "Candidate_Data",
+        override_source_reference_wid: "Override_Source_Reference_WID",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyWorkdayToJSON(
   postAtsJobsJobIdApplicationsRequestBodyWorkday:
@@ -2900,9 +3049,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyZohorecruit$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyZohorecruit$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyZohorecruit
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyZohorecruitToJSON(
   postAtsJobsJobIdApplicationsRequestBodyZohorecruit:
@@ -2920,6 +3071,7 @@ export type PostAtsJobsJobIdApplicationsRequestBodyBullhorn$Outbound = {
   candidate?: { [k: string]: any } | undefined;
   job_submission?: { [k: string]: any } | undefined;
   existing_candidate_remote_id?: string | undefined;
+  candidate_specialty_remote_ids?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -2928,11 +3080,14 @@ export const PostAtsJobsJobIdApplicationsRequestBodyBullhorn$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyBullhorn$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyBullhorn
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-    job_submission: z.record(z.any()).optional(),
-    existing_candidate_remote_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+      job_submission: z.record(z.any()).optional(),
+      existing_candidate_remote_id: z.string().optional(),
+      candidate_specialty_remote_ids: z.array(z.string()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyBullhornToJSON(
   postAtsJobsJobIdApplicationsRequestBodyBullhorn:
@@ -2960,21 +3115,23 @@ export const PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions$outboundSch
     PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions
-  > = z.object({
-    single: z.boolean().optional(),
-    smart_recruit: z.boolean().optional(),
-    smart_crm: z.boolean().optional(),
-    smart_message_sms: z.boolean().optional(),
-    smart_message_whatsapp: z.boolean().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      single: "SINGLE",
-      smart_recruit: "SMART_RECRUIT",
-      smart_crm: "SMART_CRM",
-      smart_message_sms: "SMART_MESSAGE_SMS",
-      smart_message_whatsapp: "SMART_MESSAGE_WHATSAPP",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      single: z.boolean().optional(),
+      smart_recruit: z.boolean().optional(),
+      smart_crm: z.boolean().optional(),
+      smart_message_sms: z.boolean().optional(),
+      smart_message_whatsapp: z.boolean().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        single: "SINGLE",
+        smart_recruit: "SMART_RECRUIT",
+        smart_crm: "SMART_CRM",
+        smart_message_sms: "SMART_MESSAGE_SMS",
+        smart_message_whatsapp: "SMART_MESSAGE_WHATSAPP",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyConsentDecisionsToJSON(
   postAtsJobsJobIdApplicationsRequestBodyConsentDecisions:
@@ -3002,14 +3159,16 @@ export const PostAtsJobsJobIdApplicationsRequestBodySmartrecruiters$outboundSche
     PostAtsJobsJobIdApplicationsRequestBodySmartrecruiters$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodySmartrecruiters
-  > = z.object({
-    candidate_with_questions: z.record(z.any()).optional(),
-    candidate_without_questions: z.record(z.any()).optional(),
-    candidate: z.record(z.any()).optional(),
-    consent_decisions: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate_with_questions: z.record(z.any()).optional(),
+      candidate_without_questions: z.record(z.any()).optional(),
+      candidate: z.record(z.any()).optional(),
+      consent_decisions: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyConsentDecisions$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodySmartrecruitersToJSON(
   postAtsJobsJobIdApplicationsRequestBodySmartrecruiters:
@@ -3033,9 +3192,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyTalentadore$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyTalentadore$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyTalentadore
-  > = z.object({
-    applications: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      applications: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyTalentadoreToJSON(
   postAtsJobsJobIdApplicationsRequestBodyTalentadore:
@@ -3059,9 +3220,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyGuidecom$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyGuidecom$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyGuidecom
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyGuidecomToJSON(
   postAtsJobsJobIdApplicationsRequestBodyGuidecom:
@@ -3086,10 +3249,12 @@ export const PostAtsJobsJobIdApplicationsRequestBodyDvinci$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyDvinci$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyDvinci
-  > = z.object({
-    application: z.record(z.any()).optional(),
-    candidate: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      application: z.record(z.any()).optional(),
+      candidate: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyDvinciToJSON(
   postAtsJobsJobIdApplicationsRequestBodyDvinci:
@@ -3113,13 +3278,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyHrworks$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyHrworks$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyHrworks
-  > = z.object({
-    job_application: z.record(z.any()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      job_application: "jobApplication",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      job_application: z.record(z.any()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        job_application: "jobApplication",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyHrworksToJSON(
   postAtsJobsJobIdApplicationsRequestBodyHrworks:
@@ -3144,9 +3311,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyJobylonApplication$outboundS
     PostAtsJobsJobIdApplicationsRequestBodyJobylonApplication$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyJobylonApplication
-  > = z.object({
-    message: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string().optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyJobylonApplicationToJSON(
   postAtsJobsJobIdApplicationsRequestBodyJobylonApplication:
@@ -3171,11 +3340,13 @@ export const PostAtsJobsJobIdApplicationsRequestBodyJobylon$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyJobylon$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyJobylon
-  > = z.object({
-    application: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyJobylonApplication$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      application: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyJobylonApplication$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyJobylonToJSON(
   postAtsJobsJobIdApplicationsRequestBodyJobylon:
@@ -3199,9 +3370,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyStep$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyStep$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyStep
-  > = z.object({
-    id: z.number().int(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.number().int(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyStepToJSON(
   postAtsJobsJobIdApplicationsRequestBodyStep:
@@ -3225,11 +3398,13 @@ export const PostAtsJobsJobIdApplicationsRequestBodyWorkflow$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyWorkflow$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyWorkflow
-  > = z.object({
-    step: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyStep$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      step: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyStep$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyWorkflowToJSON(
   postAtsJobsJobIdApplicationsRequestBodyWorkflow:
@@ -3256,12 +3431,14 @@ export const PostAtsJobsJobIdApplicationsRequestBodyAvature$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyAvature$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyAvature
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-    workflow: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyWorkflow$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+      workflow: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyWorkflow$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyAvatureToJSON(
   postAtsJobsJobIdApplicationsRequestBodyAvature:
@@ -3286,9 +3463,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRecruiteeCandidate$outboundS
     PostAtsJobsJobIdApplicationsRequestBodyRecruiteeCandidate$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyRecruiteeCandidate
-  > = z.object({
-    cover_letter_text: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cover_letter_text: z.string().optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyRecruiteeCandidateToJSON(
   postAtsJobsJobIdApplicationsRequestBodyRecruiteeCandidate:
@@ -3313,11 +3492,13 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRecruitee$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyRecruitee$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyRecruitee
-  > = z.object({
-    candidate: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyRecruiteeCandidate$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyRecruiteeCandidate$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyRecruiteeToJSON(
   postAtsJobsJobIdApplicationsRequestBodyRecruitee:
@@ -3341,9 +3522,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRexx$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyRexx$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyRexx
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyRexxToJSON(
   postAtsJobsJobIdApplicationsRequestBodyRexx:
@@ -3367,9 +3550,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyUmantis$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyUmantis$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyUmantis
-  > = z.object({
-    person: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      person: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyUmantisToJSON(
   postAtsJobsJobIdApplicationsRequestBodyUmantis:
@@ -3394,10 +3579,12 @@ export const PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$outboundSche
     PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate
-  > = z.object({
-    street: z.string().optional(),
-    geburtsdatum: z.date().transform(v => v.toISOString()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      street: z.string().optional(),
+      geburtsdatum: z.date().transform(v => v.toISOString()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyPilogaCandidateToJSON(
   postAtsJobsJobIdApplicationsRequestBodyPilogaCandidate:
@@ -3423,11 +3610,13 @@ export const PostAtsJobsJobIdApplicationsRequestBodyPiloga$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyPiloga$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyPiloga
-  > = z.object({
-    candidate: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyPilogaCandidate$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyPilogaToJSON(
   postAtsJobsJobIdApplicationsRequestBodyPiloga:
@@ -3451,9 +3640,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyPinpoint$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyPinpoint$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyPinpoint
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyPinpointToJSON(
   postAtsJobsJobIdApplicationsRequestBodyPinpoint:
@@ -3468,8 +3659,10 @@ export function postAtsJobsJobIdApplicationsRequestBodyPinpointToJSON(
 
 /** @internal */
 export const PostAtsJobsJobIdApplicationsRequestBodyAktiv$outboundSchema:
-  z.ZodNativeEnum<typeof PostAtsJobsJobIdApplicationsRequestBodyAktiv> = z
-    .nativeEnum(PostAtsJobsJobIdApplicationsRequestBodyAktiv);
+  z.ZodNativeEnum<typeof PostAtsJobsJobIdApplicationsRequestBodyAktiv> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PostAtsJobsJobIdApplicationsRequestBodyAktiv)
+    );
 
 /** @internal */
 export type PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$Outbound =
@@ -3485,12 +3678,14 @@ export const PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$outbound
     PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate
-  > = z.object({
-    mandant: z.number().optional(),
-    status: z.number().int().optional(),
-    aktiv: PostAtsJobsJobIdApplicationsRequestBodyAktiv$outboundSchema
-      .optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      mandant: z.number().optional(),
+      status: z.number().int().optional(),
+      aktiv: PostAtsJobsJobIdApplicationsRequestBodyAktiv$outboundSchema
+        .optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyCovetorestCandidateToJSON(
   postAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate:
@@ -3515,11 +3710,13 @@ export const PostAtsJobsJobIdApplicationsRequestBodyCovetorest$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyCovetorest$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyCovetorest
-  > = z.object({
-    candidate: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyCovetorestCandidate$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyCovetorestToJSON(
   postAtsJobsJobIdApplicationsRequestBodyCovetorest:
@@ -3543,13 +3740,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyAfas$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyAfas$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyAfas
-  > = z.object({
-    fields: z.record(z.any()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      fields: "Fields",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      fields: z.record(z.any()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        fields: "Fields",
+      });
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyAfasToJSON(
   postAtsJobsJobIdApplicationsRequestBodyAfas:
@@ -3576,12 +3775,14 @@ export const PostAtsJobsJobIdApplicationsRequestBodyFountain$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyFountain$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyFountain
-  > = z.object({
-    consent_sms_transactional: z.boolean().optional(),
-    consent_sms_marketing: z.boolean().optional(),
-    consent_calls_transactional: z.boolean().optional(),
-    consent_calls_marketing: z.boolean().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      consent_sms_transactional: z.boolean().optional(),
+      consent_sms_marketing: z.boolean().optional(),
+      consent_calls_transactional: z.boolean().optional(),
+      consent_calls_marketing: z.boolean().optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyFountainToJSON(
   postAtsJobsJobIdApplicationsRequestBodyFountain:
@@ -3609,13 +3810,15 @@ export const PostAtsJobsJobIdApplicationsRequestBodyCustomField$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyCustomField$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyCustomField
-  > = z.object({
-    field_id: z.number().int(),
-    value: z.string(),
-    entity_type: z.string().optional(),
-    field_name: z.string().optional(),
-    field_type: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      field_id: z.number().int(),
+      value: z.string(),
+      entity_type: z.string().optional(),
+      field_name: z.string().optional(),
+      field_type: z.string().optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyCustomFieldToJSON(
   postAtsJobsJobIdApplicationsRequestBodyCustomField:
@@ -3641,13 +3844,13 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm
-  > = z.object({
-    custom_fields: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      custom_fields: z.array(z.lazy(() =>
         PostAtsJobsJobIdApplicationsRequestBodyCustomField$outboundSchema
-      ),
-    ).optional(),
-  });
+      )).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyRecruitcrmToJSON(
   postAtsJobsJobIdApplicationsRequestBodyRecruitcrm:
@@ -3671,9 +3874,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyIcims$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyIcims$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyIcims
-  > = z.object({
-    application: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      application: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyIcimsToJSON(
   postAtsJobsJobIdApplicationsRequestBodyIcims:
@@ -3697,9 +3902,11 @@ export const PostAtsJobsJobIdApplicationsRequestBodyEmplypeople$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyEmplypeople$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyEmplypeople
-  > = z.object({
-    form_data: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      form_data: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyEmplypeopleToJSON(
   postAtsJobsJobIdApplicationsRequestBodyEmplypeople:
@@ -3787,95 +3994,97 @@ export const PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyRemoteFields
-  > = z.object({
-    successfactors: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodySuccessfactors$outboundSchema
-    ).optional(),
-    personio: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyPersonio$outboundSchema
-    ).optional(),
-    talentsoft: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyTalentsoft$outboundSchema
-    ).optional(),
-    teamtailor: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyTeamtailor$outboundSchema
-    ).optional(),
-    greenhouse: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyGreenhouse$outboundSchema
-    ).optional(),
-    greenhousev3: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3$outboundSchema
-    ).optional(),
-    lever: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyLever$outboundSchema
-    ).optional(),
-    workable: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyWorkable$outboundSchema
-    ).optional(),
-    workday: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyWorkday$outboundSchema
-    ).optional(),
-    zohorecruit: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyZohorecruit$outboundSchema
-    ).optional(),
-    bullhorn: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyBullhorn$outboundSchema
-    ).optional(),
-    smartrecruiters: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodySmartrecruiters$outboundSchema
-    ).optional(),
-    talentadore: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyTalentadore$outboundSchema
-    ).optional(),
-    guidecom: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyGuidecom$outboundSchema
-    ).optional(),
-    dvinci: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyDvinci$outboundSchema
-    ).optional(),
-    hrworks: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyHrworks$outboundSchema
-    ).optional(),
-    jobylon: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyJobylon$outboundSchema
-    ).optional(),
-    avature: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyAvature$outboundSchema
-    ).optional(),
-    recruitee: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyRecruitee$outboundSchema
-    ).optional(),
-    rexx: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyRexx$outboundSchema
-    ).optional(),
-    umantis: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyUmantis$outboundSchema
-    ).optional(),
-    piloga: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyPiloga$outboundSchema
-    ).optional(),
-    pinpoint: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyPinpoint$outboundSchema
-    ).optional(),
-    covetorest: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyCovetorest$outboundSchema
-    ).optional(),
-    afas: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyAfas$outboundSchema
-    ).optional(),
-    fountain: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyFountain$outboundSchema
-    ).optional(),
-    recruitcrm: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm$outboundSchema
-    ).optional(),
-    icims: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyIcims$outboundSchema
-    ).optional(),
-    emplypeople: z.lazy(() =>
-      PostAtsJobsJobIdApplicationsRequestBodyEmplypeople$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      successfactors: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodySuccessfactors$outboundSchema
+      ).optional(),
+      personio: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyPersonio$outboundSchema
+      ).optional(),
+      talentsoft: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyTalentsoft$outboundSchema
+      ).optional(),
+      teamtailor: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyTeamtailor$outboundSchema
+      ).optional(),
+      greenhouse: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyGreenhouse$outboundSchema
+      ).optional(),
+      greenhousev3: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyGreenhousev3$outboundSchema
+      ).optional(),
+      lever: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyLever$outboundSchema
+      ).optional(),
+      workable: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyWorkable$outboundSchema
+      ).optional(),
+      workday: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyWorkday$outboundSchema
+      ).optional(),
+      zohorecruit: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyZohorecruit$outboundSchema
+      ).optional(),
+      bullhorn: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyBullhorn$outboundSchema
+      ).optional(),
+      smartrecruiters: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodySmartrecruiters$outboundSchema
+      ).optional(),
+      talentadore: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyTalentadore$outboundSchema
+      ).optional(),
+      guidecom: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyGuidecom$outboundSchema
+      ).optional(),
+      dvinci: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyDvinci$outboundSchema
+      ).optional(),
+      hrworks: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyHrworks$outboundSchema
+      ).optional(),
+      jobylon: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyJobylon$outboundSchema
+      ).optional(),
+      avature: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyAvature$outboundSchema
+      ).optional(),
+      recruitee: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyRecruitee$outboundSchema
+      ).optional(),
+      rexx: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyRexx$outboundSchema
+      ).optional(),
+      umantis: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyUmantis$outboundSchema
+      ).optional(),
+      piloga: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyPiloga$outboundSchema
+      ).optional(),
+      pinpoint: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyPinpoint$outboundSchema
+      ).optional(),
+      covetorest: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyCovetorest$outboundSchema
+      ).optional(),
+      afas: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyAfas$outboundSchema
+      ).optional(),
+      fountain: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyFountain$outboundSchema
+      ).optional(),
+      recruitcrm: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyRecruitcrm$outboundSchema
+      ).optional(),
+      icims: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyIcims$outboundSchema
+      ).optional(),
+      emplypeople: z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyEmplypeople$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyRemoteFieldsToJSON(
   postAtsJobsJobIdApplicationsRequestBodyRemoteFields:
@@ -3902,12 +4111,14 @@ export const PostAtsJobsJobIdApplicationsRequestBodyAnswer$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyAnswer$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyAnswer
-  > = z.object({
-    name: z.string(),
-    content_type: z.string().optional(),
-    data_url: z.string().optional(),
-    data: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string(),
+      content_type: z.string().optional(),
+      data_url: z.string().optional(),
+      data: z.string().optional(),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyAnswerToJSON(
   postAtsJobsJobIdApplicationsRequestBodyAnswer:
@@ -3935,14 +4146,18 @@ export const PostAtsJobsJobIdApplicationsRequestBodyAnswerUnion$outboundSchema:
     PostAtsJobsJobIdApplicationsRequestBodyAnswerUnion$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyAnswerUnion
-  > = z.union([
-    z.lazy(() => PostAtsJobsJobIdApplicationsRequestBodyAnswer$outboundSchema),
-    z.string(),
-    z.boolean(),
-    z.number(),
-    z.array(z.string()),
-    z.date().transform(v => v.toISOString()),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() =>
+        PostAtsJobsJobIdApplicationsRequestBodyAnswer$outboundSchema
+      ),
+      z.string(),
+      z.boolean(),
+      z.number(),
+      z.array(z.string()),
+      z.date().transform(v => v.toISOString()),
+    ])
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyAnswerUnionToJSON(
   postAtsJobsJobIdApplicationsRequestBodyAnswerUnion:
@@ -3974,19 +4189,21 @@ export const PostAtsJobsJobIdApplicationsRequestBodyScreeningQuestionAnswer$outb
     PostAtsJobsJobIdApplicationsRequestBodyScreeningQuestionAnswer$Outbound,
     z.ZodTypeDef,
     PostAtsJobsJobIdApplicationsRequestBodyScreeningQuestionAnswer
-  > = z.object({
-    question_id: z.string(),
-    answer: z.union([
-      z.lazy(() =>
-        PostAtsJobsJobIdApplicationsRequestBodyAnswer$outboundSchema
-      ),
-      z.string(),
-      z.boolean(),
-      z.number(),
-      z.array(z.string()),
-      z.date().transform(v => v.toISOString()),
-    ]),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      question_id: z.string(),
+      answer: z.union([
+        z.lazy(() =>
+          PostAtsJobsJobIdApplicationsRequestBodyAnswer$outboundSchema
+        ),
+        z.string(),
+        z.boolean(),
+        z.number(),
+        z.array(z.string()),
+        z.date().transform(v => v.toISOString()),
+      ]),
+    })
+  );
 
 export function postAtsJobsJobIdApplicationsRequestBodyScreeningQuestionAnswerToJSON(
   postAtsJobsJobIdApplicationsRequestBodyScreeningQuestionAnswer:
@@ -4027,34 +4244,32 @@ export const PostAtsJobsJobIdApplicationsRequestBody$outboundSchema: z.ZodType<
   PostAtsJobsJobIdApplicationsRequestBody$Outbound,
   z.ZodTypeDef,
   PostAtsJobsJobIdApplicationsRequestBody
-> = z.object({
-  stage_id: z.string().optional(),
-  candidate: z.lazy(() =>
-    PostAtsJobsJobIdApplicationsRequestBodyCandidate$outboundSchema
-  ),
-  attachments: z.array(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    stage_id: z.string().optional(),
+    candidate: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyCandidate$outboundSchema
+    ),
+    attachments: z.array(z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyAttachment$outboundSchema
-    ),
-  ).optional(),
-  source: z.lazy(() =>
-    PostAtsJobsJobIdApplicationsRequestBodySource$outboundSchema
-  ).optional(),
-  sourced_by: z.lazy(() =>
-    PostAtsJobsJobIdApplicationsRequestBodySourcedBy$outboundSchema
-  ).optional(),
-  gdpr_consent: z.lazy(() =>
-    PostAtsJobsJobIdApplicationsRequestBodyGdprConsent$outboundSchema
-  ).optional(),
-  remote_fields: z.lazy(() =>
-    PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$outboundSchema
-  ).optional(),
-  screening_question_answers: z.array(
-    z.lazy(() =>
+    )).optional(),
+    source: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodySource$outboundSchema
+    ).optional(),
+    sourced_by: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodySourcedBy$outboundSchema
+    ).optional(),
+    gdpr_consent: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyGdprConsent$outboundSchema
+    ).optional(),
+    remote_fields: z.lazy(() =>
+      PostAtsJobsJobIdApplicationsRequestBodyRemoteFields$outboundSchema
+    ).optional(),
+    screening_question_answers: z.array(z.lazy(() =>
       PostAtsJobsJobIdApplicationsRequestBodyScreeningQuestionAnswer$outboundSchema
-    ),
-  ).optional(),
-});
+    )).optional(),
+  })
+);
 
 export function postAtsJobsJobIdApplicationsRequestBodyToJSON(
   postAtsJobsJobIdApplicationsRequestBody:

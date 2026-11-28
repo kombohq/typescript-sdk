@@ -13,6 +13,7 @@ import { hrisGetEmployeeForm } from "../funcs/hrisGetEmployeeForm.js";
 import { hrisGetEmployees } from "../funcs/hrisGetEmployees.js";
 import { hrisGetEmployments } from "../funcs/hrisGetEmployments.js";
 import { hrisGetGroups } from "../funcs/hrisGetGroups.js";
+import { hrisGetHrisEmployeesEmployeeIdFormRehire } from "../funcs/hrisGetHrisEmployeesEmployeeIdFormRehire.js";
 import { hrisGetHrisPayRuns } from "../funcs/hrisGetHrisPayRuns.js";
 import { hrisGetHrisPayslips } from "../funcs/hrisGetHrisPayslips.js";
 import { hrisGetLegalEntities } from "../funcs/hrisGetLegalEntities.js";
@@ -22,6 +23,7 @@ import { hrisGetPerformanceReviews } from "../funcs/hrisGetPerformanceReviews.js
 import { hrisGetStaffingEntities } from "../funcs/hrisGetStaffingEntities.js";
 import { hrisGetTimeOffBalances } from "../funcs/hrisGetTimeOffBalances.js";
 import { hrisGetTimesheets } from "../funcs/hrisGetTimesheets.js";
+import { hrisPostHrisEmployeesEmployeeIdFormRehire } from "../funcs/hrisPostHrisEmployeesEmployeeIdFormRehire.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as models from "../models/index.js";
 import * as operations from "../models/operations/index.js";
@@ -216,6 +218,83 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<models.PostHrisEmployeesEmployeeIdDocumentsPositiveResponse> {
     return unwrapAsync(hrisAddEmployeeDocument(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get rehire form
+   *
+   * @remarks
+   * Get the form for rehiring a former employee. Display the returned fields in your app, then submit the values to [Rehire employee](/hris/v1/post-employees-employee-id-form-rehire).
+   *
+   * See [Rehire Employee](/hris/features/rehire-employee) for the workflow.
+   *
+   * ### Example Form
+   * ```json
+   * {
+   *   "properties": {
+   *     "startDate": {
+   *       "type": "date",
+   *       "label": "Start Date",
+   *       "required": true,
+   *       "description": "The first day of the new job",
+   *       "unified_key": "start_date"
+   *     },
+   *     "jobTitle": {
+   *       "type": "text",
+   *       "label": "Job Title",
+   *       "required": false,
+   *       "description": "The job title of the new job",
+   *       "unified_key": "job_title",
+   *       "min_length": null,
+   *       "max_length": null,
+   *       "reg_exp": null
+   *     }
+   *   }
+   * }
+   * ```
+   */
+  async getHrisEmployeesEmployeeIdFormRehire(
+    request: operations.GetHrisEmployeesEmployeeIdFormRehireRequest,
+    options?: RequestOptions,
+  ): Promise<models.GetHrisEmployeesEmployeeIdFormRehirePositiveResponse> {
+    return unwrapAsync(hrisGetHrisEmployeesEmployeeIdFormRehire(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Rehire employee
+   *
+   * @remarks
+   * Rehire a former employee using values from the rehire form.
+   *
+   * <Note>
+   *   This endpoint requires the permission **Create and manage employees** to be enabled in [your scope config](/scopes).
+   * </Note>
+   *
+   * ### Example Request Body
+   *
+   * ```json
+   * {
+   *   "staffing_entity_id": "4wPdBNLfMYBeXjNiQ5zKbStR",
+   *   "properties": {
+   *     "startDate": "2026-11-01",
+   *     "jobTitle": "Lifeguard"
+   *   }
+   * }
+   * ```
+   */
+  async postHrisEmployeesEmployeeIdFormRehire(
+    request: operations.PostHrisEmployeesEmployeeIdFormRehireRequest,
+    options?: RequestOptions,
+  ): Promise<models.PostHrisEmployeesEmployeeIdFormRehirePositiveResponse> {
+    return unwrapAsync(hrisPostHrisEmployeesEmployeeIdFormRehire(
       this,
       request,
       options,

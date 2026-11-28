@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -457,13 +457,15 @@ export const GetIntegrationsIntegrationIdPositiveResponseTool$inboundSchema:
     GetIntegrationsIntegrationIdPositiveResponseTool,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    label: z.string(),
-    internal_label: z.nullable(z.string()),
-    logo_url: z.string(),
-    icon_url: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      label: z.string(),
+      internal_label: z.nullable(z.string()),
+      logo_url: z.string(),
+      icon_url: z.string(),
+    })
+  );
 
 export function getIntegrationsIntegrationIdPositiveResponseToolFromJSON(
   jsonString: string,
@@ -484,18 +486,24 @@ export function getIntegrationsIntegrationIdPositiveResponseToolFromJSON(
 /** @internal */
 export const GetIntegrationsIntegrationIdPositiveResponseCategory$inboundSchema:
   z.ZodNativeEnum<typeof GetIntegrationsIntegrationIdPositiveResponseCategory> =
-    z.nativeEnum(GetIntegrationsIntegrationIdPositiveResponseCategory);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetIntegrationsIntegrationIdPositiveResponseCategory)
+    );
 
 /** @internal */
 export const GetIntegrationsIntegrationIdPositiveResponseStatus$inboundSchema:
-  z.ZodNativeEnum<typeof GetIntegrationsIntegrationIdPositiveResponseStatus> = z
-    .nativeEnum(GetIntegrationsIntegrationIdPositiveResponseStatus);
+  z.ZodNativeEnum<typeof GetIntegrationsIntegrationIdPositiveResponseStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetIntegrationsIntegrationIdPositiveResponseStatus)
+    );
 
 /** @internal */
 export const GetIntegrationsIntegrationIdPositiveResponseSetupStatus$inboundSchema:
   z.ZodNativeEnum<
     typeof GetIntegrationsIntegrationIdPositiveResponseSetupStatus
-  > = z.nativeEnum(GetIntegrationsIntegrationIdPositiveResponseSetupStatus);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetIntegrationsIntegrationIdPositiveResponseSetupStatus)
+  );
 
 /** @internal */
 export const GetIntegrationsIntegrationIdPositiveResponseEndUser$inboundSchema:
@@ -503,11 +511,13 @@ export const GetIntegrationsIntegrationIdPositiveResponseEndUser$inboundSchema:
     GetIntegrationsIntegrationIdPositiveResponseEndUser,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    organization_name: z.string(),
-    creator_email: z.nullable(z.string()),
-    origin_id: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      organization_name: z.string(),
+      creator_email: z.nullable(z.string()),
+      origin_id: z.nullable(z.string()),
+    })
+  );
 
 export function getIntegrationsIntegrationIdPositiveResponseEndUserFromJSON(
   jsonString: string,
@@ -530,10 +540,12 @@ export const ScopeConfig$inboundSchema: z.ZodType<
   ScopeConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()),
+  })
+);
 
 export function scopeConfigFromJSON(
   jsonString: string,
@@ -549,27 +561,33 @@ export function scopeConfigFromJSON(
 export const GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus$inboundSchema:
   z.ZodNativeEnum<
     typeof GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus
-  > = z.nativeEnum(
-    GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus,
+    )
   );
 
 /** @internal */
 export const ReadModelScopeConfigSetting$inboundSchema: z.ZodNativeEnum<
   typeof ReadModelScopeConfigSetting
-> = z.nativeEnum(ReadModelScopeConfigSetting);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ReadModelScopeConfigSetting)
+);
 
 /** @internal */
 export const GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus$inboundSchema:
   z.ZodNativeEnum<
     typeof GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus
-  > = z.nativeEnum(
-    GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus,
+    )
   );
 
 /** @internal */
 export const FieldScopeConfigSetting$inboundSchema: z.ZodNativeEnum<
   typeof FieldScopeConfigSetting
-> = z.nativeEnum(FieldScopeConfigSetting);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FieldScopeConfigSetting));
 
 /** @internal */
 export const GetIntegrationsIntegrationIdPositiveResponseReadModelField$inboundSchema:
@@ -577,14 +595,16 @@ export const GetIntegrationsIntegrationIdPositiveResponseReadModelField$inboundS
     GetIntegrationsIntegrationIdPositiveResponseReadModelField,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    is_available: z.boolean(),
-    coverage_status:
-      GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus$inboundSchema,
-    scope_config_setting: FieldScopeConfigSetting$inboundSchema,
-    opted_out_by_customer: z.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      is_available: z.boolean(),
+      coverage_status:
+        GetIntegrationsIntegrationIdPositiveResponseReadModelFieldCoverageStatus$inboundSchema,
+      scope_config_setting: FieldScopeConfigSetting$inboundSchema,
+      opted_out_by_customer: z.boolean(),
+    })
+  );
 
 export function getIntegrationsIntegrationIdPositiveResponseReadModelFieldFromJSON(
   jsonString: string,
@@ -607,20 +627,20 @@ export const GetIntegrationsIntegrationIdPositiveResponseReadModel$inboundSchema
     GetIntegrationsIntegrationIdPositiveResponseReadModel,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    label: z.string(),
-    is_available: z.boolean(),
-    coverage_status:
-      GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus$inboundSchema,
-    scope_config_setting: ReadModelScopeConfigSetting$inboundSchema,
-    opted_out_by_customer: z.boolean(),
-    fields: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      label: z.string(),
+      is_available: z.boolean(),
+      coverage_status:
+        GetIntegrationsIntegrationIdPositiveResponseReadModelCoverageStatus$inboundSchema,
+      scope_config_setting: ReadModelScopeConfigSetting$inboundSchema,
+      opted_out_by_customer: z.boolean(),
+      fields: z.array(z.lazy(() =>
         GetIntegrationsIntegrationIdPositiveResponseReadModelField$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function getIntegrationsIntegrationIdPositiveResponseReadModelFromJSON(
   jsonString: string,
@@ -642,21 +662,27 @@ export function getIntegrationsIntegrationIdPositiveResponseReadModelFromJSON(
 export const GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus$inboundSchema:
   z.ZodNativeEnum<
     typeof GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus
-  > = z.nativeEnum(
-    GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus,
+    )
   );
 
 /** @internal */
 export const WriteActionScopeConfigSetting$inboundSchema: z.ZodNativeEnum<
   typeof WriteActionScopeConfigSetting
-> = z.nativeEnum(WriteActionScopeConfigSetting);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(WriteActionScopeConfigSetting)
+);
 
 /** @internal */
 export const GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus$inboundSchema:
   z.ZodNativeEnum<
     typeof GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus
-  > = z.nativeEnum(
-    GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus,
+    )
   );
 
 /** @internal */
@@ -665,12 +691,14 @@ export const GetIntegrationsIntegrationIdPositiveResponseWriteActionField$inboun
     GetIntegrationsIntegrationIdPositiveResponseWriteActionField,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    is_available: z.boolean(),
-    coverage_status:
-      GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      is_available: z.boolean(),
+      coverage_status:
+        GetIntegrationsIntegrationIdPositiveResponseWriteActionFieldCoverageStatus$inboundSchema,
+    })
+  );
 
 export function getIntegrationsIntegrationIdPositiveResponseWriteActionFieldFromJSON(
   jsonString: string,
@@ -693,20 +721,20 @@ export const GetIntegrationsIntegrationIdPositiveResponseWriteAction$inboundSche
     GetIntegrationsIntegrationIdPositiveResponseWriteAction,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    label: z.string(),
-    is_available: z.boolean(),
-    coverage_status:
-      GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus$inboundSchema,
-    scope_config_setting: WriteActionScopeConfigSetting$inboundSchema,
-    opted_out_by_customer: z.boolean(),
-    fields: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      label: z.string(),
+      is_available: z.boolean(),
+      coverage_status:
+        GetIntegrationsIntegrationIdPositiveResponseWriteActionCoverageStatus$inboundSchema,
+      scope_config_setting: WriteActionScopeConfigSetting$inboundSchema,
+      opted_out_by_customer: z.boolean(),
+      fields: z.array(z.lazy(() =>
         GetIntegrationsIntegrationIdPositiveResponseWriteActionField$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function getIntegrationsIntegrationIdPositiveResponseWriteActionFromJSON(
   jsonString: string,
@@ -729,38 +757,36 @@ export const GetIntegrationsIntegrationIdPositiveResponseData$inboundSchema:
     GetIntegrationsIntegrationIdPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    tool: z.lazy(() =>
-      GetIntegrationsIntegrationIdPositiveResponseTool$inboundSchema
-    ),
-    category:
-      GetIntegrationsIntegrationIdPositiveResponseCategory$inboundSchema,
-    status: GetIntegrationsIntegrationIdPositiveResponseStatus$inboundSchema,
-    setup_status:
-      GetIntegrationsIntegrationIdPositiveResponseSetupStatus$inboundSchema,
-    end_user: z.lazy(() =>
-      GetIntegrationsIntegrationIdPositiveResponseEndUser$inboundSchema
-    ),
-    scope_config: z.lazy(() => ScopeConfig$inboundSchema),
-    data_expired_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    created_at: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    beta: z.boolean(),
-    read_models: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      tool: z.lazy(() =>
+        GetIntegrationsIntegrationIdPositiveResponseTool$inboundSchema
+      ),
+      category:
+        GetIntegrationsIntegrationIdPositiveResponseCategory$inboundSchema,
+      status: GetIntegrationsIntegrationIdPositiveResponseStatus$inboundSchema,
+      setup_status:
+        GetIntegrationsIntegrationIdPositiveResponseSetupStatus$inboundSchema,
+      end_user: z.lazy(() =>
+        GetIntegrationsIntegrationIdPositiveResponseEndUser$inboundSchema
+      ),
+      scope_config: z.lazy(() => ScopeConfig$inboundSchema),
+      data_expired_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      created_at: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      beta: z.boolean(),
+      read_models: z.array(z.lazy(() =>
         GetIntegrationsIntegrationIdPositiveResponseReadModel$inboundSchema
-      ),
-    ),
-    write_actions: z.array(
-      z.lazy(() =>
+      )),
+      write_actions: z.array(z.lazy(() =>
         GetIntegrationsIntegrationIdPositiveResponseWriteAction$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function getIntegrationsIntegrationIdPositiveResponseDataFromJSON(
   jsonString: string,
@@ -784,12 +810,14 @@ export const GetIntegrationsIntegrationIdPositiveResponse$inboundSchema:
     GetIntegrationsIntegrationIdPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      GetIntegrationsIntegrationIdPositiveResponseData$inboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        GetIntegrationsIntegrationIdPositiveResponseData$inboundSchema
+      ),
+    })
+  );
 
 export function getIntegrationsIntegrationIdPositiveResponseFromJSON(
   jsonString: string,

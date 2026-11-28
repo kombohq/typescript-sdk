@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -32,7 +32,7 @@ export const PostAtsApplicationsApplicationIdResultLinksPositiveResponseData$inb
     PostAtsApplicationsApplicationIdResultLinksPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({});
+  > = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function postAtsApplicationsApplicationIdResultLinksPositiveResponseDataFromJSON(
   jsonString: string,
@@ -55,9 +55,11 @@ export const PostAtsApplicationsApplicationIdResultLinksPositiveResponseWarning$
     PostAtsApplicationsApplicationIdResultLinksPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -80,17 +82,17 @@ export const PostAtsApplicationsApplicationIdResultLinksPositiveResponse$inbound
     PostAtsApplicationsApplicationIdResultLinksPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PostAtsApplicationsApplicationIdResultLinksPositiveResponseData$inboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        PostAtsApplicationsApplicationIdResultLinksPositiveResponseWarning$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        PostAtsApplicationsApplicationIdResultLinksPositiveResponseData$inboundSchema
       ),
-    ),
-  });
+      warnings: z.array(z.lazy(() =>
+        PostAtsApplicationsApplicationIdResultLinksPositiveResponseWarning$inboundSchema
+      )),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksPositiveResponseFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -313,14 +313,16 @@ export const ResultDate$inboundSchema: z.ZodType<
   ResultDate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  label: z.string(),
-  description: z.nullable(z.string()),
-  required: z.nullable(z.boolean()),
-  type: z.literal("DATE"),
-  answer: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    label: z.string(),
+    description: z.nullable(z.string()),
+    required: z.nullable(z.boolean()),
+    type: z.literal("DATE"),
+    answer: z.nullable(z.string()),
+  })
+);
 
 export function resultDateFromJSON(
   jsonString: string,
@@ -337,14 +339,16 @@ export const ResultNumber$inboundSchema: z.ZodType<
   ResultNumber,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  label: z.string(),
-  description: z.nullable(z.string()),
-  required: z.nullable(z.boolean()),
-  type: z.literal("NUMBER"),
-  answer: z.nullable(z.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    label: z.string(),
+    description: z.nullable(z.string()),
+    required: z.nullable(z.boolean()),
+    type: z.literal("NUMBER"),
+    answer: z.nullable(z.number()),
+  })
+);
 
 export function resultNumberFromJSON(
   jsonString: string,
@@ -361,14 +365,16 @@ export const ResultBoolean$inboundSchema: z.ZodType<
   ResultBoolean,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  label: z.string(),
-  description: z.nullable(z.string()),
-  required: z.nullable(z.boolean()),
-  type: z.literal("BOOLEAN"),
-  answer: z.nullable(z.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    label: z.string(),
+    description: z.nullable(z.string()),
+    required: z.nullable(z.boolean()),
+    type: z.literal("BOOLEAN"),
+    answer: z.nullable(z.boolean()),
+  })
+);
 
 export function resultBooleanFromJSON(
   jsonString: string,
@@ -385,10 +391,12 @@ export const GetAtsScorecardsPositiveResponseOption2$inboundSchema: z.ZodType<
   GetAtsScorecardsPositiveResponseOption2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  label: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    label: z.string(),
+  })
+);
 
 export function getAtsScorecardsPositiveResponseOption2FromJSON(
   jsonString: string,
@@ -411,10 +419,12 @@ export const GetAtsScorecardsPositiveResponseAnswer2$inboundSchema: z.ZodType<
   GetAtsScorecardsPositiveResponseAnswer2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  label: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    label: z.string(),
+  })
+);
 
 export function getAtsScorecardsPositiveResponseAnswer2FromJSON(
   jsonString: string,
@@ -437,21 +447,21 @@ export const ResultMultiSelect$inboundSchema: z.ZodType<
   ResultMultiSelect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  label: z.string(),
-  description: z.nullable(z.string()),
-  required: z.nullable(z.boolean()),
-  type: z.literal("MULTI_SELECT"),
-  options: z.array(
-    z.lazy(() => GetAtsScorecardsPositiveResponseOption2$inboundSchema),
-  ),
-  answer: z.nullable(
-    z.array(
-      z.lazy(() => GetAtsScorecardsPositiveResponseAnswer2$inboundSchema),
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    label: z.string(),
+    description: z.nullable(z.string()),
+    required: z.nullable(z.boolean()),
+    type: z.literal("MULTI_SELECT"),
+    options: z.array(
+      z.lazy(() => GetAtsScorecardsPositiveResponseOption2$inboundSchema),
     ),
-  ),
-});
+    answer: z.nullable(z.array(z.lazy(() =>
+      GetAtsScorecardsPositiveResponseAnswer2$inboundSchema
+    ))),
+  })
+);
 
 export function resultMultiSelectFromJSON(
   jsonString: string,
@@ -468,10 +478,12 @@ export const GetAtsScorecardsPositiveResponseOption1$inboundSchema: z.ZodType<
   GetAtsScorecardsPositiveResponseOption1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  label: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    label: z.string(),
+  })
+);
 
 export function getAtsScorecardsPositiveResponseOption1FromJSON(
   jsonString: string,
@@ -494,10 +506,12 @@ export const GetAtsScorecardsPositiveResponseAnswer1$inboundSchema: z.ZodType<
   GetAtsScorecardsPositiveResponseAnswer1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  label: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    label: z.string(),
+  })
+);
 
 export function getAtsScorecardsPositiveResponseAnswer1FromJSON(
   jsonString: string,
@@ -520,19 +534,21 @@ export const ResultSingleSelect$inboundSchema: z.ZodType<
   ResultSingleSelect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  label: z.string(),
-  description: z.nullable(z.string()),
-  required: z.nullable(z.boolean()),
-  type: z.literal("SINGLE_SELECT"),
-  options: z.array(
-    z.lazy(() => GetAtsScorecardsPositiveResponseOption1$inboundSchema),
-  ),
-  answer: z.nullable(
-    z.lazy(() => GetAtsScorecardsPositiveResponseAnswer1$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    label: z.string(),
+    description: z.nullable(z.string()),
+    required: z.nullable(z.boolean()),
+    type: z.literal("SINGLE_SELECT"),
+    options: z.array(
+      z.lazy(() => GetAtsScorecardsPositiveResponseOption1$inboundSchema),
+    ),
+    answer: z.nullable(
+      z.lazy(() => GetAtsScorecardsPositiveResponseAnswer1$inboundSchema),
+    ),
+  })
+);
 
 export function resultSingleSelectFromJSON(
   jsonString: string,
@@ -549,14 +565,16 @@ export const ResultText$inboundSchema: z.ZodType<
   ResultText,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  remote_id: z.nullable(z.string()),
-  label: z.string(),
-  description: z.nullable(z.string()),
-  required: z.nullable(z.boolean()),
-  type: z.literal("TEXT"),
-  answer: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    remote_id: z.nullable(z.string()),
+    label: z.string(),
+    description: z.nullable(z.string()),
+    required: z.nullable(z.boolean()),
+    type: z.literal("TEXT"),
+    answer: z.nullable(z.string()),
+  })
+);
 
 export function resultTextFromJSON(
   jsonString: string,
@@ -573,14 +591,16 @@ export const ResponseT$inboundSchema: z.ZodType<
   ResponseT,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => ResultText$inboundSchema),
-  z.lazy(() => ResultSingleSelect$inboundSchema),
-  z.lazy(() => ResultMultiSelect$inboundSchema),
-  z.lazy(() => ResultBoolean$inboundSchema),
-  z.lazy(() => ResultNumber$inboundSchema),
-  z.lazy(() => ResultDate$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => ResultText$inboundSchema),
+    z.lazy(() => ResultSingleSelect$inboundSchema),
+    z.lazy(() => ResultMultiSelect$inboundSchema),
+    z.lazy(() => ResultBoolean$inboundSchema),
+    z.lazy(() => ResultNumber$inboundSchema),
+    z.lazy(() => ResultDate$inboundSchema),
+  ])
+);
 
 export function responseFromJSON(
   jsonString: string,
@@ -597,13 +617,15 @@ export const GetAtsScorecardsPositiveResponseAuthor$inboundSchema: z.ZodType<
   GetAtsScorecardsPositiveResponseAuthor,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  email: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    first_name: z.nullable(z.string()),
+    last_name: z.nullable(z.string()),
+    email: z.nullable(z.string()).optional(),
+  })
+);
 
 export function getAtsScorecardsPositiveResponseAuthorFromJSON(
   jsonString: string,
@@ -621,15 +643,15 @@ export const GetAtsScorecardsPositiveResponseResult$inboundSchema: z.ZodType<
   GetAtsScorecardsPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  candidate_id: z.nullable(z.string()),
-  application_id: z.nullable(z.string()),
-  interview_id: z.nullable(z.string()),
-  author_id: z.nullable(z.string()),
-  responses: z.nullable(
-    z.array(z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    candidate_id: z.nullable(z.string()),
+    application_id: z.nullable(z.string()),
+    interview_id: z.nullable(z.string()),
+    author_id: z.nullable(z.string()),
+    responses: z.nullable(z.array(z.union([
       z.lazy(() => ResultText$inboundSchema),
       z.lazy(() =>
         ResultSingleSelect$inboundSchema
@@ -638,22 +660,26 @@ export const GetAtsScorecardsPositiveResponseResult$inboundSchema: z.ZodType<
       z.lazy(() => ResultBoolean$inboundSchema),
       z.lazy(() => ResultNumber$inboundSchema),
       z.lazy(() => ResultDate$inboundSchema),
-    ])),
-  ).optional(),
-  remote_created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  remote_updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  author: z.nullable(
-    z.lazy(() => GetAtsScorecardsPositiveResponseAuthor$inboundSchema),
-  ),
-});
+    ]))).optional(),
+    remote_created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+    ),
+    remote_updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    author: z.nullable(
+      z.lazy(() => GetAtsScorecardsPositiveResponseAuthor$inboundSchema),
+    ),
+  })
+);
 
 export function getAtsScorecardsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -671,12 +697,14 @@ export const GetAtsScorecardsPositiveResponseData$inboundSchema: z.ZodType<
   GetAtsScorecardsPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetAtsScorecardsPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetAtsScorecardsPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getAtsScorecardsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -694,10 +722,12 @@ export const GetAtsScorecardsPositiveResponse$inboundSchema: z.ZodType<
   GetAtsScorecardsPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAtsScorecardsPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetAtsScorecardsPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getAtsScorecardsPositiveResponseFromJSON(
   jsonString: string,

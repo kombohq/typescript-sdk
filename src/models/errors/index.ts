@@ -8,5 +8,6 @@ export * from "./kombodefaulterror.js";
 export * from "./komboerror.js";
 export * from "./kombogeneralerror.js";
 export * from "./kombohriserror.js";
+export * from "./kombopassthrougherror.js";
 export * from "./responsevalidationerror.js";
 export * from "./sdkvalidationerror.js";

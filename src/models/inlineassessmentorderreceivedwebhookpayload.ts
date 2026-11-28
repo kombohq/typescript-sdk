@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -205,8 +205,10 @@ export type InlineAssessmentOrderReceivedWebhookPayload = {
 
 /** @internal */
 export const InlineAssessmentOrderReceivedWebhookPayloadType$inboundSchema:
-  z.ZodNativeEnum<typeof InlineAssessmentOrderReceivedWebhookPayloadType> = z
-    .nativeEnum(InlineAssessmentOrderReceivedWebhookPayloadType);
+  z.ZodNativeEnum<typeof InlineAssessmentOrderReceivedWebhookPayloadType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(InlineAssessmentOrderReceivedWebhookPayloadType)
+    );
 /** @internal */
 export const InlineAssessmentOrderReceivedWebhookPayloadType$outboundSchema:
   z.ZodNativeEnum<typeof InlineAssessmentOrderReceivedWebhookPayloadType> =
@@ -214,8 +216,10 @@ export const InlineAssessmentOrderReceivedWebhookPayloadType$outboundSchema:
 
 /** @internal */
 export const InlineAssessmentOrderReceivedWebhookPayloadStatus$inboundSchema:
-  z.ZodNativeEnum<typeof InlineAssessmentOrderReceivedWebhookPayloadStatus> = z
-    .nativeEnum(InlineAssessmentOrderReceivedWebhookPayloadStatus);
+  z.ZodNativeEnum<typeof InlineAssessmentOrderReceivedWebhookPayloadStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(InlineAssessmentOrderReceivedWebhookPayloadStatus)
+    );
 /** @internal */
 export const InlineAssessmentOrderReceivedWebhookPayloadStatus$outboundSchema:
   z.ZodNativeEnum<typeof InlineAssessmentOrderReceivedWebhookPayloadStatus> =
@@ -227,13 +231,15 @@ export const InlineAssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema:
     InlineAssessmentOrderReceivedWebhookPayloadCandidate,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-    email: z.string(),
-    first_name: z.nullable(z.string()),
-    last_name: z.nullable(z.string()),
-    phone: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      email: z.string(),
+      first_name: z.nullable(z.string()),
+      last_name: z.nullable(z.string()),
+      phone: z.nullable(z.string()),
+    })
+  );
 /** @internal */
 export type InlineAssessmentOrderReceivedWebhookPayloadCandidate$Outbound = {
   remote_id: string | null;
@@ -249,13 +255,15 @@ export const InlineAssessmentOrderReceivedWebhookPayloadCandidate$outboundSchema
     InlineAssessmentOrderReceivedWebhookPayloadCandidate$Outbound,
     z.ZodTypeDef,
     InlineAssessmentOrderReceivedWebhookPayloadCandidate
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-    email: z.string(),
-    first_name: z.nullable(z.string()),
-    last_name: z.nullable(z.string()),
-    phone: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      email: z.string(),
+      first_name: z.nullable(z.string()),
+      last_name: z.nullable(z.string()),
+      phone: z.nullable(z.string()),
+    })
+  );
 
 export function inlineAssessmentOrderReceivedWebhookPayloadCandidateToJSON(
   inlineAssessmentOrderReceivedWebhookPayloadCandidate:
@@ -289,9 +297,11 @@ export const InlineAssessmentOrderReceivedWebhookPayloadApplication$inboundSchem
     InlineAssessmentOrderReceivedWebhookPayloadApplication,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+    })
+  );
 /** @internal */
 export type InlineAssessmentOrderReceivedWebhookPayloadApplication$Outbound = {
   remote_id: string | null;
@@ -303,9 +313,11 @@ export const InlineAssessmentOrderReceivedWebhookPayloadApplication$outboundSche
     InlineAssessmentOrderReceivedWebhookPayloadApplication$Outbound,
     z.ZodTypeDef,
     InlineAssessmentOrderReceivedWebhookPayloadApplication
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+    })
+  );
 
 export function inlineAssessmentOrderReceivedWebhookPayloadApplicationToJSON(
   inlineAssessmentOrderReceivedWebhookPayloadApplication:
@@ -338,15 +350,17 @@ export const InlineAssessmentOrderReceivedWebhookPayloadLocation$inboundSchema:
     InlineAssessmentOrderReceivedWebhookPayloadLocation,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    street_1: z.nullable(z.string()).optional(),
-    street_2: z.nullable(z.string()).optional(),
-    city: z.nullable(z.string()).optional(),
-    state: z.nullable(z.string()).optional(),
-    zip_code: z.nullable(z.string()).optional(),
-    country: z.nullable(z.string()).optional(),
-    raw: z.nullable(z.string()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      street_1: z.nullable(z.string()).optional(),
+      street_2: z.nullable(z.string()).optional(),
+      city: z.nullable(z.string()).optional(),
+      state: z.nullable(z.string()).optional(),
+      zip_code: z.nullable(z.string()).optional(),
+      country: z.nullable(z.string()).optional(),
+      raw: z.nullable(z.string()).optional(),
+    })
+  );
 /** @internal */
 export type InlineAssessmentOrderReceivedWebhookPayloadLocation$Outbound = {
   street_1?: string | null | undefined;
@@ -364,15 +378,17 @@ export const InlineAssessmentOrderReceivedWebhookPayloadLocation$outboundSchema:
     InlineAssessmentOrderReceivedWebhookPayloadLocation$Outbound,
     z.ZodTypeDef,
     InlineAssessmentOrderReceivedWebhookPayloadLocation
-  > = z.object({
-    street_1: z.nullable(z.string()).optional(),
-    street_2: z.nullable(z.string()).optional(),
-    city: z.nullable(z.string()).optional(),
-    state: z.nullable(z.string()).optional(),
-    zip_code: z.nullable(z.string()).optional(),
-    country: z.nullable(z.string()).optional(),
-    raw: z.nullable(z.string()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      street_1: z.nullable(z.string()).optional(),
+      street_2: z.nullable(z.string()).optional(),
+      city: z.nullable(z.string()).optional(),
+      state: z.nullable(z.string()).optional(),
+      zip_code: z.nullable(z.string()).optional(),
+      country: z.nullable(z.string()).optional(),
+      raw: z.nullable(z.string()).optional(),
+    })
+  );
 
 export function inlineAssessmentOrderReceivedWebhookPayloadLocationToJSON(
   inlineAssessmentOrderReceivedWebhookPayloadLocation:
@@ -404,7 +420,9 @@ export function inlineAssessmentOrderReceivedWebhookPayloadLocationFromJSON(
 export const InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole$inboundSchema:
   z.ZodNativeEnum<
     typeof InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole
-  > = z.nativeEnum(InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole)
+  );
 /** @internal */
 export const InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole$outboundSchema:
   z.ZodNativeEnum<
@@ -417,15 +435,17 @@ export const InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema
     InlineAssessmentOrderReceivedWebhookPayloadHiringTeam,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-    email: z.nullable(z.string()),
-    first_name: z.nullable(z.string()),
-    last_name: z.nullable(z.string()),
-    hiring_team_roles: z.array(
-      InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole$inboundSchema,
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      email: z.nullable(z.string()),
+      first_name: z.nullable(z.string()),
+      last_name: z.nullable(z.string()),
+      hiring_team_roles: z.array(
+        InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole$inboundSchema,
+      ),
+    })
+  );
 /** @internal */
 export type InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$Outbound = {
   remote_id: string | null;
@@ -441,15 +461,17 @@ export const InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$outboundSchem
     InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$Outbound,
     z.ZodTypeDef,
     InlineAssessmentOrderReceivedWebhookPayloadHiringTeam
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-    email: z.nullable(z.string()),
-    first_name: z.nullable(z.string()),
-    last_name: z.nullable(z.string()),
-    hiring_team_roles: z.array(
-      InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole$outboundSchema,
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      email: z.nullable(z.string()),
+      first_name: z.nullable(z.string()),
+      last_name: z.nullable(z.string()),
+      hiring_team_roles: z.array(
+        InlineAssessmentOrderReceivedWebhookPayloadHiringTeamRole$outboundSchema,
+      ),
+    })
+  );
 
 export function inlineAssessmentOrderReceivedWebhookPayloadHiringTeamToJSON(
   inlineAssessmentOrderReceivedWebhookPayloadHiringTeam:
@@ -483,22 +505,20 @@ export const InlineAssessmentOrderReceivedWebhookPayloadJob$inboundSchema:
     InlineAssessmentOrderReceivedWebhookPayloadJob,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-    name: z.nullable(z.string()),
-    job_code: z.nullable(z.string()),
-    description: z.nullable(z.string()),
-    location: z.nullable(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      name: z.nullable(z.string()),
+      job_code: z.nullable(z.string()),
+      description: z.nullable(z.string()),
+      location: z.nullable(z.lazy(() =>
         InlineAssessmentOrderReceivedWebhookPayloadLocation$inboundSchema
-      ),
-    ),
-    hiring_team: z.array(
-      z.lazy(() =>
+      )),
+      hiring_team: z.array(z.lazy(() =>
         InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 /** @internal */
 export type InlineAssessmentOrderReceivedWebhookPayloadJob$Outbound = {
   remote_id: string | null;
@@ -517,22 +537,20 @@ export const InlineAssessmentOrderReceivedWebhookPayloadJob$outboundSchema:
     InlineAssessmentOrderReceivedWebhookPayloadJob$Outbound,
     z.ZodTypeDef,
     InlineAssessmentOrderReceivedWebhookPayloadJob
-  > = z.object({
-    remote_id: z.nullable(z.string()),
-    name: z.nullable(z.string()),
-    job_code: z.nullable(z.string()),
-    description: z.nullable(z.string()),
-    location: z.nullable(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      name: z.nullable(z.string()),
+      job_code: z.nullable(z.string()),
+      description: z.nullable(z.string()),
+      location: z.nullable(z.lazy(() =>
         InlineAssessmentOrderReceivedWebhookPayloadLocation$outboundSchema
-      ),
-    ),
-    hiring_team: z.array(
-      z.lazy(() =>
+      )),
+      hiring_team: z.array(z.lazy(() =>
         InlineAssessmentOrderReceivedWebhookPayloadHiringTeam$outboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function inlineAssessmentOrderReceivedWebhookPayloadJobToJSON(
   inlineAssessmentOrderReceivedWebhookPayloadJob:
@@ -566,21 +584,23 @@ export const InlineAssessmentOrderReceivedWebhookPayloadData$inboundSchema:
     InlineAssessmentOrderReceivedWebhookPayloadData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    package_id: z.string(),
-    status: InlineAssessmentOrderReceivedWebhookPayloadStatus$inboundSchema,
-    integration_id: z.string(),
-    candidate: z.lazy(() =>
-      InlineAssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema
-    ),
-    application: z.lazy(() =>
-      InlineAssessmentOrderReceivedWebhookPayloadApplication$inboundSchema
-    ),
-    job: z.lazy(() =>
-      InlineAssessmentOrderReceivedWebhookPayloadJob$inboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      package_id: z.string(),
+      status: InlineAssessmentOrderReceivedWebhookPayloadStatus$inboundSchema,
+      integration_id: z.string(),
+      candidate: z.lazy(() =>
+        InlineAssessmentOrderReceivedWebhookPayloadCandidate$inboundSchema
+      ),
+      application: z.lazy(() =>
+        InlineAssessmentOrderReceivedWebhookPayloadApplication$inboundSchema
+      ),
+      job: z.lazy(() =>
+        InlineAssessmentOrderReceivedWebhookPayloadJob$inboundSchema
+      ),
+    })
+  );
 /** @internal */
 export type InlineAssessmentOrderReceivedWebhookPayloadData$Outbound = {
   id: string;
@@ -598,21 +618,23 @@ export const InlineAssessmentOrderReceivedWebhookPayloadData$outboundSchema:
     InlineAssessmentOrderReceivedWebhookPayloadData$Outbound,
     z.ZodTypeDef,
     InlineAssessmentOrderReceivedWebhookPayloadData
-  > = z.object({
-    id: z.string(),
-    package_id: z.string(),
-    status: InlineAssessmentOrderReceivedWebhookPayloadStatus$outboundSchema,
-    integration_id: z.string(),
-    candidate: z.lazy(() =>
-      InlineAssessmentOrderReceivedWebhookPayloadCandidate$outboundSchema
-    ),
-    application: z.lazy(() =>
-      InlineAssessmentOrderReceivedWebhookPayloadApplication$outboundSchema
-    ),
-    job: z.lazy(() =>
-      InlineAssessmentOrderReceivedWebhookPayloadJob$outboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      package_id: z.string(),
+      status: InlineAssessmentOrderReceivedWebhookPayloadStatus$outboundSchema,
+      integration_id: z.string(),
+      candidate: z.lazy(() =>
+        InlineAssessmentOrderReceivedWebhookPayloadCandidate$outboundSchema
+      ),
+      application: z.lazy(() =>
+        InlineAssessmentOrderReceivedWebhookPayloadApplication$outboundSchema
+      ),
+      job: z.lazy(() =>
+        InlineAssessmentOrderReceivedWebhookPayloadJob$outboundSchema
+      ),
+    })
+  );
 
 export function inlineAssessmentOrderReceivedWebhookPayloadDataToJSON(
   inlineAssessmentOrderReceivedWebhookPayloadData:
@@ -646,13 +668,15 @@ export const InlineAssessmentOrderReceivedWebhookPayload$inboundSchema:
     InlineAssessmentOrderReceivedWebhookPayload,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    type: InlineAssessmentOrderReceivedWebhookPayloadType$inboundSchema,
-    data: z.lazy(() =>
-      InlineAssessmentOrderReceivedWebhookPayloadData$inboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      type: InlineAssessmentOrderReceivedWebhookPayloadType$inboundSchema,
+      data: z.lazy(() =>
+        InlineAssessmentOrderReceivedWebhookPayloadData$inboundSchema
+      ),
+    })
+  );
 /** @internal */
 export type InlineAssessmentOrderReceivedWebhookPayload$Outbound = {
   id: string;
@@ -666,13 +690,15 @@ export const InlineAssessmentOrderReceivedWebhookPayload$outboundSchema:
     InlineAssessmentOrderReceivedWebhookPayload$Outbound,
     z.ZodTypeDef,
     InlineAssessmentOrderReceivedWebhookPayload
-  > = z.object({
-    id: z.string(),
-    type: InlineAssessmentOrderReceivedWebhookPayloadType$outboundSchema,
-    data: z.lazy(() =>
-      InlineAssessmentOrderReceivedWebhookPayloadData$outboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      type: InlineAssessmentOrderReceivedWebhookPayloadType$outboundSchema,
+      data: z.lazy(() =>
+        InlineAssessmentOrderReceivedWebhookPayloadData$outboundSchema
+      ),
+    })
+  );
 
 export function inlineAssessmentOrderReceivedWebhookPayloadToJSON(
   inlineAssessmentOrderReceivedWebhookPayload:

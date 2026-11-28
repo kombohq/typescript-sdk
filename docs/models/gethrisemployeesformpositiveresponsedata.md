@@ -81,6 +81,6 @@ let value: GetHrisEmployeesFormPositiveResponseData = {
 
 ## Fields
 
-| Field                               | Type                                | Required                            | Description                         |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `properties`                        | Record<string, *models.Properties*> | :heavy_check_mark:                  | N/A                                 |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `properties`                                                                 | Record<string, *models.GetHrisEmployeesFormPositiveResponsePropertiesUnion*> | :heavy_check_mark:                                                           | N/A                                                                          |

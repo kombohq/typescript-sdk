@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -130,8 +131,8 @@ export type PutAtsApplicationsApplicationIdStageRequestBody = {
 };
 
 /** @internal */
-export const StepType$outboundSchema: z.ZodNativeEnum<typeof StepType> = z
-  .nativeEnum(StepType);
+export const StepType$outboundSchema: z.ZodNativeEnum<typeof StepType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(StepType));
 
 /** @internal */
 export type PutAtsApplicationsApplicationIdStageRequestBodyWorkday$Outbound = {
@@ -145,15 +146,17 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyWorkday$outboundSche
     PutAtsApplicationsApplicationIdStageRequestBodyWorkday$Outbound,
     z.ZodTypeDef,
     PutAtsApplicationsApplicationIdStageRequestBodyWorkday
-  > = z.object({
-    workflow_step_id: z.string().optional(),
-    step_type: StepType$outboundSchema.optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      workflow_step_id: "Workflow_Step_ID",
-      step_type: "Step_Type",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      workflow_step_id: z.string().optional(),
+      step_type: StepType$outboundSchema.optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        workflow_step_id: "Workflow_Step_ID",
+        step_type: "Step_Type",
+      });
+    })
+  );
 
 export function putAtsApplicationsApplicationIdStageRequestBodyWorkdayToJSON(
   putAtsApplicationsApplicationIdStageRequestBodyWorkday:
@@ -178,13 +181,15 @@ export const PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$outbo
     PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$Outbound,
     z.ZodTypeDef,
     PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors
-  > = z.object({
-    job_application: z.record(z.any()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      job_application: "JobApplication",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      job_application: z.record(z.any()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        job_application: "JobApplication",
+      });
+    })
+  );
 
 export function putAtsApplicationsApplicationIdStageRequestBodySuccessfactorsToJSON(
   putAtsApplicationsApplicationIdStageRequestBodySuccessfactors:
@@ -207,9 +212,11 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyLever$outboundSchema
     PutAtsApplicationsApplicationIdStageRequestBodyLever$Outbound,
     z.ZodTypeDef,
     PutAtsApplicationsApplicationIdStageRequestBodyLever
-  > = z.object({
-    perform_as: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      perform_as: z.string().optional(),
+    })
+  );
 
 export function putAtsApplicationsApplicationIdStageRequestBodyLeverToJSON(
   putAtsApplicationsApplicationIdStageRequestBodyLever:
@@ -234,13 +241,15 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$outbound
     PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$Outbound,
     z.ZodTypeDef,
     PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders
-  > = z.object({
-    on_behalf_of: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      on_behalf_of: "On-Behalf-Of",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of: z.nullable(z.string()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        on_behalf_of: "On-Behalf-Of",
+      });
+    })
+  );
 
 export function putAtsApplicationsApplicationIdStageRequestBodyPostHeadersToJSON(
   putAtsApplicationsApplicationIdStageRequestBodyPostHeaders:
@@ -266,11 +275,13 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$outboundS
     PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$Outbound,
     z.ZodTypeDef,
     PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse
-  > = z.object({
-    post_headers: z.lazy(() =>
-      PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      post_headers: z.lazy(() =>
+        PutAtsApplicationsApplicationIdStageRequestBodyPostHeaders$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function putAtsApplicationsApplicationIdStageRequestBodyGreenhouseToJSON(
   putAtsApplicationsApplicationIdStageRequestBodyGreenhouse:
@@ -293,9 +304,11 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyWorkable$outboundSch
     PutAtsApplicationsApplicationIdStageRequestBodyWorkable$Outbound,
     z.ZodTypeDef,
     PutAtsApplicationsApplicationIdStageRequestBodyWorkable
-  > = z.object({
-    on_behalf_of_user_remote_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of_user_remote_id: z.string().optional(),
+    })
+  );
 
 export function putAtsApplicationsApplicationIdStageRequestBodyWorkableToJSON(
   putAtsApplicationsApplicationIdStageRequestBodyWorkable:
@@ -333,23 +346,25 @@ export const PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$outboun
     PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$Outbound,
     z.ZodTypeDef,
     PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields
-  > = z.object({
-    workday: z.lazy(() =>
-      PutAtsApplicationsApplicationIdStageRequestBodyWorkday$outboundSchema
-    ).optional(),
-    successfactors: z.lazy(() =>
-      PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$outboundSchema
-    ).optional(),
-    lever: z.lazy(() =>
-      PutAtsApplicationsApplicationIdStageRequestBodyLever$outboundSchema
-    ).optional(),
-    greenhouse: z.lazy(() =>
-      PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$outboundSchema
-    ).optional(),
-    workable: z.lazy(() =>
-      PutAtsApplicationsApplicationIdStageRequestBodyWorkable$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      workday: z.lazy(() =>
+        PutAtsApplicationsApplicationIdStageRequestBodyWorkday$outboundSchema
+      ).optional(),
+      successfactors: z.lazy(() =>
+        PutAtsApplicationsApplicationIdStageRequestBodySuccessfactors$outboundSchema
+      ).optional(),
+      lever: z.lazy(() =>
+        PutAtsApplicationsApplicationIdStageRequestBodyLever$outboundSchema
+      ).optional(),
+      greenhouse: z.lazy(() =>
+        PutAtsApplicationsApplicationIdStageRequestBodyGreenhouse$outboundSchema
+      ).optional(),
+      workable: z.lazy(() =>
+        PutAtsApplicationsApplicationIdStageRequestBodyWorkable$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function putAtsApplicationsApplicationIdStageRequestBodyRemoteFieldsToJSON(
   putAtsApplicationsApplicationIdStageRequestBodyRemoteFields:
@@ -375,12 +390,14 @@ export const PutAtsApplicationsApplicationIdStageRequestBody$outboundSchema:
     PutAtsApplicationsApplicationIdStageRequestBody$Outbound,
     z.ZodTypeDef,
     PutAtsApplicationsApplicationIdStageRequestBody
-  > = z.object({
-    stage_id: z.string(),
-    remote_fields: z.lazy(() =>
-      PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      stage_id: z.string(),
+      remote_fields: z.lazy(() =>
+        PutAtsApplicationsApplicationIdStageRequestBodyRemoteFields$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function putAtsApplicationsApplicationIdStageRequestBodyToJSON(
   putAtsApplicationsApplicationIdStageRequestBody:

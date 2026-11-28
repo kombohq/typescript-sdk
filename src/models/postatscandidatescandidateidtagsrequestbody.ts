@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type PostAtsCandidatesCandidateIdTagsRequestBodyTag = {
   /**
@@ -81,9 +82,11 @@ export const PostAtsCandidatesCandidateIdTagsRequestBodyTag$outboundSchema:
     PostAtsCandidatesCandidateIdTagsRequestBodyTag$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdTagsRequestBodyTag
-  > = z.object({
-    name: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: z.string(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdTagsRequestBodyTagToJSON(
   postAtsCandidatesCandidateIdTagsRequestBodyTag:
@@ -107,13 +110,15 @@ export const PostAtsCandidatesCandidateIdTagsRequestBodyPostHeaders$outboundSche
     PostAtsCandidatesCandidateIdTagsRequestBodyPostHeaders$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdTagsRequestBodyPostHeaders
-  > = z.object({
-    on_behalf_of: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      on_behalf_of: "On-Behalf-Of",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of: z.nullable(z.string()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        on_behalf_of: "On-Behalf-Of",
+      });
+    })
+  );
 
 export function postAtsCandidatesCandidateIdTagsRequestBodyPostHeadersToJSON(
   postAtsCandidatesCandidateIdTagsRequestBodyPostHeaders:
@@ -139,11 +144,13 @@ export const PostAtsCandidatesCandidateIdTagsRequestBodyGreenhouse$outboundSchem
     PostAtsCandidatesCandidateIdTagsRequestBodyGreenhouse$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdTagsRequestBodyGreenhouse
-  > = z.object({
-    post_headers: z.lazy(() =>
-      PostAtsCandidatesCandidateIdTagsRequestBodyPostHeaders$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      post_headers: z.lazy(() =>
+        PostAtsCandidatesCandidateIdTagsRequestBodyPostHeaders$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdTagsRequestBodyGreenhouseToJSON(
   postAtsCandidatesCandidateIdTagsRequestBodyGreenhouse:
@@ -167,9 +174,11 @@ export const PostAtsCandidatesCandidateIdTagsRequestBodyWorkable$outboundSchema:
     PostAtsCandidatesCandidateIdTagsRequestBodyWorkable$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdTagsRequestBodyWorkable
-  > = z.object({
-    on_behalf_of_user_remote_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of_user_remote_id: z.string().optional(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdTagsRequestBodyWorkableToJSON(
   postAtsCandidatesCandidateIdTagsRequestBodyWorkable:
@@ -198,14 +207,16 @@ export const PostAtsCandidatesCandidateIdTagsRequestBodyRemoteFields$outboundSch
     PostAtsCandidatesCandidateIdTagsRequestBodyRemoteFields$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdTagsRequestBodyRemoteFields
-  > = z.object({
-    greenhouse: z.lazy(() =>
-      PostAtsCandidatesCandidateIdTagsRequestBodyGreenhouse$outboundSchema
-    ).optional(),
-    workable: z.lazy(() =>
-      PostAtsCandidatesCandidateIdTagsRequestBodyWorkable$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      greenhouse: z.lazy(() =>
+        PostAtsCandidatesCandidateIdTagsRequestBodyGreenhouse$outboundSchema
+      ).optional(),
+      workable: z.lazy(() =>
+        PostAtsCandidatesCandidateIdTagsRequestBodyWorkable$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdTagsRequestBodyRemoteFieldsToJSON(
   postAtsCandidatesCandidateIdTagsRequestBodyRemoteFields:
@@ -231,14 +242,16 @@ export const PostAtsCandidatesCandidateIdTagsRequestBody$outboundSchema:
     PostAtsCandidatesCandidateIdTagsRequestBody$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdTagsRequestBody
-  > = z.object({
-    tag: z.lazy(() =>
-      PostAtsCandidatesCandidateIdTagsRequestBodyTag$outboundSchema
-    ),
-    remote_fields: z.lazy(() =>
-      PostAtsCandidatesCandidateIdTagsRequestBodyRemoteFields$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      tag: z.lazy(() =>
+        PostAtsCandidatesCandidateIdTagsRequestBodyTag$outboundSchema
+      ),
+      remote_fields: z.lazy(() =>
+        PostAtsCandidatesCandidateIdTagsRequestBodyRemoteFields$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsCandidatesCandidateIdTagsRequestBodyToJSON(
   postAtsCandidatesCandidateIdTagsRequestBody:

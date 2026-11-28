@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -41,8 +41,10 @@ export type GetAssessmentPackagesPositiveResponse = {
 
 /** @internal */
 export const GetAssessmentPackagesPositiveResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetAssessmentPackagesPositiveResponseType> = z
-    .nativeEnum(GetAssessmentPackagesPositiveResponseType);
+  z.ZodNativeEnum<typeof GetAssessmentPackagesPositiveResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetAssessmentPackagesPositiveResponseType)
+    );
 
 /** @internal */
 export const GetAssessmentPackagesPositiveResponsePackage$inboundSchema:
@@ -50,15 +52,17 @@ export const GetAssessmentPackagesPositiveResponsePackage$inboundSchema:
     GetAssessmentPackagesPositiveResponsePackage,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    name: z.string(),
-    description: z.string(),
-    updated_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    type: z.nullable(GetAssessmentPackagesPositiveResponseType$inboundSchema),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      name: z.string(),
+      description: z.string(),
+      updated_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      type: z.nullable(GetAssessmentPackagesPositiveResponseType$inboundSchema),
+    })
+  );
 
 export function getAssessmentPackagesPositiveResponsePackageFromJSON(
   jsonString: string,
@@ -81,11 +85,13 @@ export const GetAssessmentPackagesPositiveResponseData$inboundSchema: z.ZodType<
   GetAssessmentPackagesPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  packages: z.array(
-    z.lazy(() => GetAssessmentPackagesPositiveResponsePackage$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    packages: z.array(
+      z.lazy(() => GetAssessmentPackagesPositiveResponsePackage$inboundSchema),
+    ),
+  })
+);
 
 export function getAssessmentPackagesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -108,10 +114,12 @@ export const GetAssessmentPackagesPositiveResponse$inboundSchema: z.ZodType<
   GetAssessmentPackagesPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAssessmentPackagesPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetAssessmentPackagesPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getAssessmentPackagesPositiveResponseFromJSON(
   jsonString: string,

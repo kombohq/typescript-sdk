@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -21,9 +21,11 @@ export const GetCheckApiKeyPositiveResponseData$inboundSchema: z.ZodType<
   GetCheckApiKeyPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environment_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environment_id: z.string(),
+  })
+);
 
 export function getCheckApiKeyPositiveResponseDataFromJSON(
   jsonString: string,
@@ -41,10 +43,12 @@ export const GetCheckApiKeyPositiveResponse$inboundSchema: z.ZodType<
   GetCheckApiKeyPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetCheckApiKeyPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetCheckApiKeyPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getCheckApiKeyPositiveResponseFromJSON(
   jsonString: string,

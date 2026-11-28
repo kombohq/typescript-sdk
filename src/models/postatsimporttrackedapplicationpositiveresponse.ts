@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -157,11 +157,13 @@ export const PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicatio
     PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id_type: z.literal("application_and_candidate_remote_ids"),
-    candidate_remote_id: z.string(),
-    application_remote_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("application_and_candidate_remote_ids"),
+      candidate_remote_id: z.string(),
+      application_remote_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIdsFromJSON(
   jsonString: string,
@@ -184,11 +186,13 @@ export const PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicatio
     PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id_type: z.literal("application_and_job_remote_ids"),
-    application_remote_id: z.string(),
-    job_remote_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("application_and_job_remote_ids"),
+      application_remote_id: z.string(),
+      job_remote_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIdsFromJSON(
   jsonString: string,
@@ -211,14 +215,16 @@ export const PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion$inbo
     PostAtsImportTrackedApplicationPositiveResponseErecruiterUnion,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() =>
-      PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$inboundSchema
-    ),
-    z.lazy(() =>
-      PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$inboundSchema
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() =>
+        PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$inboundSchema
+      ),
+      z.lazy(() =>
+        PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$inboundSchema
+      ),
+    ])
+  );
 
 export function postAtsImportTrackedApplicationPositiveResponseErecruiterUnionFromJSON(
   jsonString: string,
@@ -241,10 +247,12 @@ export const PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplic
     PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id_type: z.literal("application_remote_id"),
-    application_remote_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("application_remote_id"),
+      application_remote_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteIDFromJSON(
   jsonString: string,
@@ -267,8 +275,10 @@ export const PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion$
     PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnion,
     z.ZodTypeDef,
     unknown
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.lazy(() =>
+      PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$inboundSchema
+    )
   );
 
 export function postAtsImportTrackedApplicationPositiveResponseSuccessfactorsUnionFromJSON(
@@ -292,10 +302,12 @@ export const PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID
     PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id_type: z.literal("placement_id"),
-    placement_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("placement_id"),
+      placement_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationPositiveResponseRecruiteePlacementIDFromJSON(
   jsonString: string,
@@ -318,8 +330,10 @@ export const PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion$inbou
     PostAtsImportTrackedApplicationPositiveResponseRecruiteeUnion,
     z.ZodTypeDef,
     unknown
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.lazy(() =>
+      PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$inboundSchema
+    )
   );
 
 export function postAtsImportTrackedApplicationPositiveResponseRecruiteeUnionFromJSON(
@@ -343,10 +357,12 @@ export const PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicatio
     PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id_type: z.literal("application_id"),
-    application_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("application_id"),
+      application_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationIDFromJSON(
   jsonString: string,
@@ -369,8 +385,10 @@ export const PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion$inbo
     PostAtsImportTrackedApplicationPositiveResponseGreenhouseUnion,
     z.ZodTypeDef,
     unknown
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.lazy(() =>
+      PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$inboundSchema
+    )
   );
 
 export function postAtsImportTrackedApplicationPositiveResponseGreenhouseUnionFromJSON(
@@ -394,10 +412,12 @@ export const PostAtsImportTrackedApplicationPositiveResponseGreenhousev3Applicat
     PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id_type: z.literal("application_id"),
-    application_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("application_id"),
+      application_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationIDFromJSON(
   jsonString: string,
@@ -420,8 +440,10 @@ export const PostAtsImportTrackedApplicationPositiveResponseGreenhousev3Union$in
     PostAtsImportTrackedApplicationPositiveResponseGreenhousev3Union,
     z.ZodTypeDef,
     unknown
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.lazy(() =>
+      PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID$inboundSchema
+    )
   );
 
 export function postAtsImportTrackedApplicationPositiveResponseGreenhousev3UnionFromJSON(
@@ -445,10 +467,12 @@ export const PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$
     PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id_type: z.literal("application_id"),
-    application_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("application_id"),
+      application_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationIDFromJSON(
   jsonString: string,
@@ -471,8 +495,10 @@ export const PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion$inboundS
     PostAtsImportTrackedApplicationPositiveResponseOnlyfyUnion,
     z.ZodTypeDef,
     unknown
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.lazy(() =>
+      PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$inboundSchema
+    )
   );
 
 export function postAtsImportTrackedApplicationPositiveResponseOnlyfyUnionFromJSON(
@@ -496,11 +522,13 @@ export const PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandi
     PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id_type: z.literal("candidate_and_job_remote_ids"),
-    candidate_remote_id: z.string(),
-    job_remote_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("candidate_and_job_remote_ids"),
+      candidate_remote_id: z.string(),
+      job_remote_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIdsFromJSON(
   jsonString: string,
@@ -523,8 +551,10 @@ export const PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion
     PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnion,
     z.ZodTypeDef,
     unknown
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.lazy(() =>
+      PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$inboundSchema
+    )
   );
 
 export function postAtsImportTrackedApplicationPositiveResponseSmartrecruitersUnionFromJSON(
@@ -547,34 +577,36 @@ export const ImportedId$inboundSchema: z.ZodType<
   ImportedId,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  erecruiter: z.union([
-    z.lazy(() =>
-      PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$inboundSchema
-    ),
-    z.lazy(() =>
-      PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$inboundSchema
-    ),
-  ]).optional(),
-  successfactors: z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$inboundSchema
-  ).optional(),
-  recruitee: z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$inboundSchema
-  ).optional(),
-  greenhouse: z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$inboundSchema
-  ).optional(),
-  greenhousev3: z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID$inboundSchema
-  ).optional(),
-  onlyfy: z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$inboundSchema
-  ).optional(),
-  smartrecruiters: z.lazy(() =>
-    PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$inboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    erecruiter: z.union([
+      z.lazy(() =>
+        PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndJobRemoteIds$inboundSchema
+      ),
+      z.lazy(() =>
+        PostAtsImportTrackedApplicationPositiveResponseErecruiterApplicationAndCandidateRemoteIds$inboundSchema
+      ),
+    ]).optional(),
+    successfactors: z.lazy(() =>
+      PostAtsImportTrackedApplicationPositiveResponseSuccessfactorsApplicationRemoteID$inboundSchema
+    ).optional(),
+    recruitee: z.lazy(() =>
+      PostAtsImportTrackedApplicationPositiveResponseRecruiteePlacementID$inboundSchema
+    ).optional(),
+    greenhouse: z.lazy(() =>
+      PostAtsImportTrackedApplicationPositiveResponseGreenhouseApplicationID$inboundSchema
+    ).optional(),
+    greenhousev3: z.lazy(() =>
+      PostAtsImportTrackedApplicationPositiveResponseGreenhousev3ApplicationID$inboundSchema
+    ).optional(),
+    onlyfy: z.lazy(() =>
+      PostAtsImportTrackedApplicationPositiveResponseOnlyfyApplicationID$inboundSchema
+    ).optional(),
+    smartrecruiters: z.lazy(() =>
+      PostAtsImportTrackedApplicationPositiveResponseSmartrecruitersCandidateAndJobRemoteIds$inboundSchema
+    ).optional(),
+  })
+);
 
 export function importedIdFromJSON(
   jsonString: string,
@@ -592,13 +624,15 @@ export const PostAtsImportTrackedApplicationPositiveResponseData$inboundSchema:
     PostAtsImportTrackedApplicationPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    tracked_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    imported_id: z.lazy(() => ImportedId$inboundSchema),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      tracked_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      imported_id: z.lazy(() => ImportedId$inboundSchema),
+    })
+  );
 
 export function postAtsImportTrackedApplicationPositiveResponseDataFromJSON(
   jsonString: string,
@@ -622,9 +656,11 @@ export const PostAtsImportTrackedApplicationPositiveResponseWarning$inboundSchem
     PostAtsImportTrackedApplicationPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -647,17 +683,17 @@ export const PostAtsImportTrackedApplicationPositiveResponse$inboundSchema:
     PostAtsImportTrackedApplicationPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PostAtsImportTrackedApplicationPositiveResponseData$inboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        PostAtsImportTrackedApplicationPositiveResponseWarning$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        PostAtsImportTrackedApplicationPositiveResponseData$inboundSchema
       ),
-    ),
-  });
+      warnings: z.array(z.lazy(() =>
+        PostAtsImportTrackedApplicationPositiveResponseWarning$inboundSchema
+      )),
+    })
+  );
 
 export function postAtsImportTrackedApplicationPositiveResponseFromJSON(
   jsonString: string,

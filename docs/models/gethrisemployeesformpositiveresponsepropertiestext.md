@@ -1,13 +1,13 @@
-# PropertiesText
+# GetHrisEmployeesFormPositiveResponsePropertiesText
 
 ## Example Usage
 
 ```typescript
-import { PropertiesText } from "@kombo-api/sdk/models";
+import { GetHrisEmployeesFormPositiveResponsePropertiesText } from "@kombo-api/sdk/models";
 
-let value: PropertiesText = {
+let value: GetHrisEmployeesFormPositiveResponsePropertiesText = {
   label: "<value>",
-  required: true,
+  required: false,
   type: "text",
 };
 ```

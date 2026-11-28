@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -88,9 +88,10 @@ export type ConnectionFlowFailedWebhookPayload = {
 
 /** @internal */
 export const ConnectionFlowFailedWebhookPayloadType$inboundSchema:
-  z.ZodNativeEnum<typeof ConnectionFlowFailedWebhookPayloadType> = z.nativeEnum(
-    ConnectionFlowFailedWebhookPayloadType,
-  );
+  z.ZodNativeEnum<typeof ConnectionFlowFailedWebhookPayloadType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ConnectionFlowFailedWebhookPayloadType)
+    );
 /** @internal */
 export const ConnectionFlowFailedWebhookPayloadType$outboundSchema:
   z.ZodNativeEnum<typeof ConnectionFlowFailedWebhookPayloadType> =
@@ -100,7 +101,9 @@ export const ConnectionFlowFailedWebhookPayloadType$outboundSchema:
 export const ConnectionFlowFailedWebhookPayloadIntegrationCategory$inboundSchema:
   z.ZodNativeEnum<
     typeof ConnectionFlowFailedWebhookPayloadIntegrationCategory
-  > = z.nativeEnum(ConnectionFlowFailedWebhookPayloadIntegrationCategory);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(ConnectionFlowFailedWebhookPayloadIntegrationCategory)
+  );
 /** @internal */
 export const ConnectionFlowFailedWebhookPayloadIntegrationCategory$outboundSchema:
   z.ZodNativeEnum<
@@ -112,11 +115,13 @@ export const ConnectionFlowFailedWebhookPayloadEndUser$inboundSchema: z.ZodType<
   ConnectionFlowFailedWebhookPayloadEndUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  organization_name: z.string(),
-  creator_email: z.nullable(z.string()),
-  origin_id: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organization_name: z.string(),
+    creator_email: z.nullable(z.string()),
+    origin_id: z.nullable(z.string()),
+  })
+);
 /** @internal */
 export type ConnectionFlowFailedWebhookPayloadEndUser$Outbound = {
   organization_name: string;
@@ -130,11 +135,13 @@ export const ConnectionFlowFailedWebhookPayloadEndUser$outboundSchema:
     ConnectionFlowFailedWebhookPayloadEndUser$Outbound,
     z.ZodTypeDef,
     ConnectionFlowFailedWebhookPayloadEndUser
-  > = z.object({
-    organization_name: z.string(),
-    creator_email: z.nullable(z.string()),
-    origin_id: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      organization_name: z.string(),
+      creator_email: z.nullable(z.string()),
+      origin_id: z.nullable(z.string()),
+    })
+  );
 
 export function connectionFlowFailedWebhookPayloadEndUserToJSON(
   connectionFlowFailedWebhookPayloadEndUser:
@@ -167,15 +174,17 @@ export const ConnectionFlowFailedWebhookPayloadData$inboundSchema: z.ZodType<
   ConnectionFlowFailedWebhookPayloadData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integration_tool: z.string(),
-  integration_category:
-    ConnectionFlowFailedWebhookPayloadIntegrationCategory$inboundSchema,
-  end_user: z.lazy(() =>
-    ConnectionFlowFailedWebhookPayloadEndUser$inboundSchema
-  ),
-  log_url: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration_tool: z.string(),
+    integration_category:
+      ConnectionFlowFailedWebhookPayloadIntegrationCategory$inboundSchema,
+    end_user: z.lazy(() =>
+      ConnectionFlowFailedWebhookPayloadEndUser$inboundSchema
+    ),
+    log_url: z.string(),
+  })
+);
 /** @internal */
 export type ConnectionFlowFailedWebhookPayloadData$Outbound = {
   integration_tool: string;
@@ -189,15 +198,17 @@ export const ConnectionFlowFailedWebhookPayloadData$outboundSchema: z.ZodType<
   ConnectionFlowFailedWebhookPayloadData$Outbound,
   z.ZodTypeDef,
   ConnectionFlowFailedWebhookPayloadData
-> = z.object({
-  integration_tool: z.string(),
-  integration_category:
-    ConnectionFlowFailedWebhookPayloadIntegrationCategory$outboundSchema,
-  end_user: z.lazy(() =>
-    ConnectionFlowFailedWebhookPayloadEndUser$outboundSchema
-  ),
-  log_url: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration_tool: z.string(),
+    integration_category:
+      ConnectionFlowFailedWebhookPayloadIntegrationCategory$outboundSchema,
+    end_user: z.lazy(() =>
+      ConnectionFlowFailedWebhookPayloadEndUser$outboundSchema
+    ),
+    log_url: z.string(),
+  })
+);
 
 export function connectionFlowFailedWebhookPayloadDataToJSON(
   connectionFlowFailedWebhookPayloadData:
@@ -225,11 +236,13 @@ export const ConnectionFlowFailedWebhookPayload$inboundSchema: z.ZodType<
   ConnectionFlowFailedWebhookPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  type: ConnectionFlowFailedWebhookPayloadType$inboundSchema,
-  data: z.lazy(() => ConnectionFlowFailedWebhookPayloadData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: ConnectionFlowFailedWebhookPayloadType$inboundSchema,
+    data: z.lazy(() => ConnectionFlowFailedWebhookPayloadData$inboundSchema),
+  })
+);
 /** @internal */
 export type ConnectionFlowFailedWebhookPayload$Outbound = {
   id: string;
@@ -242,11 +255,13 @@ export const ConnectionFlowFailedWebhookPayload$outboundSchema: z.ZodType<
   ConnectionFlowFailedWebhookPayload$Outbound,
   z.ZodTypeDef,
   ConnectionFlowFailedWebhookPayload
-> = z.object({
-  id: z.string(),
-  type: ConnectionFlowFailedWebhookPayloadType$outboundSchema,
-  data: z.lazy(() => ConnectionFlowFailedWebhookPayloadData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: ConnectionFlowFailedWebhookPayloadType$outboundSchema,
+    data: z.lazy(() => ConnectionFlowFailedWebhookPayloadData$outboundSchema),
+  })
+);
 
 export function connectionFlowFailedWebhookPayloadToJSON(
   connectionFlowFailedWebhookPayload: ConnectionFlowFailedWebhookPayload,

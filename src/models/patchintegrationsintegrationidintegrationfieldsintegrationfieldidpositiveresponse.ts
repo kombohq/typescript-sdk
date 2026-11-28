@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -68,8 +68,10 @@ export type PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPos
 export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType$inboundSchema:
   z.ZodNativeEnum<
     typeof PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType
-  > = z.nativeEnum(
-    PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType,
+    )
   );
 
 /** @internal */
@@ -78,16 +80,18 @@ export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPo
     PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    key: z.string(),
-    model: z.string(),
-    type:
-      PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType$inboundSchema,
-    label: z.nullable(z.string()),
-    is_passthrough_enabled: z.boolean(),
-    is_writable: z.literal(false),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      key: z.string(),
+      model: z.string(),
+      type:
+        PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseType$inboundSchema,
+      label: z.nullable(z.string()),
+      is_passthrough_enabled: z.boolean(),
+      is_writable: z.literal(false),
+    })
+  );
 
 export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseDataFromJSON(
   jsonString: string,
@@ -110,12 +114,14 @@ export const PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPo
     PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$inboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        PatchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseData$inboundSchema
+      ),
+    })
+  );
 
 export function patchIntegrationsIntegrationIdIntegrationFieldsIntegrationFieldIdPositiveResponseFromJSON(
   jsonString: string,

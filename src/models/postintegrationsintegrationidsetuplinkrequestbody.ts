@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -52,13 +53,17 @@ export type PostIntegrationsIntegrationIdSetupLinkRequestBody = {
 export const PostIntegrationsIntegrationIdSetupLinkRequestBodyLanguage$outboundSchema:
   z.ZodNativeEnum<
     typeof PostIntegrationsIntegrationIdSetupLinkRequestBodyLanguage
-  > = z.nativeEnum(PostIntegrationsIntegrationIdSetupLinkRequestBodyLanguage);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(PostIntegrationsIntegrationIdSetupLinkRequestBodyLanguage)
+  );
 
 /** @internal */
 export const PostIntegrationsIntegrationIdSetupLinkRequestBodyLinkType$outboundSchema:
   z.ZodNativeEnum<
     typeof PostIntegrationsIntegrationIdSetupLinkRequestBodyLinkType
-  > = z.nativeEnum(PostIntegrationsIntegrationIdSetupLinkRequestBodyLinkType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(PostIntegrationsIntegrationIdSetupLinkRequestBodyLinkType)
+  );
 
 /** @internal */
 export type PostIntegrationsIntegrationIdSetupLinkRequestBody$Outbound = {
@@ -72,14 +77,16 @@ export const PostIntegrationsIntegrationIdSetupLinkRequestBody$outboundSchema:
     PostIntegrationsIntegrationIdSetupLinkRequestBody$Outbound,
     z.ZodTypeDef,
     PostIntegrationsIntegrationIdSetupLinkRequestBody
-  > = z.object({
-    language: z.nullable(
-      PostIntegrationsIntegrationIdSetupLinkRequestBodyLanguage$outboundSchema
-        .default("en"),
-    ),
-    link_type:
-      PostIntegrationsIntegrationIdSetupLinkRequestBodyLinkType$outboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      language: z.nullable(
+        PostIntegrationsIntegrationIdSetupLinkRequestBodyLanguage$outboundSchema
+          .default("en"),
+      ),
+      link_type:
+        PostIntegrationsIntegrationIdSetupLinkRequestBodyLinkType$outboundSchema,
+    })
+  );
 
 export function postIntegrationsIntegrationIdSetupLinkRequestBodyToJSON(
   postIntegrationsIntegrationIdSetupLinkRequestBody:

@@ -1,13 +1,13 @@
-# PropertiesDate
+# GetHrisEmployeesFormPositiveResponsePropertiesDate
 
 ## Example Usage
 
 ```typescript
-import { PropertiesDate } from "@kombo-api/sdk/models";
+import { GetHrisEmployeesFormPositiveResponsePropertiesDate } from "@kombo-api/sdk/models";
 
-let value: PropertiesDate = {
+let value: GetHrisEmployeesFormPositiveResponsePropertiesDate = {
   label: "<value>",
-  required: false,
+  required: true,
   type: "date",
 };
 ```

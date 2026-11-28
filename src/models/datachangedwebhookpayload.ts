@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -148,7 +148,9 @@ export type DataChangedWebhookPayload = {
 /** @internal */
 export const DataChangedWebhookPayloadType$inboundSchema: z.ZodNativeEnum<
   typeof DataChangedWebhookPayloadType
-> = z.nativeEnum(DataChangedWebhookPayloadType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DataChangedWebhookPayloadType)
+);
 /** @internal */
 export const DataChangedWebhookPayloadType$outboundSchema: z.ZodNativeEnum<
   typeof DataChangedWebhookPayloadType
@@ -156,17 +158,18 @@ export const DataChangedWebhookPayloadType$outboundSchema: z.ZodNativeEnum<
 
 /** @internal */
 export const DataChangedWebhookPayloadIntegrationCategory$inboundSchema:
-  z.ZodNativeEnum<typeof DataChangedWebhookPayloadIntegrationCategory> = z
-    .nativeEnum(DataChangedWebhookPayloadIntegrationCategory);
+  z.ZodNativeEnum<typeof DataChangedWebhookPayloadIntegrationCategory> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DataChangedWebhookPayloadIntegrationCategory)
+    );
 /** @internal */
 export const DataChangedWebhookPayloadIntegrationCategory$outboundSchema:
   z.ZodNativeEnum<typeof DataChangedWebhookPayloadIntegrationCategory> =
     DataChangedWebhookPayloadIntegrationCategory$inboundSchema;
 
 /** @internal */
-export const Name$inboundSchema: z.ZodNativeEnum<typeof Name> = z.nativeEnum(
-  Name,
-);
+export const Name$inboundSchema: z.ZodNativeEnum<typeof Name> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Name));
 /** @internal */
 export const Name$outboundSchema: z.ZodNativeEnum<typeof Name> =
   Name$inboundSchema;
@@ -176,9 +179,11 @@ export const ChangedModel$inboundSchema: z.ZodType<
   ChangedModel,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: Name$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: Name$inboundSchema,
+  })
+);
 /** @internal */
 export type ChangedModel$Outbound = {
   name: string;
@@ -189,9 +194,11 @@ export const ChangedModel$outboundSchema: z.ZodType<
   ChangedModel$Outbound,
   z.ZodTypeDef,
   ChangedModel
-> = z.object({
-  name: Name$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: Name$outboundSchema,
+  })
+);
 
 export function changedModelToJSON(changedModel: ChangedModel): string {
   return JSON.stringify(ChangedModel$outboundSchema.parse(changedModel));
@@ -211,13 +218,15 @@ export const DataChangedWebhookPayloadData$inboundSchema: z.ZodType<
   DataChangedWebhookPayloadData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integration_id: z.string(),
-  integration_tool: z.string(),
-  integration_category:
-    DataChangedWebhookPayloadIntegrationCategory$inboundSchema,
-  changed_models: z.array(z.lazy(() => ChangedModel$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration_id: z.string(),
+    integration_tool: z.string(),
+    integration_category:
+      DataChangedWebhookPayloadIntegrationCategory$inboundSchema,
+    changed_models: z.array(z.lazy(() => ChangedModel$inboundSchema)),
+  })
+);
 /** @internal */
 export type DataChangedWebhookPayloadData$Outbound = {
   integration_id: string;
@@ -231,13 +240,15 @@ export const DataChangedWebhookPayloadData$outboundSchema: z.ZodType<
   DataChangedWebhookPayloadData$Outbound,
   z.ZodTypeDef,
   DataChangedWebhookPayloadData
-> = z.object({
-  integration_id: z.string(),
-  integration_tool: z.string(),
-  integration_category:
-    DataChangedWebhookPayloadIntegrationCategory$outboundSchema,
-  changed_models: z.array(z.lazy(() => ChangedModel$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration_id: z.string(),
+    integration_tool: z.string(),
+    integration_category:
+      DataChangedWebhookPayloadIntegrationCategory$outboundSchema,
+    changed_models: z.array(z.lazy(() => ChangedModel$outboundSchema)),
+  })
+);
 
 export function dataChangedWebhookPayloadDataToJSON(
   dataChangedWebhookPayloadData: DataChangedWebhookPayloadData,
@@ -263,11 +274,13 @@ export const DataChangedWebhookPayload$inboundSchema: z.ZodType<
   DataChangedWebhookPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  type: DataChangedWebhookPayloadType$inboundSchema,
-  data: z.lazy(() => DataChangedWebhookPayloadData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: DataChangedWebhookPayloadType$inboundSchema,
+    data: z.lazy(() => DataChangedWebhookPayloadData$inboundSchema),
+  })
+);
 /** @internal */
 export type DataChangedWebhookPayload$Outbound = {
   id: string;
@@ -280,11 +293,13 @@ export const DataChangedWebhookPayload$outboundSchema: z.ZodType<
   DataChangedWebhookPayload$Outbound,
   z.ZodTypeDef,
   DataChangedWebhookPayload
-> = z.object({
-  id: z.string(),
-  type: DataChangedWebhookPayloadType$outboundSchema,
-  data: z.lazy(() => DataChangedWebhookPayloadData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: DataChangedWebhookPayloadType$outboundSchema,
+    data: z.lazy(() => DataChangedWebhookPayloadData$outboundSchema),
+  })
+);
 
 export function dataChangedWebhookPayloadToJSON(
   dataChangedWebhookPayload: DataChangedWebhookPayload,

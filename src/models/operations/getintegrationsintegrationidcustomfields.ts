@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
@@ -41,11 +41,13 @@ export const GetIntegrationsIntegrationIdCustomFieldsRequest$outboundSchema:
     GetIntegrationsIntegrationIdCustomFieldsRequest$Outbound,
     z.ZodTypeDef,
     GetIntegrationsIntegrationIdCustomFieldsRequest
-  > = z.object({
-    integration_id: z.string(),
-    cursor: z.string().optional(),
-    page_size: z.number().int().default(100),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integration_id: z.string(),
+      cursor: z.string().optional(),
+      page_size: z.number().int().default(100),
+    })
+  );
 
 export function getIntegrationsIntegrationIdCustomFieldsRequestToJSON(
   getIntegrationsIntegrationIdCustomFieldsRequest:
@@ -64,15 +66,17 @@ export const GetIntegrationsIntegrationIdCustomFieldsResponse$inboundSchema:
     GetIntegrationsIntegrationIdCustomFieldsResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    Result:
-      models
-        .GetIntegrationsIntegrationIdCustomFieldsPositiveResponse$inboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
-      "Result": "result",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      Result:
+        models
+          .GetIntegrationsIntegrationIdCustomFieldsPositiveResponse$inboundSchema,
+    }).transform((v) => {
+      return remap$(v, {
+        "Result": "result",
+      });
+    })
+  );
 
 export function getIntegrationsIntegrationIdCustomFieldsResponseFromJSON(
   jsonString: string,
