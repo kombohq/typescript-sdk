@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 
 export type PostIntegrationsIntegrationIdRelinkRequest = {
@@ -28,10 +29,13 @@ export const PostIntegrationsIntegrationIdRelinkRequest$outboundSchema:
     PostIntegrationsIntegrationIdRelinkRequest$Outbound,
     z.ZodTypeDef,
     PostIntegrationsIntegrationIdRelinkRequest
-  > = z.object({
-    integration_id: z.string(),
-    body: models.PostIntegrationsIntegrationIdRelinkRequestBody$outboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integration_id: z.string(),
+      body:
+        models.PostIntegrationsIntegrationIdRelinkRequestBody$outboundSchema,
+    })
+  );
 
 export function postIntegrationsIntegrationIdRelinkRequestToJSON(
   postIntegrationsIntegrationIdRelinkRequest:

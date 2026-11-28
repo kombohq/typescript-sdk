@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -101,8 +102,8 @@ export type PostPassthroughToolApiRequestBody = {
 };
 
 /** @internal */
-export const Method$outboundSchema: z.ZodNativeEnum<typeof Method> = z
-  .nativeEnum(Method);
+export const Method$outboundSchema: z.ZodNativeEnum<typeof Method> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Method));
 
 /** @internal */
 export type Value$Outbound = {
@@ -117,12 +118,14 @@ export const Value$outboundSchema: z.ZodType<
   Value$Outbound,
   z.ZodTypeDef,
   Value
-> = z.object({
-  name: z.string(),
-  content_type: z.string().optional(),
-  data_url: z.string().optional(),
-  data: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    content_type: z.string().optional(),
+    data_url: z.string().optional(),
+    data: z.string().optional(),
+  })
+);
 
 export function valueToJSON(value: Value): string {
   return JSON.stringify(Value$outboundSchema.parse(value));
@@ -136,7 +139,9 @@ export const ValueUnion$outboundSchema: z.ZodType<
   ValueUnion$Outbound,
   z.ZodTypeDef,
   ValueUnion
-> = z.union([z.lazy(() => Value$outboundSchema), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.lazy(() => Value$outboundSchema), z.string()])
+);
 
 export function valueUnionToJSON(valueUnion: ValueUnion): string {
   return JSON.stringify(ValueUnion$outboundSchema.parse(valueUnion));
@@ -153,10 +158,12 @@ export const MultipartFormDatum$outboundSchema: z.ZodType<
   MultipartFormDatum$Outbound,
   z.ZodTypeDef,
   MultipartFormDatum
-> = z.object({
-  name: z.string(),
-  value: z.union([z.lazy(() => Value$outboundSchema), z.string()]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    value: z.union([z.lazy(() => Value$outboundSchema), z.string()]),
+  })
+);
 
 export function multipartFormDatumToJSON(
   multipartFormDatum: MultipartFormDatum,
@@ -183,17 +190,20 @@ export const PostPassthroughToolApiRequestBody$outboundSchema: z.ZodType<
   PostPassthroughToolApiRequestBody$Outbound,
   z.ZodTypeDef,
   PostPassthroughToolApiRequestBody
-> = z.object({
-  method: Method$outboundSchema,
-  path: z.string(),
-  headers: z.record(z.string()).optional(),
-  params: z.record(z.string()).optional(),
-  data: z.any().optional(),
-  response_as_base64: z.boolean().optional(),
-  multipart_form_data: z.array(z.lazy(() => MultipartFormDatum$outboundSchema))
-    .optional(),
-  api_options: z.record(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    method: Method$outboundSchema,
+    path: z.string(),
+    headers: z.record(z.string()).optional(),
+    params: z.record(z.string()).optional(),
+    data: z.any().optional(),
+    response_as_base64: z.boolean().optional(),
+    multipart_form_data: z.array(
+      z.lazy(() => MultipartFormDatum$outboundSchema),
+    ).optional(),
+    api_options: z.record(z.string()).optional(),
+  })
+);
 
 export function postPassthroughToolApiRequestBodyToJSON(
   postPassthroughToolApiRequestBody: PostPassthroughToolApiRequestBody,

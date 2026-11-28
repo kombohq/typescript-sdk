@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -89,8 +89,10 @@ export type PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveRespons
 export const PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseType$inboundSchema:
   z.ZodNativeEnum<
     typeof PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseType
-  > = z.nativeEnum(
-    PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseType,
+    )
   );
 
 /** @internal */
@@ -99,13 +101,15 @@ export const PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveRespon
     PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseIntegrationField,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    key: z.string(),
-    type:
-      PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseType$inboundSchema,
-    label: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      key: z.string(),
+      type:
+        PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseType$inboundSchema,
+      label: z.nullable(z.string()),
+    })
+  );
 
 export function putIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseIntegrationFieldFromJSON(
   jsonString: string,
@@ -128,18 +132,18 @@ export const PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveRespon
     PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    key: z.string(),
-    integration_field: z.nullable(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      key: z.string(),
+      integration_field: z.nullable(z.lazy(() =>
         PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseIntegrationField$inboundSchema
-      ),
-    ),
-    model: z.string(),
-    label: z.nullable(z.string()),
-    description: z.nullable(z.string()),
-  });
+      )),
+      model: z.string(),
+      label: z.nullable(z.string()),
+      description: z.nullable(z.string()),
+    })
+  );
 
 export function putIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseDataFromJSON(
   jsonString: string,
@@ -162,12 +166,14 @@ export const PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveRespon
     PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseData$inboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        PutIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseData$inboundSchema
+      ),
+    })
+  );
 
 export function putIntegrationsIntegrationIdCustomFieldsCustomFieldIdPositiveResponseFromJSON(
   jsonString: string,

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export type PostAtsApplicationsApplicationIdResultLinksRequestBodyAttribute = {
@@ -214,10 +215,12 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBodyAttribute$out
     PostAtsApplicationsApplicationIdResultLinksRequestBodyAttribute$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdResultLinksRequestBodyAttribute
-  > = z.object({
-    key: z.string(),
-    value: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      key: z.string(),
+      value: z.string(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksRequestBodyAttributeToJSON(
   postAtsApplicationsApplicationIdResultLinksRequestBodyAttribute:
@@ -244,14 +247,14 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBodyDetails$outbo
     PostAtsApplicationsApplicationIdResultLinksRequestBodyDetails$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdResultLinksRequestBodyDetails
-  > = z.object({
-    custom_field_name_prefix: z.string(),
-    attributes: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      custom_field_name_prefix: z.string(),
+      attributes: z.array(z.lazy(() =>
         PostAtsApplicationsApplicationIdResultLinksRequestBodyAttribute$outboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksRequestBodyDetailsToJSON(
   postAtsApplicationsApplicationIdResultLinksRequestBodyDetails:
@@ -275,9 +278,11 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBodyIcims$outboun
     PostAtsApplicationsApplicationIdResultLinksRequestBodyIcims$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdResultLinksRequestBodyIcims
-  > = z.object({
-    assessment_package_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      assessment_package_id: z.string().optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksRequestBodyIcimsToJSON(
   postAtsApplicationsApplicationIdResultLinksRequestBodyIcims:
@@ -293,8 +298,10 @@ export function postAtsApplicationsApplicationIdResultLinksRequestBodyIcimsToJSO
 export const PostAtsApplicationsApplicationIdResultLinksRequestBodyOverrideDocumentCategory$outboundSchema:
   z.ZodNativeEnum<
     typeof PostAtsApplicationsApplicationIdResultLinksRequestBodyOverrideDocumentCategory
-  > = z.nativeEnum(
-    PostAtsApplicationsApplicationIdResultLinksRequestBodyOverrideDocumentCategory,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      PostAtsApplicationsApplicationIdResultLinksRequestBodyOverrideDocumentCategory,
+    )
   );
 
 /** @internal */
@@ -310,12 +317,14 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBodyOracle$outbou
     PostAtsApplicationsApplicationIdResultLinksRequestBodyOracle$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdResultLinksRequestBodyOracle
-  > = z.object({
-    override_document_category:
-      PostAtsApplicationsApplicationIdResultLinksRequestBodyOverrideDocumentCategory$outboundSchema
-        .optional(),
-    multi_post_to_all_current_applications: z.boolean().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      override_document_category:
+        PostAtsApplicationsApplicationIdResultLinksRequestBodyOverrideDocumentCategory$outboundSchema
+          .optional(),
+      multi_post_to_all_current_applications: z.boolean().optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksRequestBodyOracleToJSON(
   postAtsApplicationsApplicationIdResultLinksRequestBodyOracle:
@@ -339,9 +348,11 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360$out
     PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360
-  > = z.object({
-    user_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      user_id: z.string(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksRequestBodyTalent360ToJSON(
   postAtsApplicationsApplicationIdResultLinksRequestBodyTalent360:
@@ -365,9 +376,11 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit$outbo
     PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksRequestBodyTraffitToJSON(
   postAtsApplicationsApplicationIdResultLinksRequestBodyTraffit:
@@ -391,13 +404,15 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBodyPostHeaders$o
     PostAtsApplicationsApplicationIdResultLinksRequestBodyPostHeaders$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdResultLinksRequestBodyPostHeaders
-  > = z.object({
-    on_behalf_of: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      on_behalf_of: "On-Behalf-Of",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of: z.nullable(z.string()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        on_behalf_of: "On-Behalf-Of",
+      });
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksRequestBodyPostHeadersToJSON(
   postAtsApplicationsApplicationIdResultLinksRequestBodyPostHeaders:
@@ -423,11 +438,13 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBodyGreenhouse$ou
     PostAtsApplicationsApplicationIdResultLinksRequestBodyGreenhouse$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdResultLinksRequestBodyGreenhouse
-  > = z.object({
-    post_headers: z.lazy(() =>
-      PostAtsApplicationsApplicationIdResultLinksRequestBodyPostHeaders$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      post_headers: z.lazy(() =>
+        PostAtsApplicationsApplicationIdResultLinksRequestBodyPostHeaders$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksRequestBodyGreenhouseToJSON(
   postAtsApplicationsApplicationIdResultLinksRequestBodyGreenhouse:
@@ -451,9 +468,11 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBodyWorkable$outb
     PostAtsApplicationsApplicationIdResultLinksRequestBodyWorkable$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdResultLinksRequestBodyWorkable
-  > = z.object({
-    on_behalf_of_user_remote_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of_user_remote_id: z.string().optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksRequestBodyWorkableToJSON(
   postAtsApplicationsApplicationIdResultLinksRequestBodyWorkable:
@@ -494,26 +513,28 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields$
     PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields
-  > = z.object({
-    icims: z.lazy(() =>
-      PostAtsApplicationsApplicationIdResultLinksRequestBodyIcims$outboundSchema
-    ).optional(),
-    oracle: z.lazy(() =>
-      PostAtsApplicationsApplicationIdResultLinksRequestBodyOracle$outboundSchema
-    ).optional(),
-    talent360: z.lazy(() =>
-      PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360$outboundSchema
-    ).optional(),
-    traffit: z.lazy(() =>
-      PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit$outboundSchema
-    ).optional(),
-    greenhouse: z.lazy(() =>
-      PostAtsApplicationsApplicationIdResultLinksRequestBodyGreenhouse$outboundSchema
-    ).optional(),
-    workable: z.lazy(() =>
-      PostAtsApplicationsApplicationIdResultLinksRequestBodyWorkable$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      icims: z.lazy(() =>
+        PostAtsApplicationsApplicationIdResultLinksRequestBodyIcims$outboundSchema
+      ).optional(),
+      oracle: z.lazy(() =>
+        PostAtsApplicationsApplicationIdResultLinksRequestBodyOracle$outboundSchema
+      ).optional(),
+      talent360: z.lazy(() =>
+        PostAtsApplicationsApplicationIdResultLinksRequestBodyTalent360$outboundSchema
+      ).optional(),
+      traffit: z.lazy(() =>
+        PostAtsApplicationsApplicationIdResultLinksRequestBodyTraffit$outboundSchema
+      ).optional(),
+      greenhouse: z.lazy(() =>
+        PostAtsApplicationsApplicationIdResultLinksRequestBodyGreenhouse$outboundSchema
+      ).optional(),
+      workable: z.lazy(() =>
+        PostAtsApplicationsApplicationIdResultLinksRequestBodyWorkable$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFieldsToJSON(
   postAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields:
@@ -545,16 +566,18 @@ export const PostAtsApplicationsApplicationIdResultLinksRequestBody$outboundSche
     PostAtsApplicationsApplicationIdResultLinksRequestBody$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdResultLinksRequestBody
-  > = z.object({
-    label: z.string(),
-    url: z.string(),
-    details: z.lazy(() =>
-      PostAtsApplicationsApplicationIdResultLinksRequestBodyDetails$outboundSchema
-    ).optional(),
-    remote_fields: z.lazy(() =>
-      PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      label: z.string(),
+      url: z.string(),
+      details: z.lazy(() =>
+        PostAtsApplicationsApplicationIdResultLinksRequestBodyDetails$outboundSchema
+      ).optional(),
+      remote_fields: z.lazy(() =>
+        PostAtsApplicationsApplicationIdResultLinksRequestBodyRemoteFields$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdResultLinksRequestBodyToJSON(
   postAtsApplicationsApplicationIdResultLinksRequestBody:

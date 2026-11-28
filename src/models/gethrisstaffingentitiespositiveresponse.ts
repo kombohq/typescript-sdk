@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -386,18 +386,22 @@ export type GetHrisStaffingEntitiesPositiveResponse = {
 };
 
 /** @internal */
-export const ModelType$inboundSchema: z.ZodNativeEnum<typeof ModelType> = z
-  .nativeEnum(ModelType);
+export const ModelType$inboundSchema: z.ZodNativeEnum<typeof ModelType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ModelType));
 
 /** @internal */
 export const GetHrisStaffingEntitiesPositiveResponseStatus$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisStaffingEntitiesPositiveResponseStatus> = z
-    .nativeEnum(GetHrisStaffingEntitiesPositiveResponseStatus);
+  z.ZodNativeEnum<typeof GetHrisStaffingEntitiesPositiveResponseStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisStaffingEntitiesPositiveResponseStatus)
+    );
 
 /** @internal */
 export const GetHrisStaffingEntitiesPositiveResponseUnifiedType$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisStaffingEntitiesPositiveResponseUnifiedType> = z
-    .nativeEnum(GetHrisStaffingEntitiesPositiveResponseUnifiedType);
+  z.ZodNativeEnum<typeof GetHrisStaffingEntitiesPositiveResponseUnifiedType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisStaffingEntitiesPositiveResponseUnifiedType)
+    );
 
 /** @internal */
 export const GetHrisStaffingEntitiesPositiveResponseEmploymentType$inboundSchema:
@@ -405,12 +409,14 @@ export const GetHrisStaffingEntitiesPositiveResponseEmploymentType$inboundSchema
     GetHrisStaffingEntitiesPositiveResponseEmploymentType,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    remote_label: z.string(),
-    unified_type: z.nullable(
-      GetHrisStaffingEntitiesPositiveResponseUnifiedType$inboundSchema,
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_label: z.string(),
+      unified_type: z.nullable(
+        GetHrisStaffingEntitiesPositiveResponseUnifiedType$inboundSchema,
+      ),
+    })
+  );
 
 export function getHrisStaffingEntitiesPositiveResponseEmploymentTypeFromJSON(
   jsonString: string,
@@ -434,12 +440,14 @@ export const GetHrisStaffingEntitiesPositiveResponseLocation$inboundSchema:
     GetHrisStaffingEntitiesPositiveResponseLocation,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()),
-    name: z.nullable(z.string()),
-    type: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      remote_id: z.nullable(z.string()),
+      name: z.nullable(z.string()),
+      type: z.nullable(z.string()),
+    })
+  );
 
 export function getHrisStaffingEntitiesPositiveResponseLocationFromJSON(
   jsonString: string,
@@ -463,11 +471,13 @@ export const GetHrisStaffingEntitiesPositiveResponseLegalEntity$inboundSchema:
     GetHrisStaffingEntitiesPositiveResponseLegalEntity,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()),
-    name: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      remote_id: z.nullable(z.string()),
+      name: z.nullable(z.string()),
+    })
+  );
 
 export function getHrisStaffingEntitiesPositiveResponseLegalEntityFromJSON(
   jsonString: string,
@@ -487,8 +497,10 @@ export function getHrisStaffingEntitiesPositiveResponseLegalEntityFromJSON(
 
 /** @internal */
 export const GetHrisStaffingEntitiesPositiveResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetHrisStaffingEntitiesPositiveResponseType> = z
-    .nativeEnum(GetHrisStaffingEntitiesPositiveResponseType);
+  z.ZodNativeEnum<typeof GetHrisStaffingEntitiesPositiveResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetHrisStaffingEntitiesPositiveResponseType)
+    );
 
 /** @internal */
 export const GetHrisStaffingEntitiesPositiveResponseGroup$inboundSchema:
@@ -496,12 +508,16 @@ export const GetHrisStaffingEntitiesPositiveResponseGroup$inboundSchema:
     GetHrisStaffingEntitiesPositiveResponseGroup,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    remote_id: z.string(),
-    name: z.nullable(z.string()),
-    type: z.nullable(GetHrisStaffingEntitiesPositiveResponseType$inboundSchema),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      remote_id: z.string(),
+      name: z.nullable(z.string()),
+      type: z.nullable(
+        GetHrisStaffingEntitiesPositiveResponseType$inboundSchema,
+      ),
+    })
+  );
 
 export function getHrisStaffingEntitiesPositiveResponseGroupFromJSON(
   jsonString: string,
@@ -524,11 +540,13 @@ export const OrderedOption$inboundSchema: z.ZodType<
   OrderedOption,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    name: z.string(),
+  })
+);
 
 export function orderedOptionFromJSON(
   jsonString: string,
@@ -545,12 +563,14 @@ export const ProficiencyScaleSingleSelect$inboundSchema: z.ZodType<
   ProficiencyScaleSingleSelect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  type: z.literal("SINGLE_SELECT"),
-  ordered_options: z.array(z.lazy(() => OrderedOption$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    type: z.literal("SINGLE_SELECT"),
+    ordered_options: z.array(z.lazy(() => OrderedOption$inboundSchema)),
+  })
+);
 
 export function proficiencyScaleSingleSelectFromJSON(
   jsonString: string,
@@ -567,14 +587,16 @@ export const ProficiencyScaleNumeric$inboundSchema: z.ZodType<
   ProficiencyScaleNumeric,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  type: z.literal("NUMERIC"),
-  min: z.nullable(z.number()),
-  max: z.nullable(z.number()),
-  step: z.nullable(z.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    type: z.literal("NUMERIC"),
+    min: z.nullable(z.number()),
+    max: z.nullable(z.number()),
+    step: z.nullable(z.number()),
+  })
+);
 
 export function proficiencyScaleNumericFromJSON(
   jsonString: string,
@@ -591,10 +613,12 @@ export const ProficiencyScale$inboundSchema: z.ZodType<
   ProficiencyScale,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => ProficiencyScaleNumeric$inboundSchema),
-  z.lazy(() => ProficiencyScaleSingleSelect$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => ProficiencyScaleNumeric$inboundSchema),
+    z.lazy(() => ProficiencyScaleSingleSelect$inboundSchema),
+  ])
+);
 
 export function proficiencyScaleFromJSON(
   jsonString: string,
@@ -611,17 +635,17 @@ export const SkillSkill$inboundSchema: z.ZodType<
   SkillSkill,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  name: z.nullable(z.string()),
-  proficiency_scale: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    name: z.nullable(z.string()),
+    proficiency_scale: z.nullable(z.union([
       z.lazy(() => ProficiencyScaleNumeric$inboundSchema),
       z.lazy(() => ProficiencyScaleSingleSelect$inboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function skillSkillFromJSON(
   jsonString: string,
@@ -638,10 +662,12 @@ export const ExpectedProficiencySingleSelect$inboundSchema: z.ZodType<
   ExpectedProficiencySingleSelect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("SINGLE_SELECT"),
-  selected_option_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("SINGLE_SELECT"),
+    selected_option_id: z.string(),
+  })
+);
 
 export function expectedProficiencySingleSelectFromJSON(
   jsonString: string,
@@ -658,10 +684,12 @@ export const ExpectedProficiencyNumeric$inboundSchema: z.ZodType<
   ExpectedProficiencyNumeric,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("NUMERIC"),
-  value: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("NUMERIC"),
+    value: z.number(),
+  })
+);
 
 export function expectedProficiencyNumericFromJSON(
   jsonString: string,
@@ -678,10 +706,12 @@ export const ExpectedProficiency$inboundSchema: z.ZodType<
   ExpectedProficiency,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => ExpectedProficiencyNumeric$inboundSchema),
-  z.lazy(() => ExpectedProficiencySingleSelect$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => ExpectedProficiencyNumeric$inboundSchema),
+    z.lazy(() => ExpectedProficiencySingleSelect$inboundSchema),
+  ])
+);
 
 export function expectedProficiencyFromJSON(
   jsonString: string,
@@ -694,17 +724,17 @@ export function expectedProficiencyFromJSON(
 }
 
 /** @internal */
-export const Skill$inboundSchema: z.ZodType<Skill, z.ZodTypeDef, unknown> = z
-  .object({
-    skill_id: z.string(),
-    skill: z.lazy(() => SkillSkill$inboundSchema),
-    expected_proficiency: z.nullable(
-      z.union([
+export const Skill$inboundSchema: z.ZodType<Skill, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      skill_id: z.string(),
+      skill: z.lazy(() => SkillSkill$inboundSchema),
+      expected_proficiency: z.nullable(z.union([
         z.lazy(() => ExpectedProficiencyNumeric$inboundSchema),
         z.lazy(() => ExpectedProficiencySingleSelect$inboundSchema),
-      ]),
-    ).optional(),
-  });
+      ])).optional(),
+    })
+  );
 
 export function skillFromJSON(
   jsonString: string,
@@ -722,51 +752,51 @@ export const GetHrisStaffingEntitiesPositiveResponseResult$inboundSchema:
     GetHrisStaffingEntitiesPositiveResponseResult,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    remote_id: z.string(),
-    name: z.nullable(z.string()),
-    model_type: z.nullable(ModelType$inboundSchema),
-    description: z.nullable(z.string()),
-    status: z.nullable(
-      GetHrisStaffingEntitiesPositiveResponseStatus$inboundSchema,
-    ),
-    employment_types: z.nullable(
-      z.array(z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      remote_id: z.string(),
+      name: z.nullable(z.string()),
+      model_type: z.nullable(ModelType$inboundSchema),
+      description: z.nullable(z.string()),
+      status: z.nullable(
+        GetHrisStaffingEntitiesPositiveResponseStatus$inboundSchema,
+      ),
+      employment_types: z.nullable(z.array(z.lazy(() =>
         GetHrisStaffingEntitiesPositiveResponseEmploymentType$inboundSchema
-      )),
-    ),
-    number_of_openings: z.nullable(z.number()),
-    parent_id: z.nullable(z.string()),
-    remote_url: z.nullable(z.string()),
-    remote_created_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    remote_updated_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    changed_at: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    remote_deleted_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    custom_fields: z.nullable(z.record(z.any())),
-    locations: z.array(
-      z.lazy(() =>
+      ))),
+      number_of_openings: z.nullable(z.number()),
+      parent_id: z.nullable(z.string()),
+      remote_url: z.nullable(z.string()),
+      remote_created_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v =>
+          new Date(v)
+        ),
+      ),
+      remote_updated_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      changed_at: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      remote_deleted_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      custom_fields: z.nullable(z.record(z.any())),
+      locations: z.array(z.lazy(() =>
         GetHrisStaffingEntitiesPositiveResponseLocation$inboundSchema
-      ),
-    ),
-    legal_entities: z.array(
-      z.lazy(() =>
+      )),
+      legal_entities: z.array(z.lazy(() =>
         GetHrisStaffingEntitiesPositiveResponseLegalEntity$inboundSchema
-      ),
-    ),
-    groups: z.array(
-      z.lazy(() => GetHrisStaffingEntitiesPositiveResponseGroup$inboundSchema),
-    ),
-    skills: z.array(z.lazy(() => Skill$inboundSchema)),
-  });
+      )),
+      groups: z.array(z.lazy(() =>
+        GetHrisStaffingEntitiesPositiveResponseGroup$inboundSchema
+      )),
+      skills: z.array(z.lazy(() =>
+        Skill$inboundSchema
+      )),
+    })
+  );
 
 export function getHrisStaffingEntitiesPositiveResponseResultFromJSON(
   jsonString: string,
@@ -790,12 +820,16 @@ export const GetHrisStaffingEntitiesPositiveResponseData$inboundSchema:
     GetHrisStaffingEntitiesPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    next: z.nullable(z.string()),
-    results: z.array(
-      z.lazy(() => GetHrisStaffingEntitiesPositiveResponseResult$inboundSchema),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      next: z.nullable(z.string()),
+      results: z.array(
+        z.lazy(() =>
+          GetHrisStaffingEntitiesPositiveResponseResult$inboundSchema
+        ),
+      ),
+    })
+  );
 
 export function getHrisStaffingEntitiesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -818,10 +852,14 @@ export const GetHrisStaffingEntitiesPositiveResponse$inboundSchema: z.ZodType<
   GetHrisStaffingEntitiesPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisStaffingEntitiesPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() =>
+      GetHrisStaffingEntitiesPositiveResponseData$inboundSchema
+    ),
+  })
+);
 
 export function getHrisStaffingEntitiesPositiveResponseFromJSON(
   jsonString: string,

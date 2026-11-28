@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import * as openEnums from "../types/enums.js";
 import { ClosedEnum, OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -352,6 +352,10 @@ export type JobPosting = {
    * The public URL to the job posting on the ATS platform.
    */
   url: string | null;
+  /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
 };
 
 export const GetAtsJobsPositiveResponseHiringTeamRole = {
@@ -630,50 +634,60 @@ export const GetAtsJobsPositiveResponseEmploymentType$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseEmploymentType,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(GetAtsJobsPositiveResponseEmploymentType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(GetAtsJobsPositiveResponseEmploymentType)
+);
 
 /** @internal */
 export const GetAtsJobsPositiveResponseStatus$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(GetAtsJobsPositiveResponseStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(GetAtsJobsPositiveResponseStatus)
+);
 
 /** @internal */
 export const GetAtsJobsPositiveResponseVisibility$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseVisibility,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(GetAtsJobsPositiveResponseVisibility);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(GetAtsJobsPositiveResponseVisibility)
+);
 
 /** @internal */
 export const RemoteWorkStatus$inboundSchema: z.ZodType<
   RemoteWorkStatus,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(RemoteWorkStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  openEnums.inboundSchema(RemoteWorkStatus)
+);
 
 /** @internal */
 export const SalaryPeriod$inboundSchema: z.ZodType<
   SalaryPeriod,
   z.ZodTypeDef,
   unknown
-> = openEnums.inboundSchema(SalaryPeriod);
+> = /* @__PURE__ */ lazySchema$(() => openEnums.inboundSchema(SalaryPeriod));
 
 /** @internal */
 export const GetAtsJobsPositiveResponseLocation$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseLocation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  city: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.string()).optional(),
-  state: z.nullable(z.string()).optional(),
-  street_1: z.nullable(z.string()).optional(),
-  street_2: z.nullable(z.string()).optional(),
-  zip_code: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    city: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    raw: z.nullable(z.string()).optional(),
+    state: z.nullable(z.string()).optional(),
+    street_1: z.nullable(z.string()).optional(),
+    street_2: z.nullable(z.string()).optional(),
+    zip_code: z.nullable(z.string()).optional(),
+  })
+);
 
 export function getAtsJobsPositiveResponseLocationFromJSON(
   jsonString: string,
@@ -687,19 +701,21 @@ export function getAtsJobsPositiveResponseLocationFromJSON(
 }
 
 /** @internal */
-export const StageStatus$inboundSchema: z.ZodNativeEnum<typeof StageStatus> = z
-  .nativeEnum(StageStatus);
+export const StageStatus$inboundSchema: z.ZodNativeEnum<typeof StageStatus> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(StageStatus));
 
 /** @internal */
-export const Stage$inboundSchema: z.ZodType<Stage, z.ZodTypeDef, unknown> = z
-  .object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()),
-    name: z.nullable(z.string()),
-    status: z.nullable(StageStatus$inboundSchema),
-    custom_fields: z.nullable(z.record(z.any())),
-    index: z.nullable(z.number().int()).optional(),
-  });
+export const Stage$inboundSchema: z.ZodType<Stage, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      remote_id: z.nullable(z.string()),
+      name: z.nullable(z.string()),
+      status: z.nullable(StageStatus$inboundSchema),
+      custom_fields: z.nullable(z.record(z.any())),
+      index: z.nullable(z.number().int()).optional(),
+    })
+  );
 
 export function stageFromJSON(
   jsonString: string,
@@ -716,10 +732,12 @@ export const FormatUnknown$inboundSchema: z.ZodType<
   FormatUnknown,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  raw_question: z.any().optional(),
-  type: z.literal("UNKNOWN"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    raw_question: z.any().optional(),
+    type: z.literal("UNKNOWN"),
+  })
+);
 
 export function formatUnknownFromJSON(
   jsonString: string,
@@ -736,9 +754,11 @@ export const FormatInformation$inboundSchema: z.ZodType<
   FormatInformation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("INFORMATION"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("INFORMATION"),
+  })
+);
 
 export function formatInformationFromJSON(
   jsonString: string,
@@ -755,11 +775,13 @@ export const GetAtsJobsPositiveResponseOption2$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseOption2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()).optional(),
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()).optional(),
+    name: z.string(),
+  })
+);
 
 export function getAtsJobsPositiveResponseOption2FromJSON(
   jsonString: string,
@@ -776,12 +798,14 @@ export const FormatMultiSelect$inboundSchema: z.ZodType<
   FormatMultiSelect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: z.array(
-    z.lazy(() => GetAtsJobsPositiveResponseOption2$inboundSchema),
-  ),
-  type: z.literal("MULTI_SELECT"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: z.array(
+      z.lazy(() => GetAtsJobsPositiveResponseOption2$inboundSchema),
+    ),
+    type: z.literal("MULTI_SELECT"),
+  })
+);
 
 export function formatMultiSelectFromJSON(
   jsonString: string,
@@ -798,9 +822,11 @@ export const FormatDate$inboundSchema: z.ZodType<
   FormatDate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("DATE"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("DATE"),
+  })
+);
 
 export function formatDateFromJSON(
   jsonString: string,
@@ -817,9 +843,11 @@ export const FormatBoolean$inboundSchema: z.ZodType<
   FormatBoolean,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("BOOLEAN"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("BOOLEAN"),
+  })
+);
 
 export function formatBooleanFromJSON(
   jsonString: string,
@@ -833,18 +861,20 @@ export function formatBooleanFromJSON(
 
 /** @internal */
 export const DisplayType3$inboundSchema: z.ZodNativeEnum<typeof DisplayType3> =
-  z.nativeEnum(DisplayType3);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DisplayType3));
 
 /** @internal */
 export const GetAtsJobsPositiveResponseOption1$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseOption1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()).optional(),
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()).optional(),
+    name: z.string(),
+  })
+);
 
 export function getAtsJobsPositiveResponseOption1FromJSON(
   jsonString: string,
@@ -861,13 +891,15 @@ export const FormatSingleSelect$inboundSchema: z.ZodType<
   FormatSingleSelect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  display_type: z.nullable(DisplayType3$inboundSchema).optional(),
-  options: z.array(
-    z.lazy(() => GetAtsJobsPositiveResponseOption1$inboundSchema),
-  ),
-  type: z.literal("SINGLE_SELECT"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    display_type: z.nullable(DisplayType3$inboundSchema).optional(),
+    options: z.array(
+      z.lazy(() => GetAtsJobsPositiveResponseOption1$inboundSchema),
+    ),
+    type: z.literal("SINGLE_SELECT"),
+  })
+);
 
 export function formatSingleSelectFromJSON(
   jsonString: string,
@@ -884,11 +916,13 @@ export const FormatFile$inboundSchema: z.ZodType<
   FormatFile,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accepted_mime_types: z.nullable(z.array(z.string())).optional(),
-  max_file_size_bytes: z.nullable(z.number().int()).optional(),
-  type: z.literal("FILE"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accepted_mime_types: z.nullable(z.array(z.string())).optional(),
+    max_file_size_bytes: z.nullable(z.number().int()).optional(),
+    type: z.literal("FILE"),
+  })
+);
 
 export function formatFileFromJSON(
   jsonString: string,
@@ -902,19 +936,21 @@ export function formatFileFromJSON(
 
 /** @internal */
 export const DisplayType2$inboundSchema: z.ZodNativeEnum<typeof DisplayType2> =
-  z.nativeEnum(DisplayType2);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DisplayType2));
 
 /** @internal */
 export const FormatNumber$inboundSchema: z.ZodType<
   FormatNumber,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  display_type: z.nullable(DisplayType2$inboundSchema.default("FIELD")),
-  max: z.nullable(z.number()).optional(),
-  min: z.nullable(z.number()).optional(),
-  type: z.literal("NUMBER"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    display_type: z.nullable(DisplayType2$inboundSchema.default("FIELD")),
+    max: z.nullable(z.number()).optional(),
+    min: z.nullable(z.number()).optional(),
+    type: z.literal("NUMBER"),
+  })
+);
 
 export function formatNumberFromJSON(
   jsonString: string,
@@ -928,18 +964,20 @@ export function formatNumberFromJSON(
 
 /** @internal */
 export const DisplayType1$inboundSchema: z.ZodNativeEnum<typeof DisplayType1> =
-  z.nativeEnum(DisplayType1);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DisplayType1));
 
 /** @internal */
 export const FormatText$inboundSchema: z.ZodType<
   FormatText,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  display_type: z.nullable(DisplayType1$inboundSchema).optional(),
-  max_length: z.nullable(z.number().int()).optional(),
-  type: z.literal("TEXT"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    display_type: z.nullable(DisplayType1$inboundSchema).optional(),
+    max_length: z.nullable(z.number().int()).optional(),
+    type: z.literal("TEXT"),
+  })
+);
 
 export function formatTextFromJSON(
   jsonString: string,
@@ -952,18 +990,20 @@ export function formatTextFromJSON(
 }
 
 /** @internal */
-export const Format$inboundSchema: z.ZodType<Format, z.ZodTypeDef, unknown> = z
-  .union([
-    z.lazy(() => FormatText$inboundSchema),
-    z.lazy(() => FormatNumber$inboundSchema),
-    z.lazy(() => FormatFile$inboundSchema),
-    z.lazy(() => FormatSingleSelect$inboundSchema),
-    z.lazy(() => FormatBoolean$inboundSchema),
-    z.lazy(() => FormatDate$inboundSchema),
-    z.lazy(() => FormatMultiSelect$inboundSchema),
-    z.lazy(() => FormatInformation$inboundSchema),
-    z.lazy(() => FormatUnknown$inboundSchema),
-  ]);
+export const Format$inboundSchema: z.ZodType<Format, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() => FormatText$inboundSchema),
+      z.lazy(() => FormatNumber$inboundSchema),
+      z.lazy(() => FormatFile$inboundSchema),
+      z.lazy(() => FormatSingleSelect$inboundSchema),
+      z.lazy(() => FormatBoolean$inboundSchema),
+      z.lazy(() => FormatDate$inboundSchema),
+      z.lazy(() => FormatMultiSelect$inboundSchema),
+      z.lazy(() => FormatInformation$inboundSchema),
+      z.lazy(() => FormatUnknown$inboundSchema),
+    ])
+  );
 
 export function formatFromJSON(
   jsonString: string,
@@ -978,14 +1018,18 @@ export function formatFromJSON(
 /** @internal */
 export const GetAtsJobsPositiveResponseCategory$inboundSchema: z.ZodNativeEnum<
   typeof GetAtsJobsPositiveResponseCategory
-> = z.nativeEnum(GetAtsJobsPositiveResponseCategory);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetAtsJobsPositiveResponseCategory)
+);
 
 /** @internal */
 export const PreconditionOptions$inboundSchema: z.ZodType<
   PreconditionOptions,
   z.ZodTypeDef,
   unknown
-> = z.union([z.array(z.string()), z.array(z.boolean())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([z.array(z.string()), z.array(z.boolean())])
+);
 
 export function preconditionOptionsFromJSON(
   jsonString: string,
@@ -1002,13 +1046,13 @@ export const ScreeningQuestion$inboundSchema: z.ZodType<
   ScreeningQuestion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  title: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  format: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    title: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    format: z.nullable(z.union([
       z.lazy(() => FormatText$inboundSchema),
       z.lazy(() => FormatNumber$inboundSchema),
       z.lazy(() => FormatFile$inboundSchema),
@@ -1018,16 +1062,16 @@ export const ScreeningQuestion$inboundSchema: z.ZodType<
       z.lazy(() => FormatMultiSelect$inboundSchema),
       z.lazy(() => FormatInformation$inboundSchema),
       z.lazy(() => FormatUnknown$inboundSchema),
-    ]),
-  ).optional(),
-  category: z.nullable(GetAtsJobsPositiveResponseCategory$inboundSchema),
-  index: z.nullable(z.number().int()).optional(),
-  required: z.nullable(z.boolean()),
-  precondition_question_id: z.nullable(z.string()).optional(),
-  precondition_options: z.nullable(
-    z.union([z.array(z.string()), z.array(z.boolean())]),
-  ).optional(),
-});
+    ])).optional(),
+    category: z.nullable(GetAtsJobsPositiveResponseCategory$inboundSchema),
+    index: z.nullable(z.number().int()).optional(),
+    required: z.nullable(z.boolean()),
+    precondition_question_id: z.nullable(z.string()).optional(),
+    precondition_options: z.nullable(
+      z.union([z.array(z.string()), z.array(z.boolean())]),
+    ).optional(),
+  })
+);
 
 export function screeningQuestionFromJSON(
   jsonString: string,
@@ -1042,27 +1086,30 @@ export function screeningQuestionFromJSON(
 /** @internal */
 export const JobPostingStatus$inboundSchema: z.ZodNativeEnum<
   typeof JobPostingStatus
-> = z.nativeEnum(JobPostingStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(JobPostingStatus));
 
 /** @internal */
 export const JobPostingVisibility$inboundSchema: z.ZodNativeEnum<
   typeof JobPostingVisibility
-> = z.nativeEnum(JobPostingVisibility);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(JobPostingVisibility));
 
 /** @internal */
 export const JobPosting$inboundSchema: z.ZodType<
   JobPosting,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  title: z.nullable(z.string()),
-  description_html: z.nullable(z.string()),
-  status: z.nullable(JobPostingStatus$inboundSchema),
-  visibility: z.nullable(JobPostingVisibility$inboundSchema),
-  url: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    title: z.nullable(z.string()),
+    description_html: z.nullable(z.string()),
+    status: z.nullable(JobPostingStatus$inboundSchema),
+    visibility: z.nullable(JobPostingVisibility$inboundSchema),
+    url: z.nullable(z.string()),
+    custom_fields: z.nullable(z.record(z.any())),
+  })
+);
 
 export function jobPostingFromJSON(
   jsonString: string,
@@ -1076,30 +1123,37 @@ export function jobPostingFromJSON(
 
 /** @internal */
 export const GetAtsJobsPositiveResponseHiringTeamRole$inboundSchema:
-  z.ZodNativeEnum<typeof GetAtsJobsPositiveResponseHiringTeamRole> = z
-    .nativeEnum(GetAtsJobsPositiveResponseHiringTeamRole);
+  z.ZodNativeEnum<typeof GetAtsJobsPositiveResponseHiringTeamRole> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetAtsJobsPositiveResponseHiringTeamRole)
+    );
 
 /** @internal */
 export const GetAtsJobsPositiveResponseUnifiedType$inboundSchema:
-  z.ZodNativeEnum<typeof GetAtsJobsPositiveResponseUnifiedType> = z.nativeEnum(
-    GetAtsJobsPositiveResponseUnifiedType,
-  );
+  z.ZodNativeEnum<typeof GetAtsJobsPositiveResponseUnifiedType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetAtsJobsPositiveResponseUnifiedType)
+    );
 
 /** @internal */
 export const GetAtsJobsPositiveResponseScope$inboundSchema: z.ZodNativeEnum<
   typeof GetAtsJobsPositiveResponseScope
-> = z.nativeEnum(GetAtsJobsPositiveResponseScope);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetAtsJobsPositiveResponseScope)
+);
 
 /** @internal */
 export const JobRole$inboundSchema: z.ZodType<JobRole, z.ZodTypeDef, unknown> =
-  z.object({
-    remote_id: z.nullable(z.string()),
-    remote_label: z.nullable(z.string()),
-    unified_type: z.nullable(
-      GetAtsJobsPositiveResponseUnifiedType$inboundSchema,
-    ),
-    scope: GetAtsJobsPositiveResponseScope$inboundSchema,
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      remote_id: z.nullable(z.string()),
+      remote_label: z.nullable(z.string()),
+      unified_type: z.nullable(
+        GetAtsJobsPositiveResponseUnifiedType$inboundSchema,
+      ),
+      scope: GetAtsJobsPositiveResponseScope$inboundSchema,
+    })
+  );
 
 export function jobRoleFromJSON(
   jsonString: string,
@@ -1116,17 +1170,19 @@ export const GetAtsJobsPositiveResponseHiringTeam$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseHiringTeam,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.nullable(z.string()),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  email: z.nullable(z.string()).optional(),
-  hiring_team_roles: z.array(
-    GetAtsJobsPositiveResponseHiringTeamRole$inboundSchema,
-  ),
-  job_roles: z.array(z.lazy(() => JobRole$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.nullable(z.string()),
+    first_name: z.nullable(z.string()),
+    last_name: z.nullable(z.string()),
+    email: z.nullable(z.string()).optional(),
+    hiring_team_roles: z.array(
+      GetAtsJobsPositiveResponseHiringTeamRole$inboundSchema,
+    ),
+    job_roles: z.array(z.lazy(() => JobRole$inboundSchema)),
+  })
+);
 
 export function getAtsJobsPositiveResponseHiringTeamFromJSON(
   jsonString: string,
@@ -1144,59 +1200,64 @@ export const GetAtsJobsPositiveResponseResult$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  name: z.nullable(z.string()),
-  job_code: z.nullable(z.string()),
-  description: z.nullable(z.string()),
-  confidential: z.nullable(z.boolean()),
-  weekly_hours: z.nullable(z.number()),
-  employment_type: z.nullable(
-    GetAtsJobsPositiveResponseEmploymentType$inboundSchema,
-  ).optional(),
-  status: z.nullable(GetAtsJobsPositiveResponseStatus$inboundSchema).optional(),
-  visibility: z.nullable(GetAtsJobsPositiveResponseVisibility$inboundSchema)
-    .optional(),
-  category: z.nullable(z.string()),
-  department: z.nullable(z.string()),
-  post_url: z.nullable(z.string()),
-  experience_level: z.nullable(z.string()),
-  remote_work_status: z.nullable(RemoteWorkStatus$inboundSchema).optional(),
-  salary_amount: z.nullable(z.number()),
-  salary_amount_from: z.nullable(z.number()),
-  salary_amount_to: z.nullable(z.number()),
-  salary_currency: z.nullable(z.string()),
-  salary_period: z.nullable(SalaryPeriod$inboundSchema).optional(),
-  location: z.nullable(
-    z.lazy(() => GetAtsJobsPositiveResponseLocation$inboundSchema),
-  ).optional(),
-  custom_fields: z.nullable(z.record(z.any())),
-  remote_url: z.nullable(z.string()),
-  opened_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  closed_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  remote_created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  remote_updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  contact_id: z.nullable(z.string()),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  stages: z.array(z.lazy(() => Stage$inboundSchema)),
-  screening_questions: z.array(z.lazy(() => ScreeningQuestion$inboundSchema)),
-  job_postings: z.array(z.lazy(() => JobPosting$inboundSchema)),
-  hiring_team: z.array(
-    z.lazy(() => GetAtsJobsPositiveResponseHiringTeam$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    name: z.nullable(z.string()),
+    job_code: z.nullable(z.string()),
+    description: z.nullable(z.string()),
+    confidential: z.nullable(z.boolean()),
+    weekly_hours: z.nullable(z.number()),
+    employment_type: z.nullable(
+      GetAtsJobsPositiveResponseEmploymentType$inboundSchema,
+    ).optional(),
+    status: z.nullable(GetAtsJobsPositiveResponseStatus$inboundSchema)
+      .optional(),
+    visibility: z.nullable(GetAtsJobsPositiveResponseVisibility$inboundSchema)
+      .optional(),
+    category: z.nullable(z.string()),
+    department: z.nullable(z.string()),
+    post_url: z.nullable(z.string()),
+    experience_level: z.nullable(z.string()),
+    remote_work_status: z.nullable(RemoteWorkStatus$inboundSchema).optional(),
+    salary_amount: z.nullable(z.number()),
+    salary_amount_from: z.nullable(z.number()),
+    salary_amount_to: z.nullable(z.number()),
+    salary_currency: z.nullable(z.string()),
+    salary_period: z.nullable(SalaryPeriod$inboundSchema).optional(),
+    location: z.nullable(
+      z.lazy(() => GetAtsJobsPositiveResponseLocation$inboundSchema),
+    ).optional(),
+    custom_fields: z.nullable(z.record(z.any())),
+    remote_url: z.nullable(z.string()),
+    opened_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    closed_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    remote_created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    remote_updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    contact_id: z.nullable(z.string()),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    stages: z.array(z.lazy(() => Stage$inboundSchema)),
+    screening_questions: z.array(z.lazy(() => ScreeningQuestion$inboundSchema)),
+    job_postings: z.array(z.lazy(() => JobPosting$inboundSchema)),
+    hiring_team: z.array(
+      z.lazy(() => GetAtsJobsPositiveResponseHiringTeam$inboundSchema),
+    ),
+  })
+);
 
 export function getAtsJobsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -1213,12 +1274,14 @@ export const GetAtsJobsPositiveResponseData$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetAtsJobsPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetAtsJobsPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getAtsJobsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -1235,10 +1298,12 @@ export const GetAtsJobsPositiveResponse$inboundSchema: z.ZodType<
   GetAtsJobsPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAtsJobsPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetAtsJobsPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getAtsJobsPositiveResponseFromJSON(
   jsonString: string,

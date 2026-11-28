@@ -1,15 +1,21 @@
-# PropertiesObject
+# GetHrisEmployeesFormPositiveResponsePropertiesObject
 
 ## Example Usage
 
 ```typescript
-import { PropertiesObject } from "@kombo-api/sdk/models";
+import { GetHrisEmployeesFormPositiveResponsePropertiesObject } from "@kombo-api/sdk/models";
 
-let value: PropertiesObject = {
+let value: GetHrisEmployeesFormPositiveResponsePropertiesObject = {
   label: "<value>",
   required: false,
   type: "object",
-  properties: {},
+  properties: {
+    "key": {
+      label: "<value>",
+      required: true,
+      type: "checkbox",
+    },
+  },
 };
 ```
 

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -120,6 +121,38 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyTalent360 = {
 };
 
 /**
+ * Sharing and visibility options passed through to SmartRecruiters' `POST /messages/shares` `shareWith` field. Defaults to `{ openNote: true }` when not provided.
+ */
+export type ShareWith = {
+  /**
+   * Array of SmartRecruiters user remote IDs to share the note with.
+   */
+  users?: Array<string> | undefined;
+  /**
+   * Array of SmartRecruiters job remote IDs whose hiring teams the note will be shared with.
+   */
+  hiring_team_of?: Array<string> | undefined;
+  /**
+   * Whether to share the note with everyone in the company. Cannot be `true` at the same time as `openNote`.
+   */
+  everyone?: boolean | undefined;
+  /**
+   * Whether the note is visible to everyone in the company who has access to the candidate. Defaults to `false` when `shareWith` is provided.
+   */
+  open_note?: boolean | undefined;
+};
+
+/**
+ * SmartRecruiters specific remote fields for the note.
+ */
+export type PostAtsApplicationsApplicationIdNotesRequestBodySmartrecruiters = {
+  /**
+   * Sharing and visibility options passed through to SmartRecruiters' `POST /messages/shares` `shareWith` field. Defaults to `{ openNote: true }` when not provided.
+   */
+  share_with?: ShareWith | undefined;
+};
+
+/**
  * Workable specific remote fields for ATS actions.
  */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyWorkable = {
@@ -174,6 +207,12 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields = {
     | PostAtsApplicationsApplicationIdNotesRequestBodyTalent360
     | undefined;
   /**
+   * SmartRecruiters specific remote fields for the note.
+   */
+  smartrecruiters?:
+    | PostAtsApplicationsApplicationIdNotesRequestBodySmartrecruiters
+    | undefined;
+  /**
    * Workable specific remote fields for ATS actions.
    */
   workable?:
@@ -203,8 +242,8 @@ export type PostAtsApplicationsApplicationIdNotesRequestBody = {
 };
 
 /** @internal */
-export const ContentType$outboundSchema: z.ZodNativeEnum<typeof ContentType> = z
-  .nativeEnum(ContentType);
+export const ContentType$outboundSchema: z.ZodNativeEnum<typeof ContentType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ContentType));
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$Outbound =
@@ -218,9 +257,11 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$outbound
     PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor
-  > = z.object({
-    user_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      user_id: z.string().optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesRequestBodyTeamtailorToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyTeamtailor:
@@ -244,13 +285,15 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$outboun
     PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders
-  > = z.object({
-    on_behalf_of: z.nullable(z.string()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      on_behalf_of: "On-Behalf-Of",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of: z.nullable(z.string()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        on_behalf_of: "On-Behalf-Of",
+      });
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesRequestBodyPostHeadersToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyPostHeaders:
@@ -276,11 +319,13 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$outbound
     PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse
-  > = z.object({
-    post_headers: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      post_headers: z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesRequestBodyPostHeaders$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesRequestBodyGreenhouseToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyGreenhouse:
@@ -296,7 +341,9 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyGreenhouseToJSON
 export const PostAtsApplicationsApplicationIdNotesRequestBodyVisibility$outboundSchema:
   z.ZodNativeEnum<
     typeof PostAtsApplicationsApplicationIdNotesRequestBodyVisibility
-  > = z.nativeEnum(PostAtsApplicationsApplicationIdNotesRequestBodyVisibility);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(PostAtsApplicationsApplicationIdNotesRequestBodyVisibility)
+  );
 
 /** @internal */
 export type PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3$Outbound =
@@ -310,11 +357,13 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3$outbou
     PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3
-  > = z.object({
-    visibility:
-      PostAtsApplicationsApplicationIdNotesRequestBodyVisibility$outboundSchema
-        .optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      visibility:
+        PostAtsApplicationsApplicationIdNotesRequestBodyVisibility$outboundSchema
+          .optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3ToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3:
@@ -339,10 +388,12 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$outboundS
     PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee
-  > = z.object({
-    visibility: z.any().optional(),
-    is_json: z.boolean().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      visibility: z.any().optional(),
+      is_json: z.boolean().optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesRequestBodyRecruiteeToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyRecruitee:
@@ -366,9 +417,11 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$outboundSc
     PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn
-  > = z.object({
-    action: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: z.string().optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesRequestBodyBullhornToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyBullhorn:
@@ -391,9 +444,11 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyLever$outboundSchem
     PostAtsApplicationsApplicationIdNotesRequestBodyLever$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequestBodyLever
-  > = z.object({
-    perform_as: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      perform_as: z.string().optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesRequestBodyLeverToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyLever:
@@ -418,9 +473,11 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyTalent360$outboundS
     PostAtsApplicationsApplicationIdNotesRequestBodyTalent360$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequestBodyTalent360
-  > = z.object({
-    user_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      user_id: z.string(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesRequestBodyTalent360ToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyTalent360:
@@ -429,6 +486,69 @@ export function postAtsApplicationsApplicationIdNotesRequestBodyTalent360ToJSON(
   return JSON.stringify(
     PostAtsApplicationsApplicationIdNotesRequestBodyTalent360$outboundSchema
       .parse(postAtsApplicationsApplicationIdNotesRequestBodyTalent360),
+  );
+}
+
+/** @internal */
+export type ShareWith$Outbound = {
+  users?: Array<string> | undefined;
+  hiringTeamOf?: Array<string> | undefined;
+  everyone?: boolean | undefined;
+  openNote?: boolean | undefined;
+};
+
+/** @internal */
+export const ShareWith$outboundSchema: z.ZodType<
+  ShareWith$Outbound,
+  z.ZodTypeDef,
+  ShareWith
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    users: z.array(z.string()).optional(),
+    hiring_team_of: z.array(z.string()).optional(),
+    everyone: z.boolean().optional(),
+    open_note: z.boolean().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      hiring_team_of: "hiringTeamOf",
+      open_note: "openNote",
+    });
+  })
+);
+
+export function shareWithToJSON(shareWith: ShareWith): string {
+  return JSON.stringify(ShareWith$outboundSchema.parse(shareWith));
+}
+
+/** @internal */
+export type PostAtsApplicationsApplicationIdNotesRequestBodySmartrecruiters$Outbound =
+  {
+    shareWith?: ShareWith$Outbound | undefined;
+  };
+
+/** @internal */
+export const PostAtsApplicationsApplicationIdNotesRequestBodySmartrecruiters$outboundSchema:
+  z.ZodType<
+    PostAtsApplicationsApplicationIdNotesRequestBodySmartrecruiters$Outbound,
+    z.ZodTypeDef,
+    PostAtsApplicationsApplicationIdNotesRequestBodySmartrecruiters
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      share_with: z.lazy(() => ShareWith$outboundSchema).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        share_with: "shareWith",
+      });
+    })
+  );
+
+export function postAtsApplicationsApplicationIdNotesRequestBodySmartrecruitersToJSON(
+  postAtsApplicationsApplicationIdNotesRequestBodySmartrecruiters:
+    PostAtsApplicationsApplicationIdNotesRequestBodySmartrecruiters,
+): string {
+  return JSON.stringify(
+    PostAtsApplicationsApplicationIdNotesRequestBodySmartrecruiters$outboundSchema
+      .parse(postAtsApplicationsApplicationIdNotesRequestBodySmartrecruiters),
   );
 }
 
@@ -444,9 +564,11 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$outboundSc
     PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequestBodyWorkable
-  > = z.object({
-    on_behalf_of_user_remote_id: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      on_behalf_of_user_remote_id: z.string().optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesRequestBodyWorkableToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyWorkable:
@@ -482,6 +604,9 @@ export type PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$Outboun
     talent360?:
       | PostAtsApplicationsApplicationIdNotesRequestBodyTalent360$Outbound
       | undefined;
+    smartrecruiters?:
+      | PostAtsApplicationsApplicationIdNotesRequestBodySmartrecruiters$Outbound
+      | undefined;
     workable?:
       | PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$Outbound
       | undefined;
@@ -493,32 +618,37 @@ export const PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$outbou
     PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields
-  > = z.object({
-    teamtailor: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$outboundSchema
-    ).optional(),
-    greenhouse: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$outboundSchema
-    ).optional(),
-    greenhousev3: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3$outboundSchema
-    ).optional(),
-    recruitee: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$outboundSchema
-    ).optional(),
-    bullhorn: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$outboundSchema
-    ).optional(),
-    lever: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyLever$outboundSchema
-    ).optional(),
-    talent360: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyTalent360$outboundSchema
-    ).optional(),
-    workable: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      teamtailor: z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesRequestBodyTeamtailor$outboundSchema
+      ).optional(),
+      greenhouse: z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesRequestBodyGreenhouse$outboundSchema
+      ).optional(),
+      greenhousev3: z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesRequestBodyGreenhousev3$outboundSchema
+      ).optional(),
+      recruitee: z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesRequestBodyRecruitee$outboundSchema
+      ).optional(),
+      bullhorn: z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesRequestBodyBullhorn$outboundSchema
+      ).optional(),
+      lever: z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesRequestBodyLever$outboundSchema
+      ).optional(),
+      talent360: z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesRequestBodyTalent360$outboundSchema
+      ).optional(),
+      smartrecruiters: z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesRequestBodySmartrecruiters$outboundSchema
+      ).optional(),
+      workable: z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesRequestBodyWorkable$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesRequestBodyRemoteFieldsToJSON(
   postAtsApplicationsApplicationIdNotesRequestBodyRemoteFields:
@@ -546,14 +676,16 @@ export const PostAtsApplicationsApplicationIdNotesRequestBody$outboundSchema:
     PostAtsApplicationsApplicationIdNotesRequestBody$Outbound,
     z.ZodTypeDef,
     PostAtsApplicationsApplicationIdNotesRequestBody
-  > = z.object({
-    title: z.string().optional(),
-    content: z.string(),
-    content_type: ContentType$outboundSchema,
-    remote_fields: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      title: z.string().optional(),
+      content: z.string(),
+      content_type: ContentType$outboundSchema,
+      remote_fields: z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesRequestBodyRemoteFields$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesRequestBodyToJSON(
   postAtsApplicationsApplicationIdNotesRequestBody:

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -72,24 +72,26 @@ export type KomboAtsErrorError = {
 /** @internal */
 export const KomboAtsErrorStatus$inboundSchema: z.ZodNativeEnum<
   typeof KomboAtsErrorStatus
-> = z.nativeEnum(KomboAtsErrorStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(KomboAtsErrorStatus));
 
 /** @internal */
 export const KomboAtsErrorCode$inboundSchema: z.ZodNativeEnum<
   typeof KomboAtsErrorCode
-> = z.nativeEnum(KomboAtsErrorCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(KomboAtsErrorCode));
 
 /** @internal */
 export const KomboAtsErrorError$inboundSchema: z.ZodType<
   KomboAtsErrorError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: z.nullable(KomboAtsErrorCode$inboundSchema),
-  title: z.nullable(z.string()),
-  message: z.string(),
-  log_url: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.nullable(KomboAtsErrorCode$inboundSchema),
+    title: z.nullable(z.string()),
+    message: z.string(),
+    log_url: z.nullable(z.string()),
+  })
+);
 
 export function komboAtsErrorErrorFromJSON(
   jsonString: string,

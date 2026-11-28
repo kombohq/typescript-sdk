@@ -58,6 +58,7 @@ let value: GetHrisEmployeesPositiveResponseData = {
       date_of_birth: new Date("1986-01-01T00:00:00Z"),
       start_date: new Date("2020-04-07T00:00:00Z"),
       termination_date: new Date("2022-05-20T00:00:00Z"),
+      eligible_for_rehire: true,
       remote_created_at: new Date("2020-04-07T12:32:01Z"),
       changed_at: new Date("2022-08-07T14:01:29.196Z"),
       remote_deleted_at: null,

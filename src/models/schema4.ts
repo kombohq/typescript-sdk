@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type Schema4 =
   | string
@@ -21,13 +22,15 @@ export const Schema4$outboundSchema: z.ZodType<
   Schema4$Outbound,
   z.ZodTypeDef,
   Schema4
-> = z.union([
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.record(z.lazy(() => Schema4$outboundSchema)),
-  z.array(z.lazy(() => Schema4$outboundSchema)),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.record(z.lazy(() => Schema4$outboundSchema)),
+    z.array(z.lazy(() => Schema4$outboundSchema)),
+  ])
+);
 
 export function schema4ToJSON(schema4: Schema4): string {
   return JSON.stringify(Schema4$outboundSchema.parse(schema4));

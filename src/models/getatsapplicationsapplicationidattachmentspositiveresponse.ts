@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -61,8 +61,8 @@ export type GetAtsApplicationsApplicationIdAttachmentsPositiveResponse = {
 export const GetAtsApplicationsApplicationIdAttachmentsPositiveResponseType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetAtsApplicationsApplicationIdAttachmentsPositiveResponseType
-  > = z.nativeEnum(
-    GetAtsApplicationsApplicationIdAttachmentsPositiveResponseType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetAtsApplicationsApplicationIdAttachmentsPositiveResponseType)
   );
 
 /** @internal */
@@ -71,21 +71,23 @@ export const GetAtsApplicationsApplicationIdAttachmentsPositiveResponseResult$in
     GetAtsApplicationsApplicationIdAttachmentsPositiveResponseResult,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    type:
-      GetAtsApplicationsApplicationIdAttachmentsPositiveResponseType$inboundSchema,
-    id: z.string(),
-    remote_id: z.string(),
-    data_url: z.string(),
-    file_name: z.string(),
-    content_type: z.string(),
-    remote_created_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    remote_updated_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type:
+        GetAtsApplicationsApplicationIdAttachmentsPositiveResponseType$inboundSchema,
+      id: z.string(),
+      remote_id: z.string(),
+      data_url: z.string(),
+      file_name: z.string(),
+      content_type: z.string(),
+      remote_created_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      remote_updated_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+    })
+  );
 
 export function getAtsApplicationsApplicationIdAttachmentsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -108,13 +110,13 @@ export const GetAtsApplicationsApplicationIdAttachmentsPositiveResponseData$inbo
     GetAtsApplicationsApplicationIdAttachmentsPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    results: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      results: z.array(z.lazy(() =>
         GetAtsApplicationsApplicationIdAttachmentsPositiveResponseResult$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function getAtsApplicationsApplicationIdAttachmentsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -137,9 +139,11 @@ export const GetAtsApplicationsApplicationIdAttachmentsPositiveResponseWarning$i
     GetAtsApplicationsApplicationIdAttachmentsPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function getAtsApplicationsApplicationIdAttachmentsPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -162,17 +166,17 @@ export const GetAtsApplicationsApplicationIdAttachmentsPositiveResponse$inboundS
     GetAtsApplicationsApplicationIdAttachmentsPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      GetAtsApplicationsApplicationIdAttachmentsPositiveResponseData$inboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        GetAtsApplicationsApplicationIdAttachmentsPositiveResponseWarning$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        GetAtsApplicationsApplicationIdAttachmentsPositiveResponseData$inboundSchema
       ),
-    ),
-  });
+      warnings: z.array(z.lazy(() =>
+        GetAtsApplicationsApplicationIdAttachmentsPositiveResponseWarning$inboundSchema
+      )),
+    })
+  );
 
 export function getAtsApplicationsApplicationIdAttachmentsPositiveResponseFromJSON(
   jsonString: string,

@@ -89,6 +89,7 @@ let value: GetAtsJobsPositiveResponseData = {
           status: "ACTIVE",
           visibility: "PUBLIC",
           url: "https://jobs.example.com/post/159829112",
+          custom_fields: {},
         },
       ],
       hiring_team: [

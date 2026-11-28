@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../../lib/primitives.js";
-import { safeParse } from "../../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
@@ -129,22 +129,24 @@ export const GetHrisEmployeesRequest$outboundSchema: z.ZodType<
   GetHrisEmployeesRequest$Outbound,
   z.ZodTypeDef,
   GetHrisEmployeesRequest
-> = z.object({
-  cursor: z.string().optional(),
-  page_size: z.number().int().default(100),
-  updated_after: z.date().transform(v => v.toISOString()).optional(),
-  include_deleted: z.boolean().default(false),
-  ignore_unsupported_filters: z.boolean().default(false),
-  ids: z.array(z.string()).optional(),
-  remote_ids: z.array(z.string()).optional(),
-  employment_statuses: z.array(z.string()).optional(),
-  group_ids: z.array(z.string()).optional(),
-  legal_entity_ids: z.array(z.string()).optional(),
-  work_location_ids: z.array(z.string()).optional(),
-  work_emails: z.array(z.string()).optional(),
-  personal_emails: z.array(z.string()).optional(),
-  custom_fields: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cursor: z.string().optional(),
+    page_size: z.number().int().default(100),
+    updated_after: z.date().transform(v => v.toISOString()).optional(),
+    include_deleted: z.boolean().default(false),
+    ignore_unsupported_filters: z.boolean().default(false),
+    ids: z.array(z.string()).optional(),
+    remote_ids: z.array(z.string()).optional(),
+    employment_statuses: z.array(z.string()).optional(),
+    group_ids: z.array(z.string()).optional(),
+    legal_entity_ids: z.array(z.string()).optional(),
+    work_location_ids: z.array(z.string()).optional(),
+    work_emails: z.array(z.string()).optional(),
+    personal_emails: z.array(z.string()).optional(),
+    custom_fields: z.string().optional(),
+  })
+);
 
 export function getHrisEmployeesRequestToJSON(
   getHrisEmployeesRequest: GetHrisEmployeesRequest,
@@ -159,13 +161,15 @@ export const GetHrisEmployeesResponse$inboundSchema: z.ZodType<
   GetHrisEmployeesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Result: models.GetHrisEmployeesPositiveResponse$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "Result": "result",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Result: models.GetHrisEmployeesPositiveResponse$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "Result": "result",
+    });
+  })
+);
 
 export function getHrisEmployeesResponseFromJSON(
   jsonString: string,

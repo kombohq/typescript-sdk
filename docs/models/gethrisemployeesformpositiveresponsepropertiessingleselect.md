@@ -1,11 +1,11 @@
-# PropertiesSingleSelect
+# GetHrisEmployeesFormPositiveResponsePropertiesSingleSelect
 
 ## Example Usage
 
 ```typescript
-import { PropertiesSingleSelect } from "@kombo-api/sdk/models";
+import { GetHrisEmployeesFormPositiveResponsePropertiesSingleSelect } from "@kombo-api/sdk/models";
 
-let value: PropertiesSingleSelect = {
+let value: GetHrisEmployeesFormPositiveResponsePropertiesSingleSelect = {
   label: "<value>",
   required: false,
   type: "single_select",

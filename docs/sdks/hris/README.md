@@ -8,6 +8,8 @@
 * [getEmployeeForm](#getemployeeform) - Get employee form
 * [createEmployeeWithForm](#createemployeewithform) - Create employee with form
 * [addEmployeeDocument](#addemployeedocument) - Add document to employee
+* [getHrisEmployeesEmployeeIdFormRehire](#gethrisemployeesemployeeidformrehire) - Get rehire form
+* [postHrisEmployeesEmployeeIdFormRehire](#posthrisemployeesemployeeidformrehire) - Rehire employee
 * [getEmployeeDocumentCategories](#getemployeedocumentcategories) - Get employee document categories
 * [getGroups](#getgroups) - Get groups
 * [getEmployments](#getemployments) - Get employments
@@ -716,6 +718,337 @@ run();
 ### Response
 
 **Promise\<[models.PostHrisEmployeesEmployeeIdDocumentsPositiveResponse](../../models/posthrisemployeesemployeeiddocumentspositiveresponse.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.KomboHrisError    | default                  | application/json         |
+| errors.KomboDefaultError | 4XX, 5XX                 | \*/\*                    |
+
+## getHrisEmployeesEmployeeIdFormRehire
+
+Get the form for rehiring a former employee. Display the returned fields in your app, then submit the values to [Rehire employee](/hris/v1/post-employees-employee-id-form-rehire).
+
+See [Rehire Employee](/hris/features/rehire-employee) for the workflow.
+
+### Example Form
+```json
+{
+  "properties": {
+    "startDate": {
+      "type": "date",
+      "label": "Start Date",
+      "required": true,
+      "description": "The first day of the new job",
+      "unified_key": "start_date"
+    },
+    "jobTitle": {
+      "type": "text",
+      "label": "Job Title",
+      "required": false,
+      "description": "The job title of the new job",
+      "unified_key": "job_title",
+      "min_length": null,
+      "max_length": null,
+      "reg_exp": null
+    }
+  }
+}
+```
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="GetHrisEmployeesEmployeeIdFormRehire" method="get" path="/hris/employees/{employee_id}/form/rehire" example="example1" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.getHrisEmployeesEmployeeIdFormRehire({
+    employee_id: "remote:12345",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisGetHrisEmployeesEmployeeIdFormRehire } from "@kombo-api/sdk/funcs/hrisGetHrisEmployeesEmployeeIdFormRehire.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisGetHrisEmployeesEmployeeIdFormRehire(kombo, {
+    employee_id: "remote:12345",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisGetHrisEmployeesEmployeeIdFormRehire failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetHrisEmployeesEmployeeIdFormRehireRequest](../../models/operations/gethrisemployeesemployeeidformrehirerequest.md)                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.GetHrisEmployeesEmployeeIdFormRehirePositiveResponse](../../models/gethrisemployeesemployeeidformrehirepositiveresponse.md)\>**
+
+### Errors
+
+| Error Type               | Status Code              | Content Type             |
+| ------------------------ | ------------------------ | ------------------------ |
+| errors.KomboHrisError    | default                  | application/json         |
+| errors.KomboDefaultError | 4XX, 5XX                 | \*/\*                    |
+
+## postHrisEmployeesEmployeeIdFormRehire
+
+Rehire a former employee using values from the rehire form.
+
+<Note>
+  This endpoint requires the permission **Create and manage employees** to be enabled in [your scope config](/scopes).
+</Note>
+
+### Example Request Body
+
+```json
+{
+  "staffing_entity_id": "4wPdBNLfMYBeXjNiQ5zKbStR",
+  "properties": {
+    "startDate": "2026-11-01",
+    "jobTitle": "Lifeguard"
+  }
+}
+```
+
+### Example Usage: Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostHrisEmployeesEmployeeIdFormRehire" method="post" path="/hris/employees/{employee_id}/form/rehire" example="Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.postHrisEmployeesEmployeeIdFormRehire({
+    employee_id: "<id>",
+    body: {
+      properties: {
+        "key": "<value>",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisPostHrisEmployeesEmployeeIdFormRehire } from "@kombo-api/sdk/funcs/hrisPostHrisEmployeesEmployeeIdFormRehire.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisPostHrisEmployeesEmployeeIdFormRehire(kombo, {
+    employee_id: "<id>",
+    body: {
+      properties: {
+        "key": "<value>",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisPostHrisEmployeesEmployeeIdFormRehire failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: Minimal Error Response
+
+<!-- UsageSnippet language="typescript" operationID="PostHrisEmployeesEmployeeIdFormRehire" method="post" path="/hris/employees/{employee_id}/form/rehire" example="Minimal Error Response" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.postHrisEmployeesEmployeeIdFormRehire({
+    employee_id: "<id>",
+    body: {
+      properties: {
+        "key": "<value>",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisPostHrisEmployeesEmployeeIdFormRehire } from "@kombo-api/sdk/funcs/hrisPostHrisEmployeesEmployeeIdFormRehire.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisPostHrisEmployeesEmployeeIdFormRehire(kombo, {
+    employee_id: "<id>",
+    body: {
+      properties: {
+        "key": "<value>",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisPostHrisEmployeesEmployeeIdFormRehire failed:", res.error);
+  }
+}
+
+run();
+```
+### Example Usage: example1
+
+<!-- UsageSnippet language="typescript" operationID="PostHrisEmployeesEmployeeIdFormRehire" method="post" path="/hris/employees/{employee_id}/form/rehire" example="example1" -->
+```typescript
+import { Kombo } from "@kombo-api/sdk";
+
+const kombo = new Kombo({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await kombo.hris.postHrisEmployeesEmployeeIdFormRehire({
+    employee_id: "26vafvWSRmbhNcxJYqjCzuJg",
+    body: {
+      staffing_entity_id: "4wPdBNLfMYBeXjNiQ5zKbStR",
+      properties: {
+        "startDate": "2026-11-01T00:00:00Z",
+        "jobTitle": "Lifeguard",
+      },
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { KomboCore } from "@kombo-api/sdk/core.js";
+import { hrisPostHrisEmployeesEmployeeIdFormRehire } from "@kombo-api/sdk/funcs/hrisPostHrisEmployeesEmployeeIdFormRehire.js";
+
+// Use `KomboCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const kombo = new KomboCore({
+  integration_id: "workday:HWUTwvyx2wLoSUHphiWVrp28",
+  api_key: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await hrisPostHrisEmployeesEmployeeIdFormRehire(kombo, {
+    employee_id: "26vafvWSRmbhNcxJYqjCzuJg",
+    body: {
+      staffing_entity_id: "4wPdBNLfMYBeXjNiQ5zKbStR",
+      properties: {
+        "startDate": "2026-11-01T00:00:00Z",
+        "jobTitle": "Lifeguard",
+      },
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("hrisPostHrisEmployeesEmployeeIdFormRehire failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.PostHrisEmployeesEmployeeIdFormRehireRequest](../../models/operations/posthrisemployeesemployeeidformrehirerequest.md)                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.PostHrisEmployeesEmployeeIdFormRehirePositiveResponse](../../models/posthrisemployeesemployeeidformrehirepositiveresponse.md)\>**
 
 ### Errors
 

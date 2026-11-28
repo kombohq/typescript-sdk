@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -74,25 +74,31 @@ export type GetHrisGroupsPositiveResponse = {
 /** @internal */
 export const GetHrisGroupsPositiveResponseType$inboundSchema: z.ZodNativeEnum<
   typeof GetHrisGroupsPositiveResponseType
-> = z.nativeEnum(GetHrisGroupsPositiveResponseType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetHrisGroupsPositiveResponseType)
+);
 
 /** @internal */
 export const GetHrisGroupsPositiveResponseResult$inboundSchema: z.ZodType<
   GetHrisGroupsPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  name: z.nullable(z.string()),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  type: z.nullable(GetHrisGroupsPositiveResponseType$inboundSchema),
-  parent_id: z.nullable(z.string()),
-  custom_fields: z.nullable(z.record(z.any())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    name: z.nullable(z.string()),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    type: z.nullable(GetHrisGroupsPositiveResponseType$inboundSchema),
+    parent_id: z.nullable(z.string()),
+    custom_fields: z.nullable(z.record(z.any())),
+  })
+);
 
 export function getHrisGroupsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -110,12 +116,14 @@ export const GetHrisGroupsPositiveResponseData$inboundSchema: z.ZodType<
   GetHrisGroupsPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetHrisGroupsPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetHrisGroupsPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getHrisGroupsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -132,10 +140,12 @@ export const GetHrisGroupsPositiveResponse$inboundSchema: z.ZodType<
   GetHrisGroupsPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetHrisGroupsPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetHrisGroupsPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getHrisGroupsPositiveResponseFromJSON(
   jsonString: string,

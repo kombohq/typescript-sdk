@@ -3,11 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
-import { Schema2, Schema2$inboundSchema } from "./schema2.js";
+import { Schema2Union1, Schema2Union1$inboundSchema } from "./schema2union1.js";
 
 export const Schema1UnifiedKey8 = {
   FirstName: "first_name",
@@ -355,7 +355,7 @@ export type Schema1Array1 = {
   description?: string | null | undefined;
   unified_key?: Schema1UnifiedKey7 | null | undefined;
   type: "array";
-  item_type: Schema2;
+  item_type: Schema2Union1;
   min_items?: number | null | undefined;
   max_items?: number | null | undefined;
 };
@@ -363,17 +363,19 @@ export type Schema1Array1 = {
 /** @internal */
 export const Schema1UnifiedKey8$inboundSchema: z.ZodNativeEnum<
   typeof Schema1UnifiedKey8
-> = z.nativeEnum(Schema1UnifiedKey8);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Schema1UnifiedKey8));
 
 /** @internal */
 export const Schema1FileRestrictions$inboundSchema: z.ZodType<
   Schema1FileRestrictions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accepted_mime_types: z.array(z.string()),
-  max_file_size: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accepted_mime_types: z.array(z.string()),
+    max_file_size: z.nullable(z.number()).optional(),
+  })
+);
 
 export function schema1FileRestrictionsFromJSON(
   jsonString: string,
@@ -390,14 +392,16 @@ export const Schema1File$inboundSchema: z.ZodType<
   Schema1File,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey8$inboundSchema).optional(),
-  type: z.literal("file"),
-  file_restrictions: z.lazy(() => Schema1FileRestrictions$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(Schema1UnifiedKey8$inboundSchema).optional(),
+    type: z.literal("file"),
+    file_restrictions: z.lazy(() => Schema1FileRestrictions$inboundSchema),
+  })
+);
 
 export function schema1FileFromJSON(
   jsonString: string,
@@ -412,28 +416,30 @@ export function schema1FileFromJSON(
 /** @internal */
 export const Schema1UnifiedKey7$inboundSchema: z.ZodNativeEnum<
   typeof Schema1UnifiedKey7
-> = z.nativeEnum(Schema1UnifiedKey7);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Schema1UnifiedKey7));
 
 /** @internal */
 export const Schema1UnifiedKey1$inboundSchema: z.ZodNativeEnum<
   typeof Schema1UnifiedKey1
-> = z.nativeEnum(Schema1UnifiedKey1);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Schema1UnifiedKey1));
 
 /** @internal */
 export const Schema1Text$inboundSchema: z.ZodType<
   Schema1Text,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey1$inboundSchema).optional(),
-  type: z.literal("text"),
-  min_length: z.nullable(z.number()).optional(),
-  max_length: z.nullable(z.number()).optional(),
-  reg_exp: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(Schema1UnifiedKey1$inboundSchema).optional(),
+    type: z.literal("text"),
+    min_length: z.nullable(z.number()).optional(),
+    max_length: z.nullable(z.number()).optional(),
+    reg_exp: z.nullable(z.string()).optional(),
+  })
+);
 
 export function schema1TextFromJSON(
   jsonString: string,
@@ -448,22 +454,24 @@ export function schema1TextFromJSON(
 /** @internal */
 export const Schema1UnifiedKey2$inboundSchema: z.ZodNativeEnum<
   typeof Schema1UnifiedKey2
-> = z.nativeEnum(Schema1UnifiedKey2);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Schema1UnifiedKey2));
 
 /** @internal */
 export const Schema1Number$inboundSchema: z.ZodType<
   Schema1Number,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey2$inboundSchema).optional(),
-  type: z.literal("number"),
-  min: z.nullable(z.number()).optional(),
-  max: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(Schema1UnifiedKey2$inboundSchema).optional(),
+    type: z.literal("number"),
+    min: z.nullable(z.number()).optional(),
+    max: z.nullable(z.number()).optional(),
+  })
+);
 
 export function schema1NumberFromJSON(
   jsonString: string,
@@ -478,20 +486,22 @@ export function schema1NumberFromJSON(
 /** @internal */
 export const Schema1UnifiedKey3$inboundSchema: z.ZodNativeEnum<
   typeof Schema1UnifiedKey3
-> = z.nativeEnum(Schema1UnifiedKey3);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Schema1UnifiedKey3));
 
 /** @internal */
 export const Schema1Date$inboundSchema: z.ZodType<
   Schema1Date,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey3$inboundSchema).optional(),
-  type: z.literal("date"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(Schema1UnifiedKey3$inboundSchema).optional(),
+    type: z.literal("date"),
+  })
+);
 
 export function schema1DateFromJSON(
   jsonString: string,
@@ -506,14 +516,14 @@ export function schema1DateFromJSON(
 /** @internal */
 export const Schema1UnifiedKey4$inboundSchema: z.ZodNativeEnum<
   typeof Schema1UnifiedKey4
-> = z.nativeEnum(Schema1UnifiedKey4);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Schema1UnifiedKey4));
 
 /** @internal */
 export const Schema1RemoteId1$inboundSchema: z.ZodType<
   Schema1RemoteId1,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() => z.union([z.string(), z.number()]));
 
 export function schema1RemoteId1FromJSON(
   jsonString: string,
@@ -530,12 +540,14 @@ export const Schema1Entry1$inboundSchema: z.ZodType<
   Schema1Entry1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  label: z.string(),
-  unified_value: z.string().optional(),
-  remote_id: z.union([z.string(), z.number()]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    label: z.string(),
+    unified_value: z.string().optional(),
+    remote_id: z.union([z.string(), z.number()]),
+  })
+);
 
 export function schema1Entry1FromJSON(
   jsonString: string,
@@ -552,10 +564,12 @@ export const Schema1OptionsInline1$inboundSchema: z.ZodType<
   Schema1OptionsInline1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("inline"),
-  entries: z.array(z.lazy(() => Schema1Entry1$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("inline"),
+    entries: z.array(z.lazy(() => Schema1Entry1$inboundSchema)),
+  })
+);
 
 export function schema1OptionsInline1FromJSON(
   jsonString: string,
@@ -572,10 +586,12 @@ export const Schema1OptionsReferenced1$inboundSchema: z.ZodType<
   Schema1OptionsReferenced1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("referenced"),
-  link: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("referenced"),
+    link: z.string(),
+  })
+);
 
 export function schema1OptionsReferenced1FromJSON(
   jsonString: string,
@@ -592,10 +608,12 @@ export const Schema1OptionsUnion1$inboundSchema: z.ZodType<
   Schema1OptionsUnion1,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => Schema1OptionsInline1$inboundSchema),
-  z.lazy(() => Schema1OptionsReferenced1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => Schema1OptionsInline1$inboundSchema),
+    z.lazy(() => Schema1OptionsReferenced1$inboundSchema),
+  ])
+);
 
 export function schema1OptionsUnion1FromJSON(
   jsonString: string,
@@ -612,17 +630,19 @@ export const Schema1SingleSelect$inboundSchema: z.ZodType<
   Schema1SingleSelect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey4$inboundSchema).optional(),
-  type: z.literal("single_select"),
-  options: z.union([
-    z.lazy(() => Schema1OptionsInline1$inboundSchema),
-    z.lazy(() => Schema1OptionsReferenced1$inboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(Schema1UnifiedKey4$inboundSchema).optional(),
+    type: z.literal("single_select"),
+    options: z.union([
+      z.lazy(() => Schema1OptionsInline1$inboundSchema),
+      z.lazy(() => Schema1OptionsReferenced1$inboundSchema),
+    ]),
+  })
+);
 
 export function schema1SingleSelectFromJSON(
   jsonString: string,
@@ -639,7 +659,7 @@ export const Schema1RemoteId2$inboundSchema: z.ZodType<
   Schema1RemoteId2,
   z.ZodTypeDef,
   unknown
-> = z.union([z.string(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() => z.union([z.string(), z.number()]));
 
 export function schema1RemoteId2FromJSON(
   jsonString: string,
@@ -656,12 +676,14 @@ export const Schema1Entry2$inboundSchema: z.ZodType<
   Schema1Entry2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  label: z.string(),
-  unified_value: z.string().optional(),
-  remote_id: z.union([z.string(), z.number()]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    label: z.string(),
+    unified_value: z.string().optional(),
+    remote_id: z.union([z.string(), z.number()]),
+  })
+);
 
 export function schema1Entry2FromJSON(
   jsonString: string,
@@ -678,10 +700,12 @@ export const Schema1OptionsInline2$inboundSchema: z.ZodType<
   Schema1OptionsInline2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("inline"),
-  entries: z.array(z.lazy(() => Schema1Entry2$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("inline"),
+    entries: z.array(z.lazy(() => Schema1Entry2$inboundSchema)),
+  })
+);
 
 export function schema1OptionsInline2FromJSON(
   jsonString: string,
@@ -698,10 +722,12 @@ export const Schema1OptionsReferenced2$inboundSchema: z.ZodType<
   Schema1OptionsReferenced2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("referenced"),
-  link: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("referenced"),
+    link: z.string(),
+  })
+);
 
 export function schema1OptionsReferenced2FromJSON(
   jsonString: string,
@@ -718,10 +744,12 @@ export const Schema1OptionsUnion2$inboundSchema: z.ZodType<
   Schema1OptionsUnion2,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => Schema1OptionsInline2$inboundSchema),
-  z.lazy(() => Schema1OptionsReferenced2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => Schema1OptionsInline2$inboundSchema),
+    z.lazy(() => Schema1OptionsReferenced2$inboundSchema),
+  ])
+);
 
 export function schema1OptionsUnion2FromJSON(
   jsonString: string,
@@ -738,19 +766,21 @@ export const Schema1MultiSelect$inboundSchema: z.ZodType<
   Schema1MultiSelect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(z.string()).optional(),
-  type: z.literal("multi_select"),
-  min_items: z.nullable(z.number()).optional(),
-  max_items: z.nullable(z.number()).optional(),
-  options: z.union([
-    z.lazy(() => Schema1OptionsInline2$inboundSchema),
-    z.lazy(() => Schema1OptionsReferenced2$inboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(z.string()).optional(),
+    type: z.literal("multi_select"),
+    min_items: z.nullable(z.number()).optional(),
+    max_items: z.nullable(z.number()).optional(),
+    options: z.union([
+      z.lazy(() => Schema1OptionsInline2$inboundSchema),
+      z.lazy(() => Schema1OptionsReferenced2$inboundSchema),
+    ]),
+  })
+);
 
 export function schema1MultiSelectFromJSON(
   jsonString: string,
@@ -765,20 +795,22 @@ export function schema1MultiSelectFromJSON(
 /** @internal */
 export const Schema1UnifiedKey5$inboundSchema: z.ZodNativeEnum<
   typeof Schema1UnifiedKey5
-> = z.nativeEnum(Schema1UnifiedKey5);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Schema1UnifiedKey5));
 
 /** @internal */
 export const Schema1Checkbox$inboundSchema: z.ZodType<
   Schema1Checkbox,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey5$inboundSchema).optional(),
-  type: z.literal("checkbox"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(Schema1UnifiedKey5$inboundSchema).optional(),
+    type: z.literal("checkbox"),
+  })
+);
 
 export function schema1CheckboxFromJSON(
   jsonString: string,
@@ -793,21 +825,21 @@ export function schema1CheckboxFromJSON(
 /** @internal */
 export const Schema1UnifiedKey6$inboundSchema: z.ZodNativeEnum<
   typeof Schema1UnifiedKey6
-> = z.nativeEnum(Schema1UnifiedKey6);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Schema1UnifiedKey6));
 
 /** @internal */
 export const Schema1Object1$inboundSchema: z.ZodType<
   Schema1Object1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey6$inboundSchema).optional(),
-  type: z.literal("object"),
-  properties: z.record(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(Schema1UnifiedKey6$inboundSchema).optional(),
+    type: z.literal("object"),
+    properties: z.record(z.union([
       z.lazy(() => Schema1Text$inboundSchema),
       z.lazy(() => Schema1Number$inboundSchema),
       z.lazy(() => Schema1Date$inboundSchema),
@@ -817,9 +849,9 @@ export const Schema1Object1$inboundSchema: z.ZodType<
       z.lazy(() => Schema1Object1$inboundSchema),
       z.lazy(() => Schema1Array1$inboundSchema),
       z.lazy(() => Schema1File$inboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function schema1Object1FromJSON(
   jsonString: string,
@@ -836,17 +868,19 @@ export const Schema1Union1$inboundSchema: z.ZodType<
   Schema1Union1,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => Schema1Text$inboundSchema),
-  z.lazy(() => Schema1Number$inboundSchema),
-  z.lazy(() => Schema1Date$inboundSchema),
-  z.lazy(() => Schema1SingleSelect$inboundSchema),
-  z.lazy(() => Schema1MultiSelect$inboundSchema),
-  z.lazy(() => Schema1Checkbox$inboundSchema),
-  z.lazy(() => Schema1Object1$inboundSchema),
-  z.lazy(() => Schema1Array1$inboundSchema),
-  z.lazy(() => Schema1File$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => Schema1Text$inboundSchema),
+    z.lazy(() => Schema1Number$inboundSchema),
+    z.lazy(() => Schema1Date$inboundSchema),
+    z.lazy(() => Schema1SingleSelect$inboundSchema),
+    z.lazy(() => Schema1MultiSelect$inboundSchema),
+    z.lazy(() => Schema1Checkbox$inboundSchema),
+    z.lazy(() => Schema1Object1$inboundSchema),
+    z.lazy(() => Schema1Array1$inboundSchema),
+    z.lazy(() => Schema1File$inboundSchema),
+  ])
+);
 
 export function schema1Union1FromJSON(
   jsonString: string,
@@ -863,16 +897,18 @@ export const Schema1Array1$inboundSchema: z.ZodType<
   Schema1Array1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: z.string(),
-  required: z.boolean(),
-  description: z.nullable(z.string()).optional(),
-  unified_key: z.nullable(Schema1UnifiedKey7$inboundSchema).optional(),
-  type: z.literal("array"),
-  item_type: z.lazy(() => Schema2$inboundSchema),
-  min_items: z.nullable(z.number()).optional(),
-  max_items: z.nullable(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    required: z.boolean(),
+    description: z.nullable(z.string()).optional(),
+    unified_key: z.nullable(Schema1UnifiedKey7$inboundSchema).optional(),
+    type: z.literal("array"),
+    item_type: z.lazy(() => Schema2Union1$inboundSchema),
+    min_items: z.nullable(z.number()).optional(),
+    max_items: z.nullable(z.number()).optional(),
+  })
+);
 
 export function schema1Array1FromJSON(
   jsonString: string,

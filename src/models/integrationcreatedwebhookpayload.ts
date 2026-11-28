@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -88,9 +88,10 @@ export type IntegrationCreatedWebhookPayload = {
 
 /** @internal */
 export const IntegrationCreatedWebhookPayloadType$inboundSchema:
-  z.ZodNativeEnum<typeof IntegrationCreatedWebhookPayloadType> = z.nativeEnum(
-    IntegrationCreatedWebhookPayloadType,
-  );
+  z.ZodNativeEnum<typeof IntegrationCreatedWebhookPayloadType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(IntegrationCreatedWebhookPayloadType)
+    );
 /** @internal */
 export const IntegrationCreatedWebhookPayloadType$outboundSchema:
   z.ZodNativeEnum<typeof IntegrationCreatedWebhookPayloadType> =
@@ -98,8 +99,10 @@ export const IntegrationCreatedWebhookPayloadType$outboundSchema:
 
 /** @internal */
 export const IntegrationCreatedWebhookPayloadCategory$inboundSchema:
-  z.ZodNativeEnum<typeof IntegrationCreatedWebhookPayloadCategory> = z
-    .nativeEnum(IntegrationCreatedWebhookPayloadCategory);
+  z.ZodNativeEnum<typeof IntegrationCreatedWebhookPayloadCategory> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(IntegrationCreatedWebhookPayloadCategory)
+    );
 /** @internal */
 export const IntegrationCreatedWebhookPayloadCategory$outboundSchema:
   z.ZodNativeEnum<typeof IntegrationCreatedWebhookPayloadCategory> =
@@ -110,11 +113,13 @@ export const IntegrationCreatedWebhookPayloadEndUser$inboundSchema: z.ZodType<
   IntegrationCreatedWebhookPayloadEndUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  organization_name: z.string(),
-  creator_email: z.nullable(z.string()),
-  origin_id: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organization_name: z.string(),
+    creator_email: z.nullable(z.string()),
+    origin_id: z.nullable(z.string()),
+  })
+);
 /** @internal */
 export type IntegrationCreatedWebhookPayloadEndUser$Outbound = {
   organization_name: string;
@@ -127,11 +132,13 @@ export const IntegrationCreatedWebhookPayloadEndUser$outboundSchema: z.ZodType<
   IntegrationCreatedWebhookPayloadEndUser$Outbound,
   z.ZodTypeDef,
   IntegrationCreatedWebhookPayloadEndUser
-> = z.object({
-  organization_name: z.string(),
-  creator_email: z.nullable(z.string()),
-  origin_id: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organization_name: z.string(),
+    creator_email: z.nullable(z.string()),
+    origin_id: z.nullable(z.string()),
+  })
+);
 
 export function integrationCreatedWebhookPayloadEndUserToJSON(
   integrationCreatedWebhookPayloadEndUser:
@@ -164,12 +171,16 @@ export const IntegrationCreatedWebhookPayloadData$inboundSchema: z.ZodType<
   IntegrationCreatedWebhookPayloadData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  tool: z.string(),
-  category: IntegrationCreatedWebhookPayloadCategory$inboundSchema,
-  end_user: z.lazy(() => IntegrationCreatedWebhookPayloadEndUser$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    tool: z.string(),
+    category: IntegrationCreatedWebhookPayloadCategory$inboundSchema,
+    end_user: z.lazy(() =>
+      IntegrationCreatedWebhookPayloadEndUser$inboundSchema
+    ),
+  })
+);
 /** @internal */
 export type IntegrationCreatedWebhookPayloadData$Outbound = {
   id: string;
@@ -183,14 +194,16 @@ export const IntegrationCreatedWebhookPayloadData$outboundSchema: z.ZodType<
   IntegrationCreatedWebhookPayloadData$Outbound,
   z.ZodTypeDef,
   IntegrationCreatedWebhookPayloadData
-> = z.object({
-  id: z.string(),
-  tool: z.string(),
-  category: IntegrationCreatedWebhookPayloadCategory$outboundSchema,
-  end_user: z.lazy(() =>
-    IntegrationCreatedWebhookPayloadEndUser$outboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    tool: z.string(),
+    category: IntegrationCreatedWebhookPayloadCategory$outboundSchema,
+    end_user: z.lazy(() =>
+      IntegrationCreatedWebhookPayloadEndUser$outboundSchema
+    ),
+  })
+);
 
 export function integrationCreatedWebhookPayloadDataToJSON(
   integrationCreatedWebhookPayloadData: IntegrationCreatedWebhookPayloadData,
@@ -217,11 +230,13 @@ export const IntegrationCreatedWebhookPayload$inboundSchema: z.ZodType<
   IntegrationCreatedWebhookPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  type: IntegrationCreatedWebhookPayloadType$inboundSchema,
-  data: z.lazy(() => IntegrationCreatedWebhookPayloadData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: IntegrationCreatedWebhookPayloadType$inboundSchema,
+    data: z.lazy(() => IntegrationCreatedWebhookPayloadData$inboundSchema),
+  })
+);
 /** @internal */
 export type IntegrationCreatedWebhookPayload$Outbound = {
   id: string;
@@ -234,11 +249,13 @@ export const IntegrationCreatedWebhookPayload$outboundSchema: z.ZodType<
   IntegrationCreatedWebhookPayload$Outbound,
   z.ZodTypeDef,
   IntegrationCreatedWebhookPayload
-> = z.object({
-  id: z.string(),
-  type: IntegrationCreatedWebhookPayloadType$outboundSchema,
-  data: z.lazy(() => IntegrationCreatedWebhookPayloadData$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: IntegrationCreatedWebhookPayloadType$outboundSchema,
+    data: z.lazy(() => IntegrationCreatedWebhookPayloadData$outboundSchema),
+  })
+);
 
 export function integrationCreatedWebhookPayloadToJSON(
   integrationCreatedWebhookPayload: IntegrationCreatedWebhookPayload,

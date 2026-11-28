@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -53,20 +53,22 @@ export const GetHrisPerformanceReviewCyclesPositiveResponseResult$inboundSchema:
     GetHrisPerformanceReviewCyclesPositiveResponseResult,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    remote_id: z.string(),
-    name: z.nullable(z.string()),
-    review_period_start_date: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    changed_at: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    remote_deleted_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      remote_id: z.string(),
+      name: z.nullable(z.string()),
+      review_period_start_date: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      changed_at: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      remote_deleted_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+    })
+  );
 
 export function getHrisPerformanceReviewCyclesPositiveResponseResultFromJSON(
   jsonString: string,
@@ -90,14 +92,14 @@ export const GetHrisPerformanceReviewCyclesPositiveResponseData$inboundSchema:
     GetHrisPerformanceReviewCyclesPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    next: z.nullable(z.string()),
-    results: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      next: z.nullable(z.string()),
+      results: z.array(z.lazy(() =>
         GetHrisPerformanceReviewCyclesPositiveResponseResult$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function getHrisPerformanceReviewCyclesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -121,12 +123,14 @@ export const GetHrisPerformanceReviewCyclesPositiveResponse$inboundSchema:
     GetHrisPerformanceReviewCyclesPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      GetHrisPerformanceReviewCyclesPositiveResponseData$inboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        GetHrisPerformanceReviewCyclesPositiveResponseData$inboundSchema
+      ),
+    })
+  );
 
 export function getHrisPerformanceReviewCyclesPositiveResponseFromJSON(
   jsonString: string,

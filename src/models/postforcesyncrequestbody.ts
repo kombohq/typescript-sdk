@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -29,7 +30,9 @@ export type PostForceSyncRequestBody = {
 /** @internal */
 export const PostForceSyncRequestBodyType$outboundSchema: z.ZodNativeEnum<
   typeof PostForceSyncRequestBodyType
-> = z.nativeEnum(PostForceSyncRequestBodyType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PostForceSyncRequestBodyType)
+);
 
 /** @internal */
 export type PostForceSyncRequestBody$Outbound = {
@@ -41,9 +44,11 @@ export const PostForceSyncRequestBody$outboundSchema: z.ZodType<
   PostForceSyncRequestBody$Outbound,
   z.ZodTypeDef,
   PostForceSyncRequestBody
-> = z.object({
-  type: PostForceSyncRequestBodyType$outboundSchema.default("FULL"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: PostForceSyncRequestBodyType$outboundSchema.default("FULL"),
+  })
+);
 
 export function postForceSyncRequestBodyToJSON(
   postForceSyncRequestBody: PostForceSyncRequestBody,

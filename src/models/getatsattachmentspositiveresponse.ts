@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -97,20 +97,23 @@ export type GetAtsAttachmentsPositiveResponse = {
 
 /** @internal */
 export const GetAtsAttachmentsPositiveResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetAtsAttachmentsPositiveResponseType> = z.nativeEnum(
-    GetAtsAttachmentsPositiveResponseType,
-  );
+  z.ZodNativeEnum<typeof GetAtsAttachmentsPositiveResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetAtsAttachmentsPositiveResponseType)
+    );
 
 /** @internal */
 export const ContentRef$inboundSchema: z.ZodType<
   ContentRef,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: z.literal("s3"),
-  bucket: z.string(),
-  key: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("s3"),
+    bucket: z.string(),
+    key: z.string(),
+  })
+);
 
 export function contentRefFromJSON(
   jsonString: string,
@@ -127,25 +130,29 @@ export const GetAtsAttachmentsPositiveResponseResult$inboundSchema: z.ZodType<
   GetAtsAttachmentsPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  candidate_id: z.string(),
-  application_id: z.nullable(z.string()),
-  type: z.nullable(GetAtsAttachmentsPositiveResponseType$inboundSchema),
-  file_name: z.nullable(z.string()),
-  content_ref: z.nullable(z.lazy(() => ContentRef$inboundSchema)).optional(),
-  remote_created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  remote_updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    candidate_id: z.string(),
+    application_id: z.nullable(z.string()),
+    type: z.nullable(GetAtsAttachmentsPositiveResponseType$inboundSchema),
+    file_name: z.nullable(z.string()),
+    content_ref: z.nullable(z.lazy(() => ContentRef$inboundSchema)).optional(),
+    remote_created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    remote_updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+  })
+);
 
 export function getAtsAttachmentsPositiveResponseResultFromJSON(
   jsonString: string,
@@ -168,12 +175,14 @@ export const GetAtsAttachmentsPositiveResponseData$inboundSchema: z.ZodType<
   GetAtsAttachmentsPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetAtsAttachmentsPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetAtsAttachmentsPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getAtsAttachmentsPositiveResponseDataFromJSON(
   jsonString: string,
@@ -191,10 +200,12 @@ export const GetAtsAttachmentsPositiveResponse$inboundSchema: z.ZodType<
   GetAtsAttachmentsPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAtsAttachmentsPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetAtsAttachmentsPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getAtsAttachmentsPositiveResponseFromJSON(
   jsonString: string,

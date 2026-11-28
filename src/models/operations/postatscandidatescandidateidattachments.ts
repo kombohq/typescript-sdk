@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 
 export type PostAtsCandidatesCandidateIdAttachmentsGlobals = {
@@ -35,11 +36,14 @@ export const PostAtsCandidatesCandidateIdAttachmentsRequest$outboundSchema:
     PostAtsCandidatesCandidateIdAttachmentsRequest$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesCandidateIdAttachmentsRequest
-  > = z.object({
-    candidate_id: z.string(),
-    body:
-      models.PostAtsCandidatesCandidateIdAttachmentsRequestBody$outboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate_id: z.string(),
+      body:
+        models
+          .PostAtsCandidatesCandidateIdAttachmentsRequestBody$outboundSchema,
+    })
+  );
 
 export function postAtsCandidatesCandidateIdAttachmentsRequestToJSON(
   postAtsCandidatesCandidateIdAttachmentsRequest:

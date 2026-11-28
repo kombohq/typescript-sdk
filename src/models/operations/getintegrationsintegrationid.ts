@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 
 export type GetIntegrationsIntegrationIdRequest = {
   /**
@@ -21,9 +22,11 @@ export const GetIntegrationsIntegrationIdRequest$outboundSchema: z.ZodType<
   GetIntegrationsIntegrationIdRequest$Outbound,
   z.ZodTypeDef,
   GetIntegrationsIntegrationIdRequest
-> = z.object({
-  integration_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration_id: z.string(),
+  })
+);
 
 export function getIntegrationsIntegrationIdRequestToJSON(
   getIntegrationsIntegrationIdRequest: GetIntegrationsIntegrationIdRequest,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -63,8 +63,8 @@ export type GetConnectIntegrationByTokenTokenPositiveResponse = {
 export const GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$inboundSchema:
   z.ZodNativeEnum<
     typeof GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus
-  > = z.nativeEnum(
-    GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus)
   );
 
 /** @internal */
@@ -73,15 +73,17 @@ export const GetConnectIntegrationByTokenTokenPositiveResponseData$inboundSchema
     GetConnectIntegrationByTokenTokenPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    tool: z.string(),
-    id: z.string(),
-    end_user_origin_id: z.nullable(z.string()),
-    end_user_organization_name: z.string(),
-    end_user_email: z.nullable(z.string()),
-    setup_status:
-      GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      tool: z.string(),
+      id: z.string(),
+      end_user_origin_id: z.nullable(z.string()),
+      end_user_organization_name: z.string(),
+      end_user_email: z.nullable(z.string()),
+      setup_status:
+        GetConnectIntegrationByTokenTokenPositiveResponseSetupStatus$inboundSchema,
+    })
+  );
 
 export function getConnectIntegrationByTokenTokenPositiveResponseDataFromJSON(
   jsonString: string,
@@ -105,12 +107,14 @@ export const GetConnectIntegrationByTokenTokenPositiveResponse$inboundSchema:
     GetConnectIntegrationByTokenTokenPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      GetConnectIntegrationByTokenTokenPositiveResponseData$inboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        GetConnectIntegrationByTokenTokenPositiveResponseData$inboundSchema
+      ),
+    })
+  );
 
 export function getConnectIntegrationByTokenTokenPositiveResponseFromJSON(
   jsonString: string,

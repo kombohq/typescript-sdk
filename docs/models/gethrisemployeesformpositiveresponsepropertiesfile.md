@@ -1,17 +1,18 @@
-# PropertiesFile
+# GetHrisEmployeesFormPositiveResponsePropertiesFile
 
 ## Example Usage
 
 ```typescript
-import { PropertiesFile } from "@kombo-api/sdk/models";
+import { GetHrisEmployeesFormPositiveResponsePropertiesFile } from "@kombo-api/sdk/models";
 
-let value: PropertiesFile = {
+let value: GetHrisEmployeesFormPositiveResponsePropertiesFile = {
   label: "<value>",
   required: true,
   type: "file",
   file_restrictions: {
     accepted_mime_types: [
       "<value 1>",
+      "<value 2>",
     ],
   },
 };

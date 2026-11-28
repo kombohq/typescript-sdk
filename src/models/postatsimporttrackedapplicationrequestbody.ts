@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds =
   {
@@ -142,11 +143,13 @@ export const PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndC
     PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds
-  > = z.object({
-    id_type: z.literal("application_and_candidate_remote_ids"),
-    candidate_remote_id: z.string(),
-    application_remote_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("application_and_candidate_remote_ids"),
+      candidate_remote_id: z.string(),
+      application_remote_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIdsToJSON(
   postAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds:
@@ -174,11 +177,13 @@ export const PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJ
     PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds
-  > = z.object({
-    id_type: z.literal("application_and_job_remote_ids"),
-    application_remote_id: z.string(),
-    job_remote_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("application_and_job_remote_ids"),
+      application_remote_id: z.string(),
+      job_remote_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIdsToJSON(
   postAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds:
@@ -203,14 +208,16 @@ export const PostAtsImportTrackedApplicationRequestBodyErecruiterUnion$outboundS
     PostAtsImportTrackedApplicationRequestBodyErecruiterUnion$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodyErecruiterUnion
-  > = z.union([
-    z.lazy(() =>
-      PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds$outboundSchema
-    ),
-    z.lazy(() =>
-      PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds$outboundSchema
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() =>
+        PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds$outboundSchema
+      ),
+      z.lazy(() =>
+        PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds$outboundSchema
+      ),
+    ])
+  );
 
 export function postAtsImportTrackedApplicationRequestBodyErecruiterUnionToJSON(
   postAtsImportTrackedApplicationRequestBodyErecruiterUnion:
@@ -235,10 +242,12 @@ export const PostAtsImportTrackedApplicationRequestBodySuccessfactorsApplication
     PostAtsImportTrackedApplicationRequestBodySuccessfactorsApplicationRemoteID$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodySuccessfactorsApplicationRemoteID
-  > = z.object({
-    id_type: z.literal("application_remote_id"),
-    application_remote_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("application_remote_id"),
+      application_remote_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationRequestBodySuccessfactorsApplicationRemoteIDToJSON(
   postAtsImportTrackedApplicationRequestBodySuccessfactorsApplicationRemoteID:
@@ -262,8 +271,10 @@ export const PostAtsImportTrackedApplicationRequestBodySuccessfactorsUnion$outbo
     PostAtsImportTrackedApplicationRequestBodySuccessfactorsUnion$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodySuccessfactorsUnion
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationRequestBodySuccessfactorsApplicationRemoteID$outboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.lazy(() =>
+      PostAtsImportTrackedApplicationRequestBodySuccessfactorsApplicationRemoteID$outboundSchema
+    )
   );
 
 export function postAtsImportTrackedApplicationRequestBodySuccessfactorsUnionToJSON(
@@ -289,10 +300,12 @@ export const PostAtsImportTrackedApplicationRequestBodyRecruiteePlacementID$outb
     PostAtsImportTrackedApplicationRequestBodyRecruiteePlacementID$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodyRecruiteePlacementID
-  > = z.object({
-    id_type: z.literal("placement_id"),
-    placement_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("placement_id"),
+      placement_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationRequestBodyRecruiteePlacementIDToJSON(
   postAtsImportTrackedApplicationRequestBodyRecruiteePlacementID:
@@ -314,8 +327,10 @@ export const PostAtsImportTrackedApplicationRequestBodyRecruiteeUnion$outboundSc
     PostAtsImportTrackedApplicationRequestBodyRecruiteeUnion$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodyRecruiteeUnion
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationRequestBodyRecruiteePlacementID$outboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.lazy(() =>
+      PostAtsImportTrackedApplicationRequestBodyRecruiteePlacementID$outboundSchema
+    )
   );
 
 export function postAtsImportTrackedApplicationRequestBodyRecruiteeUnionToJSON(
@@ -341,10 +356,12 @@ export const PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID$o
     PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID
-  > = z.object({
-    id_type: z.literal("application_id"),
-    application_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("application_id"),
+      application_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationRequestBodyGreenhouseApplicationIDToJSON(
   postAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID:
@@ -366,8 +383,10 @@ export const PostAtsImportTrackedApplicationRequestBodyGreenhouseUnion$outboundS
     PostAtsImportTrackedApplicationRequestBodyGreenhouseUnion$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodyGreenhouseUnion
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID$outboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.lazy(() =>
+      PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID$outboundSchema
+    )
   );
 
 export function postAtsImportTrackedApplicationRequestBodyGreenhouseUnionToJSON(
@@ -393,10 +412,12 @@ export const PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID
     PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID
-  > = z.object({
-    id_type: z.literal("application_id"),
-    application_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("application_id"),
+      application_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationIDToJSON(
   postAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID:
@@ -420,8 +441,10 @@ export const PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union$outboun
     PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodyGreenhousev3Union
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$outboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.lazy(() =>
+      PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$outboundSchema
+    )
   );
 
 export function postAtsImportTrackedApplicationRequestBodyGreenhousev3UnionToJSON(
@@ -447,10 +470,12 @@ export const PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID$outbo
     PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID
-  > = z.object({
-    id_type: z.literal("application_id"),
-    application_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("application_id"),
+      application_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationRequestBodyOnlyfyApplicationIDToJSON(
   postAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID:
@@ -472,8 +497,10 @@ export const PostAtsImportTrackedApplicationRequestBodyOnlyfyUnion$outboundSchem
     PostAtsImportTrackedApplicationRequestBodyOnlyfyUnion$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodyOnlyfyUnion
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID$outboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.lazy(() =>
+      PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID$outboundSchema
+    )
   );
 
 export function postAtsImportTrackedApplicationRequestBodyOnlyfyUnionToJSON(
@@ -501,11 +528,13 @@ export const PostAtsImportTrackedApplicationRequestBodySmartrecruitersCandidateA
     PostAtsImportTrackedApplicationRequestBodySmartrecruitersCandidateAndJobRemoteIds$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodySmartrecruitersCandidateAndJobRemoteIds
-  > = z.object({
-    id_type: z.literal("candidate_and_job_remote_ids"),
-    candidate_remote_id: z.string(),
-    job_remote_id: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id_type: z.literal("candidate_and_job_remote_ids"),
+      candidate_remote_id: z.string(),
+      job_remote_id: z.string(),
+    })
+  );
 
 export function postAtsImportTrackedApplicationRequestBodySmartrecruitersCandidateAndJobRemoteIdsToJSON(
   postAtsImportTrackedApplicationRequestBodySmartrecruitersCandidateAndJobRemoteIds:
@@ -529,8 +558,10 @@ export const PostAtsImportTrackedApplicationRequestBodySmartrecruitersUnion$outb
     PostAtsImportTrackedApplicationRequestBodySmartrecruitersUnion$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBodySmartrecruitersUnion
-  > = z.lazy(() =>
-    PostAtsImportTrackedApplicationRequestBodySmartrecruitersCandidateAndJobRemoteIds$outboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.lazy(() =>
+      PostAtsImportTrackedApplicationRequestBodySmartrecruitersCandidateAndJobRemoteIds$outboundSchema
+    )
   );
 
 export function postAtsImportTrackedApplicationRequestBodySmartrecruitersUnionToJSON(
@@ -576,35 +607,37 @@ export const PostAtsImportTrackedApplicationRequestBody$outboundSchema:
     PostAtsImportTrackedApplicationRequestBody$Outbound,
     z.ZodTypeDef,
     PostAtsImportTrackedApplicationRequestBody
-  > = z.object({
-    erecruiter: z.union([
-      z.lazy(() =>
-        PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds$outboundSchema
-      ),
-      z.lazy(() =>
-        PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds$outboundSchema
-      ),
-    ]).optional(),
-    successfactors: z.lazy(() =>
-      PostAtsImportTrackedApplicationRequestBodySuccessfactorsApplicationRemoteID$outboundSchema
-    ).optional(),
-    recruitee: z.lazy(() =>
-      PostAtsImportTrackedApplicationRequestBodyRecruiteePlacementID$outboundSchema
-    ).optional(),
-    greenhouse: z.lazy(() =>
-      PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID$outboundSchema
-    ).optional(),
-    greenhousev3: z.lazy(() =>
-      PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$outboundSchema
-    ).optional(),
-    onlyfy: z.lazy(() =>
-      PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID$outboundSchema
-    ).optional(),
-    smartrecruiters: z.lazy(() =>
-      PostAtsImportTrackedApplicationRequestBodySmartrecruitersCandidateAndJobRemoteIds$outboundSchema
-    ).optional(),
-    tracked_at: z.nullable(z.date().transform(v => v.toISOString())),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      erecruiter: z.union([
+        z.lazy(() =>
+          PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndJobRemoteIds$outboundSchema
+        ),
+        z.lazy(() =>
+          PostAtsImportTrackedApplicationRequestBodyErecruiterApplicationAndCandidateRemoteIds$outboundSchema
+        ),
+      ]).optional(),
+      successfactors: z.lazy(() =>
+        PostAtsImportTrackedApplicationRequestBodySuccessfactorsApplicationRemoteID$outboundSchema
+      ).optional(),
+      recruitee: z.lazy(() =>
+        PostAtsImportTrackedApplicationRequestBodyRecruiteePlacementID$outboundSchema
+      ).optional(),
+      greenhouse: z.lazy(() =>
+        PostAtsImportTrackedApplicationRequestBodyGreenhouseApplicationID$outboundSchema
+      ).optional(),
+      greenhousev3: z.lazy(() =>
+        PostAtsImportTrackedApplicationRequestBodyGreenhousev3ApplicationID$outboundSchema
+      ).optional(),
+      onlyfy: z.lazy(() =>
+        PostAtsImportTrackedApplicationRequestBodyOnlyfyApplicationID$outboundSchema
+      ).optional(),
+      smartrecruiters: z.lazy(() =>
+        PostAtsImportTrackedApplicationRequestBodySmartrecruitersCandidateAndJobRemoteIds$outboundSchema
+      ).optional(),
+      tracked_at: z.nullable(z.date().transform(v => v.toISOString())),
+    })
+  );
 
 export function postAtsImportTrackedApplicationRequestBodyToJSON(
   postAtsImportTrackedApplicationRequestBody:

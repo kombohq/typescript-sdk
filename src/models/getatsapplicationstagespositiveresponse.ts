@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -68,8 +68,10 @@ export type GetAtsApplicationStagesPositiveResponse = {
 
 /** @internal */
 export const GetAtsApplicationStagesPositiveResponseStatus$inboundSchema:
-  z.ZodNativeEnum<typeof GetAtsApplicationStagesPositiveResponseStatus> = z
-    .nativeEnum(GetAtsApplicationStagesPositiveResponseStatus);
+  z.ZodNativeEnum<typeof GetAtsApplicationStagesPositiveResponseStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetAtsApplicationStagesPositiveResponseStatus)
+    );
 
 /** @internal */
 export const GetAtsApplicationStagesPositiveResponseResult$inboundSchema:
@@ -77,21 +79,23 @@ export const GetAtsApplicationStagesPositiveResponseResult$inboundSchema:
     GetAtsApplicationStagesPositiveResponseResult,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()),
-    name: z.nullable(z.string()),
-    status: z.nullable(
-      GetAtsApplicationStagesPositiveResponseStatus$inboundSchema,
-    ),
-    custom_fields: z.nullable(z.record(z.any())),
-    changed_at: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    remote_deleted_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      remote_id: z.nullable(z.string()),
+      name: z.nullable(z.string()),
+      status: z.nullable(
+        GetAtsApplicationStagesPositiveResponseStatus$inboundSchema,
+      ),
+      custom_fields: z.nullable(z.record(z.any())),
+      changed_at: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      remote_deleted_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+    })
+  );
 
 export function getAtsApplicationStagesPositiveResponseResultFromJSON(
   jsonString: string,
@@ -115,12 +119,16 @@ export const GetAtsApplicationStagesPositiveResponseData$inboundSchema:
     GetAtsApplicationStagesPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    next: z.nullable(z.string()),
-    results: z.array(
-      z.lazy(() => GetAtsApplicationStagesPositiveResponseResult$inboundSchema),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      next: z.nullable(z.string()),
+      results: z.array(
+        z.lazy(() =>
+          GetAtsApplicationStagesPositiveResponseResult$inboundSchema
+        ),
+      ),
+    })
+  );
 
 export function getAtsApplicationStagesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -143,10 +151,14 @@ export const GetAtsApplicationStagesPositiveResponse$inboundSchema: z.ZodType<
   GetAtsApplicationStagesPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAtsApplicationStagesPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() =>
+      GetAtsApplicationStagesPositiveResponseData$inboundSchema
+    ),
+  })
+);
 
 export function getAtsApplicationStagesPositiveResponseFromJSON(
   jsonString: string,

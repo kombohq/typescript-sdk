@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export const PostAtsCandidatesRequestBodyAdditionalEmailAddressType = {
@@ -510,8 +511,22 @@ export type PostAtsCandidatesRequestBodyLanguageReference = {
   wid: string;
 };
 
+/**
+ * Gender reference written to Person Biographic and Demographic Information Data.
+ */
+export type PostAtsCandidatesRequestBodyGenderReference = {
+  /**
+   * Tenant Gender_Code for the gender, such as Feminin. Not the Kombo gender enum and not the display label.
+   */
+  gender_code: string;
+};
+
 export type PostAtsCandidatesRequestBodyGlobalPersonalInformationData = {
   date_of_birth?: string | undefined;
+  /**
+   * Gender reference written to Person Biographic and Demographic Information Data.
+   */
+  gender_reference?: PostAtsCandidatesRequestBodyGenderReference | undefined;
 };
 
 export type PostAtsCandidatesRequestBodyJobAppliedToData = {
@@ -704,6 +719,10 @@ export type PostAtsCandidatesRequestBodyBullhorn = {
    * The remote ID of the Bullhorn `Candidate` the application should be filed on. When set, we skip Bullhorn's duplicate detection and use exactly this candidate, which lets you pick the right record when several candidates share an email address or phone number. The request fails if the candidate does not exist (or was deleted) in Bullhorn.
    */
   existing_candidate_remote_id?: string | undefined;
+  /**
+   * The remote IDs of Bullhorn `Specialty` records to add to the candidate. You can list the available specialties with `GET options/Specialty` through our passthrough API. Only applied when we create a new candidate, not when we file the application on an existing one. Bullhorn silently ignores IDs that do not exist, so make sure they are valid. If Bullhorn returns an error, the application is still created and the response includes a warning.
+   */
+  candidate_specialty_remote_ids?: Array<string> | undefined;
 };
 
 /**
@@ -1197,7 +1216,9 @@ export type PostAtsCandidatesRequestBody = {
 export const PostAtsCandidatesRequestBodyAdditionalEmailAddressType$outboundSchema:
   z.ZodNativeEnum<
     typeof PostAtsCandidatesRequestBodyAdditionalEmailAddressType
-  > = z.nativeEnum(PostAtsCandidatesRequestBodyAdditionalEmailAddressType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(PostAtsCandidatesRequestBodyAdditionalEmailAddressType)
+  );
 
 /** @internal */
 export type PostAtsCandidatesRequestBodyAdditionalEmailAddress$Outbound = {
@@ -1211,10 +1232,13 @@ export const PostAtsCandidatesRequestBodyAdditionalEmailAddress$outboundSchema:
     PostAtsCandidatesRequestBodyAdditionalEmailAddress$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyAdditionalEmailAddress
-  > = z.object({
-    type: PostAtsCandidatesRequestBodyAdditionalEmailAddressType$outboundSchema,
-    email_address: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type:
+        PostAtsCandidatesRequestBodyAdditionalEmailAddressType$outboundSchema,
+      email_address: z.string(),
+    })
+  );
 
 export function postAtsCandidatesRequestBodyAdditionalEmailAddressToJSON(
   postAtsCandidatesRequestBodyAdditionalEmailAddress:
@@ -1231,7 +1255,9 @@ export function postAtsCandidatesRequestBodyAdditionalEmailAddressToJSON(
 export const PostAtsCandidatesRequestBodyAdditionalPhoneNumberType$outboundSchema:
   z.ZodNativeEnum<
     typeof PostAtsCandidatesRequestBodyAdditionalPhoneNumberType
-  > = z.nativeEnum(PostAtsCandidatesRequestBodyAdditionalPhoneNumberType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(PostAtsCandidatesRequestBodyAdditionalPhoneNumberType)
+  );
 
 /** @internal */
 export type PostAtsCandidatesRequestBodyAdditionalPhoneNumber$Outbound = {
@@ -1245,10 +1271,13 @@ export const PostAtsCandidatesRequestBodyAdditionalPhoneNumber$outboundSchema:
     PostAtsCandidatesRequestBodyAdditionalPhoneNumber$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyAdditionalPhoneNumber
-  > = z.object({
-    type: PostAtsCandidatesRequestBodyAdditionalPhoneNumberType$outboundSchema,
-    phone_number: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type:
+        PostAtsCandidatesRequestBodyAdditionalPhoneNumberType$outboundSchema,
+      phone_number: z.string(),
+    })
+  );
 
 export function postAtsCandidatesRequestBodyAdditionalPhoneNumberToJSON(
   postAtsCandidatesRequestBodyAdditionalPhoneNumber:
@@ -1275,13 +1304,15 @@ export const PostAtsCandidatesRequestBodyLocation$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyLocation$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyLocation
-> = z.object({
-  city: z.string().optional(),
-  country: z.string(),
-  state: z.string().optional(),
-  street_1: z.string().optional(),
-  zip_code: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    city: z.string().optional(),
+    country: z.string(),
+    state: z.string().optional(),
+    street_1: z.string().optional(),
+    zip_code: z.string().optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyLocationToJSON(
   postAtsCandidatesRequestBodyLocation: PostAtsCandidatesRequestBodyLocation,
@@ -1296,12 +1327,16 @@ export function postAtsCandidatesRequestBodyLocationToJSON(
 /** @internal */
 export const PostAtsCandidatesRequestBodyGender$outboundSchema: z.ZodNativeEnum<
   typeof PostAtsCandidatesRequestBodyGender
-> = z.nativeEnum(PostAtsCandidatesRequestBodyGender);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PostAtsCandidatesRequestBodyGender)
+);
 
 /** @internal */
 export const PostAtsCandidatesRequestBodyPeriod$outboundSchema: z.ZodNativeEnum<
   typeof PostAtsCandidatesRequestBodyPeriod
-> = z.nativeEnum(PostAtsCandidatesRequestBodyPeriod);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PostAtsCandidatesRequestBodyPeriod)
+);
 
 /** @internal */
 export type PostAtsCandidatesRequestBodySalaryExpectations$Outbound = {
@@ -1315,10 +1350,12 @@ export const PostAtsCandidatesRequestBodySalaryExpectations$outboundSchema:
     PostAtsCandidatesRequestBodySalaryExpectations$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodySalaryExpectations
-  > = z.object({
-    period: PostAtsCandidatesRequestBodyPeriod$outboundSchema,
-    amount: z.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      period: PostAtsCandidatesRequestBodyPeriod$outboundSchema,
+      amount: z.number(),
+    })
+  );
 
 export function postAtsCandidatesRequestBodySalaryExpectationsToJSON(
   postAtsCandidatesRequestBodySalaryExpectations:
@@ -1341,9 +1378,11 @@ export const PostAtsCandidatesRequestBodySocialLink$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodySocialLink$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodySocialLink
-> = z.object({
-  url: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+  })
+);
 
 export function postAtsCandidatesRequestBodySocialLinkToJSON(
   postAtsCandidatesRequestBodySocialLink:
@@ -1386,34 +1425,35 @@ export const PostAtsCandidatesRequestBodyCandidate$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyCandidate$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyCandidate
-> = z.object({
-  first_name: z.string(),
-  last_name: z.string(),
-  email_address: z.string(),
-  additional_email_addresses: z.array(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    first_name: z.string(),
+    last_name: z.string(),
+    email_address: z.string(),
+    additional_email_addresses: z.array(z.lazy(() =>
       PostAtsCandidatesRequestBodyAdditionalEmailAddress$outboundSchema
-    ),
-  ).optional(),
-  company: z.string().optional(),
-  title: z.string().optional(),
-  phone_number: z.string().optional(),
-  additional_phone_numbers: z.array(
-    z.lazy(() =>
+    )).optional(),
+    company: z.string().optional(),
+    title: z.string().optional(),
+    phone_number: z.string().optional(),
+    additional_phone_numbers: z.array(z.lazy(() =>
       PostAtsCandidatesRequestBodyAdditionalPhoneNumber$outboundSchema
-    ),
-  ).optional(),
-  location: z.lazy(() => PostAtsCandidatesRequestBodyLocation$outboundSchema)
-    .optional(),
-  gender: PostAtsCandidatesRequestBodyGender$outboundSchema.optional(),
-  availability_date: z.date().transform(v => v.toISOString()).optional(),
-  salary_expectations: z.lazy(() =>
-    PostAtsCandidatesRequestBodySalaryExpectations$outboundSchema
-  ).optional(),
-  social_links: z.array(
-    z.lazy(() => PostAtsCandidatesRequestBodySocialLink$outboundSchema),
-  ).optional(),
-});
+    )).optional(),
+    location: z.lazy(() =>
+      PostAtsCandidatesRequestBodyLocation$outboundSchema
+    ).optional(),
+    gender: PostAtsCandidatesRequestBodyGender$outboundSchema.optional(),
+    availability_date: z.date().transform(v =>
+      v.toISOString()
+    ).optional(),
+    salary_expectations: z.lazy(() =>
+      PostAtsCandidatesRequestBodySalaryExpectations$outboundSchema
+    ).optional(),
+    social_links: z.array(z.lazy(() =>
+      PostAtsCandidatesRequestBodySocialLink$outboundSchema
+    )).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyCandidateToJSON(
   postAtsCandidatesRequestBodyCandidate: PostAtsCandidatesRequestBodyCandidate,
@@ -1436,10 +1476,12 @@ export const PostAtsCandidatesRequestBodyApplication$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyApplication$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyApplication
-> = z.object({
-  job_id: z.string(),
-  stage_id: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    job_id: z.string(),
+    stage_id: z.string().optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyApplicationToJSON(
   postAtsCandidatesRequestBodyApplication:
@@ -1465,12 +1507,14 @@ export const PostAtsCandidatesRequestBodyAnswer$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyAnswer$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyAnswer
-> = z.object({
-  name: z.string(),
-  content_type: z.string().optional(),
-  data_url: z.string().optional(),
-  data: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    content_type: z.string().optional(),
+    data_url: z.string().optional(),
+    data: z.string().optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyAnswerToJSON(
   postAtsCandidatesRequestBodyAnswer: PostAtsCandidatesRequestBodyAnswer,
@@ -1496,14 +1540,16 @@ export const PostAtsCandidatesRequestBodyAnswerUnion$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyAnswerUnion$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyAnswerUnion
-> = z.union([
-  z.lazy(() => PostAtsCandidatesRequestBodyAnswer$outboundSchema),
-  z.string(),
-  z.boolean(),
-  z.number(),
-  z.array(z.string()),
-  z.date().transform(v => v.toISOString()),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => PostAtsCandidatesRequestBodyAnswer$outboundSchema),
+    z.string(),
+    z.boolean(),
+    z.number(),
+    z.array(z.string()),
+    z.date().transform(v => v.toISOString()),
+  ])
+);
 
 export function postAtsCandidatesRequestBodyAnswerUnionToJSON(
   postAtsCandidatesRequestBodyAnswerUnion:
@@ -1534,17 +1580,19 @@ export const PostAtsCandidatesRequestBodyScreeningQuestionAnswer$outboundSchema:
     PostAtsCandidatesRequestBodyScreeningQuestionAnswer$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyScreeningQuestionAnswer
-  > = z.object({
-    question_id: z.string(),
-    answer: z.union([
-      z.lazy(() => PostAtsCandidatesRequestBodyAnswer$outboundSchema),
-      z.string(),
-      z.boolean(),
-      z.number(),
-      z.array(z.string()),
-      z.date().transform(v => v.toISOString()),
-    ]),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      question_id: z.string(),
+      answer: z.union([
+        z.lazy(() => PostAtsCandidatesRequestBodyAnswer$outboundSchema),
+        z.string(),
+        z.boolean(),
+        z.number(),
+        z.array(z.string()),
+        z.date().transform(v => v.toISOString()),
+      ]),
+    })
+  );
 
 export function postAtsCandidatesRequestBodyScreeningQuestionAnswerToJSON(
   postAtsCandidatesRequestBodyScreeningQuestionAnswer:
@@ -1559,8 +1607,10 @@ export function postAtsCandidatesRequestBodyScreeningQuestionAnswerToJSON(
 
 /** @internal */
 export const PostAtsCandidatesRequestBodyAttachmentType$outboundSchema:
-  z.ZodNativeEnum<typeof PostAtsCandidatesRequestBodyAttachmentType> = z
-    .nativeEnum(PostAtsCandidatesRequestBodyAttachmentType);
+  z.ZodNativeEnum<typeof PostAtsCandidatesRequestBodyAttachmentType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PostAtsCandidatesRequestBodyAttachmentType)
+    );
 
 /** @internal */
 export type PostAtsCandidatesRequestBodyAttachment$Outbound = {
@@ -1576,13 +1626,15 @@ export const PostAtsCandidatesRequestBodyAttachment$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyAttachment$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyAttachment
-> = z.object({
-  name: z.string(),
-  content_type: z.string().optional(),
-  data_url: z.string().optional(),
-  data: z.string().optional(),
-  type: PostAtsCandidatesRequestBodyAttachmentType$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    content_type: z.string().optional(),
+    data_url: z.string().optional(),
+    data: z.string().optional(),
+    type: PostAtsCandidatesRequestBodyAttachmentType$outboundSchema,
+  })
+);
 
 export function postAtsCandidatesRequestBodyAttachmentToJSON(
   postAtsCandidatesRequestBodyAttachment:
@@ -1607,11 +1659,13 @@ export const PostAtsCandidatesRequestBodySource$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodySource$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodySource
-> = z.object({
-  name: z.string().optional(),
-  unified_key: z.string().optional(),
-  id: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    unified_key: z.string().optional(),
+    id: z.string().optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodySourceToJSON(
   postAtsCandidatesRequestBodySource: PostAtsCandidatesRequestBodySource,
@@ -1633,9 +1687,11 @@ export const PostAtsCandidatesRequestBodySourcedBy$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodySourcedBy$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodySourcedBy
-> = z.object({
-  user_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    user_id: z.string(),
+  })
+);
 
 export function postAtsCandidatesRequestBodySourcedByToJSON(
   postAtsCandidatesRequestBodySourcedBy: PostAtsCandidatesRequestBodySourcedBy,
@@ -1658,10 +1714,12 @@ export const PostAtsCandidatesRequestBodyGdprConsent$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyGdprConsent$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyGdprConsent
-> = z.object({
-  expires_at: z.date().transform(v => v.toISOString()).optional(),
-  given: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expires_at: z.date().transform(v => v.toISOString()).optional(),
+    given: z.boolean().optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyGdprConsentToJSON(
   postAtsCandidatesRequestBodyGdprConsent:
@@ -1688,18 +1746,20 @@ export const PostAtsCandidatesRequestBodySuccessfactors$outboundSchema:
     PostAtsCandidatesRequestBodySuccessfactors$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodySuccessfactors
-  > = z.object({
-    candidate: z.record(z.any()).optional(),
-    job_application: z.record(z.any()).optional(),
-    copy_job_application_attachments: z.boolean().optional(),
-    update_existing_candidate: z.nullable(z.boolean()).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      candidate: "Candidate",
-      job_application: "JobApplication",
-      copy_job_application_attachments: "copyJobApplicationAttachments",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate: z.record(z.any()).optional(),
+      job_application: z.record(z.any()).optional(),
+      copy_job_application_attachments: z.boolean().optional(),
+      update_existing_candidate: z.nullable(z.boolean()).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        candidate: "Candidate",
+        job_application: "JobApplication",
+        copy_job_application_attachments: "copyJobApplicationAttachments",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodySuccessfactorsToJSON(
   postAtsCandidatesRequestBodySuccessfactors:
@@ -1722,9 +1782,11 @@ export const PostAtsCandidatesRequestBodyPersonio$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyPersonio$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyPersonio
-> = z.object({
-  application: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    application: z.record(z.any()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyPersonioToJSON(
   postAtsCandidatesRequestBodyPersonio: PostAtsCandidatesRequestBodyPersonio,
@@ -1748,15 +1810,17 @@ export const PostAtsCandidatesRequestBodyTalentsoft$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyTalentsoft$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyTalentsoft
-> = z.object({
-  applicant: z.record(z.any()).optional(),
-  application: z.record(z.any()).optional(),
-  custom_fields: z.record(z.any()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    custom_fields: "customFields",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    applicant: z.record(z.any()).optional(),
+    application: z.record(z.any()).optional(),
+    custom_fields: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      custom_fields: "customFields",
+    });
+  })
+);
 
 export function postAtsCandidatesRequestBodyTalentsoftToJSON(
   postAtsCandidatesRequestBodyTalentsoft:
@@ -1780,9 +1844,11 @@ export const PostAtsCandidatesRequestBodyTeamtailorApplication$outboundSchema:
     PostAtsCandidatesRequestBodyTeamtailorApplication$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyTeamtailorApplication
-  > = z.object({
-    attributes: z.record(z.any()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      attributes: z.record(z.any()).optional(),
+    })
+  );
 
 export function postAtsCandidatesRequestBodyTeamtailorApplicationToJSON(
   postAtsCandidatesRequestBodyTeamtailorApplication:
@@ -1808,12 +1874,14 @@ export const PostAtsCandidatesRequestBodyTeamtailor$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyTeamtailor$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyTeamtailor
-> = z.object({
-  candidate: z.record(z.any()).optional(),
-  application: z.lazy(() =>
-    PostAtsCandidatesRequestBodyTeamtailorApplication$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.record(z.any()).optional(),
+    application: z.lazy(() =>
+      PostAtsCandidatesRequestBodyTeamtailorApplication$outboundSchema
+    ).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyTeamtailorToJSON(
   postAtsCandidatesRequestBodyTeamtailor:
@@ -1836,13 +1904,15 @@ export const PostAtsCandidatesRequestBodyPostHeaders$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyPostHeaders$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyPostHeaders
-> = z.object({
-  on_behalf_of: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    on_behalf_of: "On-Behalf-Of",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    on_behalf_of: z.nullable(z.string()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      on_behalf_of: "On-Behalf-Of",
+    });
+  })
+);
 
 export function postAtsCandidatesRequestBodyPostHeadersToJSON(
   postAtsCandidatesRequestBodyPostHeaders:
@@ -1865,11 +1935,13 @@ export const PostAtsCandidatesRequestBodyGreenhouse$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyGreenhouse$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyGreenhouse
-> = z.object({
-  post_headers: z.lazy(() =>
-    PostAtsCandidatesRequestBodyPostHeaders$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    post_headers: z.lazy(() =>
+      PostAtsCandidatesRequestBodyPostHeaders$outboundSchema
+    ).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyGreenhouseToJSON(
   postAtsCandidatesRequestBodyGreenhouse:
@@ -1893,10 +1965,12 @@ export const PostAtsCandidatesRequestBodyGreenhousev3$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyGreenhousev3$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyGreenhousev3
-> = z.object({
-  candidate: z.record(z.any()).optional(),
-  application: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.record(z.any()).optional(),
+    application: z.record(z.any()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyGreenhousev3ToJSON(
   postAtsCandidatesRequestBodyGreenhousev3:
@@ -1919,9 +1993,11 @@ export const PostAtsCandidatesRequestBodyLever$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyLever$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyLever
-> = z.object({
-  candidate: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.record(z.any()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyLeverToJSON(
   postAtsCandidatesRequestBodyLever: PostAtsCandidatesRequestBodyLever,
@@ -1943,9 +2019,11 @@ export const PostAtsCandidatesRequestBodyWorkable$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyWorkable$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyWorkable
-> = z.object({
-  on_behalf_of_user_remote_id: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    on_behalf_of_user_remote_id: z.string().optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyWorkableToJSON(
   postAtsCandidatesRequestBodyWorkable: PostAtsCandidatesRequestBodyWorkable,
@@ -1968,13 +2046,15 @@ export const PostAtsCandidatesRequestBodySocialSuffixReference$outboundSchema:
     PostAtsCandidatesRequestBodySocialSuffixReference$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodySocialSuffixReference
-  > = z.object({
-    predefined_name_component_id: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      predefined_name_component_id: "Predefined_Name_Component_ID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      predefined_name_component_id: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        predefined_name_component_id: "Predefined_Name_Component_ID",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodySocialSuffixReferenceToJSON(
   postAtsCandidatesRequestBodySocialSuffixReference:
@@ -2001,17 +2081,19 @@ export const PostAtsCandidatesRequestBodyNameDetailData$outboundSchema:
     PostAtsCandidatesRequestBodyNameDetailData$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyNameDetailData
-  > = z.object({
-    middle_name: z.string().optional(),
-    social_suffix_reference: z.lazy(() =>
-      PostAtsCandidatesRequestBodySocialSuffixReference$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      middle_name: "Middle_Name",
-      social_suffix_reference: "Social_Suffix_Reference",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      middle_name: z.string().optional(),
+      social_suffix_reference: z.lazy(() =>
+        PostAtsCandidatesRequestBodySocialSuffixReference$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        middle_name: "Middle_Name",
+        social_suffix_reference: "Social_Suffix_Reference",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyNameDetailDataToJSON(
   postAtsCandidatesRequestBodyNameDetailData:
@@ -2035,13 +2117,15 @@ export const PostAtsCandidatesRequestBodyLanguageReference$outboundSchema:
     PostAtsCandidatesRequestBodyLanguageReference$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyLanguageReference
-  > = z.object({
-    wid: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyLanguageReferenceToJSON(
   postAtsCandidatesRequestBodyLanguageReference:
@@ -2055,9 +2139,44 @@ export function postAtsCandidatesRequestBodyLanguageReferenceToJSON(
 }
 
 /** @internal */
+export type PostAtsCandidatesRequestBodyGenderReference$Outbound = {
+  Gender_Code: string;
+};
+
+/** @internal */
+export const PostAtsCandidatesRequestBodyGenderReference$outboundSchema:
+  z.ZodType<
+    PostAtsCandidatesRequestBodyGenderReference$Outbound,
+    z.ZodTypeDef,
+    PostAtsCandidatesRequestBodyGenderReference
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      gender_code: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        gender_code: "Gender_Code",
+      });
+    })
+  );
+
+export function postAtsCandidatesRequestBodyGenderReferenceToJSON(
+  postAtsCandidatesRequestBodyGenderReference:
+    PostAtsCandidatesRequestBodyGenderReference,
+): string {
+  return JSON.stringify(
+    PostAtsCandidatesRequestBodyGenderReference$outboundSchema.parse(
+      postAtsCandidatesRequestBodyGenderReference,
+    ),
+  );
+}
+
+/** @internal */
 export type PostAtsCandidatesRequestBodyGlobalPersonalInformationData$Outbound =
   {
     Date_of_Birth?: string | undefined;
+    Gender_Reference?:
+      | PostAtsCandidatesRequestBodyGenderReference$Outbound
+      | undefined;
   };
 
 /** @internal */
@@ -2066,13 +2185,19 @@ export const PostAtsCandidatesRequestBodyGlobalPersonalInformationData$outboundS
     PostAtsCandidatesRequestBodyGlobalPersonalInformationData$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyGlobalPersonalInformationData
-  > = z.object({
-    date_of_birth: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      date_of_birth: "Date_of_Birth",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      date_of_birth: z.string().optional(),
+      gender_reference: z.lazy(() =>
+        PostAtsCandidatesRequestBodyGenderReference$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        date_of_birth: "Date_of_Birth",
+        gender_reference: "Gender_Reference",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyGlobalPersonalInformationDataToJSON(
   postAtsCandidatesRequestBodyGlobalPersonalInformationData:
@@ -2097,15 +2222,17 @@ export const PostAtsCandidatesRequestBodyJobAppliedToData$outboundSchema:
     PostAtsCandidatesRequestBodyJobAppliedToData$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyJobAppliedToData
-  > = z.object({
-    global_personal_information_data: z.lazy(() =>
-      PostAtsCandidatesRequestBodyGlobalPersonalInformationData$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      global_personal_information_data: "Global_Personal_Information_Data",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      global_personal_information_data: z.lazy(() =>
+        PostAtsCandidatesRequestBodyGlobalPersonalInformationData$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        global_personal_information_data: "Global_Personal_Information_Data",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyJobAppliedToDataToJSON(
   postAtsCandidatesRequestBodyJobAppliedToData:
@@ -2129,13 +2256,15 @@ export const PostAtsCandidatesRequestBodyFieldOfStudyReference$outboundSchema:
     PostAtsCandidatesRequestBodyFieldOfStudyReference$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyFieldOfStudyReference
-  > = z.object({
-    wid: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyFieldOfStudyReferenceToJSON(
   postAtsCandidatesRequestBodyFieldOfStudyReference:
@@ -2159,13 +2288,15 @@ export const PostAtsCandidatesRequestBodyDegreeReference$outboundSchema:
     PostAtsCandidatesRequestBodyDegreeReference$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyDegreeReference
-  > = z.object({
-    wid: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyDegreeReferenceToJSON(
   postAtsCandidatesRequestBodyDegreeReference:
@@ -2198,27 +2329,29 @@ export const PostAtsCandidatesRequestBodyEducationDatum$outboundSchema:
     PostAtsCandidatesRequestBodyEducationDatum$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyEducationDatum
-  > = z.object({
-    school_name: z.string().optional(),
-    first_year_attended: z.number().optional(),
-    last_year_attended: z.number().optional(),
-    field_of_study_reference: z.lazy(() =>
-      PostAtsCandidatesRequestBodyFieldOfStudyReference$outboundSchema
-    ).optional(),
-    degree_reference: z.lazy(() =>
-      PostAtsCandidatesRequestBodyDegreeReference$outboundSchema
-    ).optional(),
-    grade_average: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      school_name: "School_Name",
-      first_year_attended: "First_Year_Attended",
-      last_year_attended: "Last_Year_Attended",
-      field_of_study_reference: "Field_of_Study_Reference",
-      degree_reference: "Degree_Reference",
-      grade_average: "Grade_Average",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      school_name: z.string().optional(),
+      first_year_attended: z.number().optional(),
+      last_year_attended: z.number().optional(),
+      field_of_study_reference: z.lazy(() =>
+        PostAtsCandidatesRequestBodyFieldOfStudyReference$outboundSchema
+      ).optional(),
+      degree_reference: z.lazy(() =>
+        PostAtsCandidatesRequestBodyDegreeReference$outboundSchema
+      ).optional(),
+      grade_average: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        school_name: "School_Name",
+        first_year_attended: "First_Year_Attended",
+        last_year_attended: "Last_Year_Attended",
+        field_of_study_reference: "Field_of_Study_Reference",
+        degree_reference: "Degree_Reference",
+        grade_average: "Grade_Average",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyEducationDatumToJSON(
   postAtsCandidatesRequestBodyEducationDatum:
@@ -2241,13 +2374,15 @@ export const PostAtsCandidatesRequestBodySkillDatum$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodySkillDatum$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodySkillDatum
-> = z.object({
-  skill_name: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    skill_name: "Skill_Name",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    skill_name: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      skill_name: "Skill_Name",
+    });
+  })
+);
 
 export function postAtsCandidatesRequestBodySkillDatumToJSON(
   postAtsCandidatesRequestBodySkillDatum:
@@ -2272,13 +2407,15 @@ export const PostAtsCandidatesRequestBodyLanguageDatumLanguageReference$outbound
     PostAtsCandidatesRequestBodyLanguageDatumLanguageReference$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyLanguageDatumLanguageReference
-  > = z.object({
-    wid: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyLanguageDatumLanguageReferenceToJSON(
   postAtsCandidatesRequestBodyLanguageDatumLanguageReference:
@@ -2302,13 +2439,15 @@ export const PostAtsCandidatesRequestBodyLanguageProficiencyReference$outboundSc
     PostAtsCandidatesRequestBodyLanguageProficiencyReference$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyLanguageProficiencyReference
-  > = z.object({
-    wid: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyLanguageProficiencyReferenceToJSON(
   postAtsCandidatesRequestBodyLanguageProficiencyReference:
@@ -2332,13 +2471,15 @@ export const PostAtsCandidatesRequestBodyLanguageAbilityTypeReference$outboundSc
     PostAtsCandidatesRequestBodyLanguageAbilityTypeReference$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyLanguageAbilityTypeReference
-  > = z.object({
-    wid: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyLanguageAbilityTypeReferenceToJSON(
   postAtsCandidatesRequestBodyLanguageAbilityTypeReference:
@@ -2366,19 +2507,21 @@ export const PostAtsCandidatesRequestBodyLanguageAbilityData$outboundSchema:
     PostAtsCandidatesRequestBodyLanguageAbilityData$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyLanguageAbilityData
-  > = z.object({
-    language_proficiency_reference: z.lazy(() =>
-      PostAtsCandidatesRequestBodyLanguageProficiencyReference$outboundSchema
-    ).optional(),
-    language_ability_type_reference: z.lazy(() =>
-      PostAtsCandidatesRequestBodyLanguageAbilityTypeReference$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      language_proficiency_reference: "Language_Proficiency_Reference",
-      language_ability_type_reference: "Language_Ability_Type_Reference",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      language_proficiency_reference: z.lazy(() =>
+        PostAtsCandidatesRequestBodyLanguageProficiencyReference$outboundSchema
+      ).optional(),
+      language_ability_type_reference: z.lazy(() =>
+        PostAtsCandidatesRequestBodyLanguageAbilityTypeReference$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        language_proficiency_reference: "Language_Proficiency_Reference",
+        language_ability_type_reference: "Language_Ability_Type_Reference",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyLanguageAbilityDataToJSON(
   postAtsCandidatesRequestBodyLanguageAbilityData:
@@ -2404,15 +2547,17 @@ export const PostAtsCandidatesRequestBodyLanguageAbility$outboundSchema:
     PostAtsCandidatesRequestBodyLanguageAbility$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyLanguageAbility
-  > = z.object({
-    language_ability_data: z.lazy(() =>
-      PostAtsCandidatesRequestBodyLanguageAbilityData$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      language_ability_data: "Language_Ability_Data",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      language_ability_data: z.lazy(() =>
+        PostAtsCandidatesRequestBodyLanguageAbilityData$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        language_ability_data: "Language_Ability_Data",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyLanguageAbilityToJSON(
   postAtsCandidatesRequestBodyLanguageAbility:
@@ -2436,17 +2581,19 @@ export const PostAtsCandidatesRequestBodyLanguage$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyLanguage$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyLanguage
-> = z.object({
-  native: z.boolean().optional(),
-  language_ability: z.array(
-    z.lazy(() => PostAtsCandidatesRequestBodyLanguageAbility$outboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    native: "Native",
-    language_ability: "Language_Ability",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    native: z.boolean().optional(),
+    language_ability: z.array(
+      z.lazy(() => PostAtsCandidatesRequestBodyLanguageAbility$outboundSchema),
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      native: "Native",
+      language_ability: "Language_Ability",
+    });
+  })
+);
 
 export function postAtsCandidatesRequestBodyLanguageToJSON(
   postAtsCandidatesRequestBodyLanguage: PostAtsCandidatesRequestBodyLanguage,
@@ -2472,18 +2619,21 @@ export const PostAtsCandidatesRequestBodyLanguageDatum$outboundSchema:
     PostAtsCandidatesRequestBodyLanguageDatum$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyLanguageDatum
-  > = z.object({
-    language_reference: z.lazy(() =>
-      PostAtsCandidatesRequestBodyLanguageDatumLanguageReference$outboundSchema
-    ).optional(),
-    language: z.lazy(() => PostAtsCandidatesRequestBodyLanguage$outboundSchema)
-      .optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      language_reference: "Language_Reference",
-      language: "Language",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      language_reference: z.lazy(() =>
+        PostAtsCandidatesRequestBodyLanguageDatumLanguageReference$outboundSchema
+      ).optional(),
+      language: z.lazy(() =>
+        PostAtsCandidatesRequestBodyLanguage$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        language_reference: "Language_Reference",
+        language: "Language",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyLanguageDatumToJSON(
   postAtsCandidatesRequestBodyLanguageDatum:
@@ -2513,25 +2663,27 @@ export const PostAtsCandidatesRequestBodyExperienceDatum$outboundSchema:
     PostAtsCandidatesRequestBodyExperienceDatum$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyExperienceDatum
-  > = z.object({
-    company_name: z.string(),
-    title: z.string(),
-    location: z.string().optional(),
-    start_date: z.date().transform(v => v.toISOString()),
-    end_date: z.date().transform(v => v.toISOString()).optional(),
-    currently_work_here: z.boolean().optional(),
-    description: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      company_name: "Company_Name",
-      title: "Title",
-      location: "Location",
-      start_date: "Start_Date",
-      end_date: "End_Date",
-      currently_work_here: "Currently_Work_Here",
-      description: "Description",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      company_name: z.string(),
+      title: z.string(),
+      location: z.string().optional(),
+      start_date: z.date().transform(v => v.toISOString()),
+      end_date: z.date().transform(v => v.toISOString()).optional(),
+      currently_work_here: z.boolean().optional(),
+      description: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        company_name: "Company_Name",
+        title: "Title",
+        location: "Location",
+        start_date: "Start_Date",
+        end_date: "End_Date",
+        currently_work_here: "Currently_Work_Here",
+        description: "Description",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyExperienceDatumToJSON(
   postAtsCandidatesRequestBodyExperienceDatum:
@@ -2565,27 +2717,29 @@ export const PostAtsCandidatesRequestBodyResumeData$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyResumeData$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyResumeData
-> = z.object({
-  education_data: z.array(
-    z.lazy(() => PostAtsCandidatesRequestBodyEducationDatum$outboundSchema),
-  ).optional(),
-  skill_data: z.array(
-    z.lazy(() => PostAtsCandidatesRequestBodySkillDatum$outboundSchema),
-  ).optional(),
-  language_data: z.array(
-    z.lazy(() => PostAtsCandidatesRequestBodyLanguageDatum$outboundSchema),
-  ).optional(),
-  experience_data: z.array(
-    z.lazy(() => PostAtsCandidatesRequestBodyExperienceDatum$outboundSchema),
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    education_data: "Education_Data",
-    skill_data: "Skill_Data",
-    language_data: "Language_Data",
-    experience_data: "Experience_Data",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    education_data: z.array(
+      z.lazy(() => PostAtsCandidatesRequestBodyEducationDatum$outboundSchema),
+    ).optional(),
+    skill_data: z.array(
+      z.lazy(() => PostAtsCandidatesRequestBodySkillDatum$outboundSchema),
+    ).optional(),
+    language_data: z.array(
+      z.lazy(() => PostAtsCandidatesRequestBodyLanguageDatum$outboundSchema),
+    ).optional(),
+    experience_data: z.array(
+      z.lazy(() => PostAtsCandidatesRequestBodyExperienceDatum$outboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      education_data: "Education_Data",
+      skill_data: "Skill_Data",
+      language_data: "Language_Data",
+      experience_data: "Experience_Data",
+    });
+  })
+);
 
 export function postAtsCandidatesRequestBodyResumeDataToJSON(
   postAtsCandidatesRequestBodyResumeData:
@@ -2612,19 +2766,21 @@ export const PostAtsCandidatesRequestBodyJobApplicationData$outboundSchema:
     PostAtsCandidatesRequestBodyJobApplicationData$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyJobApplicationData
-  > = z.object({
-    job_applied_to_data: z.lazy(() =>
-      PostAtsCandidatesRequestBodyJobAppliedToData$outboundSchema
-    ).optional(),
-    resume_data: z.lazy(() =>
-      PostAtsCandidatesRequestBodyResumeData$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      job_applied_to_data: "Job_Applied_To_Data",
-      resume_data: "Resume_Data",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      job_applied_to_data: z.lazy(() =>
+        PostAtsCandidatesRequestBodyJobAppliedToData$outboundSchema
+      ).optional(),
+      resume_data: z.lazy(() =>
+        PostAtsCandidatesRequestBodyResumeData$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        job_applied_to_data: "Job_Applied_To_Data",
+        resume_data: "Resume_Data",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyJobApplicationDataToJSON(
   postAtsCandidatesRequestBodyJobApplicationData:
@@ -2648,13 +2804,15 @@ export const PostAtsCandidatesRequestBodyCountryRegionReference$outboundSchema:
     PostAtsCandidatesRequestBodyCountryRegionReference$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyCountryRegionReference
-  > = z.object({
-    country_region_id: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      country_region_id: "Country_Region_ID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      country_region_id: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        country_region_id: "Country_Region_ID",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyCountryRegionReferenceToJSON(
   postAtsCandidatesRequestBodyCountryRegionReference:
@@ -2678,13 +2836,15 @@ export const PostAtsCandidatesRequestBodyCountryCityReference$outboundSchema:
     PostAtsCandidatesRequestBodyCountryCityReference$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyCountryCityReference
-  > = z.object({
-    wid: z.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyCountryCityReferenceToJSON(
   postAtsCandidatesRequestBodyCountryCityReference:
@@ -2716,27 +2876,29 @@ export const PostAtsCandidatesRequestBodyLocationData$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyLocationData$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyLocationData
-> = z.object({
-  address_line_1: z.string().optional(),
-  address_line_2: z.string().optional(),
-  postal_code: z.string().optional(),
-  region_subdivision_1: z.string().optional(),
-  country_region_reference: z.lazy(() =>
-    PostAtsCandidatesRequestBodyCountryRegionReference$outboundSchema
-  ).optional(),
-  country_city_reference: z.lazy(() =>
-    PostAtsCandidatesRequestBodyCountryCityReference$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    address_line_1: "Address_Line_1",
-    address_line_2: "Address_Line_2",
-    postal_code: "Postal_Code",
-    region_subdivision_1: "Region_Subdivision_1",
-    country_region_reference: "Country_Region_Reference",
-    country_city_reference: "Country_City_Reference",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    address_line_1: z.string().optional(),
+    address_line_2: z.string().optional(),
+    postal_code: z.string().optional(),
+    region_subdivision_1: z.string().optional(),
+    country_region_reference: z.lazy(() =>
+      PostAtsCandidatesRequestBodyCountryRegionReference$outboundSchema
+    ).optional(),
+    country_city_reference: z.lazy(() =>
+      PostAtsCandidatesRequestBodyCountryCityReference$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      address_line_1: "Address_Line_1",
+      address_line_2: "Address_Line_2",
+      postal_code: "Postal_Code",
+      region_subdivision_1: "Region_Subdivision_1",
+      country_region_reference: "Country_Region_Reference",
+      country_city_reference: "Country_City_Reference",
+    });
+  })
+);
 
 export function postAtsCandidatesRequestBodyLocationDataToJSON(
   postAtsCandidatesRequestBodyLocationData:
@@ -2759,15 +2921,17 @@ export const PostAtsCandidatesRequestBodyContactData$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyContactData$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyContactData
-> = z.object({
-  location_data: z.lazy(() =>
-    PostAtsCandidatesRequestBodyLocationData$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    location_data: "Location_Data",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    location_data: z.lazy(() =>
+      PostAtsCandidatesRequestBodyLocationData$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      location_data: "Location_Data",
+    });
+  })
+);
 
 export function postAtsCandidatesRequestBodyContactDataToJSON(
   postAtsCandidatesRequestBodyContactData:
@@ -2792,15 +2956,17 @@ export const PostAtsCandidatesRequestBodyWorkerReference$outboundSchema:
     PostAtsCandidatesRequestBodyWorkerReference$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyWorkerReference
-  > = z.object({
-    wid: z.string().optional(),
-    employee_id: z.string().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      wid: "WID",
-      employee_id: "Employee_ID",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      wid: z.string().optional(),
+      employee_id: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        wid: "WID",
+        employee_id: "Employee_ID",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyWorkerReferenceToJSON(
   postAtsCandidatesRequestBodyWorkerReference:
@@ -2836,31 +3002,33 @@ export const PostAtsCandidatesRequestBodyCandidateData$outboundSchema:
     PostAtsCandidatesRequestBodyCandidateData$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyCandidateData
-  > = z.object({
-    name_detail_data: z.lazy(() =>
-      PostAtsCandidatesRequestBodyNameDetailData$outboundSchema
-    ).optional(),
-    language_reference: z.lazy(() =>
-      PostAtsCandidatesRequestBodyLanguageReference$outboundSchema
-    ).optional(),
-    job_application_data: z.lazy(() =>
-      PostAtsCandidatesRequestBodyJobApplicationData$outboundSchema
-    ).optional(),
-    contact_data: z.lazy(() =>
-      PostAtsCandidatesRequestBodyContactData$outboundSchema
-    ).optional(),
-    worker_reference: z.lazy(() =>
-      PostAtsCandidatesRequestBodyWorkerReference$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      name_detail_data: "Name_Detail_Data",
-      language_reference: "Language_Reference",
-      job_application_data: "Job_Application_Data",
-      contact_data: "Contact_Data",
-      worker_reference: "Worker_Reference",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name_detail_data: z.lazy(() =>
+        PostAtsCandidatesRequestBodyNameDetailData$outboundSchema
+      ).optional(),
+      language_reference: z.lazy(() =>
+        PostAtsCandidatesRequestBodyLanguageReference$outboundSchema
+      ).optional(),
+      job_application_data: z.lazy(() =>
+        PostAtsCandidatesRequestBodyJobApplicationData$outboundSchema
+      ).optional(),
+      contact_data: z.lazy(() =>
+        PostAtsCandidatesRequestBodyContactData$outboundSchema
+      ).optional(),
+      worker_reference: z.lazy(() =>
+        PostAtsCandidatesRequestBodyWorkerReference$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        name_detail_data: "Name_Detail_Data",
+        language_reference: "Language_Reference",
+        job_application_data: "Job_Application_Data",
+        contact_data: "Contact_Data",
+        worker_reference: "Worker_Reference",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyCandidateDataToJSON(
   postAtsCandidatesRequestBodyCandidateData:
@@ -2886,17 +3054,19 @@ export const PostAtsCandidatesRequestBodyWorkday$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyWorkday$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyWorkday
-> = z.object({
-  candidate_data: z.lazy(() =>
-    PostAtsCandidatesRequestBodyCandidateData$outboundSchema
-  ).optional(),
-  override_source_reference_wid: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    candidate_data: "Candidate_Data",
-    override_source_reference_wid: "Override_Source_Reference_WID",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate_data: z.lazy(() =>
+      PostAtsCandidatesRequestBodyCandidateData$outboundSchema
+    ).optional(),
+    override_source_reference_wid: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      candidate_data: "Candidate_Data",
+      override_source_reference_wid: "Override_Source_Reference_WID",
+    });
+  })
+);
 
 export function postAtsCandidatesRequestBodyWorkdayToJSON(
   postAtsCandidatesRequestBodyWorkday: PostAtsCandidatesRequestBodyWorkday,
@@ -2918,9 +3088,11 @@ export const PostAtsCandidatesRequestBodyZohorecruit$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyZohorecruit$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyZohorecruit
-> = z.object({
-  candidate: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.record(z.any()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyZohorecruitToJSON(
   postAtsCandidatesRequestBodyZohorecruit:
@@ -2938,6 +3110,7 @@ export type PostAtsCandidatesRequestBodyBullhorn$Outbound = {
   candidate?: { [k: string]: any } | undefined;
   job_submission?: { [k: string]: any } | undefined;
   existing_candidate_remote_id?: string | undefined;
+  candidate_specialty_remote_ids?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -2945,11 +3118,14 @@ export const PostAtsCandidatesRequestBodyBullhorn$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyBullhorn$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyBullhorn
-> = z.object({
-  candidate: z.record(z.any()).optional(),
-  job_submission: z.record(z.any()).optional(),
-  existing_candidate_remote_id: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.record(z.any()).optional(),
+    job_submission: z.record(z.any()).optional(),
+    existing_candidate_remote_id: z.string().optional(),
+    candidate_specialty_remote_ids: z.array(z.string()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyBullhornToJSON(
   postAtsCandidatesRequestBodyBullhorn: PostAtsCandidatesRequestBodyBullhorn,
@@ -2976,21 +3152,23 @@ export const PostAtsCandidatesRequestBodyConsentDecisions$outboundSchema:
     PostAtsCandidatesRequestBodyConsentDecisions$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyConsentDecisions
-  > = z.object({
-    single: z.boolean().optional(),
-    smart_recruit: z.boolean().optional(),
-    smart_crm: z.boolean().optional(),
-    smart_message_sms: z.boolean().optional(),
-    smart_message_whatsapp: z.boolean().optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      single: "SINGLE",
-      smart_recruit: "SMART_RECRUIT",
-      smart_crm: "SMART_CRM",
-      smart_message_sms: "SMART_MESSAGE_SMS",
-      smart_message_whatsapp: "SMART_MESSAGE_WHATSAPP",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      single: z.boolean().optional(),
+      smart_recruit: z.boolean().optional(),
+      smart_crm: z.boolean().optional(),
+      smart_message_sms: z.boolean().optional(),
+      smart_message_whatsapp: z.boolean().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        single: "SINGLE",
+        smart_recruit: "SMART_RECRUIT",
+        smart_crm: "SMART_CRM",
+        smart_message_sms: "SMART_MESSAGE_SMS",
+        smart_message_whatsapp: "SMART_MESSAGE_WHATSAPP",
+      });
+    })
+  );
 
 export function postAtsCandidatesRequestBodyConsentDecisionsToJSON(
   postAtsCandidatesRequestBodyConsentDecisions:
@@ -3019,14 +3197,16 @@ export const PostAtsCandidatesRequestBodySmartrecruiters$outboundSchema:
     PostAtsCandidatesRequestBodySmartrecruiters$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodySmartrecruiters
-  > = z.object({
-    candidate_with_questions: z.record(z.any()).optional(),
-    candidate_without_questions: z.record(z.any()).optional(),
-    candidate: z.record(z.any()).optional(),
-    consent_decisions: z.lazy(() =>
-      PostAtsCandidatesRequestBodyConsentDecisions$outboundSchema
-    ).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate_with_questions: z.record(z.any()).optional(),
+      candidate_without_questions: z.record(z.any()).optional(),
+      candidate: z.record(z.any()).optional(),
+      consent_decisions: z.lazy(() =>
+        PostAtsCandidatesRequestBodyConsentDecisions$outboundSchema
+      ).optional(),
+    })
+  );
 
 export function postAtsCandidatesRequestBodySmartrecruitersToJSON(
   postAtsCandidatesRequestBodySmartrecruiters:
@@ -3049,9 +3229,11 @@ export const PostAtsCandidatesRequestBodyTalentadore$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyTalentadore$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyTalentadore
-> = z.object({
-  applications: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    applications: z.record(z.any()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyTalentadoreToJSON(
   postAtsCandidatesRequestBodyTalentadore:
@@ -3074,9 +3256,11 @@ export const PostAtsCandidatesRequestBodyGuidecom$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyGuidecom$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyGuidecom
-> = z.object({
-  candidate: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.record(z.any()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyGuidecomToJSON(
   postAtsCandidatesRequestBodyGuidecom: PostAtsCandidatesRequestBodyGuidecom,
@@ -3099,10 +3283,12 @@ export const PostAtsCandidatesRequestBodyDvinci$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyDvinci$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyDvinci
-> = z.object({
-  application: z.record(z.any()).optional(),
-  candidate: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    application: z.record(z.any()).optional(),
+    candidate: z.record(z.any()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyDvinciToJSON(
   postAtsCandidatesRequestBodyDvinci: PostAtsCandidatesRequestBodyDvinci,
@@ -3124,13 +3310,15 @@ export const PostAtsCandidatesRequestBodyHrworks$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyHrworks$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyHrworks
-> = z.object({
-  job_application: z.record(z.any()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    job_application: "jobApplication",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    job_application: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      job_application: "jobApplication",
+    });
+  })
+);
 
 export function postAtsCandidatesRequestBodyHrworksToJSON(
   postAtsCandidatesRequestBodyHrworks: PostAtsCandidatesRequestBodyHrworks,
@@ -3153,9 +3341,11 @@ export const PostAtsCandidatesRequestBodyJobylonApplication$outboundSchema:
     PostAtsCandidatesRequestBodyJobylonApplication$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyJobylonApplication
-  > = z.object({
-    message: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string().optional(),
+    })
+  );
 
 export function postAtsCandidatesRequestBodyJobylonApplicationToJSON(
   postAtsCandidatesRequestBodyJobylonApplication:
@@ -3180,11 +3370,13 @@ export const PostAtsCandidatesRequestBodyJobylon$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyJobylon$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyJobylon
-> = z.object({
-  application: z.lazy(() =>
-    PostAtsCandidatesRequestBodyJobylonApplication$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    application: z.lazy(() =>
+      PostAtsCandidatesRequestBodyJobylonApplication$outboundSchema
+    ).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyJobylonToJSON(
   postAtsCandidatesRequestBodyJobylon: PostAtsCandidatesRequestBodyJobylon,
@@ -3206,9 +3398,11 @@ export const PostAtsCandidatesRequestBodyStep$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyStep$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyStep
-> = z.object({
-  id: z.number().int(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.number().int(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyStepToJSON(
   postAtsCandidatesRequestBodyStep: PostAtsCandidatesRequestBodyStep,
@@ -3230,10 +3424,12 @@ export const PostAtsCandidatesRequestBodyWorkflow$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyWorkflow$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyWorkflow
-> = z.object({
-  step: z.lazy(() => PostAtsCandidatesRequestBodyStep$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    step: z.lazy(() => PostAtsCandidatesRequestBodyStep$outboundSchema)
+      .optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyWorkflowToJSON(
   postAtsCandidatesRequestBodyWorkflow: PostAtsCandidatesRequestBodyWorkflow,
@@ -3256,11 +3452,13 @@ export const PostAtsCandidatesRequestBodyAvature$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyAvature$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyAvature
-> = z.object({
-  candidate: z.record(z.any()).optional(),
-  workflow: z.lazy(() => PostAtsCandidatesRequestBodyWorkflow$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.record(z.any()).optional(),
+    workflow: z.lazy(() => PostAtsCandidatesRequestBodyWorkflow$outboundSchema)
+      .optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyAvatureToJSON(
   postAtsCandidatesRequestBodyAvature: PostAtsCandidatesRequestBodyAvature,
@@ -3283,9 +3481,11 @@ export const PostAtsCandidatesRequestBodyRecruiteeCandidate$outboundSchema:
     PostAtsCandidatesRequestBodyRecruiteeCandidate$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyRecruiteeCandidate
-  > = z.object({
-    cover_letter_text: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cover_letter_text: z.string().optional(),
+    })
+  );
 
 export function postAtsCandidatesRequestBodyRecruiteeCandidateToJSON(
   postAtsCandidatesRequestBodyRecruiteeCandidate:
@@ -3310,11 +3510,13 @@ export const PostAtsCandidatesRequestBodyRecruitee$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyRecruitee$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyRecruitee
-> = z.object({
-  candidate: z.lazy(() =>
-    PostAtsCandidatesRequestBodyRecruiteeCandidate$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.lazy(() =>
+      PostAtsCandidatesRequestBodyRecruiteeCandidate$outboundSchema
+    ).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyRecruiteeToJSON(
   postAtsCandidatesRequestBodyRecruitee: PostAtsCandidatesRequestBodyRecruitee,
@@ -3336,9 +3538,11 @@ export const PostAtsCandidatesRequestBodyRexx$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyRexx$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyRexx
-> = z.object({
-  candidate: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.record(z.any()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyRexxToJSON(
   postAtsCandidatesRequestBodyRexx: PostAtsCandidatesRequestBodyRexx,
@@ -3360,9 +3564,11 @@ export const PostAtsCandidatesRequestBodyUmantis$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyUmantis$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyUmantis
-> = z.object({
-  person: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    person: z.record(z.any()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyUmantisToJSON(
   postAtsCandidatesRequestBodyUmantis: PostAtsCandidatesRequestBodyUmantis,
@@ -3386,10 +3592,12 @@ export const PostAtsCandidatesRequestBodyPilogaCandidate$outboundSchema:
     PostAtsCandidatesRequestBodyPilogaCandidate$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyPilogaCandidate
-  > = z.object({
-    street: z.string().optional(),
-    geburtsdatum: z.date().transform(v => v.toISOString()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      street: z.string().optional(),
+      geburtsdatum: z.date().transform(v => v.toISOString()).optional(),
+    })
+  );
 
 export function postAtsCandidatesRequestBodyPilogaCandidateToJSON(
   postAtsCandidatesRequestBodyPilogaCandidate:
@@ -3412,11 +3620,13 @@ export const PostAtsCandidatesRequestBodyPiloga$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyPiloga$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyPiloga
-> = z.object({
-  candidate: z.lazy(() =>
-    PostAtsCandidatesRequestBodyPilogaCandidate$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.lazy(() =>
+      PostAtsCandidatesRequestBodyPilogaCandidate$outboundSchema
+    ).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyPilogaToJSON(
   postAtsCandidatesRequestBodyPiloga: PostAtsCandidatesRequestBodyPiloga,
@@ -3438,9 +3648,11 @@ export const PostAtsCandidatesRequestBodyPinpoint$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyPinpoint$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyPinpoint
-> = z.object({
-  candidate: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.record(z.any()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyPinpointToJSON(
   postAtsCandidatesRequestBodyPinpoint: PostAtsCandidatesRequestBodyPinpoint,
@@ -3455,7 +3667,9 @@ export function postAtsCandidatesRequestBodyPinpointToJSON(
 /** @internal */
 export const PostAtsCandidatesRequestBodyAktiv$outboundSchema: z.ZodNativeEnum<
   typeof PostAtsCandidatesRequestBodyAktiv
-> = z.nativeEnum(PostAtsCandidatesRequestBodyAktiv);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PostAtsCandidatesRequestBodyAktiv)
+);
 
 /** @internal */
 export type PostAtsCandidatesRequestBodyCovetorestCandidate$Outbound = {
@@ -3470,11 +3684,13 @@ export const PostAtsCandidatesRequestBodyCovetorestCandidate$outboundSchema:
     PostAtsCandidatesRequestBodyCovetorestCandidate$Outbound,
     z.ZodTypeDef,
     PostAtsCandidatesRequestBodyCovetorestCandidate
-  > = z.object({
-    mandant: z.number().optional(),
-    status: z.number().int().optional(),
-    aktiv: PostAtsCandidatesRequestBodyAktiv$outboundSchema.optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      mandant: z.number().optional(),
+      status: z.number().int().optional(),
+      aktiv: PostAtsCandidatesRequestBodyAktiv$outboundSchema.optional(),
+    })
+  );
 
 export function postAtsCandidatesRequestBodyCovetorestCandidateToJSON(
   postAtsCandidatesRequestBodyCovetorestCandidate:
@@ -3499,11 +3715,13 @@ export const PostAtsCandidatesRequestBodyCovetorest$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyCovetorest$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyCovetorest
-> = z.object({
-  candidate: z.lazy(() =>
-    PostAtsCandidatesRequestBodyCovetorestCandidate$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.lazy(() =>
+      PostAtsCandidatesRequestBodyCovetorestCandidate$outboundSchema
+    ).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyCovetorestToJSON(
   postAtsCandidatesRequestBodyCovetorest:
@@ -3526,13 +3744,15 @@ export const PostAtsCandidatesRequestBodyAfas$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyAfas$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyAfas
-> = z.object({
-  fields: z.record(z.any()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    fields: "Fields",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fields: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      fields: "Fields",
+    });
+  })
+);
 
 export function postAtsCandidatesRequestBodyAfasToJSON(
   postAtsCandidatesRequestBodyAfas: PostAtsCandidatesRequestBodyAfas,
@@ -3557,12 +3777,14 @@ export const PostAtsCandidatesRequestBodyFountain$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyFountain$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyFountain
-> = z.object({
-  consent_sms_transactional: z.boolean().optional(),
-  consent_sms_marketing: z.boolean().optional(),
-  consent_calls_transactional: z.boolean().optional(),
-  consent_calls_marketing: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    consent_sms_transactional: z.boolean().optional(),
+    consent_sms_marketing: z.boolean().optional(),
+    consent_calls_transactional: z.boolean().optional(),
+    consent_calls_marketing: z.boolean().optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyFountainToJSON(
   postAtsCandidatesRequestBodyFountain: PostAtsCandidatesRequestBodyFountain,
@@ -3588,13 +3810,15 @@ export const PostAtsCandidatesRequestBodyCustomField$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyCustomField$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyCustomField
-> = z.object({
-  field_id: z.number().int(),
-  value: z.string(),
-  entity_type: z.string().optional(),
-  field_name: z.string().optional(),
-  field_type: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    field_id: z.number().int(),
+    value: z.string(),
+    entity_type: z.string().optional(),
+    field_name: z.string().optional(),
+    field_type: z.string().optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyCustomFieldToJSON(
   postAtsCandidatesRequestBodyCustomField:
@@ -3619,11 +3843,13 @@ export const PostAtsCandidatesRequestBodyRecruitcrm$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyRecruitcrm$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyRecruitcrm
-> = z.object({
-  custom_fields: z.array(
-    z.lazy(() => PostAtsCandidatesRequestBodyCustomField$outboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    custom_fields: z.array(
+      z.lazy(() => PostAtsCandidatesRequestBodyCustomField$outboundSchema),
+    ).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyRecruitcrmToJSON(
   postAtsCandidatesRequestBodyRecruitcrm:
@@ -3646,9 +3872,11 @@ export const PostAtsCandidatesRequestBodyIcims$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyIcims$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyIcims
-> = z.object({
-  application: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    application: z.record(z.any()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyIcimsToJSON(
   postAtsCandidatesRequestBodyIcims: PostAtsCandidatesRequestBodyIcims,
@@ -3670,9 +3898,11 @@ export const PostAtsCandidatesRequestBodyEmplypeople$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyEmplypeople$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyEmplypeople
-> = z.object({
-  form_data: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    form_data: z.record(z.any()).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyEmplypeopleToJSON(
   postAtsCandidatesRequestBodyEmplypeople:
@@ -3727,77 +3957,80 @@ export const PostAtsCandidatesRequestBodyRemoteFields$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBodyRemoteFields$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBodyRemoteFields
-> = z.object({
-  successfactors: z.lazy(() =>
-    PostAtsCandidatesRequestBodySuccessfactors$outboundSchema
-  ).optional(),
-  personio: z.lazy(() => PostAtsCandidatesRequestBodyPersonio$outboundSchema)
-    .optional(),
-  talentsoft: z.lazy(() =>
-    PostAtsCandidatesRequestBodyTalentsoft$outboundSchema
-  ).optional(),
-  teamtailor: z.lazy(() =>
-    PostAtsCandidatesRequestBodyTeamtailor$outboundSchema
-  ).optional(),
-  greenhouse: z.lazy(() =>
-    PostAtsCandidatesRequestBodyGreenhouse$outboundSchema
-  ).optional(),
-  greenhousev3: z.lazy(() =>
-    PostAtsCandidatesRequestBodyGreenhousev3$outboundSchema
-  ).optional(),
-  lever: z.lazy(() => PostAtsCandidatesRequestBodyLever$outboundSchema)
-    .optional(),
-  workable: z.lazy(() => PostAtsCandidatesRequestBodyWorkable$outboundSchema)
-    .optional(),
-  workday: z.lazy(() => PostAtsCandidatesRequestBodyWorkday$outboundSchema)
-    .optional(),
-  zohorecruit: z.lazy(() =>
-    PostAtsCandidatesRequestBodyZohorecruit$outboundSchema
-  ).optional(),
-  bullhorn: z.lazy(() => PostAtsCandidatesRequestBodyBullhorn$outboundSchema)
-    .optional(),
-  smartrecruiters: z.lazy(() =>
-    PostAtsCandidatesRequestBodySmartrecruiters$outboundSchema
-  ).optional(),
-  talentadore: z.lazy(() =>
-    PostAtsCandidatesRequestBodyTalentadore$outboundSchema
-  ).optional(),
-  guidecom: z.lazy(() => PostAtsCandidatesRequestBodyGuidecom$outboundSchema)
-    .optional(),
-  dvinci: z.lazy(() => PostAtsCandidatesRequestBodyDvinci$outboundSchema)
-    .optional(),
-  hrworks: z.lazy(() => PostAtsCandidatesRequestBodyHrworks$outboundSchema)
-    .optional(),
-  jobylon: z.lazy(() => PostAtsCandidatesRequestBodyJobylon$outboundSchema)
-    .optional(),
-  avature: z.lazy(() => PostAtsCandidatesRequestBodyAvature$outboundSchema)
-    .optional(),
-  recruitee: z.lazy(() => PostAtsCandidatesRequestBodyRecruitee$outboundSchema)
-    .optional(),
-  rexx: z.lazy(() => PostAtsCandidatesRequestBodyRexx$outboundSchema)
-    .optional(),
-  umantis: z.lazy(() => PostAtsCandidatesRequestBodyUmantis$outboundSchema)
-    .optional(),
-  piloga: z.lazy(() => PostAtsCandidatesRequestBodyPiloga$outboundSchema)
-    .optional(),
-  pinpoint: z.lazy(() => PostAtsCandidatesRequestBodyPinpoint$outboundSchema)
-    .optional(),
-  covetorest: z.lazy(() =>
-    PostAtsCandidatesRequestBodyCovetorest$outboundSchema
-  ).optional(),
-  afas: z.lazy(() => PostAtsCandidatesRequestBodyAfas$outboundSchema)
-    .optional(),
-  fountain: z.lazy(() => PostAtsCandidatesRequestBodyFountain$outboundSchema)
-    .optional(),
-  recruitcrm: z.lazy(() =>
-    PostAtsCandidatesRequestBodyRecruitcrm$outboundSchema
-  ).optional(),
-  icims: z.lazy(() => PostAtsCandidatesRequestBodyIcims$outboundSchema)
-    .optional(),
-  emplypeople: z.lazy(() =>
-    PostAtsCandidatesRequestBodyEmplypeople$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    successfactors: z.lazy(() =>
+      PostAtsCandidatesRequestBodySuccessfactors$outboundSchema
+    ).optional(),
+    personio: z.lazy(() => PostAtsCandidatesRequestBodyPersonio$outboundSchema)
+      .optional(),
+    talentsoft: z.lazy(() =>
+      PostAtsCandidatesRequestBodyTalentsoft$outboundSchema
+    ).optional(),
+    teamtailor: z.lazy(() =>
+      PostAtsCandidatesRequestBodyTeamtailor$outboundSchema
+    ).optional(),
+    greenhouse: z.lazy(() =>
+      PostAtsCandidatesRequestBodyGreenhouse$outboundSchema
+    ).optional(),
+    greenhousev3: z.lazy(() =>
+      PostAtsCandidatesRequestBodyGreenhousev3$outboundSchema
+    ).optional(),
+    lever: z.lazy(() => PostAtsCandidatesRequestBodyLever$outboundSchema)
+      .optional(),
+    workable: z.lazy(() => PostAtsCandidatesRequestBodyWorkable$outboundSchema)
+      .optional(),
+    workday: z.lazy(() => PostAtsCandidatesRequestBodyWorkday$outboundSchema)
+      .optional(),
+    zohorecruit: z.lazy(() =>
+      PostAtsCandidatesRequestBodyZohorecruit$outboundSchema
+    ).optional(),
+    bullhorn: z.lazy(() => PostAtsCandidatesRequestBodyBullhorn$outboundSchema)
+      .optional(),
+    smartrecruiters: z.lazy(() =>
+      PostAtsCandidatesRequestBodySmartrecruiters$outboundSchema
+    ).optional(),
+    talentadore: z.lazy(() =>
+      PostAtsCandidatesRequestBodyTalentadore$outboundSchema
+    ).optional(),
+    guidecom: z.lazy(() => PostAtsCandidatesRequestBodyGuidecom$outboundSchema)
+      .optional(),
+    dvinci: z.lazy(() => PostAtsCandidatesRequestBodyDvinci$outboundSchema)
+      .optional(),
+    hrworks: z.lazy(() => PostAtsCandidatesRequestBodyHrworks$outboundSchema)
+      .optional(),
+    jobylon: z.lazy(() => PostAtsCandidatesRequestBodyJobylon$outboundSchema)
+      .optional(),
+    avature: z.lazy(() => PostAtsCandidatesRequestBodyAvature$outboundSchema)
+      .optional(),
+    recruitee: z.lazy(() =>
+      PostAtsCandidatesRequestBodyRecruitee$outboundSchema
+    ).optional(),
+    rexx: z.lazy(() => PostAtsCandidatesRequestBodyRexx$outboundSchema)
+      .optional(),
+    umantis: z.lazy(() => PostAtsCandidatesRequestBodyUmantis$outboundSchema)
+      .optional(),
+    piloga: z.lazy(() => PostAtsCandidatesRequestBodyPiloga$outboundSchema)
+      .optional(),
+    pinpoint: z.lazy(() => PostAtsCandidatesRequestBodyPinpoint$outboundSchema)
+      .optional(),
+    covetorest: z.lazy(() =>
+      PostAtsCandidatesRequestBodyCovetorest$outboundSchema
+    ).optional(),
+    afas: z.lazy(() => PostAtsCandidatesRequestBodyAfas$outboundSchema)
+      .optional(),
+    fountain: z.lazy(() => PostAtsCandidatesRequestBodyFountain$outboundSchema)
+      .optional(),
+    recruitcrm: z.lazy(() =>
+      PostAtsCandidatesRequestBodyRecruitcrm$outboundSchema
+    ).optional(),
+    icims: z.lazy(() => PostAtsCandidatesRequestBodyIcims$outboundSchema)
+      .optional(),
+    emplypeople: z.lazy(() =>
+      PostAtsCandidatesRequestBodyEmplypeople$outboundSchema
+    ).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyRemoteFieldsToJSON(
   postAtsCandidatesRequestBodyRemoteFields:
@@ -3831,30 +4064,35 @@ export const PostAtsCandidatesRequestBody$outboundSchema: z.ZodType<
   PostAtsCandidatesRequestBody$Outbound,
   z.ZodTypeDef,
   PostAtsCandidatesRequestBody
-> = z.object({
-  candidate: z.lazy(() => PostAtsCandidatesRequestBodyCandidate$outboundSchema),
-  application: z.lazy(() =>
-    PostAtsCandidatesRequestBodyApplication$outboundSchema
-  ),
-  screening_question_answers: z.array(
-    z.lazy(() =>
-      PostAtsCandidatesRequestBodyScreeningQuestionAnswer$outboundSchema
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    candidate: z.lazy(() =>
+      PostAtsCandidatesRequestBodyCandidate$outboundSchema
     ),
-  ).optional(),
-  attachments: z.array(
-    z.lazy(() => PostAtsCandidatesRequestBodyAttachment$outboundSchema),
-  ).optional(),
-  source: z.lazy(() => PostAtsCandidatesRequestBodySource$outboundSchema)
-    .optional(),
-  sourced_by: z.lazy(() => PostAtsCandidatesRequestBodySourcedBy$outboundSchema)
-    .optional(),
-  gdpr_consent: z.lazy(() =>
-    PostAtsCandidatesRequestBodyGdprConsent$outboundSchema
-  ).optional(),
-  remote_fields: z.lazy(() =>
-    PostAtsCandidatesRequestBodyRemoteFields$outboundSchema
-  ).optional(),
-});
+    application: z.lazy(() =>
+      PostAtsCandidatesRequestBodyApplication$outboundSchema
+    ),
+    screening_question_answers: z.array(
+      z.lazy(() =>
+        PostAtsCandidatesRequestBodyScreeningQuestionAnswer$outboundSchema
+      ),
+    ).optional(),
+    attachments: z.array(
+      z.lazy(() => PostAtsCandidatesRequestBodyAttachment$outboundSchema),
+    ).optional(),
+    source: z.lazy(() => PostAtsCandidatesRequestBodySource$outboundSchema)
+      .optional(),
+    sourced_by: z.lazy(() =>
+      PostAtsCandidatesRequestBodySourcedBy$outboundSchema
+    ).optional(),
+    gdpr_consent: z.lazy(() =>
+      PostAtsCandidatesRequestBodyGdprConsent$outboundSchema
+    ).optional(),
+    remote_fields: z.lazy(() =>
+      PostAtsCandidatesRequestBodyRemoteFields$outboundSchema
+    ).optional(),
+  })
+);
 
 export function postAtsCandidatesRequestBodyToJSON(
   postAtsCandidatesRequestBody: PostAtsCandidatesRequestBody,

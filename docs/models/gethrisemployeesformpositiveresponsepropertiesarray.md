@@ -1,21 +1,21 @@
-# PropertiesArray
+# GetHrisEmployeesFormPositiveResponsePropertiesArray
 
 ## Example Usage
 
 ```typescript
-import { PropertiesArray } from "@kombo-api/sdk/models";
+import { GetHrisEmployeesFormPositiveResponsePropertiesArray } from "@kombo-api/sdk/models";
 
-let value: PropertiesArray = {
+let value: GetHrisEmployeesFormPositiveResponsePropertiesArray = {
   label: "<value>",
-  required: false,
+  required: true,
   type: "array",
   item_type: {
     label: "<value>",
-    required: false,
+    required: true,
     type: "single_select",
     options: {
-      type: "inline",
-      entries: [],
+      type: "referenced",
+      link: "<value>",
     },
   },
 };
@@ -30,6 +30,6 @@ let value: PropertiesArray = {
 | `description`                                                                                                          | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
 | `unified_key`                                                                                                          | [models.GetHrisEmployeesFormPositiveResponseUnifiedKey7](../models/gethrisemployeesformpositiveresponseunifiedkey7.md) | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
 | `type`                                                                                                                 | *"array"*                                                                                                              | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
-| `item_type`                                                                                                            | *models.Schema2*                                                                                                       | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| `item_type`                                                                                                            | *models.Schema2Union1*                                                                                                 | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
 | `min_items`                                                                                                            | *number*                                                                                                               | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
 | `max_items`                                                                                                            | *number*                                                                                                               | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |

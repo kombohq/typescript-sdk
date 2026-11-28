@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -310,12 +310,14 @@ export type GetToolsCategoryPositiveResponse = {
 };
 
 /** @internal */
-export const Assets$inboundSchema: z.ZodType<Assets, z.ZodTypeDef, unknown> = z
-  .object({
-    logo_url: z.string(),
-    icon_url: z.string(),
-    icon_black_url: z.string(),
-  });
+export const Assets$inboundSchema: z.ZodType<Assets, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      logo_url: z.string(),
+      icon_url: z.string(),
+      icon_black_url: z.string(),
+    })
+  );
 
 export function assetsFromJSON(
   jsonString: string,
@@ -331,14 +333,16 @@ export function assetsFromJSON(
 export const GetToolsCategoryPositiveResponseReadModelCoverageStatus$inboundSchema:
   z.ZodNativeEnum<
     typeof GetToolsCategoryPositiveResponseReadModelCoverageStatus
-  > = z.nativeEnum(GetToolsCategoryPositiveResponseReadModelCoverageStatus);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetToolsCategoryPositiveResponseReadModelCoverageStatus)
+  );
 
 /** @internal */
 export const GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus$inboundSchema:
   z.ZodNativeEnum<
     typeof GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus
-  > = z.nativeEnum(
-    GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus)
   );
 
 /** @internal */
@@ -347,11 +351,13 @@ export const GetToolsCategoryPositiveResponseReadModelField$inboundSchema:
     GetToolsCategoryPositiveResponseReadModelField,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    coverage_status:
-      GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      coverage_status:
+        GetToolsCategoryPositiveResponseReadModelFieldCoverageStatus$inboundSchema,
+    })
+  );
 
 export function getToolsCategoryPositiveResponseReadModelFieldFromJSON(
   jsonString: string,
@@ -374,15 +380,19 @@ export const GetToolsCategoryPositiveResponseReadModel$inboundSchema: z.ZodType<
   GetToolsCategoryPositiveResponseReadModel,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  label: z.string(),
-  coverage_status:
-    GetToolsCategoryPositiveResponseReadModelCoverageStatus$inboundSchema,
-  fields: z.array(
-    z.lazy(() => GetToolsCategoryPositiveResponseReadModelField$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    label: z.string(),
+    coverage_status:
+      GetToolsCategoryPositiveResponseReadModelCoverageStatus$inboundSchema,
+    fields: z.array(
+      z.lazy(() =>
+        GetToolsCategoryPositiveResponseReadModelField$inboundSchema
+      ),
+    ),
+  })
+);
 
 export function getToolsCategoryPositiveResponseReadModelFromJSON(
   jsonString: string,
@@ -404,14 +414,16 @@ export function getToolsCategoryPositiveResponseReadModelFromJSON(
 export const GetToolsCategoryPositiveResponseWriteActionCoverageStatus$inboundSchema:
   z.ZodNativeEnum<
     typeof GetToolsCategoryPositiveResponseWriteActionCoverageStatus
-  > = z.nativeEnum(GetToolsCategoryPositiveResponseWriteActionCoverageStatus);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetToolsCategoryPositiveResponseWriteActionCoverageStatus)
+  );
 
 /** @internal */
 export const GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus$inboundSchema:
   z.ZodNativeEnum<
     typeof GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus
-  > = z.nativeEnum(
-    GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus)
   );
 
 /** @internal */
@@ -420,11 +432,13 @@ export const GetToolsCategoryPositiveResponseWriteActionField$inboundSchema:
     GetToolsCategoryPositiveResponseWriteActionField,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    coverage_status:
-      GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      coverage_status:
+        GetToolsCategoryPositiveResponseWriteActionFieldCoverageStatus$inboundSchema,
+    })
+  );
 
 export function getToolsCategoryPositiveResponseWriteActionFieldFromJSON(
   jsonString: string,
@@ -448,17 +462,17 @@ export const GetToolsCategoryPositiveResponseWriteAction$inboundSchema:
     GetToolsCategoryPositiveResponseWriteAction,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    label: z.string(),
-    coverage_status:
-      GetToolsCategoryPositiveResponseWriteActionCoverageStatus$inboundSchema,
-    fields: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      label: z.string(),
+      coverage_status:
+        GetToolsCategoryPositiveResponseWriteActionCoverageStatus$inboundSchema,
+      fields: z.array(z.lazy(() =>
         GetToolsCategoryPositiveResponseWriteActionField$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function getToolsCategoryPositiveResponseWriteActionFromJSON(
   jsonString: string,
@@ -479,15 +493,17 @@ export function getToolsCategoryPositiveResponseWriteActionFromJSON(
 /** @internal */
 export const FeatureCoverageStatus$inboundSchema: z.ZodNativeEnum<
   typeof FeatureCoverageStatus
-> = z.nativeEnum(FeatureCoverageStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FeatureCoverageStatus));
 
 /** @internal */
 export const Feature$inboundSchema: z.ZodType<Feature, z.ZodTypeDef, unknown> =
-  z.object({
-    id: z.string(),
-    label: z.string(),
-    coverage_status: FeatureCoverageStatus$inboundSchema,
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      label: z.string(),
+      coverage_status: FeatureCoverageStatus$inboundSchema,
+    })
+  );
 
 export function featureFromJSON(
   jsonString: string,
@@ -504,15 +520,17 @@ export const Coverage$inboundSchema: z.ZodType<
   Coverage,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  read_models: z.array(
-    z.lazy(() => GetToolsCategoryPositiveResponseReadModel$inboundSchema),
-  ),
-  write_actions: z.array(
-    z.lazy(() => GetToolsCategoryPositiveResponseWriteAction$inboundSchema),
-  ),
-  features: z.array(z.lazy(() => Feature$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    read_models: z.array(
+      z.lazy(() => GetToolsCategoryPositiveResponseReadModel$inboundSchema),
+    ),
+    write_actions: z.array(
+      z.lazy(() => GetToolsCategoryPositiveResponseWriteAction$inboundSchema),
+    ),
+    features: z.array(z.lazy(() => Feature$inboundSchema)),
+  })
+);
 
 export function coverageFromJSON(
   jsonString: string,
@@ -529,17 +547,19 @@ export const GetToolsCategoryPositiveResponseTool$inboundSchema: z.ZodType<
   GetToolsCategoryPositiveResponseTool,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  label: z.string(),
-  internal_label: z.nullable(z.string()),
-  assets: z.lazy(() => Assets$inboundSchema),
-  paid_api_details_markdown: z.nullable(z.string()),
-  fast_track_details_markdown: z.nullable(z.string()),
-  partner_only_details_markdown: z.nullable(z.string()),
-  connection_guide_url: z.nullable(z.string()),
-  coverage: z.lazy(() => Coverage$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    label: z.string(),
+    internal_label: z.nullable(z.string()),
+    assets: z.lazy(() => Assets$inboundSchema),
+    paid_api_details_markdown: z.nullable(z.string()),
+    fast_track_details_markdown: z.nullable(z.string()),
+    partner_only_details_markdown: z.nullable(z.string()),
+    connection_guide_url: z.nullable(z.string()),
+    coverage: z.lazy(() => Coverage$inboundSchema),
+  })
+);
 
 export function getToolsCategoryPositiveResponseToolFromJSON(
   jsonString: string,
@@ -557,11 +577,13 @@ export const GetToolsCategoryPositiveResponseData$inboundSchema: z.ZodType<
   GetToolsCategoryPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tools: z.array(
-    z.lazy(() => GetToolsCategoryPositiveResponseTool$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tools: z.array(
+      z.lazy(() => GetToolsCategoryPositiveResponseTool$inboundSchema),
+    ),
+  })
+);
 
 export function getToolsCategoryPositiveResponseDataFromJSON(
   jsonString: string,
@@ -579,10 +601,12 @@ export const GetToolsCategoryPositiveResponse$inboundSchema: z.ZodType<
   GetToolsCategoryPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetToolsCategoryPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetToolsCategoryPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getToolsCategoryPositiveResponseFromJSON(
   jsonString: string,

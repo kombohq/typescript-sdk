@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -76,13 +77,17 @@ export type PostIntegrationsIntegrationIdRelinkRequestBody = {
 export const PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$outboundSchema:
   z.ZodNativeEnum<
     typeof PostIntegrationsIntegrationIdRelinkRequestBodyLanguage
-  > = z.nativeEnum(PostIntegrationsIntegrationIdRelinkRequestBodyLanguage);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(PostIntegrationsIntegrationIdRelinkRequestBodyLanguage)
+  );
 
 /** @internal */
 export const PostIntegrationsIntegrationIdRelinkRequestBodyLinkType$outboundSchema:
   z.ZodNativeEnum<
     typeof PostIntegrationsIntegrationIdRelinkRequestBodyLinkType
-  > = z.nativeEnum(PostIntegrationsIntegrationIdRelinkRequestBodyLinkType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(PostIntegrationsIntegrationIdRelinkRequestBodyLinkType)
+  );
 
 /** @internal */
 export type PostIntegrationsIntegrationIdRelinkRequestBody$Outbound = {
@@ -97,16 +102,18 @@ export const PostIntegrationsIntegrationIdRelinkRequestBody$outboundSchema:
     PostIntegrationsIntegrationIdRelinkRequestBody$Outbound,
     z.ZodTypeDef,
     PostIntegrationsIntegrationIdRelinkRequestBody
-  > = z.object({
-    language: z.nullable(
-      PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$outboundSchema
-        .default("en"),
-    ),
-    scope_config_id: z.nullable(z.string()).optional(),
-    link_type:
-      PostIntegrationsIntegrationIdRelinkRequestBodyLinkType$outboundSchema
-        .default("EMBEDDED"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      language: z.nullable(
+        PostIntegrationsIntegrationIdRelinkRequestBodyLanguage$outboundSchema
+          .default("en"),
+      ),
+      scope_config_id: z.nullable(z.string()).optional(),
+      link_type:
+        PostIntegrationsIntegrationIdRelinkRequestBodyLinkType$outboundSchema
+          .default("EMBEDDED"),
+    })
+  );
 
 export function postIntegrationsIntegrationIdRelinkRequestBodyToJSON(
   postIntegrationsIntegrationIdRelinkRequestBody:

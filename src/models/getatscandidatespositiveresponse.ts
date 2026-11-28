@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
@@ -265,10 +265,12 @@ export const GetAtsCandidatesPositiveResponsePhoneNumber$inboundSchema:
     GetAtsCandidatesPositiveResponsePhoneNumber,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    phone_number: z.string(),
-    type: z.nullable(z.string()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      phone_number: z.string(),
+      type: z.nullable(z.string()).optional(),
+    })
+  );
 
 export function getAtsCandidatesPositiveResponsePhoneNumberFromJSON(
   jsonString: string,
@@ -292,10 +294,12 @@ export const GetAtsCandidatesPositiveResponseEmailAddress$inboundSchema:
     GetAtsCandidatesPositiveResponseEmailAddress,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    email_address: z.nullable(z.string()).optional(),
-    type: z.nullable(z.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      email_address: z.nullable(z.string()).optional(),
+      type: z.nullable(z.string()),
+    })
+  );
 
 export function getAtsCandidatesPositiveResponseEmailAddressFromJSON(
   jsonString: string,
@@ -319,11 +323,13 @@ export const GetAtsCandidatesPositiveResponseSocialMedia$inboundSchema:
     GetAtsCandidatesPositiveResponseSocialMedia,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    link: z.nullable(z.string()).optional(),
-    type: z.nullable(z.string()).optional(),
-    username: z.nullable(z.string()).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      link: z.nullable(z.string()).optional(),
+      type: z.nullable(z.string()).optional(),
+      username: z.nullable(z.string()).optional(),
+    })
+  );
 
 export function getAtsCandidatesPositiveResponseSocialMediaFromJSON(
   jsonString: string,
@@ -346,15 +352,17 @@ export const GetAtsCandidatesPositiveResponseLocation$inboundSchema: z.ZodType<
   GetAtsCandidatesPositiveResponseLocation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  city: z.nullable(z.string()).optional(),
-  country: z.nullable(z.string()).optional(),
-  raw: z.nullable(z.string()).optional(),
-  state: z.nullable(z.string()).optional(),
-  street_1: z.nullable(z.string()).optional(),
-  street_2: z.nullable(z.string()).optional(),
-  zip_code: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    city: z.nullable(z.string()).optional(),
+    country: z.nullable(z.string()).optional(),
+    raw: z.nullable(z.string()).optional(),
+    state: z.nullable(z.string()).optional(),
+    street_1: z.nullable(z.string()).optional(),
+    street_2: z.nullable(z.string()).optional(),
+    zip_code: z.nullable(z.string()).optional(),
+  })
+);
 
 export function getAtsCandidatesPositiveResponseLocationFromJSON(
   jsonString: string,
@@ -374,8 +382,10 @@ export function getAtsCandidatesPositiveResponseLocationFromJSON(
 
 /** @internal */
 export const GetAtsCandidatesPositiveResponseOutcome$inboundSchema:
-  z.ZodNativeEnum<typeof GetAtsCandidatesPositiveResponseOutcome> = z
-    .nativeEnum(GetAtsCandidatesPositiveResponseOutcome);
+  z.ZodNativeEnum<typeof GetAtsCandidatesPositiveResponseOutcome> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetAtsCandidatesPositiveResponseOutcome)
+    );
 
 /** @internal */
 export const GetAtsCandidatesPositiveResponseCurrentStage$inboundSchema:
@@ -383,12 +393,14 @@ export const GetAtsCandidatesPositiveResponseCurrentStage$inboundSchema:
     GetAtsCandidatesPositiveResponseCurrentStage,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    name: z.nullable(z.string()),
-    remote_id: z.nullable(z.string()),
-    index: z.nullable(z.number().int()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      name: z.nullable(z.string()),
+      remote_id: z.nullable(z.string()),
+      index: z.nullable(z.number().int()),
+    })
+  );
 
 export function getAtsCandidatesPositiveResponseCurrentStageFromJSON(
   jsonString: string,
@@ -411,11 +423,13 @@ export const GetAtsCandidatesPositiveResponseJob$inboundSchema: z.ZodType<
   GetAtsCandidatesPositiveResponseJob,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()),
-  remote_id: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()),
+    remote_id: z.string(),
+  })
+);
 
 export function getAtsCandidatesPositiveResponseJobFromJSON(
   jsonString: string,
@@ -434,31 +448,37 @@ export const GetAtsCandidatesPositiveResponseApplication$inboundSchema:
     GetAtsCandidatesPositiveResponseApplication,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()),
-    outcome: z.nullable(GetAtsCandidatesPositiveResponseOutcome$inboundSchema),
-    rejection_reason_name: z.nullable(z.string()),
-    rejected_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    remote_url: z.nullable(z.string()),
-    changed_at: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    remote_created_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    remote_updated_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    current_stage: z.nullable(
-      z.lazy(() => GetAtsCandidatesPositiveResponseCurrentStage$inboundSchema),
-    ),
-    job: z.nullable(
-      z.lazy(() => GetAtsCandidatesPositiveResponseJob$inboundSchema),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      remote_id: z.nullable(z.string()),
+      outcome: z.nullable(
+        GetAtsCandidatesPositiveResponseOutcome$inboundSchema,
+      ),
+      rejection_reason_name: z.nullable(z.string()),
+      rejected_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      remote_url: z.nullable(z.string()),
+      changed_at: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      remote_created_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      remote_updated_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      current_stage: z.nullable(
+        z.lazy(() =>
+          GetAtsCandidatesPositiveResponseCurrentStage$inboundSchema
+        ),
+      ),
+      job: z.nullable(
+        z.lazy(() => GetAtsCandidatesPositiveResponseJob$inboundSchema),
+      ),
+    })
+  );
 
 export function getAtsCandidatesPositiveResponseApplicationFromJSON(
   jsonString: string,
@@ -481,11 +501,13 @@ export const GetAtsCandidatesPositiveResponseTag$inboundSchema: z.ZodType<
   GetAtsCandidatesPositiveResponseTag,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  name: z.nullable(z.string()),
-  remote_id: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.nullable(z.string()),
+    remote_id: z.nullable(z.string()),
+  })
+);
 
 export function getAtsCandidatesPositiveResponseTagFromJSON(
   jsonString: string,
@@ -503,52 +525,54 @@ export const GetAtsCandidatesPositiveResponseResult$inboundSchema: z.ZodType<
   GetAtsCandidatesPositiveResponseResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: z.string(),
-  remote_id: z.string(),
-  first_name: z.nullable(z.string()),
-  last_name: z.nullable(z.string()),
-  company: z.nullable(z.string()),
-  title: z.nullable(z.string()),
-  confidential: z.nullable(z.boolean()),
-  source: z.nullable(z.string()),
-  phone_numbers: z.nullable(
-    z.array(z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    remote_id: z.string(),
+    first_name: z.nullable(z.string()),
+    last_name: z.nullable(z.string()),
+    company: z.nullable(z.string()),
+    title: z.nullable(z.string()),
+    confidential: z.nullable(z.boolean()),
+    source: z.nullable(z.string()),
+    phone_numbers: z.nullable(z.array(z.lazy(() =>
       GetAtsCandidatesPositiveResponsePhoneNumber$inboundSchema
-    )),
-  ).optional(),
-  email_addresses: z.nullable(
-    z.array(z.lazy(() =>
+    ))).optional(),
+    email_addresses: z.nullable(z.array(z.lazy(() =>
       GetAtsCandidatesPositiveResponseEmailAddress$inboundSchema
-    )),
-  ).optional(),
-  social_media: z.nullable(
-    z.array(z.lazy(() =>
+    ))).optional(),
+    social_media: z.nullable(z.array(z.lazy(() =>
       GetAtsCandidatesPositiveResponseSocialMedia$inboundSchema
-    )),
-  ).optional(),
-  location: z.nullable(
-    z.lazy(() => GetAtsCandidatesPositiveResponseLocation$inboundSchema),
-  ).optional(),
-  custom_fields: z.nullable(z.record(z.any())),
-  remote_url: z.nullable(z.string()),
-  remote_created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  remote_updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  changed_at: z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  remote_deleted_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ),
-  applications: z.array(
-    z.lazy(() => GetAtsCandidatesPositiveResponseApplication$inboundSchema),
-  ),
-  tags: z.array(
-    z.lazy(() => GetAtsCandidatesPositiveResponseTag$inboundSchema),
-  ),
-});
+    ))).optional(),
+    location: z.nullable(z.lazy(() =>
+      GetAtsCandidatesPositiveResponseLocation$inboundSchema
+    )).optional(),
+    custom_fields: z.nullable(z.record(z.any())),
+    remote_url: z.nullable(z.string()),
+    remote_created_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+    ),
+    remote_updated_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+    ),
+    changed_at: z.string().datetime({ offset: true }).transform(v =>
+      new Date(v)
+    ),
+    remote_deleted_at: z.nullable(
+      z.string().datetime({ offset: true }).transform(v => new Date(v)),
+    ),
+    applications: z.array(
+      z.lazy(() => GetAtsCandidatesPositiveResponseApplication$inboundSchema),
+    ),
+    tags: z.array(
+      z.lazy(() => GetAtsCandidatesPositiveResponseTag$inboundSchema),
+    ),
+  })
+);
 
 export function getAtsCandidatesPositiveResponseResultFromJSON(
   jsonString: string,
@@ -566,12 +590,14 @@ export const GetAtsCandidatesPositiveResponseData$inboundSchema: z.ZodType<
   GetAtsCandidatesPositiveResponseData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: z.nullable(z.string()),
-  results: z.array(
-    z.lazy(() => GetAtsCandidatesPositiveResponseResult$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: z.nullable(z.string()),
+    results: z.array(
+      z.lazy(() => GetAtsCandidatesPositiveResponseResult$inboundSchema),
+    ),
+  })
+);
 
 export function getAtsCandidatesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -589,10 +615,12 @@ export const GetAtsCandidatesPositiveResponse$inboundSchema: z.ZodType<
   GetAtsCandidatesPositiveResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: z.literal("success"),
-  data: z.lazy(() => GetAtsCandidatesPositiveResponseData$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: z.literal("success"),
+    data: z.lazy(() => GetAtsCandidatesPositiveResponseData$inboundSchema),
+  })
+);
 
 export function getAtsCandidatesPositiveResponseFromJSON(
   jsonString: string,

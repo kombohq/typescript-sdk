@@ -1,11 +1,11 @@
-# PropertiesMultiSelect
+# GetHrisEmployeesFormPositiveResponsePropertiesMultiSelect
 
 ## Example Usage
 
 ```typescript
-import { PropertiesMultiSelect } from "@kombo-api/sdk/models";
+import { GetHrisEmployeesFormPositiveResponsePropertiesMultiSelect } from "@kombo-api/sdk/models";
 
-let value: PropertiesMultiSelect = {
+let value: GetHrisEmployeesFormPositiveResponsePropertiesMultiSelect = {
   label: "<value>",
   required: true,
   type: "multi_select",

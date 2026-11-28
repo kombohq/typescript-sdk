@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
@@ -28,7 +28,7 @@ export const PostAtsApplicationsApplicationIdNotesPositiveResponseData$inboundSc
     PostAtsApplicationsApplicationIdNotesPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({});
+  > = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function postAtsApplicationsApplicationIdNotesPositiveResponseDataFromJSON(
   jsonString: string,
@@ -51,9 +51,11 @@ export const PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$inboun
     PostAtsApplicationsApplicationIdNotesPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -76,17 +78,17 @@ export const PostAtsApplicationsApplicationIdNotesPositiveResponse$inboundSchema
     PostAtsApplicationsApplicationIdNotesPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      PostAtsApplicationsApplicationIdNotesPositiveResponseData$inboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesPositiveResponseData$inboundSchema
       ),
-    ),
-  });
+      warnings: z.array(z.lazy(() =>
+        PostAtsApplicationsApplicationIdNotesPositiveResponseWarning$inboundSchema
+      )),
+    })
+  );
 
 export function postAtsApplicationsApplicationIdNotesPositiveResponseFromJSON(
   jsonString: string,

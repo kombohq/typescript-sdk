@@ -199,6 +199,8 @@ const kombo = new Kombo({
 * [getEmployeeForm](docs/sdks/hris/README.md#getemployeeform) - Get employee form
 * [createEmployeeWithForm](docs/sdks/hris/README.md#createemployeewithform) - Create employee with form
 * [addEmployeeDocument](docs/sdks/hris/README.md#addemployeedocument) - Add document to employee
+* [getHrisEmployeesEmployeeIdFormRehire](docs/sdks/hris/README.md#gethrisemployeesemployeeidformrehire) - Get rehire form
+* [postHrisEmployeesEmployeeIdFormRehire](docs/sdks/hris/README.md#posthrisemployeesemployeeidformrehire) - Rehire employee
 * [getEmployeeDocumentCategories](docs/sdks/hris/README.md#getemployeedocumentcategories) - Get employee document categories
 * [getGroups](docs/sdks/hris/README.md#getgroups) - Get groups
 * [getEmployments](docs/sdks/hris/README.md#getemployments) - Get employments
@@ -306,7 +308,7 @@ run();
 **Primary error:**
 * [`KomboError`](./src/models/errors/komboerror.ts): The base class for HTTP error responses.
 
-<details><summary>Less common errors (9)</summary>
+<details><summary>Less common errors (10)</summary>
 
 <br />
 
@@ -319,9 +321,10 @@ run();
 
 
 **Inherit from [`KomboError`](./src/models/errors/komboerror.ts)**:
-* [`KomboAtsError`](./src/models/errors/komboatserror.ts): The standard error response with the error codes for the ATS use case. Applicable to 31 of 66 methods.*
-* [`KomboHrisError`](./src/models/errors/kombohriserror.ts): The standard error response with the error codes for the HRIS use case. Applicable to 20 of 66 methods.*
-* [`KomboGeneralError`](./src/models/errors/kombogeneralerror.ts): The standard error response with just the platform error codes. Applicable to 15 of 66 methods.*
+* [`KomboAtsError`](./src/models/errors/komboatserror.ts): The standard error response with the error codes for the ATS use case. Applicable to 31 of 68 methods.*
+* [`KomboHrisError`](./src/models/errors/kombohriserror.ts): The standard error response with the error codes for the HRIS use case. Applicable to 22 of 68 methods.*
+* [`KomboGeneralError`](./src/models/errors/kombogeneralerror.ts): The standard error response with just the platform error codes. Applicable to 14 of 68 methods.*
+* [`KomboPassthroughError`](./src/models/errors/kombopassthrougherror.ts): The standard error response with the error codes for the passthrough API. Applicable to 1 of 68 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -464,6 +467,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetEmployees`](docs/sdks/hris/README.md#getemployees) - Get employees
 - [`hrisGetEmployments`](docs/sdks/hris/README.md#getemployments) - Get employments
 - [`hrisGetGroups`](docs/sdks/hris/README.md#getgroups) - Get groups
+- [`hrisGetHrisEmployeesEmployeeIdFormRehire`](docs/sdks/hris/README.md#gethrisemployeesemployeeidformrehire) - Get rehire form
 - [`hrisGetHrisPayRuns`](docs/sdks/hris/README.md#gethrispayruns) - Pay Runs
 - [`hrisGetHrisPayslips`](docs/sdks/hris/README.md#gethrispayslips) - Payslips
 - [`hrisGetLegalEntities`](docs/sdks/hris/README.md#getlegalentities) - Get legal entities
@@ -473,6 +477,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetStaffingEntities`](docs/sdks/hris/README.md#getstaffingentities) - Get staffing entities
 - [`hrisGetTimeOffBalances`](docs/sdks/hris/README.md#gettimeoffbalances) - Get time off balances
 - [`hrisGetTimesheets`](docs/sdks/hris/README.md#gettimesheets) - Get timesheets
+- [`hrisPostHrisEmployeesEmployeeIdFormRehire`](docs/sdks/hris/README.md#posthrisemployeesemployeeidformrehire) - Rehire employee
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -551,6 +556,26 @@ const sdk = new Kombo({ debug_logger: console });
 ## Requirements
 
 For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
+
+### Lazy operation loading in Node.js
+
+The `/node` entry point and its lazy SDK classes are generated for every SDK. No `gen.yaml` flag is needed; Node.js applications opt in to loading operation functions on first use by changing their import:
+
+```typescript
+import { Kombo } from "@kombo-api/sdk/node";
+
+const sdk = new Kombo();
+```
+
+The `/node` entry point keeps the same method signatures, pagination behaviour, and response helpers. Operation modules load through dynamic imports when a method is called. Models and error classes are shared with the standard entry points, rather than bundled into separate copies.
+
+The standard package entry point and SDK subpaths retain their static imports. Keep using those entry points in browser bundles, including IIFE and UMD builds, to avoid dynamic-import chunks. Custom root exports may still load additional modules.
+
+The Node SDK classes live in `src/sdk/*.lazy.ts`. Custom code regions in the standard SDK classes are not copied to these classes; apply any required customisations to their separate regions. Accept-header enums have the same values, but their enum objects are specific to each entry point.
+
+Generated model schemas are constructed synchronously and cached on first use with either entry point. Importing a model does not construct its schema; parsing or inspecting a schema does. This does not require changing the configured Zod version.
+
+`Object.freeze`, `Object.seal`, and `Object.preventExtensions` construct the schema and apply to the cached Zod object. Zod's own restrictions on frozen schemas still apply, including methods that install properties on first access.
 <!-- End Requirements [requirements] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

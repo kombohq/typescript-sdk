@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 
 export type PostPassthroughToolApiGlobals = {
@@ -39,11 +40,13 @@ export const PostPassthroughToolApiRequest$outboundSchema: z.ZodType<
   PostPassthroughToolApiRequest$Outbound,
   z.ZodTypeDef,
   PostPassthroughToolApiRequest
-> = z.object({
-  tool: z.string(),
-  api: z.string(),
-  body: models.PostPassthroughToolApiRequestBody$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tool: z.string(),
+    api: z.string(),
+    body: models.PostPassthroughToolApiRequestBody$outboundSchema,
+  })
+);
 
 export function postPassthroughToolApiRequestToJSON(
   postPassthroughToolApiRequest: PostPassthroughToolApiRequest,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../../lib/schemas.js";
 import * as models from "../index.js";
 
 export type DeleteAtsCandidatesCandidateIdTagsGlobals = {
@@ -35,10 +36,12 @@ export const DeleteAtsCandidatesCandidateIdTagsRequest$outboundSchema:
     DeleteAtsCandidatesCandidateIdTagsRequest$Outbound,
     z.ZodTypeDef,
     DeleteAtsCandidatesCandidateIdTagsRequest
-  > = z.object({
-    candidate_id: z.string(),
-    body: models.DeleteAtsCandidatesCandidateIdTagsRequestBody$outboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      candidate_id: z.string(),
+      body: models.DeleteAtsCandidatesCandidateIdTagsRequestBody$outboundSchema,
+    })
+  );
 
 export function deleteAtsCandidatesCandidateIdTagsRequestToJSON(
   deleteAtsCandidatesCandidateIdTagsRequest:

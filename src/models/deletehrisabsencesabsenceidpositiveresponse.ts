@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import * as openEnums from "../types/enums.js";
 import { ClosedEnum, OpenEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -107,6 +107,10 @@ export type DeleteHrisAbsencesAbsenceIdPositiveResponseData = {
    * The date and time the object was deleted in the remote system. Objects are automatically marked as deleted when Kombo can't retrieve them from the remote system anymore. Kombo will also anonymize entries 14 days after they disappear.
    */
   remote_deleted_at: Date | null;
+  /**
+   * A key-value store of fields not covered by the schema. [Read more](/custom-fields)
+   */
+  custom_fields: { [k: string]: any } | null;
 };
 
 export type DeleteHrisAbsencesAbsenceIdPositiveResponseWarning = {
@@ -124,8 +128,10 @@ export type DeleteHrisAbsencesAbsenceIdPositiveResponse = {
 
 /** @internal */
 export const DeleteHrisAbsencesAbsenceIdPositiveResponseUnit$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteHrisAbsencesAbsenceIdPositiveResponseUnit> = z
-    .nativeEnum(DeleteHrisAbsencesAbsenceIdPositiveResponseUnit);
+  z.ZodNativeEnum<typeof DeleteHrisAbsencesAbsenceIdPositiveResponseUnit> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteHrisAbsencesAbsenceIdPositiveResponseUnit)
+    );
 
 /** @internal */
 export const DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$inboundSchema:
@@ -133,8 +139,8 @@ export const DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$inboundSchema:
     DeleteHrisAbsencesAbsenceIdPositiveResponseStatus,
     z.ZodTypeDef,
     unknown
-  > = openEnums.inboundSchema(
-    DeleteHrisAbsencesAbsenceIdPositiveResponseStatus,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    openEnums.inboundSchema(DeleteHrisAbsencesAbsenceIdPositiveResponseStatus)
   );
 
 /** @internal */
@@ -143,38 +149,41 @@ export const DeleteHrisAbsencesAbsenceIdPositiveResponseData$inboundSchema:
     DeleteHrisAbsencesAbsenceIdPositiveResponseData,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    id: z.string(),
-    remote_id: z.nullable(z.string()),
-    employee_id: z.string(),
-    start_date: z.nullable(z.any()).optional(),
-    end_date: z.nullable(z.any()).optional(),
-    start_half_day: z.nullable(z.boolean()),
-    end_half_day: z.nullable(z.boolean()),
-    start_time: z.nullable(z.any()).optional(),
-    end_time: z.nullable(z.any()).optional(),
-    amount: z.nullable(z.number()),
-    unit: z.nullable(
-      DeleteHrisAbsencesAbsenceIdPositiveResponseUnit$inboundSchema,
-    ),
-    status: z.nullable(
-      DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$inboundSchema,
-    ).optional(),
-    employee_note: z.nullable(z.string()),
-    type_id: z.nullable(z.string()),
-    remote_created_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    remote_updated_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-    changed_at: z.string().datetime({ offset: true }).transform(v =>
-      new Date(v)
-    ),
-    remote_deleted_at: z.nullable(
-      z.string().datetime({ offset: true }).transform(v => new Date(v)),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: z.string(),
+      remote_id: z.nullable(z.string()),
+      employee_id: z.string(),
+      start_date: z.nullable(z.any()).optional(),
+      end_date: z.nullable(z.any()).optional(),
+      start_half_day: z.nullable(z.boolean()),
+      end_half_day: z.nullable(z.boolean()),
+      start_time: z.nullable(z.any()).optional(),
+      end_time: z.nullable(z.any()).optional(),
+      amount: z.nullable(z.number()),
+      unit: z.nullable(
+        DeleteHrisAbsencesAbsenceIdPositiveResponseUnit$inboundSchema,
+      ),
+      status: z.nullable(
+        DeleteHrisAbsencesAbsenceIdPositiveResponseStatus$inboundSchema,
+      ).optional(),
+      employee_note: z.nullable(z.string()),
+      type_id: z.nullable(z.string()),
+      remote_created_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      remote_updated_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      changed_at: z.string().datetime({ offset: true }).transform(v =>
+        new Date(v)
+      ),
+      remote_deleted_at: z.nullable(
+        z.string().datetime({ offset: true }).transform(v => new Date(v)),
+      ),
+      custom_fields: z.nullable(z.record(z.any())),
+    })
+  );
 
 export function deleteHrisAbsencesAbsenceIdPositiveResponseDataFromJSON(
   jsonString: string,
@@ -198,9 +207,11 @@ export const DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$inboundSchema:
     DeleteHrisAbsencesAbsenceIdPositiveResponseWarning,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    message: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      message: z.string(),
+    })
+  );
 
 export function deleteHrisAbsencesAbsenceIdPositiveResponseWarningFromJSON(
   jsonString: string,
@@ -224,17 +235,17 @@ export const DeleteHrisAbsencesAbsenceIdPositiveResponse$inboundSchema:
     DeleteHrisAbsencesAbsenceIdPositiveResponse,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    status: z.literal("success"),
-    data: z.lazy(() =>
-      DeleteHrisAbsencesAbsenceIdPositiveResponseData$inboundSchema
-    ),
-    warnings: z.array(
-      z.lazy(() =>
-        DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: z.literal("success"),
+      data: z.lazy(() =>
+        DeleteHrisAbsencesAbsenceIdPositiveResponseData$inboundSchema
       ),
-    ),
-  });
+      warnings: z.array(z.lazy(() =>
+        DeleteHrisAbsencesAbsenceIdPositiveResponseWarning$inboundSchema
+      )),
+    })
+  );
 
 export function deleteHrisAbsencesAbsenceIdPositiveResponseFromJSON(
   jsonString: string,
